@@ -6,26 +6,13 @@
   "scripts": {
     "start": "electron . ",
     "postinstall": "install-app-deps",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "build-win": "electon-builder -w",
+    "build-mac": "electon-builder -m",
+    "build-linux": "electon-builder -l",
+    "build-all": "electon-builder -mwl"
   },
   "build": {
-    "appId": "org.electron.NeXiClient",
-    "build": {
-      "win": {
-        "target": [
-          {
-            "target": "zip",
-            "arch": [
-              "x64"
-            ]
-          }
-        ]
-      }
-    },
-    "publish": {
-      "provider": "github"
-    }
+    "appId": "org.electron.NeXiClient"
   },
   "repository": {
     "type": "git",
