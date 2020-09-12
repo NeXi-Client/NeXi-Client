@@ -18,16 +18,4 @@ How to install it: Just drag the 'NeXiClient' folder somewhere you can find it a
 
 If you encounter any bugs & problems then please. Join my discord and let me now about it.
 
-Credits: NeXi
-
-Social
-
-Discord: NeXi#9174
-
-NeXi2k's Discord: https://discord.gg/vQZbaT6
-
-Twitch: twitch.tv/nexi2k_
-
-Twitter: @NeXi2k
-
-Venge.io: NeXi2k
+Credits: NeXi, Urban & Syn7ax
