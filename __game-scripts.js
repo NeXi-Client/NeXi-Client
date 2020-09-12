@@ -8138,7 +8138,7 @@ Menu.prototype.onMatchFound = function() {
         x: 1.2,
         y: 1.2,
         z: 1.2
-    }, .5, pc.QuarticOut).start(),
+    }, 1, pc.QuarticOut).start(),
     this.matchFoundBackground.tween(this.matchFoundCenter.element).to({
         opacity: 1
     }, .5, pc.Linear).start(),
