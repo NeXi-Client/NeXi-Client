@@ -91,9 +91,9 @@
                   0.11764705882352941
                 ],
                 "meColor": [
+                  0,
                   1,
-                  0.8352941176470589,
-                  0
+                  1
                 ],
                 "explosive": [
                   1,
@@ -2883,7 +2883,7 @@
       "tags": [
         "MODE-TDM"
       ],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "ff41e611-57ff-4814-a2b5-81e6b9ffdf6d",
       "parent": "55905da6-2f85-4c85-aeac-1da64a7d0301",
       "children": [
@@ -2994,7 +2994,7 @@
       "tags": [
         "MODE-TDM"
       ],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "ef1bd1ef-b6f0-4a92-8855-3c7c50adfc83",
       "parent": "55905da6-2f85-4c85-aeac-1da64a7d0301",
       "children": [
@@ -40731,7 +40731,7 @@
       "tags": [
         "MODE-TDM"
       ],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "2bbee589-78ad-486b-9fad-b60ce2cf8a7c",
       "parent": "12110017-a0d1-4449-ab75-c62bdb170f0c",
       "children": [
@@ -41054,7 +41054,7 @@
       "tags": [
         "MODE-TDM"
       ],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "2aa06571-845d-4c44-894c-e1c8a1f4b742",
       "parent": "12110017-a0d1-4449-ab75-c62bdb170f0c",
       "children": [
@@ -48038,7 +48038,7 @@
     "b9cf25d8-9615-4b3e-a1c7-d4d95fb22316": {
       "name": "Team",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "b9cf25d8-9615-4b3e-a1c7-d4d95fb22316",
       "parent": "ebebda7a-5ed8-4895-841d-73c2b1ab560b",
       "children": [],
@@ -50594,7 +50594,7 @@
     "71eb5b83-a160-43d9-aab3-4ad7caa239b8": {
       "name": "TeamNotification",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "71eb5b83-a160-43d9-aab3-4ad7caa239b8",
       "parent": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
       "children": [
