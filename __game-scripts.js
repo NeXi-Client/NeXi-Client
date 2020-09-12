@@ -3594,36 +3594,36 @@ Overlay.prototype.onTransition = function(t) {
     this.rightCinema.enabled = !0,
     this.entity.sound.slots.Whoosh.pitch = 1.1,
     this.entity.sound.play("Whoosh"),
-    this.leftCinema.setLocalEulerAngles(0, 0, 15),
-    this.leftCinema.setLocalScale(.1, 0, 0),
+    this.leftCinema.setLocalEulerAngles(0, 0, 0),
+    this.leftCinema.setLocalScale(.1, 1, 1),
     this.leftCinema.tween(this.leftCinema.getLocalScale()).to({
         x: 1.4,
         y: 1,
         z: 1
-    }, .35, pc.Linear).start(),
-    this.rightCinema.setLocalEulerAngles(0, 0, 15),
-    this.rightCinema.setLocalScale(.1, 0, 0),
+    }, .5, pc.QuarticInOut).start(),
+    this.rightCinema.setLocalEulerAngles(0, 0, 0),
+    this.rightCinema.setLocalScale(.1, 1, 1),
     this.rightCinema.tween(this.rightCinema.getLocalScale()).to({
         x: 1.4,
         y: 1,
         z: 1
-    }, .35, pc.Linear).start(),
+    }, .5, pc.QuarticInOut).start(),
     setTimeout(function(t) {
-        t.leftCinema.setLocalEulerAngles(0, 0, -15),
+        t.leftCinema.setLocalEulerAngles(0, 0, 0),
         t.leftCinema.tween(t.leftCinema.getLocalScale()).to({
             x: .1,
             y: 1,
             z: 1
-        }, .35, pc.Linear).start(),
-        t.rightCinema.setLocalEulerAngles(0, 0, -15),
+        }, .5, pc.QuarticInOut).start(),
+        t.rightCinema.setLocalEulerAngles(0, 0, 0),
         t.rightCinema.tween(t.rightCinema.getLocalScale()).to({
             x: .1,
             y: 1,
             z: 1
-        }, .35, pc.Linear).start(),
+        }, .5, pc.QuarticInOut).start(),
         t.entity.sound.slots.Whoosh.pitch = 1,
         t.entity.sound.play("Whoosh")
-    }, 400, this)
+    }, 500, this)
 }
 ,
 Overlay.prototype.setDeath = function() {
@@ -8121,21 +8121,30 @@ Menu.prototype.onMatchFound = function() {
     this.matchFoundBackground.tween(this.matchFoundBackground.element).to({
         opacity: 1
     }, 1, pc.Linear).start(),
-    this.matchFoundRectangle.element.opacity = 1,
-    this.matchFoundRectangle.setLocalScale(20, 1, 1),
-    this.matchFoundRectangle.tween(this.matchFoundRectangle.getLocalScale()).to({
-        x: 1,
-        y: 1,
-        z: 1
-    }, .5, pc.Linear).start(),
-    this.matchFoundRectangle.tween(this.matchFoundRectangle.element).to({
-        opacity: .1
-    }, .5, pc.Linear).start(),
+    // this.matchFoundRectangle.element.opacity = 1,
+    // this.matchFoundRectangle.setLocalScale(20, 1, 1),
+    // this.matchFoundRectangle.tween(this.matchFoundRectangle.getLocalScale()).to({
+    //     x: 1,
+    //     y: 1,
+    //     z: 1
+    // }, .5, pc.Linear).start(),
+    // this.matchFoundRectangle.tween(this.matchFoundRectangle.element).to({
+    //     opacity: .1
+    // }, .5, pc.Linear).start(),
+    this.matchFoundBackground.element.opacity = 0,
+    this.matchFoundText.element.opacity = 0,
+    this.matchFoundCenter.setLocalScale(3, 3, 3),
     this.matchFoundCenter.tween(this.matchFoundCenter.getLocalScale()).to({
         x: 1.2,
         y: 1.2,
         z: 1.2
-    }, 2, pc.Linear).start(),
+    }, .5, pc.QuarticOut).start(),
+    this.matchFoundBackground.tween(this.matchFoundCenter.element).to({
+        opacity: 1
+    }, .5, pc.Linear).start(),
+    this.matchFoundText.tween(this.matchFoundText.element).to({
+        opacity: 1
+    }, .5, pc.QuarticOut).start(),
     setTimeout(function(e) {
         e.matchFoundLoading.enabled = !0,
         e.matchFoundRectangle.tween(e.matchFoundRectangle.element).to({
@@ -8146,7 +8155,7 @@ Menu.prototype.onMatchFound = function() {
         }, .5, pc.Linear).start(),
         setTimeout(function() {
             pc.app.fire("Game:Connect", !0)
-        }, 600)
+        }, 2000)
     }, 1500, this)
 }
 ,
@@ -11874,7 +11883,7 @@ RoomManager.prototype.start = function(t) {
     if (this.waitingForInfo)
         return !1;
     this.app.fire("Fetcher:RoomManager", !0),
-    this.matchmakingTitle.element.text = "Loading server settings...",
+    this.matchmakingTitle.element.text = "Joining game",
     this.matchmakingCancel.enabled = !1,
     this.waitingForInfo = !0
 }

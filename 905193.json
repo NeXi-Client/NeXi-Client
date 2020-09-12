@@ -30901,8 +30901,8 @@
           "fontSize": 32,
           "minFontSize": 8,
           "maxFontSize": 32,
-          "autoFitWidth": false,
-          "autoFitHeight": false,
+          "autoFitWidth": true,
+          "autoFitHeight": true,
           "maxLines": null,
           "lineHeight": 32,
           "wrapLines": true,
@@ -30920,10 +30920,10 @@
           "width": 400,
           "height": 200,
           "margin": [
-            -200,
-            -100,
-            -200,
-            -100
+            0,
+            0,
+            0,
+            0
           ],
           "alignment": [
             0.5,
@@ -30953,8 +30953,8 @@
             1
           ],
           "materialAsset": null,
-          "autoWidth": false,
-          "autoHeight": false,
+          "autoWidth": true,
+          "autoHeight": true,
           "useInput": false,
           "batchGroupId": null,
           "mask": false,
@@ -31110,7 +31110,7 @@
             0.5,
             0.5
           ],
-          "text": "Looking for worthy opponents...",
+          "text": "Matchmaking",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 20,
@@ -32502,7 +32502,7 @@
               "asset": 31149158,
               "startTime": 0,
               "duration": null,
-              "volume": 0.2,
+              "volume": 1,
               "pitch": 1
             }
           }
