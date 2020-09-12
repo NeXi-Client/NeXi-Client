@@ -11613,7 +11613,7 @@ RoomManager.prototype.onCreateInvite = function() {
     this.app.fire("Fetcher:Invite", {
         map: this.currentMap,
         version: this.serverCode,
-        max_player: this.maxPlayers = 4,
+        max_player: this.maxPlayers,
         country: this.currentServer
     })
 }
@@ -11681,8 +11681,6 @@ RoomManager.prototype.onLeave = function(t) {
     this.app.fire("Analytics:Event", "Invite", "Cancel")),
     this.matchmakingEntity.enabled = !1,
     this.friendWaiting.enabled = !1,
-    this.maxPlayers = 4,
-    console.log(this.maxPlayers)
 }
 ,
 RoomManager.prototype.getRoomId = function(t) {
