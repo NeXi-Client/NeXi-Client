@@ -8138,7 +8138,7 @@ Menu.prototype.onMatchFound = function() {
         x: 1.2,
         y: 1.2,
         z: 1.2
-    }, 3.5, pc.QuarticOut).start(),
+    }, .5, pc.QuarticOut).start(),
     this.matchFoundBackground.tween(this.matchFoundCenter.element).to({
         opacity: 1
     }, .5, pc.Linear).start(),
@@ -11748,7 +11748,6 @@ RoomManager.prototype.rematchmaking = function() {
     console.log("Rematchmaking..."),
     this.app.fire("RoomManager:Leave", !0),
     this.app.fire("Analytics:Event", "Room", "Rematchmaking"),
-    this.matchmakingTitle.element.text = "Looking for worthy opponents...",
     this.matchmakingCancel.enabled = !0,
     setTimeout(function(t) {
         t.startMatchmaking()
