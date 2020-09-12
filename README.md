@@ -1,21 +1,31 @@
-Thanks for downloading NeXi-Client. 
+# NeXi-Client
 
-NeXi-Client is a unofficial client for the browser game called 'Venge.io' made by NeXi. This client is not official created by the devs of 'Venge.io' and is not affiliated with them any kind. This client is NOT a virus and won't harm your PC or either your account in 'Venge.io'. Anyone telling that it is a virus or a creditals stealer is completely wrong. If you don't believe me then please refer deleting the client again. This client is made to have easier navigation by utilizing shortcuts while giving the least input delay & the maximum of FPS together.
+## Introduction
+Thanks for downloading NeXi-Client.
 
-Client Shortcuts:
+NeXi-Client is a unofficial client developed by NeXi for the browser game called 'Venge.io'. This client is not officially created by the devs of 'Venge.io' and NeXi is not affiliated with the 'Venge.io' team in any way. This client is NOT a virus and won't harm your PC or your 'Venge.io' account. Anyone saying that it is a virus or a credentials stealer is completely wrong. If you don't believe me then you may delete the client. This client is made to be easier to navigate by utilizing shortcuts. It also maximises FPS and reduces input lag.
+
+## Client Shortcuts
 
 F1 - Leaves the game back to the main menu
 
-F2 - Opens the Link Menu where you can join your friends via a Invite link
+F2 - Opens a dialog where you can join your friends via an invite link
 
-F4 - Quits the Client
+Alt+F4 - Quits the Client
 
-F10 - Switches the game to Windowed Mode
+F9 - Opens the developer tool
 
-F11 - Switches the game to Fullscreen Mode
+F11 - Toggles full screen mode
 
-How to install it: Just drag the 'NeXiClient' folder somewhere you can find it again (e.x Desktop) and start the NeXiClient file inside the folder
+## Installation
 
-If you encounter any bugs & problems then please. Join my discord and let me now about it.
+1. Just drag the 'NeXiClient' folder somewhere appropiate.
+2. Launch the executable.
 
-Credits: NeXi, Urban & Syn7ax
+## Contact
+
+To report issues or enquire about something, you may join the [NeXi2k Discord Server](https://discord.gg/6bEYYxM).
+
+## Credits
+
+Developed in collaboration by NeXi, Urban & Syn7ax.
