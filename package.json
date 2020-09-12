@@ -6,10 +6,10 @@
   "scripts": {
     "start": "electron . ",
     "postinstall": "install-app-deps",
-    "build-win": "electon-builder -w",
-    "build-mac": "electon-builder -m",
-    "build-linux": "electon-builder -l",
-    "build-all": "electon-builder -mwl"
+    "build-win": "electron-builder -w",
+    "build-mac": "electron-builder -m",
+    "build-linux": "electron-builder -l",
+    "build-all": "electron-builder -mwl"
   },
   "build": {
     "appId": "org.electron.NeXiClient"
