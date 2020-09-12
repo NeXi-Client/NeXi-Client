@@ -81,11 +81,15 @@ function shortCuts()
 		console.log('Quit has been used'),
 		app.exit(0)  
 	}) 
+	globalShortcut.register('Ctrl+F5'),() =>{
+		win.webContents.reloadIgnoringCache(),
+		console.log('Refresh has been used.')
+	}
 	globalShortcut.register('F9', () => { 
 		win.webContents.openDevTools(), 
 		console.log('DevTools opened') 
 	})
-    globalShortcut.register('F11', () => { 
+    	globalShortcut.register('F11', () => { 
 		win.setSimpleFullScreen(!win.isSimpleFullScreen()) 
 	})
 	globalShortcut.register('ESCAPE', () => { 
