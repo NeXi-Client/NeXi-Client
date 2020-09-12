@@ -11680,7 +11680,7 @@ RoomManager.prototype.onLeave = function(t) {
     }),
     this.app.fire("Analytics:Event", "Invite", "Cancel")),
     this.matchmakingEntity.enabled = !1,
-    this.friendWaiting.enabled = !1,
+    this.friendWaiting.enabled = !1
 }
 ,
 RoomManager.prototype.getRoomId = function(t) {
