@@ -18479,9 +18479,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0,
-            0,
-            0
+            1,
+            1,
+            1
           ],
           "opacity": 1,
           "textureAsset": 30964398,
