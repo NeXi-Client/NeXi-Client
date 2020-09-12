@@ -8156,7 +8156,7 @@ Menu.prototype.onMatchFound = function() {
         setTimeout(function() {
             pc.app.fire("Game:Connect", !0)
         }, 2000)
-    }, 1100, this)
+    }, 1150, this)
 }
 ,
 Menu.prototype.onConnect = function() {
