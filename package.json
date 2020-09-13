@@ -6,10 +6,10 @@
   "scripts": {
     "start": "electron . ",
     "postinstall": "install-app-deps",
-    "build-win": "electron-builder -w --icon './files/game.ico'",
-    "build-mac": "electron-builder -m --icon './files/game.ico'",
-    "build-linux": "electron-builder -l --icon './files/game.ico'",
-    "build-all": "electron-builder -mwl --icon './files/game.ico'"
+    "build-win": "electron-builder -w",
+    "build-mac": "electron-builder -m",
+    "build-linux": "electron-builder -l",
+    "build-all": "electron-builder -mwl"
   },
   "build": {
     "appId": "org.electron.NeXiClient"
