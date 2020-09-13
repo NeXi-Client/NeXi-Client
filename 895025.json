@@ -54169,9 +54169,9 @@
             "slider": {
               "enabled": true,
               "attributes": {
-                "defaultValue": 100,
+                "defaultValue": 110,
                 "min": 50,
-                "max": 100,
+                "max": 110,
                 "step": 1,
                 "displayElement": "fc6a3271-fb3e-4d90-b884-52f996d42e4f",
                 "storeValue": true,
