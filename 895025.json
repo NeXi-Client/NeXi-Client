@@ -40840,7 +40840,7 @@
     "99db74b3-e4c8-41ac-979a-424ebcba2606": {
       "name": "Score",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "99db74b3-e4c8-41ac-979a-424ebcba2606",
       "parent": "2bbee589-78ad-486b-9fad-b60ce2cf8a7c",
       "children": [],

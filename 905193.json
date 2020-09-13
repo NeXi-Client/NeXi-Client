@@ -739,7 +739,7 @@
             -460,
             -570,
             -460,
-            90
+            140
           ],
           "alignment": [
             0.5,
@@ -786,7 +786,7 @@
       "tags": [
         "DesktopOnly"
       ],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "2baa7f22-cb28-4cbb-a175-55b8d4385c6f",
       "parent": "06c5ec69-e469-4a9c-8d86-1f10ab8e0412",
       "children": [
@@ -30901,8 +30901,8 @@
           "fontSize": 32,
           "minFontSize": 8,
           "maxFontSize": 32,
-          "autoFitWidth": false,
-          "autoFitHeight": false,
+          "autoFitWidth": true,
+          "autoFitHeight": true,
           "maxLines": null,
           "lineHeight": 32,
           "wrapLines": true,
@@ -30920,10 +30920,10 @@
           "width": 400,
           "height": 200,
           "margin": [
-            -200,
-            -100,
-            -200,
-            -100
+            0,
+            0,
+            0,
+            0
           ],
           "alignment": [
             0.5,
@@ -30953,8 +30953,8 @@
             1
           ],
           "materialAsset": null,
-          "autoWidth": false,
-          "autoHeight": false,
+          "autoWidth": true,
+          "autoHeight": true,
           "useInput": false,
           "batchGroupId": null,
           "mask": false,
@@ -31110,7 +31110,7 @@
             0.5,
             0.5
           ],
-          "text": "Looking for worthy opponents...",
+          "text": "Matchmaking",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 20,
@@ -31326,7 +31326,7 @@
             0.5,
             0.5
           ],
-          "text": "00:05",
+          "text": "00:00",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 25,
@@ -32502,7 +32502,7 @@
               "asset": 31149158,
               "startTime": 0,
               "duration": null,
-              "volume": 0.2,
+              "volume": 1,
               "pitch": 1
             }
           }
@@ -48973,7 +48973,7 @@
             0,
             0
           ],
-          "opacity": 0.8,
+          "opacity": 0,
           "textureAsset": null,
           "spriteAsset": null,
           "spriteFrame": 0,
@@ -49029,7 +49029,7 @@
     "a6a48770-0c07-4d8f-a9ae-9b7f18cffdfd": {
       "name": "Title",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "a6a48770-0c07-4d8f-a9ae-9b7f18cffdfd",
       "parent": "01097d79-855f-4d4c-898a-59451e05e229",
       "children": [],
@@ -68089,7 +68089,7 @@
     "7bd47686-3054-4874-a183-8458c2afacfd": {
       "name": "FreeVG",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "7bd47686-3054-4874-a183-8458c2afacfd",
       "parent": "580b4e60-7686-4214-8eff-9e0f266e826d",
       "children": [
