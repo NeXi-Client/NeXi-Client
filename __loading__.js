@@ -75,7 +75,7 @@ pc.script.createLoadingScreen(function (app) {
         
         var footer = document.createElement('div');
             footer.id = 'footer';
-            footer.innerHTML = 'v' + _version;
+            footer.innerHTML = 'NeXi-Client';
         
         splash.appendChild(footer);
         splash.appendChild(logo);
