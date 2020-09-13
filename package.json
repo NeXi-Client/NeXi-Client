@@ -1,6 +1,6 @@
 {
   "name": "nexi-client",
-  "version": "1.2.4",
+  "version": "1.2.4-hotfix1",
   "description": "NeXi-Client is a client made for the browser game called 'Venge.io'",
   "main": "main.js",
   "scripts": {
@@ -13,6 +13,7 @@
   },
   "build": {
     "appId": "org.electron.NeXiClient",
+    "asar": false,
     "win": {
       "target": "nsis",
       "icon": "build/game.png"
