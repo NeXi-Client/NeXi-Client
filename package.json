@@ -12,7 +12,11 @@
     "build-all": "electron-builder -mwl"
   },
   "build": {
-    "appId": "org.electron.NeXiClient"
+    "appId": "org.electron.NeXiClient",
+    "win": {
+      "target": "nsis",
+      "icon": "build/game.png"
+    }
   },
   "repository": {
     "type": "git",
