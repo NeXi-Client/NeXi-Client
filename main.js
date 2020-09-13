@@ -122,31 +122,71 @@ function shortCuts()
 
 //Funktion damit die Linkbox erstellt wird
 function LinkBox()
-{
-	prompt({
-	title: 'Please paste your Invite link here',
-	label: 'Any other link NOT from Venge will not work',
-	value: 'https://venge.io/#00000',
-	inputAttrs: {
-		type: 'url'
-	},
-	type: 'input'
-	})
-	.then((r) => {
-		let inputUrl = r;
-		let arr1 = inputUrl.split('#');
-		let inviteCode = arr1[arr1.length - 1];
-		
-		let currentUrl = win.webContents.getURL();
-		let arr2= currentUrl.split('/');
-		
-		arr2[arr2.length - 1] = `index.html#${inviteCode}`;
-		
-		let newUrl = arr2.join('/');
-		
-		console.log(newUrl)
-		win.loadURL(newUrl);
+{	
+	const choice = dialog.showMessageBoxSync(win, {
+		type: 'question',
+		buttons: ['Regular', 'Spectate'],
+		title: 'Do you want to spectate or join a game?',
+		message: '',
+		defaultId: 0,
+		cancelId: 1
 	});
-}
+	const link = (choice === 0)
+	if (link) {
+		prompt({
+			title: 'Please paste your Invite link here',
+			label: 'Any other link NOT from Venge will not work',
+			value: 'https://venge.io/#00000',
+			inputAttrs: {
+				type: 'url'
+			},
+			type: 'input'
+			})
+			.then((r) => {
+				let inputUrl = r;
+				let arr1 = inputUrl.split('#');
+				let inviteCode = arr1[arr1.length - 1];
+				
+				let currentUrl = win.webContents.getURL();
+				let arr2= currentUrl.split('/');
+				
+				arr2[arr2.length - 1] = `index.html#${inviteCode}`;
+				
+				let newUrl = arr2.join('/');
+				
+				console.log(newUrl)
+				win.loadURL(newUrl);
+			});
+		}
+	else {
+		prompt({
+			title: 'Please paste your Invite link here',
+			label: 'Any other link NOT from Venge will not work',
+			value: 'https://venge.io/#00000',
+			inputAttrs: {
+				type: 'url'
+			},
+			type: 'input'
+			})
+			.then((r) => {
+				let inputUrl = r;
+				let arr1 = inputUrl.split('#');
+				let inviteCode = arr1[arr1.length - 1];
+				
+				let currentUrl = win.webContents.getURL();
+				let arr2= currentUrl.split('/');
+				
+				arr2[arr2.length - 1] = `index.html#Spectate:${inviteCode}`;
+				
+				let newUrl = arr2.join('/');
+				
+				console.log(newUrl)
+				win.loadURL(newUrl);
+			});
+	}
+	};
+
+
+	
 
 app.on('ready', init)
