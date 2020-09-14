@@ -8,6 +8,8 @@ const customInit = () => {
   customTransition();
   customMatchFoundAnimation();
   customDeathMessage();
+  customKillstreakText();
+  customChatMessage();
 };
 
 // Functionality modifications
@@ -68,6 +70,7 @@ const customTransition = () => {
   };
 };
 
+
 const customMatchFoundAnimation = () => {
   Menu.prototype.onMatchFound = function () {
     (this.isMatchFound = !0),
@@ -118,6 +121,8 @@ const customMatchFoundAnimation = () => {
       );
   };
 };
+
+// Custom Death Message
 
 const customDeathMessage = () => {
   Player.prototype.setDeath = function (t, e) {
@@ -173,5 +178,80 @@ const customDeathMessage = () => {
     this.app.fire("Player:StopSpeaking", !0),
       this.showCircularMenu(),
       "undefined" != typeof PokiSDK && PokiSDK.gameplayStop();
+  };
+};
+
+//Custom Killstreak Translations
+
+const customKillstreakText = () => {
+    Overlay.prototype.onKill = function(t, e) {
+      var i = "Kill"
+        , a = "Kill-Icon"
+        , n = "Kill";
+      "Kill" == e ? (i = "Kill Point",
+      a = "Kill-Icon",
+      n = "Kill") : "Headshot" == e ? (i = "Headshot",
+      a = "Headshot-Icon",
+      n = "Headshot") : "FirstBlood" == e ? (i = "First Blood",
+      a = "First-Blood-Icon",
+      n = "Kill") : "Drilled" == e ? (i = "Drilled",
+      a = "Kill-Drilled",
+      n = "3x") : "PickedOff" == e ? (i = "Drilled",
+      a = "Kill-Drilled",
+      n = "4x") : "Nailed" == e ? (i = "Nailed",
+      a = "Kill-Nailed",
+      n = "4x") : "Pumped" == e ? (i = "Pumped",
+      a = "Kill-Pumped",
+      n = "2x") : "360d" == e ? (i = "360 Degree Trick Shot",
+      a = "Kill-360d",
+      n = "God") : "Revenge" == e ? (i = "Revenge",
+      a = "Revenge-Icon",
+      n = "3x") : "2x" == e ? (i = "Double Kill",
+      a = "Kill-2x",
+      n = "2x") : "3x" == e ? (i = "Multi Kill",
+      a = "Kill-3x",
+      n = "3x") : "4x" == e ? (i = "Ultra Kill",
+      a = "Kill-4x",
+      n = "3x") : "5x" == e ? (i = "Unbreakable",
+      a = "Kill-5x",
+      n = "3x") : "6x" == e ? (i = "Unbelievable",
+      a = "Kill-6x",
+      n = "3x") : "7x" == e ? (i = "Savage",
+      a = "Kill-7x") : "8x" == e ? (i = "Immortal",
+      a = "Kill-8x",
+      n = "3x") : "9x" == e ? (i = "Godlike",
+      a = "Kill-9x",
+      n = "4x") : "10x" == e ? (i = "Annihilation",
+      a = "God-Icon",
+      n = "God") : "Suicide" == e ? (i = "Suicide",
+      a = "Suicide-Icon",
+      n = "Suicide") : "Throw" == e ? (i = "Thrower",
+      a = "Throw-Icon",
+      n = "Throw") : "Capture" == e && (i = "Capture",
+      a = "Capture-Icon",
+      n = "Point");
+      var s = "+";
+      t < 0 && (s = ""),
+      this.app.fire("Overlay:Announce", i, s + t + " score", n, a)
+  };
+};
+  
+//Custom Chat Message Color
+const customChatMessage = () => {
+  Chat.prototype.onMessage = function(t, e, s, i) {
+    var a = this.messageEntity.clone();
+    a.enabled = !0,
+    a.setLocalPosition(0, 0, 0),
+    a.findByName("Text").element.text = t + ' : [color="#01A9DB"]' + e + "[/color]",
+    a.element.height = a.findByName("Text").element.height + 10,
+    a.findByName("Text").element.color = i ? this.consoleColor : s ? this.meColor : this.whiteColor,
+    this.messages.push(a),
+    this.messageHolder.addChild(a),
+    this.nextMessage(),
+    this.entity.sound.play("Notify"),
+    a.messageTimeout = setTimeout(function(t, e) {
+        e && (t.messages.splice(0, 1),
+        e.destroy())
+    }, 1e3 * this.timeLimit, this, a)
   };
 };
