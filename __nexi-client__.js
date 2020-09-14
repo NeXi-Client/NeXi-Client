@@ -7,6 +7,7 @@ const customInit = () => {
   customOnLeaveCallback();
   customTransition();
   customMatchFoundAnimation();
+  customDeathMessage();
 };
 
 // Functionality modifications
@@ -115,5 +116,62 @@ const customMatchFoundAnimation = () => {
         1500,
         this
       );
+  };
+};
+
+const customDeathMessage = () => {
+  Player.prototype.setDeath = function (t, e) {
+    if (
+      ((this.killedBy = t),
+      (this.isDeath = !0),
+      this.deathCount++,
+      this.app.fire("Digit:DeathCount", this.deathCount),
+      this.movement.death(),
+      (this.characterHolder.enabled = !0),
+      this.characterEntity.setLocalEulerAngles(0, this.movement.lookX, 0),
+      setTimeout(
+        function (t) {
+          t.movement.lookEntity.enabled = !1;
+        },
+        100,
+        this
+      ),
+      this.characterEntity.setLocalPosition(0, -2.15, 0),
+      (this.characterEntity.animation.speed = 1),
+      "Drown" == e
+        ? (this.characterEntity.animation.play("Floating"),
+          (this.characterEntity.animation.speed = 3),
+          (this.characterEntity.animation.loop = !0),
+          this.entity.sound.play("Splash"),
+          this.characterEntity.setLocalPosition(0, -3.5, 0),
+          this.characterEntity
+            .tween(this.characterEntity.getLocalPosition())
+            .to({ x: 0, y: -6.5, z: 0 }, 2, pc.Linear)
+            .start())
+        : (this.characterEntity.animation.play("Death"),
+          (this.characterEntity.animation.loop = !1)),
+      (this.characterCamera.script.blackWhite.enabled = !0),
+      this.characterCamera.setLocalPosition(0, 1.215, -0.115),
+      this.characterCamera
+        .tween(this.characterCamera.getLocalPosition())
+        .to({ x: 0, y: 3.015, z: 7 }, 1, pc.SineOut)
+        .start(),
+      this.characterCamera.setLocalEulerAngles(0, 0, 0),
+      this.characterCamera
+        .tween(this.characterCamera.getLocalEulerAngles())
+        .rotate({ x: -18, y: 0, z: 0 }, 0.7, pc.BackOut)
+        .start(),
+      this.interface.hideGameplay(),
+      this.killedBy && this.killedBy != this.entity)
+    ) {
+      var a = this.killedBy.script.enemy.username;
+      this.app.fire(
+        "Overlay:Status",
+        'Killed by [color="#FF0000"]' + a + "[/color]"
+      );
+    }
+    this.app.fire("Player:StopSpeaking", !0),
+      this.showCircularMenu(),
+      "undefined" != typeof PokiSDK && PokiSDK.gameplayStop();
   };
 };
