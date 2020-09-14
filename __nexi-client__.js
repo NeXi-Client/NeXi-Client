@@ -11,6 +11,7 @@ const customInit = () => {
   customKillstreakText();
   customChatMessage();
   linkFix();
+  removeEmoteHint();
 };
 
 // Functionality modifications
@@ -298,5 +299,16 @@ const linkFix = () => {
       this.on("destroy", function(t) {
           this.onDestroy()
       }, this)
+  };
+};
+
+const removeEmoteHint = () => {
+  Player.prototype.onKill = function(t, e) {
+    this.app.fire("Player:Frag", !0),
+    "Capture" != e && "Suicide" != e && (this.killCount++,
+    this.app.fire("Digit:KillCount", this.killCount)),
+    setTimeout(function(t) {
+        t.movement.inspect()
+    }, 1e3, this)
   };
 };
