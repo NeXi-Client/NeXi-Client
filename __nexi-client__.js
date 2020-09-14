@@ -10,6 +10,7 @@ const customInit = () => {
   customDeathMessage();
   customKillstreakText();
   customChatMessage();
+  linkFix();
 };
 
 // Functionality modifications
@@ -26,6 +27,7 @@ const customOnLeaveCallback = () => {
 
 // UI Modifications
 
+//Custom Spawn Animation
 const customTransition = () => {
   Overlay.prototype.onTransition = function (t) {
     t
@@ -70,7 +72,7 @@ const customTransition = () => {
   };
 };
 
-
+//Custom match found animation
 const customMatchFoundAnimation = () => {
   Menu.prototype.onMatchFound = function () {
     (this.isMatchFound = !0),
@@ -122,8 +124,7 @@ const customMatchFoundAnimation = () => {
   };
 };
 
-// Custom Death Message
-
+//Changes Message when get killed on top
 const customDeathMessage = () => {
   Player.prototype.setDeath = function (t, e) {
     if (
@@ -172,7 +173,7 @@ const customDeathMessage = () => {
       var a = this.killedBy.script.enemy.username;
       this.app.fire(
         "Overlay:Status",
-        'Killed by [color="#FF0000"]' + a + "[/color]"
+        'Eliminated by [color="#FF0000"]' + a + "[/color]"
       );
     }
     this.app.fire("Player:StopSpeaking", !0),
@@ -182,7 +183,6 @@ const customDeathMessage = () => {
 };
 
 //Custom Killstreak Translations
-
 const customKillstreakText = () => {
     Overlay.prototype.onKill = function(t, e) {
       var i = "Kill"
@@ -235,7 +235,7 @@ const customKillstreakText = () => {
       this.app.fire("Overlay:Announce", i, s + t + " score", n, a)
   };
 };
-  
+
 //Custom Chat Message Color
 const customChatMessage = () => {
   Chat.prototype.onMessage = function(t, e, s, i) {
@@ -253,5 +253,50 @@ const customChatMessage = () => {
         e && (t.messages.splice(0, 1),
         e.destroy())
     }, 1e3 * this.timeLimit, this, a)
+  };
+}
+
+
+//Fixes link not getting destroyed when match starts
+const linkFix = () => {
+      Input.prototype.initialize = function() {
+      this.timeout = !1,
+      this.isDestroyed = !1,
+      this.currentWidth = 0,
+      this.currentHeight = 0,
+      this.element = document.createElement("input"),
+      this.element.placeholder = this.placeholder,
+      this.element.type = this.type,
+      this.element.style.position = "absolute",
+      this.element.style.fontFamily = this.fontFamily,
+      this.element.style.border = "0px",
+      this.element.style.background = "transparent",
+      this.element.style.fontSize = this.fontSize + this.scaleUnit,
+      this.element.style.padding = this.padding + this.scaleUnit,
+      this.element.style.boxSizing = "border-box",
+      this.disableTab && (this.element.tabindex = !1),
+      this.maxLength > 0 && (this.element.maxLength = this.maxLength);
+      var t = "rgb(" + 255 * this.color.r + ", " + 255 * this.color.g + ", " + 255 * this.color.b + ")";
+      this.element.style.color = t,
+      this.element.style.outline = "none",
+      this.whitePlaceholder && (this.element.className = "white-placeholder"),
+      document.body.appendChild(this.element),
+      this.focusEntity && (this.focusEntity.enabled = !1,
+      this.element.onfocus = this.onFocus.bind(this),
+      this.element.onblur = this.onBlur.bind(this)),
+      this.blurFunction && (this.element.onblur = this.onBlurFunction.bind(this)),
+      this.element.onchange = this.onChange.bind(this),
+      Utils.getItem(this.entity._guid) && this.setValue(Utils.getItem(this.entity._guid)),
+      this.updateStyle(),
+      this.app.on("DOM:Clear", this.onDOMClear, this),
+      this.app.on("DOM:Update", this.onDomUpdate, this),
+      this.app.on("Input:" + this.entity.name, this.setResultValue, this),
+      this.sleepValue && this.setValue(this.sleepValue),
+      this.on("state", function(t) {
+          this.entity.enabled ? this.element.style.display = "block" : this.element.style.display = "none"
+      }, this),
+      this.on("destroy", function(t) {
+          this.onDestroy()
+      }, this)
   };
 };
