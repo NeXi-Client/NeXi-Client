@@ -23,7 +23,7 @@
       "oneClick": false,
       "perMachine": false,
       "license": "",
-      "artifactName": "NeXi-Client-Setup-${version}.${ext}",
+      "artifactName": "NeXi-Client-Windows-${version}.${ext}",
       "createDesktopShortcut": "always",
       "createStartMenuShortcut": true,
       "deleteAppDataOnUninstall": true,
@@ -36,8 +36,8 @@
       "icon": "build/game.png"
     },
     "dmg": {
-      "title": "NeXi-Client-${version}"
-
+      "title": "NeXi-Client-${version}",
+      "artifactName": "NeXi-Client-Mac-${version}.${ext}"
     }
   },
   "repository": {
