@@ -126,16 +126,16 @@ function LinkBox()
 	const choice = dialog.showMessageBoxSync(win, {
 		type: 'question',
 		buttons: ['Regular', 'Spectate'],
-		title: 'Do you want to spectate or join a game?',
-		message: '',
+		title: 'Linkbox',
+		message: 'Wanne spectate or join a game?',
 		defaultId: 0,
 		cancelId: 1
 	});
 	const link = (choice === 0)
 	if (link) {
 		prompt({
-			title: 'Please paste your Invite link here',
-			label: 'Any other link NOT from Venge will not work',
+			title: 'Linkbox',
+			label: 'Please enter your Invite link here',
 			value: 'https://venge.io/#00000',
 			inputAttrs: {
 				type: 'url'
@@ -160,8 +160,8 @@ function LinkBox()
 		}
 	else {
 		prompt({
-			title: 'Please paste your Invite link here',
-			label: 'Any other link NOT from Venge will not work',
+			title: 'Linkbox',
+			label: 'Please enter your Invite link here',
 			value: 'https://venge.io/#00000',
 			inputAttrs: {
 				type: 'url'
