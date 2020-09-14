@@ -8,8 +8,7 @@ const customInit = () => {
   customTransition();
   customMatchFoundAnimation();
   customDeathMessage();
-  customKillstreakText();
-  customChatMessage();
+  linkFix();
 };
 
 // Functionality modifications
@@ -26,6 +25,7 @@ const customOnLeaveCallback = () => {
 
 // UI Modifications
 
+//Custom Spawn Animation
 const customTransition = () => {
   Overlay.prototype.onTransition = function (t) {
     t
@@ -70,7 +70,7 @@ const customTransition = () => {
   };
 };
 
-
+//Custom match found animation
 const customMatchFoundAnimation = () => {
   Menu.prototype.onMatchFound = function () {
     (this.isMatchFound = !0),
@@ -122,8 +122,7 @@ const customMatchFoundAnimation = () => {
   };
 };
 
-// Custom Death Message
-
+//Changes Message when get killed on top
 const customDeathMessage = () => {
   Player.prototype.setDeath = function (t, e) {
     if (
@@ -172,7 +171,7 @@ const customDeathMessage = () => {
       var a = this.killedBy.script.enemy.username;
       this.app.fire(
         "Overlay:Status",
-        'Killed by [color="#FF0000"]' + a + "[/color]"
+        'Eliminated by [color="#FF0000"]' + a + "[/color]"
       );
     }
     this.app.fire("Player:StopSpeaking", !0),
@@ -181,77 +180,47 @@ const customDeathMessage = () => {
   };
 };
 
-//Custom Killstreak Translations
 
-const customKillstreakText = () => {
-    Overlay.prototype.onKill = function(t, e) {
-      var i = "Kill"
-        , a = "Kill-Icon"
-        , n = "Kill";
-      "Kill" == e ? (i = "Kill Point",
-      a = "Kill-Icon",
-      n = "Kill") : "Headshot" == e ? (i = "Headshot",
-      a = "Headshot-Icon",
-      n = "Headshot") : "FirstBlood" == e ? (i = "First Blood",
-      a = "First-Blood-Icon",
-      n = "Kill") : "Drilled" == e ? (i = "Drilled",
-      a = "Kill-Drilled",
-      n = "3x") : "PickedOff" == e ? (i = "Drilled",
-      a = "Kill-Drilled",
-      n = "4x") : "Nailed" == e ? (i = "Nailed",
-      a = "Kill-Nailed",
-      n = "4x") : "Pumped" == e ? (i = "Pumped",
-      a = "Kill-Pumped",
-      n = "2x") : "360d" == e ? (i = "360 Degree Trick Shot",
-      a = "Kill-360d",
-      n = "God") : "Revenge" == e ? (i = "Revenge",
-      a = "Revenge-Icon",
-      n = "3x") : "2x" == e ? (i = "Double Kill",
-      a = "Kill-2x",
-      n = "2x") : "3x" == e ? (i = "Multi Kill",
-      a = "Kill-3x",
-      n = "3x") : "4x" == e ? (i = "Ultra Kill",
-      a = "Kill-4x",
-      n = "3x") : "5x" == e ? (i = "Unbreakable",
-      a = "Kill-5x",
-      n = "3x") : "6x" == e ? (i = "Unbelievable",
-      a = "Kill-6x",
-      n = "3x") : "7x" == e ? (i = "Savage",
-      a = "Kill-7x") : "8x" == e ? (i = "Immortal",
-      a = "Kill-8x",
-      n = "3x") : "9x" == e ? (i = "Godlike",
-      a = "Kill-9x",
-      n = "4x") : "10x" == e ? (i = "Annihilation",
-      a = "God-Icon",
-      n = "God") : "Suicide" == e ? (i = "Suicide",
-      a = "Suicide-Icon",
-      n = "Suicide") : "Throw" == e ? (i = "Thrower",
-      a = "Throw-Icon",
-      n = "Throw") : "Capture" == e && (i = "Capture",
-      a = "Capture-Icon",
-      n = "Point");
-      var s = "+";
-      t < 0 && (s = ""),
-      this.app.fire("Overlay:Announce", i, s + t + " score", n, a)
-  };
-};
-  
-//Custom Chat Message Color
-const customChatMessage = () => {
-  Chat.prototype.onMessage = function(t, e, s, i) {
-    var a = this.messageEntity.clone();
-    a.enabled = !0,
-    a.setLocalPosition(0, 0, 0),
-    a.findByName("Text").element.text = t + ' : [color="#01A9DB"]' + e + "[/color]",
-    a.element.height = a.findByName("Text").element.height + 10,
-    a.findByName("Text").element.color = i ? this.consoleColor : s ? this.meColor : this.whiteColor,
-    this.messages.push(a),
-    this.messageHolder.addChild(a),
-    this.nextMessage(),
-    this.entity.sound.play("Notify"),
-    a.messageTimeout = setTimeout(function(t, e) {
-        e && (t.messages.splice(0, 1),
-        e.destroy())
-    }, 1e3 * this.timeLimit, this, a)
+//Fixes link not getting destroyed when match starts
+const linkFix = () => {
+      Input.prototype.initialize = function() {
+      this.timeout = !1,
+      this.isDestroyed = !1,
+      this.currentWidth = 0,
+      this.currentHeight = 0,
+      this.element = document.createElement("input"),
+      this.element.placeholder = this.placeholder,
+      this.element.type = this.type,
+      this.element.style.position = "absolute",
+      this.element.style.fontFamily = this.fontFamily,
+      this.element.style.border = "0px",
+      this.element.style.background = "transparent",
+      this.element.style.fontSize = this.fontSize + this.scaleUnit,
+      this.element.style.padding = this.padding + this.scaleUnit,
+      this.element.style.boxSizing = "border-box",
+      this.disableTab && (this.element.tabindex = !1),
+      this.maxLength > 0 && (this.element.maxLength = this.maxLength);
+      var t = "rgb(" + 255 * this.color.r + ", " + 255 * this.color.g + ", " + 255 * this.color.b + ")";
+      this.element.style.color = t,
+      this.element.style.outline = "none",
+      this.whitePlaceholder && (this.element.className = "white-placeholder"),
+      document.body.appendChild(this.element),
+      this.focusEntity && (this.focusEntity.enabled = !1,
+      this.element.onfocus = this.onFocus.bind(this),
+      this.element.onblur = this.onBlur.bind(this)),
+      this.blurFunction && (this.element.onblur = this.onBlurFunction.bind(this)),
+      this.element.onchange = this.onChange.bind(this),
+      Utils.getItem(this.entity._guid) && this.setValue(Utils.getItem(this.entity._guid)),
+      this.updateStyle(),
+      this.app.on("DOM:Clear", this.onDOMClear, this),
+      this.app.on("DOM:Update", this.onDomUpdate, this),
+      this.app.on("Input:" + this.entity.name, this.setResultValue, this),
+      this.sleepValue && this.setValue(this.sleepValue),
+      this.on("state", function(t) {
+          this.entity.enabled ? this.element.style.display = "block" : this.element.style.display = "none"
+      }, this),
+      this.on("destroy", function(t) {
+          this.onDestroy()
+      }, this)
   };
 };
