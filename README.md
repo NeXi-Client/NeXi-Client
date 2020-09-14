@@ -19,8 +19,17 @@ F11 - Toggles full screen mode
 
 ## Installation
 
-1. Just drag the 'NeXiClient' folder somewhere appropiate.
-2. Launch the executable.
+### For Windows:
+1. Just use the "NeXi-Client Setup.exe" file
+2. Read the 'READ ME!.txt' for shortcuts!
+3. Have fun playing!
+
+### For Mac:
+1. Launch the NeXi-Client-Mac.dmg file.
+2. Drag the Nexi Client App to your Applications folder.
+
+### For Linux:
+Coming soon!
 
 ## Contact
 
