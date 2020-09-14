@@ -14,12 +14,30 @@
   "build": {
     "appId": "org.electron.NeXiClient",
     "asar": false,
+    "productName": "NeXi-Client",
     "win": {
       "target": "nsis",
       "icon": "build/game.png"
     },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "license": "",
+      "artifactName": "NeXi-Client-Windows-${version}.${ext}",
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "deleteAppDataOnUninstall": true,
+      "runAfterFinish": true,
+      "shortcutName": "NeXi-Client",
+      "allowToChangeInstallationDirectory": true
+    },
     "mac": {
+      "target": "dmg",
       "icon": "build/game.png"
+    },
+    "dmg": {
+      "title": "NeXi-Client-${version}",
+      "artifactName": "NeXi-Client-Mac-${version}.dmg"
     }
   },
   "repository": {
