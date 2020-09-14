@@ -36,7 +36,7 @@
       "icon": "build/game.png"
     },
     "dmg": {
-      "title": "NeXi-Client-${version}.dmg"
+      "title": "NeXi-Client-${version}"
 
     }
   },
