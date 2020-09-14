@@ -53719,7 +53719,7 @@
               "attributes": {
                 "defaultValue": 60,
                 "min": 40,
-                "max": 120,
+                "max": 125,
                 "step": 1,
                 "displayElement": "cd7d31d6-30b3-4240-b305-06e7635e8595",
                 "storeValue": true,

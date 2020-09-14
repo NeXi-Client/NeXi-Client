@@ -137,6 +137,8 @@
                         console.error(err);
                     }
 
+                    client();
+
                     app.loadScene(SCENE_PATH, function (err, scene) {
                         if (err) {
                             console.error(err);

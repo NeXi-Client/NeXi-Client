@@ -410,6 +410,10 @@ var Utils = {
     shortcutName: function(e) {
         return e ? e.replace("-Grenade", "") : ""
     },
+    cleanUsername: function(e) {
+        var t = e.split("[/color]]");
+        return t.length > 1 ? t[1].trim() : t[0].trim()
+    },
     clearName: function(e) {
         return e ? e.replace("_", ".").replace("Ammo-", "") : ""
     },
@@ -8884,7 +8888,7 @@ Result.prototype.createPlayerRow = function(t, e) {
     i.findByName("Rank").element.text = e,
     i.findByName("Rank").element.opacity = this.rankOpacity;
     var a = i.findByName("Follow");
-    a && a.script && a.script.button && (a.script.button.fireFunction = "Follow:User@" + t.username),
+    a && a.script && a.script.button && (a.script.button.fireFunction = "Follow:User@" + Utils.cleanUsername(t.username)),
     this.rankOpacity -= .4;
     var n = this.players.length % 2 + 2;
     1 === e ? (n = 1,
@@ -11705,7 +11709,7 @@ RoomManager.prototype.getRoomId = function(t) {
 ,
 RoomManager.prototype.setSession = function() {
     pc.session && pc.session.hash ? (this.hash = pc.session.hash,
-    pc.session.username && (this.username = pc.session.username)) : this.hash = !1
+    pc.session.username && (this.username = Utils.cleanUsername(pc.session.username))) : this.hash = !1
 }
 ,
 RoomManager.prototype.reconnect = function() {
@@ -14625,4 +14629,193 @@ ElementAnimation.prototype.getTweens = function() {
 }
 ,
 ElementAnimation.prototype.update = function(t) {}
+;
+var CustomList = pc.createScript("customList");
+CustomList.attributes.add("key", {
+    type: "string"
+}),
+CustomList.attributes.add("fields", {
+    type: "string",
+    array: !0
+}),
+CustomList.attributes.add("items", {
+    type: "entity",
+    array: !0
+}),
+CustomList.attributes.add("rowEntity", {
+    type: "entity"
+}),
+CustomList.attributes.add("holderEntity", {
+    type: "entity"
+}),
+CustomList.prototype.initialize = function() {
+    this.list = [],
+    this.app.on("CustomList:" + this.entity.name, this.setCustomList, this),
+    this.rowEntity.enabled = !1
+}
+,
+CustomList.prototype.clearList = function() {
+    for (var t = this.list.length; t--; )
+        this.list[t].destroy();
+    this.list = []
+}
+,
+CustomList.prototype.setCustomList = function(t) {
+    this.clearList();
+    var i = t[this.key];
+    for (var s in i) {
+        var e = i[s]
+          , o = this.rowEntity.clone();
+        o.enabled = !0;
+        var a = this.items;
+        for (var r in a) {
+            var n = a[r];
+            "Color" == n.name ? o.findByName(n.name).element.color = Utils.hex2RGB(e[this.fields[r]]) : o.findByName(n.name).element.text = e[this.fields[r]]
+        }
+        o.setLocalPosition(0, -s * o.element.height, 0),
+        this.holderEntity.addChild(o),
+        this.list.push(o)
+    }
+}
+;
+var CustomChat = pc.createScript("customChat");
+CustomChat.attributes.add("isDebug", {
+    type: "boolean",
+    default: !0
+}),
+CustomChat.attributes.add("URL", {
+    type: "string"
+}),
+CustomChat.attributes.add("testURL", {
+    type: "string"
+}),
+CustomChat.attributes.add("key", {
+    type: "string"
+}),
+CustomChat.prototype.initialize = function() {
+    this.pack = MessagePack.initialize(4194304),
+    this.ws = !1,
+    this.keys = this.getKeys(),
+    this.on("state", function(t) {
+        t ? this.prepareCustomChat() : this.closeCustomChat()
+    }),
+    this.on("destroy", function(t) {
+        this.closeCustomChat()
+    }),
+    this.prepareCustomChat()
+}
+,
+CustomChat.prototype.prepareCustomChat = function() {
+    this.app.on("CustomChat:" + this.entity.name, this.setCustomChat, this),
+    this.app.on("Network:Chat", this.sendMessage, this),
+    this.roomId && this.startCustomChat(this.roomId)
+}
+,
+CustomChat.prototype.closeCustomChat = function() {
+    this.ws && this.ws.close(),
+    this.app.off("CustomChat:" + this.entity.name, this.setCustomChat, this),
+    this.app.off("Network:Chat", this.sendMessage, this)
+}
+,
+CustomChat.prototype.setCustomChat = function(t) {
+    this.startCustomChat(t[this.key])
+}
+,
+CustomChat.prototype.getKeys = function() {
+    return {
+        auth: "auth",
+        info: "info",
+        chat: "chat",
+        history: "history",
+        online: "online"
+    }
+}
+,
+CustomChat.prototype.online = function(t) {
+    t.length > 0 && this.app.fire("Count:Online", t[0])
+}
+,
+CustomChat.prototype.auth = function(t) {
+    var s = pc.session.username;
+    s && (s = Utils.cleanUsername(s)),
+    this.send([this.keys.auth, this.roomId, pc.session.hash, s])
+}
+,
+CustomChat.prototype.chat = function(t) {
+    t.length > 0 && this.app.fire("Chat:Message", t[0], t[1])
+}
+,
+CustomChat.prototype.sendMessage = function(t) {
+    t.length > 0 && t.length < 60 ? this.send([this.keys.chat, t]) : alert("Can't send more than 60 characters.")
+}
+,
+CustomChat.prototype.history = function(t) {
+    var s = t[0];
+    s.length;
+    for (var o in this.app.fire("Chat:Clear", !0),
+    s) {
+        var e = s[o];
+        this.app.fire("Chat:Message", e.username, e.message)
+    }
+}
+,
+CustomChat.prototype.startCustomChat = function(t) {
+    if (this.ws && this.ws.close(),
+    this.roomId = t,
+    this.roomId) {
+        var s = this.URL;
+        this.isDebug && (s = this.testURL),
+        this.ws = new WebSocket(s + "/?" + this.roomId),
+        this.ws.binaryType = "arraybuffer",
+        this.ws.onopen = this.onOpen.bind(this),
+        this.ws.onclose = this.onClose.bind(this),
+        this.ws.onmessage = this.onMessage.bind(this)
+    }
+}
+,
+CustomChat.prototype.log = function(t) {
+    this.isDebug && console.log(t)
+}
+,
+CustomChat.prototype.send = function(t) {
+    this.ws && this.ws.readyState == this.ws.OPEN && this.ws.send(this.pack.encode(t))
+}
+,
+CustomChat.prototype.parse = function(t) {
+    if (0 === t.length)
+        return !1;
+    var s = t[0];
+    Object.keys(this.keys).indexOf(s) > -1 && this[this.keys[s]](t.splice(1, t.length + 1))
+}
+,
+CustomChat.prototype.onOpen = function() {
+    this.log("Network connection is open!")
+}
+,
+CustomChat.prototype.onMessage = function(t) {
+    var s = new Uint8Array(t.data);
+    s = MessagePack.Buffer.from(s);
+    var o = this.pack.decode(s);
+    o && this.parse(o)
+}
+,
+CustomChat.prototype.onClose = function() {
+    this.log("Network connection is close!")
+}
+;
+var Hidden = pc.createScript("hidden");
+Hidden.attributes.add("key", {
+    type: "string"
+}),
+Hidden.prototype.initialize = function() {
+    this.value = !1
+}
+,
+Hidden.prototype.setValue = function(e) {
+    e && this.key && (this.value = e[this.key])
+}
+,
+Hidden.prototype.getValue = function() {
+    return this.value
+}
 ;
