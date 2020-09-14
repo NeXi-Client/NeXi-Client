@@ -40168,7 +40168,7 @@
             0,
             0.5
           ],
-          "text": "{{username | limit}}",
+          "text": "{{username}}",
           "key": null,
           "fontAsset": 29313023,
           "fontSize": 15,
