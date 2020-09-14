@@ -37,7 +37,7 @@
     },
     "dmg": {
       "title": "NeXi-Client-${version}",
-      "artifactName": "NeXi-Client-Mac-${version}.${ext}"
+      "artifactName": "NeXi-Client-Mac-${version}.dmg"
     }
   },
   "repository": {
