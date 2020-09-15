@@ -2870,9 +2870,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.16470588235294117,
-            0.1568627450980392,
-            0.19607843137254902
+            0.2980392157,
+            0.768627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": 29912104,
@@ -31020,9 +31020,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.19607843137254902,
-            0.3411764705882353,
-            0.7764705882352941
+            0.2980392157,
+            0.768627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": 29912104,
@@ -33353,9 +33353,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.4666666666666667,
-            0.6039215686274509,
-            0.19607843137254902
+            0.2980392157,
+            0.768627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": 29912104,
@@ -43235,7 +43235,7 @@
             1,
             1
           ],
-          "opacity": 1,
+          "opacity": 0,
           "textureAsset": 32147821,
           "spriteAsset": null,
           "spriteFrame": 0,
@@ -43341,7 +43341,7 @@
             1,
             1
           ],
-          "opacity": 1,
+          "opacity": 0,
           "textureAsset": null,
           "spriteAsset": null,
           "spriteFrame": 0,
@@ -43447,7 +43447,7 @@
             1,
             1
           ],
-          "opacity": 1,
+          "opacity": 0,
           "textureAsset": null,
           "spriteAsset": null,
           "spriteFrame": 0,
@@ -92489,9 +92489,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.4117647058823529,
-            0.6196078431372549,
-            0
+            0.2980392157,
+            0.768627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": 29912104,
@@ -94657,9 +94657,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.1607843137254902,
-            0.4666666666666667,
-            0.08235294117647059
+            0.2980392157,
+            0.768627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": 31526384,
