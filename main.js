@@ -125,16 +125,16 @@ function LinkBox()
 {	
 	const choice = dialog.showMessageBoxSync(win, {
 		type: 'question',
-		buttons: ['Regular', 'Spectate'],
+		buttons: ['Play', 'Spectate'],
 		title: 'Join',
-		message: 'Would you like to spectate or join?',
+		message: 'Would you like to spectate or play?',
 		defaultId: 0,
-		cancelId: 1
+		cancelId: 2
 	});
 	const link = (choice === 0)
 	if (link) {
 		prompt({
-			title: 'Regular',
+			title: 'Play',
 			label: 'Please enter your Invite link here',
 			value: 'https://venge.io/#00000',
 			inputAttrs: {
@@ -159,31 +159,33 @@ function LinkBox()
 			});
 		}
 	else {
-		prompt({
-			title: 'Spectate',
-			label: 'Please enter your Invite link here',
-			value: 'https://venge.io/#00000',
-			inputAttrs: {
-				type: 'url'
-			},
-			type: 'input'
-			})
-			.then((r) => {
-				let inputUrl = r;
-				let arr1 = inputUrl.split('#');
-				let inviteCode = arr1[arr1.length - 1];
-				
-				let currentUrl = win.webContents.getURL();
-				let arr2= currentUrl.split('/');
-				
-				arr2[arr2.length - 1] = `index.html#Spectate:${inviteCode}`;
-				
-				let newUrl = arr2.join('/');
-				
-				console.log(newUrl)
-				win.loadURL(newUrl);
-			});
-	}
+		if (choice !== 2) {
+			prompt({
+				title: 'Spectate',
+				label: 'Please enter your Invite link here',
+				value: 'https://venge.io/#00000',
+				inputAttrs: {
+					type: 'url'
+				},
+				type: 'input'
+				})
+				.then((r) => {
+					let inputUrl = r;
+					let arr1 = inputUrl.split('#');
+					let inviteCode = arr1[arr1.length - 1];
+					
+					let currentUrl = win.webContents.getURL();
+					let arr2= currentUrl.split('/');
+					
+					arr2[arr2.length - 1] = `index.html#Spectate:${inviteCode}`;
+					
+					let newUrl = arr2.join('/');
+					
+					console.log(newUrl)
+					win.loadURL(newUrl);
+				});
+			}
+		}
 	};
 
 
