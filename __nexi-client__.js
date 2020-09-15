@@ -334,6 +334,8 @@ const staticCrosshair = () => {
   };
 };
 
+
+// Fixes Notification ingame that are not showing anything besides kills
 const notificationsFix = () => {
     Overlay.prototype.onNotification = function(t, e, i) {
       var a = 35 * -this.notifications.length
