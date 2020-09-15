@@ -127,7 +127,7 @@ function LinkBox()
 		type: 'question',
 		buttons: ['Play', 'Spectate'],
 		title: 'Join',
-		message: 'Would you like to spectate or join?',
+		message: 'Would you like to spectate or play?',
 		defaultId: 0,
 		cancelId: 2
 	});
