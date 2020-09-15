@@ -12,6 +12,9 @@ const customInit = () => {
   customChatMessage();
   linkFix();
   removeEmoteHint();
+  staticCrosshair();
+  
+  console.log('All Scripts have been started!')
 };
 
 // Functionality modifications
@@ -310,5 +313,22 @@ const removeEmoteHint = () => {
     setTimeout(function(t) {
         t.movement.inspect()
     }, 1e3, this)
+  };
+};
+
+const staticCrosshair = () => {
+  Overlay.prototype.onShooting = function() {
+    //this.crosshairEntity.tween(this.crosshairEntity.element).to({
+    ////    width: 65,
+    //    height: 65
+    //}, .045, pc.SineOut).start(),
+    this.setAmmo()
+  };
+
+  Overlay.prototype.onJumping = function() {
+  // this.crosshairEntity.tween(this.crosshairEntity.element).to({
+  //    width: 70,
+  //      height: 70
+  //  }, .15, pc.SineOut).start()
   };
 };
