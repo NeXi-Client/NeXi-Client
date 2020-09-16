@@ -12,6 +12,10 @@ const customInit = () => {
   customChatMessage();
   linkFix();
   removeEmoteHint();
+  staticCrosshair();
+  notificationsFix();
+  
+  console.log('All Scripts have been started!')
 };
 
 // Functionality modifications
@@ -310,5 +314,64 @@ const removeEmoteHint = () => {
     setTimeout(function(t) {
         t.movement.inspect()
     }, 1e3, this)
+  };
+};
+
+const staticCrosshair = () => {
+  Overlay.prototype.onShooting = function() {
+    //this.crosshairEntity.tween(this.crosshairEntity.element).to({
+    ////    width: 65,
+    //    height: 65
+    //}, .045, pc.SineOut).start(),
+    this.setAmmo()
+  };
+
+  Overlay.prototype.onJumping = function() {
+  // this.crosshairEntity.tween(this.crosshairEntity.element).to({
+  //    width: 70,
+  //      height: 70
+  //  }, .15, pc.SineOut).start()
+  };
+};
+
+
+// Fixes Notification ingame that are not showing anything besides kills
+const notificationsFix = () => {
+    Overlay.prototype.onNotification = function(t, e, i) {
+      var a = 35 * -this.notifications.length
+        , n = !1;
+      if ("message" == t)
+          (n = this.notificationMessage.clone()).findByName("Message").element.text = e,
+          n.element.width = 7 * (e.length - 23);
+      else if ("kill" == t && e.killer && e.killed) {
+          var s = e.killer.length + e.killed.length
+            , o = e.killedSkin
+            , l = e.killerSkin;
+          (n = this.notificationKill.clone()).findByName("Gibbon").element.color = e.color,
+          n.findByName("Gibbon").element.width = 7 * (e.killer.length + 15),
+          n.findByName("Killer").element.text = e.killer,
+          n.findByName("Killed").element.text = e.killed,
+          n.element.width = 7 * (s + 17);
+          var r = this.app.assets.find(o + "-Thumbnail-2");
+          n.findByName("KilledPicture").element.textureAsset = r;
+          var y = this.app.assets.find(l + "-Thumbnail-2");
+          n.findByName("KillerPicture").element.textureAsset = y
+      }
+      if (!n)
+          return !1;
+      n.enabled = !0,
+      n.setLocalPosition(180, a, 0),
+      n.tween(n.getLocalPosition()).to({
+          x: 0,
+          y: a,
+          z: 0
+      }, .15, pc.BackOut).start(),
+      this.notificationHolder.addChild(n),
+      this.notifications.push(n),
+      this.entity.sound.play("Whoosh"),
+      setTimeout(function(t, e) {
+          t.destroy(),
+          e.notifications.splice(0, 1)
+      }, 3500, n, this)
   };
 };

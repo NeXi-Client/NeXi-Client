@@ -10448,16 +10448,6 @@ Menu.attributes.add("cameraEntity", { type: "entity" }),
     this.mobileRedirection.enabled = !1;
   }),
   (Menu.prototype.attachCharacterEntity = function () {
-    var e = "Character1_RightHand";
-    "Lilium" == pc.session.character
-      ? (e = "Character1_RightHand")
-      : "Shin" == pc.session.character && (e = "Hand_R");
-    var t = this.characterEntity.findByName(e);
-    t &&
-      ((this.weaponEntity = this.characterEntity.findByName("Weapon")),
-      this.weaponEntity.setLocalScale(100, 100, 100),
-      this.weaponEntity.reparent(t)),
-      this.app.fire("Player:Weapon", pc.session.weapon);
   }),
   (Menu.prototype.onPageChange = function () {
     setTimeout(
