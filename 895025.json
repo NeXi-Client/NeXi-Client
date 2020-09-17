@@ -2392,9 +2392,9 @@
           "wrapLines": true,
           "spacing": 0.9,
           "color": [
-            1,
-            1,
-            1
+            0.4980392157,
+            0.968627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -3688,9 +3688,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0,
-            0,
-            0
+            0.4980392157,
+            0.968627451,
+            1.000000000
           ],
           "opacity": 0.8,
           "textureAsset": null,
@@ -5546,9 +5546,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            1,
-            1,
-            1
+            0.4980392157,
+            0.968627451,
+            1.000000000
           ],
           "opacity": 0,
           "textureAsset": 29398397,
@@ -9110,9 +9110,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.1607843137254902,
-            0.9647058823529412,
-            0
+            0.4980392157,
+            0.968627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -10465,9 +10465,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.6862745098039216,
-            1,
-            0.5568627450980392
+            0.4980392157,
+            0.968627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -14411,9 +14411,9 @@
                 "padding": 0.8,
                 "scaleUnit": "vw",
                 "color": [
-                  1,
-                  1,
-                  1
+                  0.4980392157,
+                  0.968627451,
+                  1.000000000
                 ],
                 "whitePlaceholder": true,
                 "fontFamily": "Arial, sans-serif",
@@ -17615,9 +17615,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.4627450980392157,
-            0.050980392156862744,
-            0.8117647058823529
+            0.4980392157,
+            0.968627451,
+            1.000000000
           ],
           "opacity": 0.8,
           "textureAsset": 29692621,
@@ -22997,9 +22997,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.6705882352941176,
-            0.8666666666666667,
-            0.2
+            0.4980392157,
+            0.968627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": 30842573,
@@ -30023,7 +30023,7 @@
             0.5,
             0.5
           ],
-          "text": "CONNECTING",
+          "text": "Connecting",
           "key": null,
           "fontAsset": 29313023,
           "fontSize": 35,
@@ -30283,9 +30283,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.06274509803921569,
-            0.06274509803921569,
-            0.06274509803921569
+            0.1980392157,
+            0.468627451,
+            0.500000000
           ],
           "opacity": 1,
           "textureAsset": 29914569,
@@ -30594,7 +30594,7 @@
             0,
             0.5
           ],
-          "text": "KILL",
+          "text": "Kills",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 11,
@@ -30700,7 +30700,7 @@
             0,
             0.5
           ],
-          "text": "DEATH",
+          "text": "Deaths",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 11,
@@ -30806,7 +30806,7 @@
             0,
             0.5
           ],
-          "text": "SCORE",
+          "text": "Score",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 11,
@@ -30912,7 +30912,7 @@
             1,
             0.5
           ],
-          "text": "TIER",
+          "text": "Tier",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 11,
@@ -32008,7 +32008,7 @@
             0.5,
             0.5
           ],
-          "text": "CONTINUE",
+          "text": "Resume",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 22,
@@ -32351,7 +32351,7 @@
             0.5,
             0.5
           ],
-          "text": "QUIT",
+          "text": "Leave",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 18,
@@ -33065,7 +33065,7 @@
     "eef4ce34-0cb7-4a20-aa8f-5a853c44c331": {
       "name": "Tips",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "eef4ce34-0cb7-4a20-aa8f-5a853c44c331",
       "parent": "a982cda8-0ecd-4dff-9058-1ebda813ee26",
       "children": [
@@ -33709,7 +33709,7 @@
     "6fae38f8-712b-4a9f-9a97-df462ccae391": {
       "name": "Mode",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "6fae38f8-712b-4a9f-9a97-df462ccae391",
       "parent": "a982cda8-0ecd-4dff-9058-1ebda813ee26",
       "children": [],
@@ -33833,9 +33833,9 @@
         0
       ],
       "scale": [
-        1,
-        1,
-        1
+        1.5,
+        1.5,
+        1.5
       ],
       "components": {
         "element": {
@@ -33879,7 +33879,7 @@
             -128,
             -356,
             -128,
-            100
+            250
           ],
           "alignment": [
             0.5,
@@ -45265,7 +45265,7 @@
           "width": 100,
           "height": 45,
           "margin": [
-            100,
+            150,
             -22.5,
             -200,
             -22.5
@@ -45368,7 +45368,7 @@
             0.5,
             0.5
           ],
-          "text": "REPORT",
+          "text": "Report",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 18,
@@ -45597,9 +45597,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.06274509803921569,
-            0.06274509803921569,
-            0.06274509803921569
+            0.1980392157,
+            0.368627451,
+            0.500000000
           ],
           "opacity": 1,
           "textureAsset": 29914569,
@@ -46304,9 +46304,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.06274509803921569,
-            0.06274509803921569,
-            0.06274509803921569
+            0.1980392157,
+            0.368627451,
+            0.500000000
           ],
           "opacity": 1,
           "textureAsset": 29914569,
@@ -46633,7 +46633,7 @@
             0.5,
             0.5
           ],
-          "text": "CONTINUE",
+          "text": "Continue",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 22,
@@ -51087,7 +51087,7 @@
           "width": 110,
           "height": 45,
           "margin": [
-            205,
+            305,
             -22.5,
             -315,
             -22.5
@@ -51190,7 +51190,7 @@
             0.5,
             0.5
           ],
-          "text": "SETTINGS",
+          "text": "Settings",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 18,
@@ -51418,9 +51418,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.06274509803921569,
-            0.06274509803921569,
-            0.06274509803921569
+            0.1980392157,
+            0.368627451,
+            0.500000000
           ],
           "opacity": 1,
           "textureAsset": 29914569,
@@ -51641,7 +51641,7 @@
             0.5,
             0.5
           ],
-          "text": "CONTINUE",
+          "text": "Continue",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 22,
@@ -51864,7 +51864,7 @@
             0.5,
             1
           ],
-          "text": "SETTINGS",
+          "text": "Options",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 20,
@@ -55102,9 +55102,9 @@
         0
       ],
       "scale": [
-        1,
-        1,
-        1
+        1.5,
+        1.5,
+        1.5
       ],
       "components": {
         "element": {
@@ -55133,9 +55133,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0,
-            1,
-            0
+            0.4980392157,
+            0.968627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -56048,9 +56048,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            1,
-            1,
-            1
+            0.4980392157,
+            0.968627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -56277,9 +56277,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            1,
-            1,
-            1
+            0.4980392157,
+            0.968627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": 34788636,
@@ -56383,9 +56383,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            1,
-            1,
-            1
+            0.4980392157,
+            0.968627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -59185,9 +59185,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.3176470588235294,
-            0.3176470588235294,
-            0.3176470588235294
+            0.1980392157,
+            0.368627451,
+            0.500000000
           ],
           "opacity": 1,
           "textureAsset": 29914569,
@@ -59300,7 +59300,7 @@
             0.5,
             0.5
           ],
-          "text": "KICK",
+          "text": "Kick",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 18,
