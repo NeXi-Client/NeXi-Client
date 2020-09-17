@@ -18449,9 +18449,9 @@
         0
       ],
       "scale": [
-        2.27122705407602,
-        2.27122705407602,
-        2.27122705407602
+        2.53,
+        1.435,
+        1.435
       ],
       "components": {
         "element": {
@@ -18540,7 +18540,7 @@
     "03a21dce-6227-4aff-a9a5-3e1e4492ec75": {
       "name": "Black",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "03a21dce-6227-4aff-a9a5-3e1e4492ec75",
       "parent": "93abf351-c078-4bb4-8bf0-e164bd9f793a",
       "children": [],
@@ -18646,7 +18646,7 @@
     "78c01491-2565-417a-987b-6c95af4cc8eb": {
       "name": "Black",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "78c01491-2565-417a-987b-6c95af4cc8eb",
       "parent": "93abf351-c078-4bb4-8bf0-e164bd9f793a",
       "children": [],
