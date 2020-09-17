@@ -319,10 +319,10 @@ const removeEmoteHint = () => {
 
 const staticCrosshair = () => {
   Overlay.prototype.onShooting = function() {
-    //this.crosshairEntity.tween(this.crosshairEntity.element).to({
-    ////    width: 65,
-    //    height: 65
-    //}, .045, pc.SineOut).start(),
+    this.crosshairEntity.tween(this.crosshairEntity.element).to({
+        width: 65,
+        height: 65
+    }, .045, pc.SineOut).start(),
     this.setAmmo()
   };
 
