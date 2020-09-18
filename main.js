@@ -37,7 +37,7 @@ function init()
 	createWindow();
 	shortCuts();
 	Leave();
-	CheckGame();
+	CheckURL();
 }
 
 function DiscordRPC()
