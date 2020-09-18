@@ -9429,7 +9429,7 @@
     "54ff1878-a9eb-467a-a5d6-b18e854f54b3": {
       "name": "DamageIndictator",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "54ff1878-a9eb-467a-a5d6-b18e854f54b3",
       "parent": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
       "children": [],
