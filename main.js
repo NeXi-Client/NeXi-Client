@@ -1,4 +1,4 @@
-const { app } = require('electron')
+const { app, shell } = require('electron')
 const { BrowserWindow } = require('electron')
 const { globalShortcut } = require('electron')
 const { dialog } = require('electron')
@@ -37,6 +37,7 @@ function init()
 	createWindow();
 	shortCuts();
 	Leave();
+	CheckGame();
 }
 
 function DiscordRPC()
@@ -67,6 +68,23 @@ function createWindow()
 	win.setTitle('NeXi-Client')
 	win.on('page-title-updated', function(e) { e.preventDefault() })
 	console.log('Window has been created')
+}
+
+function CheckURL(){
+	String.prototype.CheckVenge = function() {
+		var SITE_REGEX = /^(https?:\/\/)?(www\.)?(.+\.|)(venge\.io|127\.0\.0\.1:8080)(|\/|.+)$/;
+		return SITE_REGEX.test(this, '')
+	}
+	let nav = (e, url) => {
+		e.preventDefault();
+		if (url.CheckVenge()) {
+			win.loadURL(url);
+		} 
+		else shell.openExternal(url);
+	};
+
+	win.webContents.on('new-window', nav);
+	win.webContents.on('will-navigate', nav);
 }
 
 function Leave()
