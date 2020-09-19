@@ -116,10 +116,10 @@ function leave() {
 //Asks for link and inputs it.
 function LinkBox() {
     let paste = clipboard.readText();
-    if (paste.indexOf('venge.io/#') === -1){
+    if (paste.indexOf('https://www.venge.io/#') === -1){
         paste = 'https://venge.io/#00000';
     }
-    
+
     const choice = dialog.showMessageBoxSync(win, {
         type: 'question',
         buttons: ['Play', 'Spectate'],
