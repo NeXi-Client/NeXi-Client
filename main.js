@@ -1,5 +1,5 @@
 const {
-    app, shell
+    app, shell, clipboard
 } = require('electron')
 const {
     BrowserWindow
@@ -85,17 +85,14 @@ function createWindow() {
 }
 
 function CheckGame() {
-    String.prototype.CheckForTwitch = function() {
-        var SITE_REGEX = /https:\/\/www.twitch.tv/;
-        return SITE_REGEX.test(this, '');
+    String.prototype.CheckForVenge = function(){
+        var VENGE_REGEX = /index.html/;
+        return VENGE_REGEX.test(this, '')
     }
-    String.prototype.CheckForYT = function() {
-        var YT_REGEX = /https:\/\/www.youtube.com/;
-        return YT_REGEX.test(this, '');
-    }
+   
     let nav = (e, url) => {
         e.preventDefault();
-        if (!url.CheckForYT() && !url.CheckForTwitch()) {
+        if (url.CheckForVenge()) {
             win.loadURL(url);
         } else {
             shell.openExternal(url);
@@ -118,6 +115,11 @@ function leave() {
 
 //Asks for link and inputs it.
 function LinkBox() {
+    let paste = clipboard.readText();
+    if (paste.indexOf('venge.io/#') === -1){
+        paste = 'https://venge.io/#00000';
+    }
+    
     const choice = dialog.showMessageBoxSync(win, {
         type: 'question',
         buttons: ['Play', 'Spectate'],
@@ -131,7 +133,7 @@ function LinkBox() {
         prompt({
                 title: 'Play',
                 label: 'Please enter your Invite link here',
-                value: 'https://venge.io/#00000',
+                value: paste,
                 inputAttrs: {
                     type: 'url'
                 },
@@ -157,7 +159,7 @@ function LinkBox() {
             prompt({
                     title: 'Spectate',
                     label: 'Please enter your Invite link here',
-                    value: 'https://venge.io/#00000',
+                    value: paste,
                     inputAttrs: {
                         type: 'url'
                     },
