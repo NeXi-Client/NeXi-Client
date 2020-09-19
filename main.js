@@ -13,7 +13,7 @@ const {
 const prompt = require('electron-prompt')
 const RPC = require('discord-rpc')
 
-
+//Add Window to check :D
 app.commandLine.appendSwitch('disable-frame-rate-limit')
 app.commandLine.appendSwitch('disable-gpu-vsync')
 app.commandLine.appendSwitch('ignore-gpu-blacklist');
@@ -115,21 +115,21 @@ function leave() {
 
 //Asks for link and inputs it.
 function LinkBox() {
+    
     let paste = clipboard.readText();
-    if (paste.indexOf('https://www.venge.io/#') === -1){
+    if (paste.indexOf('venge.io/#') === -1){
         paste = 'https://venge.io/#00000';
-    }
-
-    const choice = dialog.showMessageBoxSync(win, {
-        type: 'question',
-        buttons: ['Play', 'Spectate'],
-        title: 'Join',
-        message: 'Would you like to spectate or play?',
-        defaultId: 0,
-        cancelId: 2
-    });
-    const link = (choice === 0)
-    if (link) {
+        const choice = dialog.showMessageBoxSync(win, {
+            type: 'question',
+            buttons: ['Play', 'Spectate'],
+            title: 'Join',
+            message: 'Would you like to spectate or play?',
+            defaultId: 0,
+            cancelId: 2
+        });
+        
+   
+    if (choice === 0) {
         prompt({
                 title: 'Play',
                 label: 'Please enter your Invite link here',
@@ -182,6 +182,51 @@ function LinkBox() {
                 });
         }
     }
+    }
+    else {
+        const choice = dialog.showMessageBoxSync(win, {
+            type: 'question',
+            buttons: ['Play', 'Spectate'],
+            title: 'Join',
+            message: 'Would you like to spectate or play?',
+            defaultId: 0,
+            cancelId: 2
+        });
+        if (choice === 0){
+            let inputUrl = paste;
+            let arr1 = inputUrl.split('#');
+            let inviteCode = arr1[arr1.length - 1];
+
+            let currentUrl = win.webContents.getURL();
+            let arr2 = currentUrl.split('/');
+
+            arr2[arr2.length - 1] = `index.html#${inviteCode}`;
+
+            let newUrl = arr2.join('/');
+
+            console.log(newUrl)
+            win.loadURL(newUrl);
+        }
+        else{
+            if (choice !== 2) {
+              
+                let inputUrl = paste;
+                let arr1 = inputUrl.split('#');
+                let inviteCode = arr1[arr1.length - 1];
+
+                let currentUrl = win.webContents.getURL();
+                let arr2 = currentUrl.split('/');
+
+                arr2[arr2.length - 1] = `index.html#Spectate:${inviteCode}`;
+
+                let newUrl = arr2.join('/');
+
+                console.log(newUrl)
+                win.loadURL(newUrl);
+            };
+        }
+    }
+
 };
 
 
@@ -215,6 +260,22 @@ function shortCuts() {
                   document.exitPointerLock();
 		`);
     })
+    globalShortcut.register('=', () => {
+        win = new BrowserWindow({
+            width: 500,
+            height: 350,
+            icon: "files/game.png"
+        })
+        win.loadFile('./menu/menu.html')
+        win.removeMenu(true)
+        win.setTitle('NeXi-Client')
+        win.on('page-title-updated', function(e) {
+            e.preventDefault()
+        })
+        console.log('Window has been created')
+    
+    })
+    
     console.log('Shortcuts has been registered')
 }
 app.on('ready', init)
