@@ -1,6 +1,6 @@
 {
   "name": "nexi-client",
-  "version": "1.2.41",
+  "version": "1.2.5",
   "description": "NeXi-Client is a client made for the browser game called 'Venge.io'",
   "main": "main.js",
   "scripts": {
@@ -21,7 +21,7 @@
     },
     "nsis": {
       "oneClick": false,
-      "perMachine": false,
+      "perMachine": true,
       "license": "",
       "artifactName": "NeXi-Client-Windows-${version}.${ext}",
       "createDesktopShortcut": "always",
