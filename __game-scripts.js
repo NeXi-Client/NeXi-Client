@@ -6184,7 +6184,7 @@ NetworkManager.attributes.add("isDebug", { type: "boolean", default: !0 }),
     "undefined" != typeof VERSION &&
       this.app.fire(
         "Overlay:Info",
-        "This session is not available! Please refresh page and try again!"
+        "Something went wrong. Search for another lobby please!"
       );
   }),
   (NetworkManager.prototype.onRestart = function () {

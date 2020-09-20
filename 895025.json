@@ -1727,13 +1727,13 @@
             },
             "34": {
               "name": "Overtime-Loop",
-              "loop": true,
+              "loop": false,
               "autoPlay": false,
               "overlap": false,
               "asset": 31632611,
               "startTime": 0,
               "duration": null,
-              "volume": 0.5,
+              "volume": 0.45,
               "pitch": 1
             },
             "35": {
