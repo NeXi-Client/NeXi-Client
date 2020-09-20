@@ -31354,7 +31354,7 @@
           "width": 47.266,
           "height": 20.957,
           "margin": [
-            -29.541,
+            147.541,
             -24.03,
             -29.541,
             -2.166
@@ -31460,7 +31460,7 @@
           "width": 29.626,
           "height": 15.718,
           "margin": [
-            -14.813,
+            162.813,
             6.853,
             -14.813,
             -22.571
@@ -31632,9 +31632,9 @@
         0
       ],
       "scale": [
-        1,
-        1,
-        1
+        0.85,
+        0.85,
+        0.85
       ],
       "components": {
         "element": {
@@ -31781,7 +31781,7 @@
           "width": 135.83,
           "height": 20.957,
           "margin": [
-            -67.915,
+            -62.915,
             14.899,
             -67.915,
             -35.856
@@ -32047,7 +32047,7 @@
     "8910e703-b1b8-444f-ab4d-5fb331343dd3": {
       "name": "Text",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "8910e703-b1b8-444f-ab4d-5fb331343dd3",
       "parent": "51dd1e74-4ecb-4487-9872-477ac5b227fc",
       "children": [],
@@ -32153,7 +32153,7 @@
     "ae66a1ae-0788-413e-85db-371ec5ea4d85": {
       "name": "Time",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "ae66a1ae-0788-413e-85db-371ec5ea4d85",
       "parent": "51dd1e74-4ecb-4487-9872-477ac5b227fc",
       "children": [],
@@ -32318,7 +32318,7 @@
           "height": 32,
           "margin": [
             -16,
-            -16,
+            -153,
             -16,
             -16
           ],
@@ -32869,7 +32869,7 @@
             0.5,
             0
           ],
-          "text": "LOADING...",
+          "text": "",
           "key": null,
           "fontAsset": 30364504,
           "fontSize": 30,

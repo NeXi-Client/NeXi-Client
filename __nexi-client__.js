@@ -94,7 +94,7 @@ const customMatchFoundAnimation = () => {
         .to({ opacity: 1 }, 1, pc.QuarticOut)
         .start(),
       (this.matchFoundRectangle.element.opacity = 1),
-      this.matchFoundRectangle.setLocalScale(20, 1, 1),
+      this.matchFoundRectangle.setLocalScale(0, 0, 0),
       this.matchFoundCenter.setLocalScale(3, 3, 3),
       this.matchFoundRectangle
         .tween(this.matchFoundRectangle.getLocalScale())
@@ -121,7 +121,7 @@ const customMatchFoundAnimation = () => {
               .start(),
             setTimeout(function () {
               pc.app.fire("Game:Connect", !0);
-            }, 1000);
+            }, 1300);
         },
         1500,
         this
