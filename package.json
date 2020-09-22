@@ -38,6 +38,13 @@
     "dmg": {
       "title": "NeXi-Client-${version}",
       "artifactName": "NeXi-Client-Mac-${version}.dmg"
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "snap",
+        "rpm"
+      ]
     }
   },
   "repository": {
