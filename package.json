@@ -1,6 +1,6 @@
 {
   "name": "nexi-client",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "NeXi-Client is a client made for the browser game called 'Venge.io'",
   "main": "main.js",
   "scripts": {

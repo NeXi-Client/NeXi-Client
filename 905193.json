@@ -44413,13 +44413,11 @@
                 "itemNames": [
                   "Sierra",
                   "Xibalba",
-                  "Mistle",
-                  "Editor"
+                  "Mistle"
                 ],
                 "itemImages": [
                   32202739,
                   32202738,
-                  34173543,
                   34173543
                 ]
               }
@@ -47371,7 +47369,7 @@
             1,
             1
           ],
-          "text": "NeXi-Client v1.2.6",
+          "text": "NeXi-Client v1.2.7",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 20,
