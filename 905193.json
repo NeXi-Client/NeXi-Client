@@ -10140,7 +10140,7 @@
       "children": [],
       "position": [
         0,
-        0,
+        -10,
         0
       ],
       "rotation": [
@@ -10159,13 +10159,13 @@
           "type": "group",
           "anchor": [
             0.5,
+            1,
             0.5,
-            0.5,
-            0.5
+            1
           ],
           "pivot": [
             0.5,
-            0.5
+            1
           ],
           "text": "",
           "key": null,
@@ -10190,12 +10190,12 @@
           "spriteFrame": 0,
           "pixelsPerUnit": null,
           "width": 700,
-          "height": 430,
+          "height": 355,
           "margin": [
             -350,
-            -215,
+            -365,
             -350,
-            -215
+            10
           ],
           "alignment": [
             0.5,
@@ -36815,15 +36815,13 @@
                   "General",
                   "Keyboard",
                   "Audio",
-                  "Miscellaneous",
-                  "Customs"
+                  "Miscellaneous"
                 ],
                 "page": [
                   "4f5169c9-5ba0-437a-ae8a-b0e1772cfea2",
                   "a260fc8f-0d3b-42d6-b8e3-55c1f9d9bc9b",
                   "742462a0-9782-4c6b-9625-f27511467468",
-                  "afffc5e5-4511-4118-924e-0f63c2df8248",
-                  "bf3d6d33-6490-48f9-bb74-df7a4f7991a4"
+                  "afffc5e5-4511-4118-924e-0f63c2df8248"
                 ],
                 "align": "Vertical",
                 "buttonEntity": "bce3f8e0-99d6-4577-9b16-437dce5017c1",
@@ -44415,11 +44413,13 @@
                 "itemNames": [
                   "Sierra",
                   "Xibalba",
-                  "Mistle"
+                  "Mistle",
+                  "Editor"
                 ],
                 "itemImages": [
                   32202739,
                   32202738,
+                  34173543,
                   34173543
                 ]
               }
@@ -46526,7 +46526,7 @@
     "c719a624-3eb0-4761-9c3d-a18c7963b776": {
       "name": "Row",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "c719a624-3eb0-4761-9c3d-a18c7963b776",
       "parent": "66ff71c7-3b29-4715-8f8a-1f57b4c2e41e",
       "children": [
@@ -46635,7 +46635,7 @@
     "9ea3182f-57f6-4a5c-90cd-c4051b46ec15": {
       "name": "Label",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "9ea3182f-57f6-4a5c-90cd-c4051b46ec15",
       "parent": "c719a624-3eb0-4761-9c3d-a18c7963b776",
       "children": [],
@@ -46741,7 +46741,7 @@
     "524a4ce5-c6e8-494f-90da-9317f84a4337": {
       "name": "DisableMenuMusic",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "524a4ce5-c6e8-494f-90da-9317f84a4337",
       "parent": "c719a624-3eb0-4761-9c3d-a18c7963b776",
       "children": [],
