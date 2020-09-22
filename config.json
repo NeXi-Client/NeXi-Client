@@ -64851,6 +64851,53 @@
       "i18n": {},
       "id": "34173543"
     },
+    "34173544": {
+      "tags": [],
+      "name": "Hexagon-Thumbnail.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColor",
+        "width": 512,
+        "height": 512,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Hexagon-Thumbnail.png",
+        "hash": "b7b5096f1aae98c2d2968ea68870e2ab",
+        "size": 88953,
+        "variants": {},
+        "url": "files/assets/34173544/1/Hexagon-Thumbnail.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "34173544"
+    },
     "34174383": {
       "tags": [],
       "name": "Floating",

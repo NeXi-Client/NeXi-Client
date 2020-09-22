@@ -44415,12 +44415,14 @@
                 "itemNames": [
                   "Sierra",
                   "Xibalba",
-                  "Mistle"
+                  "Mistle",
+                  "Hexagon"
                 ],
                 "itemImages": [
                   32202739,
                   32202738,
-                  34173543
+                  34173543,
+                  34173544
                 ]
               }
             },

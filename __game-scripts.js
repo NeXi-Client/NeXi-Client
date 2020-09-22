@@ -16781,9 +16781,6 @@ Damageable.prototype.initialize = function() {
 Damageable.prototype.setDamage = function(t) {
     var e = this.entity.getPosition().clone();
     this.health = t,
-    this.app.fire("EffectManager:CustomSound", "Hit-Sound", 1 - .005 * this.health, e),
-    this.material.opacity = Math.max(.008 * this.health, .05),
-    this.material.update(),
     this.health <= 0 && (this.app.fire("EffectManager:ExplosionEffect", e),
     this.entity.destroy())
 }
