@@ -100762,7 +100762,7 @@
     "1c84fac2-9b22-415d-a477-3d6afd470e9f": {
       "name": "Profile",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "1c84fac2-9b22-415d-a477-3d6afd470e9f",
       "parent": "e5ea1ac7-541c-427b-93c2-d24193b1b5bb",
       "children": [
@@ -100930,7 +100930,7 @@
             0,
             0.5
           ],
-          "text": "https://social.venge.io/#{{raw_username}}",
+          "text": "Open your Profile Page",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 14,
