@@ -19048,7 +19048,7 @@
                 "recoil": 1.5,
                 "sliderLimit": 0,
                 "hasSlider": false,
-                "cameraShake": 10,
+                "cameraShake": 5,
                 "bulletPoint": "61a9ca0a-8d3e-4289-b49d-42c1da557141",
                 "muzzlePoint": "33c72757-da9f-4922-9562-7324de191364",
                 "shootTime": 1.1,
@@ -19073,7 +19073,8 @@
                 "barrelPoint": null,
                 "ammoEntity": null,
                 "isRightHanded": false,
-                "distanceMultiplier": 1
+                "distanceMultiplier": 1,
+                "isShootable": true
               }
             }
           }
