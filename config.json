@@ -410,6 +410,10 @@
     {
       "name": "Result-Mobile",
       "url": "943672.json"
+    },
+    {
+      "name": "DEV",
+      "url": "DEV.json"
     }
   ],
   "assets": {
@@ -64994,7 +64998,7 @@
     },
     "34173544": {
       "tags": [],
-      "name": "Hexagon-Thumbnail.png",
+      "name": "DEV.png",
       "revision": 1,
       "preload": false,
       "meta": {
@@ -65029,11 +65033,11 @@
       },
       "type": "texture",
       "file": {
-        "filename": "Hexagon-Thumbnail.png",
+        "filename": "DEV.png",
         "hash": "b7b5096f1aae98c2d2968ea68870e2ab",
         "size": 88953,
         "variants": {},
-        "url": "files/assets/34173544/1/Hexagon-Thumbnail.png"
+        "url": "files/assets/34173544/1/DEV.png"
       },
       "region": "eu-west-1",
       "i18n": {},

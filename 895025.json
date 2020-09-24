@@ -427,7 +427,7 @@
                   "Tec-9"
                 ],
                 "danceName": "Techno",
-                "characterName": "Shin",
+                "characterName": "Lilium",
                 "characterArmLeft": "ac6d9d60-eaca-4660-8be4-0595b9b27b06",
                 "characterArmRight": "25d3a2d2-50a2-456f-a117-af777b61e455",
                 "meleeCenter": "e274f82e-7e5a-4239-96e2-f649a792c64f",
@@ -992,7 +992,8 @@
                 "barrelPoint": null,
                 "ammoEntity": null,
                 "isRightHanded": false,
-                "distanceMultiplier": 1
+                "distanceMultiplier": 1,
+                "isShootable": true
               }
             }
           }
@@ -1074,6 +1075,7 @@
       "parent": "f6362378-ef61-4e6e-90a0-f4bfa23a448d",
       "children": [
         "00105180-4235-4666-b8d6-e29e0e763fdd",
+        "7ce9e164-c3d2-4741-a842-d9c00a8ad7fa",
         "00e8efa1-8e2a-4162-97a3-202b601757ca",
         "bf215832-8da1-4910-9ee4-fe68fcda2224",
         "a92e3a56-d2cb-4d4a-8f97-047cd217b171",
@@ -4303,6 +4305,17 @@
               "duration": null,
               "volume": 1,
               "pitch": 1
+            },
+            "10": {
+              "name": "Hit-Sound",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 29398287,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
             }
           }
         }
@@ -5986,7 +5999,9 @@
                 "playSound": true,
                 "waitResolve": false,
                 "leaveFunction": "",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -7356,7 +7371,8 @@
         "81b9c9f1-2e57-4dd9-82a4-1ca5dc737d0a",
         "cc61dc2c-066e-43a6-b8de-f9f354a4f0bb",
         "17d3912f-7452-4165-85b3-bb9ed92c3deb",
-        "b2637abc-f970-4148-af47-e6343a34b8c6"
+        "b2637abc-f970-4148-af47-e6343a34b8c6",
+        "d1322615-14ed-4b07-839e-e4bc5d9fcc8d"
       ],
       "position": [
         0,
@@ -7459,7 +7475,9 @@
     },
     "81b9c9f1-2e57-4dd9-82a4-1ca5dc737d0a": {
       "name": "Top",
-      "tags": [],
+      "tags": [
+        "CrosshairPart"
+      ],
       "enabled": true,
       "resource_id": "81b9c9f1-2e57-4dd9-82a4-1ca5dc737d0a",
       "parent": "25495d1f-9a61-4dc8-b126-1a69c25f0dc1",
@@ -7565,7 +7583,9 @@
     },
     "cc61dc2c-066e-43a6-b8de-f9f354a4f0bb": {
       "name": "Bottom",
-      "tags": [],
+      "tags": [
+        "CrosshairPart"
+      ],
       "enabled": true,
       "resource_id": "cc61dc2c-066e-43a6-b8de-f9f354a4f0bb",
       "parent": "25495d1f-9a61-4dc8-b126-1a69c25f0dc1",
@@ -7671,7 +7691,9 @@
     },
     "17d3912f-7452-4165-85b3-bb9ed92c3deb": {
       "name": "Left",
-      "tags": [],
+      "tags": [
+        "CrosshairPart"
+      ],
       "enabled": true,
       "resource_id": "17d3912f-7452-4165-85b3-bb9ed92c3deb",
       "parent": "25495d1f-9a61-4dc8-b126-1a69c25f0dc1",
@@ -7777,7 +7799,9 @@
     },
     "b2637abc-f970-4148-af47-e6343a34b8c6": {
       "name": "Right",
-      "tags": [],
+      "tags": [
+        "CrosshairPart"
+      ],
       "enabled": true,
       "resource_id": "b2637abc-f970-4148-af47-e6343a34b8c6",
       "parent": "25495d1f-9a61-4dc8-b126-1a69c25f0dc1",
@@ -9307,7 +9331,7 @@
             "mapManager": {
               "enabled": true,
               "attributes": {
-                "defaultMap": "Sierra",
+                "defaultMap": "Tundra",
                 "mapHolder": "61d5c8dc-28d8-4b9e-b0cc-7908646ca0c7",
                 "autoLoad": true
               }
@@ -11413,15 +11437,14 @@
       "scale": [
         1,
         1,
-        1
-        
+        1  
       ],
       "components": {}
     },
     "c112a26d-22a6-468a-82d6-b3b600b07bc5": {
       "name": "ArmLeft",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "c112a26d-22a6-468a-82d6-b3b600b07bc5",
       "parent": "f6362378-ef61-4e6e-90a0-f4bfa23a448d",
       "children": [
@@ -14258,7 +14281,11 @@
                   1
                 ],
                 "padding": 2,
-                "timeLimit": 12
+                "timeLimit": 99999,
+                "messageLimit": 6,
+                "isFocused": false,
+                "keepHistory": false,
+                "inGame": true
               }
             }
           }
@@ -14421,7 +14448,10 @@
                 "focusEntity": null,
                 "sleepValue": "",
                 "blurFunction": "",
-                "disableTab": true
+                "disableTab": true,
+                "hasIcon": false,
+                "key": "",
+                "temporary": false
               }
             }
           }
@@ -19653,7 +19683,8 @@
                 "barrelPoint": "1fe8f1ca-6a2c-4a46-806c-ab93b69591be",
                 "ammoEntity": "cb72285f-c9c4-4ead-a8a3-4384d667b8cc",
                 "isRightHanded": false,
-                "distanceMultiplier": 0.95
+                "distanceMultiplier": 0.95,
+                "isShootable": true
               }
             }
           }
@@ -21956,7 +21987,8 @@
                 "barrelPoint": null,
                 "ammoEntity": null,
                 "isRightHanded": true,
-                "distanceMultiplier": 0.9
+                "distanceMultiplier": 0.9,
+                "isShootable": true
               }
             }
           }
@@ -22323,7 +22355,7 @@
     "8b07a182-402b-4af9-a2d7-ec35be35d50f": {
       "name": "ArmRight",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "8b07a182-402b-4af9-a2d7-ec35be35d50f",
       "parent": "f6362378-ef61-4e6e-90a0-f4bfa23a448d",
       "children": [
@@ -22395,7 +22427,7 @@
       "tags": [
         "MODE-POINT"
       ],
-      "enabled":  false,
+      "enabled": false,
       "resource_id": "9bbad417-d9d4-413e-892b-83b25e312339",
       "parent": "84f9d6ee-6764-4ffc-b8ae-3a4995cd1ca0",
       "children": [],
@@ -24753,7 +24785,9 @@
                 "fireArgs": "",
                 "playSound": false,
                 "waitResolve": false,
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -24884,7 +24918,9 @@
                 "fireArgs": "",
                 "playSound": false,
                 "waitResolve": false,
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -25015,7 +25051,9 @@
                 "fireArgs": "",
                 "playSound": false,
                 "waitResolve": false,
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -31966,7 +32004,9 @@
                 "playSound": true,
                 "waitResolve": false,
                 "leaveFunction": "",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -32309,7 +32349,9 @@
                 "playSound": true,
                 "waitResolve": false,
                 "leaveFunction": "",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -34370,7 +34412,9 @@
                 "playSound": false,
                 "waitResolve": false,
                 "leaveFunction": "Touch:Shoot@false",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -34845,7 +34889,9 @@
                 "fireArgs": "",
                 "playSound": false,
                 "waitResolve": false,
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -34973,7 +35019,9 @@
                 "fireArgs": "",
                 "playSound": false,
                 "waitResolve": false,
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -35101,7 +35149,9 @@
                 "fireArgs": "",
                 "playSound": false,
                 "waitResolve": false,
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -35229,7 +35279,9 @@
                 "fireArgs": "",
                 "playSound": false,
                 "waitResolve": false,
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -35687,7 +35739,9 @@
                 "playSound": false,
                 "waitResolve": false,
                 "leaveFunction": "",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -36581,7 +36635,9 @@
                 "playSound": false,
                 "waitResolve": false,
                 "leaveFunction": "Touch:Shoot@false",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -36817,7 +36873,9 @@
                 "playSound": false,
                 "waitResolve": false,
                 "leaveFunction": "",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -37053,7 +37111,9 @@
                 "playSound": false,
                 "waitResolve": false,
                 "leaveFunction": "",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -37290,7 +37350,9 @@
                 "playSound": false,
                 "waitResolve": false,
                 "leaveFunction": "Touch:BuyEnd",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -37632,7 +37694,9 @@
                 "playSound": false,
                 "waitResolve": false,
                 "leaveFunction": "",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -37868,7 +37932,9 @@
                 "playSound": false,
                 "waitResolve": false,
                 "leaveFunction": "",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -45326,7 +45392,9 @@
                 "playSound": true,
                 "waitResolve": false,
                 "leaveFunction": "",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -46140,7 +46208,9 @@
                 "fireArgs": "",
                 "playSound": true,
                 "waitResolve": false,
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -46591,7 +46661,9 @@
                 "playSound": true,
                 "waitResolve": false,
                 "leaveFunction": "",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -47656,7 +47728,8 @@
                 "barrelPoint": null,
                 "ammoEntity": null,
                 "isRightHanded": false,
-                "distanceMultiplier": 1
+                "distanceMultiplier": 1,
+                "isShootable": true
               }
             }
           }
@@ -49416,7 +49489,9 @@
                 "fireArgs": "",
                 "playSound": true,
                 "waitResolve": false,
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -49654,7 +49729,9 @@
                 "fireArgs": "",
                 "playSound": true,
                 "waitResolve": false,
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -49892,7 +49969,9 @@
                 "fireArgs": "",
                 "playSound": true,
                 "waitResolve": false,
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -50130,7 +50209,9 @@
                 "fireArgs": "",
                 "playSound": true,
                 "waitResolve": false,
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -51148,7 +51229,9 @@
                 "playSound": true,
                 "waitResolve": false,
                 "leaveFunction": "",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -51599,7 +51682,9 @@
                 "playSound": true,
                 "waitResolve": false,
                 "leaveFunction": "",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -53276,7 +53361,8 @@
                 "default": false,
                 "storeValue": true,
                 "storeWithName": true,
-                "triggerFunction": "Menu:Settings"
+                "triggerFunction": "Menu:Settings",
+                "key": ""
               }
             }
           }
@@ -54624,7 +54710,8 @@
                 "default": false,
                 "storeValue": true,
                 "storeWithName": true,
-                "triggerFunction": "Menu:Settings"
+                "triggerFunction": "Menu:Settings",
+                "key": ""
               }
             }
           }
@@ -54962,7 +55049,8 @@
                 "default": false,
                 "storeValue": true,
                 "storeWithName": true,
-                "triggerFunction": "Menu:Settings"
+                "triggerFunction": "Menu:Settings",
+                "key": ""
               }
             }
           }
@@ -55337,7 +55425,7 @@
             0.5,
             0.5
           ],
-          "text": "Match will start in",
+          "text": "Next Game will start in",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 20,
@@ -58871,7 +58959,9 @@
                 "fireArgs": "",
                 "playSound": true,
                 "waitResolve": false,
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -59198,8 +59288,8 @@
           "width": 80,
           "height": 45,
           "margin": [
-            320,
-            -22.5,
+            500,
+            100.5,
             -400,
             -22.5
           ],
@@ -59258,7 +59348,9 @@
                 "playSound": true,
                 "waitResolve": false,
                 "leaveFunction": "",
-                "destroyOnFunction": false
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
@@ -59474,6 +59566,446 @@
             4
           ],
           "enableMarkup": true
+        }
+      }
+    },
+    "7ce9e164-c3d2-4741-a842-d9c00a8ad7fa": {
+      "name": "Melee",
+      "tags": [
+        "Weapon"
+      ],
+      "enabled": false,
+      "resource_id": "7ce9e164-c3d2-4741-a842-d9c00a8ad7fa",
+      "parent": "57faf188-2890-4852-a83d-11c7af921839",
+      "children": [
+        "bcf1ac09-924f-402f-aab8-ce108018cc91",
+        "756554ea-0357-46c4-99a6-ac913a78e4b6",
+        "24d0f535-aaff-4a1e-b039-7cf909d72faf",
+        "e3eabd09-cafd-40a6-a53c-b16df73914f6",
+        "64541c76-32ba-42ab-be92-3c50d250876a"
+      ],
+      "position": [
+        -9.576477282280393e-7,
+        -0.0000013520402717404068,
+        0.000003647208387747014
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "script": {
+          "enabled": true,
+          "order": [
+            "weapon"
+          ],
+          "scripts": {
+            "weapon": {
+              "enabled": true,
+              "attributes": {
+                "sliderName": "",
+                "recoil": 0.9,
+                "sliderLimit": -220,
+                "hasSlider": false,
+                "cameraShake": 12,
+                "bulletPoint": "24d0f535-aaff-4a1e-b039-7cf909d72faf",
+                "muzzlePoint": "e3eabd09-cafd-40a6-a53c-b16df73914f6",
+                "shootTime": 0.06,
+                "spread": 300,
+                "focusSpread": 200,
+                "ammo": 20,
+                "capacity": 25,
+                "damage": 15,
+                "doodahEntity": null,
+                "doodahReference": "6edd1eb2-6422-4a3b-b258-5ddca5b452ce",
+                "magazineName": "",
+                "magazinePoint": "756554ea-0357-46c4-99a6-ac913a78e4b6",
+                "reloadingTime": 2.2,
+                "armEntity": "c112a26d-22a6-468a-82d6-b3b600b07bc5",
+                "handPoint": "64541c76-32ba-42ab-be92-3c50d250876a",
+                "type": "Melee",
+                "scopeOverlay": null,
+                "focusFov": 45,
+                "modelEntity": "0faecac9-fb0c-4812-8de9-c48255bbde97",
+                "isAutomatic": false,
+                "barrelName": "",
+                "barrelPoint": null,
+                "ammoEntity": null,
+                "isRightHanded": false,
+                "distanceMultiplier": 1,
+                "isShootable": false
+              }
+            }
+          }
+        },
+        "sound": {
+          "enabled": true,
+          "volume": 1,
+          "pitch": 1,
+          "positional": false,
+          "refDistance": 1,
+          "maxDistance": 10000,
+          "rollOffFactor": 1,
+          "distanceModel": "linear",
+          "slots": {
+            "1": {
+              "name": "Fire",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": true,
+              "asset": 29479198,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "2": {
+              "name": "Tail",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": true,
+              "asset": 29479199,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "3": {
+              "name": "Reload",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 29487879,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.5,
+              "pitch": 1
+            },
+            "4": {
+              "name": "Unload",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 29776997,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.5,
+              "pitch": 1.1
+            },
+            "5": {
+              "name": "Load",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 29776996,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.7,
+              "pitch": 0.8
+            }
+          }
+        }
+      }
+    },
+    "0faecac9-fb0c-4812-8de9-c48255bbde97": {
+      "name": "Model",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "0faecac9-fb0c-4812-8de9-c48255bbde97",
+      "parent": "bcf1ac09-924f-402f-aab8-ce108018cc91",
+      "children": [],
+      "position": [
+        -7.233509013028026,
+        -2.879112544838563,
+        0.000003647208387747014
+      ],
+      "rotation": [
+        0,
+        0,
+        9.575945645471557e-22
+      ],
+      "scale": [
+        11.16661597630421,
+        11.16661597630421,
+        11.16661597630421
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 30283157,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            1000
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "756554ea-0357-46c4-99a6-ac913a78e4b6": {
+      "name": "MagazinePoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "756554ea-0357-46c4-99a6-ac913a78e4b6",
+      "parent": "7ce9e164-c3d2-4741-a842-d9c00a8ad7fa",
+      "children": [],
+      "position": [
+        -4.426555904046836e-7,
+        0,
+        -0.0000010478970295935142
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "components": {}
+    },
+    "24d0f535-aaff-4a1e-b039-7cf909d72faf": {
+      "name": "BulletPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "24d0f535-aaff-4a1e-b039-7cf909d72faf",
+      "parent": "7ce9e164-c3d2-4741-a842-d9c00a8ad7fa",
+      "children": [],
+      "position": [
+        0.52355347533224,
+        1.0403241694282315,
+        0.27480617535284924
+      ],
+      "rotation": [
+        -90,
+        -90,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "e3eabd09-cafd-40a6-a53c-b16df73914f6": {
+      "name": "MuzzlePoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "e3eabd09-cafd-40a6-a53c-b16df73914f6",
+      "parent": "7ce9e164-c3d2-4741-a842-d9c00a8ad7fa",
+      "children": [],
+      "position": [
+        4.88828490323219,
+        1.1169142683368136,
+        4.327894997935289e-8
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "64541c76-32ba-42ab-be92-3c50d250876a": {
+      "name": "HandPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "64541c76-32ba-42ab-be92-3c50d250876a",
+      "parent": "7ce9e164-c3d2-4741-a842-d9c00a8ad7fa",
+      "children": [],
+      "position": [
+        -1.3584453135386525,
+        -0.0000013520402717404068,
+        0.000003647208387747014
+      ],
+      "rotation": [
+        5.108363094752662e-15,
+        19.375155744677127,
+        8.720486480062126e-16
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "bcf1ac09-924f-402f-aab8-ce108018cc91": {
+      "name": "Origin",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "bcf1ac09-924f-402f-aab8-ce108018cc91",
+      "parent": "7ce9e164-c3d2-4741-a842-d9c00a8ad7fa",
+      "children": [
+        "0faecac9-fb0c-4812-8de9-c48255bbde97"
+      ],
+      "position": [
+        -0.2776350026222758,
+        -3.226674569701345,
+        0.8895135907851284
+      ],
+      "rotation": [
+        -114.9414551002781,
+        1.4505656545695942,
+        164.36299558856592
+      ],
+      "scale": [
+        1.1769185105689473,
+        1.1769185105689473,
+        1.1769185105689473
+      ],
+      "components": {}
+    },
+    "d1322615-14ed-4b07-839e-e4bc5d9fcc8d": {
+      "name": "Crosshair",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "d1322615-14ed-4b07-839e-e4bc5d9fcc8d",
+      "parent": "25495d1f-9a61-4dc8-b126-1a69c25f0dc1",
+      "children": [],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": 35630927,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 64,
+          "height": 64,
+          "margin": [
+            -32,
+            -32,
+            -32,
+            -32
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "customImage",
+            "cookie"
+          ],
+          "scripts": {
+            "customImage": {
+              "enabled": true,
+              "attributes": {
+                "key": "Crosshair_Image",
+                "autoResize": true,
+                "defaultImage": 35630927
+              }
+            },
+            "cookie": {
+              "enabled": true,
+              "attributes": {
+                "key": "Crosshair_Image",
+                "onGet": "CustomImage:Crosshair, Overlay:SetCustomCrosshair"
+              }
+            }
+          }
         }
       }
     }
