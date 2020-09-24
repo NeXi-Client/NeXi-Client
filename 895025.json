@@ -2587,9 +2587,9 @@
       "parent": "93790e46-99cf-49e7-830a-a15bc441b889",
       "children": [],
       "position": [
-        0.24,
-        0.685,
-        -0.454
+        0.1,
+        0.57,
+        -0.72
       ],
       "rotation": [
         0,
@@ -11421,7 +11421,7 @@
     "c112a26d-22a6-468a-82d6-b3b600b07bc5": {
       "name": "ArmLeft",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "c112a26d-22a6-468a-82d6-b3b600b07bc5",
       "parent": "f6362378-ef61-4e6e-90a0-f4bfa23a448d",
       "children": [
@@ -22323,7 +22323,7 @@
     "8b07a182-402b-4af9-a2d7-ec35be35d50f": {
       "name": "ArmRight",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "8b07a182-402b-4af9-a2d7-ec35be35d50f",
       "parent": "f6362378-ef61-4e6e-90a0-f4bfa23a448d",
       "children": [
@@ -55782,7 +55782,7 @@
             1
           ],
           "opacity": 1,
-          "textureAsset": 30842580,
+          "textureAsset": 30842581,
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
@@ -56049,9 +56049,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.1980392157,
-            0.668627451,
-            1.000000000
+            1,
+            1,
+            1
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -56278,9 +56278,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.1980392157,
-            0.668627451,
-            1.000000000
+            1,
+            1,
+            1
           ],
           "opacity": 1,
           "textureAsset": 34788636,
@@ -56384,9 +56384,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.1980392157,
-            0.668627451,
-            1.000000000
+            1,
+            1,
+            1
           ],
           "opacity": 1,
           "textureAsset": null,

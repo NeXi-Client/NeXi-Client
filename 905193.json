@@ -505,7 +505,7 @@
             1.000000000
           ],
           "opacity": 1,
-          "textureAsset": null,
+          "textureAsset": 29914569,
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
@@ -952,12 +952,12 @@
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 212,
+          "width": 180,
           "height": 50,
           "margin": [
             0,
             -25,
-            -212,
+            -180,
             -25
           ],
           "alignment": [
@@ -1250,8 +1250,8 @@
         "54181140-eb43-4ed0-bfcf-a5d0249215ab"
       ],
       "position": [
-        -420,
-        -0.000019073486328125,
+        -375,
+        -0.00004291534423828125,
         0
       ],
       "rotation": [
@@ -1340,12 +1340,12 @@
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 150,
+          "width": 135,
           "height": 50,
           "margin": [
-            -570,
+            -510,
             -25,
-            420,
+            375,
             -25
           ],
           "alignment": [
@@ -1420,8 +1420,8 @@
       "parent": "165162f8-834f-4e43-ab42-928c6af7db18",
       "children": [],
       "position": [
-        8.286987543106079,
-        -1.113617327967404,
+        9.765620657688572,
+        -1.1136178970336914,
         0
       ],
       "rotation": [
@@ -1451,13 +1451,13 @@
           "text": "MATCH",
           "key": null,
           "fontAsset": 29329818,
-          "fontSize": 20,
+          "fontSize": 18,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
           "autoFitHeight": false,
           "maxLines": null,
-          "lineHeight": 20,
+          "lineHeight": 18,
           "wrapLines": true,
           "spacing": 0.9,
           "color": [
@@ -1473,10 +1473,10 @@
           "width": 64.874,
           "height": 26.196,
           "margin": [
-            -17.663,
-            -11.592,
-            -34.237,
-            -9.365
+            -13.589,
+            -10.544,
+            -33.12,
+            -8.317
           ],
           "alignment": [
             0.5,
@@ -1735,10 +1735,10 @@
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 150,
+          "width": 135,
           "height": 50,
           "margin": [
-            -150,
+            -135,
             -25,
             0,
             -25
@@ -1815,8 +1815,8 @@
       "parent": "988ccfe0-8d65-43ca-acfd-29d6a6b5a05e",
       "children": [],
       "position": [
-        6.7700958251953125,
-        -1.113647845545529,
+        9.186352895552261,
+        -1.1136722564697266,
         0
       ],
       "rotation": [
@@ -1868,9 +1868,9 @@
           "width": 88.945,
           "height": 26.196,
           "margin": [
-            -28.808,
+            -26.392,
             -11.592,
-            -42.348,
+            -44.764,
             -9.365
           ],
           "alignment": [
@@ -1971,13 +1971,13 @@
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 22,
-          "height": 22,
+          "width": 20,
+          "height": 20,
           "margin": [
             16.882,
-            -11,
-            -38.882,
-            -11
+            -10,
+            -36.882,
+            -10
           ],
           "alignment": [
             0.5,
@@ -2033,7 +2033,7 @@
         "e81a6fb7-ad17-4c98-af4b-fa7d3bc3498d"
       ],
       "position": [
-        -280,
+        -250,
         -0.00004291534423828125,
         0
       ],
@@ -2123,12 +2123,12 @@
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 150,
+          "width": 135,
           "height": 50,
           "margin": [
-            -430,
+            -385,
             -25,
-            280,
+            250,
             -25
           ],
           "alignment": [
@@ -2203,8 +2203,8 @@
       "parent": "d76f5a57-75a0-413c-8efb-4fb785474568",
       "children": [],
       "position": [
-        7.739003896713257,
-        -1.113617327967404,
+        9.672004457202917,
+        -1.113713264465332,
         0
       ],
       "rotation": [
@@ -2234,13 +2234,13 @@
           "text": "LEADERS",
           "key": null,
           "fontAsset": 29329818,
-          "fontSize": 20,
+          "fontSize": 18,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
           "autoFitHeight": false,
           "maxLines": null,
-          "lineHeight": 20,
+          "lineHeight": 18,
           "wrapLines": true,
           "spacing": 0.9,
           "color": [
@@ -2256,10 +2256,10 @@
           "width": 82.76,
           "height": 26.196,
           "margin": [
-            -25.365,
-            -11.592,
-            -40.843,
-            -9.365
+            -20.122,
+            -10.544,
+            -39.466,
+            -8.317
           ],
           "alignment": [
             0.5,
@@ -4007,7 +4007,7 @@
             0.5,
             0.5
           ],
-          "text": "Account",
+          "text": "SIGNUP",
           "key": null,
           "fontAsset": 29313023,
           "fontSize": 17,
@@ -7602,7 +7602,7 @@
             0,
             0.5
           ],
-          "text": "Sign Up",
+          "text": "SIGNUP",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 18,
@@ -9449,7 +9449,7 @@
       "children": [],
       "position": [
         0,
-        10,
+        -55,
         0
       ],
       "rotation": [
@@ -9580,8 +9580,8 @@
                   1
                 ],
                 "headerColor": [
-                  0.2980392157,
-                  0.768627451,
+                  0.1980392157,
+                  0.568627451,
                   1.000000000
                 ],
                 "buttons": [],
@@ -10272,8 +10272,8 @@
                   1
                 ],
                 "headerColor": [
-                  0.2980392157,
-                  0.768627451,
+                  0.1980392157,
+                  0.568627451,
                   1.000000000
                 ],
                 "buttons": [],
@@ -10399,12 +10399,12 @@
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 150,
+          "width": 135,
           "height": 50,
           "margin": [
-            -290,
+            -260,
             -25,
-            140,
+            125,
             -25
           ],
           "alignment": [
@@ -10479,8 +10479,8 @@
       "parent": "0378978d-2bff-4a41-9a3f-c5a06a83386e",
       "children": [],
       "position": [
-        5.785501003265381,
-        -1.1136039765269743,
+        12.403159223250668,
+        -1.113485336303711,
         0
       ],
       "rotation": [
@@ -10510,13 +10510,13 @@
           "text": "SHOP",
           "key": null,
           "fontAsset": 29329818,
-          "fontSize": 20,
+          "fontSize": 18,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
           "autoFitHeight": false,
           "maxLines": null,
-          "lineHeight": 20,
+          "lineHeight": 18,
           "wrapLines": true,
           "spacing": 0.9,
           "color": [
@@ -11445,8 +11445,8 @@
         "dcef40a5-63e9-432d-ae9f-e4cbb6a7de91"
       ],
       "position": [
-        110,
-        -0.00001239776611328125,
+        110.00000524520874,
+        -6.383630584267962,
         0
       ],
       "rotation": [
@@ -11476,13 +11476,13 @@
           "text": "{{username}}",
           "key": null,
           "fontAsset": 29313023,
-          "fontSize": 28,
+          "fontSize": 20,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
           "autoFitHeight": false,
           "maxLines": null,
-          "lineHeight": 32,
+          "lineHeight": 20,
           "wrapLines": true,
           "spacing": 1,
           "color": [
@@ -11495,13 +11495,13 @@
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 193.28,
-          "height": 36.832,
+          "width": 120.8,
+          "height": 23.02,
           "margin": [
             110,
-            -36.832,
-            -303.28,
-            0
+            -29.404,
+            -230.8,
+            6.384
           ],
           "alignment": [
             0.5,
@@ -13807,7 +13807,7 @@
             1
           ],
           "opacity": 1,
-          "textureAsset": 30842580,
+          "textureAsset": 30842581,
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
@@ -15313,7 +15313,7 @@
             1
           ],
           "opacity": 1,
-          "textureAsset": 30842580,
+          "textureAsset": 30842581,
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
@@ -20720,7 +20720,7 @@
     "112b512e-f122-456c-a208-44865c842f06": {
       "name": "Update",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "112b512e-f122-456c-a208-44865c842f06",
       "parent": "94b34383-8a40-4968-8b66-4d90e5e6503e",
       "children": [
@@ -20744,7 +20744,7 @@
       ],
       "components": {
         "button": {
-          "enabled": false,
+          "enabled": true,
           "active": true,
           "imageEntity": "112b512e-f122-456c-a208-44865c842f06",
           "hitPadding": [
@@ -21389,8 +21389,8 @@
                   1
                 ],
                 "headerColor": [
-                  0.2980392157,
-                  0.768627451,
+                  0.1980392157,
+                  0.568627451,
                   1.000000000
                 ],
                 "buttons": [
@@ -23165,9 +23165,9 @@
       "parent": "da7afdbf-ad4b-4295-9746-715a51b8e89c",
       "children": [],
       "position": [
-        0,
-        -0.14116406778028412,
-        -14.156012836336709
+        0.5392448306083679,
+        0.27802876061068105,
+        -14.156012535095215
       ],
       "rotation": [
         90,
@@ -23175,9 +23175,9 @@
         0
       ],
       "scale": [
-        8.21923457135792,
-        3.4472126507067364,
-        5.082963395997074
+        11.79878442502506,
+        4.203076311412436,
+        6.468323572439041
       ],
       "components": {
         "model": {
@@ -23411,7 +23411,7 @@
               "enabled": true,
               "attributes": {
                 "axis": "y",
-                "speed": -0.5,
+                "speed": -1,
                 "waveStyle": false,
                 "waveWidth": 0,
                 "children": false,
@@ -25250,8 +25250,8 @@
                 "description": "Select one of them!",
                 "onSelect": "Player:Character, Cookie:Character",
                 "headerColor": [
-                  0.2980392157,
-                  0.768627451,
+                  0.1980392157,
+                  0.568627451,
                   1.000000000
                 ],
                 "headerTextColor": [
@@ -31058,7 +31058,7 @@
             0.5,
             0.5
           ],
-          "text": "Matchmaking",
+          "text": "Searching for players...",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 20,
@@ -31299,7 +31299,7 @@
           "width": 47.266,
           "height": 20.957,
           "margin": [
-            147.541,
+            146.541,
             -24.03,
             -29.541,
             -2.166
@@ -31405,7 +31405,7 @@
           "width": 29.626,
           "height": 15.718,
           "margin": [
-            162.813,
+            160.813,
             6.853,
             -14.813,
             -22.571
@@ -31577,9 +31577,9 @@
         0
       ],
       "scale": [
-        0.85,
-        0.85,
-        0.85
+        1,
+        1,
+        1
       ],
       "components": {
         "element": {
@@ -31726,7 +31726,7 @@
           "width": 135.83,
           "height": 20.957,
           "margin": [
-            -62.915,
+            -67.915,
             14.899,
             -67.915,
             -35.856
@@ -32450,7 +32450,7 @@
               "asset": 31149158,
               "startTime": 0,
               "duration": null,
-              "volume": 0.6,
+              "volume": 0.5,
               "pitch": 1
             }
           }
@@ -33945,7 +33945,7 @@
     "9b3f317d-b27f-4819-8303-5c0bab068d86": {
       "name": "Version",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "9b3f317d-b27f-4819-8303-5c0bab068d86",
       "parent": "89fa5e74-7929-4d0e-9469-11fc9f785088",
       "children": [],
@@ -33981,7 +33981,7 @@
           "text": "v1.0.0",
           "key": null,
           "fontAsset": 29313023,
-          "fontSize": 15,
+          "fontSize": 17,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
@@ -33991,9 +33991,9 @@
           "wrapLines": true,
           "spacing": 0.9,
           "color": [
+            0,
             1,
-            0.7490196078431373,
-            0
+            1
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -34056,7 +34056,7 @@
               "enabled": true,
               "attributes": {
                 "connected": null,
-                "triggerFunction": "window.open('https://venge.io/changes.txt');",
+                "triggerFunction": "window.open('https://github.com/NeXi-Client/NeXi-Client/releases');",
                 "pressFunction": "",
                 "fireFunction": "",
                 "fireArgs": "",
@@ -34553,8 +34553,8 @@
       "parent": "d76f5a57-75a0-413c-8efb-4fb785474568",
       "children": [],
       "position": [
-        22.068002939224243,
-        0.7881221123112709,
+        18.686213370052343,
+        0.7879610061645508,
         0
       ],
       "rotation": [
@@ -34606,9 +34606,9 @@
           "width": 22,
           "height": 22,
           "margin": [
-            22.068,
+            18.686,
             -10.212,
-            -44.068,
+            -40.686,
             -11.788
           ],
           "alignment": [
@@ -34659,7 +34659,7 @@
       "parent": "0378978d-2bff-4a41-9a3f-c5a06a83386e",
       "children": [],
       "position": [
-        22.067992687225342,
+        27.690427221603983,
         9.5367431640625e-7,
         0
       ],
@@ -34704,18 +34704,18 @@
             1,
             1
           ],
-          "opacity": 0.4,
-          "textureAsset": 31222966,
+          "opacity": 1,
+          "textureAsset": 33286834,
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 22,
-          "height": 22,
+          "width": 20,
+          "height": 20,
           "margin": [
-            22.068,
-            -11,
-            -44.068,
-            -11
+            27.69,
+            -10,
+            -47.69,
+            -10
           ],
           "alignment": [
             0.5,
@@ -36000,7 +36000,7 @@
             0.5,
             0.5
           ],
-          "text": "Waiting for players to join...",
+          "text": "WAITING FOR FRIENDS...",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 15,
@@ -36815,13 +36815,15 @@
                   "General",
                   "Keyboard",
                   "Audio",
-                  "Miscellaneous"
+                  "Miscellaneous",
+                  "Customs"
                 ],
                 "page": [
                   "4f5169c9-5ba0-437a-ae8a-b0e1772cfea2",
                   "a260fc8f-0d3b-42d6-b8e3-55c1f9d9bc9b",
                   "742462a0-9782-4c6b-9625-f27511467468",
-                  "afffc5e5-4511-4118-924e-0f63c2df8248"
+                  "afffc5e5-4511-4118-924e-0f63c2df8248",
+                  "bf3d6d33-6490-48f9-bb74-df7a4f7991a4"
                 ],
                 "align": "Vertical",
                 "buttonEntity": "bce3f8e0-99d6-4577-9b16-437dce5017c1",
@@ -41642,7 +41644,7 @@
             "slider": {
               "enabled": true,
               "attributes": {
-                "defaultValue": 100,
+                "defaultValue": 90,
                 "min": 40,
                 "max": 125,
                 "step": 1,
@@ -42906,7 +42908,7 @@
     "6f31c034-c96d-4e75-abb6-906121c47917": {
       "name": "Holder",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "6f31c034-c96d-4e75-abb6-906121c47917",
       "parent": "2baa7f22-cb28-4cbb-a175-55b8d4385c6f",
       "children": [
@@ -44413,13 +44415,11 @@
                 "itemNames": [
                   "Sierra",
                   "Xibalba",
-                  "Mistle",
-                  "Editor"
+                  "Mistle"
                 ],
                 "itemImages": [
                   32202739,
                   32202738,
-                  34173543,
                   34173543
                 ]
               }
@@ -47338,7 +47338,7 @@
     "e0850441-d29d-4e62-ae27-b1853130faec": {
       "name": "Beta",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "e0850441-d29d-4e62-ae27-b1853130faec",
       "parent": "89fa5e74-7929-4d0e-9469-11fc9f785088",
       "children": [],
@@ -47371,7 +47371,7 @@
             1,
             1
           ],
-          "text": "NeXi-Client v1.2.6",
+          "text": "NeXi-Client v1.2.71",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 20,
@@ -49147,7 +49147,7 @@
             1,
             1
           ],
-          "text": "",
+          "text": "1.0.27",
           "key": null,
           "fontAsset": 29313023,
           "fontSize": 20,
@@ -56250,8 +56250,8 @@
                   1
                 ],
                 "headerColor": [
-                  0.2980392157,
-                  0.768627451,
+                  0.1980392157,
+                  0.568627451,
                   1.000000000
                 ],
                 "buttons": [
@@ -61749,8 +61749,8 @@
                   1
                 ],
                 "headerColor": [
-                  0.2980392157,
-                  0.768627451,
+                  0.1980392157,
+                  0.568627451,
                   1.000000000
                 ],
                 "buttons": [],
@@ -61989,7 +61989,7 @@
     "5a731c4a-46c9-4481-85b8-62eb422bdc3d": {
       "name": "Shop",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "5a731c4a-46c9-4481-85b8-62eb422bdc3d",
       "parent": "580b4e60-7686-4214-8eff-9e0f266e826d",
       "children": [
@@ -62054,7 +62054,7 @@
           "height": 55,
           "margin": [
             -150,
-            0,
+            70,
             -40,
             -125
           ],
@@ -62130,8 +62130,8 @@
       "parent": "5a731c4a-46c9-4481-85b8-62eb422bdc3d",
       "children": [],
       "position": [
-        53.1158529180517,
-        9.108996391296387,
+        42.81798839569092,
+        7.405835008067768,
         0
       ],
       "rotation": [
@@ -62448,8 +62448,8 @@
       "parent": "5a731c4a-46c9-4481-85b8-62eb422bdc3d",
       "children": [],
       "position": [
-        45.04849180998542,
-        -11.774742603302002,
+        58.80797116839864,
+        -12.62754201889038,
         0
       ],
       "rotation": [
@@ -75932,8 +75932,8 @@
                   1
                 ],
                 "headerColor": [
-                  0.2980392157,
-                  0.768627451,
+                  0.1980392157,
+                  0.568627451,
                   1.000000000
                 ]
               }
@@ -78591,8 +78591,8 @@
                   1
                 ],
                 "headerColor": [
-                  0.2980392157,
-                  0.768627451,
+                  0.1980392157,
+                  0.568627451,
                   1.000000000
                 ]
               }
@@ -90208,8 +90208,8 @@
                   1
                 ],
                 "headerColor": [
-                  0.2980392157,
-                  0.768627451,
+                  0.1980392157,
+                  0.568627451,
                   1.000000000
                 ],
                 "buttons": [],
@@ -91894,8 +91894,8 @@
                   1
                 ],
                 "headerColor": [
-                  0.2980392157,
-                  0.768627451,
+                  0.1980392157,
+                  0.568627451,
                   1.000000000
                 ]
               }
@@ -100930,7 +100930,7 @@
             0,
             0.5
           ],
-          "text": "Open your Profile Page",
+          "text": "https://social.venge.io/#{{raw_username}}",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 14,

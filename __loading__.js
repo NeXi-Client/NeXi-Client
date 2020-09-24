@@ -20,6 +20,16 @@ window.addEventListener('keydown', function(e) {
         e.preventDefault();
     }
     
+    if(e.which == 9 && (e.target == document.body || pc.isMapLoaded)) { 
+        e.preventDefault(); 
+    }
+});
+
+window.addEventListener('keyup', function(e) {
+    if(e.keyCode == 32 && e.target == document.body) {
+        e.preventDefault();
+    }
+    
     if(e.which == 9 && e.target == document.body) { 
         e.preventDefault(); 
     }
@@ -159,10 +169,6 @@ pc.script.createLoadingScreen(function (app) {
             '    opacity: 1;',
             '}',
             
-            'input::-webkit-input-placeholder {',
-            '    color: #d0d0d0;',
-            '}',
-            
             '#application-splash-wrapper {',
             '    position: absolute;',
             '    top: 0;',
@@ -242,6 +248,20 @@ pc.script.createLoadingScreen(function (app) {
             '    from { opacity : 0; right : -300px; }',
             '    to { opacity : 1; right : 30px; }',
             '}',
+            
+            'button {',
+            '    background-color: #4f237c;',
+            '    border: none;',
+            '    border-radius: 0.2vw;',
+            '    color: #fff;',
+            '    box-shadow: 0px 0.05vw 0.2vw rgba(0, 0, 0, 0.4);',
+            '    padding: 0.4vw 0.9vw !important;',
+            '    font-size: 0.8vw;',
+            '    border-top: solid 1px rgba(255, 255, 255, 0.1);',
+            '    cursor:pointer;',
+            '    outline:none;',
+            '    white-space: nowrap;',
+            '}',
 
             '#progress-bar {',
             '    width: 0%;',
@@ -290,6 +310,7 @@ pc.script.createLoadingScreen(function (app) {
         
     app.on('preload:start', function () {
         var randomImage = new Image();
+            randomImage.src = pc.app.assets.find('Shin-Thumbnail-3').getFileUrl();
             randomImage.id  = 'animated-loading-image-1';
         
         wrapper.appendChild(randomImage);

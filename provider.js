@@ -104,19 +104,22 @@ var adsProvider = {
 	},
 
 	initalizePokiSDK : function(){
+		/*
 	    var self = this;
 	    var script = document.createElement('script');
-	        script.src = 'https://game-cdn.poki.com/scripts/v2/poki-sdk.js';
+	        script.src = '//game-cdn.poki.com/scripts/v2/poki-sdk.js';
 	        script.onload = function(){
 	            self.onPokiSDK();
 	        };
 	    
 	    document.head.appendChild(script);
+	    */
+	    this.onPokiSDK();
 	},
 	initalizeAdinplay : function(){
 	    var self = this;
 	    var script = document.createElement('script');
-	        script.src = 'https://api.adinplay.com/libs/aiptag/pub/SHP/venge.io/tag.min.js';
+	        script.src = '//api.adinplay.com/libs/aiptag/pub/SHP/venge.io/tag.min.js';
 	        script.onload = function(){
 	            self.onAdinplay();
 	        };
@@ -126,7 +129,7 @@ var adsProvider = {
 	initalizeVLISDK : function(){
 	    var self = this;
 	    var script = document.createElement('script');
-	        script.src = 'https://services.vlitag.com/adv1/?q=88c341984e92f1782076da0b24e5bffb';
+	        script.src = '//services.vlitag.com/adv1/?q=88c341984e92f1782076da0b24e5bffb';
 	        script.onload = function(){
 	            self.onVLI();
 	        };
