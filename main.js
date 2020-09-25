@@ -260,7 +260,7 @@ function shortCuts() {
                   document.exitPointerLock();
 		`);
     })
-    globalShortcut.register('=', () => {
+    /*globalShortcut.register('=', () => {
         win = new BrowserWindow({
             width: 500,
             height: 350,
@@ -274,7 +274,7 @@ function shortCuts() {
         })
         console.log('Window has been created')
     
-    })
+    })*/
     
     console.log('Shortcuts has been registered')
 }

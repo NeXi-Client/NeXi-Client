@@ -61990,7 +61990,7 @@
     "5a731c4a-46c9-4481-85b8-62eb422bdc3d": {
       "name": "Shop",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "5a731c4a-46c9-4481-85b8-62eb422bdc3d",
       "parent": "580b4e60-7686-4214-8eff-9e0f266e826d",
       "children": [
