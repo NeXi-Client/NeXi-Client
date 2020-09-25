@@ -41,10 +41,11 @@ app.commandLine.appendSwitch('high-dpi-support', 1);
 function init() {
 
     DiscordRPC();
-    createWindow();
+    createWindow('index.html');
     shortCuts();
     CheckGame();
     leave();
+   
 }
 
 function DiscordRPC() {
@@ -53,7 +54,8 @@ function DiscordRPC() {
     });
     rpc.on("ready", () => {
         rpc.setActivity({
-            state: 'Playing Venge.io',
+            state: 'Playing Venge.io!',
+            details: "https://discord.gg/vQZbaT6",
             startTimestamp: new Date(),
             largeImageKey: 'nexi-old',
         })
@@ -65,15 +67,23 @@ function DiscordRPC() {
         clientId: "750116161890287657"
     })
 }
-
+function UpdateRPC(){
+    
+}
 //Create window
-function createWindow() {
+function createWindow(url) {
     win = new BrowserWindow({
         width: 1920,
         height: 1080,
         icon: "files/game.png"
     })
-    win.loadFile('index.html')
+    if (url.indexOf('https://') !== -1) {
+        win.loadURL(url);
+    }
+    else {
+        win.loadFile(url);
+    }
+    
     win.setFullScreen(true)
     win.removeMenu(true)
     win.setTitle('NeXi-Client')
@@ -85,17 +95,25 @@ function createWindow() {
 }
 
 function CheckGame() {
-    String.prototype.CheckForVenge = function(){
+    String.prototype.isVenge = function(){
         var VENGE_REGEX = /index.html/;
         return VENGE_REGEX.test(this, '')
     }
-   
+    String.prototype.isSocial = function(){
+        var SOCIAL_REGEX = /https:\/\/social.venge.io\//;
+        return SOCIAL_REGEX.test(this, '')
+    }
     let nav = (e, url) => {
         e.preventDefault();
-        if (url.CheckForVenge()) {
+        if (url.isVenge()) {
             win.loadURL(url);
         } else {
-            shell.openExternal(url);
+            if (url.isSocial()){
+                createWindow(url);
+            }
+            else {
+                shell.openExternal(url);
+            }
         }
     };
 
