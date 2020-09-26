@@ -33,7 +33,7 @@ const customOnLeaveCallback = () => {
 
 // UI Modifications
 
-//Custom Spawn Animation
+//Custom Spawn Animation.
 const customTransition = () => {
   Overlay.prototype.onTransition = function (t) {
     t
@@ -78,7 +78,7 @@ const customTransition = () => {
   };
 };
 
-//Custom match found animation
+//Custom match found animation.
 const customMatchFoundAnimation = () => {
   Menu.prototype.onMatchFound = function () {
     (this.isMatchFound = !0),
@@ -130,7 +130,7 @@ const customMatchFoundAnimation = () => {
   };
 };
 
-//Changes Message when get killed on top
+//Changes Message when get killed on top.
 const customDeathMessage = () => {
   Player.prototype.setDeath = function (t, e) {
     if (
@@ -188,7 +188,7 @@ const customDeathMessage = () => {
   };
 };
 
-//Custom Killstreak Translations
+//Custom Killstreak Translations.
 const customKillstreakText = () => {
     Overlay.prototype.onKill = function(t, e) {
       var i = "Kill"
@@ -242,7 +242,7 @@ const customKillstreakText = () => {
   };
 };
 
-//Custom Chat Message Color
+//Custom Chat Message Color.
 const customChatMessage = () => {
   Chat.prototype.onMessage = function(t, e, s, i) {
     var a = this.messageEntity.clone();
@@ -263,7 +263,7 @@ const customChatMessage = () => {
 }
 
 
-//Fixes link not getting destroyed when match starts
+//Fixes link not getting destroyed when match starts.
 const linkFix = () => {
       Input.prototype.initialize = function() {
       this.timeout = !1,
@@ -307,6 +307,7 @@ const linkFix = () => {
   };
 };
 
+//Removes Emote Hint when getting a kill.
 const removeEmoteHint = () => {
   Player.prototype.onKill = function(t, e) {
     this.app.fire("Player:Frag", !0),
@@ -318,6 +319,7 @@ const removeEmoteHint = () => {
   };
 };
 
+//Makes the Crosshair 
 const staticCrosshair = () => {
   Overlay.prototype.onShooting = function() {
     this.crosshairEntity.tween(this.crosshairEntity.element).to({
@@ -326,7 +328,6 @@ const staticCrosshair = () => {
     }, .045, pc.SineOut).start(),
     this.setAmmo()
   };
-
   Overlay.prototype.onJumping = function() {
   // this.crosshairEntity.tween(this.crosshairEntity.element).to({
   //    width: 70,
@@ -336,7 +337,7 @@ const staticCrosshair = () => {
 };
 
 
-// Fixes Notification ingame that are not showing anything besides kills
+// Fixes Notification ingame that are not showing anything besides kills.
 const notificationsFix = () => {
     Overlay.prototype.onNotification = function(t, e, i) {
       var a = 35 * -this.notifications.length
@@ -377,7 +378,7 @@ const notificationsFix = () => {
   };
 };
 
-//Removes the Weapon of the Main Menu character
+//Removes the Weapon of the Main Menu character.
 const removeWeaponMenu = () => {
   Menu.prototype.attachCharacterEntity = function() {
     //var e = "Character1_RightHand";
