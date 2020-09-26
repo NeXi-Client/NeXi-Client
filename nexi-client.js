@@ -307,6 +307,7 @@ const linkFix = () => {
   };
 };
 
+//Removes Emote Hint when getting a kill
 const removeEmoteHint = () => {
   Player.prototype.onKill = function(t, e) {
     this.app.fire("Player:Frag", !0),
@@ -318,6 +319,7 @@ const removeEmoteHint = () => {
   };
 };
 
+//Makes the Crosshair 
 const staticCrosshair = () => {
   Overlay.prototype.onShooting = function() {
     this.crosshairEntity.tween(this.crosshairEntity.element).to({
@@ -326,7 +328,6 @@ const staticCrosshair = () => {
     }, .045, pc.SineOut).start(),
     this.setAmmo()
   };
-
   Overlay.prototype.onJumping = function() {
   // this.crosshairEntity.tween(this.crosshairEntity.element).to({
   //    width: 70,
