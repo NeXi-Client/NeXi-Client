@@ -278,21 +278,9 @@ function shortCuts() {
                   document.exitPointerLock();
 		`);
     })
-    /*globalShortcut.register('=', () => {
-        win = new BrowserWindow({
-            width: 500,
-            height: 350,
-            icon: "files/game.png"
-        })
-        win.loadFile('./menu/menu.html')
-        win.removeMenu(true)
-        win.setTitle('NeXi-Client')
-        win.on('page-title-updated', function(e) {
-            e.preventDefault()
-        })
-        console.log('Window has been created')
-    
-    })*/
+    globalShortcut.register('=', () => {
+       createWindow('https://social.venge.io')
+    })
     
     console.log('Shortcuts has been registered')
 }
