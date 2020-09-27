@@ -18914,7 +18914,7 @@
     "85b240a2-a3cc-4bf3-992e-36874cdcf335": {
       "name": "Spin",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "85b240a2-a3cc-4bf3-992e-36874cdcf335",
       "parent": "d8869081-b893-4a78-87b9-085eb48d34e3",
       "children": [],
@@ -38646,7 +38646,7 @@
     "30526500-028a-4815-a5aa-a6b0bd568a3e": {
       "name": "Spin",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "30526500-028a-4815-a5aa-a6b0bd568a3e",
       "parent": "5a65f623-e21e-40e5-bdcd-273bc3223922",
       "children": [],
