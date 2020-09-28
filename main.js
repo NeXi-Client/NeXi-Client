@@ -292,11 +292,12 @@ function shortCuts() {
                   document.exitPointerLock();
 		`);
     })
+    /*
     globalShortcut.register('`', () => {
         
         SwitchToDefault();
     })
-    /*
+    
     globalShortcut.register('=', () => {
         createWindow('https://social.venge.io')
     })
