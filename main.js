@@ -15,7 +15,7 @@ if (config.get('utilities_FPS', true)){
     }
     app.commandLine.appendSwitch('disable-frame-rate-limit');
 }
-if (config.get('utilities_useD3D9',true)){
+if (config.get('utilities_useD3D11OND12',true)){
     app.commandLine.appendSwitch('use-angle', 'd3d11ond12');
     app.commandLine.appendSwitch('enable-webgl2-compute-context');
 }
