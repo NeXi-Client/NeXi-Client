@@ -15,7 +15,7 @@ if (config.get('utilities_FPS', true)){
     }
     app.commandLine.appendSwitch('disable-frame-rate-limit');
 }
-if (config.get('utilities_useD3D11OND12',true)){
+if (config.get('utilities_useD3D9',true)){
     app.commandLine.appendSwitch('use-angle', 'd3d11ond12');
     app.commandLine.appendSwitch('enable-webgl2-compute-context');
 }
@@ -55,8 +55,8 @@ function DiscordRPC() {
 
     app.once('before-quit', () => {
         if (rpc.destroy) rpc.destroy().catch(console.error);
-        shortcut.unregisterAll();
-        gameWindow.close();
+        globalShortcut.unregisterAll();
+        win.close();
     console.log("Rich presence is now active")
     
 })
@@ -91,26 +91,26 @@ function createWindow(url) {
 }
 
 function CheckGame() {
-    String.prototype.isVenge = function(){
-        var VENGE_REGEX = /index.html/;
+    String.prototype.isGame = function(){
+        var VENGE_REGEX = /index.html|https:\/\/www|social.venge.io\//;
         return VENGE_REGEX.test(this, '')
     }
-    String.prototype.isSocial = function(){
+   /* String.prototype.isSocial = function(){
         var SOCIAL_REGEX = /https:\/\/social.venge.io\//; //Messy bad but lazy lol
         return SOCIAL_REGEX.test(this, '')
-    }
+    }*/
     let nav = (e, url) => {
         e.preventDefault();
-        if (url.isVenge()) {
+        if (url.isGame()) {
             win.loadURL(url);
         } else {
-            if (url.isSocial()){
+            /*if (url.isSocial()){
                 createWindow(url);
             }
-            else {
+            else {*/
                 shell.openExternal(url);
             }
-        }
+        
     };
 
     win.webContents.on('new-window', nav);
@@ -131,6 +131,7 @@ function SwitchToDefault(){
     else {
         toggle = 1;
         win.loadURL('https://venge.io');
+        
     }
 }
 
@@ -290,6 +291,7 @@ function shortCuts() {
         win.webContents.executeJavaScript(`
                   document.exitPointerLock = document.exitPointerLock || document.mozExitPointerLock;
                   document.exitPointerLock();
+                  this.app.mouse.disablePointerLock();
 		`);
     })
     /*
