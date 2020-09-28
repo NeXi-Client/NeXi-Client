@@ -41646,7 +41646,7 @@
               "attributes": {
                 "defaultValue": 90,
                 "min": 40,
-                "max": 125,
+                "max": 100,
                 "step": 1,
                 "displayElement": "f99c20fd-dc4f-488e-85d0-cb23826043c0",
                 "storeValue": true,
