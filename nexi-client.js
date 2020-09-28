@@ -328,10 +328,10 @@ const staticCrosshair = () => {
   };
 
   Overlay.prototype.onJumping = function() {
-  // this.crosshairEntity.tween(this.crosshairEntity.element).to({
-  //    width: 70,
-  //      height: 70
-  //  }, .15, pc.SineOut).start()
+  this.crosshairEntity.tween(this.crosshairEntity.element).to({
+      width: 70,
+        height: 70
+    }, .15, pc.SineOut).start()
   };
 };
 
