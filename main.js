@@ -1,37 +1,27 @@
 const {
-    app, shell, clipboard
-} = require('electron')
-const {
-    BrowserWindow
-} = require('electron')
-const {
-    globalShortcut
-} = require('electron')
-const {
-    dialog
-} = require('electron')
-const prompt = require('electron-prompt')
-const RPC = require('discord-rpc')
+    app, shell, clipboard, dialog, BrowserWindow, globalShortcut
+} = require('electron');
+const prompt = require('electron-prompt');
+const discord = require('discord-rpc');
+const Store = require('electron-store');
+const config = new Store();
+const OS = require('os');
 
 //Add Window to check :D
-app.commandLine.appendSwitch('disable-frame-rate-limit')
-app.commandLine.appendSwitch('disable-gpu-vsync')
+//In progress, leave me along D:
+if (config.get('utilities_FPS', true)){
+    if (OS.cpus().findIndex(cpu => cpu.model.includes("AMD")) != -1){
+        app.commandLine.appendSwitch('enable-zero-copy');
+    }
+    app.commandLine.appendSwitch('disable-frame-rate-limit');
+}
+if (config.get('utilities_useD3D9',true)){
+    app.commandLine.appendSwitch('use-angle', 'd3d11ond12');
+    app.commandLine.appendSwitch('enable-webgl2-compute-context');
+}
+app.commandLine.appendSwitch('enable-quic');
 app.commandLine.appendSwitch('ignore-gpu-blacklist');
-app.commandLine.appendSwitch('disable-breakpad');
-app.commandLine.appendSwitch('disable-component-update');
-app.commandLine.appendSwitch('disable-print-preview');
-app.commandLine.appendSwitch('disable-metrics');
-app.commandLine.appendSwitch('disable-metrics-repo');
-app.commandLine.appendSwitch('smooth-scrolling');
-app.commandLine.appendSwitch('enable-javascript-harmony');
-app.commandLine.appendSwitch('enable-future-v8-vm-features');
-app.commandLine.appendSwitch('disable-hang-monitor');
-app.commandLine.appendSwitch('no-referrers');
-app.commandLine.appendSwitch('disable-2d-canvas-clip-aa');
-app.commandLine.appendSwitch('disable-bundled-ppapi-flash');
-app.commandLine.appendSwitch('disable-logging');
-app.commandLine.appendSwitch('disable-web-security');
-app.commandLine.appendSwitch('webrtc-max-cpu-consumption-percentage=100');
+app.commandLine.appendSwitch('disable-gpu-vsync')
 app.commandLine.appendSwitch('enable-pointer-lock-options');
 app.commandLine.appendSwitch('disable-accelerated-video-decode', false);
 app.commandLine.appendSwitch('autoplay-policy', 'no-user-gesture-required')
@@ -41,7 +31,7 @@ app.commandLine.appendSwitch('high-dpi-support', 1);
 function init() {
 
     DiscordRPC();
-    createWindow('index.html');
+    createWindow('./index.html');
     shortCuts();
     CheckGame();
     leave();
@@ -49,9 +39,9 @@ function init() {
 }
 
 function DiscordRPC() {
-    const rpc = new RPC.Client({
-        transport: "ipc"
-    });
+    const rpc = new discord.Client({ transport: 'ipc' })
+    rpc.isConnected = false;
+    rpc.login({ 'clientId': '750116161890287657'})
     rpc.on("ready", () => {
         rpc.setActivity({
             state: 'Playing Venge.io!',
@@ -59,14 +49,20 @@ function DiscordRPC() {
             startTimestamp: new Date(),
             largeImageKey: 'nexi-old',
         })
+            
+   
     });
 
+    app.once('before-quit', () => {
+        if (rpc.destroy) rpc.destroy().catch(console.error);
+        shortcut.unregisterAll();
+        gameWindow.close();
     console.log("Rich presence is now active")
-
-    rpc.login({
-        clientId: "750116161890287657"
-    })
+    
+})
 }
+
+
 function UpdateRPC(){
     
 }
@@ -100,7 +96,7 @@ function CheckGame() {
         return VENGE_REGEX.test(this, '')
     }
     String.prototype.isSocial = function(){
-        var SOCIAL_REGEX = /https:\/\/social.venge.io\//;
+        var SOCIAL_REGEX = /https:\/\/social.venge.io\//; //Messy bad but lazy lol
         return SOCIAL_REGEX.test(this, '')
     }
     let nav = (e, url) => {
@@ -121,6 +117,26 @@ function CheckGame() {
     win.webContents.on('will-navigate', nav);
 
 }
+
+//For people who do not like the client:
+
+var toggle = 0;
+function SwitchToDefault(){
+    //Kinda useless feature but will do for now, until I can come up with a window to fix this.
+    //Inefficient but will do for now. Bad code but lazy so deal with it.
+    if (toggle == 1){
+        toggle = 0;
+        win.loadFile('index.html');
+    }
+    else {
+        toggle = 1;
+        win.loadURL('https://venge.io');
+    }
+}
+
+
+
+
 
 function leave() {
     win.webContents.on('will-prevent-unload', (event) => {
@@ -247,8 +263,6 @@ function LinkBox() {
 
 };
 
-
-
 //Shortcuts
 function shortCuts() {
     globalShortcut.register('F1', () => {
@@ -278,10 +292,15 @@ function shortCuts() {
                   document.exitPointerLock();
 		`);
     })
-    globalShortcut.register('=', () => {
-       createWindow('https://social.venge.io')
+    globalShortcut.register('`', () => {
+        
+        SwitchToDefault();
     })
-    
+    /*
+    globalShortcut.register('=', () => {
+        createWindow('https://social.venge.io')
+    })
+    */
     console.log('Shortcuts has been registered')
 }
 app.on('ready', init)

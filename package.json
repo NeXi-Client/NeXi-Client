@@ -60,6 +60,7 @@
     "electron-is-dev": "^1.2.0",
     "electron-log": "^4.2.4",
     "electron-prompt": "^1.6.0",
+    "electron-store": "^6.0.0",
     "electron-updater": "^4.3.5",
     "update-electron-app": "^1.5.0"
   },
