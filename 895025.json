@@ -2589,9 +2589,9 @@
       "parent": "93790e46-99cf-49e7-830a-a15bc441b889",
       "children": [],
       "position": [
-        0.5,
-        0.57,
-        -0.72
+        0.24,
+        0.685,
+        -0.454
       ],
       "rotation": [
         0,
@@ -11425,9 +11425,9 @@
         "f6362378-ef61-4e6e-90a0-f4bfa23a448d"
       ],
       "position": [
-        0.6754223712241382,
+        0.5354223712241382,
         0.057025909423828125,
-        5.552713678800501e-15
+        3.552713678800501e-15
       ],
       "rotation": [
         0,
@@ -53805,9 +53805,9 @@
             "slider": {
               "enabled": true,
               "attributes": {
-                "defaultValue": 60,
+                "defaultValue": 90,
                 "min": 40,
-                "max": 125,
+                "max": 100,
                 "step": 1,
                 "displayElement": "cd7d31d6-30b3-4240-b305-06e7635e8595",
                 "storeValue": true,
