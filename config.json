@@ -369,43 +369,43 @@
   "scenes": [
     {
       "name": "Prototype",
-      "url": "895025.json"
+      "url": "ScriptLoad.json"
     },
     {
       "name": "Menu",
-      "url": "905193.json"
+      "url": "MainMenu.json"
     },
     {
       "name": "Mistle",
-      "url": "954486.json"
+      "url": "Mistle.json"
     },
     {
       "name": "Sierra",
-      "url": "913339.json"
+      "url": "Sierra.json"
     },
     {
       "name": "Tundra",
-      "url": "979967.json"
+      "url": "Tundra.json"
     },
     {
       "name": "Capture",
-      "url": "913313.json"
+      "url": "CaptureScript.json"
     },
     {
       "name": "Hexagon",
-      "url": "989153.json"
+      "url": "Hexagon.json"
     },
     {
       "name": "Result",
-      "url": "912228.json"
+      "url": "ResultScreen.json"
     },
     {
       "name": "Editor",
-      "url": "974655.json"
+      "url": "Editor.json"
     },
     {
       "name": "Xibalba",
-      "url": "925413.json"
+      "url": "Xibalba.json"
     },
     {
       "name": "Result-Mobile",

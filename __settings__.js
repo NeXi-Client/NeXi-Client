@@ -1,6 +1,6 @@
 ASSET_PREFIX = "";
 SCRIPT_PREFIX = "";
-SCENE_PATH = "905193.json?v=" + VERSION;
+SCENE_PATH = "MainMenu.json?v=" + VERSION;
 CONTEXT_OPTIONS = {
     'antialias': false,
     'alpha': false,
