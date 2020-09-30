@@ -2,7 +2,7 @@ ASSET_PREFIX = "";
 SCRIPT_PREFIX = "";
 SCENE_PATH = "MainMenu.json?v=" + VERSION;
 CONTEXT_OPTIONS = {
-    'antialias': false,
+    'antialias': true,
     'alpha': false,
     'preserveDrawingBuffer': false,
     'preferWebGl2': true
@@ -13,7 +13,7 @@ INPUT_SETTINGS = {
     useKeyboard: true,
     useMouse: true,
     useGamepads: false,
-    useTouch: true
+    useTouch: false
 };
 pc.script.legacy = false;
 PRELOAD_MODULES = [
