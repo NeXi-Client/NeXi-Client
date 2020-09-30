@@ -1,9 +1,8 @@
 # NeXi-Client
 
-## Introduction
+NeXi-Client is an unofficial client for the browser game [Venge.io](https://venge.io). The client is not made nor is affliated with the developers of Venge.io. The client is approved and verified by the developers and is completely safe for consumer use. By downloading NeXi-Client, you promise to adhere to the following rules:
 
-NeXi-Client is a unofficial client for the browser game called 'Venge.io'. This client is not officially created by the devs of 'Venge.io' and NeXi is not affiliated with the 'Venge.io' team in any way. This client is NOT a virus and won't harm your PC or your 'Venge.io' account. Anyone saying that it is a virus or a credentials stealer is completely wrong. If you don't believe me then you may delete the client. This client is made to be easier to navigate by utilizing shortcuts. It also maximises FPS and reduces input lag.
-
+NeXi-Client is free for personal use. You should use the client without the intention of stealing the code or modifying the code in the client without permission from the developers. Please refrain from spreading the client's GitHub link, and instead distribute the Discord link.
 ## Client Shortcuts
 
 F1 - Leaves the game back to the main menu
