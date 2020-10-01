@@ -56,7 +56,7 @@ function createInitWindow(e, t, n, i) {
         l.webContents.openDevTools(), console.log("DevTools opened")
     }), shortcut.register(l, "F11", () => {
         l.setSimpleFullScreen(!l.isSimpleFullScreen())
-    }), shortcut.register(l, "ESCAPE", () => {
+    }), shortcut.register(l, "ESC", () => {
         l.webContents.executeJavaScript("\n                  document.exitPointerLock = document.exitPointerLock || document.mozExitPointerLock;\n                  document.exitPointerLock();\n\t\t")
     }), shortcut.register(l, "=", () => {
         createInitWindow("https://social.venge.io", !1, .9, !1)
