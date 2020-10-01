@@ -1,6 +1,6 @@
 {
   "name": "nexi-client",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "NeXi-Client is a client made for the browser game called 'Venge.io'",
   "main": "main.js",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "build": {
     "appId": "org.electron.NeXiClient",
-    "asar": false,
+    "asar": true,
     "productName": "NeXi-Client",
     "win": {
       "target": "nsis",
@@ -58,11 +58,13 @@
     "discord-rpc": "^3.1.4",
     "discord.js": "^12.3.1",
     "electron-is-dev": "^1.2.0",
+    "electron-localshortcut": "^3.2.1",
     "electron-log": "^4.2.4",
     "electron-prompt": "^1.6.0",
     "electron-store": "^6.0.0",
     "electron-updater": "^4.3.5",
-    "update-electron-app": "^1.5.0"
+    "update-electron-app": "^1.5.0",
+    "v8-compile-cache": "^2.1.1"
   },
   "devDependencies": {
     "electron": "^10.0.1",
