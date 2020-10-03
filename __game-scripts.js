@@ -367,6 +367,8 @@ function() {
 }();
 var Utils = {
     prefix: "venge",
+    currentNameIndex: 1,
+    nameIndex: [],
     zeroVector: new pc.Vec3(0,0,0),
     heightVector: new pc.Vec3(0,-5,0),
     nullVector: new pc.Vec3(0,-100,0),
@@ -388,11 +390,11 @@ var Utils = {
     decodeFloat: function(e) {
         return e / 5
     },
-    lookAt: function(e, t, r, o) {
-        return Math.atan2(r - e, o - t)
+    lookAt: function(e, t, r, n) {
+        return Math.atan2(r - e, n - t)
     },
-    distance: function(e, t, r, o) {
-        return Math.sqrt(Math.pow(e - r, 2) + Math.pow(t - o, 2))
+    distance: function(e, t, r, n) {
+        return Math.sqrt(Math.pow(e - r, 2) + Math.pow(t - n, 2))
     },
     toDeg: function(e) {
         return e * (180 / Math.PI)
@@ -401,8 +403,8 @@ var Utils = {
         return e * (Math.PI / 180)
     },
     lerp: function(e, t, r) {
-        var o = (1 - r) * e + r * t;
-        return isNaN(o) ? 0 : Math.abs(o - e) > 50 ? t : o
+        var n = (1 - r) * e + r * t;
+        return isNaN(n) ? 0 : Math.abs(n - e) > 50 ? t : n
     },
     rotate: function(e, t, r) {
         return e + this.shortAngleDist(e, t) * r
@@ -410,9 +412,18 @@ var Utils = {
     shortcutName: function(e) {
         return e ? e.replace("-Grenade", "") : ""
     },
-    cleanUsername: function(e) {
+    onlyUsername: function(e) {
         var t = e.split("[/color]]");
         return t.length > 1 ? t[1].trim() : t[0].trim()
+    },
+    displayUsername: function(e) {
+        var t = 1;
+        return Utils.nameIndex[e] ? t = Utils.nameIndex[e] : (Utils.currentNameIndex++,
+        Utils.nameIndex[e] = Utils.currentNameIndex + ""),
+        !0 === pc.settings.hideUsernames ? "HIDDEN" + t : e
+    },
+    cleanUsername: function(e) {
+        return e.replace(/\[color="(.*?)"\]/g, "").replace(/\[\/color]/g, "").replace(/\\/g, "").trim()
     },
     clearName: function(e) {
         return e ? e.replace("_", ".").replace("Ammo-", "") : ""
@@ -422,8 +433,8 @@ var Utils = {
     },
     shortAngleDist: function(e, t) {
         var r = 2 * Math.PI
-          , o = (t - e) % r;
-        return 2 * o % r - o
+          , n = (t - e) % r;
+        return 2 * n % r - n
     },
     float: function(e) {
         return isNaN(e) ? 0 : e.toFixed(3)
@@ -434,24 +445,24 @@ var Utils = {
     mmssmm: function(e) {
         var t = e
           , r = Math.floor(1e3 * t % 1e3)
-          , o = Math.floor(t % 60)
-          , n = Math.floor(1e3 * t / 6e4 % 60)
+          , n = Math.floor(t % 60)
+          , o = Math.floor(1e3 * t / 6e4 % 60)
           , a = "MM:SS:XX";
-        return o < 10 && (o = "0" + o),
-        n < 10 && (n = "0" + n),
+        return n < 10 && (n = "0" + n),
+        o < 10 && (o = "0" + o),
         r < 100 && (r = "0" + r),
-        a = (a = (a = a.replace(/MM/, n)).replace(/SS/, o)).replace(/XX/, r.toString().slice(0, 2))
+        a = (a = (a = a.replace(/MM/, o)).replace(/SS/, n)).replace(/XX/, r.toString().slice(0, 2))
     },
     mmss: function(e) {
         var t = e
           , r = Math.floor(1e3 * t % 1e3)
-          , o = Math.floor(t % 60)
-          , n = Math.floor(1e3 * t / 6e4 % 60)
+          , n = Math.floor(t % 60)
+          , o = Math.floor(1e3 * t / 6e4 % 60)
           , a = "MM:SS";
-        return o < 10 && (o = "0" + o),
-        n < 10 && (n = "0" + n),
+        return n < 10 && (n = "0" + n),
+        o < 10 && (o = "0" + o),
         r < 100 && (r = "0" + r),
-        a = (a = a.replace(/MM/, n)).replace(/SS/, o),
+        a = (a = a.replace(/MM/, o)).replace(/SS/, n),
         e >= 0 ? a : "00:00"
     },
     isLocalStorageSupported: function() {
@@ -472,28 +483,28 @@ var Utils = {
     },
     createCookie: function(e, t, r) {
         if (r) {
-            var o = new Date;
-            o.setTime(o.getTime() + 24 * r * 60 * 60 * 1e3);
-            var n = "; expires=" + o.toGMTString()
+            var n = new Date;
+            n.setTime(n.getTime() + 24 * r * 60 * 60 * 1e3);
+            var o = "; expires=" + n.toGMTString()
         } else
-            n = "";
-        document.cookie = e + "=" + t + n + "; path=/"
+            o = "";
+        document.cookie = e + "=" + t + o + "; path=/"
     },
     readCookie: function(e) {
-        for (var t = e + "=", r = document.cookie.split(";"), o = 0; o < r.length; o++) {
-            for (var n = r[o]; " " == n.charAt(0); )
-                n = n.substring(1, n.length);
-            if (0 == n.indexOf(t))
-                return n.substring(t.length, n.length)
+        for (var t = e + "=", r = document.cookie.split(";"), n = 0; n < r.length; n++) {
+            for (var o = r[n]; " " == o.charAt(0); )
+                o = o.substring(1, o.length);
+            if (0 == o.indexOf(t))
+                return o.substring(t.length, o.length)
         }
         return null
     },
     shuffle: function(e) {
-        var t, r, o;
-        for (o = e.length - 1; o > 0; o--)
-            t = Math.floor(Math.random() * (o + 1)),
-            r = e[o],
-            e[o] = e[t],
+        var t, r, n;
+        for (n = e.length - 1; n > 0; n--)
+            t = Math.floor(Math.random() * (n + 1)),
+            r = e[n],
+            e[n] = e[t],
             e[t] = r;
         return e
     },
@@ -513,16 +524,16 @@ var Utils = {
         return null == r ? null : r[1]
     },
     closestPointLine: function(e, t, r) {
-        var o = r.x - t.x
-          , n = r.y - t.y
-          , a = o * o + n * n
-          , i = (e.x - t.x) * o + (e.y - t.y) * n
+        var n = r.x - t.x
+          , o = r.y - t.y
+          , a = n * n + o * o
+          , i = (e.x - t.x) * n + (e.y - t.y) * o
           , c = Math.min(1, Math.max(0, i / a));
         return i = (r.x - t.x) * (e.y - t.y) - (r.y - t.y) * (e.x - t.x),
         {
             point: {
-                x: t.x + o * c,
-                y: t.y + n * c
+                x: t.x + n * c,
+                y: t.y + o * c
             },
             left: i < 1,
             dot: i,
@@ -554,12 +565,12 @@ var Utils = {
     return e = new pc.Vec3,
     t = new pc.Vec3,
     r = new pc.Vec3,
-    function(o, n, a) {
-        r.copy(n).scale(-1),
+    function(n, o, a) {
+        r.copy(o).scale(-1),
         t.copy(a).normalize(),
         e.cross(t, r).normalize(),
         t.cross(r, e);
-        var i = o.data;
+        var i = n.data;
         return i[0] = e.x,
         i[1] = e.y,
         i[2] = e.z,
@@ -573,7 +584,7 @@ var Utils = {
         i[10] = r.z,
         i[11] = 0,
         i[15] = 1,
-        o
+        n
     }
 }();
 pc.setFromNormal = function(e) {
@@ -1980,8 +1991,7 @@ Movement.prototype.updateAutoLock = function() {
     }
     this.setShootDirection();
     var i = this.app.systems.rigidbody.raycastFirst(this.raycastShootFrom, this.raycastTo);
-    i && i.entity.tags && i.entity.tags.list().indexOf("Player") > -1 && ("-1" != i.entity.script.enemy.playerId && (this.currentWeapon.spread = .1,
-    this.leftMouse = !0,
+    i && i.entity.tags && i.entity.tags.list().indexOf("Player") > -1 && ("-1" != i.entity.script.enemy.playerId && (this.leftMouse = !0,
     clearTimeout(this.mobileShootTimer),
     this.mobileShootTimer = setTimeout(function(t) {
         t.leftMouse = !1
@@ -2998,7 +3008,7 @@ Overlay.prototype.setPausePlayers = function(t) {
           , r = i.clone();
         r.enabled = !0,
         r.setLocalPosition(0, s, 0),
-        r.findByName("Username").element.text = n.username,
+        r.findByName("Username").element.text = Utils.displayUsername(n.username),
         r.findByName("Kill").element.text = n.kill + "",
         r.findByName("Death").element.text = n.death + "",
         r.findByName("Score").element.text = n.score + "",
@@ -3028,7 +3038,7 @@ Overlay.prototype.setPlayerStats = function(t) {
           , r = i.clone();
         r.enabled = !0,
         r.setLocalPosition(0, s, 0),
-        r.findByName("Username").element.text = n.username,
+        r.findByName("Username").element.text = Utils.displayUsername(n.username),
         r.findByName("Kill").element.text = n.kill + "",
         r.findByName("Death").element.text = n.death + "",
         r.findByName("Score").element.text = n.score + "",
@@ -3482,7 +3492,7 @@ Overlay.prototype.setLeaderboard = function(t) {
         y.findByName("Bar").setLocalScale(o.bar, 1, 1),
         y.findByName("Tier").element.textureAsset = r,
         y.findByName("Rank").element.text = l + 1 + ".",
-        y.findByName("Username").element.text = o.username,
+        y.findByName("Username").element.text = Utils.displayUsername(o.username),
         "red" == o.team ? (y.findByName("Team").element.color = pc.colors.redTeam,
         y.findByName("Team").enabled = !0) : "blue" == o.team ? (y.findByName("Team").element.color = pc.colors.blueTeam,
         y.findByName("Team").enabled = !0) : y.findByName("Team").enabled = !1,
@@ -4024,17 +4034,15 @@ Overlay.prototype.onNotification = function(t, e, i) {
       , n = !1;
     if ("message" == t)
         (n = this.notificationMessage.clone()).findByName("Message").element.text = e,
-        e.split("]").length > 1 ? n.element.width = 7 * (e[1].length - 23) : n.element.width = 7 * (e[0].length - 23);
+        n.element.width = 7 * (Utils.cleanUsername(e).length + 1);
     else if ("kill" == t && e.killer && e.killed) {
-        var s = e.killer.split("]");
-        s.length > 1 ? killerLength = 5 + s[1].length : killerLength = s[0].length;
-        var o = e.killed.split("]");
-        o.length > 1 ? killedLength = 5 + o[1].length : killedLength = o[0].length;
-        var l = killerLength + killedLength
+        var s = Utils.cleanUsername(e.killer).length
+          , o = Utils.cleanUsername(e.killed).length
+          , l = s + o
           , r = e.killedSkin
           , y = e.killerSkin;
         (n = this.notificationKill.clone()).findByName("Gibbon").element.color = e.color,
-        n.findByName("Gibbon").element.width = 7 * (killedLength + 15),
+        n.findByName("Gibbon").element.width = 7 * (o + 15),
         n.findByName("Killer").element.text = e.killer,
         n.findByName("Killed").element.text = e.killed,
         n.element.width = 7 * (l + 17);
@@ -5766,7 +5774,7 @@ NetworkManager.prototype.mode = function(e) {
     this.setModeState(this.currentMode, !0);
     var t = this.app.root.findByName("Result");
     if (t) {
-        var i = this.app.root.findByName("Chat");
+        var i = this.app.root.findByName("ChatGame");
         i && (i.setLocalPosition(0, 0, 0),
         i.reparent(this.app.root.findByName("ChatGame"))),
         t.destroy()
@@ -6063,8 +6071,8 @@ NetworkManager.prototype.notification = function(e) {
           , s = this.getPlayerScriptById(i.killed)
           , o = this.group != r.group ? pc.colors.enemy : pc.colors.friendly;
         this.app.fire("Overlay:Notification", "kill", {
-            killer: r.username,
-            killed: s.username,
+            killer: Utils.displayUsername(r.username),
+            killed: Utils.displayUsername(s.username),
             killedSkin: s.skin,
             killerSkin: r.skin,
             color: o,
@@ -6295,7 +6303,7 @@ NetworkManager.prototype.left = function(e) {
     if (e.length > 0) {
         var t = this.getPlayerById(e[0]);
         if (t && t.script && t.script.enemy) {
-            var i = t.script.enemy.username;
+            var i = Utils.displayUsername(t.script.enemy.username);
             this.removePlayerById(e[0]),
             this.app.fire("Overlay:Notification", "message", '[color="#58E6FA"]' + i + "[/color] left", !1),
             t.script.enemy.left()
@@ -6320,7 +6328,7 @@ NetworkManager.prototype.position = function(e) {
 NetworkManager.prototype.player = function(e) {
     var t = e[0];
     if (t) {
-        var i = t.username.replace("[", "[").replace("]", "]");
+        var i = Utils.displayUsername(t.username).replace("[", "[").replace("]", "]");
         "-1" != t.playerId && this.app.fire("Overlay:Notification", "message", '[color="#58E6FA"]' + i + "[/color] joined", !1),
         t.playerId != this.playerId && this.createPlayer(t)
     }
@@ -8512,7 +8520,7 @@ Player.prototype.setDeath = function(t, e) {
     }, .7, pc.BackOut).start(),
     this.interface.hideGameplay(),
     this.killedBy && this.killedBy != this.entity) {
-        var a = this.killedBy.script.enemy.username;
+        var a = Utils.displayUsername(this.killedBy.script.enemy.username);
         this.app.fire("Overlay:Status", 'Following [color="#FF0000"]' + a + "[/color]")
     }
     this.app.fire("Player:StopSpeaking", !0),
@@ -9839,15 +9847,14 @@ Menu.prototype.defineKey = function(e) {
 Menu.prototype.setHome = function(e) {
     return !this.isConnected && (!!this.youtubeName && ("undefined" != typeof VERSION_CODE && (VERSION_CODE == e.version || pc.isMobile || (this.updateEntity.enabled = !0,
     this.updateVersionEntity.element.text = e.version)),
-    !!this.twitchButton && (e.display_name && Math.random() > .2 ? (this.youtubeButton.enabled = !1,
-    this.twitchButton.enabled = !0,
+    !!this.twitchButton && (e.display_name && Math.random() > .2 ? (this.twitchButton.enabled = !0,
     this.twitchName.element.text = e.display_name,
     this.twitchButton.element.width = this.twitchName.element.calculatedWidth + 50,
-    this.twitchButton.script.button.triggerFunction = 'window.open("https://www.twitch.tv/' + e.username + '");') : (this.twitchButton.enabled = !1,
+    this.twitchButton.script.button.triggerFunction = 'window.open("https://www.twitch.tv/' + e.username + '");') : this.twitchButton.enabled = !1,
     this.youtubeButton.enabled = !0,
     this.youtubeName.element.text = e.youtuber.name,
     this.youtubeButton.element.width = this.youtubeName.element.calculatedWidth + 50,
-    this.youtubeButton.script.button.triggerFunction = 'window.open("' + e.youtuber.link + '");'),
+    this.youtubeButton.script.button.triggerFunction = 'window.open("' + e.youtuber.link + '");',
     void (e.server && this.app.fire("RoomManager:SetServer", e.server)))))
 }
 ,
@@ -9879,8 +9886,8 @@ Menu.prototype.onProfileData = function(e) {
     pc.session.username = e.username,
     Utils.setItem("Hash", e.hash),
     e.username && this.miniProfileEntity && this.miniProfileEntity.element)) {
-        var t = e.username.split("]");
-        t.length > 1 ? this.miniProfileEntity.element.width = 415 + 3.5 * t[1].length : this.miniProfileEntity.element.width = 415 + 3.5 * t[0].length
+        var t = this.miniProfileEntity.findByName("Username").element.width;
+        this.miniProfileEntity.element.width = 355 + t
     }
 }
 ,
@@ -10159,10 +10166,17 @@ Label.prototype.initialize = function() {
     this.isInitalized = !1,
     this.team = "none",
     this.isEnabled = !0,
+    this.originalUsername = "Guest",
+    this.usernameEntity = !1,
     this.app.on("Game:Mode", this.onGameMode, this),
     this.app.on("Game:Finish", this.onGameFinish, this),
     this.app.on("Player:Respawn", this.onPlayerRespawn, this),
-    this.app.on("Player:Death", this.onPlayerDeath, this)
+    this.app.on("Player:Death", this.onPlayerDeath, this),
+    this.app.on("Game:Settings", this.onSettingsChange, this)
+}
+,
+Label.prototype.onSettingsChange = function() {
+    this.usernameEntity && (this.usernameEntity.element.text = Utils.displayUsername(this.originalUsername))
 }
 ,
 Label.prototype.onGameMode = function() {
@@ -10205,7 +10219,9 @@ Label.prototype.setDestroy = function() {
 }
 ,
 Label.prototype.setUsername = function(t, e) {
-    this.labelEntity.findByName("Username").element.text = t,
+    this.labelEntity.findByName("Username").element.text = Utils.displayUsername(t),
+    this.originalUsername = t,
+    this.usernameEntity = this.labelEntity.findByName("Username"),
     this.team = e,
     this.updateTeamColor()
 }
@@ -10624,7 +10640,7 @@ Result.prototype.showScoreTable = function(t) {
     this.headerEntity.tween(this.headerEntity.element).to({
         width: 1e3
     }, .8, pc.BackOut).start();
-    var s = this.app.root.findByName("Chat");
+    var s = this.app.root.findByName("ChatGame");
     s && (s.setLocalPosition(0, 0, 0),
     s.reparent(this.app.root.findByName("ChatHolder"))),
     setTimeout(function(t) {
@@ -10646,7 +10662,7 @@ Result.prototype.createPlayerRow = function(t, e) {
     var s = -this.players.length * (this.padding + i.element.height);
     i.enabled = !0,
     i.setLocalPosition(-800, s, 0),
-    i.findByName("Username").element.text = t.username,
+    i.findByName("Username").element.text = Utils.displayUsername(t.username),
     i.findByName("Kill").element.text = t.kill.toString(),
     i.findByName("Death").element.text = t.death.toString(),
     i.findByName("Assist").element.text = t.assist.toString(),
@@ -10660,7 +10676,7 @@ Result.prototype.createPlayerRow = function(t, e) {
     i.findByName("Rank").element.text = e,
     i.findByName("Rank").element.opacity = this.rankOpacity;
     var a = i.findByName("Follow");
-    a && a.script && a.script.button && (a.script.button.fireFunction = "Follow:User@" + Utils.cleanUsername(t.username)),
+    a && a.script && a.script.button && (a.script.button.fireFunction = "Follow:User@" + Utils.onlyUsername(t.username)),
     this.rankOpacity -= .4;
     var n = this.players.length % 2 + 2;
     1 === e ? (n = 1,
@@ -11196,9 +11212,15 @@ Chat.attributes.add("keepHistory", {
     type: "boolean",
     default: !1
 }),
+Chat.attributes.add("profanity", {
+    type: "boolean",
+    default: !0
+}),
 Chat.prototype.initialize = function() {
     this.displayed = !1,
     this.messages = [],
+    this.includeList = ["fuck", "f u c k", "fuk", "f u k", "fuc", "f u c", "rape", "r a p e", "raping", "r a p i n g", "boob", "b o o b", "b00b", "b 0 0 b", "faggot", "f a g g o t", "gay", "g a y", "nigga", "n i g g a", "nigger", "n i g g e r", "niger", "n i g e r", "niga", "n i g a", "dick", "d i c k", "cock", "c o c k", "shlong", "s h l o n g", "dong", "d o n g", "vagina", "v a g i n a", "pussy", "p u s s y"],
+    this.exactList = ["nig", "n i g", "cok", "c o k"],
     this.messageEntity.enabled = !1,
     this.on("state", function(t) {
         t ? this.mountEvents() : this.unmountEvents()
@@ -11221,6 +11243,22 @@ Chat.prototype.unmountEvents = function() {
     this.app.off("Chat:Clear", this.onClear, this),
     this.app.off("Map:Loaded", this.onMapLoaded, this),
     this.app.off("Input:Focus", this.onInputFocus, this)
+}
+,
+Chat.prototype.checkProfinatity = function(t) {
+    var e = !1;
+    for (var s in this.includeList) {
+        var i = this.includeList[s];
+        t.toLowerCase().indexOf(i) > -1 && (e = !0)
+    }
+    var a = t.split(" ");
+    for (var o in this.exactList) {
+        var n = this.exactList[o];
+        for (var h in a) {
+            a[h].toLowerCase().indexOf(n) > -1 && (e = !0)
+        }
+    }
+    return e
 }
 ,
 Chat.prototype.onClear = function() {
@@ -11251,9 +11289,13 @@ Chat.prototype.nextMessage = function() {
 }
 ,
 Chat.prototype.onMessage = function(t, e, s, i) {
+    if (this.profanity && this.checkProfinatity(e) && "Console" != t)
+        return s && this.app.fire("Chat:Message", "Console", "Message removed."),
+        !1;
     var a = this.messageEntity.clone();
     a.enabled = !0,
     a.setLocalPosition(0, 0, 0),
+    this.profanity && (t = Utils.displayUsername(t)),
     a.findByName("Text").element.text = t + ' : [color="#dddddd"]' + e + "[/color]",
     a.element.height = a.findByName("Text").element.height + 10,
     a.findByName("Text").element.color = i ? this.consoleColor : s ? this.meColor : this.whiteColor,
@@ -11541,6 +11583,10 @@ Waterfall.prototype.initialize = function() {
         return this.entity.enabled = !1,
         !1;
     this.isLoaded = !1,
+    this.topLightColor = this.top_light_color.data,
+    this.topDarkColor = this.top_dark_color.data,
+    this.botLightColor = this.bot_light_color.data,
+    this.botDarkColor = this.bot_dark_color.data,
     this.shader = "",
     this.shader += "#ifdef MAPCOLOR\n",
     this.shader += "uniform vec3 material_emissive;\n",
@@ -11597,10 +11643,10 @@ Waterfall.prototype.onLoad = function() {
     this.material = t.meshInstances[0].material,
     this.material.setParameter("noise_tex", this.noise_1.resource),
     this.material.setParameter("displ_tex", this.noise_2.resource),
-    this.material.setParameter("top_light_color", this.top_light_color.data),
-    this.material.setParameter("top_dark_color", this.top_dark_color.data),
-    this.material.setParameter("bot_light_color", this.bot_light_color.data),
-    this.material.setParameter("bot_dark_color", this.bot_dark_color.data),
+    this.material.setParameter("top_light_color", this.topLightColor),
+    this.material.setParameter("top_dark_color", this.topDarkColor),
+    this.material.setParameter("bot_light_color", this.botLightColor),
+    this.material.setParameter("bot_dark_color", this.botDarkColor),
     this.material.chunks.emissivePS = this.shader,
     this.isLoaded = !0
 }
@@ -12842,15 +12888,28 @@ Template.prototype.limit = function(e) {
     return e.slice(0, 16)
 }
 ,
+Template.prototype.numberFormat = function(e) {
+    return e = parseInt(e),
+    Math.abs(e) > 999 ? Math.sign(e) * (Math.abs(e) / 1e3).toFixed(1) + "k" : Math.sign(e) * Math.abs(e)
+}
+,
 Template.prototype.count = function(e) {
     var t = new Date(e).getTime() - (new Date).getTime();
     Math.floor(t / 864e5);
     return Math.floor(t % 864e5 / 36e5) + " hours " + Math.floor(t % 36e5 / 6e4) + " minutes " + Math.floor(t % 6e4 / 1e3) + " seconds "
 }
 ,
+Template.prototype.cleanUsername = function(e) {
+    return Utils.cleanUsername(e)
+}
+,
+Template.prototype.onlyUsername = function(e) {
+    return Utils.onlyUsername(e)
+}
+,
 Template.prototype.preprocess = function(e, t) {
-    var r = t.split(" | ");
-    return r.length > 1 ? this[r[1]](e) : e
+    var r = t.split("|");
+    return r.length > 1 ? this[r[1].trim()](e) : e
 }
 ,
 Template.prototype.render = function(data, text) {
@@ -12858,8 +12917,8 @@ Template.prototype.render = function(data, text) {
         m.index === regex.lastIndex && regex.lastIndex++;
         var content = m[1]
           , variable = m[1];
-        variable = variable.split(" | "),
-        variable = variable[0];
+        variable = variable.split("|"),
+        variable = variable[0].trim();
         try {
             var value = this.preprocess(eval("data." + variable), content);
             str = value ? str.replace(m[0], value) : str.replace(m[0], "")
@@ -12906,8 +12965,8 @@ Template.prototype.onUpdate = function(e) {
                   , s = this.getAsset(e, i.name);
                 if (i.element.sourceImage = a,
                 i.element.sourceImage) {
-                    var p = i.element.sourceImage;
-                    i.element.textureAsset = p
+                    var o = i.element.sourceImage;
+                    i.element.textureAsset = o
                 } else
                     i.element.sourceImage = a;
                 s && (i.element.textureAsset = s)
@@ -14142,9 +14201,9 @@ Checkbox.prototype.updateStyle = function() {
 ,
 Checkbox.prototype.setValue = function(e) {
     if (this.element && this.key && e)
-        return this.element.checked = e[this.key],
+        return this.element.checked = "true" == e[this.key],
         !1;
-    this.element ? (this.element.checked = e,
+    this.element ? (this.element.checked = "true" == e,
     this.sleepValue = !1) : this.sleepValue = e
 }
 ,
@@ -16211,6 +16270,7 @@ Settings.prototype.initialize = function() {
         disableSpecialEffects: !1,
         fpsCounter: !1,
         hideChat: !1,
+        hideUsernames: !1,
         hideArms: !1
     },
     this.app.on("Menu:Settings", this.setSettings, this),
@@ -16253,12 +16313,14 @@ Settings.prototype.setSettings = function() {
     this.app.fire("Menu:Music", !0));
     var p = this.getSetting("FPSCounter");
     pc.settings.fpsCounter = "true" === p;
-    var g = this.getSetting("DisableSpecialEffects");
-    pc.settings.disableSpecialEffects = "true" === g;
-    var r = this.getSetting("HideChat");
-    pc.settings.hideChat = "true" === r;
-    var o = this.getSetting("HideArms");
-    pc.settings.hideArms = "true" === o,
+    var r = this.getSetting("DisableSpecialEffects");
+    pc.settings.disableSpecialEffects = "true" === r;
+    var g = this.getSetting("HideChat");
+    pc.settings.hideChat = "true" === g;
+    var o = this.getSetting("HideUsernames");
+    pc.settings.hideUsernames = "true" === o;
+    var c = this.getSetting("HideArms");
+    pc.settings.hideArms = "true" === c,
     this.app.root.findByTag("KeyBinding").forEach(function(t) {
         t.element.text = keyboardMap[pc["KEY_" + t.element.text]]
     }),
@@ -16866,5 +16928,302 @@ CustomImage.prototype.setCustomImage = function(e) {
         t.entity.element.height = s.height),
         t.entity.element.texture = s
     })
+}
+;
+var Tooltip = pc.createScript("tooltip");
+Tooltip.attributes.add("text", {
+    type: "string"
+}),
+Tooltip.attributes.add("screenEntity", {
+    type: "entity"
+}),
+Tooltip.attributes.add("delay", {
+    type: "number",
+    default: 0,
+    description: 'Duration of the delay to call "show tooltip" action. Default is 0.6.'
+}),
+Tooltip.prototype.initialize = function() {
+    this.tooltipEntity = this.app.root.findByName("Tooltip"),
+    this.entity.element.on("mouseenter", this.onHover, this),
+    this.entity.element.on("mouseleave", this.onLeave, this),
+    this.on("state", function(t) {
+        t ? this.onInit() : this.onDestroy()
+    }),
+    this.onInit()
+}
+,
+Tooltip.prototype.onInit = function() {
+    this.app.mouse.on("mousemove", this.onMouseMove, this)
+}
+,
+Tooltip.prototype.onDestroy = function() {
+    this.app.mouse.off("mousemove", this.onMouseMove, this)
+}
+,
+Tooltip.prototype.setText = function() {
+    this.tooltipText = this.tooltipEntity.findByName("Text").element,
+    this.tooltipText.text = this.text,
+    this.tooltipEntity.enabled = !0,
+    this.tooltipEntity.element.height = this.tooltipText.height + 10,
+    this.tooltipEntity.element.width = this.tooltipText.width + 20
+}
+,
+Tooltip.prototype.onMouseMove = function(t) {
+    var o = this.screenEntity.screen.scale
+      , i = this.app.graphicsDevice.maxPixelRatio;
+    this.tooltipEntity.setLocalPosition((t.x + 15) / o * i, -(t.y + 15) / o * i, 0)
+}
+,
+Tooltip.prototype.onHover = function() {
+    this.onHoverTimeout && clearTimeout(this.onHoverTimeout),
+    this.onHoverTimeout = setTimeout(function(t) {
+        t.setText(),
+        t.openTooltip()
+    }, 1e3 * this.delay, this)
+}
+,
+Tooltip.prototype.onLeave = function(t) {
+    this.closeTooltip()
+}
+,
+Tooltip.prototype.openTooltip = function() {
+    this.tooltipEntity.setLocalScale(0, 1, 1),
+    this.tooltipText.opacity = 0,
+    this.tooltipEntity.enabled = !0,
+    this.tooltipTweenScale = this.tooltipEntity.tween(this.tooltipEntity.getLocalScale()).to({
+        x: 1
+    }, .3, pc.ExponentialOut).start(),
+    this.tooltipTweenOpacity = this.tooltipEntity.tween(this.tooltipText).to({
+        opacity: 1
+    }, .3, pc.ExponentialOut).delay(.15).start()
+}
+,
+Tooltip.prototype.closeTooltip = function() {
+    this.tooltipEntity.setLocalScale(1, 1, 1),
+    this.tooltipText.opacity = 1,
+    this.tooltipEntity.enabled = !1
+}
+;
+var Reward = pc.createScript("reward");
+Reward.attributes.add("baseEntity", {
+    type: "entity"
+}),
+Reward.attributes.add("crateEntity", {
+    type: "entity"
+}),
+Reward.attributes.add("coinEntity", {
+    type: "entity"
+}),
+Reward.attributes.add("pointEntity", {
+    type: "entity"
+}),
+Reward.attributes.add("forceUp", {
+    type: "number",
+    default: 1
+}),
+Reward.attributes.add("forceRotation", {
+    type: "number",
+    default: 1
+}),
+Reward.attributes.add("limit", {
+    type: "number",
+    default: 10
+}),
+Reward.attributes.add("cameraEntity", {
+    type: "entity"
+}),
+Reward.attributes.add("lightEntity", {
+    type: "entity"
+}),
+Reward.attributes.add("crateOpen", {
+    type: "entity"
+}),
+Reward.attributes.add("confettiEntity", {
+    type: "entity"
+}),
+Reward.prototype.initialize = function() {
+    this.animation = {
+        lidAxis: 0,
+        rotation: 0,
+        verticalAxis: 0,
+        height: 0,
+        fov: 45,
+        cameraShake: 0,
+        lookHeight: 8.7
+    },
+    this.isOpening = !1
+}
+,
+Reward.prototype.slowTime = function() {
+    this.app.tween(this.app).to({
+        timeScale: .2
+    }, .7, pc.Linear).start(),
+    this.app.tween(this.animation).to({
+        fov: 35
+    }, .3, pc.ExponentialOut).start(),
+    setTimeout(function(t) {
+        t.app.tween(t.animation).to({
+            fov: 45,
+            lookHeight: 10
+        }, 1.5, pc.ExponentialOut).start()
+    }, 300, this),
+    setTimeout(function(t) {
+        t.app.tween(t.app).to({
+            timeScale: 1
+        }, .2, pc.Linear).start()
+    }, 1e3, this)
+}
+,
+Reward.prototype.explodeCoins = function() {
+    for (var t = this.pointEntity.getPosition().clone(), i = 0; i < this.limit; i++) {
+        var e = .01 * (Math.random() - Math.random())
+          , a = this.coinEntity.clone();
+        a.setPosition(t.add(new pc.Vec3(e,e,e))),
+        a.enabled = !0,
+        a.rigidbody.applyImpulse(0, this.forceUp, 0),
+        a.rigidbody.applyTorqueImpulse(0, 0, this.forceRotation),
+        this.entity.addChild(a)
+    }
+    for (var n = 0; n < 20; n++)
+        setTimeout(function(t) {
+            t.entity.sound.play("Coin")
+        }, 600 * Math.random() + 500 + 10 * n, this);
+    this.app.tween(this.animation).to({
+        rotation: -10
+    }, 2, pc.Linear).start()
+}
+,
+Reward.prototype.explode = function() {
+    this.app.tween(this.animation).to({
+        rotation: 980
+    }, .6, pc.Linear).start(),
+    setTimeout(function(t) {
+        t.app.tween(t.animation).rotate({
+            rotation: -5
+        }, .8, pc.ExponentialOut).start()
+    }, 600, this),
+    setTimeout(function(t) {
+        t.lidOpen()
+    }, 1e3, this),
+    setTimeout(function(t) {
+        t.entity.sound.play("Time")
+    }, 600, this),
+    this.isOpening = !0,
+    this.crateOpen.enabled = !0,
+    this.entity.sound.play("Device-Start")
+}
+,
+Reward.prototype.lidOpen = function() {
+    this.lidEntity = this.crateEntity.findByName("Lid"),
+    this.animation.lidAxis = 0,
+    this.slowTime(),
+    this.app.tween(this.animation).rotate({
+        lidAxis: -95
+    }, .3, pc.BackOut).start(),
+    setTimeout(function(t) {
+        t.app.tween(t.animation).rotate({
+            lidAxis: -105,
+            verticalAxis: 0,
+            height: 0
+        }, .1, pc.BackOut).start()
+    }, 300, this),
+    this.explodeCoins(),
+    setTimeout(function(t) {
+        t.animation.cameraShake = 1,
+        t.app.tween(t.animation).rotate({
+            cameraShake: -1
+        }, .05, pc.Linear).yoyo(!0).repeat(5).start(),
+        t.entity.sound.play("Coins")
+    }, 100, this),
+    setTimeout(function(t) {
+        t.app.tween(t.animation).rotate({
+            cameraShake: 0
+        }, .05, pc.Linear).start()
+    }, 900, this),
+    this.entity.sound.play("Explosion-1"),
+    this.entity.sound.play("Particles"),
+    this.crateOpen.enabled = !1,
+    this.confettiEntity.enabled = !0
+}
+,
+Reward.prototype.update = function(t) {
+    this.app.keyboard.wasPressed(pc.KEY_Z) && this.explode(),
+    this.baseEntity.setLocalEulerAngles(this.animation.verticalAxis, this.animation.rotation, 0),
+    this.baseEntity.setLocalPosition(0, this.animation.height, 0),
+    this.lidEntity && this.lidEntity.setLocalEulerAngles(this.animation.lidAxis, 0, 0),
+    this.isOpening || (this.animation.rotation += 10 * t),
+    this.cameraEntity.camera.fov = this.animation.fov,
+    this.cameraEntity.setLocalEulerAngles(this.animation.lookHeight, 0, this.animation.cameraShake)
+}
+;
+var Snow = pc.createScript("snow");
+Snow.attributes.add("materialAsset", {
+    type: "asset",
+    assetType: "material"
+}),
+Snow.prototype.initialize = function() {
+    this.material = this.materialAsset.resource,
+    this.timestamp = 0
+}
+,
+Snow.prototype.update = function(t) {
+    this.material.opacityMapOffset.x -= .4 * t,
+    this.material.opacityMapOffset.y -= .08 * t,
+    this.material.update()
+}
+;
+var Ocean = pc.createScript("ocean");
+Ocean.attributes.add("normalMap", {
+    type: "asset",
+    assetType: "texture"
+}),
+Ocean.attributes.add("cameraBottom", {
+    type: "asset",
+    assetType: "texture"
+}),
+Ocean.attributes.add("sunColor", {
+    type: "rgb"
+}),
+Ocean.attributes.add("sunDirection", {
+    type: "rgb"
+}),
+Ocean.attributes.add("horizonColor", {
+    type: "rgb"
+}),
+Ocean.attributes.add("zenithColor", {
+    type: "rgb"
+}),
+Ocean.prototype.initialize = function() {
+    var e = this.app.graphicsDevice
+      , o = {
+        attributes: {
+            aPosition: pc.SEMANTIC_POSITION
+        },
+        vshader: ["attribute vec3 aPosition;", "", "uniform mat4 matrix_model;", "uniform mat4 matrix_viewProjection;", "", "varying vec3 vWorldPos;", "varying vec4 vProjectedPos;", "", "void main(void)", "{", "    vec4 worldPos = matrix_model * vec4(aPosition, 1.0);", "    vWorldPos = worldPos.xyz;", "    vProjectedPos = matrix_viewProjection * worldPos;", "    gl_Position = vProjectedPos;", "}"].join("\n"),
+        fshader: ["precision " + e.precision + " float;", "", "varying vec3 vWorldPos;", "varying vec4 vProjectedPos;", "", "uniform sampler2D uNormalMap;", "uniform sampler2D uCameraBottom;", "uniform float uTime;", "uniform vec3 view_position;", "uniform vec3 sunColor;", "uniform vec3 sunDirection;", "", "uniform vec3 horizonColor;", "uniform vec3 zenithColor;", "", "vec3 atmosphereColor(vec3 rayDirection) {", "    float a = max(0.0, dot(rayDirection, vec3(0.0, 1.0, 0.0)));", "    vec3 skyColor = mix(horizonColor, zenithColor, a);", "    float sunTheta = max( dot(rayDirection, sunDirection), 0.0 );", "    return skyColor+sunColor*pow(sunTheta, 256.0)*0.5;", "}", "", "vec3 applyFog(vec3 albedo, float dist, vec3 rayOrigin, vec3 rayDirection) {", "    float fogDensity = 0.00006;", "    float vFalloff = 20.0;", "    vec3 fogColor = vec3(0.88, 0.92, 0.999);", "    float fog = exp((-rayOrigin.y*vFalloff)*fogDensity) * (1.0-exp(-dist*rayDirection.y*vFalloff*fogDensity))/(rayDirection.y*vFalloff);", "    return mix(albedo, fogColor, clamp(fog, 0.0, 1.0));", "}", "", "vec3 aerialPerspective(vec3 albedo, float dist, vec3 rayOrigin, vec3 rayDirection) {", "    float atmosphereDensity = 0.000025;", "    vec3 atmosphere = atmosphereColor(rayDirection)+vec3(0.0, 0.02, 0.04);", "    vec3 color = mix(albedo, atmosphere, clamp(1.0-exp(-dist*atmosphereDensity), 0.0, 1.0));", "    return applyFog(color, dist, rayOrigin, rayDirection);", "}", "", "void sunLight(const vec3 surfaceNormal, const vec3 eyeDirection, float shiny, float spec, float diffuse,", "              inout vec3 diffuseColor, inout vec3 specularColor){", "    vec3 reflection = normalize(reflect(-sunDirection, surfaceNormal));", "    float direction = max(0.0, dot(eyeDirection, reflection));", "    specularColor += pow(direction, shiny)*sunColor*spec;", "    diffuseColor += max(dot(sunDirection, surfaceNormal),0.0)*sunColor*diffuse;", "}", "", "vec4 getNoise(vec2 uv)", "{", "    vec2 defaultUv = uv / 512.0 + vec2(0.5, 0.5);", "    vec2 uv0 = (uv / 103.0) + vec2(uTime / 17.0, uTime / 29.0);", "    vec2 uv1 = uv / 107.0 - vec2(uTime / -19.0, uTime / 31.0) + vec2(0.23);", "    vec2 uv2 = uv / vec2(897.0, 983.0) + vec2(uTime / 101.0, uTime / 97.0) + vec2(0.51);", "    vec2 uv3 = uv / vec2(991.0, 877.0) - vec2(uTime / 109.0, uTime / -113.0) + vec2(0.71);", "", "    vec4 noise = (texture2D(uNormalMap, uv0)) +", "                 (texture2D(uNormalMap, uv1)) +", "                 (texture2D(uNormalMap, uv2)) +", "                 (texture2D(uNormalMap, uv3));", "    vec4 bottom = (texture2D(uCameraBottom, defaultUv));", "", "    return noise * 0.5 - 1.15;", "}", "", "void main(void)", "{", "    vec3 diffuse = vec3(0.0);", "    vec3 specular = vec3(0.0);", "", "    vec3 worldToEye = view_position - vWorldPos;", "    vec3 eyeDirection = normalize(worldToEye);", "", "    vec2 uv = vWorldPos.xz * 50.0;", "    vec4 noise = getNoise(uv);", "    float dist = length(worldToEye);", "    float distortionFactor = max(dist / 100.0, 50.0);", "", "    vec3 surfaceNormal = normalize(noise.xzy * vec3(2.0, clamp(dist * 0.001, 1.0, 100.0), 2.0));", "", "    sunLight(surfaceNormal, eyeDirection, 100.0, 2.0, 0.5, diffuse, specular);", "", "    vec3 albedo = diffuse + specular;", "", "    albedo = aerialPerspective(albedo, dist, view_position, -eyeDirection);", "", "    gl_FragColor = vec4(albedo, 0.95);", "}"].join("\n")
+    };
+    this.shader = new pc.Shader(e,o);
+    var t = new pc.Material;
+    t.blendType = pc.BLEND_NORMAL,
+    t.setShader(this.shader),
+    t.setParameter("uTime", 0),
+    t.setParameter("sunColor", this.getRGB(this.sunColor)),
+    t.setParameter("sunDirection", [-1, .2, 0]),
+    t.setParameter("horizonColor", this.getRGB(this.horizonColor)),
+    t.setParameter("zenithColor", this.getRGB(this.zenithColor)),
+    t.setParameter("uNormalMap", this.normalMap.resource),
+    t.setParameter("uCameraBottom", this.cameraBottom.resource),
+    this.entity.model.model.meshInstances[0].material = t,
+    this.material = t,
+    this.time = 0
+}
+,
+Ocean.prototype.getRGB = function(e) {
+    return [e.r, e.g, e.b]
+}
+,
+Ocean.prototype.update = function(e) {
+    this.time += e,
+    this.material.setParameter("uTime", this.time)
 }
 ;
