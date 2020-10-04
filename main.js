@@ -81,7 +81,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
         rpc.isConnected = true;
         rpc.on("ready", () => {
             rpc.setActivity({
-                largeImageKey: 'nexi-old',
+                largeImageKey: 'nexi-client',
                 details: `${rpc.user.username}`,
                 state: `Started Playing`,
             })
