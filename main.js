@@ -7,9 +7,13 @@ const discord = require('discord-rpc');
 const Store = require('electron-store');
 const config = new Store();
 const OS = require('os');
+const log = require('electron-log')
+const { autoUpdater } = require('electron-updater');
 const shortcut = require('electron-localshortcut');
 const { dir } = require('path');
 const { link } = require('fs');
+autoUpdater.logger = require('electron-log');
+autoUpdater.logger.transports.file.level = 'info';
 //Add Window to check :D
 
 if (config.get('utilities_FPS')) {
@@ -36,8 +40,8 @@ app.commandLine.appendSwitch('high-dpi-support', 1);
 function init() {
     //createInitWindow('./loading.html', true, 1, true);
     createInitWindow('./index.html', true, 1.2, true);
+    autoUpdater.checkForUpdatesAndNotify();
 }
-
 
 //Create Start Window
 function createInitWindow(url, isFullScreen, Size, isMain) {
@@ -377,5 +381,38 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
 
     };
 }
+
+//---------------------------------------------
+//----------------Auto-Updater-----------------
+//---------------------------------------------
+
+autoUpdater.on('checking-for-update', () => {
+    console.log('Checking for updates...');
+});
+autoUpdater.on('update-available', (info) => {
+    console.log('Update available');
+    console.log('Version', info.version);
+    console.log('Release Date', info.releaseDate);
+});
+autoUpdater.on('update-not-available', () => {
+    console.log('Version is up-to-date');
+});
+autoUpdater.on('download-pregress', (progress) => {
+    console.log('Download Speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.transferred} + '/' ${progressObj.total}');
+});
+autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+    const dialogOpts = {
+      type: 'info',
+      buttons: ['Restart', 'Later'],
+      title: 'Application Update',
+      message: process.platform === 'win32' ? releaseNotes : releaseName,
+      detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+     }
+   
+     dialog.showMessageBox(dialogOpts).then((returnValue) => {
+       if (returnValue.response === 0) autoUpdater.quitAndInstall()
+     })
+   })
+autoUpdater.on('error', (error) => {})
 
 app.on('ready', init)
