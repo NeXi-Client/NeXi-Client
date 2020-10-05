@@ -234,19 +234,12 @@
         "script": {
           "enabled": true,
           "order": [
-            "zoom",
-            "ssaoForum"
+            "zoom"
           ],
           "scripts": {
             "zoom": {
               "enabled": false,
               "attributes": {}
-            },
-            "ssaoForum": {
-              "enabled": false,
-              "attributes": {
-                "strength": 30
-              }
             }
           }
         }
@@ -9339,7 +9332,7 @@
             "mapManager": {
               "enabled": true,
               "attributes": {
-                "defaultMap": "Tundra",
+                "defaultMap": "Sierra",
                 "mapHolder": "61d5c8dc-28d8-4b9e-b0cc-7908646ca0c7",
                 "autoLoad": true
               }
