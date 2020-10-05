@@ -234,12 +234,19 @@
         "script": {
           "enabled": true,
           "order": [
-            "zoom"
+            "zoom",
+            "ssaoForum"
           ],
           "scripts": {
             "zoom": {
               "enabled": false,
               "attributes": {}
+            },
+            "ssaoForum": {
+              "enabled": false,
+              "attributes": {
+                "strength": 30
+              }
             }
           }
         }
@@ -2589,9 +2596,9 @@
       "parent": "93790e46-99cf-49e7-830a-a15bc441b889",
       "children": [],
       "position": [
-        0.24,
-        0.685,
-        -0.454
+        0.5,
+        0.58,
+        -0.80
       ],
       "rotation": [
         0,
@@ -4168,7 +4175,8 @@
                 "hitEntity": "5b168db3-3eff-4b4d-acdf-50b4ff403524",
                 "mapEntity": "61d5c8dc-28d8-4b9e-b0cc-7908646ca0c7",
                 "breakable": [
-                  "Ceramic"
+                  "Ceramic",
+                  "Ice"
                 ],
                 "grenadeEntity": "58209216-a5d3-4da8-874e-de4ccd4b7304",
                 "throwPower": 2500,
@@ -5845,8 +5853,8 @@
             "networkManager": {
               "enabled": true,
               "attributes": {
-                "URL": "ws://127.0.0.1:8080",
-                "testURL": "ws://127.0.0.1:8080",
+                "URL": "wss://server-eu-1.venge.io",
+                "testURL": "wss://server-eu-1.venge.io",
                 "playerEntity": "d6311a5c-7dec-4eb4-b495-15f29130570e",
                 "overlayEntity": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
                 "menuCameraEntity": "c58e956e-222b-47a0-a2a2-44233169f8f5",
@@ -11437,7 +11445,7 @@
       "scale": [
         1,
         1,
-        1  
+        1
       ],
       "components": {}
     },
@@ -14282,10 +14290,10 @@
                 ],
                 "padding": 2,
                 "timeLimit": 99999,
-                "messageLimit": 6,
+                "messageLimit": 5,
                 "isFocused": false,
                 "keepHistory": false,
-                "inGame": true
+                "profanity": true
               }
             }
           }
@@ -40908,7 +40916,7 @@
     "99db74b3-e4c8-41ac-979a-424ebcba2606": {
       "name": "Score",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "99db74b3-e4c8-41ac-979a-424ebcba2606",
       "parent": "2bbee589-78ad-486b-9fad-b60ce2cf8a7c",
       "children": [],
@@ -51813,7 +51821,8 @@
         "b15a0c78-223b-43f0-8003-94e0297c6308",
         "abddb485-b892-41df-9422-564b5f81e88a",
         "363b5d0b-78a5-4cf3-8855-1fbe4653a621",
-        "b15d6493-d474-4c6f-b3e5-c59c41d69a06"
+        "b15d6493-d474-4c6f-b3e5-c59c41d69a06",
+        "84e53dba-2500-4c6d-ac76-dcd191c6e474"
       ],
       "position": [
         20.000004768371582,
@@ -53807,7 +53816,7 @@
               "attributes": {
                 "defaultValue": 90,
                 "min": 40,
-                "max": 100,
+                "max": 125,
                 "step": 1,
                 "displayElement": "cd7d31d6-30b3-4240-b305-06e7635e8595",
                 "storeValue": true,
@@ -55176,7 +55185,7 @@
     "2885c322-8cea-4b70-b591-89266a1bb5a0": {
       "name": "Stats",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "2885c322-8cea-4b70-b591-89266a1bb5a0",
       "parent": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
       "children": [],
@@ -60003,6 +60012,345 @@
               "attributes": {
                 "key": "Crosshair_Image",
                 "onGet": "CustomImage:Crosshair, Overlay:SetCustomCrosshair"
+              }
+            }
+          }
+        }
+      }
+    },
+    "84e53dba-2500-4c6d-ac76-dcd191c6e474": {
+      "name": "Row",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "84e53dba-2500-4c6d-ac76-dcd191c6e474",
+      "parent": "163888b6-25cf-46bd-beb6-aa16c51422f4",
+      "children": [
+        "ac907155-0117-4904-b5a8-37204ee7cc6c",
+        "dceee39d-a3b5-467f-af5e-ad18761be36d"
+      ],
+      "position": [
+        0.00000476837158203125,
+        -440,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "pivot": [
+            0,
+            1
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 0.05,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 460,
+          "height": 45,
+          "margin": [
+            0,
+            -485,
+            -460,
+            440
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "ac907155-0117-4904-b5a8-37204ee7cc6c": {
+      "name": "Label",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "ac907155-0117-4904-b5a8-37204ee7cc6c",
+      "parent": "84e53dba-2500-4c6d-ac76-dcd191c6e474",
+      "children": [],
+      "position": [
+        20,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0,
+            0.5,
+            0,
+            0.5
+          ],
+          "pivot": [
+            0,
+            0.5
+          ],
+          "text": "Hide Usernames",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 18,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 18,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 115.884,
+          "height": 18.861,
+          "margin": [
+            20,
+            -9.431,
+            -135.884,
+            -9.431
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "dceee39d-a3b5-467f-af5e-ad18761be36d": {
+      "name": "HideUsernames",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "dceee39d-a3b5-467f-af5e-ad18761be36d",
+      "parent": "84e53dba-2500-4c6d-ac76-dcd191c6e474",
+      "children": [],
+      "position": [
+        -20,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            1,
+            0.5,
+            1,
+            0.5
+          ],
+          "pivot": [
+            1,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 0.1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 30,
+          "height": 30,
+          "margin": [
+            -50,
+            -15,
+            20,
+            -15
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "checkbox"
+          ],
+          "scripts": {
+            "checkbox": {
+              "enabled": true,
+              "attributes": {
+                "default": false,
+                "storeValue": true,
+                "storeWithName": true,
+                "triggerFunction": "Menu:Settings",
+                "key": ""
               }
             }
           }

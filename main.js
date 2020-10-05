@@ -58,7 +58,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
     });
 
     initWin.setFullScreen(isFullScreen);
-   
+
     initWin.once('ready-to-show', (event) => {
         initWin.setTitle('NeXi-Client V1.2.9');
         event.preventDefault();
@@ -71,7 +71,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
     }
     initWin.removeMenu()
     CheckGame(initWin);
-   
+
     if (config.get('utilities_RPC') && isMain){
         DiscordRPC();
     }
@@ -91,11 +91,11 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
                 details: `${rpc.user.username}`,
                 state: `Started Playing`,
             })
-            
+
             setInterval(() => {
                 updateDiscord();
             }, 1000);
-            
+
         });
         function updateDiscord(){
             url = initWin.webContents.getURL();
@@ -125,7 +125,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
                 details: `${url}`,
                 state: `${activity}`,
             })
-        
+
         }
     }
 
@@ -204,7 +204,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
             } else {
                 var fps = 'Disable';
             }
-            
+
             if (config.get('utilities_D3D11OND12', true)) {
                 var d3d11ond12 = 'Disable';
             } else {
@@ -398,7 +398,7 @@ autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
       message: process.platform === 'win32' ? releaseNotes : releaseName,
       detail: 'A new version has been downloaded. Restart the application to apply the updates.'
      }
-   
+
      dialog.showMessageBox(dialogOpts).then((returnValue) => {
        if (returnValue.response === 0) autoUpdater.quitAndInstall()
      })

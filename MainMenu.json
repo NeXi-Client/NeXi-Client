@@ -165,7 +165,8 @@
         "90849701-0c04-4a04-a782-1db2f9077105",
         "1eb77bcd-1129-4cda-b8bb-415ff839cc03",
         "53a27c3e-c69b-4ded-b538-524ebe9a1afa",
-        "43b02ff6-d590-47ef-a5e9-a0288a021d73"
+        "43b02ff6-d590-47ef-a5e9-a0288a021d73",
+        "4b2458e9-f576-4b4e-9dbd-e763dbf65ac4"
       ],
       "position": [
         0,
@@ -786,7 +787,7 @@
       "tags": [
         "DesktopOnly"
       ],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "2baa7f22-cb28-4cbb-a175-55b8d4385c6f",
       "parent": "06c5ec69-e469-4a9c-8d86-1f10ab8e0412",
       "children": [
@@ -804,9 +805,9 @@
         0
       ],
       "scale": [
-        1,
-        1,
-        1
+        0.75,
+        0.75,
+        0.75
       ],
       "components": {
         "element": {
@@ -848,7 +849,7 @@
           "height": 110,
           "margin": [
             -500,
-            20,
+            4,
             -500,
             -130
           ],
@@ -14023,7 +14024,7 @@
             1
           ],
           "opacity": 1,
-          "textureAsset": 30842569,
+          "textureAsset": 30842568,
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
@@ -23063,7 +23064,7 @@
             0,
             0.5
           ],
-          "text": "Top 10 players receive 100 VG at day end.",
+          "text": "Top 10 players receive 750 VG when the leaderboard resets!",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 15,
@@ -33990,7 +33991,7 @@
           "lineHeight": 15,
           "wrapLines": true,
           "spacing": 0.9,
-          "color": [
+          "color": [  
             0,
             1,
             1
@@ -40429,7 +40430,7 @@
         "047696cb-fc4d-48a4-8e7f-5ee70e648212"
       ],
       "position": [
-        -100,
+        -130,
         -0.0000019073486328125,
         0
       ],
@@ -40480,12 +40481,12 @@
           "spriteFrame": 0,
           "pixelsPerUnit": null,
           "width": 120,
-          "height": 5,
+          "height": 10,
           "margin": [
-            -220,
-            -2.5,
-            100,
-            -2.5
+            -250,
+            -5,
+            130,
+            -5
           ],
           "alignment": [
             0.5,
@@ -40588,12 +40589,12 @@
           "spriteFrame": 0,
           "pixelsPerUnit": null,
           "width": 120,
-          "height": 5,
+          "height": 10,
           "margin": [
             0,
-            -2.5,
+            -5,
             -120,
-            -2.5
+            -5
           ],
           "alignment": [
             0.5,
@@ -40708,16 +40709,16 @@
             0,
             0.5
           ],
-          "text": "XP {{experience}} / {{experience_next}}",
+          "text": "XP {{experience | numberFormat}} / {{experience_next | numberFormat}}",
           "key": null,
           "fontAsset": 29313023,
-          "fontSize": 10,
+          "fontSize": 13,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
           "autoFitHeight": false,
           "maxLines": null,
-          "lineHeight": 10,
+          "lineHeight": 13,
           "wrapLines": true,
           "spacing": 1,
           "color": [
@@ -40730,13 +40731,13 @@
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 196.6,
+          "width": 340.2,
           "height": 11.51,
           "margin": [
             130,
-            -5.755,
-            -326.6,
-            -5.755
+            -7.482,
+            -572.26,
+            -7.481
           ],
           "alignment": [
             0.5,
@@ -44416,8 +44417,8 @@
                   "Sierra",
                   "Xibalba",
                   "Mistle",
-                  "DEV"
-                ],
+                  "DEV"   
+                 ],
                 "itemImages": [
                   32202739,
                   32202738,
@@ -47372,7 +47373,7 @@
             1,
             1
           ],
-          "text": "NeXi-Client v1",
+          "text": "NeXi-Client v1.2.9",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 20,
@@ -47884,6 +47885,7 @@
         "e4a6eff9-867e-4572-b3dc-14020f9c8aea",
         "06ea25f5-a705-400d-83fc-682e41e0b390",
         "9c094b3b-6729-4f82-89f3-44c9c2fd2886",
+        "ea925b34-bf1a-4d61-87ad-1ba49fc042e3",
         "3c1efecb-6c07-4ab6-a599-2c9c4976538f"
       ],
       "position": [
@@ -64003,13 +64005,29 @@
           "materialAsset": null,
           "autoWidth": false,
           "autoHeight": false,
-          "useInput": false,
+          "useInput": true,
           "batchGroupId": null,
           "mask": false,
           "layers": [
             4
           ],
           "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "tooltip"
+          ],
+          "scripts": {
+            "tooltip": {
+              "enabled": true,
+              "attributes": {
+                "text": "Primary Skill",
+                "screenEntity": "06c5ec69-e469-4a9c-8d86-1f10ab8e0412",
+                "delay": 0
+              }
+            }
+          }
         }
       }
     },
@@ -64111,13 +64129,29 @@
           "materialAsset": null,
           "autoWidth": false,
           "autoHeight": false,
-          "useInput": false,
+          "useInput": true,
           "batchGroupId": null,
           "mask": false,
           "layers": [
             4
           ],
           "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "tooltip"
+          ],
+          "scripts": {
+            "tooltip": {
+              "enabled": true,
+              "attributes": {
+                "text": "Secondary Skill",
+                "screenEntity": "06c5ec69-e469-4a9c-8d86-1f10ab8e0412",
+                "delay": 0
+              }
+            }
+          }
         }
       }
     },
@@ -64584,7 +64618,7 @@
             0,
             0.5
           ],
-          "text": "Hide Chat",
+          "text": "Hide Chat Messages",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 18,
@@ -64606,12 +64640,12 @@
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 69.302,
+          "width": 143.903,
           "height": 18.861,
           "margin": [
             20,
             -9.431,
-            -89.302,
+            -163.903,
             -9.431
           ],
           "alignment": [
@@ -67781,7 +67815,7 @@
       ],
       "position": [
         -9.5367431640625e-7,
-        -171,
+        -221,
         0
       ],
       "rotation": [
@@ -67834,9 +67868,9 @@
           "height": 45,
           "margin": [
             0,
-            -216,
+            -266,
             -680,
-            171
+            221
           ],
           "alignment": [
             0.5,
@@ -79017,7 +79051,7 @@
                 "messageLimit": 6,
                 "isFocused": true,
                 "keepHistory": true,
-                "inGame": false
+                "profanity": false
               }
             }
           }
@@ -100763,7 +100797,7 @@
     "1c84fac2-9b22-415d-a477-3d6afd470e9f": {
       "name": "Profile",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "1c84fac2-9b22-415d-a477-3d6afd470e9f",
       "parent": "e5ea1ac7-541c-427b-93c2-d24193b1b5bb",
       "children": [
@@ -100877,7 +100911,7 @@
               "enabled": true,
               "attributes": {
                 "connected": null,
-                "triggerFunction": "window.open(\"https://social.venge.io/\");",
+                "triggerFunction": "window.open(\"https://social.venge.io/#profile\");",
                 "pressFunction": "",
                 "leaveFunction": "",
                 "fireFunction": "",
@@ -100931,7 +100965,7 @@
             0,
             0.5
           ],
-          "text": "https://social.venge.io/#{{raw_username}}",
+          "text": "https://social.venge.io/#{{username | onlyUsername}}",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 14,
@@ -101104,6 +101138,559 @@
             4
           ],
           "enableMarkup": true
+        }
+      }
+    },
+    "4b2458e9-f576-4b4e-9dbd-e763dbf65ac4": {
+      "name": "Tooltip",
+      "tags": [],
+      "enabled": false,
+      "resource_id": "4b2458e9-f576-4b4e-9dbd-e763dbf65ac4",
+      "parent": "06c5ec69-e469-4a9c-8d86-1f10ab8e0412",
+      "children": [
+        "f386b8c6-6b86-4d33-a383-cecfe350f6f3"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "pivot": [
+            0,
+            1
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "opacity": 0.5,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 100,
+          "height": 20,
+          "margin": [
+            0,
+            -20,
+            -100,
+            0
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "f386b8c6-6b86-4d33-a383-cecfe350f6f3": {
+      "name": "Text",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "f386b8c6-6b86-4d33-a383-cecfe350f6f3",
+      "parent": "4b2458e9-f576-4b4e-9dbd-e763dbf65ac4",
+      "children": [],
+      "position": [
+        10,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0,
+            0.5,
+            0,
+            0.5
+          ],
+          "pivot": [
+            0,
+            0.5
+          ],
+          "text": "Text",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 15,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 15,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 33.271,
+          "height": 20.957,
+          "margin": [
+            10,
+            -20.479,
+            -43.271,
+            -20.479
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "ea925b34-bf1a-4d61-87ad-1ba49fc042e3": {
+      "name": "Row",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "ea925b34-bf1a-4d61-87ad-1ba49fc042e3",
+      "parent": "831ac842-b449-43c4-a3c4-38a2bba753f5",
+      "children": [
+        "cf3c9d1f-059b-4a90-8957-9957edbbebca",
+        "f7037a1a-78e8-45ac-9c0a-43b0099d756f"
+      ],
+      "position": [
+        -9.5367431640625e-7,
+        -171,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "pivot": [
+            0,
+            1
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 0.05,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 680,
+          "height": 45,
+          "margin": [
+            0,
+            -216,
+            -680,
+            171
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "cf3c9d1f-059b-4a90-8957-9957edbbebca": {
+      "name": "Label",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "cf3c9d1f-059b-4a90-8957-9957edbbebca",
+      "parent": "ea925b34-bf1a-4d61-87ad-1ba49fc042e3",
+      "children": [],
+      "position": [
+        20,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0,
+            0.5,
+            0,
+            0.5
+          ],
+          "pivot": [
+            0,
+            0.5
+          ],
+          "text": "Hide Usernames",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 18,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 18,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 115.884,
+          "height": 18.861,
+          "margin": [
+            20,
+            -9.431,
+            -135.884,
+            -9.431
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "f7037a1a-78e8-45ac-9c0a-43b0099d756f": {
+      "name": "HideUsernames",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "f7037a1a-78e8-45ac-9c0a-43b0099d756f",
+      "parent": "ea925b34-bf1a-4d61-87ad-1ba49fc042e3",
+      "children": [],
+      "position": [
+        -20,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            1,
+            0.5,
+            1,
+            0.5
+          ],
+          "pivot": [
+            1,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 0.1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 30,
+          "height": 30,
+          "margin": [
+            -50,
+            -15,
+            20,
+            -15
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "checkbox"
+          ],
+          "scripts": {
+            "checkbox": {
+              "enabled": true,
+              "attributes": {
+                "default": false,
+                "storeValue": true,
+                "storeWithName": true,
+                "triggerFunction": "Menu:Settings",
+                "key": ""
+              }
+            }
+          }
         }
       }
     }
