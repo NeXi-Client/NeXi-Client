@@ -787,7 +787,7 @@
       "tags": [
         "DesktopOnly"
       ],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "2baa7f22-cb28-4cbb-a175-55b8d4385c6f",
       "parent": "06c5ec69-e469-4a9c-8d86-1f10ab8e0412",
       "children": [
