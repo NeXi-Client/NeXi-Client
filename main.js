@@ -1,1 +1,408 @@
-const _0x4bb3=['isGame','no-user-gesture-required','reloadIgnoringCache','electron-store','executeJavaScript','ESC','isSimpleFullScreen','mWMZs','model','will-prevent-unload','Join','relaunch','join','Alt+F4','discord-rpc','ipc','high-dpi-support','showMessageBoxSync','split','once','ignore-gpu-blacklist','getPrimaryDisplay','https://venge.io/#00000','test','Linkbox\x20has\x20been\x20opened','AMD','NeXi-Client','\x0a\x09\x09onbeforeunload\x20=\x20null;\x0a\x09\x09','VysLv','Quit\x20has\x20been\x20used','F10','./index.html','utilities_FPS','Enable\x20/\x20Disable\x20Frame\x20Rate\x20Limit','readText','index.html#Spectate:','Enable\x20/\x20Disable\x20D3D11OND12','set','General','disable-accelerated-video-decode','use-angle','getURL','VsfaK','Please\x20enter\x20your\x20Invite\x20link\x20here','nexi-old','length','appendSwitch','loadFile','then','webContents','commandLine','url','setTitle','750116161890287657','prototype','autoplay-policy','DevTools\x20opened','new-window','cpus','findIndex','removeMenu','isConnected','openExternal','Playing\x20Venge.io!','isSocial','loadURL','https://social.venge.io','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20document.exitPointerLock\x20=\x20document.exitPointerLock\x20||\x20document.mozExitPointerLock;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20document.exitPointerLock();\x0a\x09\x09','preventDefault','enable-quic','utilities_D3D11OND12','v8-compile-cache','register','get','enable-zero-copy','will-navigate','disable-gpu-vsync','electron-prompt','setActivity','F11','Settings','quit','d3d11ond12','indexOf','openDevTools','https://','log','NeXi-Client\x20V1.2.8+\x20BETA','workAreaSize','ready','Would\x20you\x20like\x20to\x20spectate\x20or\x20play?','Spectate','question','Play','sICkx','setSimpleFullScreen','Client'];(function(_0xa46eee,_0x4bb395){const _0x10e015=function(_0x42a2a9){while(--_0x42a2a9){_0xa46eee['push'](_0xa46eee['shift']());}};_0x10e015(++_0x4bb395);}(_0x4bb3,0x1f2));const _0x10e0=function(_0xa46eee,_0x4bb395){_0xa46eee=_0xa46eee-0x0;let _0x10e015=_0x4bb3[_0xa46eee];return _0x10e015;};const _0x18c219=_0x10e0;require(_0x18c219('0x3a'));const {app:app,shell:shell,clipboard:clipboard,dialog:dialog,BrowserWindow:BrowserWindow,screen:screen}=require('electron'),prompt=require(_0x18c219('0x40')),discord=require(_0x18c219('0x1')),Store=require(_0x18c219('0x57')),config=new Store(),OS=require('os'),shortcut=require('electron-localshortcut');let activity=0x0;function init(){const _0x17fedd=_0x18c219;DiscordRPC(),createInitWindow(_0x17fedd('0x12'),!0x0,1.2,!0x0);}function DiscordRPC(){const _0xed186c=_0x18c219,_0x519252=new discord[(_0xed186c('0x53'))]({'transport':_0xed186c('0x2')});_0x519252['isConnected']=!0x1,_0x519252['login']({'clientId':_0xed186c('0x28')}),_0x519252['on']('ready',()=>{const _0x401243=_0xed186c;0x0===activity&&_0x519252[_0x401243('0x41')]({'state':_0x401243('0x32'),'details':_0x401243('0xd'),'startTimestamp':new Date(),'largeImageKey':_0x401243('0x1f')});});}function createInitWindow(_0x4088a9,_0x25d70a,_0x3afb47,_0x2b6cc8){const _0x12242f=_0x18c219,{width:_0x5bae3a,height:_0x371988}=screen[_0x12242f('0x8')]()[_0x12242f('0x4b')];let _0x2819ef=new BrowserWindow({'width':_0x5bae3a*_0x3afb47,'height':_0x371988*_0x3afb47,'show':!0x1});_0x2819ef['setFullScreen'](_0x25d70a),_0x2819ef[_0x12242f('0x27')](_0x12242f('0x4a')),_0x2819ef[_0x12242f('0x6')]('ready-to-show',()=>_0x2819ef['show']()),-0x1!==_0x4088a9[_0x12242f('0x46')](_0x12242f('0x48'))?_0x2819ef[_0x12242f('0x34')](_0x4088a9):_0x2819ef['loadFile'](_0x4088a9),_0x2819ef[_0x12242f('0x2f')](),function(_0x469f8b){const _0x8e5183=_0x12242f;String['prototype'][_0x8e5183('0x54')]=function(){const _0x5ac16b=_0x8e5183;if('yERFf'==='yERFf')return/index.html/[_0x5ac16b('0xa')](this,'');else{function _0x23803c(){const _0x326ade=_0x5ac16b;let _0x56b3f8=_0x2d1c49[_0x326ade('0x24')][_0x326ade('0x1c')]();_0xe3d81d[_0x326ade('0x34')](_0x56b3f8);}}},String[_0x8e5183('0x29')][_0x8e5183('0x33')]=function(){const _0x64b56f=_0x8e5183;return/https:\/\/social.venge.io\//[_0x64b56f('0xa')](this,'');};let _0x1bfe00=(_0x4f60cb,_0x522350)=>{const _0x4a3e6b=_0x8e5183;_0x4f60cb[_0x4a3e6b('0x37')](),_0x522350['isGame']()?_0x2819ef[_0x4a3e6b('0x34')](_0x522350):_0x522350[_0x4a3e6b('0x33')]()?createInitWindow(_0x522350,!0x1,0.9,!0x1):shell[_0x4a3e6b('0x31')](_0x522350);};_0x469f8b['webContents']['on'](_0x8e5183('0x2c'),_0x1bfe00),_0x469f8b['webContents']['on'](_0x8e5183('0x3e'),_0x1bfe00);}(_0x2819ef),shortcut['register'](_0x2819ef,'F1',()=>{const _0x4bade4=_0x12242f;if('VysLv'!==_0x4bade4('0xf')){function _0x21078d(){const _0x1dcb79=_0x4bade4,_0x6accec=_0x1e3b31[_0x1dcb79('0x4')](_0x341a06,{'type':_0x1dcb79('0x4f'),'buttons':[_0x1dcb79('0x50'),_0x1dcb79('0x4e')],'title':_0x1dcb79('0x5e'),'message':_0x1dcb79('0x4d'),'defaultId':0x0,'cancelId':0x3});return _0x6accec;}}else{if(_0x2b6cc8)_0x2819ef[_0x4bade4('0x22')](_0x4bade4('0x12'));else{let _0x2093fe=_0x2819ef[_0x4bade4('0x24')][_0x4bade4('0x1c')]();_0x2819ef[_0x4bade4('0x34')](_0x2093fe);}}}),_0x2b6cc8&&shortcut[_0x12242f('0x3b')](_0x2819ef,'F2',()=>{const _0x10ec5f=_0x12242f;console[_0x10ec5f('0x49')](_0x10ec5f('0xb')),function(){const _0x41d19d=_0x10ec5f;function _0x51a0fc(_0xc6fb51){const _0x431d67=_0x10e0;var _0x263284=prompt({'title':_0xc6fb51,'label':_0x431d67('0x1e'),'value':_0x4ce7e5,'inputAttrs':{'type':_0x431d67('0x26')},'type':'input'});return _0x263284;}function _0x4f38d1(){const _0x56190d=_0x10e0,_0x58b737=dialog[_0x56190d('0x4')](_0x2819ef,{'type':_0x56190d('0x4f'),'buttons':[_0x56190d('0x50'),_0x56190d('0x4e')],'title':_0x56190d('0x5e'),'message':'Would\x20you\x20like\x20to\x20spectate\x20or\x20play?','defaultId':0x0,'cancelId':0x3});return _0x58b737;}function _0x43c184(_0x3a6687,_0xd828b5){const _0x1e1860=_0x10e0;let _0x34fa2f=_0x3a6687,_0x7523f9=_0x34fa2f[_0x1e1860('0x5')]('#'),_0x61ed80=_0x7523f9[_0x7523f9[_0x1e1860('0x20')]-0x1],_0x367b92=_0x2819ef[_0x1e1860('0x24')][_0x1e1860('0x1c')](),_0x231872=_0x367b92[_0x1e1860('0x5')]('/');_0x231872[_0x231872[_0x1e1860('0x20')]-0x1]=_0xd828b5?_0x1e1860('0x16')+_0x61ed80:'index.html#'+_0x61ed80;let _0x3b1720=_0x231872[_0x1e1860('0x60')]('/');console[_0x1e1860('0x49')](_0x3b1720),_0x2819ef['loadURL'](_0x3b1720);}let _0x4ce7e5=clipboard[_0x41d19d('0x15')]();if(-0x1===_0x4ce7e5[_0x41d19d('0x46')]('venge.io/#')){_0x4ce7e5=_0x41d19d('0x9');let _0x43134d=_0x4f38d1();0x0===_0x43134d?_0x51a0fc('Play')[_0x41d19d('0x23')](_0x594b68=>{_0x43c184(_0x594b68,!0x1);}):0x1===_0x43134d&&_0x51a0fc(_0x41d19d('0x4e'))[_0x41d19d('0x23')](_0x4ccaec=>{_0x43c184(_0x4ccaec,!0x0);});}else{let _0x570288=_0x4f38d1();0x0===_0x570288?_0x43c184(_0x4ce7e5,!0x1):0x2!==_0x570288&&_0x43c184(_0x4ce7e5,!0x0);}}();}),shortcut[_0x12242f('0x3b')](_0x2819ef,_0x12242f('0x0'),()=>{const _0x4acaca=_0x12242f;_0x2819ef[_0x4acaca('0x24')]['executeJavaScript'](onbeforeunload=null),console[_0x4acaca('0x49')](_0x4acaca('0x10')),_0x2b6cc8?app[_0x4acaca('0x44')]():_0x2819ef['close']();}),shortcut['register'](_0x2819ef,'Ctrl+F5',()=>{const _0x3a3851=_0x12242f;_0x2819ef[_0x3a3851('0x24')][_0x3a3851('0x56')]();}),shortcut[_0x12242f('0x3b')](_0x2819ef,'F9',()=>{const _0x4feddd=_0x12242f;_0x2819ef[_0x4feddd('0x24')][_0x4feddd('0x47')](),console['log'](_0x4feddd('0x2b'));}),shortcut[_0x12242f('0x3b')](_0x2819ef,_0x12242f('0x42'),()=>{const _0x1a0394=_0x12242f;if(_0x1a0394('0x5b')!==_0x1a0394('0x5b')){function _0x56129c(){const _0x65d547=_0x1a0394,_0x406f47=new _0x1ad494[(_0x65d547('0x53'))]({'transport':_0x65d547('0x2')});_0x406f47[_0x65d547('0x30')]=!0x1,_0x406f47['login']({'clientId':'750116161890287657'}),_0x406f47['on'](_0x65d547('0x4c'),()=>{const _0x258f49=_0x65d547;0x0===_0x25bbbd&&_0x406f47[_0x258f49('0x41')]({'state':_0x258f49('0x32'),'details':'NeXi-Client','startTimestamp':new _0x5e3fcf(),'largeImageKey':_0x258f49('0x1f')});});}}else _0x2819ef[_0x1a0394('0x52')](!_0x2819ef[_0x1a0394('0x5a')]());}),shortcut['register'](_0x2819ef,_0x12242f('0x59'),()=>{const _0xae3642=_0x12242f;_0x2819ef['webContents'][_0xae3642('0x58')](_0xae3642('0x36'));}),shortcut[_0x12242f('0x3b')](_0x2819ef,'=',()=>{const _0xb94663=_0x12242f;if(_0xb94663('0x51')===_0xb94663('0x51'))createInitWindow(_0xb94663('0x35'),!0x1,0.9,!0x1);else{function _0x273918(){const _0x37eb19=_0xb94663;if(_0x4126cc)_0x5adb1d['loadFile'](_0x37eb19('0x12'));else{let _0x4295be=_0x1c49bd[_0x37eb19('0x24')][_0x37eb19('0x1c')]();_0x1822e0['loadURL'](_0x4295be);}}}}),shortcut[_0x12242f('0x3b')](_0x2819ef,_0x12242f('0x11'),()=>{!function(){const _0x431974=_0x10e0;if(_0x431974('0x1d')!==_0x431974('0x1d')){function _0x52c90c(){const _0x12c540=_0x431974;return/https:\/\/social.venge.io\//[_0x12c540('0xa')](this,'');}}else 0x0===dialog[_0x431974('0x4')](_0x2819ef,{'type':_0x431974('0x4f'),'buttons':[_0x431974('0x19')],'title':_0x431974('0x43'),'message':'','defaultId':0x0,'cancelId':0x2})&&function(){const _0x7f307c=_0x431974,_0x298432=dialog[_0x7f307c('0x4')](_0x2819ef,{'type':_0x7f307c('0x4f'),'buttons':[_0x7f307c('0x14'),_0x7f307c('0x17')],'title':_0x7f307c('0x43'),'message':'','defaultId':0x0,'cancelId':0x2});0x0===_0x298432&&(config[_0x7f307c('0x3c')](_0x7f307c('0x13'),!0x0)?config[_0x7f307c('0x18')](_0x7f307c('0x13'),!0x1):config[_0x7f307c('0x18')](_0x7f307c('0x13'),!0x0),app[_0x7f307c('0x5f')](),app[_0x7f307c('0x44')]()),0x1===_0x298432&&(config[_0x7f307c('0x3c')]('utilities_D3D11OND12',!0x0)?config['set'](_0x7f307c('0x39'),!0x1):config[_0x7f307c('0x18')](_0x7f307c('0x39'),!0x0),app[_0x7f307c('0x5f')](),app[_0x7f307c('0x44')]());}();}();}),_0x2819ef[_0x12242f('0x24')]['on'](_0x12242f('0x5d'),_0xd7b1bc=>{const _0x2f21ce=_0x12242f;_0x2819ef['webContents'][_0x2f21ce('0x58')](_0x2f21ce('0xe')),_0xd7b1bc[_0x2f21ce('0x37')]();});}config[_0x18c219('0x3c')](_0x18c219('0x13'))&&(-0x1!=OS[_0x18c219('0x2d')]()[_0x18c219('0x2e')](_0x3a9db4=>_0x3a9db4[_0x18c219('0x5c')]['includes'](_0x18c219('0xc')))&&app[_0x18c219('0x25')][_0x18c219('0x21')](_0x18c219('0x3d')),app[_0x18c219('0x25')][_0x18c219('0x21')]('disable-frame-rate-limit')),config[_0x18c219('0x3c')](_0x18c219('0x39'))?(app['commandLine'][_0x18c219('0x21')](_0x18c219('0x1b'),_0x18c219('0x45')),app[_0x18c219('0x25')][_0x18c219('0x21')]('enable-webgl2-compute-context')):app[_0x18c219('0x25')][_0x18c219('0x21')](_0x18c219('0x1b'),'d3d9'),app[_0x18c219('0x25')][_0x18c219('0x21')]('enable-quic'),app[_0x18c219('0x25')][_0x18c219('0x21')](_0x18c219('0x7')),app[_0x18c219('0x25')][_0x18c219('0x21')](_0x18c219('0x3f')),app[_0x18c219('0x25')]['appendSwitch']('enable-pointer-lock-options'),app[_0x18c219('0x25')][_0x18c219('0x21')](_0x18c219('0x1a'),!0x1),app[_0x18c219('0x25')][_0x18c219('0x21')](_0x18c219('0x2a'),_0x18c219('0x55')),app[_0x18c219('0x25')][_0x18c219('0x21')](_0x18c219('0x38')),app['commandLine'][_0x18c219('0x21')](_0x18c219('0x3'),0x1),app['on']('ready',init);
+require('v8-compile-cache');
+
+// !!!!! MADE BY NEXI2K, URBAN, SYN7AX, AND MAYBE IZZIBABY (IDK) !!!!!
+
+const {
+    app, shell, clipboard, dialog, BrowserWindow, screen
+} = require('electron');
+const prompt = require('electron-prompt');
+const discord = require('discord-rpc');
+const Store = require('electron-store');
+const config = new Store();
+const OS = require('os');
+const log = require('electron-log')
+const { autoUpdater } = require('electron-updater');
+const shortcut = require('electron-localshortcut');
+const { dir } = require('path');
+const { link } = require('fs');
+autoUpdater.logger = require('electron-log');
+autoUpdater.logger.transports.file.level = 'info';
+//Add Window to check :D
+
+if (config.get('utilities_FPS')) {
+    if (OS.cpus().findIndex(cpu => cpu.model.includes("AMD")) != -1) {
+        app.commandLine.appendSwitch('enable-zero-copy');
+    }
+    app.commandLine.appendSwitch('disable-frame-rate-limit');
+}
+if (config.get('utilities_D3D11OND12')) {
+    app.commandLine.appendSwitch('use-angle', 'd3d11ond12');
+    app.commandLine.appendSwitch('enable-webgl2-compute-context');
+} else {
+    app.commandLine.appendSwitch('use-angle', 'd3d9');
+}
+app.commandLine.appendSwitch('enable-quic');
+app.commandLine.appendSwitch('ignore-gpu-blacklist');
+app.commandLine.appendSwitch('disable-gpu-vsync')
+app.commandLine.appendSwitch('enable-pointer-lock-options');
+app.commandLine.appendSwitch('disable-accelerated-video-decode', false);
+app.commandLine.appendSwitch('autoplay-policy', 'no-user-gesture-required')
+app.commandLine.appendSwitch('enable-quic');
+app.commandLine.appendSwitch('high-dpi-support', 1);
+
+function init() {
+    createInitWindow('./index.html', true, 1.2, true);
+    autoUpdater.checkForUpdatesAndNotify();
+}
+
+//Create Start Window
+function createInitWindow(url, isFullScreen, Size, isMain) {
+    const {
+        width, height
+    } = screen.getPrimaryDisplay().workAreaSize;
+    let initWin = new BrowserWindow({
+        width: width * Size,
+        height: height * Size,
+        show: false,
+
+    });
+
+    initWin.setFullScreen(isFullScreen);
+
+    initWin.once('ready-to-show', (event) => {
+        initWin.setTitle('NeXi-Client V1.2.9');
+        event.preventDefault();
+        initWin.show();
+    });
+    if (url.indexOf('https://') !== -1) {
+        initWin.loadURL(url);
+    } else {
+        initWin.loadFile(url);
+    }
+    initWin.removeMenu()
+    CheckGame(initWin);
+
+    if (config.get('utilities_RPC') && isMain){
+        DiscordRPC();
+    }
+    // !!!!! MINOR CHANGES DONE TO RPC (MORE TO COME (HOPEFULLY)) !!!!!
+    function DiscordRPC() {
+        const rpc = new discord.Client({
+            transport: 'ipc'
+        })
+        rpc.isConnected = false;
+        rpc.login({
+            'clientId': '750116161890287657'
+        })
+        rpc.isConnected = true;
+        rpc.on("ready", () => {
+            rpc.setActivity({
+                largeImageKey: 'nexi-client',
+                details: `${rpc.user.username}`,
+                state: `Started Playing`,
+            })
+
+            setInterval(() => {
+                updateDiscord();
+            }, 1000);
+
+        });
+        function updateDiscord(){
+            url = initWin.webContents.getURL();
+            let activity = 'In Menu';
+            if (url === null){
+                url = rpc.user.username;
+                activity = 'Idling';
+            }
+            if (isMain){
+                if (url.indexOf('index.html#')!== -1){
+                    let arr1 = url.split('#');
+                    let inviteCode = arr1[arr1.length - 1];
+                    let arr2 = [undefined];
+                    arr2[arr2.length - 1] = `https://venge.io/#${inviteCode}`;
+                    url = arr2;
+                    activity = 'Playing Venge.io!';
+                }
+                else {
+                    if (url.indexOf('index.html') !== -1){
+                        url = rpc.user.username;
+                    }
+                }
+            }
+
+            rpc.setActivity({
+                largeImageKey: 'nexi-old',
+                details: `${url}`,
+                state: `${activity}`,
+            })
+
+        }
+    }
+
+    // !!!!! REGISTERS SHORTCUTS !!!!!
+    shortcut.register(initWin, 'F1', () => {
+        if (!isMain) {
+            let URL = initWin.webContents.getURL();
+            initWin.loadURL(URL);
+        } else {
+            initWin.loadFile('./index.html');
+        }
+
+    })
+    if (isMain) {
+        shortcut.register(initWin, 'F2', () => {
+            console.log('Linkbox has been opened'), LinkBox()
+        })
+    }
+    shortcut.register(initWin, 'Alt+F4', () => {
+        initWin.webContents.executeJavaScript(onbeforeunload = null);
+        console.log('Quit has been used');
+        if (isMain) {
+            app.quit();
+        } else {
+            initWin.close();
+        }
+    })
+    shortcut.register(initWin, 'Ctrl+F5', () => {
+        initWin.webContents.reloadIgnoringCache();
+    })
+    shortcut.register(initWin, 'F9', () => {
+        initWin.webContents.openDevTools(),
+            console.log('DevTools opened')
+    })
+    shortcut.register(initWin, 'F11', () => {
+        initWin.setSimpleFullScreen(!initWin.isSimpleFullScreen())
+    })
+    shortcut.register(initWin, 'ESC', () => {
+        initWin.webContents.executeJavaScript(`
+                  document.exitPointerLock = document.exitPointerLock || document.mozExitPointerLock;
+                  document.exitPointerLock();
+		`);
+    })
+    shortcut.register(initWin, '=', () => {
+            createInitWindow('https://social.venge.io', false, 0.9, false)
+        })
+    shortcut.register(initWin, 'F10', ()=> {
+        createSettingsWindow();
+    })
+    initWin.webContents.on('will-prevent-unload', (event) => {
+        initWin.webContents.executeJavaScript(`
+		onbeforeunload = null;
+		`)
+        event.preventDefault();
+    })
+
+    // !!!!! DECIDED TO STICK WITH DIALOG, MENU.HTML CAN COME LATER (I SUCK AT CSS) !!!!!
+    function createSettingsWindow() {
+        const settings = dialog.showMessageBoxSync(initWin, {
+            type: 'question',
+            buttons: ['General'],
+            title: 'Settings',
+            message: '',
+            defaultId: 0,
+            cancelId: 2
+        });
+        if (settings === 0) {
+            openGeneralSettings();
+        }
+
+        function openGeneralSettings() {
+
+            // !!!!! PROCESS INEFFICIENT AS HELL BUT I COULDN'T GIVE A DAMN !!!!! 
+            if (config.get('utilities_FPS', true)) {
+                var fps = 'Enable';
+            } else {
+                var fps = 'Disable';
+            }
+
+            if (config.get('utilities_D3D11OND12', true)) {
+                var d3d11ond12 = 'Disable';
+            } else {
+                var d3d11ond12 = 'Enable';
+            }
+            if (config.get('utilities_RPC', true)) {
+                var dc = 'Disable';
+            } else {
+                var dc = 'Enable';
+            }
+            if (config.get('utilities_FPS') == null){
+                config.set('utilities_FPS',true);
+            };
+            if (config.get('utilities_D3D11OND12') == null){
+                config.set('utilities_D3D11OND12',true);
+            };
+            if (config.get('utilities_RPC') == null){
+                config.set('utilities_RPC',true);
+            };
+
+            // !!!!! SHOWS MENU TO USER !!!!!
+            const options = dialog.showMessageBoxSync(initWin, {
+                type: 'question',
+                buttons: [`${fps} Frame Rate Limit Cap`, `${d3d11ond12} D3D11OND12`, `${dc} Discord RPC`],
+                title: 'Settings',
+                message: '',
+                defaultId: 0,
+                cancelId: 3
+            });
+
+            // !!!!! BASICALLY ACTS AS A SWITCH, A VERY INEFFICIENT ONE !!!!!
+            if (options === 0) {
+                if (config.get('utilities_FPS', true)) {
+                    config.set('utilities_FPS', false);
+                } else {
+                    config.set('utilities_FPS', true)
+                }
+                app.relaunch();
+                app.quit();
+            }
+            if (options === 1) {
+                if (config.get('utilities_D3D11OND12', true)) {
+                    config.set('utilities_D3D11OND12', false);
+                } else {
+                    config.set('utilities_D3D11OND12', true);
+                }
+                app.relaunch();
+                app.quit();
+            }
+            if (options === 2){
+                if (config.get('utilities_RPC', true)) {
+                    config.set('utilities_RPC', false);
+                } else {
+                    config.set('utilities_RPC', true);
+                }
+                app.relaunch();
+                app.quit();
+            }
+        }
+    }
+
+
+
+    function CheckGame(window) {
+        String.prototype.isGame = function() {
+            var VENGE_REGEX = /index.html/;
+            return VENGE_REGEX.test(this, '')
+        }
+        String.prototype.isSocial = function() {
+            var SOCIAL_REGEX = /https:\/\/social.venge.io\//;
+            return SOCIAL_REGEX.test(this, '')
+        }
+        let nav = (event, url) => {
+            event.preventDefault();
+            if (url.isGame()) {
+                initWin.loadURL(url);
+                return url;
+            } else {
+                if (url.isSocial()) {
+                    createInitWindow(url, false, 0.9, false);
+                    return url;
+                } else {
+                    shell.openExternal(url);
+                    return url;
+                }
+            }
+        };
+
+        window.webContents.on('new-window', nav);
+        window.webContents.on('will-navigate', nav);
+
+    }
+
+    // !!!!! ASKS FOR LINK !!!!!
+    function LinkBox() {
+        function input(msg) {
+            var prompting = prompt({
+                title: msg,
+                label: 'Please enter your Invite link here',
+                value: paste,
+                inputAttrs: {
+                    type: 'url'
+                },
+                type: 'input'
+            })
+            return prompting;
+        }
+
+        // !!!!! CHOOSE BETWEEN PLAY AND SPECTATE !!!!!
+        function question() {
+            const choice = dialog.showMessageBoxSync(initWin, {
+                type: 'question',
+                buttons: ['Play', 'Spectate'],
+                title: 'Join',
+                message: 'Would you like to spectate or play?',
+                defaultId: 0,
+                cancelId: 3,
+            });
+            return choice;
+        }
+
+        // !!!!! LOADS NEW URL !!!!!
+        function isPaste(message, isSpectate) {
+            let inputUrl = message;
+            let arr1 = inputUrl.split('#');
+            let inviteCode = arr1[arr1.length - 1];
+            let currentURL = initWin.webContents.getURL();
+            let arr2 = currentURL.split('/');
+            if (isSpectate) {
+                arr2[arr2.length - 1] = `index.html#Spectate:${inviteCode}`;
+            } else {
+                arr2[arr2.length - 1] = `index.html#${inviteCode}`;
+            }
+            let newUrl = arr2.join('/');
+
+            console.log(newUrl)
+            initWin.loadURL(newUrl);
+        }
+
+        // !!!!! CHECKS IF LINK IS ALREADY COPIED !!!!!
+        let paste = clipboard.readText();
+        if (paste.indexOf('venge.io/#') === -1) {
+            paste = 'https://venge.io/#00000';
+            let choice = question();
+
+            if (choice === 0) {
+                input("Play")
+                    .then((r) => {
+                        isPaste(r, false);
+                    });
+            } else {
+                if (choice === 1) {
+                    input("Spectate")
+                        .then((r) => {
+                            isPaste(r, true);
+                        });
+                }
+            }
+        } else {
+            input("Play")
+                .then((r) => {
+                    isPaste(r, false);
+                });
+        }
+    } 
+}
+
+//---------------------------------------------
+//----------------Auto-Updater-----------------
+//---------------------------------------------
+
+autoUpdater.on('checking-for-update', () => {
+    console.log('Checking for updates...');
+});
+autoUpdater.on('update-available', (info) => {
+    console.log('Update available');
+    console.log('Version', info.version);
+    console.log('Release Date', info.releaseDate);
+});
+autoUpdater.on('update-not-available', () => {
+    console.log('Version is up-to-date');
+});
+autoUpdater.on('download-pregress', (progress) => {
+    console.log('Download Speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.transferred} + '/' ${progressObj.total}');
+});
+autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+    const dialogOpts = {
+      type: 'info',
+      buttons: ['Restart', 'Later'],
+      title: 'Application Update',
+      message: process.platform === 'win32' ? releaseNotes : releaseName,
+      detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+     }
+
+     dialog.showMessageBox(dialogOpts).then((returnValue) => {
+       if (returnValue.response === 0) autoUpdater.quitAndInstall()
+     })
+   })
+autoUpdater.on('error', (error) => {})
+
+app.on('ready', init)
