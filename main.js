@@ -1,4 +1,7 @@
 require('v8-compile-cache');
+
+// !!!!! MADE BY NEXI2K, URBAN, SYN7AX, AND MAYBE IZZIBABY (IDK) !!!!!
+
 const {
     app, shell, clipboard, dialog, BrowserWindow, screen
 } = require('electron');
@@ -8,9 +11,8 @@ const Store = require('electron-store');
 const config = new Store();
 const OS = require('os');
 const shortcut = require('electron-localshortcut');
-const { dir } = require('path');
-const { link } = require('fs');
-//Add Window to check :D
+
+// !!!!! MINOR PERFORMANCE BOOST !!!!! 
 
 if (config.get('utilities_FPS')) {
     if (OS.cpus().findIndex(cpu => cpu.model.includes("AMD")) != -1) {
@@ -34,12 +36,11 @@ app.commandLine.appendSwitch('enable-quic');
 app.commandLine.appendSwitch('high-dpi-support', 1);
 
 function init() {
-    //createInitWindow('./loading.html', true, 1, true);
     createInitWindow('./index.html', true, 1.2, true);
 }
 
 
-//Create Start Window
+// !!!!! CREATE STARTING WINDOW !!!!! 
 function createInitWindow(url, isFullScreen, Size, isMain) {
     const {
         width, height
@@ -69,7 +70,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
     if (config.get('utilities_RPC') && isMain){
         DiscordRPC();
     }
-    //Just calls Discord RP (WIP).
+    // !!!!! MINOR CHANGES DONE TO RPC (MORE TO COME (HOPEFULLY)) !!!!!
     function DiscordRPC() {
         const rpc = new discord.Client({
             transport: 'ipc'
@@ -94,19 +95,18 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
         function updateDiscord(){
             url = initWin.webContents.getURL();
             let activity = 'In Menu';
+            if (url === null){
+                url = rpc.user.username;
+                activity = 'Idling';
+            }
             if (isMain){
                 if (url.indexOf('index.html#')!== -1){
-                    let arr1 = url.split('/');
+                    let arr1 = url.split('#');
                     let inviteCode = arr1[arr1.length - 1];
-                    inviteCode = inviteCode.replace('index.html#','');
-                    let currentUrl = 'https://venge.io/#';
-                    let arr2 = currentUrl.split(']');
+                    let arr2 = [undefined];
                     arr2[arr2.length - 1] = `https://venge.io/#${inviteCode}`;
-                    newUrl = arr2.join(']');
-                    
-                    url = newUrl;  
+                    url = arr2;
                     activity = 'Playing Venge.io!';
-                    
                 }
                 else {
                     if (url.indexOf('index.html') !== -1){
@@ -123,6 +123,8 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
         
         }
     }
+
+    // !!!!! REGISTERS SHORTCUTS !!!!!
     shortcut.register(initWin, 'F1', () => {
         if (!isMain) {
             let URL = initWin.webContents.getURL();
@@ -175,7 +177,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
         event.preventDefault();
     })
 
-    //Creating foundation (WIP, I may use HTML instead) for SettingsWindow
+    // !!!!! DECIDED TO STICK WITH DIALOG, MENU.HTML CAN COME LATER (I SUCK AT CSS) !!!!!
     function createSettingsWindow() {
         const settings = dialog.showMessageBoxSync(initWin, {
             type: 'question',
@@ -190,6 +192,24 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
         }
 
         function openGeneralSettings() {
+
+            // !!!!! PROCESS INEFFICIENT AS HELL BUT I COULDN'T GIVE A DAMN !!!!! 
+            if (config.get('utilities_FPS', true)) {
+                var fps = 'Enable';
+            } else {
+                var fps = 'Disable';
+            }
+            
+            if (config.get('utilities_D3D11OND12', true)) {
+                var d3d11ond12 = 'Disable';
+            } else {
+                var d3d11ond12 = 'Enable';
+            }
+            if (config.get('utilities_RPC', true)) {
+                var dc = 'Disable';
+            } else {
+                var dc = 'Enable';
+            }
             if (config.get('utilities_FPS') == null){
                 config.set('utilities_FPS',true);
             };
@@ -199,14 +219,18 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
             if (config.get('utilities_RPC') == null){
                 config.set('utilities_RPC',true);
             };
+
+            // !!!!! SHOWS MENU TO USER !!!!!
             const options = dialog.showMessageBoxSync(initWin, {
                 type: 'question',
-                buttons: ['Enable / Disable Frame Rate Limit', 'Enable / Disable D3D11OND12', 'Enable / Disable RPC'],
+                buttons: [`${fps} Frame Rate Limit Cap`, `${d3d11ond12} D3D11OND12`, `${dc} Discord RPC`],
                 title: 'Settings',
                 message: '',
                 defaultId: 0,
                 cancelId: 3
             });
+
+            // !!!!! BASICALLY ACTS AS A SWITCH, A VERY INEFFICIENT ONE !!!!!
             if (options === 0) {
                 if (config.get('utilities_FPS', true)) {
                     config.set('utilities_FPS', false);
@@ -234,20 +258,6 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
                 app.relaunch();
                 app.quit();
             }
-            /*if (options===2){
-            if (config.get('ScopeURL',true)){
-                var Scope = prompt({
-                    title: 'Scope Input',
-                    label: 'Please enter your Scope Link here',
-                    value: null,
-                    inputAttrs: {
-                        type: 'url'
-                    },
-                    type: 'input'
-                })
-                config.set('utilities_scopeURL',Scope);
-        }
-    }*/
         }
     }
 
@@ -283,10 +293,8 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
 
     }
 
-    //Asks for link and inputs it.
+    // !!!!! ASKS FOR LINK !!!!!
     function LinkBox() {
-        //var isChecked = false;
-        //Prompts user for input.
         function input(msg) {
             var prompting = prompt({
                 title: msg,
@@ -300,7 +308,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
             return prompting;
         }
 
-        //Asks the person to choose between 'Play and Spectate'.
+        // !!!!! CHOOSE BETWEEN PLAY AND SPECTATE !!!!!
         function question() {
             const choice = dialog.showMessageBoxSync(initWin, {
                 type: 'question',
@@ -309,21 +317,17 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
                 message: 'Would you like to spectate or play?',
                 defaultId: 0,
                 cancelId: 3,
-                //checkboxLabel: "Do not show this message again.",
-                //checkboxChecked: false,
             });
-            //isChecked = choice.checkboxChecked;
             return choice;
         }
 
-        //Loads new URL.
+        // !!!!! LOADS NEW URL !!!!!
         function isPaste(message, isSpectate) {
             let inputUrl = message;
             let arr1 = inputUrl.split('#');
             let inviteCode = arr1[arr1.length - 1];
-
-            let currentUrl = initWin.webContents.getURL();
-            let arr2 = currentUrl.split('/');
+            let currentURL = initWin.webContents.getURL();
+            let arr2 = currentURL.split('/');
             if (isSpectate) {
                 arr2[arr2.length - 1] = `index.html#Spectate:${inviteCode}`;
             } else {
@@ -335,47 +339,32 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
             initWin.loadURL(newUrl);
         }
 
-        //Check if link is already copied.
-
+        // !!!!! CHECKS IF LINK IS ALREADY COPIED !!!!!
         let paste = clipboard.readText();
         if (paste.indexOf('venge.io/#') === -1) {
-            if (!isChecked) {
-                paste = 'https://venge.io/#00000';
-                let choice = question();
+            paste = 'https://venge.io/#00000';
+            let choice = question();
 
-                if (choice === 0) {
-                    input("Play")
-                        .then((r) => {
-                            isPaste(r, false);
-                        });
-                } else {
-                    if (choice === 1) {
-                        input("Spectate")
-                            .then((r) => {
-                                isPaste(r, true);
-                            });
-                    }
-
-                }
-
-            } else {
+            if (choice === 0) {
                 input("Play")
                     .then((r) => {
                         isPaste(r, false);
                     });
+            } else {
+                if (choice === 1) {
+                    input("Spectate")
+                        .then((r) => {
+                            isPaste(r, true);
+                        });
+                }
             }
         } else {
-            let choice = question();
-            if (choice === 0) {
-                isPaste(paste, false);
-            } else {
-                if (choice !== 2) {
-                    isPaste(paste, true);
-                };
-            }
+            input("Play")
+                .then((r) => {
+                    isPaste(r, false);
+                });
         }
-
-    };
+    } 
 }
 
 app.on('ready', init)
