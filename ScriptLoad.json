@@ -234,19 +234,12 @@
         "script": {
           "enabled": true,
           "order": [
-            "zoom",
-            "ssaoForum"
+            "zoom"
           ],
           "scripts": {
             "zoom": {
               "enabled": false,
               "attributes": {}
-            },
-            "ssaoForum": {
-              "enabled": false,
-              "attributes": {
-                "strength": 30
-              }
             }
           }
         }
