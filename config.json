@@ -35925,6 +35925,53 @@
       "i18n": {},
       "id": "31475909"
     },
+    "31485274": {
+      "tags": [],
+      "name": "Tier-4.png",
+      "revision": 1,
+      "preload": true,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "Bilevel",
+        "width": 64,
+        "height": 64,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Tier-4.png",
+        "hash": "93db4fbcc1f5fba46a0d4c137d3ec8e3",
+        "size": 809,
+        "variants": {},
+        "url": "files/assets/31485274/1/Tier-4.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "31485274"
+    },
     "31485275": {
       "tags": [],
       "name": "Tier-3.png",
