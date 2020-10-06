@@ -2,7 +2,7 @@ ASSET_PREFIX = "";
 SCRIPT_PREFIX = "";
 SCENE_PATH = "MainMenu.json?v=" + VERSION;
 CONTEXT_OPTIONS = {
-    'antialias': true,
+    'antialias': false,
     'alpha': false,
     'preserveDrawingBuffer': false,
     'preferWebGl2': true
