@@ -5,41 +5,13 @@ require('v8-compile-cache');
 const {
     app, shell, clipboard, dialog, BrowserWindow, screen
 } = require('electron');
-const prompt = require('electron-prompt');
 const discord = require('discord-rpc');
-const Store = require('electron-store');
-const config = new Store();
-const OS = require('os');
-const log = require('electron-log')
-const { autoUpdater } = require('electron-updater');
-const shortcut = require('electron-localshortcut');
-const { dir } = require('path');
-const { link } = require('fs');
-autoUpdater.logger = require('electron-log');
-autoUpdater.logger.transports.file.level = 'info';
-//Add Window to check :D
+const {
+    createSettingsWindow, fps_boost, config
+} = require('./nexi-client');
+const prompt = require('electron-prompt');
 
-if (config.get('utilities_FPS')) {
-    if (OS.cpus().findIndex(cpu => cpu.model.includes("AMD")) != -1) {
-        app.commandLine.appendSwitch('enable-zero-copy');
-    }
-    app.commandLine.appendSwitch('disable-frame-rate-limit');
-}
-if (config.get('utilities_D3D11OND12')) {
-    app.commandLine.appendSwitch('use-angle', 'd3d11ond12');
-    app.commandLine.appendSwitch('enable-webgl2-compute-context');
-} else {
-    app.commandLine.appendSwitch('use-angle', 'd3d9');
-}
-app.commandLine.appendSwitch('enable-quic');
-app.commandLine.appendSwitch('ignore-gpu-blacklist');
-app.commandLine.appendSwitch('disable-gpu-vsync')
-app.commandLine.appendSwitch('enable-pointer-lock-options');
-app.commandLine.appendSwitch('disable-accelerated-video-decode', false);
-app.commandLine.appendSwitch('autoplay-policy', 'no-user-gesture-required')
-app.commandLine.appendSwitch('enable-quic');
-app.commandLine.appendSwitch('high-dpi-support', 1);
-
+fps_boost();
 function init() {
     createInitWindow('./index.html', true, 1.2, true);
     autoUpdater.checkForUpdatesAndNotify();
@@ -50,15 +22,12 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
     const {
         width, height
     } = screen.getPrimaryDisplay().workAreaSize;
-    let initWin = new BrowserWindow({
+    var initWin = new BrowserWindow({
         width: width * Size,
         height: height * Size,
         show: false,
-
     });
-
     initWin.setFullScreen(isFullScreen);
-
     initWin.once('ready-to-show', (event) => {
         initWin.setTitle('NeXi-Client V1.2.9');
         event.preventDefault();
@@ -94,7 +63,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
 
             setInterval(() => {
                 updateDiscord();
-            }, 1000);
+            }, 5000);
 
         });
         function updateDiscord(){
@@ -121,7 +90,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
             }
 
             rpc.setActivity({
-                largeImageKey: 'nexi-old',
+                largeImageKey: 'nexi-client',
                 details: `${url}`,
                 state: `${activity}`,
             })
@@ -130,6 +99,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
     }
 
     // !!!!! REGISTERS SHORTCUTS !!!!!
+    const shortcut = require('electron-localshortcut');
     shortcut.register(initWin, 'F1', () => {
         if (!isMain) {
             let URL = initWin.webContents.getURL();
@@ -182,92 +152,6 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
         event.preventDefault();
     })
 
-    // !!!!! DECIDED TO STICK WITH DIALOG, MENU.HTML CAN COME LATER (I SUCK AT CSS) !!!!!
-    function createSettingsWindow() {
-        const settings = dialog.showMessageBoxSync(initWin, {
-            type: 'question',
-            buttons: ['General'],
-            title: 'Settings',
-            message: '',
-            defaultId: 0,
-            cancelId: 2
-        });
-        if (settings === 0) {
-            openGeneralSettings();
-        }
-
-        function openGeneralSettings() {
-
-            // !!!!! PROCESS INEFFICIENT AS HELL BUT I COULDN'T GIVE A DAMN !!!!! 
-            if (config.get('utilities_FPS', true)) {
-                var fps = 'Enable';
-            } else {
-                var fps = 'Disable';
-            }
-
-            if (config.get('utilities_D3D11OND12', true)) {
-                var d3d11ond12 = 'Disable';
-            } else {
-                var d3d11ond12 = 'Enable';
-            }
-            if (config.get('utilities_RPC', true)) {
-                var dc = 'Disable';
-            } else {
-                var dc = 'Enable';
-            }
-            if (config.get('utilities_FPS') == null){
-                config.set('utilities_FPS',true);
-            };
-            if (config.get('utilities_D3D11OND12') == null){
-                config.set('utilities_D3D11OND12',true);
-            };
-            if (config.get('utilities_RPC') == null){
-                config.set('utilities_RPC',true);
-            };
-
-            // !!!!! SHOWS MENU TO USER !!!!!
-            const options = dialog.showMessageBoxSync(initWin, {
-                type: 'question',
-                buttons: [`${fps} Frame Rate Limit Cap`, `${d3d11ond12} D3D11OND12`, `${dc} Discord RPC`],
-                title: 'Settings',
-                message: '',
-                defaultId: 0,
-                cancelId: 3
-            });
-
-            // !!!!! BASICALLY ACTS AS A SWITCH, A VERY INEFFICIENT ONE !!!!!
-            if (options === 0) {
-                if (config.get('utilities_FPS', true)) {
-                    config.set('utilities_FPS', false);
-                } else {
-                    config.set('utilities_FPS', true)
-                }
-                app.relaunch();
-                app.quit();
-            }
-            if (options === 1) {
-                if (config.get('utilities_D3D11OND12', true)) {
-                    config.set('utilities_D3D11OND12', false);
-                } else {
-                    config.set('utilities_D3D11OND12', true);
-                }
-                app.relaunch();
-                app.quit();
-            }
-            if (options === 2){
-                if (config.get('utilities_RPC', true)) {
-                    config.set('utilities_RPC', false);
-                } else {
-                    config.set('utilities_RPC', true);
-                }
-                app.relaunch();
-                app.quit();
-            }
-        }
-    }
-
-
-
     function CheckGame(window) {
         String.prototype.isGame = function() {
             var VENGE_REGEX = /index.html/;
@@ -298,7 +182,11 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
 
     }
 
-    // !!!!! ASKS FOR LINK !!!!!
+    /*
+    ------------------------------------------------------------
+    ----------------Asks for link and Inputs it-----------------
+    ------------------------------------------------------------
+    */
     function LinkBox() {
         function input(msg) {
             var prompting = prompt({
@@ -364,18 +252,26 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
                 }
             }
         } else {
-            input("Play")
-                .then((r) => {
-                    isPaste(r, false);
-                });
+            let choice = question();
+            if (choice === 0){
+                isPaste(paste,false)
+            }
+            else {
+                if (choice === 1){
+                    isPaste(paste,true)
+                }
+            }
         }
     } 
 }
-
-//---------------------------------------------
-//----------------Auto-Updater-----------------
-//---------------------------------------------
-
+/*
+---------------------------------------------
+----------------Auto-Updater-----------------
+---------------------------------------------
+*/
+const { autoUpdater } = require('electron-updater');
+autoUpdater.logger = require('electron-log');
+autoUpdater.logger.transports.file.level = 'info';
 autoUpdater.on('checking-for-update', () => {
     console.log('Checking for updates...');
 });
@@ -387,7 +283,7 @@ autoUpdater.on('update-available', (info) => {
 autoUpdater.on('update-not-available', () => {
     console.log('Version is up-to-date');
 });
-autoUpdater.on('download-pregress', (progress) => {
+autoUpdater.on('download-progress', (progress) => {
     console.log('Download Speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.transferred} + '/' ${progressObj.total}');
 });
 autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
@@ -403,6 +299,8 @@ autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
        if (returnValue.response === 0) autoUpdater.quitAndInstall()
      })
    })
-autoUpdater.on('error', (error) => {})
+autoUpdater.on('error', (error) => {
+    console.log(error)
+})
 
 app.on('ready', init)
