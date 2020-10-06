@@ -140,9 +140,6 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
                   document.exitPointerLock();
 		`);
         })
-        shortcut.register(initWin, '=', () => {
-            createInitWindow('https://social.venge.io', false, 0.9, false)
-        })
         shortcut.register(initWin, 'F10', () => {
             createSettingsWindow();
         })
