@@ -2752,6 +2752,9 @@ Overlay.attributes.add("rightCinema", {
 Overlay.attributes.add("chatEntity", {
     type: "entity"
 }),
+Overlay.attributes.add("chatWrapperEntity", {
+    type: "entity"
+}),
 Overlay.attributes.add("modeEntity", {
     type: "entity"
 }),
@@ -5774,7 +5777,7 @@ NetworkManager.prototype.mode = function(e) {
     this.setModeState(this.currentMode, !0);
     var t = this.app.root.findByName("Result");
     if (t) {
-        var i = this.app.root.findByName("ChatGame");
+        var i = this.app.root.findByName("ChatWrapper");
         i && (i.setLocalPosition(0, 0, 0),
         i.reparent(this.app.root.findByName("ChatGame"))),
         t.destroy()
@@ -10640,7 +10643,7 @@ Result.prototype.showScoreTable = function(t) {
     this.headerEntity.tween(this.headerEntity.element).to({
         width: 1e3
     }, .8, pc.BackOut).start();
-    var s = this.app.root.findByName("ChatGame");
+    var s = this.app.root.findByName("ChatWrapper");
     s && (s.setLocalPosition(0, 0, 0),
     s.reparent(this.app.root.findByName("ChatHolder"))),
     setTimeout(function(t) {
