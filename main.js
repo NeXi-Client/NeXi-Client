@@ -276,9 +276,18 @@ autoUpdater.on('checking-for-update', () => {
     console.log('Checking for updates...');
 });
 autoUpdater.on('update-available', (info) => {
-    console.log('Update available');
-    console.log('Version', info.version);
-    console.log('Release Date', info.releaseDate);
+    const dialogOpts = {
+        type: 'info',
+        buttons: ['Alright!'],
+        title: 'NeXi-Client Update',
+        message: 'New Version of NeXi-Client has been released',
+        detail: 'It will be downloaded in the background and notify you when the download is finished.'
+       }
+  
+       dialog.showMessageBox(dialogOpts).then((returnValue) => {
+         if (returnValue.response === 0)
+         console.log('User saw New Version message')
+       })
 });
 autoUpdater.on('update-not-available', () => {
     console.log('Version is up-to-date');
