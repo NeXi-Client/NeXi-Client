@@ -356,6 +356,16 @@ const OS = require('os');
 var {initWin} = require('./main')
 exports.config = config;
 function fps_boost(){
+    if (config.get('utilities_FPS') == null){
+      config.set('utilities_FPS',true);
+    };
+    if (config.get('utilities_D3D11OND12') == null){
+        config.set('utilities_D3D11OND12',true);
+    };
+    if (config.get('utilities_RPC') == null){
+        config.set('utilities_RPC',true);
+    };
+
     if (config.get('utilities_FPS')) {
         if (OS.cpus().findIndex(cpu => cpu.model.includes("AMD")) != -1) {
             app.commandLine.appendSwitch('enable-zero-copy');
@@ -411,16 +421,7 @@ function createSettingsWindow() {
         } else {
             var dc = 'Enable';
         }
-        if (config.get('utilities_FPS') == null){
-            config.set('utilities_FPS',true);
-        };
-        if (config.get('utilities_D3D11OND12') == null){
-            config.set('utilities_D3D11OND12',true);
-        };
-        if (config.get('utilities_RPC') == null){
-            config.set('utilities_RPC',true);
-        };
-
+      
         // !!!!! SHOWS MENU TO USER !!!!!
         const options = dialog.showMessageBoxSync(initWin, {
             type: 'question',
