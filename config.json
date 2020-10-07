@@ -400,6 +400,10 @@
       "url": "Sierra.json"
     },
     {
+      "name": "Sierra2v2",
+      "url": "Sierra2v2.json"
+    },
+    {
       "name": "Capture",
       "url": "CaptureScript.json"
     },
@@ -414,6 +418,10 @@
     {
       "name": "Xibalba",
       "url": "Xibalba.json"
+    },
+    {
+      "name": "Xibalba2v2",
+      "url": "Xibalba2v2.json"
     },
     {
       "name": "Result-Mobile",
