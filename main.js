@@ -31,14 +31,16 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
     initWin.once('ready-to-show', (event) => {
         initWin.setTitle('NeXi-Client V1.2.9');
         event.preventDefault();
-        initWin.show();
+        setTimeout(() => {
+            initWin.show();
+        }, 800)
     });
     if (url.indexOf('https://') !== -1) {
         initWin.loadURL(url);
     } else {
         initWin.loadFile(url);
     }
-    initWin.removeMenu()
+    initWin.removeMenu();
     CheckGame(initWin);
 
     if (config.get('utilities_RPC') && isMain){
@@ -77,9 +79,8 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
                 if (url.indexOf('index.html#')!== -1){
                     let arr1 = url.split('#');
                     let inviteCode = arr1[arr1.length - 1];
-                    let arr2 = [undefined];
-                    arr2[arr2.length - 1] = `https://venge.io/#${inviteCode}`;
-                    url = arr2;
+                    let newURL = `https://venge.io/${inviteCode}`;
+                    url = newURL;
                     activity = 'Playing Venge.io!';
                 }
                 else {
@@ -105,7 +106,14 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
             let URL = initWin.webContents.getURL();
             initWin.loadURL(URL);
         } else {
-            initWin.loadFile('./index.html');
+            let URL = initWin.webContents.getURL();
+            let path = URL.substring('index.html'.length)
+            if (path.length === 0){
+                initWin.loadURL(`${__dirname}/index.html#Spectate:00000000000000000`);
+            }
+            else {
+                initWin.loadURL(`${__dirname}/index.html`);
+            }
         }
 
     })
@@ -115,7 +123,6 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
         })
     }
     shortcut.register(initWin, 'Alt+F4', () => {
-        initWin.webContents.executeJavaScript(onbeforeunload = null);
         console.log('Quit has been used');
         if (isMain) {
             app.quit();
@@ -216,16 +223,11 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
             let inputUrl = message;
             let arr1 = inputUrl.split('#');
             let inviteCode = arr1[arr1.length - 1];
-            let currentURL = initWin.webContents.getURL();
-            let arr2 = currentURL.split('/');
-            if (isSpectate) {
-                arr2[arr2.length - 1] = `index.html#Spectate:${inviteCode}`;
-            } else {
-                arr2[arr2.length - 1] = `index.html#${inviteCode}`;
+            newUrl = `${__dirname}/index.html#${inviteCode}`;
+            if (isSpectate){
+                newUrl = `${__dirname}/index.html#Spectate${inviteCode}`;
             }
-            let newUrl = arr2.join('/');
-
-            console.log(newUrl)
+            console.log(newUrl);
             initWin.loadURL(newUrl);
         }
 
