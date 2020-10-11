@@ -277,8 +277,8 @@ autoUpdater.on('update-available', (info) => {
         type: 'info',
         buttons: ['Alright!'],
         title: 'NeXi-Client Update',
-        message: 'New Version of NeXi-Client has been released',
-        detail: 'It will be downloaded in the background and notify you when the download is finished.'
+        message: 'New Version of NeXi-Client has been found',
+        detail: "Please don't play any matches until the download is complete"
        }
   
        dialog.showMessageBox(dialogOpts).then((returnValue) => {
@@ -298,7 +298,7 @@ autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
       buttons: ['Restart', 'Later'],
       title: 'Application Update',
       message: process.platform === 'win32' ? releaseNotes : releaseName,
-      detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+      detail: 'A new version has been downloaded. Want to update the client now?'
      }
 
      dialog.showMessageBox(dialogOpts).then((returnValue) => {
