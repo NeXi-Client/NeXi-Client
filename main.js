@@ -43,7 +43,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
     initWin.removeMenu();
     CheckGame(initWin);
 
-    if (config.get('utilities_RPC') && isMain){
+    if (config.get('RPC') && isMain){
         DiscordRPC();
     }
     // !!!!! MINOR CHANGES DONE TO RPC (MORE TO COME (HOPEFULLY)) !!!!!
@@ -70,28 +70,45 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
         });
         function updateDiscord(){
             url = initWin.webContents.getURL();
+            let arr = url.split('#');
+            if (arr.length == 1){
+                url = rpc.user.username;
+            }
+            else {
+                arr = arr[arr.length - 1];
+                let newURL = `https://venge.io/#${arr}`;
+                url = newURL;
+            }
             let activity = 'In Menu';
             if (url === null){
                 url = rpc.user.username;
-                activity = 'Idling';
             }
             if (isMain){
-                if (url.indexOf('index.html#')!== -1){
-                    let arr1 = url.split('#');
-                    let inviteCode = arr1[arr1.length - 1];
-                    let newURL = `https://venge.io/${inviteCode}`;
-                    url = newURL;
-                    activity = 'Playing Venge.io!';
-                }
-                else {
-                    if (url.indexOf('index.html') !== -1){
-                        url = rpc.user.username;
-                    }
-                }
+               if (url.indexOf('index.html#Spectate') !== -1){ 
+                   activity = 'Spectating a Match';
+               }
+               else {
+                   if (url.indexOf('index.html#') !== -1){
+                       a = url.split('#');
+                       let code = a[a.length - 1];
+                       if (code.length > 0){
+                           activity = 'In a Match';
+                       }
+                       else {
+                            activity = 'Joining a Game...';
+                       }
+                   }
+                   else {
+                       if (url.indexOf('index.html') !== -1){
+                           activity = 'In Menu' || 'Idling';
+                       }
+                   }
+               }
             }
 
             rpc.setActivity({
                 largeImageKey: 'nexi-client',
+                largeImageText: 'NeXi-Client',
                 details: `${url}`,
                 state: `${activity}`,
             })
@@ -107,8 +124,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
             initWin.loadURL(URL);
         } else {
             let URL = initWin.webContents.getURL();
-            let path = URL.substring('index.html'.length)
-            if (path.length === 0){
+            if (URL.indexOf('index.html') !== -1){
                 initWin.loadURL(`${__dirname}/index.html#Spectate:00000000000000000`);
             }
             else {
