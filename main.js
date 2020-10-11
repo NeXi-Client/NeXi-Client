@@ -59,6 +59,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
         rpc.on("ready", () => {
             rpc.setActivity({
                 largeImageKey: 'nexi-client',
+                largeImageText: 'NeXi-Client',
                 details: `NeXi-Client`,
                 state: `Started Playing`,
             })
@@ -124,7 +125,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
             initWin.loadURL(URL);
         } else {
             let URL = initWin.webContents.getURL();
-            if (URL.indexOf('index.html') !== -1){
+            if (URL.indexOf('index.html#') === -1){
                 initWin.loadURL(`${__dirname}/index.html#Spectate:00000000000000000`);
             }
             else {
