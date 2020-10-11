@@ -21,6 +21,7 @@ const customInit = () => {
   shopFix();
   customMatchEndMessages();
   inspectWeapon();
+  removeRandomInspect();
   
   console.log('All Scripts have been started!')
 };
@@ -629,8 +630,8 @@ const customNextMatchMessages = () => {
       if (!this.timerEntity || !this.timerEntity.element || !this.timerEntity.element.text)
           return !1;
       var t = Math.max(this.time, 0);
-      t >= 0 && t <= 5 ? (this.timerEntity.element.text = 'Match starting in - [color="#ffc703"]' + t + "[/color]",
-      this.time > -1 && this.entity.sound.play("Count")) : this.timerEntity.element.text = "";
+      t >= 0 && t <= 5 ? (this.timerEntity.element.text = 'Next Match starting in - [color="#ffc703"]' + t + "[/color]",
+      this.time > -1 && this.entity.sound.play("Count")) : this.timerEntity.element.text = 'Next Match starting in - [color="#ffc703"]' + t + "[/color]";
       var e = this.time - 10;
       e = Math.max(e, 0),
       this.time--,
@@ -674,7 +675,7 @@ const fixAds = () => {
   }
 }
 
-//Shop fix?
+//Shop fix
 const shopFix = () => {
     Shop.prototype.onTransactionToken = function(t) {
       if (!t || !0 !== t.success)
@@ -712,7 +713,7 @@ const customMatchEndMessages = () => {
       this.rowEntity.enabled = !1,
       this.resultHolder.enabled = !0,
       this.scoresEntity.enabled = !1,
-      !0 === pc.isSpectator ? this.showMessage("Match is finished") : pc.isVictory ? this.showMessage("Victory") : this.showMessage("Defeat"),
+      !0 === pc.isSpectator ? this.showMessage("Match is finished") : pc.isVictory ? this.showMessage("VICTORY") : this.showMessage("DEFEATED"),
       setTimeout(function(t) {
           t.showScoreTable(pc.stats)
       }, 3e3, this),
@@ -791,121 +792,3 @@ const scoreboardFix = () => {
       this.app.keyboard.wasReleased(pc.KEY_TAB) && this.app.fire("Overlay:PlayerStats", !1)
   }
 }
-
-const {dialog, app} = require('electron');
-const Store = require('electron-store');
-const config = new Store();
-const OS = require('os');
-const { inspect } = require('util');
-var {initWin} = require('./main')
-exports.config = config;
-function fps_boost(){
-    if (config.get('utilities_FPS') == null){
-      config.set('utilities_FPS',true);
-    };
-    if (config.get('utilities_D3D11OND12') == null){
-        config.set('utilities_D3D11OND12',true);
-    };
-    if (config.get('utilities_RPC') == null){
-        config.set('utilities_RPC',true);
-    };
-
-    if (config.get('utilities_FPS')) {
-        if (OS.cpus().findIndex(cpu => cpu.model.includes("AMD")) != -1) {
-            app.commandLine.appendSwitch('enable-zero-copy');
-        }
-        app.commandLine.appendSwitch('disable-frame-rate-limit');
-    }
-    if (config.get('utilities_D3D11OND12')) {
-        app.commandLine.appendSwitch('use-angle', 'd3d11ond12');
-        app.commandLine.appendSwitch('enable-webgl2-compute-context');
-    } else {
-        app.commandLine.appendSwitch('use-angle', 'd3d9');
-    }
-    app.commandLine.appendSwitch('enable-quic');
-    app.commandLine.appendSwitch('ignore-gpu-blacklist');
-    app.commandLine.appendSwitch('disable-gpu-vsync')
-    app.commandLine.appendSwitch('enable-pointer-lock-options');
-    app.commandLine.appendSwitch('disable-accelerated-video-decode', false);
-    app.commandLine.appendSwitch('autoplay-policy', 'no-user-gesture-required')
-    app.commandLine.appendSwitch('enable-quic');
-    app.commandLine.appendSwitch('high-dpi-support', 1);
-}
-
-
-function createSettingsWindow() {
-    const settings = dialog.showMessageBoxSync(initWin, {
-        type: 'question',
-        buttons: ['General'],
-        title: 'Settings',
-        message: '',
-        defaultId: 0,
-        cancelId: 2
-    });
-    if (settings === 0) {
-        openGeneralSettings();
-    }
-
-    function openGeneralSettings() {
-
-        // !!!!! PROCESS INEFFICIENT AS HELL BUT I COULDN'T GIVE A DAMN !!!!! 
-        if (config.get('utilities_FPS', true)) {
-            var fps = 'Enable';
-        } else {
-            var fps = 'Disable';
-        }
-
-        if (config.get('utilities_D3D11OND12', true)) {
-            var d3d11ond12 = 'Disable';
-        } else {
-            var d3d11ond12 = 'Enable';
-        }
-        if (config.get('utilities_RPC', true)) {
-            var dc = 'Disable';
-        } else {
-            var dc = 'Enable';
-        }
-      
-        // !!!!! SHOWS MENU TO USER !!!!!
-        const options = dialog.showMessageBoxSync(initWin, {
-            type: 'question',
-            buttons: [`${fps} Frame Rate Limit Cap`, `${d3d11ond12} D3D11OND12`, `${dc} Discord RPC`],
-            title: 'Settings',
-            message: '',
-            defaultId: 0,
-            cancelId: 3
-        });
-
-        // !!!!! BASICALLY ACTS AS A SWITCH, A VERY INEFFICIENT ONE !!!!!
-        if (options === 0) {
-            if (config.get('utilities_FPS', true)) {
-                config.set('utilities_FPS', false);
-            } else {
-                config.set('utilities_FPS', true)
-            }
-            app.relaunch();
-            app.quit();
-        }
-        if (options === 1) {
-            if (config.get('utilities_D3D11OND12', true)) {
-                config.set('utilities_D3D11OND12', false);
-            } else {
-                config.set('utilities_D3D11OND12', true);
-            }
-            app.relaunch();
-            app.quit();
-        }
-        if (options === 2){
-            if (config.get('utilities_RPC', true)) {
-                config.set('utilities_RPC', false);
-            } else {
-                config.set('utilities_RPC', true);
-            }
-            app.relaunch();
-            app.quit();
-        }
-    }
-}
-
-exports.createSettingsWindow =  createSettingsWindow;
-exports.fps_boost = fps_boost;
