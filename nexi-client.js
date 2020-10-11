@@ -713,7 +713,7 @@ const customMatchEndMessages = () => {
       this.rowEntity.enabled = !1,
       this.resultHolder.enabled = !0,
       this.scoresEntity.enabled = !1,
-      !0 === pc.isSpectator ? this.showMessage("Match is finished") : pc.isVictory ? this.showMessage("VICTORY") : this.showMessage("DEFEATED"),
+      !0 === pc.isSpectator ? this.showMessage("MATCH HAS FINISHED") : pc.isVictory ? this.showMessage("VICTORY") : this.showMessage("DEFEATED"),
       setTimeout(function(t) {
           t.showScoreTable(pc.stats)
       }, 3e3, this),
