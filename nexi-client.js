@@ -356,23 +356,23 @@ const OS = require('os');
 var {initWin} = require('./main')
 exports.config = config;
 function fps_boost(){
-    if (config.get('utilities_FPS') == null){
-      config.set('utilities_FPS',true);
+    if (config.get('FPS') == null){
+      config.set('FPS',true);
     };
-    if (config.get('utilities_D3D11OND12') == null){
-        config.set('utilities_D3D11OND12',true);
+    if (config.get('D3D11OND12') == null){
+        config.set('D3D11OND12',true);
     };
-    if (config.get('utilities_RPC') == null){
-        config.set('utilities_RPC',true);
+    if (config.get('RPC') == null){
+        config.set('RPC',true);
     };
 
-    if (config.get('utilities_FPS')) {
+    if (config.get('FPS')) {
         if (OS.cpus().findIndex(cpu => cpu.model.includes("AMD")) != -1) {
             app.commandLine.appendSwitch('enable-zero-copy');
         }
         app.commandLine.appendSwitch('disable-frame-rate-limit');
     }
-    if (config.get('utilities_D3D11OND12')) {
+    if (config.get('D3D11OND12')) {
         app.commandLine.appendSwitch('use-angle', 'd3d11ond12');
         app.commandLine.appendSwitch('enable-webgl2-compute-context');
     } else {
@@ -405,18 +405,18 @@ function createSettingsWindow() {
     function openGeneralSettings() {
 
         // !!!!! PROCESS INEFFICIENT AS HELL BUT I COULDN'T GIVE A DAMN !!!!! 
-        if (config.get('utilities_FPS', true)) {
+        if (config.get('FPS', true)) {
             var fps = 'Enable';
         } else {
             var fps = 'Disable';
         }
 
-        if (config.get('utilities_D3D11OND12', true)) {
+        if (config.get('D3D11OND12', true)) {
             var d3d11ond12 = 'Disable';
         } else {
             var d3d11ond12 = 'Enable';
         }
-        if (config.get('utilities_RPC', true)) {
+        if (config.get('RPC', true)) {
             var dc = 'Disable';
         } else {
             var dc = 'Enable';
@@ -434,28 +434,28 @@ function createSettingsWindow() {
 
         // !!!!! BASICALLY ACTS AS A SWITCH, A VERY INEFFICIENT ONE !!!!!
         if (options === 0) {
-            if (config.get('utilities_FPS', true)) {
-                config.set('utilities_FPS', false);
+            if (config.get('FPS', true)) {
+                config.set('FPS', false);
             } else {
-                config.set('utilities_FPS', true)
+                config.set('FPS', true)
             }
             app.relaunch();
             app.quit();
         }
         if (options === 1) {
-            if (config.get('utilities_D3D11OND12', true)) {
-                config.set('utilities_D3D11OND12', false);
+            if (config.get('D3D11OND12', true)) {
+                config.set('D3D11OND12', false);
             } else {
-                config.set('utilities_D3D11OND12', true);
+                config.set('D3D11OND12', true);
             }
             app.relaunch();
             app.quit();
         }
         if (options === 2){
-            if (config.get('utilities_RPC', true)) {
-                config.set('utilities_RPC', false);
+            if (config.get('RPC', true)) {
+                config.set('RPC', false);
             } else {
-                config.set('utilities_RPC', true);
+                config.set('RPC', true);
             }
             app.relaunch();
             app.quit();
