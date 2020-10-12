@@ -9332,7 +9332,7 @@
             "mapManager": {
               "enabled": true,
               "attributes": {
-                "defaultMap": "Tundra",
+                "defaultMap": "Sierra",
                 "mapHolder": "61d5c8dc-28d8-4b9e-b0cc-7908646ca0c7",
                 "autoLoad": true
               }
@@ -27617,7 +27617,7 @@
             0,
             0
           ],
-          "opacity": 0.1,
+          "opacity": 1,
           "textureAsset": null,
           "spriteAsset": null,
           "spriteFrame": 0,
@@ -42464,7 +42464,7 @@
             1,
             1
           ],
-          "opacity": 1,
+          "opacity": 0.2,
           "textureAsset": null,
           "spriteAsset": null,
           "spriteFrame": 0,
