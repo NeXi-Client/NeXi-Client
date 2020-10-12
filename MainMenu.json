@@ -12469,9 +12469,9 @@
         0
       ],
       "scale": [
-        1,
-        1,
-        1
+        0.8,
+        0.8,
+        0.8
       ],
       "components": {
         "element": {
@@ -12792,9 +12792,9 @@
         0
       ],
       "scale": [
-        1,
-        1,
-        1
+        0.8,
+        0.8,
+        0.8
       ],
       "components": {
         "element": {
@@ -13115,9 +13115,9 @@
         0
       ],
       "scale": [
-        1,
-        1,
-        1
+        0.8,
+        0.8,
+        0.8
       ],
       "components": {
         "element": {
@@ -33491,7 +33491,7 @@
       "tags": [
         "DesktopOnly"
       ],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "cb6b5875-716b-41cf-b8b3-1366c9c0d388",
       "parent": "580b4e60-7686-4214-8eff-9e0f266e826d",
       "children": [
@@ -33554,7 +33554,7 @@
           "width": 200,
           "height": 40,
           "margin": [
-            760,
+            800,
             -9,
             -960,
             -31
@@ -33602,7 +33602,7 @@
     "ef468769-415c-4485-9a11-f621b205f317": {
       "name": "Poki",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "ef468769-415c-4485-9a11-f621b205f317",
       "parent": "cb6b5875-716b-41cf-b8b3-1366c9c0d388",
       "children": [
@@ -34203,7 +34203,7 @@
     "8da88110-3d96-401b-9b2a-6dac0cbbfb41": {
       "name": "Discord",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "8da88110-3d96-401b-9b2a-6dac0cbbfb41",
       "parent": "cb6b5875-716b-41cf-b8b3-1366c9c0d388",
       "children": [
@@ -43134,7 +43134,7 @@
               "enabled": true,
               "attributes": {
                 "connected": null,
-                "triggerFunction": "window.open(\"https://www.twitch.tv/grimkrunker\");",
+                "triggerFunction": "window.open(\"https://www.twitch.tv/NeXi2k_\");",
                 "pressFunction": "",
                 "fireFunction": "",
                 "fireArgs": "",
@@ -43490,9 +43490,9 @@
         0
       ],
       "scale": [
-        1,
-        1,
-        1
+        1.1,
+        1.1,
+        1.1
       ],
       "components": {
         "element": {
@@ -43533,9 +43533,9 @@
           "width": 150,
           "height": 40,
           "margin": [
-            -365,
+            -500,
             -20,
-            215,
+            59,
             -20
           ],
           "alignment": [
@@ -63498,7 +63498,7 @@
     "b17e0252-d943-4899-be62-deee36312721": {
       "name": "Twitter",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "b17e0252-d943-4899-be62-deee36312721",
       "parent": "cb6b5875-716b-41cf-b8b3-1366c9c0d388",
       "children": [
