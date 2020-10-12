@@ -22,6 +22,7 @@ const customInit = () => {
   customMatchEndMessages();
   inspectWeapon();
   removeRandomInspect();
+  scoreboardFix();
   
   console.log('All Scripts have been started!')
 };
@@ -787,7 +788,7 @@ const scoreboardFix = () => {
       this.abilityBuyButton.findByName("Thumbnail").element.color = pc.colors.gray,
       this.isAbilitySelected = !1,
       this.isOvertime = !1
-      this.app.keyboard.wasReleased(pc.KEY_TAB) && this.app.fire("Overlay:PlayerStats", !1)
+      this.app.fire("Overlay:PlayerStats", !1)
   }
   ,
   Overlay.prototype.onFinish = function() {
@@ -801,7 +802,7 @@ const scoreboardFix = () => {
       this.entity.sound.stop("Overtime-Loop"),
       this.abilities = [],
       this.hideAllGameplay(),
-      this.app.keyboard.wasReleased(pc.KEY_TAB) && this.app.fire("Overlay:PlayerStats", !1)
+      this.app.fire("Overlay:PlayerStats", !1)
   }
 }
 
