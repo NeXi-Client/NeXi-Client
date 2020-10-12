@@ -29,7 +29,7 @@ function createInitWindow(url, isFullScreen, Size, isMain) {
     });
     initWin.setFullScreen(isFullScreen);
     initWin.once('ready-to-show', (event) => {
-        initWin.setTitle('NeXi-Client V1.2.9');
+        initWin.setTitle('NeXi-Client V1.3.0');
         event.preventDefault();
         initWin.show();
     });
