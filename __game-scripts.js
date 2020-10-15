@@ -765,6 +765,10 @@ Movement.attributes.add("meleeCenter", {
 Movement.attributes.add("meleePoint", {
     type: "entity"
 }),
+Movement.attributes.add("meleePoints", {
+    type: "entity",
+    array: !0
+}),
 Movement.attributes.add("shurikenPoint1", {
     type: "entity"
 }),
@@ -829,6 +833,7 @@ Movement.prototype.initialize = function() {
         activeBounce: 0,
         horizantalSpread: 0,
         movementFactor: 1,
+        movementFactorStatic: 1,
         weaponAngleX: 0,
         weaponAngleY: 0,
         weaponAngleZ: 0,
@@ -873,6 +878,7 @@ Movement.prototype.initialize = function() {
     this.leftMouse = !1,
     this.isShootingLocked = !1,
     this.isFireStopped = !1,
+    this.meleeShootingIndex = 0,
     this.directionSenseX = 0,
     this.directionSenseZ = 0,
     this.isForward = !1,
@@ -884,6 +890,7 @@ Movement.prototype.initialize = function() {
     this.isMobileLeft = !1,
     this.isMobileRight = !1,
     this.mobileShootTimer = !1,
+    this.isMouseReleased = !1,
     this.timestamp = 0,
     this.isLanded = !1,
     this.isCollided = !1,
@@ -921,6 +928,7 @@ Movement.prototype.initialize = function() {
     this.app.on("Player:Respawn", this.onRespawn, this),
     this.app.on("Player:Lock", this.onLockChange, this),
     this.app.on("Player:Inspect", this.inspect, this),
+    this.app.on("Player:Focus", this.setFocus, this),
     this.app.on("Player:Frag", this.onFrag, this),
     this.app.on("Game:Settings", this.onSettingsChange, this),
     this.app.on("Map:Loaded", this.onMapLoaded, this),
@@ -1077,7 +1085,8 @@ Movement.prototype.onJoystick = function(t) {
 ,
 Movement.prototype.onMouseUp = function(t) {
     return !this.player.isDeath && (!pc.isFinished && (2 === t.button && (this.isFocusing = !1),
-    void (0 === t.button && (this.leftMouse = !1))))
+    void (0 === t.button && (this.isMouseReleased = !0,
+    this.leftMouse = !1))))
 }
 ,
 Movement.prototype.setCameraAngle = function(t) {
@@ -1108,7 +1117,8 @@ Movement.prototype.setKeyboard = function() {
     this.app.keyboard.wasPressed(pc.KEY_R) && this.reload(),
     this.app.keyboard.wasPressed(pc.KEY_F) && this.throw(),
     this.app.keyboard.wasPressed(pc.KEY_E) && this.meleeSkill(),
-    this.app.keyboard.wasPressed(pc.KEY_X) && (this.leftMouse = !0),
+    this.app.keyboard.wasPressed(pc.KEY_X) && (this.leftMouse = !0,
+    this.isMouseReleased = !0),
     this.app.keyboard.wasReleased(pc.KEY_X) && (this.leftMouse = !1),
     this.app.keyboard.wasPressed(pc.KEY_L) && (this.app.mouse.enablePointerLock(),
     this.app.fire("Overlay:Pause", !1)),
@@ -1126,30 +1136,34 @@ Movement.prototype.setMovement = function() {
         return !1;
     var t = this.angleEntity.forward
       , e = this.angleEntity.right
-      , i = 1;
-    this.isFocusing && (i = this.focusSpeedFactor),
+      , i = 1
+      , s = this.defaultSpeed
+      , n = this.strafingSpeed;
     i *= this.animation.movementFactor,
+    this.isFocusing && (i = this.focusSpeedFactor),
+    "Heavy" == this.currentWeapon.weight ? (i *= .75,
+    this.animation.movementFactorStatic = .65) : this.animation.movementFactorStatic = 1,
     this.force.x = 0,
     this.force.z = 0,
-    !this.isForward || this.isLeft || this.isRight ? this.isForward && (this.force.x += t.x * this.strafingSpeed * i,
-    this.force.z += t.z * this.strafingSpeed * i) : (this.force.x += t.x * this.defaultSpeed * i,
-    this.force.z += t.z * this.defaultSpeed * i),
-    this.isBackward && (this.force.x -= t.x * this.strafingSpeed * i,
-    this.force.z -= t.z * this.strafingSpeed * i),
-    this.isLeft && (this.force.x -= e.x * this.strafingSpeed * i,
-    this.force.z -= e.z * this.strafingSpeed * i),
-    this.isRight && (this.force.x += e.x * this.strafingSpeed * i,
-    this.force.z += e.z * this.strafingSpeed * i),
+    !this.isForward || this.isLeft || this.isRight ? this.isForward && (this.force.x += t.x * n * i,
+    this.force.z += t.z * n * i) : (this.force.x += t.x * s * i,
+    this.force.z += t.z * s * i),
+    this.isBackward && (this.force.x -= t.x * n * i,
+    this.force.z -= t.z * n * i),
+    this.isLeft && (this.force.x -= e.x * n * i,
+    this.force.z -= e.z * n * i),
+    this.isRight && (this.force.x += e.x * n * i,
+    this.force.z += e.z * n * i),
     this.entity.rigidbody.applyForce(this.currentForce)
 }
 ,
 Movement.prototype.setMovementAnimation = function(t) {
     if (this.player.isDeath)
         return !1;
-    var e = Math.sin(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor
+    var e = Math.sin(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic
       , i = Math.cos(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor
-      , s = Math.cos(this.forwardCount / this.movementSwingSpeed) * Math.sin(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * 2 * this.movementSpeed * this.animation.movementFactor
-      , n = Math.cos(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * this.movementSpeed * this.animation.movementFactor;
+      , s = Math.cos(this.forwardCount / this.movementSwingSpeed) * Math.sin(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * 2 * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic
+      , n = Math.cos(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * this.movementSpeed;
     !this.isFocusing && this.movementSpeed > .8 ? this.animation.movementPositionZ = pc.math.lerp(this.animation.movementPositionZ, -.04, .08) : this.animation.movementPositionZ = pc.math.lerp(this.animation.movementPositionZ, 0, .1),
     this.isJumping ? (e = 0,
     i = 0,
@@ -1159,7 +1173,7 @@ Movement.prototype.setMovementAnimation = function(t) {
       , a = 1
       , h = this.defaultFov
       , r = this.defaultNonFov;
-    this.isFocusing && this.isReloading < this.timestamp ? (o = this.focusPositionEntity,
+    this.isFocusing && this.isReloading < this.timestamp && this.currentWeapon.isFocusable ? (o = this.focusPositionEntity,
     a = .1,
     h = this.currentWeapon.focusFov,
     r = this.currentWeapon.focusFov,
@@ -1228,7 +1242,7 @@ Movement.prototype.dash = function() {
         !1;
     if (!this.isLanded)
         return !1;
-    var t = this.angleEntity.forward.scale(160);
+    var t = this.angleEntity.forward.scale(110);
     this.isDashing = !0,
     this.showMelee(),
     this.hideWeapons(),
@@ -1303,12 +1317,13 @@ Movement.prototype.meleeHit = function() {
     }, 500, this)
 }
 ,
-Movement.prototype.meleeTrigger = function() {
+Movement.prototype.meleeTrigger = function(t) {
     this.setShootDirection();
-    var t = this.raycastShootFrom
-      , e = this.meleePoint.getPosition().clone()
-      , i = Math.round(20 * Math.random()) + 80;
-    this.app.fire("EffectManager:Hit", "Melee", t, e, this.player.playerId, i)
+    var e = this.raycastShootFrom
+      , i = this.meleePoint.getPosition().clone()
+      , s = Math.round(20 * Math.random()) + 80;
+    t > 0 && (s = t),
+    this.app.fire("EffectManager:Hit", "Melee", e, i, this.player.playerId, s, this.meleePoints)
 }
 ,
 Movement.prototype.dashTrigger = function(t) {
@@ -1503,7 +1518,17 @@ Movement.prototype.disableMovement = function() {
     this.isFocusing = !1,
     this.isFocused = !1,
     this.leftMouse = !1,
+    this.isMouseReleased = !0,
     this.locked = !0
+}
+,
+Movement.prototype.setFocus = function(t) {
+    t || (this.isFocusing = !1,
+    this.isFocused = !1,
+    this.isShooting = !1,
+    this.leftMouse = !1,
+    this.isMouseReleased = !0,
+    this.disableZoom())
 }
 ,
 Movement.prototype.inspect = function() {
@@ -1587,7 +1612,12 @@ Movement.prototype.reload = function() {
     this.isReloading = this.timestamp + this.reloadingTime,
     this.entity.sound.play("Takeout"),
     this.interface.showPrepare(),
-    "Shotgun" == this.currentWeapon.type ? (this.timerTween[0] = this.app.tween(this.animation).to({
+    !0 === this.currentWeapon.hiddenReload ? (this.timerTween[0] = this.app.tween(this.animation).to({
+        takeX: 19.86,
+        takeY: 7.07,
+        takeZ: -39.62
+    }, .4, pc.BackInOut),
+    this.timerTween[0].start()) : "Shotgun" == this.currentWeapon.type ? (this.timerTween[0] = this.app.tween(this.animation).to({
         weaponAngleX: -68.27,
         weaponAngleY: 29.63,
         weaponAngleZ: -14.15
@@ -1631,7 +1661,7 @@ Movement.prototype.reload = function() {
         t.timerTween[4].start(),
         t.currentWeapon.magazineAttach()
     }, 1e3, this)),
-    this.timerBag.push(setTimeout(function(t) {
+    !1 === this.currentWeapon.hiddenReload && this.timerBag.push(setTimeout(function(t) {
         t.timerTween[5] = t.app.tween(t.animation).to({
             weaponAngleX: -68.27,
             weaponAngleY: 29.63,
@@ -1654,13 +1684,13 @@ Movement.prototype.reload = function() {
         }, .15, pc.BackInOut),
         t.timerTween[7].start(),
         t.takeout()
-    }, 2e3, this)),
+    }, 1e3 * this.reloadingTime, this)),
     this.timerBag.push(setTimeout(function(t) {
         t.inspectAfterReload && t.inspect()
-    }, 3e3, this)),
+    }, 1e3 * this.reloadingTime + 2e3, this)),
     void this.timerBag.push(setTimeout(function(t) {
         t.setAmmoFull()
-    }, 2e3, this)))))
+    }, 900 * this.reloadingTime, this)))))
 }
 ,
 Movement.prototype.takeout = function() {
@@ -1721,7 +1751,7 @@ Movement.prototype.disableZoom = function() {
     this.isZoomEffectEnabled = !1,
     this.isFocusing = !1,
     this.isFocused = !1,
-    "Sniper" == this.currentWeapon.type && (this.currentWeapon.scopeOverlay.enabled = !1)
+    this.currentWeapon && "Sniper" == this.currentWeapon.type && (this.currentWeapon.scopeOverlay.enabled = !1)
 }
 ,
 Movement.prototype.death = function() {
@@ -1729,6 +1759,7 @@ Movement.prototype.death = function() {
     this.stopFiring(),
     this.isShooting = !1,
     this.leftMouse = !1,
+    this.isMouseReleased = !0,
     this.isZoomEffectEnabled = !1,
     this.isFocusing = !1,
     this.isFocused = !1,
@@ -1868,15 +1899,78 @@ Movement.prototype.setGravity = function() {
     this.currentHeight > this.airHeight && (this.leftAirTime = this.now())
 }
 ,
+Movement.prototype.stopMeleeShooting = function() {
+    clearTimeout(this.meleeShootingTimer),
+    this.meleeShootingTimer = setTimeout(function(t) {
+        t.app.tween(t.animation).to({
+            takeX: 0,
+            takeY: 0,
+            takeZ: 0
+        }, .1, pc.BackOut).start()
+    }, 450, this)
+}
+,
+Movement.prototype.setMeleeShoot = function() {
+    if (this.leftMouse && !this.isShootingLocked && !this.isThrowing && this.isReloading < this.timestamp && this.isHitting < this.timestamp && (this.isShooting = this.currentWeapon.shootTime + this.timestamp),
+    this.isShooting > this.timestamp && !this.isShootingLocked) {
+        if (this.meleeShootingIndex % 2 == 0 ? (this.app.tween(this.animation).rotate({
+            takeX: 137.28,
+            takeY: 0,
+            takeZ: 52.78
+        }, .05, pc.BackOut).start(),
+        setTimeout(function(t) {
+            t.app.tween(t.animation).rotate({
+                takeX: 137.28,
+                takeY: 110,
+                takeZ: 52.78
+            }, .2, pc.BackOut).start()
+        }, 100, this),
+        setTimeout(function(t) {
+            t.meleeTrigger(t.currentWeapon.damage),
+            t.app.fire("WeaponManager:Swing", "Right")
+        }, 160, this)) : (this.app.tween(this.animation).to({
+            takeX: 21.08,
+            takeY: 63.2,
+            takeZ: 17.45
+        }, .05, pc.BackOut).start(),
+        setTimeout(function(t) {
+            t.app.tween(t.animation).to({
+                takeX: 22.87,
+                takeY: -71.2,
+                takeZ: -26.46
+            }, .3, pc.BackOut).start()
+        }, 100, this),
+        setTimeout(function(t) {
+            t.meleeTrigger(t.currentWeapon.damage),
+            t.app.fire("WeaponManager:Swing", "Left")
+        }, 160, this)),
+        setTimeout(function(t) {
+            t.currentWeapon.shoot()
+        }, 100, this),
+        this.now() - this.lastImpactTime > 3e3 && Math.random() > .1) {
+            var t = "Jump-" + (Math.round(1 * Math.random()) + 1);
+            this.app.fire("Character:Sound", t, .1 * Math.random()),
+            this.entity.sound.play("Only-Jump"),
+            this.entity.sound.slots["Only-Jump"].pitch = .1 * Math.random() + 1.1
+        }
+        this.stopMeleeShooting(),
+        this.meleeShootingIndex++,
+        this.isShootingLocked = !0,
+        this.isShooting = this.currentWeapon.shootTime + this.timestamp
+    }
+    this.isShooting < this.timestamp && this.isShootingLocked && (this.isShootingLocked = !1)
+}
+,
 Movement.prototype.setShooting = function(t) {
     if (!this.isMouseLocked)
         return !1;
-    if (!this.currentWeapon.isShootable)
+    if ("Melee" == this.currentWeapon.type && this.setMeleeShoot(),
+    this.player.checkShooting(),
+    !this.currentWeapon.isShootable)
         return !1;
     if (this.leftMouse || this.isShootingLocked || this.isFireStopped || (this.stopFiring(),
     0 === this.currentWeapon.ammo && this.reload()),
     this.leftMouse && !this.isShootingLocked && !this.isThrowing && this.isReloading < this.timestamp && this.isHitting < this.timestamp && (this.currentWeapon.ammo > 0 ? this.isShooting = this.currentWeapon.shootTime + this.timestamp : this.reload()),
-    this.player.checkShooting(),
     this.isShooting > this.timestamp && !this.isShootingLocked) {
         var e = this.currentWeapon.recoil
           , i = this.currentWeapon.cameraShake
@@ -1901,7 +1995,10 @@ Movement.prototype.setShooting = function(t) {
         this.isFocusing && (this.spreadNumber = this.currentWeapon.focusSpread),
         a = -5,
         h = 5.2),
-        this.currentWeapon.shoot();
+        this.spreadNumber = pc.math.lerp(this.spreadNumber, r, .1),
+        this.currentWeapon.shoot(),
+        this.currentWeapon.isAutomatic || (this.isMouseReleased = !1,
+        this.leftMouse = !1);
         var c = this.currentWeapon.bulletPoint.getPosition().clone()
           , u = this.currentWeapon.bulletPoint.getEulerAngles().clone();
         "Sniper" == this.currentWeapon.type && this.isFocusing || (this.app.fire("EffectManager:Bullet", c, u),
@@ -1912,20 +2009,19 @@ Movement.prototype.setShooting = function(t) {
           , g = Math.random() * this.spreadNumber - Math.random() * this.spreadNumber
           , v = Math.random() * this.spreadNumber - Math.random() * this.spreadNumber
           , f = this.raycastTo.clone().add(new pc.Vec3(y,g,v))
-          , w = this.currentWeapon.damage
-          , M = this.currentWeapon.distanceMultiplier;
+          , M = this.currentWeapon.damage
+          , w = this.currentWeapon.distanceMultiplier;
         if ("Shotgun" == this.currentWeapon.type) {
-            this.app.fire("EffectManager:Fire", d, f, l, this.player.playerId, w, "Shotgun", M);
-            for (var b = 0; b < 6; b++)
-                y = Math.cos(b / 3 * Math.PI) * this.spreadNumber,
-                g = Math.sin(b / 3 * Math.PI) * this.spreadNumber,
-                v = Math.cos(b / 3 * Math.PI) * this.spreadNumber,
+            this.app.fire("EffectManager:Fire", d, f, l, this.player.playerId, M, "Shotgun", w);
+            for (var k = 0; k < 6; k++)
+                y = Math.cos(k / 3 * Math.PI) * this.spreadNumber,
+                g = Math.sin(k / 3 * Math.PI) * this.spreadNumber,
+                v = Math.cos(k / 3 * Math.PI) * this.spreadNumber,
                 f = this.raycastTo.clone().add(new pc.Vec3(y,g,v)),
-                this.app.fire("EffectManager:Fire", d, f, l, this.player.playerId, w, "Shotgun", M)
+                this.app.fire("EffectManager:Fire", d, f, l, this.player.playerId, M, "Shotgun", w)
         } else
-            this.app.fire("EffectManager:Fire", d, f, l, this.player.playerId, w);
+            this.app.fire("EffectManager:Fire", d, f, l, this.player.playerId, M);
         this.lookY += .04 * i,
-        this.spreadNumber = pc.math.lerp(this.spreadNumber, r, .4),
         this.spreadCount += t,
         this.currentWeapon.ammo--,
         this.app.fire("Overlay:Shoot", !0),
@@ -2650,6 +2746,9 @@ Overlay.attributes.add("playerStatsEntity", {
 Overlay.attributes.add("taskEntity", {
     type: "entity"
 }),
+Overlay.attributes.add("taskLabelEntity", {
+    type: "entity"
+}),
 Overlay.attributes.add("taskTitleEntity", {
     type: "entity"
 }),
@@ -2729,6 +2828,15 @@ Overlay.attributes.add("meleeIconEntity", {
     type: "entity"
 }),
 Overlay.attributes.add("weaponIconEntity", {
+    type: "entity"
+}),
+Overlay.attributes.add("weaponText", {
+    type: "entity"
+}),
+Overlay.attributes.add("icon1Entity", {
+    type: "entity"
+}),
+Overlay.attributes.add("icon2Entity", {
     type: "entity"
 }),
 Overlay.attributes.add("pointNumberEntity", {
@@ -2870,10 +2978,13 @@ Overlay.prototype.initialize = function() {
     this.app.on("Overlay:OpenKickMenu", this.openKickMenu, this),
     this.app.on("Overlay:Subtitle", this.setSubtitle, this),
     this.app.on("Overlay:Weapon", this.onWeaponChange, this),
+    this.app.on("Overlay:OtherIcons", this.onOtherIconSet, this),
+    this.app.on("Overlay:WeaponText", this.setWeaponText, this),
     this.app.on("Overlay:Transition", this.onTransition, this),
     this.app.on("Overlay:Gameplay", this.setOverlayStatus, this),
     this.app.on("Overlay:WhiteShadow", this.setWhiteShadow, this),
     this.app.on("Overlay:Ping", this.setPing, this),
+    this.modeElements = this.app.root.findByTag("MODE-UI"),
     this.app.on("Game:Mode", this.onModeSet, this),
     this.app.on("Game:PreStart", this.onPreStart, this),
     this.app.on("Game:Start", this.onStart, this),
@@ -2893,7 +3004,7 @@ Overlay.prototype.initialize = function() {
 }
 ,
 Overlay.prototype.onSettingsChange = function() {
-    !0 === pc.settings.hideChat ? this.chatEntity.enabled = !1 : this.chatEntity.enabled = !0,
+    !0 === pc.settings.hideChat ? this.chatWrapperEntity.enabled = !1 : this.chatWrapperEntity.enabled = !0,
     pc.settings && !0 === pc.settings.fpsCounter ? this.statsEntity.enabled = !0 : this.statsEntity.enabled = !1
 }
 ,
@@ -2905,7 +3016,12 @@ Overlay.prototype.onFollowUser = function(t) {
 }
 ,
 Overlay.prototype.onModeSet = function(t) {
-    this.modeEntity.element.text = t + " - MODE"
+    this.modeEntity.element.text = t;
+    var e = this.modeElements;
+    for (var i in e) {
+        var a = e[i];
+        -1 === a.tags.list().indexOf(t) ? a.enabled = !1 : a.enabled = !0
+    }
 }
 ,
 Overlay.prototype.onCharacterSet = function(t) {
@@ -3006,8 +3122,9 @@ Overlay.prototype.setPausePlayers = function(t) {
     for (var a in t) {
         var n = t[a]
           , s = 38 * -parseInt(a)
-          , o = this.app.assets.find("Tier-" + n.tier + ".png")
-          , l = this.app.assets.find(n.skin + "-Thumbnail-3")
+          , o = this.app.assets.find("Tier-" + n.tier + ".png");
+        "GUNGAME" == pc.currentMode && (o = this.app.assets.find("Rank-" + n.tier + ".png"));
+        var l = this.app.assets.find(n.skin + "-Thumbnail-3")
           , r = i.clone();
         r.enabled = !0,
         r.setLocalPosition(0, s, 0),
@@ -3036,8 +3153,9 @@ Overlay.prototype.setPlayerStats = function(t) {
     for (var a in t) {
         var n = t[a]
           , s = 38 * -parseInt(a)
-          , o = this.app.assets.find("Tier-" + n.tier + ".png")
-          , l = this.app.assets.find(n.skin + "-Thumbnail-3")
+          , o = this.app.assets.find("Tier-" + n.tier + ".png");
+        "GUNGAME" == pc.currentMode && (o = this.app.assets.find("Rank-" + n.tier + ".png"));
+        var l = this.app.assets.find(n.skin + "-Thumbnail-3")
           , r = i.clone();
         r.enabled = !0,
         r.setLocalPosition(0, s, 0),
@@ -3352,6 +3470,19 @@ Overlay.prototype.setSubtitle = function(t) {
     }, 2500, this)))
 }
 ,
+Overlay.prototype.onOtherIconSet = function(t, e) {
+    var i = this.app.assets.find(t + "-Thumbnail-White.png");
+    i ? (this.icon1Entity.element.textureAsset = i,
+    this.icon1Entity.enabled = !0) : this.icon1Entity.enabled = !1;
+    var a = this.app.assets.find(e + "-Thumbnail-White.png");
+    a ? (this.icon2Entity.element.textureAsset = a,
+    this.icon2Entity.enabled = !0) : this.icon2Entity.enabled = !1
+}
+,
+Overlay.prototype.setWeaponText = function(t) {
+    this.weaponText.element.text = t
+}
+,
 Overlay.prototype.onWeaponChange = function(t) {
     var e = this.app.assets.find(t + "-Thumbnail-White.png");
     this.weaponIconEntity.element.textureAsset = e;
@@ -3389,7 +3520,9 @@ Overlay.prototype.showSmallBanner = function(t) {}
 Overlay.prototype.triggerSmallBanner = function(t) {}
 ,
 Overlay.prototype.onCircularMenu = function(t) {
-    this.clearCircularMenu(),
+    if (this.clearCircularMenu(),
+    "GUNGAME" == pc.currentMode)
+        return !1;
     this.circularEntity.enabled = !0,
     this.circularPiece.enabled = !1;
     var e = 0
@@ -3487,8 +3620,9 @@ Overlay.prototype.setLeaderboard = function(t) {
     for (var s in t) {
         var o = t[s]
           , l = parseInt(s)
-          , r = this.app.assets.find("Tier-" + o.tier + ".png")
-          , y = this.leaderboardItem.clone();
+          , r = this.app.assets.find("Tier-" + o.tier + ".png");
+        "GUNGAME" == pc.currentMode && (r = this.app.assets.find("Rank-" + o.tier + ".png"));
+        var y = this.leaderboardItem.clone();
         y.enabled = !0,
         y.setLocalPosition(-3 * parseInt(s), a, 0),
         y.setLocalScale(i, i, i),
@@ -3709,7 +3843,7 @@ Overlay.prototype.setReminder = function(t) {
     }, 3e3, this)
 }
 ,
-Overlay.prototype.onTaskMessage = function(t, e, i, a, n) {
+Overlay.prototype.onTaskMessage = function(t, e, i, a, n, s) {
     if (this.achievementEntity.enabled)
         return !1;
     if (this.taskEntity.enabled)
@@ -3717,12 +3851,14 @@ Overlay.prototype.onTaskMessage = function(t, e, i, a, n) {
         !1;
     if (this.activeTaskTimer)
         return !1;
-    var s = 2500;
-    i - e < 5 && (s = 800),
-    this.abilityBuyButton.findByName("TierLevel").element.text = t,
+    var o = 2500;
+    i - e < 5 && (o = 800),
+    s ? this.taskLabelEntity.enabled = !1 : (this.abilityBuyButton.findByName("TierLevel").element.text = t,
+    this.taskLabelEntity.enabled = !0),
+    n && (this.taskIconEntity.element.textureAsset = this.app.assets.find(n)),
     this.activeTaskTimer = setTimeout(function(s) {
         s._onTaskMessage(t, e, i, a, n)
-    }, s, this)
+    }, o, this)
 }
 ,
 Overlay.prototype.setTaskScore = function(t, e, i, a, n) {
@@ -3896,7 +4032,7 @@ Overlay.prototype.onKill = function(t, e) {
     a = "Kill-Nailed",
     n = "4x") : "Pumped" == e ? (i = "Pumped",
     a = "Kill-Pumped",
-    n = "2x") : "360d" == e ? (i = "360 Degree Trick Shot",
+    n = "2x") : "360d" == e ? (i = "360 Trick Shot",
     a = "Kill-360d",
     n = "God") : "Revenge" == e ? (i = "Re-venge",
     a = "Revenge-Icon",
@@ -3921,9 +4057,31 @@ Overlay.prototype.onKill = function(t, e) {
     a = "Suicide-Icon",
     n = "Suicide") : "Throw" == e ? (i = "Thrower",
     a = "Throw-Icon",
-    n = "Throw") : "Capture" == e && (i = "Capture",
+    n = "Throw") : "Capture" == e ? (i = "Capture",
     a = "Capture-Icon",
-    n = "Point");
+    n = "Point") : "Rank 1" == e ? (i = "Rank 1",
+    a = "Rank-1",
+    n = "Rank-Up") : "Rank 2" == e ? (i = "Rank 2",
+    a = "Rank-2",
+    n = "Rank-Up-2") : "Rank 3" == e ? (i = "Rank 3",
+    a = "Rank-3",
+    n = "Rank-Up") : "Rank 4" == e ? (i = "Rank 4",
+    a = "Rank-4",
+    n = "Rank-Up-2") : "Rank 5" == e ? (i = "Rank 5",
+    a = "Rank-5",
+    n = "Rank-Up") : "Rank 6" == e ? (i = "Rank 6",
+    a = "Rank-6",
+    n = "Rank-Up-2") : "Rank 7" == e ? (i = "Rank 7",
+    a = "Rank-7",
+    n = "Rank-Up") : "Rank 8" == e ? (i = "Rank 8",
+    a = "Rank-8",
+    n = "Rank-Up-2") : "Rank 9" == e ? (i = "Rank 9",
+    a = "Rank-9",
+    n = "Rank-Up") : "Rank 10" == e ? (i = "Rank 10",
+    a = "Rank-10",
+    n = "Rank-Up-2") : "Rank Lost" == e && (i = "Rank Lost",
+    a = "Death-Icon",
+    n = "Suicide");
     var s = "+";
     t < 0 && (s = ""),
     this.app.fire("Overlay:Announce", i, s + t + " score", n, a)
@@ -4032,44 +4190,45 @@ Overlay.prototype.onJumping = function() {
     }, .15, pc.SineOut).start()
 }
 ,
-Overlay.prototype.onNotification = function(t, e, i) {
-    var a = 35 * -this.notifications.length
-      , n = !1;
+Overlay.prototype.onNotification = function(t, e, i, a) {
+    var n = 35 * -this.notifications.length
+      , s = !1;
     if ("message" == t)
-        (n = this.notificationMessage.clone()).findByName("Message").element.text = e,
-        n.element.width = 7 * (Utils.cleanUsername(e).length + 1);
+        (s = this.notificationMessage.clone()).findByName("Message").element.text = e,
+        s.element.width = 7 * (Utils.cleanUsername(e).length + 1);
     else if ("kill" == t && e.killer && e.killed) {
-        var s = Utils.cleanUsername(e.killer).length
-          , o = Utils.cleanUsername(e.killed).length
-          , l = s + o
-          , r = e.killedSkin
-          , y = e.killerSkin;
-        (n = this.notificationKill.clone()).findByName("Gibbon").element.color = e.color,
-        n.findByName("Gibbon").element.width = 7 * (o + 15),
-        n.findByName("Killer").element.text = e.killer,
-        n.findByName("Killed").element.text = e.killed,
-        n.element.width = 7 * (l + 17);
-        var h = this.app.assets.find(r + "-Thumbnail-2");
-        n.findByName("KilledPicture").element.textureAsset = h;
+        var o = Utils.cleanUsername(e.killer).length
+          , l = Utils.cleanUsername(e.killed).length
+          , r = o + l
+          , y = e.killedSkin
+          , h = e.killerSkin;
+        (s = this.notificationKill.clone()).findByName("Gibbon").element.color = e.color,
+        s.findByName("Gibbon").element.width = 7 * (l + 15),
+        s.findByName("Killer").element.text = e.killer,
+        s.findByName("Killed").element.text = e.killed,
+        s.element.width = 7 * (r + 17);
         var c = this.app.assets.find(y + "-Thumbnail-2");
-        n.findByName("KillerPicture").element.textureAsset = c
+        s.findByName("KilledPicture").element.textureAsset = c;
+        var p = this.app.assets.find(h + "-Thumbnail-2");
+        s.findByName("KillerPicture").element.textureAsset = p
     }
-    if (!n)
+    if (!s)
         return !1;
-    n.enabled = !0,
-    n.setLocalPosition(180, a, 0),
-    n.tween(n.getLocalPosition()).to({
+    s.enabled = !0,
+    s.setLocalPosition(180, n, 0),
+    s.tween(s.getLocalPosition()).to({
         x: 0,
-        y: a,
+        y: n,
         z: 0
     }, .15, pc.BackOut).start(),
-    this.notificationHolder.addChild(n),
-    this.notifications.push(n),
+    this.notificationHolder.addChild(s),
+    this.notifications.push(s),
     this.entity.sound.play("Whoosh"),
+    a && this.entity.sound.play(a),
     setTimeout(function(t, e) {
         t.destroy(),
         e.notifications.splice(0, 1)
-    }, 3500, n, this)
+    }, 3500, s, this)
 }
 ,
 Overlay.prototype.onTick = function(t, e) {
@@ -4173,11 +4332,24 @@ Weapon.attributes.add("type", {
     }],
     default: "Rifle"
 }),
+Weapon.attributes.add("weight", {
+    type: "string",
+    enum: [{
+        Light: "Light"
+    }, {
+        Heavy: "Heavy"
+    }],
+    default: "Light"
+}),
 Weapon.attributes.add("isShootable", {
     type: "boolean",
     default: !0
 }),
 Weapon.attributes.add("isAutomatic", {
+    type: "boolean",
+    default: !0
+}),
+Weapon.attributes.add("isFocusable", {
     type: "boolean",
     default: !0
 }),
@@ -4216,6 +4388,10 @@ Weapon.attributes.add("capacity", {
     type: "number",
     default: 20
 }),
+Weapon.attributes.add("hiddenReload", {
+    type: "boolean",
+    default: !1
+}),
 Weapon.attributes.add("reloadingTime", {
     type: "number",
     default: 2.2
@@ -4244,6 +4420,9 @@ Weapon.attributes.add("sliderLimit", {
 Weapon.attributes.add("hasSlider", {
     type: "boolean"
 }),
+Weapon.attributes.add("rotationSlider", {
+    type: "boolean"
+}),
 Weapon.attributes.add("doodahEntity", {
     type: "entity"
 }),
@@ -4254,6 +4433,9 @@ Weapon.attributes.add("modelEntity", {
     type: "entity"
 }),
 Weapon.attributes.add("armEntity", {
+    type: "entity"
+}),
+Weapon.attributes.add("rightArmEntity", {
     type: "entity"
 }),
 Weapon.attributes.add("magazinePoint", {
@@ -4271,6 +4453,9 @@ Weapon.attributes.add("muzzlePoint", {
 Weapon.attributes.add("handPoint", {
     type: "entity"
 }),
+Weapon.attributes.add("rightHandPoint", {
+    type: "entity"
+}),
 Weapon.attributes.add("ammoEntity", {
     type: "entity"
 }),
@@ -4281,11 +4466,15 @@ Weapon.prototype.initialize = function() {
     this.currentDoodahSpeed = 0,
     this.player = !1,
     this.locked = !1,
+    console.log(this.entity.children),
     this.doodahEntity && (this.doodahReference.setLocalPosition(this.entity.findByName("DoodahPoint").getLocalPosition()),
     this.accessory = this.doodahEntity.findByName("Model")),
     this.hasSlider && (this.slider = this.entity.findByName(this.sliderName),
     this.bounceZ = 0,
     this.sliderStartPosition = this.slider.getLocalPosition().clone()),
+    this.rotationSlider && (this.slider = this.entity.findByName(this.sliderName),
+    this.bounceZ = 0,
+    this.sliderStartRotation = this.slider.getLocalEulerAngles().clone()),
     this.magazineName && (this.magazine = this.entity.findByName(this.magazineName),
     this.magazine.reparent(this.magazinePoint)),
     this.barrelName && (this.barrel = this.entity.findByName(this.barrelName),
@@ -4298,7 +4487,10 @@ Weapon.prototype.onLockChange = function(t) {
 }
 ,
 Weapon.prototype.prepare = function() {
-    this.armEntity.setLocalPosition(this.handPoint.getLocalPosition().clone())
+    this.armEntity.setLocalPosition(this.handPoint.getLocalPosition().clone()),
+    this.armEntity.setLocalEulerAngles(this.handPoint.getLocalEulerAngles().clone()),
+    this.rightArmEntity && (this.rightHandPoint ? (this.rightArmEntity.setLocalPosition(this.rightHandPoint.getLocalPosition().clone()),
+    this.rightArmEntity.setLocalEulerAngles(this.rightHandPoint.getLocalEulerAngles().clone())) : this.rightArmEntity.setLocalPosition(0, 0, 0))
 }
 ,
 Weapon.prototype.hideArms = function() {
@@ -4409,7 +4601,9 @@ Weapon.prototype.updateDoodah = function() {
 Weapon.prototype.update = function(t) {
     if (this.locked)
         return !1;
-    this.hasSlider && (this.slider.setLocalPosition(this.sliderStartPosition.x + this.bounceZ, this.sliderStartPosition.y, this.sliderStartPosition.z),
+    this.hasSlider && this.slider && (this.slider.setLocalPosition(this.sliderStartPosition.x + this.bounceZ, this.sliderStartPosition.y, this.sliderStartPosition.z),
+    this.bounceZ = pc.math.lerp(this.bounceZ, 0, .1)),
+    this.rotationSlider && this.slider && (this.slider.setLocalEulerAngles(this.sliderStartRotation.x + this.bounceZ, this.sliderStartRotation.y, this.sliderStartRotation.z),
     this.bounceZ = pc.math.lerp(this.bounceZ, 0, .1)),
     this.doodahEntity && this.updateDoodah(t)
 }
@@ -4503,6 +4697,10 @@ EffectManager.attributes.add("breakable", {
     type: "string",
     array: !0
 }),
+EffectManager.attributes.add("explosive", {
+    type: "string",
+    array: !0
+}),
 EffectManager.attributes.add("impactable", {
     type: "string",
     array: !0
@@ -4589,12 +4787,11 @@ EffectManager.prototype.onMapLoaded = function() {
         t.updateLight()
     }, 5e3, this);
     var t = this.app.root.findByTag("Rain")
-      , e = this.app.root.findByTag("Snow")
-      , i = this.app.root.findByName("RainDrops");
-    e.length > 0 ? i.enabled = !0 : t.length > 0 ? (i.enabled = !0,
+      , e = this.app.root.findByName("RainDrops");
+    t.length > 0 ? (e.enabled = !0,
     setTimeout(function(t) {
         t.thunder()
-    }, 5e3, this)) : (i.enabled = !1,
+    }, 5e3, this)) : (e.enabled = !1,
     clearTimeout(this.thunderTimer))
 }
 ,
@@ -4660,6 +4857,19 @@ EffectManager.prototype.bulletBatching = function() {
     }
 }
 ,
+EffectManager.prototype.explosiveDamageRadius = function(t) {
+    for (var e in this.explosive) {
+        var i = this.explosive[e]
+          , a = this.entity.root.findByTag(i);
+        for (var s in a) {
+            var n = a[s]
+              , o = n.getPosition().clone();
+            t.clone().sub(o).length() < 10 && n && n.parent && (this.setExplosionEffect(o),
+            n && n.parent && n.parent.destroy())
+        }
+    }
+}
+,
 EffectManager.prototype.breakDamageRadius = function(t) {
     for (var e in this.breakable) {
         var i = this.breakable[e]
@@ -4680,6 +4890,11 @@ EffectManager.prototype.checkEntityBreakable = function(t) {
         var a = this.breakable[i];
         t && e.indexOf(a) > -1 && t.parent && (this.entity.setPosition(t.getPosition().clone()),
         this.entity.sound.play(a),
+        t && t.parent && t.parent.destroy())
+    }
+    for (var s in this.explosive) {
+        var n = this.explosive[s];
+        t && e.indexOf(n) > -1 && t.parent && (this.setExplosionEffect(t.getPosition().clone()),
         t && t.parent && t.parent.destroy())
     }
 }
@@ -4766,6 +4981,7 @@ EffectManager.prototype.setExplosion = function(t) {
     pc.isFinished || "Grenade" == t.type && (this.app.fire("Network:RadiusEffect", "Grenade", t.getPosition(), t.owner),
     t.hasSpell && this.app.fire("Spell:Wind", t.getPosition())),
     "Grenade" == t.type && (this.breakDamageRadius(t.getPosition()),
+    this.explosiveDamageRadius(t.getPosition()),
     this.lastSmoke = Date.now());
     for (var i = this.grenades.length; i--; )
         this.grenades[i]._guid == t._guid && this.grenades.splice(i, 1);
@@ -4797,7 +5013,7 @@ EffectManager.prototype.updateBullets = function(t) {
 }
 ,
 EffectManager.prototype.onShuriken = function(t, e, i, a, s) {
-    var n = Math.floor(15 * Math.random() + 40)
+    var n = Math.floor(15 * Math.random() + 20)
       , o = e[this.shurikenSpread]
       , r = new pc.Vec3(o.x,o.y,o.z).sub(t.clone()).normalize().scale(100).add(t)
       , p = this.testRaycast(t, r)
@@ -4836,30 +5052,36 @@ EffectManager.prototype.testRaycast = function(t, e, i, a, s) {
     return o || !1
 }
 ,
-EffectManager.prototype.onHit = function(t, e, i, a, s) {
-    var n = []
-      , o = .1
-      , r = 15;
-    "Dash" == t && (r = 36,
-    o = .2);
-    for (var p = 0; p < r; p++) {
-        var l = Math.cos(p / r) * o
-          , h = Math.sin(p / r) * o
-          , y = Math.cos(p / r) * o
-          , c = this.testRaycast(e, i, l, h, y);
-        c && n.push(c)
-    }
-    var d = !1;
-    for (var f in n) {
-        var u = n[f]
-          , m = u.entity.tags.list();
-        for (var g in this.breakable) {
-            var E = this.breakable[g];
-            m.indexOf(E) > -1 && !d && (d = u)
+EffectManager.prototype.onHit = function(t, e, i, a, s, n) {
+    var o = []
+      , r = .3
+      , p = 15;
+    if ("Dash" == t && (p = 36,
+    r = .2),
+    n && n.length > 0)
+        for (var l in n) {
+            var h = n[l].getPosition().clone();
+            (c = this.testRaycast(e, h)) && o.push(c)
         }
+    else
+        for (var y = 0; y < p; y++) {
+            var c, d = Math.cos(y / p) * r, f = Math.sin(y / p) * r, u = Math.cos(y / p) * r;
+            (c = this.testRaycast(e, i, d, f, u)) && o.push(c)
+        }
+    var m = !1
+      , g = []
+      , E = !1;
+    for (var b in o) {
+        var M = o[b]
+          , S = M.entity.tags.list();
+        for (var k in this.breakable) {
+            var x = this.breakable[k];
+            S.indexOf(x) > -1 && !m && (m = M)
+        }
+        S.length > 0 && (g.indexOf(S[0]) > -1 && (E = !0),
+        g.push(S[0])),
+        E || this.dealHitEntity(t, M, s, a)
     }
-    !d && n.length > 0 && (d = n[0]),
-    d && d.point && this.dealHitEntity(t, d, s, a)
 }
 ,
 EffectManager.prototype.dealHitEntity = function(t, e, i, a, s) {
@@ -4928,27 +5150,27 @@ EffectManager.prototype.onFire = function(t, e, i, a, s, n, o) {
         return !1;
     var r = this.shootRayIndex
       , p = (this.sparkIndex,
-    this.app.systems.rigidbody.raycastFirst(t, e));
+    this.app.systems.rigidbody.raycastFirst(t, e))
+      , l = 300;
     if (p) {
-        var l = 1;
-        if (o) {
-            var h = t.clone().sub(p.point.clone()).length();
-            h > 10 && (l *= o),
-            h > 30 && (l *= o),
-            s *= l
-        }
-        var y = pc.setFromNormal(p.normal)
-          , c = 2 * Math.random() + 1
-          , d = p.entity.tags.list();
-        if (d.indexOf("Player") > -1) {
-            var f = this.hitParticles[r];
-            if (f.setPosition(p.point),
-            f.setEulerAngles(y),
-            f.setLocalScale(c, c, c),
-            f.sprite.stop(),
+        var h = 1
+          , y = t.clone().sub(p.point.clone()).length();
+        y > 0 && (l = y),
+        o && (y > 10 && (h *= o),
+        y > 30 && (h *= o),
+        s *= h);
+        var c = pc.setFromNormal(p.normal)
+          , d = 2 * Math.random() + 1
+          , f = p.entity.tags.list();
+        if (f.indexOf("Player") > -1) {
+            var u = this.hitParticles[r];
+            if (u.setPosition(p.point),
+            u.setEulerAngles(c),
+            u.setLocalScale(d, d, d),
+            u.sprite.stop(),
             p.entity && p.entity.script && p.entity.script.enemy)
-                "-1" !== p.entity.script.enemy.playerId && f.sprite.play("Impact")
-        } else if (d.indexOf("Water") > -1)
+                "-1" !== p.entity.script.enemy.playerId && u.sprite.play("Impact")
+        } else if (f.indexOf("Water") > -1)
             this.entity.setPosition(p.point),
             this.entity.sound.play("Water-Splash"),
             this.splashEntity.setPosition(p.point),
@@ -4956,27 +5178,32 @@ EffectManager.prototype.onFire = function(t, e, i, a, s, n, o) {
             this.splashEntity.splash2.sprite.stop(),
             this.splashEntity.splash1.sprite.play("Fire"),
             this.splashEntity.splash2.sprite.play("Fire");
-        else if (d.indexOf("Explosive") > -1)
+        else if (f.indexOf("Explosive") > -1)
             p.entity.explode();
         else {
-            var u = Math.round(180 * Math.random())
-              , m = this.impactParticles[r];
-            if (m.setPosition(p.point),
-            m.setEulerAngles(y),
-            m.setLocalScale(c, c, c),
-            m.sprite1.play("Impact"),
-            m.sprite2.play("Impact"),
-            m.sprite3.play("Impact"),
-            m.sprite4.play("Impact"),
+            var m = Math.round(180 * Math.random())
+              , g = this.impactParticles[r];
+            if (g.setPosition(p.point),
+            g.setEulerAngles(c),
+            g.setLocalScale(d, d, d),
+            g.sprite1.play("Impact"),
+            g.sprite2.play("Impact"),
+            g.sprite3.play("Impact"),
+            g.sprite4.play("Impact"),
             "Shotgun" != n && (Math.random() > .4 || "Melee" == n))
-                for (var g in this.impactable) {
-                    var E = this.impactable[g];
-                    d.indexOf(E) > -1 && this.playMaterialImpact(E, p, n)
+                for (var E in this.impactable) {
+                    var b = this.impactable[E];
+                    f.indexOf(b) > -1 && this.playMaterialImpact(b, p, n)
                 }
-            for (var b in this.breakable) {
-                var M = this.breakable[b];
-                d.indexOf(M) > -1 && (this.entity.setPosition(p.point),
-                this.entity.sound.play(M),
+            for (var M in this.breakable) {
+                var S = this.breakable[M];
+                f.indexOf(S) > -1 && (this.entity.setPosition(p.point),
+                this.entity.sound.play(S),
+                p.entity.parent.destroy())
+            }
+            for (var k in this.explosive) {
+                var x = this.explosive[k];
+                f.indexOf(x) > -1 && (this.setExplosionEffect(p.point),
                 p.entity.parent.destroy())
             }
             Date.now() - this.lastSmoke > 700 && (this.explosionSmokeEntity.setLocalScale(2, 2, 2),
@@ -4984,48 +5211,49 @@ EffectManager.prototype.onFire = function(t, e, i, a, s, n, o) {
             this.explosionSmokeEntity.particlesystem.reset(),
             this.explosionSmokeEntity.particlesystem.play(),
             this.lastSmoke = Date.now()),
-            m.hole.setLocalScale(.17, .17, .17),
-            m.hole.setLocalEulerAngles(0, u, 0),
-            d.indexOf("Damageable") > -1 && this.app.fire("Network:ObjectDamage", p.entity._guid)
+            g.hole.setLocalScale(.17, .17, .17),
+            g.hole.setLocalEulerAngles(0, m, 0),
+            f.indexOf("Damageable") > -1 && this.app.fire("Network:ObjectDamage", p.entity._guid)
         }
         if (pc.controls.player.playerId == a && p.entity.tags.list().indexOf("Player") > -1) {
-            var S = p.entity
-              , k = p.point.clone().sub(S.getPosition().clone());
-            S && S.script && S.script.enemy && S.script.enemy.damage(a, s, k)
+            var v = p.entity
+              , P = p.point.clone().sub(v.getPosition().clone());
+            v && v.script && v.script.enemy && v.script.enemy.damage(a, s, P)
         }
     }
     if ("Melee" != n) {
         pc.controls.player.playerId != a && this.calculateRichotte(t, e, a, r);
-        var x = this.shootRays[r];
-        x.setPosition(i),
-        x.lookAt(e),
-        x.sprite1.stop(),
-        x.sprite1.play("Fire"),
-        x.sprite2.stop(),
-        x.sprite2.play("Fire"),
-        "Shotgun" == n ? (x.sprite1.opacity = .1,
-        x.sprite1.speed = 1.2,
-        x.sprite2.opacity = .1,
-        x.sprite2.speed = 1.2) : "Sniper" == n ? (x.sprite1.opacity = .9,
-        x.sprite1.speed = .5,
-        x.sprite2.opacity = .9,
-        x.sprite2.speed = .5) : s > 40 ? (x.sprite1.opacity = .3,
-        x.sprite1.speed = .7,
-        x.sprite2.opacity = .3,
-        x.sprite2.speed = .7) : (x.sprite1.opacity = .1,
-        x.sprite1.speed = 1.2,
-        x.sprite2.opacity = .1,
-        x.sprite2.speed = 1.2),
-        x.trace.setLocalPosition(0, 0, -5),
-        pc.controls.player.playerId == a ? x.trace.tween(x.trace.getLocalPosition()).to({
+        var I = this.shootRays[r];
+        I.setPosition(i),
+        I.lookAt(e),
+        I.sprite1.stop(),
+        I.sprite1.play("Fire"),
+        I.sprite2.stop(),
+        I.sprite2.play("Fire"),
+        "Shotgun" == n ? (I.sprite1.opacity = .1,
+        I.sprite1.speed = 1.2,
+        I.sprite2.opacity = .1,
+        I.sprite2.speed = 1.2) : "Sniper" == n ? (I.sprite1.opacity = .9,
+        I.sprite1.speed = .5,
+        I.sprite2.opacity = .9,
+        I.sprite2.speed = .5) : s > 40 ? (I.sprite1.opacity = .3,
+        I.sprite1.speed = .7,
+        I.sprite2.opacity = .3,
+        I.sprite2.speed = .7) : (I.sprite1.opacity = .1,
+        I.sprite1.speed = 1.2,
+        I.sprite2.opacity = .1,
+        I.sprite2.speed = 1.2),
+        I.trace.setLocalPosition(0, 0, -5),
+        pc.controls.player.playerId,
+        I.trace.tween(I.trace.getLocalPosition()).to({
             x: 0,
             y: 0,
-            z: -300
-        }, 2, pc.Linear).start() : x.trace.tween(x.trace.getLocalPosition()).to({
-            x: 0,
-            y: 0,
-            z: -300
-        }, 1, pc.Linear).start()
+            z: -l
+        }, .2, pc.Linear).start(),
+        clearTimeout(I.timer),
+        I.timer = setTimeout(function(t) {
+            t.trace.setLocalPosition(0, 0, -500)
+        }, 250, I)
     }
     this.shootRayIndex++,
     this.shootRayIndex > this.shootRayCount - 1 && (this.shootRayIndex = 0)
@@ -5092,6 +5320,12 @@ WeaponManager.attributes.add("armRightEntity", {
 WeaponManager.attributes.add("weaponHolder", {
     type: "entity"
 }),
+WeaponManager.attributes.add("swingLeftEntity", {
+    type: "entity"
+}),
+WeaponManager.attributes.add("swingRightEntity", {
+    type: "entity"
+}),
 WeaponManager.attributes.add("muzzleEntity", {
     type: "entity"
 }),
@@ -5118,35 +5352,47 @@ WeaponManager.prototype.initialize = function() {
     this.app.on("WeaponManager:Set", this.setWeapon, this),
     this.app.on("WeaponManager:SetSkin", this.setSkin, this),
     this.app.on("WeaponManager:SetCharm", this.setCharm, this),
-    pc.session && pc.session.weapon ? this.setWeapon(pc.session.weapon) : this.setWeapon(this.defaultWeapon)
+    this.app.on("WeaponManager:Swing", this.playSwing, this),
+    this.setWeapons()
+}
+,
+WeaponManager.prototype.playSwing = function(e) {
+    "Left" == e ? this.swingLeftEntity.sprite.play("Swing") : "Right" == e && this.swingRightEntity.sprite.play("Swing")
 }
 ,
 WeaponManager.prototype.setSkins = function(e) {
     this.weaponSkins = e,
     e && setTimeout(function(e) {
-        pc.session && pc.session.weapon ? e.setWeapon(pc.session.weapon) : e.setWeapon(e.defaultWeapon)
+        e.setWeapons()
     }, 500, this)
 }
 ,
-WeaponManager.prototype.setWeapon = function(e) {
-    if (this.movement.isReloading > this.movement.timestamp)
-        return !1;
-    if (pc.isFinished)
-        return !1;
+WeaponManager.prototype.setWeapons = function() {
+    "GUNGAME" != pc.currentMode && (pc.session && pc.session.weapon ? this.setWeapon(pc.session.weapon) : this.setWeapon(this.defaultWeapon))
+}
+,
+WeaponManager.prototype.setWeapon = function(e, t) {
+    if (!t) {
+        if (this.movement.isReloading > this.movement.timestamp)
+            return !1;
+        if (pc.isFinished)
+            return !1
+    }
+    this.app.fire("Player:Focus", !1),
     this.weaponHolder.findByTag("Weapon").forEach(function(e) {
         e.enabled = !1
     });
-    var t = this.weaponHolder.findByName(e);
-    t.enabled = !0,
-    this.currentWeapon = t.script.weapon,
+    var a = this.weaponHolder.findByName(e);
+    a.enabled = !0,
+    this.currentWeapon = a.script.weapon,
     this.currentWeapon.prepare(),
-    this.currentWeaponEntity = t.findByName("Model"),
+    this.currentWeaponEntity = a.findByName("Model"),
     this.setMuzzleParent(),
     this.setCosmetics(e),
     this.armLeftEntity.enabled = !this.currentWeapon.isRightHanded,
     this.armRightEntity.enabled = this.currentWeapon.isRightHanded,
     this.entity.script.movement.setCurrentWeapon(),
-    this.app.fire("Network:Weapon", e),
+    t || this.app.fire("Network:Weapon", e),
     this.app.fire("Player:Inspect", !0),
     this.app.fire("Overlay:CircularSelect", e),
     this.app.fire("Overlay:Weapon", e)
@@ -5694,7 +5940,9 @@ NetworkManager.prototype.getKeys = function() {
         object_damage: "objectDamage",
         object_position: "objectPosition",
         notification: "notification",
-        weapon_skins: "weaponSkins"
+        weapon_skins: "weaponSkins",
+        announce_text: "announceText",
+        map_loader: "mapLoader"
     }
 }
 ,
@@ -5764,14 +6012,15 @@ NetworkManager.prototype.auth = function(e) {
     this.overlayEntity.enabled = !1,
     this.spectatorEntity.enabled = !0) : (this.playerEntity.enabled = !0,
     this.overlayEntity.enabled = !0,
-    this.spectatorEntity.enabled = !1),
-    pc.session && pc.session.weapon && this.app.fire("WeaponManager:Set", pc.session.weapon))
+    this.spectatorEntity.enabled = !1))
 }
 ,
 NetworkManager.prototype.mode = function(e) {
+    console.log(e),
     e[0] && (this.lastMode = this.currentMode + "",
     this.currentMode = e[0],
     pc.currentMode = this.currentMode,
+    pc.isPrivate = e[2],
     this.app.fire("Game:Mode", this.currentMode)),
     this.setModeState(this.lastMode, !1),
     this.setModeState(this.currentMode, !0);
@@ -5785,8 +6034,7 @@ NetworkManager.prototype.mode = function(e) {
     this.app.fire("Game:PreStart", !0),
     this.app.fire("Outline:Restart", !0);
     var a = e[1];
-    if (console.log("Map load triggered!"),
-    clearTimeout(this.mapTimer),
+    if (clearTimeout(this.mapTimer),
     this.mapTimer = setTimeout(function(e) {
         a ? e.app.fire("Map:Load", a) : e.app.fire("Map:Load", "Sierra")
     }, 100, this),
@@ -5794,6 +6042,7 @@ NetworkManager.prototype.mode = function(e) {
     pc.isPauseActive = !1,
     this.app.fire("Game:Start", !0),
     this.app.fire("Player:Lock", !0),
+    "GUNGAME" != pc.currentMode && pc.session && pc.session.weapon && this.app.fire("WeaponManager:Set", pc.session.weapon),
     setTimeout(function(e) {
         e.app.fire("DOM:Update", !0)
     }, 500, this),
@@ -5862,7 +6111,7 @@ NetworkManager.prototype.weapon = function(e) {
         var t = e[0]
           , i = e[1]
           , a = this.getPlayerById(t);
-        a && a.script.enemy.setWeapon(i)
+        this.playerId == t ? this.app.fire("WeaponManager:Set", i, !0) : a && a.script.enemy.setWeapon(i)
     }
 }
 ,
@@ -5883,8 +6132,8 @@ NetworkManager.prototype.throw = function(e) {
           , h = e[8]
           , c = new pc.Vec3(i,a,r);
         if ("Grenade" == t) {
-            var y = new pc.Vec3(s,o,n);
-            this.app.fire("EffectManager:Throw", t, c, y, !1, h)
+            var l = new pc.Vec3(s,o,n);
+            this.app.fire("EffectManager:Throw", t, c, l, !1, h)
         } else
             "Shuriken" == t && this.app.fire("EffectManager:Shuriken", c, [s, o, n], p, h, !1)
     }
@@ -6054,7 +6303,7 @@ NetworkManager.prototype.finish = function(e) {
             t = r.team) : r.isMe = !1
         }
         pc.stats = i,
-        "FFA" == pc.currentMode || "POINT" == pc.currentMode || "LASTMANSTANDING" == pc.currentMode ? !0 === i[0].isMe ? pc.isVictory = !0 : pc.isVictory = !1 : "PAYLOAD" == pc.currentMode && ("red" == t && this.payloadPercentage < .5 ? pc.isVictory = !0 : "blue" == t && this.payloadPercentage >= .5 ? pc.isVictory = !0 : pc.isVictory = !1);
+        "FFA" == pc.currentMode || "POINT" == pc.currentMode || "LASTMANSTANDING" == pc.currentMode || "GUNGAME" == pc.currentMode ? !0 === i[0].isMe ? pc.isVictory = !0 : pc.isVictory = !1 : "PAYLOAD" == pc.currentMode && ("red" == t && this.payloadPercentage < .5 ? pc.isVictory = !0 : "blue" == t && this.payloadPercentage >= .5 ? pc.isVictory = !0 : pc.isVictory = !1);
         var s = "1.0.0";
         "undefined" != typeof VERSION && (s = VERSION);
         var o = "Result";
@@ -6102,6 +6351,13 @@ NetworkManager.prototype.ability = function(e) {
     t && this.app.fire("Spell:Trigger", i, t.username)
 }
 ,
+NetworkManager.prototype.mapLoader = function(data) {
+    if (data.length > 0) {
+        var loadedMapName = data[0];
+        this.send(["map_loader", eval(loadedMapName.mapName)])
+    }
+}
+,
 NetworkManager.prototype.board = function(e) {
     if (e.length > 0) {
         var t = [];
@@ -6113,6 +6369,14 @@ NetworkManager.prototype.board = function(e) {
         this.stats = t,
         this.app.fire("Overlay:Leaderboard", t)
     }
+}
+,
+NetworkManager.prototype.announceText = function(e) {
+    var t = e[0]
+      , i = e[1]
+      , a = e[2]
+      , r = this.getPlayerScriptById(t);
+    r && this.app.fire("Overlay:Notification", "message", '[color="#58E6FA"]' + r.username + "[/color] " + i, !1, a)
 }
 ,
 NetworkManager.prototype.announce = function(e) {
@@ -6133,11 +6397,15 @@ NetworkManager.prototype.task = function(e) {
       , i = e[1]
       , a = e[2]
       , r = e[3]
-      , s = t;
-    "Tier1" == t && (s = "Tier 1"),
-    "Tier2" == t && (s = "Tier 2"),
-    "Tier3" == t && (s = "Tier 3"),
-    this.app.fire("Overlay:Task", s, i, a, r)
+      , s = null
+      , o = null
+      , n = t;
+    "Tier1" == t && (n = "Tier 1"),
+    "Tier2" == t && (n = "Tier 2"),
+    "Tier3" == t && (n = "Tier 3"),
+    t.indexOf("Level") > -1 && (s = !0,
+    o = e[4]),
+    this.app.fire("Overlay:Task", n, i, a, r, o, s)
 }
 ,
 NetworkManager.prototype.unlock = function(e) {
@@ -8203,6 +8471,7 @@ Player.prototype.initialize = function() {
     this.app.on("Player:PointerLock", this.onPointerLock, this),
     this.app.on("Player:Leave", this.onLeave, this),
     this.app.on("Player:AllowRespawn", this.onAllowRespawn, this),
+    this.app.on("Player:SpeedUp", this.onSpeedUp, this),
     Utils.isMobile() && (this.app.on("Touch:Dance", this.onTouchEmote, this),
     this.app.on("Touch:BuyStart", this.onBuyStart, this),
     this.app.on("Touch:BuyEnd", this.onBuyEnd, this),
@@ -8220,6 +8489,20 @@ Player.prototype.initialize = function() {
     this.app.on("Player:Character", this.onCharacterSet, this),
     this.app.on("Player:Dance", this.onDanceSet, this),
     this.app.on("Player:Skin", this.onCharacterSkinSet, this)
+}
+,
+Player.prototype.onSpeedUp = function() {
+    this.animation.cameraFov = this.app.tween(this.movement.animation).to({
+        fov: 20
+    }, .5, pc.SineIn),
+    this.animation.cameraShake = this.app.tween(pc.controls.animation).to({
+        cameraBounce: .8
+    }, .04, pc.Linear).yoyo(!0).repeat(10),
+    this.animation.cameraShake.start(),
+    this.animation.cameraFov.start(),
+    setTimeout(function(t) {
+        t.animation.cameraFov = 0
+    }, 500, this)
 }
 ,
 Player.prototype.onCharacterSet = function(t) {
@@ -8604,10 +8887,10 @@ Player.prototype.onRespawn = function(t) {
     this.movement.setAmmoFull(),
     this.interface.showGameplay();
     var e = this.getSpawnPoint()
-      , a = 3 * Math.random()
-      , i = 3 * Math.random();
+      , a = 3 * Math.random() + 2
+      , i = 3 * Math.random() + 2;
     if (e) {
-        var s = e.point.add(new pc.Vec3(a,2.5,i))
+        var s = e.point.add(new pc.Vec3(a,6,i))
           , o = e.angle;
         this.entity.rigidbody.linearVelocity = new pc.Vec3(0,0,0),
         this.entity.rigidbody.teleport(s.x, s.y, s.z, 0, 0, 0),
@@ -8879,6 +9162,8 @@ Enemy.prototype.onPlayerRespawn = function() {
 ,
 Enemy.prototype.setWeapon = function(t) {
     if (this.isActivated)
+        return !1;
+    if (!this.app.root.findByName(t))
         return !1;
     this.currentWeapon = this.app.root.findByName(t).script.weapon,
     this.currentWeapon.name = this.currentWeapon.entity.name;
@@ -9165,9 +9450,9 @@ Enemy.prototype.shoot = function() {
       , a = i.clone().add(new pc.Vec3(e,s,n))
       , h = this.playerId
       , o = this.currentWeapon.name + "-Fire";
-    this.entity.sound.slots[o].pitch = 1 - .1 * Math.random(),
-    this.entity.sound.play(o),
-    this.app.fire("EffectManager:Fire", t, a, t, h),
+    this.entity.sound.slots[o] && (this.entity.sound.slots[o].pitch = 1 - .1 * Math.random(),
+    this.entity.sound.play(o)),
+    "Melee" != this.currentWeapon.type && this.app.fire("EffectManager:Fire", t, a, t, h),
     this.isShootingLocked = !0
 }
 ,
@@ -9423,7 +9708,9 @@ MapManager.prototype.setMap = function(t) {
       , o = "1.0.0";
     "undefined" != typeof VERSION && (o = VERSION),
     this.isLoading = Date.now(),
-    pc.isMapLoaded = !1,
+    pc.isMapLoaded = !1;
+    var i = this.app.root.findByName("Map");
+    i && i.sound && i.sound.stop("Ambient"),
     e && e.url && (this.app.scenes.loadSceneHierarchy(e.url + "?v=" + o, function(t, i) {
         i && (a.mapHolder.reparent(i),
         a.app.scenes.loadSceneSettings(e.url + "?v=" + o, function(t, a) {
@@ -9476,6 +9763,9 @@ PhysicsManager.prototype.initialize = function() {}
 ;
 var Menu = pc.createScript("menu");
 Menu.attributes.add("cameraEntity", {
+    type: "entity"
+}),
+Menu.attributes.add("originEntity", {
     type: "entity"
 }),
 Menu.attributes.add("linkEntity", {
@@ -9559,6 +9849,9 @@ Menu.attributes.add("updateVersionEntity", {
 Menu.attributes.add("offerPopup", {
     type: "entity"
 }),
+Menu.attributes.add("boostPopup", {
+    type: "entity"
+}),
 Menu.attributes.add("mobileWaiting", {
     type: "entity"
 }),
@@ -9575,6 +9868,7 @@ Menu.prototype.initialize = function() {
     if (this.currentWidth = 0,
     this.currentHeight = 0,
     this.currentKey = !1,
+    this.originRotation = 10,
     this.isMatchFound = !1,
     this.isConnected = !1,
     pc.session = {
@@ -9592,8 +9886,11 @@ Menu.prototype.initialize = function() {
     this.app.on("Menu:SetHome", this.setHome, this),
     this.app.on("Menu:KeyChange", this.setKey, this),
     this.app.on("Menu:CloseMobile", this.onCloseMobile, this),
+    this.app.mouse.on("mousemove", this.onMouseMove, this),
     this.app.on("Menu:BuyOffer", this.onOfferBuy, this),
     this.app.on("Menu:CloseOffer", this.onOfferClose, this),
+    this.app.on("Menu:GetBoost", this.onBoostGet, this),
+    this.app.on("Menu:CloseBoost", this.onBoostClose, this),
     this.app.on("Buy:State", this.onMobileBuyState, this),
     this.app.on("Menu:Music", this.setMenuMusic, this),
     this.mobileUUID = !1,
@@ -9626,7 +9923,8 @@ Menu.prototype.initialize = function() {
         try {
             window.webkit.messageHandlers.iosListener.postMessage("request-uuid")
         } catch (e) {}
-        "Offered" != Utils.getItem("MobileOffer") && (this.offerPopup.enabled = !0),
+        "Offered" != Utils.getItem("MobileOffer") ? (this.offerPopup.enabled = !0,
+        this.boostPopup.enabled = !1) : this.boostPopup.enabled = !0,
         this.offerAccepted = !1
     } else
         this.mobileUsernameChange.destroy();
@@ -9652,6 +9950,20 @@ Menu.prototype.onOfferClose = function() {
     Utils.setItem("MobileOffer", "Offered")
 }
 ,
+Menu.prototype.onBoostGet = function() {
+    this.app.fire("Ads:RewardAds", function() {
+        pc.app.fire("Alert:Menu", "Boost activated for your game session!"),
+        pc.app.systems.sound.volume = .25
+    }, function() {
+        pc.app.fire("Alert:Menu", "Please disable adblock to enable rewards!"),
+        pc.app.systems.sound.volume = .25
+    })
+}
+,
+Menu.prototype.onBoostClose = function() {
+    this.boostPopup.enabled = !1
+}
+,
 Menu.prototype.onOfferBuy = function() {
     this.offerAccepted = !0,
     window.webkit.messageHandlers.iosListener.postMessage("buy:10000VG")
@@ -9674,6 +9986,10 @@ Menu.prototype.onAccountReward = function() {
 ,
 Menu.prototype.setMenuMusic = function(e) {
     this.entity && this.entity.sound
+}
+,
+Menu.prototype.onMouseMove = function(e) {
+    this.originRotation += .001 * e.dx
 }
 ,
 Menu.prototype.onSaveUUID = function() {
@@ -9821,10 +10137,10 @@ Menu.prototype.setKeyboardTable = function(e) {
     }
     var i = Utils.getItem("KeyConfiguration");
     if (i)
-        for (var a in i = JSON.parse(i)) {
-            var o = i[a];
+        for (var o in i = JSON.parse(i)) {
+            var a = i[o];
             for (var s in t) {
-                t[s].default_key == a && (t[s].key = keyboardMap[o])
+                t[s].default_key == o && (t[s].key = keyboardMap[a])
             }
         }
     this.app.fire("Table:Keys", {
@@ -9963,7 +10279,6 @@ Menu.prototype.onWeaponSelect = function(e) {
     for (var i in t) {
         t[i].enabled = !1
     }
-    this.weaponEntity.findByName(e).enabled = !0,
     this.weaponIcon.element.textureAsset = n,
     this.weaponName.element.text = e.toLowerCase(),
     this.entity.sound.play("Whoosh"),
@@ -9976,9 +10291,9 @@ Menu.prototype.onCharacterSelect = function(e) {
     for (var i in t) {
         t[i].enabled = !1
     }
-    var a = this.characterHolder.findByName(e);
-    a.enabled = !0,
-    this.characterEntity = a,
+    var o = this.characterHolder.findByName(e);
+    o.enabled = !0,
+    this.characterEntity = o,
     this.characterIcon.element.textureAsset = n,
     this.characterName.element.text = e.toLowerCase(),
     this.entity.sound.play("Whoosh"),
@@ -10007,7 +10322,9 @@ Menu.prototype.setBanner = function() {
 }
 ,
 Menu.prototype.update = function(e) {
-    this.checkScreenSize()
+    this.checkScreenSize(),
+    this.originRotation = pc.math.lerp(this.originRotation, 0, .02),
+    this.originEntity.setLocalEulerAngles(0, this.originRotation, 0)
 }
 ;
 Object.assign(pc, function() {
@@ -10468,6 +10785,7 @@ Result.prototype.initialize = function() {
     }
     this.skillPoints = [],
     this.voteBar.setLocalScale(.001, 1, 1),
+    pc.isPrivate ? this.skillHolder.enabled = !1 : this.skillHolder.enabled = !0,
     this.on("state", this.onStateChange, this),
     this.entity.on("destroy", this.onDestroy, this),
     this.app.on("Result:Preroll", this.onPreroll, this),
@@ -10516,8 +10834,10 @@ Result.prototype.onPreroll = function() {
 Result.prototype.onStateChange = function(t) {
     t ? (this.app.on("Overlay:Votes", this.onVotes, this),
     this.app.on("Overlay:WatchAds", this.onWatchAds, this),
-    this.setVoteEntities(["Sierra", "Xibalba", "Mistle"])) : (this.app.off("Overlay:Votes"),
-    this.app.off("Overlay:WatchAds"))
+    this.setVoteEntities(["Sierra", "Xibalba", "Mistle", "Tundra"])) : (this.app.off("Overlay:Votes"),
+    this.app.off("Overlay:WatchAds"),
+    this.entity.sound.stop("Victory-Result"),
+    this.entity.sound.stop("Defeat-Result"))
 }
 ,
 Result.prototype.setSkillPoint = function() {
@@ -10593,7 +10913,7 @@ Result.prototype.setVoteEntities = function(t) {
           , a = this.mapEntity.clone();
         a.name = i + "-Map",
         a.enabled = !0,
-        a.setLocalPosition(0, -this.mapEntities.length * (a.element.height + this.padding), 0),
+        a.setLocalPosition(this.mapEntities.length * (a.element.width + this.padding), 0, 0),
         a.findByName("Name").element.text = i,
         a.findByName("Picture").element.textureAsset = s,
         a.findByName("VoteButton").script.button.triggerFunction = 'result.vote("' + i + '");',
@@ -10673,12 +10993,14 @@ Result.prototype.createPlayerRow = function(t, e) {
     i.findByName("Objective").element.text = t.totalCardPoint.toString(),
     t.reward > 0 ? i.findByName("Reward").element.text = "+" + t.reward.toString() : i.findByName("Reward").enabled = !1,
     i.findByName("Score").element.text = t.score.toString(),
-    (u = this.app.assets.find("Tier-" + t.tier + ".png")) && (i.findByName("Tier").element.textureAsset = u),
-    i.findByName("Status").element.color = 1 == e ? this.victoryColor : this.defeatColor,
-    t.isMe ? i.findByName("You").enabled = !0 : i.findByName("You").enabled = !1,
-    i.findByName("Rank").element.text = e,
-    i.findByName("Rank").element.opacity = this.rankOpacity;
+    (y = this.app.assets.find("Tier-" + t.tier + ".png")) && (i.findByName("Tier").element.textureAsset = y),
+    i.findByName("Status").element.color = 1 == e ? this.victoryColor : this.defeatColor;
     var a = i.findByName("Follow");
+    t.isMe ? (i.findByName("You").enabled = !0,
+    a.enabled = !1) : (i.findByName("You").enabled = !1,
+    a.enabled = !0),
+    i.findByName("Rank").element.text = e,
+    i.findByName("Rank").element.opacity = this.rankOpacity,
     a && a.script && a.script.button && (a.script.button.fireFunction = "Follow:User@" + Utils.onlyUsername(t.username)),
     this.rankOpacity -= .4;
     var n = this.players.length % 2 + 2;
@@ -10689,14 +11011,14 @@ Result.prototype.createPlayerRow = function(t, e) {
     for (var l in t.achievements) {
         var p = t.achievements[l]
           , h = this.app.assets.find(p + "-Icon.png")
-          , y = r.clone();
-        y.enabled = !0,
-        y.setLocalPosition(34 * parseInt(l), 0, 0),
-        y.element.textureAsset = h,
-        o.addChild(y)
+          , d = r.clone();
+        d.enabled = !0,
+        d.setLocalPosition(34 * parseInt(l), 0, 0),
+        d.element.textureAsset = h,
+        o.addChild(d)
     }
-    var u = this.app.assets.find(t.skin + "-Thumbnail-" + n);
-    i.findByName("PlayerPicture").element.textureAsset = u,
+    var y = this.app.assets.find(t.skin + "-Thumbnail-" + n);
+    i.findByName("PlayerPicture").element.textureAsset = y,
     i.tween(i.getLocalPosition()).to({
         x: 0,
         y: s,
@@ -12467,6 +12789,9 @@ Fetcher.attributes.add("data", {
 Fetcher.attributes.add("loading", {
     type: "string"
 }),
+Fetcher.attributes.add("loadingEntity", {
+    type: "entity"
+}),
 Fetcher.attributes.add("success", {
     type: "string"
 }),
@@ -12482,36 +12807,38 @@ Fetcher.prototype.initialize = function() {
 }
 ,
 Fetcher.prototype.onResult = function(t) {
-    t ? t.success ? this.onSuccess(t) : this.onError(t) : this.onError("An error occured!")
+    t ? t.success ? this.onSuccess(t) : this.onError(t) : this.onError("An error occured!"),
+    this.loadingEntity && (this.loadingEntity.enabled = !1)
 }
 ,
 Fetcher.prototype.onLoading = function() {
     var t = this.loading.split(", ");
     if (t.length > 0)
         for (var e in t) {
-            var r = t[e]
-              , i = r.split("@");
-            if (i.length > 1) {
-                var s = i[0]
-                  , o = i[1];
-                this.app.fire(s, o)
+            var i = t[e]
+              , r = i.split("@");
+            if (r.length > 1) {
+                var n = r[0]
+                  , s = r[1];
+                this.app.fire(n, s)
             } else
-                this.app.fire(r, !0)
+                this.app.fire(i, !0)
         }
+    this.loadingEntity && (this.loadingEntity.enabled = !0)
 }
 ,
 Fetcher.prototype.onSuccess = function(t) {
     var e = this.success.split(", ");
     if (e.length > 0)
-        for (var r in e) {
-            var i = e[r]
-              , s = i.split("@");
-            if (s.length > 1) {
-                var o = s[0]
-                  , n = s[1];
-                this.app.fire(o, n)
+        for (var i in e) {
+            var r = e[i]
+              , n = r.split("@");
+            if (n.length > 1) {
+                var s = n[0]
+                  , o = n[1];
+                this.app.fire(s, o)
             } else
-                this.app.fire(i, t)
+                this.app.fire(r, t)
         }
 }
 ,
@@ -12519,15 +12846,15 @@ Fetcher.prototype.onError = function(t) {
     if (this.error) {
         var e = this.error.split(", ");
         if (e.length > 0)
-            for (var r in e) {
-                var i = e[r]
-                  , s = i.split("@");
-                if (s.length > 1) {
-                    var o = s[0]
-                      , n = s[1];
-                    this.app.fire(o, n)
+            for (var i in e) {
+                var r = e[i]
+                  , n = r.split("@");
+                if (n.length > 1) {
+                    var s = n[0]
+                      , o = n[1];
+                    this.app.fire(s, o)
                 } else
-                    this.app.fire(i, t)
+                    this.app.fire(r, t)
             }
     }
 }
@@ -12554,19 +12881,19 @@ Fetcher.prototype.onFetch = function(t) {
     this.fetch(e, this.data, this.onResult.bind(this))
 }
 ,
-Fetcher.prototype.fetch = function(t, e, r) {
-    var i = "string" == typeof e ? e : Object.keys(e).map(function(t) {
+Fetcher.prototype.fetch = function(t, e, i) {
+    var r = "string" == typeof e ? e : Object.keys(e).map(function(t) {
         return encodeURIComponent(t) + "=" + encodeURIComponent(e[t])
     }).join("&")
-      , s = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
-    s.open("POST", t),
-    s.onreadystatechange = function() {
-        s.readyState > 3 && 200 == s.status && r(JSON.parse(s.responseText))
+      , n = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
+    n.open("POST", t),
+    n.onreadystatechange = function() {
+        n.readyState > 3 && 200 == n.status && i(JSON.parse(n.responseText))
     }
     ,
-    s.withCredentials = !0,
-    s.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"),
-    s.send(i)
+    n.withCredentials = !0,
+    n.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"),
+    n.send(r)
 }
 ;
 var Form = pc.createScript("form");
@@ -17164,14 +17491,22 @@ Snow.attributes.add("materialAsset", {
     type: "asset",
     assetType: "material"
 }),
+Snow.attributes.add("speedX", {
+    type: "number",
+    default: .4
+}),
+Snow.attributes.add("speedY", {
+    type: "number",
+    default: .04
+}),
 Snow.prototype.initialize = function() {
     this.material = this.materialAsset.resource,
     this.timestamp = 0
 }
 ,
 Snow.prototype.update = function(t) {
-    this.material.opacityMapOffset.x -= .4 * t,
-    this.material.opacityMapOffset.y -= .08 * t,
+    this.material.opacityMapOffset.x -= t * this.speedX,
+    this.material.opacityMapOffset.y -= t * this.speedY,
     this.material.update()
 }
 ;
@@ -17228,5 +17563,215 @@ Ocean.prototype.getRGB = function(e) {
 Ocean.prototype.update = function(e) {
     this.time += e,
     this.material.setParameter("uTime", this.time)
+}
+;
+var Grapple = pc.createScript("grapple");
+Grapple.attributes.add("ropeEntity", {
+    type: "entity"
+}),
+Grapple.attributes.add("grappleEntity", {
+    type: "entity"
+}),
+Grapple.attributes.add("originEntity", {
+    type: "entity"
+}),
+Grapple.attributes.add("swingEntity", {
+    type: "entity"
+}),
+Grapple.attributes.add("swingRopeEntity", {
+    type: "entity"
+}),
+Grapple.attributes.add("playerEntity", {
+    type: "entity"
+}),
+Grapple.attributes.add("playerPoint", {
+    type: "entity"
+}),
+Grapple.attributes.add("isPlayerGrapple", {
+    type: "boolean",
+    default: !0
+}),
+Grapple.attributes.add("active", {
+    type: "boolean",
+    default: !1
+}),
+Grapple.prototype.initialize = function() {
+    this.app.on("Grapple:Throw", this.onThrow, this)
+}
+,
+Grapple.prototype.onThrow = function(t, i) {
+    !1 === t && (t = this.playerEntity.getPosition().clone()),
+    this.entity.setPosition(t),
+    this.entity.lookAt(i),
+    this.originEntity.reparent(this.entity),
+    this.originEntity.setLocalPosition(0, 0, 0),
+    this.ropeEntity.reparent(this.originEntity),
+    this.ropeEntity.setLocalPosition(0, 0, 0),
+    this.swingEntity.setPosition(i),
+    this.swingEntity.setLocalEulerAngles(0, 0, 0),
+    this.swingRopeEntity.setLocalScale(1, 1, 1),
+    this.scaleRope(t, i),
+    this.active = !0
+}
+,
+Grapple.prototype.scaleRope = function(t, i) {
+    var e = i.clone().sub(t).length() / 4;
+    this.ropeEntity.setLocalScale(.5, .1, .5),
+    this.ropeEntity.tween(this.ropeEntity.getLocalScale()).to({
+        x: .5,
+        y: e,
+        z: .5
+    }, .85, pc.ElasticOut).start(),
+    this.grappleEntity.setLocalPosition(0, .34, 0),
+    this.grappleEntity.tween(this.grappleEntity.getLocalPosition()).to({
+        x: 0,
+        y: 3.2 * e,
+        z: 0
+    }, .5, pc.ElasticOut).start();
+    var n = 5 * Math.random();
+    this.grappleEntity.setLocalEulerAngles(85, 50, 30),
+    this.grappleEntity.tween(this.grappleEntity.getLocalEulerAngles()).rotate({
+        x: 0,
+        y: 0,
+        z: -n
+    }, 1, pc.ElasticOut).start(),
+    setTimeout(function(t, i) {
+        t.swing(i)
+    }, 250, this, e)
+}
+,
+Grapple.prototype.swing = function(t) {
+    this.originEntity.reparent(this.swingEntity),
+    this.originEntity.setLocalPosition(0, 0, 3.8 * t),
+    this.ropeEntity.reparent(this.swingRopeEntity),
+    this.ropeEntity.setLocalPosition(0, 3.9 * -t, 0),
+    this.swingRopeEntity.tween(this.swingRopeEntity.getLocalScale()).to({
+        x: 1,
+        y: .1,
+        z: 1
+    }, .4, pc.QuadraticOut).start(),
+    setTimeout(function(t) {
+        t.swingEntity.tween(t.swingEntity.getLocalEulerAngles()).rotate({
+            x: 90,
+            y: 0,
+            z: 0
+        }, .5, pc.BackOut).start(),
+        t.swingRopeEntity.tween(t.swingRopeEntity.getLocalScale()).to({
+            x: 1,
+            y: .2,
+            z: 1
+        }, .3, pc.BackOut).delay(.05).start()
+    }, 300, this),
+    this.app.fire("Player:SpeedUp", !0),
+    setTimeout(function(t) {
+        t.active = !1,
+        t.kickForce()
+    }, 500, this)
+}
+,
+Grapple.prototype.kickForce = function() {
+    var t = this.entity.forward.scale(50);
+    this.playerEntity.rigidbody.applyImpulse(t)
+}
+,
+Grapple.prototype.update = function() {
+    if (this.isPlayerGrapple && this.active) {
+        var t = this.playerPoint.getPosition().clone();
+        this.playerEntity.rigidbody.teleport(t)
+    }
+}
+;
+var Ccd = pc.createScript("ccd");
+Ccd.attributes.add("entities", {
+    type: "entity",
+    array: !0
+}),
+Ccd.attributes.add("motionThreshold", {
+    type: "number",
+    default: 1,
+    title: "Motion Threshold",
+    description: "Number of meters moved in one frame before CCD is enabled"
+}),
+Ccd.attributes.add("sweptSphereRadius", {
+    type: "number",
+    default: .2,
+    title: "Swept Sphere Radius",
+    description: "This should be below the half extent of the collision volume. E.g For an object of dimensions 1 meter, try 0.2"
+}),
+Ccd.prototype.initialize = function() {
+    for (var e in this.entities) {
+        var t = this.entities[e].rigidbody.body;
+        t && (t.setCcdMotionThreshold(this.motionThreshold),
+        t.setCcdSweptSphereRadius(this.sweptSphereRadius))
+    }
+}
+;
+var ModePosition = pc.createScript("modePosition");
+ModePosition.attributes.add("mode", {
+    type: "string"
+}),
+ModePosition.attributes.add("position", {
+    type: "vec3"
+}),
+ModePosition.prototype.initialize = function() {
+    this.app.on("Game:Mode", this.setMode, this),
+    this.on("destroy", this.onDestroy)
+}
+,
+ModePosition.prototype.onDestroy = function(t) {
+    this.app.off("Game:Mode", this.setMode, this)
+}
+,
+ModePosition.prototype.setMode = function(t) {
+    this.mode == t ? this.entity.setLocalPosition(this.position) : this.entity.setLocalPosition(0, 0, 0)
+}
+;
+var ModeManager = pc.createScript("modeManager");
+ModeManager.prototype.initialize = function() {
+    this.currentMode = "POINT",
+    this.app.on("Game:Mode", this.onModeSet, this),
+    this.app.on("Player:Kill", this.onKill, this),
+    this.app.on("Overlay:Weapon", this.triggerWeaponChange, this),
+    this.variables = {
+        kills: 0,
+        gungame: {
+            weapons: ["Tec-9", "Shotgun", "Scar", "M4", "Sniper", "LMG", "Desert-Eagle", "Dagger"],
+            weaponLevels: {
+                "Tec-9": 2,
+                Shotgun: 2,
+                M4: 3,
+                Scar: 3,
+                Sniper: 2,
+                LMG: 2,
+                "Desert-Eagle": 3,
+                Dagger: 1
+            }
+        }
+    },
+    this.currentWeapon = "Scar"
+}
+,
+ModeManager.prototype.onModeSet = function(e) {
+    this.currentMode = e,
+    this.variables.kills = 0
+}
+,
+ModeManager.prototype.onKill = function(e, a) {
+    this.variables.kills++,
+    "GUNGAME" == this.currentMode && (a.indexOf("Rank") > -1 && (this.variables.kills = 0),
+    this.app.fire("Overlay:WeaponText", this.variables.kills + " / " + this.variables.gungame.weaponLevels[this.currentWeapon]))
+}
+,
+ModeManager.prototype.triggerWeaponChange = function(e) {
+    if ("GUNGAME" == this.currentMode) {
+        var a = this.variables.gungame.weapons.indexOf(this.currentWeapon)
+          , i = this.variables.gungame.weapons.indexOf(e)
+          , t = this.variables.gungame.weapons[i + 1]
+          , n = this.variables.gungame.weapons[i + 2];
+        a > i && (this.variables.kills = 0),
+        this.app.fire("Overlay:OtherIcons", t, n),
+        this.app.fire("Overlay:WeaponText", this.variables.kills + " / " + this.variables.gungame.weaponLevels[e])
+    }
+    this.currentWeapon = e
 }
 ;

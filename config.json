@@ -270,6 +270,12 @@
         "name": "Wall-Red-Yellow",
         "maxAabbSize": 50,
         "dynamic": false
+      },
+      {
+        "id": 100023,
+        "name": "Rails",
+        "maxAabbSize": 30,
+        "dynamic": false
       }
     ],
     "preserveDrawingBuffer": false,
@@ -359,7 +365,11 @@
       35948644,
       35985454,
       36067803,
-      36070600
+      36070600,
+      36198009,
+      36440224,
+      36667684,
+      36667723
     ],
     "useMouse": true,
     "use3dPhysics": false,
@@ -376,24 +386,16 @@
       "url": "ScriptLoad.json"
     },
     {
-      "name": "Menu",
-      "url": "MainMenu.json"
-    },
-    {
       "name": "Tundra",
       "url": "Tundra.json"
     },
     {
+      "name": "Menu",
+      "url": "MainMenu.json"
+    },
+    {
       "name": "Result",
       "url": "ResultScreen.json"
-    },
-    {
-      "name": "Mistle",
-      "url": "Mistle.json"
-    },
-    {
-      "name": "Reward",
-      "url": "998879.json"
     },
     {
       "name": "Sierra",
@@ -404,8 +406,16 @@
       "url": "Sierra2v2.json"
     },
     {
+      "name": "Mistle",
+      "url": "Mistle.json"
+    },
+    {
       "name": "Capture",
       "url": "CaptureScript.json"
+    },
+    {
+      "name": "Reward",
+      "url": "998879.json"
     },
     {
       "name": "Hexagon",
@@ -418,10 +428,6 @@
     {
       "name": "Xibalba",
       "url": "Xibalba.json"
-    },
-    {
-      "name": "Xibalba2v2",
-      "url": "Xibalba2v2.json"
     },
     {
       "name": "Result-Mobile",
@@ -1143,6 +1149,7 @@
               "weaponFront",
               "meleeCenter",
               "meleePoint",
+              "meleePoints",
               "shurikenPoint1",
               "shurikenPoint2",
               "shurikenPoint3",
@@ -1336,6 +1343,10 @@
               },
               "shurikenPoint3": {
                 "type": "entity"
+              },
+              "meleePoints": {
+                "type": "entity",
+                "array": true
               }
             }
           }
@@ -1347,8 +1358,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -1422,8 +1433,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -1446,8 +1457,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -3546,6 +3557,7 @@
               "leaderboardItem",
               "playerStatsEntity",
               "taskEntity",
+              "taskLabelEntity",
               "taskTitleEntity",
               "taskIconEntity",
               "taskCountEntity",
@@ -3573,6 +3585,9 @@
               "throwSkillEntity",
               "meleeIconEntity",
               "weaponIconEntity",
+              "weaponText",
+              "icon1Entity",
+              "icon2Entity",
               "pointNumberEntity",
               "pointHolder",
               "subtitleEntity",
@@ -3580,6 +3595,7 @@
               "leftCinema",
               "rightCinema",
               "chatEntity",
+              "chatWrapperEntity",
               "modeEntity",
               "weaponButtons",
               "weaponTimeout",
@@ -3907,6 +3923,21 @@
               },
               "abilityNotification": {
                 "type": "entity"
+              },
+              "chatWrapperEntity": {
+                "type": "entity"
+              },
+              "taskLabelEntity": {
+                "type": "entity"
+              },
+              "icon1Entity": {
+                "type": "entity"
+              },
+              "icon2Entity": {
+                "type": "entity"
+              },
+              "weaponText": {
+                "type": "entity"
               }
             }
           }
@@ -3918,8 +3949,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -3984,8 +4015,10 @@
           "weapon": {
             "attributesOrder": [
               "type",
+              "weight",
               "isShootable",
               "isAutomatic",
+              "isFocusable",
               "isRightHanded",
               "shootTime",
               "recoil",
@@ -3995,6 +4028,7 @@
               "distanceMultiplier",
               "ammo",
               "capacity",
+              "hiddenReload",
               "reloadingTime",
               "cameraShake",
               "focusFov",
@@ -4003,15 +4037,18 @@
               "sliderName",
               "sliderLimit",
               "hasSlider",
+              "rotationSlider",
               "doodahEntity",
               "doodahReference",
               "modelEntity",
               "armEntity",
+              "rightArmEntity",
               "magazinePoint",
               "barrelPoint",
               "bulletPoint",
               "muzzlePoint",
               "handPoint",
+              "rightHandPoint",
               "ammoEntity",
               "scopeOverlay"
             ],
@@ -4137,6 +4174,37 @@
               "isShootable": {
                 "type": "boolean",
                 "default": true
+              },
+              "rotationSlider": {
+                "type": "boolean"
+              },
+              "hiddenReload": {
+                "type": "boolean",
+                "default": false
+              },
+              "weight": {
+                "type": "string",
+                "enum": {
+                  "order": [
+                    "Light",
+                    "Heavy"
+                  ],
+                  "options": {
+                    "Light": "Light",
+                    "Heavy": "Heavy"
+                  }
+                },
+                "default": "Light"
+              },
+              "rightArmEntity": {
+                "type": "entity"
+              },
+              "rightHandPoint": {
+                "type": "entity"
+              },
+              "isFocusable": {
+                "type": "boolean",
+                "default": true
               }
             }
           }
@@ -4148,8 +4216,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -6691,6 +6759,7 @@
               "killSphereEntity",
               "testBox",
               "breakable",
+              "explosive",
               "impactable"
             ],
             "attributes": {
@@ -6785,6 +6854,10 @@
               },
               "killSphereEntity": {
                 "type": "entity"
+              },
+              "explosive": {
+                "type": "string",
+                "array": true
               }
             }
           }
@@ -6796,8 +6869,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -6818,10 +6891,11 @@
               "armLeftEntity",
               "armRightEntity",
               "weaponHolder",
+              "swingLeftEntity",
+              "swingRightEntity",
               "muzzleEntity",
               "flameSpeed",
-              "maxFlameScale",
-              "meleeCollision"
+              "maxFlameScale"
             ],
             "attributes": {
               "defaultWeapon": {
@@ -6848,7 +6922,10 @@
               "armLeftEntity": {
                 "type": "entity"
               },
-              "meleeCollision": {
+              "swingLeftEntity": {
+                "type": "entity"
+              },
+              "swingRightEntity": {
                 "type": "entity"
               }
             }
@@ -6861,8 +6938,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -7269,8 +7346,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -7500,8 +7577,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -8616,8 +8693,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -8855,8 +8932,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -9043,9 +9120,9 @@
           0
         ],
         "diffuse": [
-          0.9019607843137255,
-          0.8823529411764706,
-          0.3686274509803922
+          0.7411764705882353,
+          0.7215686274509804,
+          0.09411764705882353
         ],
         "diffuseMap": 29914569,
         "diffuseMapChannel": "rgb",
@@ -9304,8 +9381,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -9327,8 +9404,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -9433,8 +9510,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -9536,8 +9613,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -12168,8 +12245,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -12206,8 +12283,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -13518,6 +13595,7 @@
           "menu": {
             "attributesOrder": [
               "cameraEntity",
+              "originEntity",
               "linkEntity",
               "header",
               "contentHolder",
@@ -13545,6 +13623,7 @@
               "updateEntity",
               "updateVersionEntity",
               "offerPopup",
+              "boostPopup",
               "mobileWaiting",
               "mobileFreeCoin",
               "mobileRedirection",
@@ -13646,6 +13725,12 @@
               },
               "mobileWaiting": {
                 "type": "entity"
+              },
+              "boostPopup": {
+                "type": "entity"
+              },
+              "originEntity": {
+                "type": "entity"
               }
             }
           }
@@ -13656,8 +13741,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -14153,8 +14238,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -16081,8 +16166,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -16555,8 +16640,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -17607,8 +17692,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -20331,8 +20416,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -21531,8 +21616,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -21614,8 +21699,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -24192,8 +24277,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -24251,8 +24336,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -25142,7 +25227,7 @@
       "region": "eu-west-1",
       "i18n": {},
       "id": "30838436"
-    },
+    },    
     "30842568": {
       "tags": [],
       "name": "Headshot-Icon-Leaderboard.png",
@@ -26414,8 +26499,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -27473,8 +27558,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -28078,8 +28163,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -31988,8 +32073,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -32880,8 +32965,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -33405,8 +33490,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -33941,8 +34026,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36227,8 +36312,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36270,8 +36355,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36307,8 +36392,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36329,6 +36414,7 @@
               "URL",
               "data",
               "loading",
+              "loadingEntity",
               "success",
               "error"
             ],
@@ -36351,6 +36437,9 @@
               },
               "loading": {
                 "type": "string"
+              },
+              "loadingEntity": {
+                "type": "entity"
               }
             }
           }
@@ -36361,8 +36450,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36404,8 +36493,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36465,8 +36554,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36508,8 +36597,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36546,8 +36635,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36772,8 +36861,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36813,8 +36902,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36998,8 +37087,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -37060,8 +37149,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -37097,8 +37186,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -37389,8 +37478,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -38243,7 +38332,7 @@
         "heightMapFactor": 1,
         "alphaToCoverage": false,
         "alphaTest": 0,
-        "opacity": 0.146,
+        "opacity": 0.2,
         "opacityMap": 31615692,
         "opacityMapChannel": "r",
         "opacityMapUv": 0,
@@ -38569,8 +38658,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -40881,8 +40970,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -40908,8 +40997,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -41217,8 +41306,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -41244,8 +41333,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -42221,8 +42310,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -42519,8 +42608,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -44555,8 +44644,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -46498,8 +46587,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -49542,8 +49631,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -49609,8 +49698,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -49682,8 +49771,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -50048,8 +50137,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -50237,8 +50326,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -55254,8 +55343,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -55337,8 +55426,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -56326,8 +56415,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -58153,8 +58242,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -58250,8 +58339,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -58272,8 +58361,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -60666,8 +60755,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -67476,8 +67565,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -69038,8 +69127,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -73357,8 +73446,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -73393,8 +73482,8 @@
       "type": "shader",
       "file": {
         "filename": "FlagFragment.glsl",
-        "size": 555,
-        "hash": "4cb521253a97fc045d2713bf79d3b6c0",
+        "size": 542,
+        "hash": "c626911840bce86a26d2f33fc13a9f00",
         "url": "files/assets/34750928/1/FlagFragment.glsl"
       },
       "region": "eu-west-1",
@@ -73441,7 +73530,7 @@
       "tags": [],
       "name": "Flag-Venge.jpg",
       "revision": 1,
-      "preload": false,
+      "preload": true,
       "meta": {
         "compress": {
           "alpha": false,
@@ -74541,9 +74630,9 @@
           0
         ],
         "diffuse": [
-          0.9372549019607843,
-          0.9372549019607843,
-          0.9372549019607843
+          0.7490196078431373,
+          0.7490196078431373,
+          0.7490196078431373
         ],
         "diffuseMap": 34742003,
         "diffuseMapChannel": "rgb",
@@ -74784,8 +74873,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -75131,8 +75220,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -75338,43 +75427,6 @@
       "i18n": {},
       "id": "34956236"
     },
-    "34956241": {
-      "tags": [],
-      "name": "wall_4m.glb",
-      "revision": 1,
-      "preload": false,
-      "region": "eu-west-1",
-      "meta": {
-        "meshes": 1,
-        "meshInstances": 1,
-        "nodes": 2,
-        "skins": 0,
-        "vertices": 409,
-        "triangles": 250,
-        "attributes": {
-          "NORMAL": 1,
-          "POSITION": 1,
-          "TEXCOORD_0": 1
-        }
-      },
-      "data": {
-        "mapping": [
-          {
-            "material": 34956236
-          }
-        ],
-        "area": 0
-      },
-      "type": "model",
-      "file": {
-        "hash": "ca18c4813edfb1f7a60e971ff4da6624",
-        "size": 17784,
-        "filename": "wall_4m.glb",
-        "url": "files/assets/34956241/1/wall_4m.glb"
-      },
-      "i18n": {},
-      "id": "34956241"
-    },
     "34993527": {
       "tags": [
         "NoCache"
@@ -75503,8 +75555,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -75549,8 +75601,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -75723,8 +75775,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -76410,8 +76462,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -77646,8 +77698,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -77688,8 +77740,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -78511,7 +78563,7 @@
       "tags": [],
       "name": "T_ENV_ice_01_BC.jpg",
       "revision": 1,
-      "preload": true,
+      "preload": false,
       "meta": {
         "compress": {
           "alpha": false,
@@ -78545,8 +78597,8 @@
       "type": "texture",
       "file": {
         "filename": "T_ENV_ice_01_BC.jpg",
-        "hash": "458d946fd6adbaeb099071d17d435ce3",
-        "size": 182472,
+        "size": 40646,
+        "hash": "c2713740ed617bcb03d299502a7f6bf8",
         "variants": {},
         "url": "files/assets/35933743/1/T_ENV_ice_01_BC.jpg"
       },
@@ -79359,246 +79411,6 @@
       "i18n": {},
       "id": "35934111"
     },
-    "35938401": {
-      "tags": [],
-      "name": "Tundra-Cave.glb",
-      "revision": 1,
-      "preload": false,
-      "region": "eu-west-1",
-      "meta": {
-        "meshes": 2,
-        "meshInstances": 2,
-        "nodes": 3,
-        "skins": 0,
-        "vertices": 430,
-        "triangles": 286,
-        "attributes": {
-          "NORMAL": 2,
-          "POSITION": 2,
-          "TEXCOORD_0": 2,
-          "TEXCOORD_1": 1
-        }
-      },
-      "data": {
-        "mapping": [
-          {
-            "material": 35938426
-          },
-          {
-            "material": 35938426
-          }
-        ],
-        "area": 0
-      },
-      "type": "model",
-      "file": {
-        "hash": "9a6ae60976f2cd077ba7271aef38de80",
-        "size": 21144,
-        "filename": "Tundra-Cave.glb",
-        "url": "files/assets/35938401/1/Tundra-Cave.glb"
-      },
-      "i18n": {},
-      "id": "35938401"
-    },
-    "35938402": {
-      "tags": [],
-      "name": "M_wood_tree_maple_north.001",
-      "revision": 1,
-      "preload": false,
-      "region": "eu-west-1",
-      "meta": {
-        "index": 0
-      },
-      "data": {
-        "shader": "blinn",
-        "ambient": [
-          0,
-          0,
-          0
-        ],
-        "diffuse": [
-          0.8,
-          0.8,
-          0.8
-        ],
-        "specular": [
-          0.2,
-          0.2,
-          0.2
-        ],
-        "shininess": 46.9993,
-        "emissive": [
-          0,
-          0,
-          0
-        ],
-        "opacity": 1,
-        "aoMap": null,
-        "diffuseMap": null,
-        "specularMap": null,
-        "metalnessMap": null,
-        "glossMap": null,
-        "emissiveMap": null,
-        "normalMap": null,
-        "heightMap": null,
-        "opacityMap": null,
-        "sphereMap": null,
-        "cubeMap": null,
-        "lightMap": null,
-        "ambientTint": false,
-        "aoMapVertexColor": false,
-        "aoMapChannel": "r",
-        "aoMapUv": 0,
-        "aoMapTiling": [
-          1,
-          1
-        ],
-        "aoMapOffset": [
-          0,
-          0
-        ],
-        "occludeSpecular": 1,
-        "diffuseMapVertexColor": false,
-        "diffuseMapChannel": "rgb",
-        "diffuseMapUv": 0,
-        "diffuseMapTiling": [
-          1,
-          1
-        ],
-        "diffuseMapOffset": [
-          0,
-          0
-        ],
-        "diffuseMapTint": false,
-        "specularMapVertexColor": false,
-        "specularMapChannel": "rgb",
-        "specularMapUv": 0,
-        "specularMapTiling": [
-          1,
-          1
-        ],
-        "specularMapOffset": [
-          0,
-          0
-        ],
-        "specularMapTint": false,
-        "specularAntialias": true,
-        "useMetalness": false,
-        "metalnessMapVertexColor": false,
-        "metalnessMapChannel": "r",
-        "metalnessMapUv": 0,
-        "metalnessMapTiling": [
-          1,
-          1
-        ],
-        "metalnessMapOffset": [
-          0,
-          0
-        ],
-        "metalnessMapTint": false,
-        "metalness": 1,
-        "conserveEnergy": true,
-        "glossMapVertexColor": false,
-        "glossMapChannel": "r",
-        "glossMapUv": 0,
-        "glossMapTiling": [
-          1,
-          1
-        ],
-        "glossMapOffset": [
-          0,
-          0
-        ],
-        "fresnelModel": 0,
-        "fresnelFactor": 0,
-        "emissiveMapVertexColor": false,
-        "emissiveMapChannel": "rgb",
-        "emissiveMapUv": 0,
-        "emissiveMapTiling": [
-          1,
-          1
-        ],
-        "emissiveMapOffset": [
-          0,
-          0
-        ],
-        "emissiveMapTint": false,
-        "emissiveIntensity": 1,
-        "normalMapTiling": [
-          1,
-          1
-        ],
-        "normalMapOffset": [
-          0,
-          0
-        ],
-        "normalMapUv": 0,
-        "bumpMapFactor": 1,
-        "heightMapChannel": "r",
-        "heightMapUv": 0,
-        "heightMapTiling": [
-          1,
-          1
-        ],
-        "heightMapOffset": [
-          0,
-          0
-        ],
-        "heightMapFactor": 1,
-        "alphaTest": 0,
-        "opacityMapVertexColor": false,
-        "opacityMapChannel": "r",
-        "opacityMapUv": 0,
-        "opacityMapTiling": [
-          1,
-          1
-        ],
-        "opacityMapOffset": [
-          0,
-          0
-        ],
-        "reflectivity": 1,
-        "refraction": 0,
-        "refractionIndex": 0.6666666666666666,
-        "cubeMapProjection": 0,
-        "cubeMapProjectionBox": {
-          "center": [
-            0,
-            0,
-            0
-          ],
-          "halfExtents": [
-            0.5,
-            0.5,
-            0.5
-          ]
-        },
-        "lightMapVertexColor": false,
-        "lightMapChannel": "rgb",
-        "lightMapUv": 1,
-        "lightMapTiling": [
-          1,
-          1
-        ],
-        "lightMapOffset": [
-          0,
-          0
-        ],
-        "depthTest": true,
-        "depthWrite": true,
-        "cull": 1,
-        "blendType": 3,
-        "shadowSampleType": 1,
-        "useFog": true,
-        "useLighting": true,
-        "useSkybox": true,
-        "useGammaTonemap": true
-      },
-      "type": "material",
-      "file": null,
-      "i18n": {},
-      "id": "35938402"
-    },
     "35938426": {
       "tags": [],
       "name": "Tundra-Cave",
@@ -79616,12 +79428,12 @@
         "aoMapChannel": "r",
         "aoMapUv": 0,
         "aoMapTiling": [
-          0.7,
-          0.7
+          1,
+          1
         ],
         "aoMapOffset": [
           0,
-          0.18000000000000002
+          0
         ],
         "diffuse": [
           1,
@@ -79632,12 +79444,12 @@
         "diffuseMapChannel": "rgb",
         "diffuseMapUv": 0,
         "diffuseMapTiling": [
-          0.7,
-          0.7
+          1,
+          1
         ],
         "diffuseMapOffset": [
           0,
-          0.18000000000000002
+          0
         ],
         "specular": [
           0.23,
@@ -79648,12 +79460,12 @@
         "specularMapChannel": "rgb",
         "specularMapUv": 0,
         "specularMapTiling": [
-          0.7,
-          0.7
+          1,
+          1
         ],
         "specularMapOffset": [
           0,
-          0.18000000000000002
+          0
         ],
         "specularAntialias": true,
         "occludeSpecular": 1,
@@ -79663,12 +79475,12 @@
         "metalnessMapChannel": "r",
         "metalnessMapUv": 0,
         "metalnessMapTiling": [
-          0.7,
-          0.7
+          1,
+          1
         ],
         "metalnessMapOffset": [
           0,
-          0.18000000000000002
+          0
         ],
         "conserveEnergy": true,
         "shininess": 32,
@@ -79676,12 +79488,12 @@
         "glossMapChannel": "r",
         "glossMapUv": 0,
         "glossMapTiling": [
-          0.7,
-          0.7
+          1,
+          1
         ],
         "glossMapOffset": [
           0,
-          0.18000000000000002
+          0
         ],
         "fresnelModel": 0,
         "emissive": [
@@ -79693,22 +79505,22 @@
         "emissiveMapChannel": "rgb",
         "emissiveMapUv": 0,
         "emissiveMapTiling": [
-          0.7,
-          0.7
+          1,
+          1
         ],
         "emissiveMapOffset": [
           0,
-          0.18000000000000002
+          0
         ],
         "emissiveIntensity": 1,
         "normalMap": null,
         "normalMapTiling": [
-          0.7,
-          0.7
+          1,
+          1
         ],
         "normalMapOffset": [
           0,
-          0.18000000000000002
+          0
         ],
         "normalMapUv": 0,
         "bumpMapFactor": 1,
@@ -79716,12 +79528,12 @@
         "heightMapChannel": "r",
         "heightMapUv": 0,
         "heightMapTiling": [
-          0.7,
-          0.7
+          1,
+          1
         ],
         "heightMapOffset": [
           0,
-          0.18000000000000002
+          0
         ],
         "heightMapFactor": 1,
         "alphaToCoverage": false,
@@ -79731,12 +79543,12 @@
         "opacityMapChannel": "r",
         "opacityMapUv": 0,
         "opacityMapTiling": [
-          0.7,
-          0.7
+          1,
+          1
         ],
         "opacityMapOffset": [
           0,
-          0.18000000000000002
+          0
         ],
         "reflectivity": 1,
         "refraction": 0,
@@ -79760,16 +79572,16 @@
         "lightMapChannel": "rgb",
         "lightMapUv": 1,
         "lightMapTiling": [
-          0.7,
-          0.7
+          1,
+          1
         ],
         "lightMapOffset": [
           0,
-          0.18000000000000002
+          0
         ],
         "depthTest": true,
         "depthWrite": true,
-        "cull": 1,
+        "cull": 0,
         "blendType": 3,
         "shader": "blinn",
         "useFog": true,
@@ -79830,8 +79642,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -79906,8 +79718,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -79936,7 +79748,7 @@
       "tags": [],
       "name": "Tundra-Terrain-1.jpg",
       "revision": 1,
-      "preload": false,
+      "preload": true,
       "meta": {
         "compress": {
           "alpha": false,
@@ -80020,7 +79832,7 @@
       "tags": [],
       "name": "Snow-Planes",
       "revision": 1,
-      "preload": false,
+      "preload": true,
       "meta": null,
       "data": {
         "ambient": [
@@ -80216,7 +80028,7 @@
       "tags": [],
       "name": "Snow-Pattern.png",
       "revision": 1,
-      "preload": false,
+      "preload": true,
       "meta": {
         "compress": {
           "alpha": false,
@@ -80269,12 +80081,22 @@
         "scripts": {
           "snow": {
             "attributesOrder": [
-              "materialAsset"
+              "materialAsset",
+              "speedX",
+              "speedY"
             ],
             "attributes": {
               "materialAsset": {
                 "type": "asset",
                 "assetType": "material"
+              },
+              "speedX": {
+                "type": "number",
+                "default": 0.4
+              },
+              "speedY": {
+                "type": "number",
+                "default": 0.04
               }
             }
           }
@@ -80285,8 +80107,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -80340,8 +80162,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 443775,
-        "hash": "51340f9a70d1c09339b3ffb8cc2da7df",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -80394,205 +80216,6 @@
       "region": "eu-west-1",
       "i18n": {},
       "id": "36070606"
-    },
-    "36071015": {
-      "tags": [],
-      "name": "lambert1",
-      "revision": 1,
-      "preload": false,
-      "region": "eu-west-1",
-      "meta": {
-        "index": 0
-      },
-      "data": {
-        "shader": "blinn",
-        "ambient": [
-          0,
-          0,
-          0
-        ],
-        "diffuse": [
-          0.8,
-          0.8,
-          0.8
-        ],
-        "diffuseMap": null,
-        "diffuseMapOffset": [
-          0,
-          0
-        ],
-        "diffuseMapTiling": [
-          1,
-          1
-        ],
-        "specular": [
-          0,
-          0,
-          0
-        ],
-        "shininess": 0,
-        "emissive": [
-          0,
-          0,
-          0
-        ],
-        "opacity": 1,
-        "aoMap": null,
-        "specularMap": null,
-        "metalnessMap": null,
-        "glossMap": null,
-        "emissiveMap": null,
-        "normalMap": null,
-        "heightMap": null,
-        "opacityMap": null,
-        "sphereMap": null,
-        "cubeMap": null,
-        "lightMap": null,
-        "ambientTint": false,
-        "aoMapVertexColor": false,
-        "aoMapChannel": "r",
-        "aoMapUv": 0,
-        "aoMapTiling": [
-          1,
-          1
-        ],
-        "aoMapOffset": [
-          0,
-          0
-        ],
-        "occludeSpecular": 1,
-        "diffuseMapVertexColor": false,
-        "diffuseMapChannel": "rgb",
-        "diffuseMapUv": 0,
-        "diffuseMapTint": false,
-        "specularMapVertexColor": false,
-        "specularMapChannel": "rgb",
-        "specularMapUv": 0,
-        "specularMapTiling": [
-          1,
-          1
-        ],
-        "specularMapOffset": [
-          0,
-          0
-        ],
-        "specularMapTint": false,
-        "specularAntialias": true,
-        "useMetalness": false,
-        "metalnessMapVertexColor": false,
-        "metalnessMapChannel": "r",
-        "metalnessMapUv": 0,
-        "metalnessMapTiling": [
-          1,
-          1
-        ],
-        "metalnessMapOffset": [
-          0,
-          0
-        ],
-        "metalnessMapTint": false,
-        "metalness": 1,
-        "conserveEnergy": true,
-        "glossMapVertexColor": false,
-        "glossMapChannel": "r",
-        "glossMapUv": 0,
-        "glossMapTiling": [
-          1,
-          1
-        ],
-        "glossMapOffset": [
-          0,
-          0
-        ],
-        "fresnelModel": 0,
-        "fresnelFactor": 0,
-        "emissiveMapVertexColor": false,
-        "emissiveMapChannel": "rgb",
-        "emissiveMapUv": 0,
-        "emissiveMapTiling": [
-          1,
-          1
-        ],
-        "emissiveMapOffset": [
-          0,
-          0
-        ],
-        "emissiveMapTint": false,
-        "emissiveIntensity": 1,
-        "normalMapTiling": [
-          1,
-          1
-        ],
-        "normalMapOffset": [
-          0,
-          0
-        ],
-        "normalMapUv": 0,
-        "bumpMapFactor": 1,
-        "heightMapChannel": "r",
-        "heightMapUv": 0,
-        "heightMapTiling": [
-          1,
-          1
-        ],
-        "heightMapOffset": [
-          0,
-          0
-        ],
-        "heightMapFactor": 1,
-        "alphaTest": 0,
-        "opacityMapVertexColor": false,
-        "opacityMapChannel": "r",
-        "opacityMapUv": 0,
-        "opacityMapTiling": [
-          1,
-          1
-        ],
-        "opacityMapOffset": [
-          0,
-          0
-        ],
-        "reflectivity": 1,
-        "refraction": 0,
-        "refractionIndex": 0.6666666666666666,
-        "cubeMapProjection": 0,
-        "cubeMapProjectionBox": {
-          "center": [
-            0,
-            0,
-            0
-          ],
-          "halfExtents": [
-            0.5,
-            0.5,
-            0.5
-          ]
-        },
-        "lightMapVertexColor": false,
-        "lightMapChannel": "rgb",
-        "lightMapUv": 1,
-        "lightMapTiling": [
-          1,
-          1
-        ],
-        "lightMapOffset": [
-          0,
-          0
-        ],
-        "depthTest": true,
-        "depthWrite": true,
-        "cull": 1,
-        "blendType": 3,
-        "shadowSampleType": 1,
-        "useFog": true,
-        "useLighting": true,
-        "useSkybox": true,
-        "useGammaTonemap": true
-      },
-      "type": "material",
-      "file": null,
-      "i18n": {},
-      "id": "36071015"
     },
     "36071016": {
       "tags": [],
@@ -80826,6 +80449,4958 @@
       "region": "eu-west-1",
       "i18n": {},
       "id": "36098703"
+    },
+    "36198009": {
+      "tags": [],
+      "name": "Grapple.js",
+      "revision": 1,
+      "preload": true,
+      "meta": null,
+      "data": {
+        "scripts": {
+          "grapple": {
+            "attributesOrder": [
+              "ropeEntity",
+              "grappleEntity",
+              "originEntity",
+              "swingEntity",
+              "swingRopeEntity",
+              "playerEntity",
+              "playerPoint",
+              "isPlayerGrapple",
+              "active"
+            ],
+            "attributes": {
+              "ropeEntity": {
+                "type": "entity"
+              },
+              "grappleEntity": {
+                "type": "entity"
+              },
+              "originEntity": {
+                "type": "entity"
+              },
+              "swingEntity": {
+                "type": "entity"
+              },
+              "swingRopeEntity": {
+                "type": "entity"
+              },
+              "playerEntity": {
+                "type": "entity"
+              },
+              "playerPoint": {
+                "type": "entity"
+              },
+              "isPlayerGrapple": {
+                "type": "boolean",
+                "default": true
+              },
+              "active": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          }
+        },
+        "loading": false,
+        "loadingType": 0
+      },
+      "type": "script",
+      "file": {
+        "filename": "__game-scripts.js",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
+        "url": "__game-scripts.js"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36198009"
+    },
+    "36198013": {
+      "tags": [],
+      "name": "Rope-Texture-Default.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 128,
+        "height": 256,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Rope-Texture-Default.jpg",
+        "size": 7422,
+        "hash": "59bb8ecc80ca56890065cdd4037c7074",
+        "variants": {},
+        "url": "files/assets/36198013/1/Rope-Texture-Default.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36198013"
+    },
+    "36198015": {
+      "tags": [],
+      "name": "Rope-Texture-Normal.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 128,
+        "height": 256,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Rope-Texture-Normal.jpg",
+        "size": 17459,
+        "hash": "3e133b84f203713014be0efa7047be89",
+        "variants": {},
+        "url": "files/assets/36198015/1/Rope-Texture-Normal.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36198015"
+    },
+    "36198017": {
+      "tags": [],
+      "name": "Rope.glb",
+      "revision": 1,
+      "preload": false,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 1,
+        "meshInstances": 1,
+        "nodes": 2,
+        "skins": 0,
+        "vertices": 588,
+        "triangles": 304,
+        "attributes": {
+          "NORMAL": 1,
+          "POSITION": 1,
+          "TEXCOORD_0": 1
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 36198026
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "dbd935eb4fc7b0871e4f2e56b669acbe",
+        "size": 24244,
+        "filename": "Rope.glb",
+        "url": "files/assets/36198017/1/Rope.glb"
+      },
+      "i18n": {},
+      "id": "36198017"
+    },
+    "36198018": {
+      "tags": [],
+      "name": "Grapple.glb",
+      "revision": 1,
+      "preload": false,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 1,
+        "meshInstances": 1,
+        "nodes": 2,
+        "skins": 0,
+        "vertices": 368,
+        "triangles": 188,
+        "attributes": {
+          "NORMAL": 1,
+          "POSITION": 1,
+          "TEXCOORD_0": 1
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 36198019
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "ec8ce58eaed2c68057c73ee964dc4a9b",
+        "size": 15832,
+        "filename": "Grapple.glb",
+        "url": "files/assets/36198018/1/Grapple.glb"
+      },
+      "i18n": {},
+      "id": "36198018"
+    },
+    "36198019": {
+      "tags": [],
+      "name": "Grapple",
+      "revision": 1,
+      "preload": false,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 0
+      },
+      "data": {
+        "shader": "blinn",
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "diffuse": [
+          0.64,
+          0.64,
+          0.64
+        ],
+        "diffuseMap": 36198024,
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "specular": [
+          0.25,
+          0.25,
+          0.25
+        ],
+        "shininess": 29.6747,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 1,
+        "aoMap": null,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": null,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": null,
+        "lightMap": null,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "36198019"
+    },
+    "36198024": {
+      "tags": [],
+      "name": "Grapple-Texture-Small.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 512,
+        "height": 512,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Grapple-Texture-Small.jpg",
+        "size": 42585,
+        "hash": "d2dea84b3fb3968d305e6f7077d3e58e",
+        "variants": {},
+        "url": "files/assets/36198024/1/Grapple-Texture-Small.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36198024"
+    },
+    "36198026": {
+      "tags": [],
+      "name": "Rope",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": {
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "ambientTint": false,
+        "aoMap": null,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          0.17999999999999994,
+          4.290000000000015
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "diffuse": [
+          1,
+          1,
+          1
+        ],
+        "diffuseMap": 36198013,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          0.17999999999999994,
+          4.290000000000015
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "specular": [
+          0.23,
+          0.23,
+          0.23
+        ],
+        "specularMap": null,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          0.17999999999999994,
+          4.290000000000015
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularAntialias": true,
+        "occludeSpecular": 1,
+        "useMetalness": false,
+        "metalness": 1,
+        "metalnessMap": null,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          0.17999999999999994,
+          4.290000000000015
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "conserveEnergy": true,
+        "shininess": 32,
+        "glossMap": null,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          0.17999999999999994,
+          4.290000000000015
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "emissiveMap": null,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          0.17999999999999994,
+          4.290000000000015
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveIntensity": 1,
+        "normalMap": 36198015,
+        "normalMapTiling": [
+          0.17999999999999994,
+          4.290000000000015
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMap": null,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          0.17999999999999994,
+          4.290000000000015
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaToCoverage": false,
+        "alphaTest": 0,
+        "opacity": 1,
+        "opacityMap": null,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          0.17999999999999994,
+          4.290000000000015
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "sphereMap": null,
+        "cubeMap": null,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMap": null,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          0.17999999999999994,
+          4.290000000000015
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shader": "blinn",
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true,
+        "aoMapVertexColor": false,
+        "diffuseMapVertexColor": false,
+        "emissiveMapVertexColor": false,
+        "specularMapVertexColor": false,
+        "metalnessMapVertexColor": false,
+        "opacityMapVertexColor": false,
+        "glossMapVertexColor": false,
+        "lightMapVertexColor": false,
+        "diffuseMapTint": false,
+        "specularMapTint": false,
+        "emissiveMapTint": false,
+        "metalnessMapTint": false
+      },
+      "type": "material",
+      "file": null,
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36198026"
+    },
+    "36280069": {
+      "tags": [],
+      "name": "Tundra-Cave.glb",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 1,
+        "meshInstances": 1,
+        "nodes": 2,
+        "skins": 0,
+        "vertices": 801,
+        "triangles": 421,
+        "attributes": {
+          "NORMAL": 1,
+          "POSITION": 1,
+          "TEXCOORD_0": 1
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 35938426
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "7ec03ffb921a2f97e4253787b8dbb27c",
+        "size": 32496,
+        "filename": "Tundra-Cave.glb",
+        "url": "files/assets/36280069/1/Tundra-Cave.glb"
+      },
+      "i18n": {},
+      "id": "36280069"
+    },
+    "36440224": {
+      "tags": [],
+      "name": "CCD.js",
+      "revision": 1,
+      "preload": true,
+      "meta": null,
+      "data": {
+        "scripts": {
+          "ccd": {
+            "attributesOrder": [
+              "entities",
+              "motionThreshold",
+              "sweptSphereRadius"
+            ],
+            "attributes": {
+              "motionThreshold": {
+                "type": "number",
+                "default": 1,
+                "title": "Motion Threshold",
+                "description": "Number of meters moved in one frame before CCD is enabled"
+              },
+              "sweptSphereRadius": {
+                "type": "number",
+                "default": 0.2,
+                "title": "Swept Sphere Radius",
+                "description": "This should be below the half extent of the collision volume. E.g For an object of dimensions 1 meter, try 0.2"
+              },
+              "entities": {
+                "type": "entity",
+                "array": true
+              }
+            }
+          }
+        },
+        "loading": false,
+        "loadingType": 0
+      },
+      "type": "script",
+      "file": {
+        "filename": "__game-scripts.js",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
+        "url": "__game-scripts.js"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36440224"
+    },
+    "36484523": {
+      "tags": [],
+      "name": "M4-Texture.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColor",
+        "width": 1024,
+        "height": 1024,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "M4-Texture.png",
+        "size": 690287,
+        "hash": "9ede264e6f7d1c9d8713f2699b9e7c7a",
+        "variants": {},
+        "url": "files/assets/36484523/1/M4-Texture.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36484523"
+    },
+    "36484534": {
+      "tags": [],
+      "name": "Assault_Rifle_m__rifle_dif_01b_png",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 0
+      },
+      "data": {
+        "shader": "phong",
+        "ambient": [
+          1,
+          1,
+          1
+        ],
+        "diffuse": [
+          0.64,
+          0.64,
+          0.64
+        ],
+        "diffuseMap": 36484523,
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "specular": [
+          0,
+          0,
+          0
+        ],
+        "shininess": 0,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 1,
+        "aoMap": null,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": null,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": null,
+        "lightMap": null,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "36484534"
+    },
+    "36487671": {
+      "tags": [],
+      "name": "M4-Tail-w.mp3",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": null,
+      "type": "audio",
+      "file": {
+        "filename": "M4-Tail-w.mp3",
+        "size": 31885,
+        "hash": "1c5cca51796cae7ae730d1289d6d42eb",
+        "url": "files/assets/36487671/1/M4-Tail-w.mp3"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36487671"
+    },
+    "36487672": {
+      "tags": [],
+      "name": "M4-Fire.mp3",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": null,
+      "type": "audio",
+      "file": {
+        "filename": "M4-Fire.mp3",
+        "size": 25360,
+        "hash": "9cf734e1ddccef4506cc6dd553fe4a6f",
+        "url": "files/assets/36487672/1/M4-Fire.mp3"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36487672"
+    },
+    "36489254": {
+      "tags": [],
+      "name": "1_t",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 0
+      },
+      "data": {
+        "shader": "blinn",
+        "ambient": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "diffuse": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "specular": [
+          0,
+          0,
+          0
+        ],
+        "shininess": 0,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 1,
+        "aoMap": null,
+        "diffuseMap": 36489259,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": null,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": null,
+        "lightMap": null,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "36489254"
+    },
+    "36489259": {
+      "tags": [],
+      "name": "LMG.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 1024,
+        "height": 1024,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "LMG.jpg",
+        "size": 170361,
+        "hash": "47c88d565c8da592b0a0758f1e47a944",
+        "variants": {},
+        "url": "files/assets/36489259/1/LMG.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36489259"
+    },
+    "36489284": {
+      "tags": [],
+      "name": "LMG-Fire.mp3",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": null,
+      "type": "audio",
+      "file": {
+        "filename": "LMG-Fire.mp3",
+        "size": 32540,
+        "hash": "2d20dd1ec471530bf44e228d6839650c",
+        "url": "files/assets/36489284/1/LMG-Fire.mp3"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36489284"
+    },
+    "36515755": {
+      "tags": [],
+      "name": "Snow-2x1",
+      "revision": 1,
+      "preload": true,
+      "meta": null,
+      "data": {
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "ambientTint": false,
+        "aoMap": null,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          4,
+          4
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "diffuse": [
+          1,
+          1,
+          1
+        ],
+        "diffuseMap": 34742002,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          4,
+          4
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "specular": [
+          0,
+          0,
+          0
+        ],
+        "specularMap": null,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          4,
+          4
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularAntialias": true,
+        "occludeSpecular": 1,
+        "useMetalness": false,
+        "metalness": 1,
+        "metalnessMap": null,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          4,
+          4
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "conserveEnergy": true,
+        "shininess": 0,
+        "glossMap": null,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          4,
+          4
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "emissive": [
+          1,
+          1,
+          1
+        ],
+        "emissiveMap": null,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          4,
+          4
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveIntensity": 0,
+        "normalMap": null,
+        "normalMapTiling": [
+          4,
+          4
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMap": null,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          4,
+          4
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaToCoverage": false,
+        "alphaTest": 0,
+        "opacity": 1,
+        "opacityMap": null,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          4,
+          4
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "sphereMap": null,
+        "cubeMap": null,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMap": null,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          4,
+          4
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shader": "phong",
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true,
+        "aoMapVertexColor": false,
+        "diffuseMapVertexColor": false,
+        "emissiveMapVertexColor": false,
+        "specularMapVertexColor": false,
+        "metalnessMapVertexColor": false,
+        "opacityMapVertexColor": false,
+        "glossMapVertexColor": false,
+        "lightMapVertexColor": false,
+        "diffuseMapTint": false,
+        "specularMapTint": false,
+        "emissiveMapTint": false,
+        "metalnessMapTint": false
+      },
+      "type": "material",
+      "file": null,
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36515755"
+    },
+    "36515758": {
+      "tags": [],
+      "name": "Ice-10x1",
+      "revision": 1,
+      "preload": true,
+      "meta": null,
+      "data": {
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "ambientTint": false,
+        "aoMap": null,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          5,
+          5
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "diffuse": [
+          0.9372549019607843,
+          0.9372549019607843,
+          0.9372549019607843
+        ],
+        "diffuseMap": 35934019,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          5,
+          5
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "specular": [
+          0,
+          0,
+          0
+        ],
+        "specularMap": null,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          5,
+          5
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularAntialias": true,
+        "occludeSpecular": 1,
+        "useMetalness": false,
+        "metalness": 1,
+        "metalnessMap": null,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          5,
+          5
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "conserveEnergy": true,
+        "shininess": 0,
+        "glossMap": null,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          5,
+          5
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "emissive": [
+          1,
+          1,
+          1
+        ],
+        "emissiveMap": null,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          5,
+          5
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveIntensity": 0,
+        "normalMap": null,
+        "normalMapTiling": [
+          5,
+          5
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMap": null,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          5,
+          5
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaToCoverage": false,
+        "alphaTest": 0,
+        "opacity": 1,
+        "opacityMap": null,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          5,
+          5
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "sphereMap": null,
+        "cubeMap": null,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMap": null,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          5,
+          5
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shader": "phong",
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true,
+        "aoMapVertexColor": false,
+        "diffuseMapVertexColor": false,
+        "emissiveMapVertexColor": false,
+        "specularMapVertexColor": false,
+        "metalnessMapVertexColor": false,
+        "opacityMapVertexColor": false,
+        "glossMapVertexColor": false,
+        "lightMapVertexColor": false,
+        "diffuseMapTint": true,
+        "specularMapTint": false,
+        "emissiveMapTint": false,
+        "metalnessMapTint": false
+      },
+      "type": "material",
+      "file": null,
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36515758"
+    },
+    "36531169": {
+      "tags": [],
+      "name": "Weapon-M4",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 2,
+        "meshInstances": 2,
+        "nodes": 3,
+        "skins": 0,
+        "vertices": 1694,
+        "triangles": 2112,
+        "attributes": {
+          "NORMAL": 2,
+          "POSITION": 2,
+          "TEXCOORD_0": 2
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 36484534
+          },
+          {
+            "material": 36484534
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "0c3c963e34932f90fcbb7bd2deb2272c",
+        "size": 82632,
+        "filename": "Weapon-M4.glb",
+        "url": "files/assets/36531169/1/Weapon-M4.glb"
+      },
+      "i18n": {},
+      "id": "36531169"
+    },
+    "36538507": {
+      "tags": [],
+      "name": "Weapon-LMG",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 2,
+        "meshInstances": 2,
+        "nodes": 3,
+        "skins": 0,
+        "vertices": 1331,
+        "triangles": 1099,
+        "attributes": {
+          "NORMAL": 2,
+          "POSITION": 2,
+          "TEXCOORD_0": 2
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 36489254
+          },
+          {
+            "material": 36489254
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "4ac72d971f93d75d1107b685ec832aed",
+        "size": 58796,
+        "filename": "Weapon-LMG.glb",
+        "url": "files/assets/36538507/1/Weapon-LMG.glb"
+      },
+      "i18n": {},
+      "id": "36538507"
+    },
+    "36540615": {
+      "tags": [],
+      "name": "LMG-Reload.mp3",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": null,
+      "type": "audio",
+      "file": {
+        "filename": "LMG-Reload.mp3",
+        "size": 44208,
+        "hash": "15aa27c80210db12f4ff85dcc7f0520b",
+        "url": "files/assets/36540615/1/LMG-Reload.mp3"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36540615"
+    },
+    "36544153": {
+      "tags": [],
+      "name": "Weapon-Desert-Eagle",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 4,
+        "meshInstances": 4,
+        "nodes": 5,
+        "skins": 0,
+        "vertices": 1953,
+        "triangles": 1637,
+        "attributes": {
+          "NORMAL": 4,
+          "POSITION": 4,
+          "TEXCOORD_0": 4
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 36544154
+          },
+          {
+            "material": 36544154
+          },
+          {
+            "material": 36544154
+          },
+          {
+            "material": 36544154
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "cd430ec7c440bdc53ccea09478d3c00e",
+        "size": 87736,
+        "filename": "Weapon-Desert-Eagle.glb",
+        "url": "files/assets/36544153/1/Weapon-Desert-Eagle.glb"
+      },
+      "i18n": {},
+      "id": "36544153"
+    },
+    "36544154": {
+      "tags": [],
+      "name": "Deagle",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 0
+      },
+      "data": {
+        "shader": "blinn",
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "diffuse": [
+          0.64,
+          0.64,
+          0.64
+        ],
+        "specular": [
+          0.25,
+          0.25,
+          0.25
+        ],
+        "shininess": 29.6747,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 1,
+        "aoMap": null,
+        "diffuseMap": 36544207,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": null,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": null,
+        "lightMap": null,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "36544154"
+    },
+    "36544207": {
+      "tags": [],
+      "name": "Deagle-Texture.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 1024,
+        "height": 1024,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Deagle-Texture.jpg",
+        "size": 335662,
+        "hash": "2a405e8f03f3a46c80d98bee6b982ea7",
+        "variants": {},
+        "url": "files/assets/36544207/1/Deagle-Texture.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36544207"
+    },
+    "36545095": {
+      "tags": [],
+      "name": "Pistol-Load.mp3",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": null,
+      "type": "audio",
+      "file": {
+        "filename": "Pistol-Load.mp3",
+        "size": 7392,
+        "hash": "14ee90deeca308549fa47853cee52ad8",
+        "url": "files/assets/36545095/1/Pistol-Load.mp3"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36545095"
+    },
+    "36545096": {
+      "tags": [],
+      "name": "Pistol-Unload.mp3",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": null,
+      "type": "audio",
+      "file": {
+        "filename": "Pistol-Unload.mp3",
+        "size": 8784,
+        "hash": "38af3ef60c5426fa70d3fcdaa7794183",
+        "url": "files/assets/36545096/1/Pistol-Unload.mp3"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36545096"
+    },
+    "36545097": {
+      "tags": [],
+      "name": "Pistol-Reload.mp3",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": null,
+      "type": "audio",
+      "file": {
+        "filename": "Pistol-Reload.mp3",
+        "size": 20823,
+        "hash": "e45e7c79ca44b9f188a9f5b46c533a58",
+        "url": "files/assets/36545097/1/Pistol-Reload.mp3"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36545097"
+    },
+    "36545098": {
+      "tags": [],
+      "name": "Pistol-Fire.mp3",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": null,
+      "type": "audio",
+      "file": {
+        "filename": "Pistol-Fire.mp3",
+        "size": 84715,
+        "hash": "7b800b7e4ebec91b0b9209e291fcd9a8",
+        "url": "files/assets/36545098/1/Pistol-Fire.mp3"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36545098"
+    },
+    "36573024": {
+      "tags": [],
+      "name": "Weapon-Dagger",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 1,
+        "meshInstances": 1,
+        "nodes": 2,
+        "skins": 0,
+        "vertices": 167,
+        "triangles": 276,
+        "attributes": {
+          "NORMAL": 1,
+          "POSITION": 1,
+          "TEXCOORD_0": 1
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 36573025
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "257b41151473773ac279eb747d1281d3",
+        "size": 10444,
+        "filename": "Weapon-Dagger.glb",
+        "url": "files/assets/36573024/1/Weapon-Dagger.glb"
+      },
+      "i18n": {},
+      "id": "36573024"
+    },
+    "36573025": {
+      "tags": [],
+      "name": "Dagger",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 0
+      },
+      "data": {
+        "shader": "blinn",
+        "ambient": [
+          1,
+          1,
+          1
+        ],
+        "diffuse": [
+          0.64,
+          0.64,
+          0.64
+        ],
+        "diffuseMap": 36573276,
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "specular": [
+          0,
+          0,
+          0
+        ],
+        "shininess": 0,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 1,
+        "aoMap": null,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": 36573275,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": null,
+        "lightMap": null,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "36573025"
+    },
+    "36573275": {
+      "tags": [],
+      "name": "Dagger-EMS.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "Grayscale",
+        "width": 1024,
+        "height": 1024,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Dagger-EMS.jpg",
+        "size": 112143,
+        "hash": "59056b108ee8d9e9927d25372b5b905b",
+        "variants": {},
+        "url": "files/assets/36573275/1/Dagger-EMS.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36573275"
+    },
+    "36573276": {
+      "tags": [],
+      "name": "Dagger-Texture.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 1024,
+        "height": 1024,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Dagger-Texture.jpg",
+        "size": 186200,
+        "hash": "c3718c1d0a4c320ecd400609c588b9b5",
+        "variants": {},
+        "url": "files/assets/36573276/1/Dagger-Texture.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36573276"
+    },
+    "36578644": {
+      "tags": [],
+      "name": "Dagger-Whoosh.mp3",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": null,
+      "type": "audio",
+      "file": {
+        "filename": "Dagger-Whoosh.mp3",
+        "size": 19351,
+        "hash": "e16055fd55b10e05d5f1490b27b75c3c",
+        "url": "files/assets/36578644/1/Dagger-Whoosh.mp3"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36578644"
+    },
+    "36584447": {
+      "tags": [],
+      "name": "Slash.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColorAlpha",
+        "width": 512,
+        "height": 128,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true,
+        "frames": {
+          "1": {
+            "name": "Frame 1",
+            "rect": [
+              0,
+              0,
+              85,
+              128
+            ],
+            "pivot": [
+              0.5,
+              0.5
+            ],
+            "border": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "2": {
+            "name": "Frame 2",
+            "rect": [
+              85,
+              0,
+              85,
+              128
+            ],
+            "pivot": [
+              0.5,
+              0.5
+            ],
+            "border": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "3": {
+            "name": "Frame 3",
+            "rect": [
+              170,
+              0,
+              85,
+              128
+            ],
+            "pivot": [
+              0.5,
+              0.5
+            ],
+            "border": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "4": {
+            "name": "Frame 4",
+            "rect": [
+              255,
+              0,
+              85,
+              128
+            ],
+            "pivot": [
+              0.5,
+              0.5
+            ],
+            "border": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "5": {
+            "name": "Frame 5",
+            "rect": [
+              340,
+              0,
+              85,
+              128
+            ],
+            "pivot": [
+              0.5,
+              0.5
+            ],
+            "border": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "6": {
+            "name": "Frame 6",
+            "rect": [
+              152,
+              0,
+              36,
+              6
+            ],
+            "pivot": [
+              0.5,
+              0.5
+            ],
+            "border": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "type": "textureatlas",
+      "file": {
+        "filename": "slash.png",
+        "size": 13131,
+        "hash": "de755c3791dd4a9fa2c64243a022f5b3",
+        "variants": {},
+        "url": "files/assets/36584447/1/slash.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36584447"
+    },
+    "36584448": {
+      "tags": [],
+      "name": "Dagger-Swing",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": {
+        "pixelsPerUnit": 100,
+        "frameKeys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "textureAtlasAsset": 36584447,
+        "renderMode": 0
+      },
+      "type": "sprite",
+      "file": null,
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36584448"
+    },
+    "36667684": {
+      "tags": [],
+      "name": "ModePosition.js",
+      "revision": 1,
+      "preload": true,
+      "meta": null,
+      "data": {
+        "scripts": {
+          "modePosition": {
+            "attributesOrder": [
+              "mode",
+              "position"
+            ],
+            "attributes": {
+              "mode": {
+                "type": "string"
+              },
+              "position": {
+                "type": "vec3"
+              }
+            }
+          }
+        },
+        "loading": false,
+        "loadingType": 0
+      },
+      "type": "script",
+      "file": {
+        "filename": "__game-scripts.js",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
+        "url": "__game-scripts.js"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36667684"
+    },
+    "36667723": {
+      "tags": [],
+      "name": "ModeManager.js",
+      "revision": 1,
+      "preload": true,
+      "meta": null,
+      "data": {
+        "scripts": {
+          "modeManager": {
+            "attributesOrder": [],
+            "attributes": {}
+          }
+        },
+        "loading": false,
+        "loadingType": 0
+      },
+      "type": "script",
+      "file": {
+        "filename": "__game-scripts.js",
+        "size": 458554,
+        "hash": "51241f0d71e695a3c12a4b396d177cec",
+        "url": "__game-scripts.js"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36667723"
+    },
+    "36674693": {
+      "tags": [],
+      "name": "Desert-Eagle-Thumbnail-White.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "GrayscaleAlpha",
+        "width": 512,
+        "height": 512,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Desert-Eagle-Thumbnail-White.png",
+        "size": 1861,
+        "hash": "6a6e3b5b55f877599b7ce328fe65c3ef",
+        "variants": {},
+        "url": "files/assets/36674693/1/Desert-Eagle-Thumbnail-White.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36674693"
+    },
+    "36674694": {
+      "tags": [],
+      "name": "LMG-Thumbnail-White.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "GrayscaleAlpha",
+        "width": 512,
+        "height": 512,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "LMG-Thumbnail-White.png",
+        "size": 1534,
+        "hash": "f458f6871fa273f833e1c1b1c2715616",
+        "variants": {},
+        "url": "files/assets/36674694/1/LMG-Thumbnail-White.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36674694"
+    },
+    "36674695": {
+      "tags": [],
+      "name": "Dagger-Thumbnail-White.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "Bilevel",
+        "width": 512,
+        "height": 512,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Dagger-Thumbnail-White.png",
+        "size": 2808,
+        "hash": "e2a3b7a88fdfccc704561ab2d44e8eed",
+        "variants": {},
+        "url": "files/assets/36674695/1/Dagger-Thumbnail-White.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36674695"
+    },
+    "36674696": {
+      "tags": [],
+      "name": "LMG.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "PaletteAlpha",
+        "width": 512,
+        "height": 512,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "LMG.png",
+        "size": 22142,
+        "hash": "3405485be515b6a0aa6456fa88abd075",
+        "variants": {},
+        "url": "files/assets/36674696/1/LMG.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36674696"
+    },
+    "36674697": {
+      "tags": [],
+      "name": "Desert-Eagle.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "PaletteAlpha",
+        "width": 512,
+        "height": 512,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Desert-Eagle.png",
+        "size": 16185,
+        "hash": "574edcf77ce0a89e4d7f25ce7dfd7cd8",
+        "variants": {},
+        "url": "files/assets/36674697/1/Desert-Eagle.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36674697"
+    },
+    "36674698": {
+      "tags": [],
+      "name": "M4.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "PaletteAlpha",
+        "width": 512,
+        "height": 512,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "M4.png",
+        "size": 28680,
+        "hash": "20a656edc9f812654d5c713e23935fbe",
+        "variants": {},
+        "url": "files/assets/36674698/1/M4.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36674698"
+    },
+    "36674699": {
+      "tags": [],
+      "name": "M4-Thumbnail-White.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "Bilevel",
+        "width": 512,
+        "height": 512,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "M4-Thumbnail-White.png",
+        "size": 1545,
+        "hash": "30f8a398253e83e53ee2741fd66cbc91",
+        "variants": {},
+        "url": "files/assets/36674699/1/M4-Thumbnail-White.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36674699"
+    },
+    "36675168": {
+      "tags": [],
+      "name": "Rank-5.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColorAlpha",
+        "width": 256,
+        "height": 256,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Rank-5.png",
+        "size": 48763,
+        "hash": "d86aa054c13f1592a485120e7edef279",
+        "variants": {},
+        "url": "files/assets/36675168/1/Rank-5.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36675168"
+    },
+    "36675169": {
+      "tags": [],
+      "name": "Rank-6.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColorAlpha",
+        "width": 256,
+        "height": 256,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Rank-6.png",
+        "size": 50747,
+        "hash": "d964f2a9dee6e029ae800c888a0aae45",
+        "variants": {},
+        "url": "files/assets/36675169/1/Rank-6.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36675169"
+    },
+    "36675170": {
+      "tags": [],
+      "name": "Rank-4.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColorAlpha",
+        "width": 256,
+        "height": 256,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Rank-4.png",
+        "size": 50080,
+        "hash": "c543b72d83e036f4de751cba979dd11f",
+        "variants": {},
+        "url": "files/assets/36675170/1/Rank-4.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36675170"
+    },
+    "36675171": {
+      "tags": [],
+      "name": "Rank-8.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColorAlpha",
+        "width": 256,
+        "height": 256,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Rank-8.png",
+        "size": 67110,
+        "hash": "71dd4bc90f6225c4ed0fbc41b7d4d9eb",
+        "variants": {},
+        "url": "files/assets/36675171/1/Rank-8.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36675171"
+    },
+    "36675172": {
+      "tags": [],
+      "name": "Rank-7.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColorAlpha",
+        "width": 256,
+        "height": 256,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Rank-7.png",
+        "size": 51159,
+        "hash": "49ebe14add53bbabfef1b1cd05021d68",
+        "variants": {},
+        "url": "files/assets/36675172/1/Rank-7.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36675172"
+    },
+    "36675173": {
+      "tags": [],
+      "name": "Rank-2.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColorAlpha",
+        "width": 256,
+        "height": 256,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Rank-2.png",
+        "size": 35149,
+        "hash": "65f908e0d87967c71417500e79ce7875",
+        "variants": {},
+        "url": "files/assets/36675173/1/Rank-2.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36675173"
+    },
+    "36675174": {
+      "tags": [],
+      "name": "Rank-1.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColorAlpha",
+        "width": 256,
+        "height": 256,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Rank-1.png",
+        "size": 30958,
+        "hash": "c1e000443e7ee7eb0a68fb8e9b037fa7",
+        "variants": {},
+        "url": "files/assets/36675174/1/Rank-1.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36675174"
+    },
+    "36675175": {
+      "tags": [],
+      "name": "Rank-3.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColorAlpha",
+        "width": 256,
+        "height": 256,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Rank-3.png",
+        "size": 37804,
+        "hash": "0a65424d359f0eb71beefbd77a6f4fca",
+        "variants": {},
+        "url": "files/assets/36675175/1/Rank-3.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36675175"
+    },
+    "36675266": {
+      "tags": [],
+      "name": "Rank-Up.mp3",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": null,
+      "type": "audio",
+      "file": {
+        "filename": "Rank-Up.mp3",
+        "size": 80295,
+        "hash": "88fe96a26fb1185d61e33dc37b5418ac",
+        "url": "files/assets/36675266/1/Rank-Up.mp3"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36675266"
+    },
+    "36675267": {
+      "tags": [],
+      "name": "Rank-Up-2.mp3",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": null,
+      "type": "audio",
+      "file": {
+        "filename": "Rank-Up-2.mp3",
+        "size": 79747,
+        "hash": "d243501eae8d6d001dd3735c907dbfd7",
+        "url": "files/assets/36675267/1/Rank-Up-2.mp3"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36675267"
+    },
+    "36680489": {
+      "tags": [],
+      "name": "Warn-User-Impulse.mp3",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": null,
+      "type": "audio",
+      "file": {
+        "filename": "Warn-User-Impulse.mp3",
+        "size": 58794,
+        "hash": "1b7d07e3e04825b3617cb71d2f80f368",
+        "url": "files/assets/36680489/1/Warn-User-Impulse.mp3"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36680489"
+    },
+    "36716849": {
+      "tags": [],
+      "name": "M4-Optimized",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 1,
+        "meshInstances": 1,
+        "nodes": 2,
+        "skins": 0,
+        "vertices": 820,
+        "triangles": 747,
+        "attributes": {
+          "NORMAL": 1,
+          "POSITION": 1,
+          "TEXCOORD_0": 1
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 36716850
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "46938fcf7d693764aa68362a35633128",
+        "size": 36944,
+        "filename": "M4-Optimized.glb",
+        "url": "files/assets/36716849/1/M4-Optimized.glb"
+      },
+      "i18n": {},
+      "id": "36716849"
+    },
+    "36716850": {
+      "tags": [],
+      "name": "Assault_Rifle_m__rifle_dif_01b_png.002",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 0
+      },
+      "data": {
+        "shader": "blinn",
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "diffuse": [
+          0.8,
+          0.8,
+          0.8
+        ],
+        "diffuseMap": 36716978,
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "specular": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "shininess": 32.7609,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 0,
+        "aoMap": null,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": null,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": null,
+        "lightMap": null,
+        "blendType": 3,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "36716850"
+    },
+    "36716852": {
+      "tags": [],
+      "name": "LMG-Optimized.glb",
+      "revision": 1,
+      "preload": false,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 2,
+        "meshInstances": 2,
+        "nodes": 3,
+        "skins": 0,
+        "vertices": 762,
+        "triangles": 553,
+        "attributes": {
+          "NORMAL": 2,
+          "POSITION": 2,
+          "TEXCOORD_0": 2
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 36716853
+          },
+          {
+            "material": 36716853
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "d6537921122551f1bee3e15b0a7e3e27",
+        "size": 34028,
+        "filename": "LMG-Optimized.glb",
+        "url": "files/assets/36716852/1/LMG-Optimized.glb"
+      },
+      "i18n": {},
+      "id": "36716852"
+    },
+    "36716853": {
+      "tags": [],
+      "name": "1_t",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 0
+      },
+      "data": {
+        "shader": "blinn",
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "diffuse": [
+          0.4,
+          0.4,
+          0.4
+        ],
+        "specular": [
+          0,
+          0,
+          0
+        ],
+        "shininess": 29.4042,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 1,
+        "aoMap": null,
+        "diffuseMap": 36716979,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": null,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": null,
+        "lightMap": null,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "36716853"
+    },
+    "36716855": {
+      "tags": [],
+      "name": "Desert-Eagle-Optimized.glb",
+      "revision": 1,
+      "preload": false,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 4,
+        "meshInstances": 4,
+        "nodes": 5,
+        "skins": 0,
+        "vertices": 1538,
+        "triangles": 1243,
+        "attributes": {
+          "NORMAL": 4,
+          "POSITION": 4,
+          "TEXCOORD_0": 4
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 36716856
+          },
+          {
+            "material": 36716856
+          },
+          {
+            "material": 36716856
+          },
+          {
+            "material": 36716856
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "657e7e28d4f4b59771a5c96d439a9e9c",
+        "size": 69728,
+        "filename": "Desert-Eagle-Optimized.glb",
+        "url": "files/assets/36716855/1/Desert-Eagle-Optimized.glb"
+      },
+      "i18n": {},
+      "id": "36716855"
+    },
+    "36716856": {
+      "tags": [],
+      "name": "Deagle",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 0
+      },
+      "data": {
+        "shader": "blinn",
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "diffuse": [
+          0.64,
+          0.64,
+          0.64
+        ],
+        "specular": [
+          0.25,
+          0.25,
+          0.25
+        ],
+        "shininess": 29.6747,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 1,
+        "aoMap": null,
+        "diffuseMap": 36716977,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": null,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": null,
+        "lightMap": null,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "36716856"
+    },
+    "36716977": {
+      "tags": [],
+      "name": "Deagle-Texture-Optimized.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 128,
+        "height": 128,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Deagle-Texture-Optimized.jpg",
+        "size": 8361,
+        "hash": "04f0e8c8fd73fd5f39de77f14ee97b29",
+        "variants": {},
+        "url": "files/assets/36716977/1/Deagle-Texture-Optimized.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36716977"
+    },
+    "36716978": {
+      "tags": [],
+      "name": "M4-Optimized.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 128,
+        "height": 128,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "M4-Optimized.jpg",
+        "size": 5389,
+        "hash": "7890a259200e96591bb4f91f3eae3fc4",
+        "variants": {},
+        "url": "files/assets/36716978/1/M4-Optimized.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36716978"
+    },
+    "36716979": {
+      "tags": [],
+      "name": "LMG-Optimized.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 128,
+        "height": 128,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "LMG-Optimized.jpg",
+        "size": 5122,
+        "hash": "dfb468191b99f5a6bba7c783ad92e35c",
+        "variants": {},
+        "url": "files/assets/36716979/1/LMG-Optimized.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36716979"
+    },
+    "36731926": {
+      "tags": [],
+      "name": "Wall-Texture-4M-Dungeon.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 512,
+        "height": 512,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Wall-Texture-4M-Dungeon.jpg",
+        "size": 24007,
+        "hash": "e016c62c9d9d4105cf547ac99257195d",
+        "variants": {},
+        "url": "files/assets/36731926/1/Wall-Texture-4M-Dungeon.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36731926"
+    },
+    "36731927": {
+      "tags": [],
+      "name": "Wall-4M-Dungeon.glb",
+      "revision": 1,
+      "preload": false,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 1,
+        "meshInstances": 1,
+        "nodes": 2,
+        "skins": 0,
+        "vertices": 24,
+        "triangles": 12,
+        "attributes": {
+          "NORMAL": 1,
+          "POSITION": 1,
+          "TEXCOORD_0": 1
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 36731968
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "1193c37e1db905c9476bcb926f6cda53",
+        "size": 2608,
+        "filename": "Wall-4M-Dungeon.glb",
+        "url": "files/assets/36731927/1/Wall-4M-Dungeon.glb"
+      },
+      "i18n": {},
+      "id": "36731927"
+    },
+    "36731968": {
+      "tags": [],
+      "name": "Wall-Dungeon",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": {
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "ambientTint": false,
+        "aoMap": null,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "diffuse": [
+          0.6823529411764706,
+          0.6823529411764706,
+          0.6823529411764706
+        ],
+        "diffuseMap": 36731926,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "specular": [
+          0,
+          0,
+          0
+        ],
+        "specularMap": null,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularAntialias": true,
+        "occludeSpecular": 1,
+        "useMetalness": false,
+        "metalness": 1,
+        "metalnessMap": null,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "conserveEnergy": true,
+        "shininess": 0,
+        "glossMap": null,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "emissiveMap": null,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveIntensity": 1,
+        "normalMap": null,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMap": null,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaToCoverage": false,
+        "alphaTest": 0,
+        "opacity": 1,
+        "opacityMap": null,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "sphereMap": null,
+        "cubeMap": null,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMap": null,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shader": "blinn",
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true,
+        "aoMapVertexColor": false,
+        "diffuseMapVertexColor": false,
+        "emissiveMapVertexColor": false,
+        "specularMapVertexColor": false,
+        "metalnessMapVertexColor": false,
+        "opacityMapVertexColor": false,
+        "glossMapVertexColor": false,
+        "lightMapVertexColor": false,
+        "diffuseMapTint": true,
+        "specularMapTint": false,
+        "emissiveMapTint": false,
+        "metalnessMapTint": false
+      },
+      "type": "material",
+      "file": null,
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36731968"
+    },
+    "36734872": {
+      "tags": [],
+      "name": "Card-Cold",
+      "revision": 1,
+      "preload": true,
+      "meta": null,
+      "data": {
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "ambientTint": false,
+        "aoMap": null,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "diffuse": [
+          0.6745098039215687,
+          0.6745098039215687,
+          0.6745098039215687
+        ],
+        "diffuseMap": 34345694,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "specular": [
+          0.23,
+          0.23,
+          0.23
+        ],
+        "specularMap": null,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularAntialias": true,
+        "occludeSpecular": 1,
+        "useMetalness": false,
+        "metalness": 1,
+        "metalnessMap": null,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "conserveEnergy": true,
+        "shininess": 32,
+        "glossMap": null,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "emissiveMap": null,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveIntensity": 1,
+        "normalMap": null,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMap": null,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaToCoverage": false,
+        "alphaTest": 0,
+        "opacity": 1,
+        "opacityMap": 34345694,
+        "opacityMapChannel": "a",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "sphereMap": null,
+        "cubeMap": null,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMap": null,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 2,
+        "shader": "phong",
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true,
+        "aoMapVertexColor": false,
+        "diffuseMapVertexColor": false,
+        "emissiveMapVertexColor": false,
+        "specularMapVertexColor": false,
+        "metalnessMapVertexColor": false,
+        "opacityMapVertexColor": false,
+        "glossMapVertexColor": false,
+        "lightMapVertexColor": false,
+        "diffuseMapTint": true,
+        "specularMapTint": false,
+        "emissiveMapTint": false,
+        "metalnessMapTint": false
+      },
+      "type": "material",
+      "file": null,
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36734872"
+    },
+    "36735818": {
+      "tags": [],
+      "name": "Tundra-512x.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 512,
+        "height": 512,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Tundra-512x.jpg",
+        "size": 130018,
+        "hash": "08f7be8fbebe28aad16e0d4968233b3d",
+        "variants": {},
+        "url": "files/assets/36735818/1/Tundra-512x.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36735818"
+    },
+    "36735838": {
+      "tags": [],
+      "name": "Tundra-Thumbnail",
+      "revision": 1,
+      "preload": true,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 128,
+        "height": 64,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Tundra-Thumbnail.jpg",
+        "hash": "857d315ff5e786e69af03a9838da66dd",
+        "size": 6222,
+        "variants": {},
+        "url": "files/assets/36735838/1/Tundra-Thumbnail.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36735838"
     }
   }
 }

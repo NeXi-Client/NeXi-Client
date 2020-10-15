@@ -177,6 +177,7 @@
         "540461b2-0e3a-4f66-b571-86b87175bbc5",
         "8aa8df1a-1661-4e70-bcce-327df3a7ca4d",
         "84f9d6ee-6764-4ffc-b8ae-3a4995cd1ca0",
+        "e10a6925-37a3-4cbc-878c-7fd37b460250",
         "60fdbaf8-aecd-4713-99a8-d40d8a5eaa61",
         "c58e956e-222b-47a0-a2a2-44233169f8f5",
         "fcf27bc6-8c98-4b74-ac38-36482fad0dbb"
@@ -392,7 +393,14 @@
                 "defaultNonFov": 60,
                 "shurikenPoint1": "0670086f-4ba6-477c-af94-4293a207cf3f",
                 "shurikenPoint2": "f67fab9f-377e-4755-b483-1714a5a74292",
-                "shurikenPoint3": "39ce40b7-4e4b-41bd-a6d2-05bda69a49ea"
+                "shurikenPoint3": "39ce40b7-4e4b-41bd-a6d2-05bda69a49ea",
+                "meleePoints": [
+                  "c50f7acf-d16d-41b9-8157-eca207cd9c1d",
+                  "17b5bfde-4136-4a48-a5de-2a4ff5dacfe0",
+                  "36da96ae-7238-420c-aed7-13ecf65a57e4",
+                  "17785b42-14f6-47b3-a508-1c1bc3048eb7",
+                  "b9b2638a-d59f-4e10-a842-9ce519281b01"
+                ]
               }
             },
             "weaponManager": {
@@ -405,7 +413,8 @@
                 "maxFlameScale": 0.7,
                 "armRightEntity": "8b07a182-402b-4af9-a2d7-ec35be35d50f",
                 "armLeftEntity": "c112a26d-22a6-468a-82d6-b3b600b07bc5",
-                "meleeCollision": "bcc3a254-4526-4d6c-967f-50a6c7606a99"
+                "swingLeftEntity": "3aa335ff-7b1c-409e-a40c-856629ed1be9",
+                "swingRightEntity": "e68fc1de-b53f-4fbd-9ae9-2459df473dcb"
               }
             },
             "player": {
@@ -904,6 +913,7 @@
       "parent": "93790e46-99cf-49e7-830a-a15bc441b889",
       "children": [
         "6edd1eb2-6422-4a3b-b258-5ddca5b452ce",
+        "678fdcd1-e21d-4ecd-a60f-b4cd2b5f1b0a",
         "06a9388b-9257-4270-b4c1-b606dfb1d457"
       ],
       "position": [
@@ -993,7 +1003,13 @@
                 "ammoEntity": null,
                 "isRightHanded": false,
                 "distanceMultiplier": 1,
-                "isShootable": true
+                "isShootable": true,
+                "rotationSlider": false,
+                "hiddenReload": false,
+                "weight": "Light",
+                "rightArmEntity": null,
+                "rightHandPoint": null,
+                "isFocusable": true
               }
             }
           }
@@ -1076,11 +1092,15 @@
       "children": [
         "00105180-4235-4666-b8d6-e29e0e763fdd",
         "7ce9e164-c3d2-4741-a842-d9c00a8ad7fa",
+        "3f8fab6a-6ec5-4a5a-94ca-27ee920a3c2d",
         "00e8efa1-8e2a-4162-97a3-202b601757ca",
+        "b2510852-d387-4cfd-b568-81a01af8852f",
+        "46f6693f-bbe6-48a7-b7fd-0c352d744e67",
         "bf215832-8da1-4910-9ee4-fe68fcda2224",
         "a92e3a56-d2cb-4d4a-8f97-047cd217b171",
         "974afaa4-7d88-4fca-8d55-33a5527c2cf9",
-        "952abbee-906a-45c8-b343-a33c07860148"
+        "952abbee-906a-45c8-b343-a33c07860148",
+        "6da0a919-8f04-41d5-b3c5-1d67d97a0c0c"
       ],
       "position": [
         -0.010881543159484863,
@@ -1111,6 +1131,11 @@
         "69e381ee-446c-4c7d-a61e-dc2b7940b5ea",
         "63cc6332-bf3e-4da6-a11b-c467bead28a4",
         "b9e4db1c-d9f4-42b7-9358-138fce8df3bc",
+        "c50f7acf-d16d-41b9-8157-eca207cd9c1d",
+        "17b5bfde-4136-4a48-a5de-2a4ff5dacfe0",
+        "36da96ae-7238-420c-aed7-13ecf65a57e4",
+        "17785b42-14f6-47b3-a508-1c1bc3048eb7",
+        "b9b2638a-d59f-4e10-a842-9ce519281b01",
         "309bd5a5-35a7-4105-ace9-287e5848bfe1"
       ],
       "position": [
@@ -1358,7 +1383,12 @@
                 "alreadyStartedCount": "d77ada6d-2dc2-438a-ba81-9e38a630ac83",
                 "playerStatsEntity": "907d5c7e-7daa-4663-a7e9-5807b0f17a74",
                 "announceTextBackground": "8f4b942f-e9a0-4fea-a110-52676c0ad59d",
-                "abilityNotification": "b33b9a6e-b883-40ed-bb92-910602f4644c"
+                "abilityNotification": "b33b9a6e-b883-40ed-bb92-910602f4644c",
+                "chatWrapperEntity": "2ce45a0a-d544-4ad2-899e-567e0f24ca79",
+                "taskLabelEntity": "6b2ac8b7-0511-4c21-ba9d-2c488f793e02",
+                "icon1Entity": "166e34b8-09fa-47a7-8641-44dde63bbeca",
+                "icon2Entity": "685b8538-9aac-4dae-8c4f-131aeba633cb",
+                "weaponText": "001eb608-6cc6-4160-87c2-a16c447288f6"
               }
             },
             "mobileController": {
@@ -1770,6 +1800,39 @@
               "duration": null,
               "volume": 0.6,
               "pitch": 1.6
+            },
+            "38": {
+              "name": "Announce-Rank-Up",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 36675266,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "39": {
+              "name": "Announce-Rank-Up-2",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 36675267,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "40": {
+              "name": "Warn-User",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 36680489,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
             }
           }
         }
@@ -4193,7 +4256,10 @@
                 "networkEntity": "13c7bc23-c999-47d0-8da3-30a6f44b6a99",
                 "splashEntity": "4442000b-6faa-4926-8796-9faff37f2aa3",
                 "testBox": "b21fb005-3d01-4de7-890b-192a51814002",
-                "killSphereEntity": "fbc1de9e-7379-455b-a473-c7195fd7ae25"
+                "killSphereEntity": "fbc1de9e-7379-455b-a473-c7195fd7ae25",
+                "explosive": [
+                  "Barrel"
+                ]
               }
             }
           }
@@ -5840,14 +5906,15 @@
           "enabled": true,
           "order": [
             "networkManager",
-            "fetcher"
+            "fetcher",
+            "modeManager"
           ],
           "scripts": {
             "networkManager": {
               "enabled": true,
               "attributes": {
-                "URL": "wss://server-eu-1.venge.io",
-                "testURL": "wss://server-eu-1.venge.io",
+                "URL": "wss://server-na-18.venge.io",
+                "testURL": "wss://server-na-18.venge.io",
                 "playerEntity": "d6311a5c-7dec-4eb4-b495-15f29130570e",
                 "overlayEntity": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
                 "menuCameraEntity": "c58e956e-222b-47a0-a2a2-44233169f8f5",
@@ -5868,8 +5935,13 @@
                 "data": "",
                 "success": "Network:Options",
                 "error": "Network:Issue",
-                "loading": ""
+                "loading": "",
+                "loadingEntity": null
               }
+            },
+            "modeManager": {
+              "enabled": true,
+              "attributes": {}
             }
           }
         }
@@ -7097,6 +7169,83 @@
               "autoPlay": false,
               "overlap": false,
               "asset": 34174439,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "32": {
+              "name": "Dagger-Fire",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 36578644,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "33": {
+              "name": "LMG-Fire",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 36489284,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "34": {
+              "name": "M4-Fire",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 36487672,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "35": {
+              "name": "Desert-Eagle-Fire",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 36545098,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "36": {
+              "name": "Desert-Eagle-Reload",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 36545097,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "37": {
+              "name": "LMG-Reload",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 36540615,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "38": {
+              "name": "M4-Reload",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 29487879,
               "startTime": 0,
               "duration": null,
               "volume": 1,
@@ -11452,9 +11601,9 @@
         "a1697e49-b421-4c1f-80d7-c4e46b3c117e"
       ],
       "position": [
-        5.329070518200751e-15,
         0,
-        3.552713678800501e-15
+        0,
+        0
       ],
       "rotation": [
         0,
@@ -14152,7 +14301,7 @@
       "tags": [],
       "enabled": true,
       "resource_id": "4e444301-26c9-4a7b-b17f-3915bac47432",
-      "parent": "e4fde2d7-2931-4575-8a6b-b39953a7cb6d",
+      "parent": "2ce45a0a-d544-4ad2-899e-567e0f24ca79",
       "children": [
         "df20128a-9f30-4da8-933c-f217ebbfbc88",
         "cc6e2afc-54ef-44c9-86c2-3746a1538136"
@@ -15087,13 +15236,12 @@
       "parent": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
       "children": [
         "17992180-94d8-46cf-9e9b-0f13d2d80da9",
-        "3db31c66-4ec9-4742-8f21-b0103b0919ab",
-        "c0d0667f-30de-4333-83f7-ce3571d97ff3",
-        "ca7b35f0-0041-450b-8433-e8917a128980"
+        "a40e7002-272f-4afe-8973-a3afe67834ec",
+        "a70d7ab5-a0db-43d2-98d5-6fb61e464435"
       ],
       "position": [
         -25.000085830688477,
-        94.99994277954102,
+        155,
         0
       ],
       "rotation": [
@@ -15146,9 +15294,9 @@
           "height": 200,
           "margin": [
             -125,
-            95,
+            155,
             25,
-            -295
+            -355
           ],
           "alignment": [
             0.5,
@@ -15300,10 +15448,16 @@
     },
     "ca7b35f0-0041-450b-8433-e8917a128980": {
       "name": "AbilityBind",
-      "tags": [],
+      "tags": [
+        "MODE-UI",
+        "POINT",
+        "PAYLOAD",
+        "TDM",
+        "FFA"
+      ],
       "enabled": true,
       "resource_id": "ca7b35f0-0041-450b-8433-e8917a128980",
-      "parent": "1ae0b1e5-db27-4873-adab-50dba6cf3964",
+      "parent": "a40e7002-272f-4afe-8973-a3afe67834ec",
       "children": [
         "b33b9a6e-b883-40ed-bb92-910602f4644c",
         "f8db3d60-40b4-420c-9dc5-0bae692854da",
@@ -15314,7 +15468,7 @@
       ],
       "position": [
         -0.000011444091796875,
-        180,
+        120,
         0
       ],
       "rotation": [
@@ -15367,9 +15521,9 @@
           "height": 60,
           "margin": [
             -120,
-            180,
+            60,
             0,
-            -240
+            -120
           ],
           "alignment": [
             0.5,
@@ -16732,7 +16886,7 @@
       "tags": [],
       "enabled": true,
       "resource_id": "c0d0667f-30de-4333-83f7-ce3571d97ff3",
-      "parent": "1ae0b1e5-db27-4873-adab-50dba6cf3964",
+      "parent": "a40e7002-272f-4afe-8973-a3afe67834ec",
       "children": [
         "a64586dd-3d87-4b31-8fcc-4df0848aaede",
         "98ea7625-f4c6-45bb-b4f2-478c532ba2ca",
@@ -16741,7 +16895,7 @@
       ],
       "position": [
         -0.000011444091796875,
-        120,
+        60,
         0
       ],
       "rotation": [
@@ -19105,7 +19259,13 @@
                 "ammoEntity": null,
                 "isRightHanded": false,
                 "distanceMultiplier": 1,
-                "isShootable": true
+                "isShootable": true,
+                "rotationSlider": false,
+                "hiddenReload": false,
+                "weight": "Light",
+                "rightArmEntity": null,
+                "rightHandPoint": null,
+                "isFocusable": true
               }
             }
           }
@@ -19685,7 +19845,13 @@
                 "ammoEntity": "cb72285f-c9c4-4ead-a8a3-4384d667b8cc",
                 "isRightHanded": false,
                 "distanceMultiplier": 0.95,
-                "isShootable": true
+                "isShootable": true,
+                "rotationSlider": false,
+                "hiddenReload": false,
+                "weight": "Light",
+                "rightArmEntity": null,
+                "rightHandPoint": null,
+                "isFocusable": true
               }
             }
           }
@@ -21066,11 +21232,13 @@
       "parent": "1ae0b1e5-db27-4873-adab-50dba6cf3964",
       "children": [
         "a6b80a66-937a-4ffc-92b1-01ccda437a67",
-        "aae85637-7549-4ea2-b49a-cf63d3745651"
+        "aae85637-7549-4ea2-b49a-cf63d3745651",
+        "082cdb81-0d4a-45a7-920c-ede5f8bae0d2",
+        "001eb608-6cc6-4160-87c2-a16c447288f6"
       ],
       "position": [
         0,
-        0,
+        -60,
         0
       ],
       "rotation": [
@@ -21123,9 +21291,9 @@
           "height": 60,
           "margin": [
             -120,
+            -60,
             0,
-            0,
-            -60
+            0
           ],
           "alignment": [
             0.5,
@@ -21492,7 +21660,7 @@
       "tags": [],
       "enabled": true,
       "resource_id": "3db31c66-4ec9-4742-8f21-b0103b0919ab",
-      "parent": "1ae0b1e5-db27-4873-adab-50dba6cf3964",
+      "parent": "a40e7002-272f-4afe-8973-a3afe67834ec",
       "children": [
         "21cca3dc-48c1-4698-b597-47a9ae6f2104",
         "5f92b814-8200-4cf8-bd50-f310bed0f49c",
@@ -21500,7 +21668,7 @@
       ],
       "position": [
         -0.000011444091796875,
-        60,
+        0,
         0
       ],
       "rotation": [
@@ -21553,9 +21721,9 @@
           "height": 60,
           "margin": [
             -120,
-            60,
             0,
-            -120
+            0,
+            -60
           ],
           "alignment": [
             0.5,
@@ -21989,7 +22157,13 @@
                 "ammoEntity": null,
                 "isRightHanded": true,
                 "distanceMultiplier": 0.9,
-                "isShootable": true
+                "isShootable": true,
+                "rotationSlider": false,
+                "hiddenReload": false,
+                "weight": "Light",
+                "rightArmEntity": "8b07a182-402b-4af9-a2d7-ec35be35d50f",
+                "rightHandPoint": null,
+                "isFocusable": true
               }
             }
           }
@@ -22363,14 +22537,14 @@
         "25d3a2d2-50a2-456f-a117-af777b61e455"
       ],
       "position": [
-        8.881784197001252e-15,
-        3.552713678800501e-15,
-        3.552713678800501e-15
+        0,
+        0,
+        0
       ],
       "rotation": [
         0,
         0,
-        0
+        7.89622112696045e-9
       ],
       "scale": [
         1,
@@ -22388,7 +22562,7 @@
       "children": [],
       "position": [
         -1.033432960510245,
-        0.07607536578675145,
+        0.076,
         -0.5061779022216761
       ],
       "rotation": [
@@ -23605,7 +23779,7 @@
       "children": [],
       "position": [
         0,
-        0,
+        1.414,
         -7
       ],
       "rotation": [
@@ -23614,9 +23788,9 @@
         0
       ],
       "scale": [
-        1,
-        1,
-        1
+        0.2,
+        0.2,
+        0.2
       ],
       "components": {}
     },
@@ -23807,7 +23981,7 @@
       }
     },
     "88c8c562-469f-47f9-a837-12ee42867a16": {
-      "name": "Text",
+      "name": "Label",
       "tags": [],
       "enabled": true,
       "resource_id": "88c8c562-469f-47f9-a837-12ee42867a16",
@@ -27245,7 +27419,7 @@
           "lightMapSizeMultiplier": 1,
           "isStatic": false,
           "layers": [
-            1000
+            0
           ],
           "batchGroupId": null
         },
@@ -27464,8 +27638,8 @@
       "parent": "ebebda7a-5ed8-4895-841d-73c2b1ab560b",
       "children": [],
       "position": [
-        3.8739164898870513,
-        -0.3194868948628482,
+        3.874,
+        -0.319,
         0
       ],
       "rotation": [
@@ -27617,7 +27791,7 @@
             0,
             0
           ],
-          "opacity": 1,
+          "opacity": 0.1,
           "textureAsset": null,
           "spriteAsset": null,
           "spriteFrame": 0,
@@ -28109,7 +28283,7 @@
       "resource_id": "e4fde2d7-2931-4575-8a6b-b39953a7cb6d",
       "parent": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
       "children": [
-        "4e444301-26c9-4a7b-b17f-3915bac47432"
+        "2ce45a0a-d544-4ad2-899e-567e0f24ca79"
       ],
       "position": [
         30,
@@ -29701,6 +29875,10 @@
       "parent": "bdeb1052-0eee-4b93-884a-e099c6923179",
       "children": [
         "72dcca32-e0ca-4dc7-8c34-e579804765fe",
+        "d60c0609-f49e-45cc-944f-2e142fda9c92",
+        "a74dac93-b261-44b7-935a-172531324280",
+        "0cb4dd21-4d13-482a-81cf-73136efe7cc6",
+        "dfde3699-c154-4895-b9a7-9e9277ef16d7",
         "231e6dbb-9ecb-429f-a5f0-85d3295fbccd",
         "c81d1983-5653-4ff1-bfa6-63c248f67078",
         "a515b627-7164-4f5a-a08e-e21671ece646"
@@ -35327,7 +35505,7 @@
           "lightMapSizeMultiplier": 1,
           "isStatic": false,
           "layers": [
-            1000
+            0
           ],
           "batchGroupId": null
         }
@@ -47730,7 +47908,13 @@
                 "ammoEntity": null,
                 "isRightHanded": false,
                 "distanceMultiplier": 1,
-                "isShootable": true
+                "isShootable": true,
+                "rotationSlider": false,
+                "hiddenReload": false,
+                "weight": "Light",
+                "rightArmEntity": null,
+                "rightHandPoint": null,
+                "isFocusable": true
               }
             }
           }
@@ -49139,7 +49323,8 @@
                 "data": "",
                 "success": "",
                 "error": "",
-                "loading": ""
+                "loading": "",
+                "loadingEntity": null
               }
             }
           }
@@ -49148,7 +49333,12 @@
     },
     "677b52db-53b5-44fb-9c99-75733583d542": {
       "name": "Weapons",
-      "tags": [],
+      "tags": [
+        "POINT",
+        "TDM",
+        "PAYLOAD",
+        "MODE-UI"
+      ],
       "enabled": true,
       "resource_id": "677b52db-53b5-44fb-9c99-75733583d542",
       "parent": "042afaa4-4432-4e25-845e-9a1a7eb897a1",
@@ -54887,12 +55077,12 @@
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 69.302,
+          "width": 143.903,
           "height": 18.861,
           "margin": [
             20,
             -9.431,
-            -89.302,
+            -163.903,
             -9.431
           ],
           "alignment": [
@@ -59641,7 +59831,13 @@
                 "ammoEntity": null,
                 "isRightHanded": false,
                 "distanceMultiplier": 1,
-                "isShootable": false
+                "isShootable": false,
+                "rotationSlider": false,
+                "hiddenReload": false,
+                "weight": "Light",
+                "rightArmEntity": null,
+                "rightHandPoint": null,
+                "isFocusable": true
               }
             }
           }
@@ -60347,6 +60543,2878 @@
               }
             }
           }
+        }
+      }
+    },
+    "2ce45a0a-d544-4ad2-899e-567e0f24ca79": {
+      "name": "ChatWrapper",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "2ce45a0a-d544-4ad2-899e-567e0f24ca79",
+      "parent": "e4fde2d7-2931-4575-8a6b-b39953a7cb6d",
+      "children": [
+        "4e444301-26c9-4a7b-b17f-3915bac47432"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "group",
+          "anchor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pivot": [
+            0,
+            0
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 200,
+          "height": 150,
+          "margin": [
+            0,
+            0,
+            -200,
+            -150
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "e10a6925-37a3-4cbc-878c-7fd37b460250": {
+      "name": "Abilities",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "e10a6925-37a3-4cbc-878c-7fd37b460250",
+      "parent": "68d4e7a3-7063-11ea-97ae-026349a27a7c",
+      "children": [
+        "5fdfdb5b-7203-4852-b7df-8b28ba1bee5c"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "5fdfdb5b-7203-4852-b7df-8b28ba1bee5c": {
+      "name": "Grapple",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "5fdfdb5b-7203-4852-b7df-8b28ba1bee5c",
+      "parent": "e10a6925-37a3-4cbc-878c-7fd37b460250",
+      "children": [
+        "d002b398-204c-4fa5-9857-f43c0a4d3764",
+        "323336a8-524b-4a6d-80db-41a34514cc7a"
+      ],
+      "position": [
+        0,
+        -5,
+        -2.6882684712447134
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "script": {
+          "enabled": true,
+          "order": [
+            "grapple"
+          ],
+          "scripts": {
+            "grapple": {
+              "enabled": true,
+              "attributes": {
+                "ropeEntity": "76d33ed6-7703-420b-bba3-29ec236cbabe",
+                "grappleEntity": "b1ee65d6-432e-4d25-9de4-cd41dbfba625",
+                "originEntity": "323336a8-524b-4a6d-80db-41a34514cc7a",
+                "swingEntity": "d002b398-204c-4fa5-9857-f43c0a4d3764",
+                "swingRopeEntity": "b8ef465b-524a-4281-8a7c-a967152aaa0f",
+                "playerEntity": "d6311a5c-7dec-4eb4-b495-15f29130570e",
+                "playerPoint": "12f1f795-02b9-422a-a7df-669354b432f6",
+                "isPlayerGrapple": true,
+                "active": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "d002b398-204c-4fa5-9857-f43c0a4d3764": {
+      "name": "Swing",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "d002b398-204c-4fa5-9857-f43c0a4d3764",
+      "parent": "5fdfdb5b-7203-4852-b7df-8b28ba1bee5c",
+      "children": [
+        "b8ef465b-524a-4281-8a7c-a967152aaa0f"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "b8ef465b-524a-4281-8a7c-a967152aaa0f": {
+      "name": "SwingRope",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "b8ef465b-524a-4281-8a7c-a967152aaa0f",
+      "parent": "d002b398-204c-4fa5-9857-f43c0a4d3764",
+      "children": [],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        -90,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "323336a8-524b-4a6d-80db-41a34514cc7a": {
+      "name": "Origin",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "323336a8-524b-4a6d-80db-41a34514cc7a",
+      "parent": "5fdfdb5b-7203-4852-b7df-8b28ba1bee5c",
+      "children": [
+        "76d33ed6-7703-420b-bba3-29ec236cbabe",
+        "b1ee65d6-432e-4d25-9de4-cd41dbfba625"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        -90,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "76d33ed6-7703-420b-bba3-29ec236cbabe": {
+      "name": "Rope",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "76d33ed6-7703-420b-bba3-29ec236cbabe",
+      "parent": "323336a8-524b-4a6d-80db-41a34514cc7a",
+      "children": [
+        "12f1f795-02b9-422a-a7df-669354b432f6"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.1,
+        0.5
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36198017,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "12f1f795-02b9-422a-a7df-669354b432f6": {
+      "name": "Box",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "12f1f795-02b9-422a-a7df-669354b432f6",
+      "parent": "76d33ed6-7703-420b-bba3-29ec236cbabe",
+      "children": [],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.6929820703739148,
+        5.464003788529388,
+        0.6929820703739148
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36198018,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "b1ee65d6-432e-4d25-9de4-cd41dbfba625": {
+      "name": "Grapple",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "b1ee65d6-432e-4d25-9de4-cd41dbfba625",
+      "parent": "323336a8-524b-4a6d-80db-41a34514cc7a",
+      "children": [],
+      "position": [
+        0,
+        0.3400000035762787,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.6546680940350044,
+        0.6546680940350044,
+        0.6546680940350044
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36198018,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "b2510852-d387-4cfd-b568-81a01af8852f": {
+      "name": "M4",
+      "tags": [
+        "Weapon"
+      ],
+      "enabled": false,
+      "resource_id": "b2510852-d387-4cfd-b568-81a01af8852f",
+      "parent": "57faf188-2890-4852-a83d-11c7af921839",
+      "children": [
+        "d2926a2c-5eb3-4135-84ad-243d047ca7be",
+        "2c06bcf5-0ff8-4346-8c96-2477baa644c7",
+        "314b03d4-a465-46c1-a255-b708cc5fbf69",
+        "d3662c8a-4cb7-4140-8e40-b9448c50fc34",
+        "18e7de26-7c72-45f1-be08-a19dae76ae09",
+        "0c15772e-5a55-4212-bf3b-1df85f916164"
+      ],
+      "position": [
+        0.29784235161628203,
+        -0.0000013520402717404068,
+        0.000003647208387747014
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "script": {
+          "enabled": true,
+          "order": [
+            "weapon"
+          ],
+          "scripts": {
+            "weapon": {
+              "enabled": true,
+              "attributes": {
+                "sliderName": "",
+                "recoil": 1.2,
+                "sliderLimit": -220,
+                "hasSlider": false,
+                "cameraShake": 12,
+                "bulletPoint": "d3662c8a-4cb7-4140-8e40-b9448c50fc34",
+                "muzzlePoint": "18e7de26-7c72-45f1-be08-a19dae76ae09",
+                "shootTime": 0.04,
+                "spread": 500,
+                "focusSpread": 400,
+                "ammo": 20,
+                "capacity": 25,
+                "damage": 16,
+                "doodahEntity": "2c06bcf5-0ff8-4346-8c96-2477baa644c7",
+                "doodahReference": "6edd1eb2-6422-4a3b-b258-5ddca5b452ce",
+                "magazineName": "Magazine",
+                "magazinePoint": "b3ae337d-6bb2-46f4-9000-b83e4d220f0c",
+                "reloadingTime": 2.2,
+                "armEntity": "c112a26d-22a6-468a-82d6-b3b600b07bc5",
+                "handPoint": "0c15772e-5a55-4212-bf3b-1df85f916164",
+                "type": "Rifle",
+                "scopeOverlay": null,
+                "focusFov": 45,
+                "modelEntity": "d2926a2c-5eb3-4135-84ad-243d047ca7be",
+                "isAutomatic": true,
+                "barrelName": "",
+                "barrelPoint": null,
+                "ammoEntity": null,
+                "isRightHanded": false,
+                "distanceMultiplier": 1,
+                "isShootable": true,
+                "rotationSlider": false,
+                "hiddenReload": false,
+                "weight": "Light",
+                "rightArmEntity": null,
+                "rightHandPoint": null,
+                "isFocusable": true
+              }
+            }
+          }
+        },
+        "sound": {
+          "enabled": true,
+          "volume": 1,
+          "pitch": 1,
+          "positional": false,
+          "refDistance": 1,
+          "maxDistance": 10000,
+          "rollOffFactor": 1,
+          "distanceModel": "linear",
+          "slots": {
+            "1": {
+              "name": "Fire",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": true,
+              "asset": 36487672,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "2": {
+              "name": "Tail",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": true,
+              "asset": 36487671,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "3": {
+              "name": "Reload",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 29487879,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.5,
+              "pitch": 1
+            },
+            "4": {
+              "name": "Unload",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 29776997,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.5,
+              "pitch": 1.1
+            },
+            "5": {
+              "name": "Load",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 29776996,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.7,
+              "pitch": 0.8
+            }
+          }
+        }
+      }
+    },
+    "d2926a2c-5eb3-4135-84ad-243d047ca7be": {
+      "name": "Model",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "d2926a2c-5eb3-4135-84ad-243d047ca7be",
+      "parent": "b2510852-d387-4cfd-b568-81a01af8852f",
+      "children": [
+        "b3ae337d-6bb2-46f4-9000-b83e4d220f0c"
+      ],
+      "position": [
+        -1.0010282507242347,
+        0.011163994993081558,
+        0.000003647208387724145
+      ],
+      "rotation": [
+        -4.478348897468807e-16,
+        -6.383137702568474e-15,
+        -3.38
+      ],
+      "scale": [
+        3.1806137425898084,
+        3.1806137425898084,
+        3.1806137425898084
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36531169,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            1000
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "2c06bcf5-0ff8-4346-8c96-2477baa644c7": {
+      "name": "Doodah",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "2c06bcf5-0ff8-4346-8c96-2477baa644c7",
+      "parent": "b2510852-d387-4cfd-b568-81a01af8852f",
+      "children": [
+        "56577bc9-8001-4c68-8bf4-3cea0e1a63ff"
+      ],
+      "position": [
+        -0.7531414613936253,
+        2.0055669508516805,
+        -0.10266770655263964
+      ],
+      "rotation": [
+        0,
+        0,
+        -4.175265910223599e-21
+      ],
+      "scale": [
+        1.655515959321908,
+        1.655515959321908,
+        1.655515959321908
+      ],
+      "components": {}
+    },
+    "56577bc9-8001-4c68-8bf4-3cea0e1a63ff": {
+      "name": "Angle",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "56577bc9-8001-4c68-8bf4-3cea0e1a63ff",
+      "parent": "2c06bcf5-0ff8-4346-8c96-2477baa644c7",
+      "children": [
+        "43a3d3c5-d7f9-48c8-ad54-f99e8c4e7b65",
+        "c8bf0de0-0385-480c-9c23-c2b0fce3390b"
+      ],
+      "position": [
+        -0.000003890144824936215,
+        0.0000034650865927687846,
+        -0.000004778301416763497
+      ],
+      "rotation": [
+        70.64913346743394,
+        23.387127822614417,
+        82.35342947102592
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "43a3d3c5-d7f9-48c8-ad54-f99e8c4e7b65": {
+      "name": "Model",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "43a3d3c5-d7f9-48c8-ad54-f99e8c4e7b65",
+      "parent": "56577bc9-8001-4c68-8bf4-3cea0e1a63ff",
+      "children": [],
+      "position": [
+        0.005383284652732014,
+        -0.19636060984833606,
+        -0.005696440173845264
+      ],
+      "rotation": [
+        -12.277534394711314,
+        -18.73210751713465,
+        -10.15329704821602
+      ],
+      "scale": [
+        0.18169020093232385,
+        0.18169020093232385,
+        0.18169020093232385
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 34620264,
+          "materialAsset": 29754005,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            1000
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "c8bf0de0-0385-480c-9c23-c2b0fce3390b": {
+      "name": "Box",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "c8bf0de0-0385-480c-9c23-c2b0fce3390b",
+      "parent": "56577bc9-8001-4c68-8bf4-3cea0e1a63ff",
+      "children": [],
+      "position": [
+        -0.000002047686407991023,
+        -0.12019752517169267,
+        -0.0015833778845149027
+      ],
+      "rotation": [
+        0,
+        -1.2722218725854067e-14,
+        0
+      ],
+      "scale": [
+        0.016387264156327613,
+        0.1328738730921863,
+        0.016387264156327613
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "box",
+          "asset": null,
+          "materialAsset": 29754009,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            1000
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "314b03d4-a465-46c1-a255-b708cc5fbf69": {
+      "name": "DoodahPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "314b03d4-a465-46c1-a255-b708cc5fbf69",
+      "parent": "b2510852-d387-4cfd-b568-81a01af8852f",
+      "children": [],
+      "position": [
+        -0.42375154343327703,
+        1.3524072880451006,
+        -0.6301408763149635
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "b3ae337d-6bb2-46f4-9000-b83e4d220f0c": {
+      "name": "MagazinePoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "b3ae337d-6bb2-46f4-9000-b83e4d220f0c",
+      "parent": "d2926a2c-5eb3-4135-84ad-243d047ca7be",
+      "children": [],
+      "position": [
+        0,
+        0,
+        -0.0000018893988311674548
+      ],
+      "rotation": [
+        5.729842492121912e-16,
+        -1.2734158152926239e-14,
+        1.9999998712748575
+      ],
+      "scale": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "components": {}
+    },
+    "d3662c8a-4cb7-4140-8e40-b9448c50fc34": {
+      "name": "BulletPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "d3662c8a-4cb7-4140-8e40-b9448c50fc34",
+      "parent": "b2510852-d387-4cfd-b568-81a01af8852f",
+      "children": [],
+      "position": [
+        0.8856492428142317,
+        1.3703898268914942,
+        0.2748061753528491
+      ],
+      "rotation": [
+        -90,
+        -90,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "18e7de26-7c72-45f1-be08-a19dae76ae09": {
+      "name": "MuzzlePoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "18e7de26-7c72-45f1-be08-a19dae76ae09",
+      "parent": "b2510852-d387-4cfd-b568-81a01af8852f",
+      "children": [],
+      "position": [
+        7.48803675193291,
+        1.1169142683368136,
+        4.32789503161969e-8
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "0c15772e-5a55-4212-bf3b-1df85f916164": {
+      "name": "HandPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "0c15772e-5a55-4212-bf3b-1df85f916164",
+      "parent": "b2510852-d387-4cfd-b568-81a01af8852f",
+      "children": [],
+      "position": [
+        0.16497873790940787,
+        0.04814595607604133,
+        -0.0185600759743636
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "46f6693f-bbe6-48a7-b7fd-0c352d744e67": {
+      "name": "LMG",
+      "tags": [
+        "Weapon"
+      ],
+      "enabled": false,
+      "resource_id": "46f6693f-bbe6-48a7-b7fd-0c352d744e67",
+      "parent": "57faf188-2890-4852-a83d-11c7af921839",
+      "children": [
+        "3d528085-3811-4a5e-a39c-dedde5754f20",
+        "04ff3692-828f-462c-8936-4e67343fbc5d",
+        "249b8475-1a22-4c8b-8c91-9e82c15a9915",
+        "ddae8394-1dbf-459e-a6ff-a1114200a47f",
+        "31765f7c-cad1-49d8-a293-e23a8899278a"
+      ],
+      "position": [
+        0.29784235161628203,
+        -0.0000013520402717404068,
+        0.000003647208387747014
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "script": {
+          "enabled": true,
+          "order": [
+            "weapon"
+          ],
+          "scripts": {
+            "weapon": {
+              "enabled": true,
+              "attributes": {
+                "sliderName": "Slider",
+                "recoil": 1,
+                "sliderLimit": -20,
+                "hasSlider": false,
+                "cameraShake": 15,
+                "bulletPoint": "249b8475-1a22-4c8b-8c91-9e82c15a9915",
+                "muzzlePoint": "ddae8394-1dbf-459e-a6ff-a1114200a47f",
+                "shootTime": 0.07,
+                "spread": 1200,
+                "focusSpread": 600,
+                "ammo": 50,
+                "capacity": 50,
+                "damage": 20,
+                "doodahEntity": "918abf67-c8a5-4eda-8300-971958d55eff",
+                "doodahReference": "6edd1eb2-6422-4a3b-b258-5ddca5b452ce",
+                "magazineName": "",
+                "magazinePoint": "04ff3692-828f-462c-8936-4e67343fbc5d",
+                "reloadingTime": 3.5,
+                "armEntity": "c112a26d-22a6-468a-82d6-b3b600b07bc5",
+                "handPoint": "31765f7c-cad1-49d8-a293-e23a8899278a",
+                "type": "Rifle",
+                "scopeOverlay": null,
+                "focusFov": 45,
+                "modelEntity": "3d528085-3811-4a5e-a39c-dedde5754f20",
+                "isAutomatic": true,
+                "barrelName": "",
+                "barrelPoint": null,
+                "ammoEntity": null,
+                "isRightHanded": false,
+                "distanceMultiplier": 1,
+                "isShootable": true,
+                "rotationSlider": true,
+                "hiddenReload": true,
+                "weight": "Heavy",
+                "rightArmEntity": null,
+                "rightHandPoint": null,
+                "isFocusable": true
+              }
+            }
+          }
+        },
+        "sound": {
+          "enabled": true,
+          "volume": 1,
+          "pitch": 1,
+          "positional": false,
+          "refDistance": 1,
+          "maxDistance": 10000,
+          "rollOffFactor": 1,
+          "distanceModel": "linear",
+          "slots": {
+            "1": {
+              "name": "Fire",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": true,
+              "asset": 36489284,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "2": {
+              "name": "Tail",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": true,
+              "asset": 36487671,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "3": {
+              "name": "Reload",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 36540615,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.5,
+              "pitch": 1
+            },
+            "4": {
+              "name": "Unload",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 31060840,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.5,
+              "pitch": 1.1
+            },
+            "5": {
+              "name": "Load",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 29776996,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.7,
+              "pitch": 0.8
+            }
+          }
+        }
+      }
+    },
+    "3d528085-3811-4a5e-a39c-dedde5754f20": {
+      "name": "Model",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "3d528085-3811-4a5e-a39c-dedde5754f20",
+      "parent": "46f6693f-bbe6-48a7-b7fd-0c352d744e67",
+      "children": [],
+      "position": [
+        1.2398558177339538,
+        0.527,
+        0.08900672399070686
+      ],
+      "rotation": [
+        180,
+        2.5444437451708134e-14,
+        179.99999999999997
+      ],
+      "scale": [
+        3.5885998923240585,
+        3.5885998923240585,
+        3.5885998923240585
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36538507,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            1000
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "04ff3692-828f-462c-8936-4e67343fbc5d": {
+      "name": "MagazinePoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "04ff3692-828f-462c-8936-4e67343fbc5d",
+      "parent": "46f6693f-bbe6-48a7-b7fd-0c352d744e67",
+      "children": [],
+      "position": [
+        -4.426555904046836e-7,
+        0,
+        -0.0000010478970295935142
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "components": {}
+    },
+    "249b8475-1a22-4c8b-8c91-9e82c15a9915": {
+      "name": "BulletPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "249b8475-1a22-4c8b-8c91-9e82c15a9915",
+      "parent": "46f6693f-bbe6-48a7-b7fd-0c352d744e67",
+      "children": [],
+      "position": [
+        0.8856490346590391,
+        1.370391405220289,
+        0.6496406044707328
+      ],
+      "rotation": [
+        -90,
+        -90,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "ddae8394-1dbf-459e-a6ff-a1114200a47f": {
+      "name": "MuzzlePoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "ddae8394-1dbf-459e-a6ff-a1114200a47f",
+      "parent": "46f6693f-bbe6-48a7-b7fd-0c352d744e67",
+      "children": [],
+      "position": [
+        9.81651173534938,
+        1.3705844141891248,
+        0.000003647208387747014
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "31765f7c-cad1-49d8-a293-e23a8899278a": {
+      "name": "HandPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "31765f7c-cad1-49d8-a293-e23a8899278a",
+      "parent": "46f6693f-bbe6-48a7-b7fd-0c352d744e67",
+      "children": [],
+      "position": [
+        0.16497873790940787,
+        0.09,
+        -0.01856084370953681
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "6da0a919-8f04-41d5-b3c5-1d67d97a0c0c": {
+      "name": "Desert-Eagle",
+      "tags": [
+        "Weapon"
+      ],
+      "enabled": false,
+      "resource_id": "6da0a919-8f04-41d5-b3c5-1d67d97a0c0c",
+      "parent": "57faf188-2890-4852-a83d-11c7af921839",
+      "children": [
+        "6e0da134-58f4-4cd9-87e6-e4e35e4aacc3",
+        "f0070781-7732-492b-b55a-5270ad2e5de3",
+        "85dff3cc-bfa6-4088-98d8-304f7e178fe4",
+        "27129868-4a5e-43ca-bea3-f3fce6c61712",
+        "14f2672d-a0b4-4e74-8abc-bf8545ce6b7c"
+      ],
+      "position": [
+        -4.426555619829742e-7,
+        1.324,
+        -0.0000010478970295935142
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "script": {
+          "enabled": true,
+          "order": [
+            "weapon"
+          ],
+          "scripts": {
+            "weapon": {
+              "enabled": true,
+              "attributes": {
+                "sliderName": "Slide",
+                "recoil": 2.1,
+                "sliderLimit": -40,
+                "hasSlider": true,
+                "cameraShake": 22,
+                "bulletPoint": "f0070781-7732-492b-b55a-5270ad2e5de3",
+                "muzzlePoint": "85dff3cc-bfa6-4088-98d8-304f7e178fe4",
+                "shootTime": 0.16,
+                "spread": 500,
+                "focusSpread": 450,
+                "ammo": 12,
+                "capacity": 12,
+                "damage": 35,
+                "doodahEntity": null,
+                "doodahReference": null,
+                "magazineName": "Mag",
+                "magazinePoint": "f0dfd598-7a2f-4c0b-864c-9c16866a50a2",
+                "reloadingTime": 2.2,
+                "armEntity": "c112a26d-22a6-468a-82d6-b3b600b07bc5",
+                "handPoint": "27129868-4a5e-43ca-bea3-f3fce6c61712",
+                "type": "Rifle",
+                "scopeOverlay": null,
+                "focusFov": 45,
+                "modelEntity": "6e0da134-58f4-4cd9-87e6-e4e35e4aacc3",
+                "isAutomatic": false,
+                "barrelName": "",
+                "barrelPoint": null,
+                "ammoEntity": null,
+                "isRightHanded": true,
+                "distanceMultiplier": 0.8,
+                "isShootable": true,
+                "rotationSlider": false,
+                "hiddenReload": false,
+                "weight": "Light",
+                "rightArmEntity": "8b07a182-402b-4af9-a2d7-ec35be35d50f",
+                "rightHandPoint": "14f2672d-a0b4-4e74-8abc-bf8545ce6b7c",
+                "isFocusable": true
+              }
+            }
+          }
+        },
+        "sound": {
+          "enabled": true,
+          "volume": 1,
+          "pitch": 1,
+          "positional": false,
+          "refDistance": 1,
+          "maxDistance": 10000,
+          "rollOffFactor": 1,
+          "distanceModel": "linear",
+          "slots": {
+            "1": {
+              "name": "Fire",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": true,
+              "asset": 36545098,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "2": {
+              "name": "Tail",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": true,
+              "asset": 31209874,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "3": {
+              "name": "Reload",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 36545097,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.9,
+              "pitch": 1
+            },
+            "4": {
+              "name": "Unload",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 36545096,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1.1
+            },
+            "5": {
+              "name": "Load",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 36545095,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 0.8
+            }
+          }
+        }
+      }
+    },
+    "6e0da134-58f4-4cd9-87e6-e4e35e4aacc3": {
+      "name": "Model",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "6e0da134-58f4-4cd9-87e6-e4e35e4aacc3",
+      "parent": "6da0a919-8f04-41d5-b3c5-1d67d97a0c0c",
+      "children": [
+        "f0dfd598-7a2f-4c0b-864c-9c16866a50a2"
+      ],
+      "position": [
+        0.559215140528238,
+        0.048093613080709474,
+        0.027074934151670504
+      ],
+      "rotation": [
+        1.9413149782699025e-13,
+        0,
+        1.8014811920103446e-13
+      ],
+      "scale": [
+        1.3776990148418422,
+        1.3776990148418422,
+        1.3776990148418422
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36544153,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            1000
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "f0dfd598-7a2f-4c0b-864c-9c16866a50a2": {
+      "name": "MagazinePoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "f0dfd598-7a2f-4c0b-864c-9c16866a50a2",
+      "parent": "6e0da134-58f4-4cd9-87e6-e4e35e4aacc3",
+      "children": [],
+      "position": [
+        -0.40590789268600247,
+        -0.034901735022970115,
+        -0.019648917923078102
+      ],
+      "rotation": [
+        -1.9413148977906856e-13,
+        -1.272221872585435e-14,
+        -1.801481168928191e-13
+      ],
+      "scale": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "components": {}
+    },
+    "f0070781-7732-492b-b55a-5270ad2e5de3": {
+      "name": "BulletPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "f0070781-7732-492b-b55a-5270ad2e5de3",
+      "parent": "6da0a919-8f04-41d5-b3c5-1d67d97a0c0c",
+      "children": [],
+      "position": [
+        0.512145811097426,
+        0.6669717043296259,
+        0.27481366737995927
+      ],
+      "rotation": [
+        -90,
+        -90,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "85dff3cc-bfa6-4088-98d8-304f7e178fe4": {
+      "name": "MuzzlePoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "85dff3cc-bfa6-4088-98d8-304f7e178fe4",
+      "parent": "6da0a919-8f04-41d5-b3c5-1d67d97a0c0c",
+      "children": [],
+      "position": [
+        2.7837814918859323,
+        0.7194948235489846,
+        0.000003647208387747014
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "27129868-4a5e-43ca-bea3-f3fce6c61712": {
+      "name": "HandPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "27129868-4a5e-43ca-bea3-f3fce6c61712",
+      "parent": "6da0a919-8f04-41d5-b3c5-1d67d97a0c0c",
+      "children": [],
+      "position": [
+        -0.984,
+        -3.23,
+        0.005
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "14f2672d-a0b4-4e74-8abc-bf8545ce6b7c": {
+      "name": "RightHandPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "14f2672d-a0b4-4e74-8abc-bf8545ce6b7c",
+      "parent": "6da0a919-8f04-41d5-b3c5-1d67d97a0c0c",
+      "children": [],
+      "position": [
+        -9.576477282280393e-7,
+        0.1,
+        0.000003647208387747014
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "3f8fab6a-6ec5-4a5a-94ca-27ee920a3c2d": {
+      "name": "Dagger",
+      "tags": [
+        "Weapon"
+      ],
+      "enabled": false,
+      "resource_id": "3f8fab6a-6ec5-4a5a-94ca-27ee920a3c2d",
+      "parent": "57faf188-2890-4852-a83d-11c7af921839",
+      "children": [
+        "4fe86122-bd64-49fb-8986-596d5ebaa948",
+        "8462528e-dab7-4b3f-b675-7441668cbbc3",
+        "e6f78af1-1dda-45f0-84dc-905969de211f",
+        "8c0330f8-4649-45b5-983b-7d103f04d500",
+        "4d588bdc-89f7-4af5-b683-c79ca38f719c",
+        "ac44ff8e-95ba-4d40-bbd0-412b7cc698b5"
+      ],
+      "position": [
+        0.03859790595032564,
+        -0.0000013520402717404068,
+        1.2104116417606434
+      ],
+      "rotation": [
+        0,
+        23.70141620262808,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "script": {
+          "enabled": true,
+          "order": [
+            "weapon"
+          ],
+          "scripts": {
+            "weapon": {
+              "enabled": true,
+              "attributes": {
+                "sliderName": "",
+                "recoil": 0.9,
+                "sliderLimit": -220,
+                "hasSlider": false,
+                "cameraShake": 12,
+                "bulletPoint": "e6f78af1-1dda-45f0-84dc-905969de211f",
+                "muzzlePoint": "8c0330f8-4649-45b5-983b-7d103f04d500",
+                "shootTime": 0.4,
+                "spread": 300,
+                "focusSpread": 200,
+                "ammo": 20,
+                "capacity": 25,
+                "damage": 50,
+                "doodahEntity": null,
+                "doodahReference": "6edd1eb2-6422-4a3b-b258-5ddca5b452ce",
+                "magazineName": "",
+                "magazinePoint": "8462528e-dab7-4b3f-b675-7441668cbbc3",
+                "reloadingTime": 2.2,
+                "armEntity": "c112a26d-22a6-468a-82d6-b3b600b07bc5",
+                "handPoint": "4d588bdc-89f7-4af5-b683-c79ca38f719c",
+                "type": "Melee",
+                "scopeOverlay": null,
+                "focusFov": 45,
+                "modelEntity": "28dc70fe-437a-49a2-b566-2fddfd692a17",
+                "isAutomatic": false,
+                "barrelName": "",
+                "barrelPoint": null,
+                "ammoEntity": null,
+                "isRightHanded": true,
+                "distanceMultiplier": 1,
+                "isShootable": false,
+                "rotationSlider": false,
+                "hiddenReload": false,
+                "weight": "Light",
+                "rightArmEntity": "8b07a182-402b-4af9-a2d7-ec35be35d50f",
+                "rightHandPoint": "ac44ff8e-95ba-4d40-bbd0-412b7cc698b5",
+                "isFocusable": false
+              }
+            }
+          }
+        },
+        "sound": {
+          "enabled": true,
+          "volume": 1,
+          "pitch": 1,
+          "positional": false,
+          "refDistance": 1,
+          "maxDistance": 10000,
+          "rollOffFactor": 1,
+          "distanceModel": "linear",
+          "slots": {
+            "1": {
+              "name": "Fire",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": true,
+              "asset": 32583116,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.7,
+              "pitch": 1
+            }
+          }
+        }
+      }
+    },
+    "4fe86122-bd64-49fb-8986-596d5ebaa948": {
+      "name": "Origin",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "4fe86122-bd64-49fb-8986-596d5ebaa948",
+      "parent": "3f8fab6a-6ec5-4a5a-94ca-27ee920a3c2d",
+      "children": [
+        "28dc70fe-437a-49a2-b566-2fddfd692a17"
+      ],
+      "position": [
+        1.143887008906347,
+        0.4711478351709957,
+        0.78368859116717
+      ],
+      "rotation": [
+        -80.71680756990212,
+        -16.92346166499795,
+        28.64552751927825
+      ],
+      "scale": [
+        3.3478779201277646,
+        3.3478779201277646,
+        3.3478779201277646
+      ],
+      "components": {}
+    },
+    "28dc70fe-437a-49a2-b566-2fddfd692a17": {
+      "name": "Model",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "28dc70fe-437a-49a2-b566-2fddfd692a17",
+      "parent": "4fe86122-bd64-49fb-8986-596d5ebaa948",
+      "children": [],
+      "position": [
+        -1.1288893771730106,
+        0.4321936831756235,
+        0.08585278025066578
+      ],
+      "rotation": [
+        0,
+        0,
+        9.575945645471557e-22
+      ],
+      "scale": [
+        2,
+        2,
+        2
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36573024,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            1000
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "8462528e-dab7-4b3f-b675-7441668cbbc3": {
+      "name": "MagazinePoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "8462528e-dab7-4b3f-b675-7441668cbbc3",
+      "parent": "3f8fab6a-6ec5-4a5a-94ca-27ee920a3c2d",
+      "children": [],
+      "position": [
+        -4.426555904046836e-7,
+        0,
+        -0.0000010478970295935142
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "components": {}
+    },
+    "e6f78af1-1dda-45f0-84dc-905969de211f": {
+      "name": "BulletPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "e6f78af1-1dda-45f0-84dc-905969de211f",
+      "parent": "3f8fab6a-6ec5-4a5a-94ca-27ee920a3c2d",
+      "children": [],
+      "position": [
+        0.52355347533224,
+        1.0403241694282315,
+        0.27480617535284924
+      ],
+      "rotation": [
+        -90,
+        -90,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "8c0330f8-4649-45b5-983b-7d103f04d500": {
+      "name": "MuzzlePoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "8c0330f8-4649-45b5-983b-7d103f04d500",
+      "parent": "3f8fab6a-6ec5-4a5a-94ca-27ee920a3c2d",
+      "children": [],
+      "position": [
+        4.88828490323219,
+        1.1169142683368136,
+        4.327894997935289e-8
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "4d588bdc-89f7-4af5-b683-c79ca38f719c": {
+      "name": "HandPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "4d588bdc-89f7-4af5-b683-c79ca38f719c",
+      "parent": "3f8fab6a-6ec5-4a5a-94ca-27ee920a3c2d",
+      "children": [],
+      "position": [
+        -0.819258653074769,
+        -3.3307302774519485,
+        0.000003647208387747014
+      ],
+      "rotation": [
+        5.108363094752662e-15,
+        0,
+        8.720486480062126e-16
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "ac44ff8e-95ba-4d40-bbd0-412b7cc698b5": {
+      "name": "RightHandPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "ac44ff8e-95ba-4d40-bbd0-412b7cc698b5",
+      "parent": "3f8fab6a-6ec5-4a5a-94ca-27ee920a3c2d",
+      "children": [],
+      "position": [
+        0.34,
+        0,
+        0.247
+      ],
+      "rotation": [
+        -60.75,
+        -4.25,
+        8.720486480062126e-16
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "e68fc1de-b53f-4fbd-9ae9-2459df473dcb": {
+      "name": "Swing-Right",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "e68fc1de-b53f-4fbd-9ae9-2459df473dcb",
+      "parent": "678fdcd1-e21d-4ecd-a60f-b4cd2b5f1b0a",
+      "children": [],
+      "position": [
+        0.5994003632507242,
+        0.196243758681314,
+        0.006231307983402098
+      ],
+      "rotation": [
+        89.99999980259379,
+        -23.399525301058574,
+        23.953330432951528
+      ],
+      "scale": [
+        2.1199102327680293,
+        2.1199102327680293,
+        2.1199102327680293
+      ],
+      "components": {
+        "sprite": {
+          "enabled": true,
+          "type": "animated",
+          "width": 1,
+          "height": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 0.2,
+          "flipX": false,
+          "flipY": false,
+          "spriteAsset": null,
+          "frame": 0,
+          "speed": 1,
+          "batchGroupId": null,
+          "layers": [
+            1000
+          ],
+          "drawOrder": 0,
+          "autoPlayClip": "Swing",
+          "clips": {
+            "0": {
+              "name": "Swing",
+              "fps": 40,
+              "loop": false,
+              "autoPlay": true,
+              "spriteAsset": 36584448
+            }
+          }
+        }
+      }
+    },
+    "678fdcd1-e21d-4ecd-a60f-b4cd2b5f1b0a": {
+      "name": "Particles",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "678fdcd1-e21d-4ecd-a60f-b4cd2b5f1b0a",
+      "parent": "7799d1c6-d41a-491e-b60e-a37ea01aa096",
+      "children": [
+        "e68fc1de-b53f-4fbd-9ae9-2459df473dcb",
+        "3aa335ff-7b1c-409e-a40c-856629ed1be9"
+      ],
+      "position": [
+        3.552713678800501e-15,
+        0,
+        3.552713678800501e-15
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "3aa335ff-7b1c-409e-a40c-856629ed1be9": {
+      "name": "Swing-Left",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "3aa335ff-7b1c-409e-a40c-856629ed1be9",
+      "parent": "678fdcd1-e21d-4ecd-a60f-b4cd2b5f1b0a",
+      "children": [],
+      "position": [
+        0.5994003632507242,
+        0.196243758681314,
+        0.006231307983402098
+      ],
+      "rotation": [
+        -62.286928530802726,
+        13.921419671871085,
+        20.99354815732588
+      ],
+      "scale": [
+        2.1199102327680293,
+        2.1199102327680293,
+        2.1199102327680293
+      ],
+      "components": {
+        "sprite": {
+          "enabled": true,
+          "type": "animated",
+          "width": 1,
+          "height": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 0.2,
+          "flipX": false,
+          "flipY": false,
+          "spriteAsset": null,
+          "frame": 0,
+          "speed": 1,
+          "batchGroupId": null,
+          "layers": [
+            1000
+          ],
+          "drawOrder": 0,
+          "autoPlayClip": "Swing",
+          "clips": {
+            "0": {
+              "name": "Swing",
+              "fps": 40,
+              "loop": false,
+              "autoPlay": true,
+              "spriteAsset": 36584448
+            }
+          }
+        }
+      }
+    },
+    "c50f7acf-d16d-41b9-8157-eca207cd9c1d": {
+      "name": "MeleePoint1",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "c50f7acf-d16d-41b9-8157-eca207cd9c1d",
+      "parent": "93790e46-99cf-49e7-830a-a15bc441b889",
+      "children": [],
+      "position": [
+        -1.2000007629394531,
+        1.41400146484375,
+        -6.250412394170315
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "components": {}
+    },
+    "17b5bfde-4136-4a48-a5de-2a4ff5dacfe0": {
+      "name": "MeleePoint2",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "17b5bfde-4136-4a48-a5de-2a4ff5dacfe0",
+      "parent": "93790e46-99cf-49e7-830a-a15bc441b889",
+      "children": [],
+      "position": [
+        -0.6000003814697266,
+        1.41400146484375,
+        -6.250412394170315
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "components": {}
+    },
+    "36da96ae-7238-420c-aed7-13ecf65a57e4": {
+      "name": "MeleePoint3",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "36da96ae-7238-420c-aed7-13ecf65a57e4",
+      "parent": "93790e46-99cf-49e7-830a-a15bc441b889",
+      "children": [],
+      "position": [
+        0,
+        1.41400146484375,
+        -6.250412394170315
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "components": {}
+    },
+    "17785b42-14f6-47b3-a508-1c1bc3048eb7": {
+      "name": "MeleePoint4",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "17785b42-14f6-47b3-a508-1c1bc3048eb7",
+      "parent": "93790e46-99cf-49e7-830a-a15bc441b889",
+      "children": [],
+      "position": [
+        0.6000003814697266,
+        1.41400146484375,
+        -6.250412394170315
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "components": {}
+    },
+    "b9b2638a-d59f-4e10-a842-9ce519281b01": {
+      "name": "MeleePoint5",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "b9b2638a-d59f-4e10-a842-9ce519281b01",
+      "parent": "93790e46-99cf-49e7-830a-a15bc441b889",
+      "children": [],
+      "position": [
+        1.2000007629394531,
+        1.41400146484375,
+        -6.250412394170315
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "components": {}
+    },
+    "a40e7002-272f-4afe-8973-a3afe67834ec": {
+      "name": "AbilityGroup",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "a40e7002-272f-4afe-8973-a3afe67834ec",
+      "parent": "1ae0b1e5-db27-4873-adab-50dba6cf3964",
+      "children": [
+        "3db31c66-4ec9-4742-8f21-b0103b0919ab",
+        "c0d0667f-30de-4333-83f7-ce3571d97ff3",
+        "ca7b35f0-0041-450b-8433-e8917a128980"
+      ],
+      "position": [
+        -0.000011444091796875,
+        80,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "group",
+          "anchor": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "pivot": [
+            1,
+            0
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 120,
+          "height": 200,
+          "margin": [
+            -120,
+            80,
+            0,
+            -280
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "modePosition"
+          ],
+          "scripts": {
+            "modePosition": {
+              "enabled": true,
+              "attributes": {
+                "mode": "GUNGAME",
+                "position": [
+                  0,
+                  80,
+                  0
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "a70d7ab5-a0db-43d2-98d5-6fb61e464435": {
+      "name": "OtherIcons",
+      "tags": [
+        "MODE-UI",
+        "GUNGAME"
+      ],
+      "enabled": true,
+      "resource_id": "a70d7ab5-a0db-43d2-98d5-6fb61e464435",
+      "parent": "1ae0b1e5-db27-4873-adab-50dba6cf3964",
+      "children": [
+        "166e34b8-09fa-47a7-8641-44dde63bbeca",
+        "685b8538-9aac-4dae-8c4f-131aeba633cb"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "group",
+          "anchor": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "pivot": [
+            1,
+            0
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 120,
+          "height": 150,
+          "margin": [
+            -120,
+            0,
+            0,
+            -150
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "166e34b8-09fa-47a7-8641-44dde63bbeca": {
+      "name": "Icon1",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "166e34b8-09fa-47a7-8641-44dde63bbeca",
+      "parent": "a70d7ab5-a0db-43d2-98d5-6fb61e464435",
+      "children": [],
+      "position": [
+        -0.000011444091796875,
+        -12,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "pivot": [
+            1,
+            0
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 0.8,
+          "textureAsset": 30638274,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 60,
+          "height": 60,
+          "margin": [
+            -60,
+            -12,
+            0,
+            -48
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "685b8538-9aac-4dae-8c4f-131aeba633cb": {
+      "name": "Icon2",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "685b8538-9aac-4dae-8c4f-131aeba633cb",
+      "parent": "a70d7ab5-a0db-43d2-98d5-6fb61e464435",
+      "children": [],
+      "position": [
+        -0.000011444091796875,
+        35,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "pivot": [
+            1,
+            0
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 0.8,
+          "textureAsset": 30638274,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 40,
+          "height": 40,
+          "margin": [
+            -40,
+            35,
+            0,
+            -75
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "001eb608-6cc6-4160-87c2-a16c447288f6": {
+      "name": "Text",
+      "tags": [
+        "MODE-UI",
+        "GUNGAME"
+      ],
+      "enabled": true,
+      "resource_id": "001eb608-6cc6-4160-87c2-a16c447288f6",
+      "parent": "17992180-94d8-46cf-9e9b-0f13d2d80da9",
+      "children": [],
+      "position": [
+        -88.22241020202637,
+        -0.0009918212890625,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "1 / 8",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 20,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 20,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 36.895,
+          "height": 20.957,
+          "margin": [
+            -106.67,
+            -10.48,
+            69.775,
+            -10.478
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "082cdb81-0d4a-45a7-920c-ede5f8bae0d2": {
+      "name": "Rectangle",
+      "tags": [
+        "MODE-UI",
+        "GUNGAME"
+      ],
+      "enabled": true,
+      "resource_id": "082cdb81-0d4a-45a7-920c-ede5f8bae0d2",
+      "parent": "17992180-94d8-46cf-9e9b-0f13d2d80da9",
+      "children": [],
+      "position": [
+        -112.89502334594727,
+        0.7047116386822836,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            1,
+            0.5,
+            1,
+            0.5
+          ],
+          "pivot": [
+            1,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "opacity": 0.4,
+          "textureAsset": 29692621,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 70,
+          "height": 28,
+          "margin": [
+            -182.895,
+            -13.295,
+            112.895,
+            -14.705
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "a74dac93-b261-44b7-935a-172531324280": {
+      "name": "LMG-Enemy",
+      "tags": [
+        "Weapon"
+      ],
+      "enabled": false,
+      "resource_id": "a74dac93-b261-44b7-935a-172531324280",
+      "parent": "fbfb4ab9-1166-495b-8c8c-681f53bf1671",
+      "children": [],
+      "position": [
+        0.6195895624363839,
+        0,
+        0
+      ],
+      "rotation": [
+        180,
+        0,
+        180
+      ],
+      "scale": [
+        0.63382576152401,
+        0.63382576152401,
+        0.63382576152401
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36716852,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "0cb4dd21-4d13-482a-81cf-73136efe7cc6": {
+      "name": "M4-Enemy",
+      "tags": [
+        "Weapon"
+      ],
+      "enabled": false,
+      "resource_id": "0cb4dd21-4d13-482a-81cf-73136efe7cc6",
+      "parent": "fbfb4ab9-1166-495b-8c8c-681f53bf1671",
+      "children": [],
+      "position": [
+        0.2507995819744711,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        53.99502159309687,
+        53.99502159309687,
+        53.99502159309687
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36716849,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "dfde3699-c154-4895-b9a7-9e9277ef16d7": {
+      "name": "Desert-Eagle-Enemy",
+      "tags": [
+        "Weapon"
+      ],
+      "enabled": false,
+      "resource_id": "dfde3699-c154-4895-b9a7-9e9277ef16d7",
+      "parent": "fbfb4ab9-1166-495b-8c8c-681f53bf1671",
+      "children": [],
+      "position": [
+        0.398372083902359,
+        0.04410613429543986,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.2593606686643837,
+        0.2593606686643837,
+        0.2593606686643837
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36716855,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "d60c0609-f49e-45cc-944f-2e142fda9c92": {
+      "name": "Dagger-Enemy",
+      "tags": [
+        "Weapon"
+      ],
+      "enabled": false,
+      "resource_id": "d60c0609-f49e-45cc-944f-2e142fda9c92",
+      "parent": "fbfb4ab9-1166-495b-8c8c-681f53bf1671",
+      "children": [],
+      "position": [
+        -0.06751027703285217,
+        0.20917892456054688,
+        0.21248258035474965
+      ],
+      "rotation": [
+        -19.26369037346946,
+        27.688150299871012,
+        -36.94790943367209
+      ],
+      "scale": [
+        0.745213285324033,
+        0.745213285324033,
+        0.745213285324033
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36573024,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
         }
       }
     }

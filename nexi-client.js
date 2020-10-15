@@ -241,9 +241,34 @@ const customKillstreakText = () => {
       a = "Suicide-Icon",
       n = "Suicide") : "Throw" == e ? (i = "Thrower",
       a = "Throw-Icon",
-      n = "Throw") : "Capture" == e && (i = "Capture",
+      n = "Throw") : "Capture" == e ? (i = "Capture",
       a = "Capture-Icon",
-      n = "Point");
+      n = "Point") : "Rank 1" == e ? (i = "Rank 1",
+      a = "Rank-1",
+      n = "Rank-Up") : "Rank 2" == e ? (i = "Rank 2",
+      a = "Rank-2",
+      n = "Rank-Up-2") : "Rank 3" == e ? (i = "Rank 3",
+      a = "Rank-3",
+      n = "Rank-Up") : "Rank 4" == e ? (i = "Rank 4",
+      a = "Rank-4",
+      n = "Rank-Up-2") : "Rank 5" == e ? (i = "Rank 5",
+      a = "Rank-5",
+      n = "Rank-Up") : "Rank 6" == e ? (i = "Rank 6",
+      a = "Rank-6",
+      n = "Rank-Up-2") : "Rank 7" == e ? (i = "Rank 7",
+      a = "Rank-7",
+      n = "Rank-Up") : "Rank 8" == e ? (i = "Rank 8",
+      a = "Rank-8",
+      n = "Rank-Up-2") : "Rank 9" == e ? (i = "Rank 9",
+      a = "Rank-9",
+      n = "Rank-Up") : "Rank 10" == e ? (i = "Rank 10",
+      a = "Rank-10",
+      n = "Rank-Up-2") : "Rank Lost" == e && (i = "Rank Lost",
+      a = "Death-Icon",
+      n = "Suicide");
+      var s = "+";
+      t < 0 && (s = ""),
+      this.app.fire("Overlay:Announce", i, s + t + " score", n, a)
       var s = "+";
       t < 0 && (s = ""),
       this.app.fire("Overlay:Announce", i, s + t + " score", n, a)
