@@ -498,6 +498,16 @@ const inspectWeaponKeyboardBind = () => {
       default_key: "J",
       function: "Toggle Viewmodel",
       waiting: ""
+    }, {
+      key: keyboardMap[pc.KEY_F6],
+      default_key: "F6",
+      function: "Hide UI",
+      waiting: ""
+    }, {
+      key: keyboardMap[pc.KEY_F7],
+      default_key: "F7",
+      function: "Show UI",
+      waiting: ""
     }];
     if (e) {
         for (var n in t) {
@@ -544,9 +554,11 @@ const inspectWeapon = () => {
       this.app.fire("Overlay:Pause", !1)),
       this.app.keyboard.wasPressed(pc.KEY_M),
       this.app.keyboard.wasPressed(pc.KEY_SHIFT) && (this.isFocusing = !0),
+      this.app.keyboard.wasPressed(pc.KEY_F6) && this.interface.hideGameplay(),
+      this.app.keyboard.wasPressed(pc.KEY_F7) && this.interface.showGameplay(),
       this.app.keyboard.wasPressed(pc.KEY_J) && (this.app.scene.layers.getLayerByName("NonFOV").enabled = checkFOV()),
-      this.app.keyboard.wasPressed(pc.KEY_T) && (this.inspectAfterReload = !0),
       toggle = this.app.scene.layers.getLayerByName("NonFOV").enabled,
+      this.app.keyboard.wasPressed(pc.KEY_T) && (this.inspectAfterReload = !0),
       this.app.keyboard.wasReleased(pc.KEY_T) && (this.animation.movementAngleX = 0,
         this.animation.movementAngleY = 0,
         this.animation.movementAngleZ = 0,
@@ -577,6 +589,17 @@ const inspectWeapon = () => {
   function checkFOV(){
     console.log('Function CheckFOV called.');
     if (toggle == 1){
+      console.log(0);
+      return 0;
+    }
+    else {
+      console.log(1);
+      return 1;
+    }
+  }
+  function checkUI(){
+    console.log('Function CheckUI called.');
+    if (toggle2 == 1){
       console.log(0);
       return 0;
     }
