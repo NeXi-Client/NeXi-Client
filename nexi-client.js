@@ -496,12 +496,7 @@ const inspectWeaponKeyboardBind = () => {
     }, {
       key: keyboardMap[pc.KEY_J],
       default_key: "J",
-      function: "Show Viewmodel ON",
-      waiting: ""
-    }, {
-      key: keyboardMap[pc.KEY_K],
-      default_key: "K",
-      function: "Show Viewmodel OFF",
+      function: "Toggle Viewmodel",
       waiting: ""
     }];
     if (e) {
@@ -546,8 +541,7 @@ const inspectWeapon = () => {
       this.app.fire("Overlay:Pause", !1)),
       this.app.keyboard.wasPressed(pc.KEY_M),
       this.app.keyboard.wasPressed(pc.KEY_SHIFT) && (this.isFocusing = !0),
-      this.app.keyboard.wasPressed(pc.KEY_J) && (this.app.scene.layers.getLayerByName("NonFOV").enabled = !0),
-      this.app.keyboard.wasPressed(pc.KEY_K) && (this.app.scene.layers.getLayerByName("NonFOV").enabled = !1),
+      this.app.keyboard.wasPressed(pc.KEY_J) && (this.app.scene.layers.getLayerByName("NonFOV").enabled = checkFOV()),
       this.app.keyboard.wasPressed(pc.KEY_T) && (this.inspectAfterReload = !0),
       
       this.app.keyboard.wasReleased(pc.KEY_T) && (this.animation.movementAngleX = 0,
@@ -577,7 +571,12 @@ const inspectWeapon = () => {
       void (this.app.keyboard.wasReleased(pc.KEY_SHIFT) && (this.isFocusing = !1))))))
   }
 }
-
+var toggle = 0;
+function checkFOV(){
+  toggle += 1;
+  toggle %= 2;
+  return toggle;
+}
 //Remove random Inspect Animations
 const removeRandomInspect = () => {
     Movement.prototype.reload = function() {
