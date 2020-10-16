@@ -502,12 +502,7 @@ const inspectWeaponKeyboardBind = () => {
     }, {
       key: keyboardMap[pc.KEY_F6],
       default_key: "F6",
-      function: "Hide UI",
-      waiting: ""
-    }, {
-      key: keyboardMap[pc.KEY_F7],
-      default_key: "F7",
-      function: "Show UI",
+      function: "Toggle UI",
       waiting: ""
     }];
     if (e) {
