@@ -535,6 +535,7 @@ const inspectWeaponKeyboardBind = () => {
 
 const inspectWeapon = () => {
     var toggle = 0;
+    var e = 0;
     Movement.prototype.setKeyboard = function() {
       return !this.player.isDeath && (!pc.isFinished && (!this.locked && ("INPUT" != document.activeElement.tagName && (this.jumpingTime + this.jumpLandTime < this.timestamp && this.currentHeight < this.nearGround && (this.isForward = !1,
       this.isBackward = !1,
@@ -554,12 +555,14 @@ const inspectWeapon = () => {
       this.app.fire("Overlay:Pause", !1)),
       this.app.keyboard.wasPressed(pc.KEY_M),
       this.app.keyboard.wasPressed(pc.KEY_SHIFT) && (this.isFocusing = !0),
-      this.app.keyboard.wasPressed(pc.KEY_F6) && this.interface.hideGameplay(),
-      this.app.keyboard.wasPressed(pc.KEY_F7) && this.interface.showGameplay(),
+      this.app.keyboard.wasPressed(pc.KEY_F6) && (
+        (e == 1) ? (this.interface.showGameplay(), e = 0) : (this.interface.hideAllGameplay(), e = 1)
+      ),
       this.app.keyboard.wasPressed(pc.KEY_J) && (this.app.scene.layers.getLayerByName("NonFOV").enabled = checkFOV()),
       toggle = this.app.scene.layers.getLayerByName("NonFOV").enabled,
       this.app.keyboard.wasPressed(pc.KEY_T) && (this.inspectAfterReload = !0),
-      this.app.keyboard.wasReleased(pc.KEY_T) && (this.animation.movementAngleX = 0,
+      this.app.keyboard.wasReleased(pc.KEY_T) && (
+        this.animation.movementAngleX = 0,
         this.animation.movementAngleY = 0,
         this.animation.movementAngleZ = 0,
         this.tween.inspect0 && this.tween.inspect0.stop(),
@@ -589,17 +592,6 @@ const inspectWeapon = () => {
   function checkFOV(){
     console.log('Function CheckFOV called.');
     if (toggle == 1){
-      console.log(0);
-      return 0;
-    }
-    else {
-      console.log(1);
-      return 1;
-    }
-  }
-  function checkUI(){
-    console.log('Function CheckUI called.');
-    if (toggle2 == 1){
       console.log(0);
       return 0;
     }
