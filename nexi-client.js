@@ -25,6 +25,7 @@ const customInit = () => {
   scoreboardFix();
   
   console.log('All Scripts have been started!')
+  console.log('Slimecube is gay <3')
 };
 
 // Functionality modifications
