@@ -521,7 +521,10 @@ const inspectWeaponKeyboardBind = () => {
 }
 
 //Keybind additions
+
+
 const inspectWeapon = () => {
+    var toggle = 0;
     Movement.prototype.setKeyboard = function() {
       return !this.player.isDeath && (!pc.isFinished && (!this.locked && ("INPUT" != document.activeElement.tagName && (this.jumpingTime + this.jumpLandTime < this.timestamp && this.currentHeight < this.nearGround && (this.isForward = !1,
       this.isBackward = !1,
@@ -543,7 +546,7 @@ const inspectWeapon = () => {
       this.app.keyboard.wasPressed(pc.KEY_SHIFT) && (this.isFocusing = !0),
       this.app.keyboard.wasPressed(pc.KEY_J) && (this.app.scene.layers.getLayerByName("NonFOV").enabled = checkFOV()),
       this.app.keyboard.wasPressed(pc.KEY_T) && (this.inspectAfterReload = !0),
-      
+      toggle = this.app.scene.layers.getLayerByName("NonFOV").enabled,
       this.app.keyboard.wasReleased(pc.KEY_T) && (this.animation.movementAngleX = 0,
         this.animation.movementAngleY = 0,
         this.animation.movementAngleZ = 0,
@@ -570,13 +573,20 @@ const inspectWeapon = () => {
 
       void (this.app.keyboard.wasReleased(pc.KEY_SHIFT) && (this.isFocusing = !1))))))
   }
+  
+  function checkFOV(){
+    console.log('Function CheckFOV called.');
+    if (toggle == 1){
+      console.log(0);
+      return 0;
+    }
+    else {
+      console.log(1);
+      return 1;
+    }
+  } 
 }
-var toggle = 0;
-function checkFOV(){
-  toggle += 1;
-  toggle %= 2;
-  return toggle;
-}
+
 //Remove random Inspect Animations
 const removeRandomInspect = () => {
     Movement.prototype.reload = function() {
