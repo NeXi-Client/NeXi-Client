@@ -498,6 +498,16 @@ const inspectWeaponKeyboardBind = () => {
       default_key: "J",
       function: "Toggle Viewmodel",
       waiting: ""
+    }, {
+      key: keyboardMap[pc.KEY_F6],
+      default_key: "F6",
+      function: "Hide UI",
+      waiting: ""
+    }, {
+      key: keyboardMap[pc.KEY_F7],
+      default_key: "F7",
+      function: "Show UI",
+      waiting: ""
     }];
     if (e) {
         for (var n in t) {
@@ -525,6 +535,7 @@ const inspectWeaponKeyboardBind = () => {
 
 const inspectWeapon = () => {
     var toggle = 0;
+    var e = 0;
     Movement.prototype.setKeyboard = function() {
       return !this.player.isDeath && (!pc.isFinished && (!this.locked && ("INPUT" != document.activeElement.tagName && (this.jumpingTime + this.jumpLandTime < this.timestamp && this.currentHeight < this.nearGround && (this.isForward = !1,
       this.isBackward = !1,
@@ -544,10 +555,14 @@ const inspectWeapon = () => {
       this.app.fire("Overlay:Pause", !1)),
       this.app.keyboard.wasPressed(pc.KEY_M),
       this.app.keyboard.wasPressed(pc.KEY_SHIFT) && (this.isFocusing = !0),
+      this.app.keyboard.wasPressed(pc.KEY_F6) && (
+        (e == 1) ? (this.interface.showGameplay(), e = 0) : (this.interface.hideAllGameplay(), e = 1)
+      ),
       this.app.keyboard.wasPressed(pc.KEY_J) && (this.app.scene.layers.getLayerByName("NonFOV").enabled = checkFOV()),
-      this.app.keyboard.wasPressed(pc.KEY_T) && (this.inspectAfterReload = !0),
       toggle = this.app.scene.layers.getLayerByName("NonFOV").enabled,
-      this.app.keyboard.wasReleased(pc.KEY_T) && (this.animation.movementAngleX = 0,
+      this.app.keyboard.wasPressed(pc.KEY_T) && (this.inspectAfterReload = !0),
+      this.app.keyboard.wasReleased(pc.KEY_T) && (
+        this.animation.movementAngleX = 0,
         this.animation.movementAngleY = 0,
         this.animation.movementAngleZ = 0,
         this.tween.inspect0 && this.tween.inspect0.stop(),
