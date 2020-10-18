@@ -1,0 +1,25 @@
+{
+  "name": "nexi-client",
+  "version": "10.0.0",
+  "description": "Venge.io Client",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NeXi-Client/NeXi-Client.git"
+  },
+  "author": "NeXi",
+  "license": "ISC",
+  "dependencies": {
+    "dialogs": "^2.0.1",
+    "discord-rpc": "^3.1.4",
+    "discord.js": "^12.3.1",
+    "electron-is-dev": "^1.2.0",
+    "electron-localshortcut": "^3.2.1",
+    "electron-log": "^4.2.4",
+    "electron-prompt": "^1.6.0",
+    "electron-store": "^6.0.0",
+    "electron-updater": "^4.3.5",
+    "update-electron-app": "^1.5.0",
+    "v8-compile-cache": "^2.1.1"
+  }
+}
