@@ -200,7 +200,7 @@ function createInitWindow(url, isFullScreen, Size, isMain)
 	initWin.webContents.on('will-prevent-unload', (event) => event.preventDefault())
 	initWin.webContents.on('dom-ready', (event) =>
 	{
-		initWin.setTitle('NeXi-Client V1.3.0');
+		initWin.setTitle('NeXi-Client V1.3.22');
 		event.preventDefault();
 	})
 

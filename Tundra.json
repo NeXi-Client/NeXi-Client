@@ -25743,7 +25743,8 @@
       "resource_id": "7aa2b032-bce9-4084-8f25-262396122f9f",
       "parent": "4619d179-2ecd-47e9-a686-0b7af12368f4",
       "children": [
-        "7161208f-68ad-4dff-a317-9abf37b522b5"
+        "7161208f-68ad-4dff-a317-9abf37b522b5",
+        "315f0aee-fb10-4a0f-b7ca-c09a1f1966e3"
       ],
       "position": [
         -30.427234203998268,
@@ -36509,6 +36510,65 @@
             25,
             1,
             15
+          ],
+          "radius": 0.5,
+          "axis": 1,
+          "height": 2,
+          "asset": null
+        },
+        "rigidbody": {
+          "enabled": true,
+          "type": "static",
+          "mass": 1,
+          "linearDamping": 0,
+          "angularDamping": 0,
+          "linearFactor": [
+            1,
+            1,
+            1
+          ],
+          "angularFactor": [
+            1,
+            1,
+            1
+          ],
+          "friction": 0.5,
+          "restitution": 0.5
+        }
+      }
+    },
+    "315f0aee-fb10-4a0f-b7ca-c09a1f1966e3": {
+      "name": "Collision",
+      "tags": [
+        "Brick"
+      ],
+      "enabled": true,
+      "resource_id": "315f0aee-fb10-4a0f-b7ca-c09a1f1966e3",
+      "parent": "7aa2b032-bce9-4084-8f25-262396122f9f",
+      "children": [],
+      "position": [
+        -6.23604821529295,
+        1.9893953233217312,
+        -0.42750051406676803
+      ],
+      "rotation": [
+        6.391927960283903e-16,
+        -17.45,
+        3.0368826830445373e-15
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "collision": {
+          "enabled": true,
+          "type": "box",
+          "halfExtents": [
+            7.169,
+            5.662,
+            1.357
           ],
           "radius": 0.5,
           "axis": 1,

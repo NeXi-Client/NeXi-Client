@@ -1995,7 +1995,6 @@ Movement.prototype.setShooting = function(t) {
         this.isFocusing && (this.spreadNumber = this.currentWeapon.focusSpread),
         a = -5,
         h = 5.2),
-        this.spreadNumber = pc.math.lerp(this.spreadNumber, r, .1),
         this.currentWeapon.shoot(),
         this.currentWeapon.isAutomatic || (this.isMouseReleased = !1,
         this.leftMouse = !1);
@@ -2022,6 +2021,7 @@ Movement.prototype.setShooting = function(t) {
         } else
             this.app.fire("EffectManager:Fire", d, f, l, this.player.playerId, M);
         this.lookY += .04 * i,
+        this.spreadNumber = pc.math.lerp(this.spreadNumber, r, .1),
         this.spreadCount += t,
         this.currentWeapon.ammo--,
         this.app.fire("Overlay:Shoot", !0),
@@ -4466,7 +4466,6 @@ Weapon.prototype.initialize = function() {
     this.currentDoodahSpeed = 0,
     this.player = !1,
     this.locked = !1,
-    console.log(this.entity.children),
     this.doodahEntity && (this.doodahReference.setLocalPosition(this.entity.findByName("DoodahPoint").getLocalPosition()),
     this.accessory = this.doodahEntity.findByName("Model")),
     this.hasSlider && (this.slider = this.entity.findByName(this.sliderName),
@@ -6016,7 +6015,6 @@ NetworkManager.prototype.auth = function(e) {
 }
 ,
 NetworkManager.prototype.mode = function(e) {
-    console.log(e),
     e[0] && (this.lastMode = this.currentMode + "",
     this.currentMode = e[0],
     pc.currentMode = this.currentMode,
@@ -8979,7 +8977,7 @@ Player.prototype.setKeyboard = function() {
     return !pc.isFinished && ("INPUT" != document.activeElement.tagName && (this.isCardSelection && (this.app.keyboard.wasPressed(pc.KEY_1) && this.onBuyCard1(),
     this.app.keyboard.wasPressed(pc.KEY_2) && this.onBuyCard2(),
     this.app.keyboard.wasPressed(pc.KEY_3) && this.onBuyCard3()),
-    this.isDeath ? (this.isCircularMenuActive && (this.app.keyboard.wasPressed(pc.KEY_1) && this.setWeapon(this.weapons[0]),
+    this.isDeath ? ("GUNGAME" != pc.currentMode && this.isCircularMenuActive && (this.app.keyboard.wasPressed(pc.KEY_1) && this.setWeapon(this.weapons[0]),
     this.app.keyboard.wasPressed(pc.KEY_2) && this.setWeapon(this.weapons[1]),
     this.app.keyboard.wasPressed(pc.KEY_3) && this.setWeapon(this.weapons[2]),
     this.app.keyboard.wasPressed(pc.KEY_4) && this.setWeapon(this.weapons[3])),
@@ -10279,6 +10277,7 @@ Menu.prototype.onWeaponSelect = function(e) {
     for (var i in t) {
         t[i].enabled = !1
     }
+    this.weaponEntity.findByName(e).enabled = !0,
     this.weaponIcon.element.textureAsset = n,
     this.weaponName.element.text = e.toLowerCase(),
     this.entity.sound.play("Whoosh"),
@@ -10991,14 +10990,14 @@ Result.prototype.createPlayerRow = function(t, e) {
     i.findByName("Assist").element.text = t.assist.toString(),
     i.findByName("Headshot").element.text = t.headshot.toString(),
     i.findByName("Objective").element.text = t.totalCardPoint.toString(),
-    t.reward > 0 ? i.findByName("Reward").element.text = "+" + t.reward.toString() : i.findByName("Reward").enabled = !1,
+    i.findByName("Reward") && (t.reward > 0 ? i.findByName("Reward").element.text = "+" + t.reward.toString() : i.findByName("Reward").enabled = !1),
     i.findByName("Score").element.text = t.score.toString(),
     (y = this.app.assets.find("Tier-" + t.tier + ".png")) && (i.findByName("Tier").element.textureAsset = y),
     i.findByName("Status").element.color = 1 == e ? this.victoryColor : this.defeatColor;
     var a = i.findByName("Follow");
     t.isMe ? (i.findByName("You").enabled = !0,
-    a.enabled = !1) : (i.findByName("You").enabled = !1,
-    a.enabled = !0),
+    a && (a.enabled = !1)) : (i.findByName("You").enabled = !1,
+    a && (a.enabled = !0)),
     i.findByName("Rank").element.text = e,
     i.findByName("Rank").element.opacity = this.rankOpacity,
     a && a.script && a.script.button && (a.script.button.fireFunction = "Follow:User@" + Utils.onlyUsername(t.username)),
