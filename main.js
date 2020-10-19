@@ -172,6 +172,7 @@ function createInitWindow(url, isFullScreen, Size, isMain)
 
 	function checkURL(url){
 		if (url.indexOf('social.venge.io') != -1) return 'social';
+		if (url.includes('index.html') == false) return 'unknown';
 		url = url.split('/');
 		let newURL = url[url.length - 1];
 		let path = newURL.substring('index.html'.length);
@@ -180,7 +181,7 @@ function createInitWindow(url, isFullScreen, Size, isMain)
 			case 1: return 'searching for game';
 			case 6: return 'game';
 			case 15: return 'spectate';
-			default: return 'unknown';
+			default: return 'weird thing should die'
 		}
 	}
 	/*
