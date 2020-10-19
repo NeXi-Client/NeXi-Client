@@ -299,7 +299,7 @@ autoUpdater.on('checking-for-update', () =>
 {
 	console.log('Checking for updates...');
 });
-autoUpdater.on('update-available', (info) =>
+autoUpdater.on('update-available', () =>
 {
 	const dialogOpts = {
 		type: 'info',
@@ -319,9 +319,9 @@ autoUpdater.on('update-not-available', () =>
 {
 	console.log('Version is up-to-date');
 });
-autoUpdater.on('download-progress', (progress) =>
+autoUpdater.on('download-progress', (progressObj) =>
 {
-	console.log('Download Speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.transferred} + ' / ' ${progressObj.total}');
+	console.log(`Download Speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.transferred}/${progressObj.total}`);
 });
 autoUpdater.on('update-downloaded', (releaseNotes, releaseName) =>
 {
