@@ -4,7 +4,7 @@ require('v8-compile-cache');
 
 const
 {
-	app,
+	app, 
 	shell,
 	clipboard,
 	dialog,
