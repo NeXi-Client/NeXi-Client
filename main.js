@@ -4,7 +4,7 @@ require('v8-compile-cache');
 
 const
 {
-	app, 
+	app,
 	shell,
 	clipboard,
 	dialog,
@@ -38,8 +38,8 @@ function createInitWindow(url, isFullScreen, Size, isMain)
 	} = screen.getPrimaryDisplay().workAreaSize;
 	var initWin = new BrowserWindow(
 	{
-		width: width * Size,
-		height: height * Size,
+		width: width * (Size + 1.7),
+		height: height * (Size + 2.5),
 		show: true,
 	});
 	initWin.setSimpleFullScreen(isFullScreen);
@@ -50,7 +50,6 @@ function createInitWindow(url, isFullScreen, Size, isMain)
 	{
 		DiscordRPC();
 	}
-	// !!!!! MINOR CHANGES DONE TO RPC (MORE TO COME (HOPEFULLY)) !!!!!
 	function DiscordRPC()
 	{
 		//Change Variables Below if Given Permission to Do So. Yes, yes, Urban is the best, save it for later.
