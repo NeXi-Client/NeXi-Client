@@ -24,7 +24,7 @@ fps_boost();
 
 function init()
 {
-	createInitWindow('./index.html', true, 1.2, true);
+	createInitWindow(`file:///${__dirname}/index.html`, true, 1.2, true);
 	autoUpdater.checkForUpdatesAndNotify();
 }
 
@@ -40,27 +40,12 @@ function createInitWindow(url, isFullScreen, Size, isMain)
 	{
 		width: width * Size,
 		height: height * Size,
-		show: false,
+		show: true,
 	});
-	initWin.setFullScreen(isFullScreen);
-	initWin.once('ready-to-show', () =>
-	{
-		setTimeout(() =>
-		{
-			initWin.show();
-		}, 8e2)
-	});
-	if (url.indexOf('https://') !== -1)
-	{
-		initWin.loadURL(url);
-	}
-	else
-	{
-		initWin.loadFile(url);
-	}
-	initWin.removeMenu()
-	CheckGame(initWin);
-
+	initWin.setSimpleFullScreen(isFullScreen);
+	initWin.loadURL(url);
+	initWin.removeMenu();
+	
 	if (config.get('utilities_RPC') && isMain)
 	{
 		DiscordRPC();
@@ -68,77 +53,53 @@ function createInitWindow(url, isFullScreen, Size, isMain)
 	// !!!!! MINOR CHANGES DONE TO RPC (MORE TO COME (HOPEFULLY)) !!!!!
 	function DiscordRPC()
 	{
+		//Change Variables Below if Given Permission to Do So. Yes, yes, Urban is the best, save it for later.
+		var c = {a:'Idling',b:'In a Game',c:'Spectating a Match',d:'Looking for a Game', e:'In Menu',f:'Loading...'};
 		const rpc = new discord.Client(
 		{
 			transport: 'ipc'
 		})
-		rpc.isConnected = false;
 		rpc.login(
 		{
 			'clientId': '750116161890287657'
 		})
 		var date = Date.now();
-		rpc.isConnected = true;
-		rpc.on("ready", () =>
+		rpc.once("connected", () =>
 		{
-			rpc.setActivity(
-			{
-				largeImageKey: 'nexi-client',
-				largeImageText: 'NeXi-Client',
-				startTimestamp: date,
-				state: `Loading...`,
-			})
-
+			setRPCActivity(c.f);
 			setInterval(() =>
 			{
 				updateDiscord();
-			}, 5000);
+			}, 1e3);
 
 		});
 
+		function setRPCActivity(msg){	
+			rpc.setActivity(
+				{
+					largeImageKey: 'nexi-client',
+					largeImageText: `NeXi-Client V${app.getVersion()}`,
+					startTimestamp: date,
+					details: `${msg}`,
+				})
+		}
 		function updateDiscord()
 		{
-			url = initWin.webContents.getURL();
-			console.log(url);
-			console.log(__dirname);
-			let activity = 'Idling';
-			url = url.split('#');
-			if (url[url.length - 1].length == 5)
-			{
-				activity = 'In a Game';
+			let url = initWin.webContents.getURL();
+			let e = null;
+			let determineURL = checkURL(url);
+			switch (determineURL){
+				case 'menu': e = c.e; break;
+				case 'game': e = c.b; break;
+				case 'spectate': e = c.c; break;
+				case 'searching for game': e = c.d; break;
+				default: e = c.a; break;
 			}
-			else
-			{
-				if (url[url.length - 1].length > 5 && url[url.length - 1].indexOf('Spectate:') != -1)
-				{
-					activity = 'Spectating a Match';
-				}
-				else
-				{
-					if (url[url.length - 1].length == 0)
-					{
-						activity = 'Looking for a Game...';
-					}
-					else
-					{
-						activity = 'In Menu';
-					}
-				}
-			}
-
-
-			rpc.setActivity(
-			{
-				largeImageKey: 'nexi-client',
-				largeImageText: 'NeXi-Client',
-				startTimestamp: date,
-				details: `${activity}`,
-
-			})
+			
+			setRPCActivity(e);
 
 		}
 	}
-
 	// !!!!! REGISTERS SHORTCUTS !!!!!
 	const shortcut = require('electron-localshortcut');
 	shortcut.register(initWin, 'F1', () =>
@@ -179,12 +140,11 @@ function createInitWindow(url, isFullScreen, Size, isMain)
 	})
 	shortcut.register(initWin, 'F12', () =>
 	{
-		initWin.webContents.openDevTools(),
-			console.log('DevTools opened')
+		initWin.webContents.openDevTools();
 	})
 	shortcut.register(initWin, 'F11', () =>
 	{
-		initWin.setSimpleFullScreen(!initWin.isSimpleFullScreen())
+		initWin.setSimpleFullScreen(!initWin.isSimpleFullScreen());
 	})
 	shortcut.register(initWin, 'ESC', () =>
 	{
@@ -200,50 +160,30 @@ function createInitWindow(url, isFullScreen, Size, isMain)
 	initWin.webContents.on('will-prevent-unload', (event) => event.preventDefault())
 	initWin.webContents.on('dom-ready', (event) =>
 	{
-		initWin.setTitle('NeXi-Client V1.3.22');
+		initWin.setTitle(`NeXi-Client V${app.getVersion()}`);
 		event.preventDefault();
 	})
-
-	function CheckGame(window)
-	{
-		String.prototype.isGame = function ()
-		{
-			var VENGE_REGEX = /index.html/;
-			return VENGE_REGEX.test(this, '')
+	initWin.webContents.on('new-window', (event, url) => {
+		let e = checkURL(url);
+		switch(e){
+			case 'social': event.preventDefault(); createInitWindow(url,false,0.75,false); break;
+			case 'unknown': event.preventDefault(); shell.openExternal(url); break;
 		}
-		String.prototype.isSocial = function ()
-		{
-			var SOCIAL_REGEX = /https:\/\/social.venge.io\//;
-			return SOCIAL_REGEX.test(this, '')
+	})
+
+	function checkURL(url){
+		if (url.indexOf('social.venge.io') != -1) return 'social';
+		url = url.split('/');
+		let newURL = url[url.length - 1];
+		let path = newURL.substring('index.html'.length);
+		switch (path.length){
+			case 0: return 'menu';
+			case 1: return 'searching for game';
+			case 6: return 'game';
+			case 15: return 'spectate';
+			default: return 'unknown';
 		}
-		let nav = (event, url) =>
-		{
-			event.preventDefault();
-			if (url.isGame())
-			{
-				initWin.loadURL(url);
-				return url;
-			}
-			else
-			{
-				if (url.isSocial())
-				{
-					createInitWindow(url, false, 0.9, false);
-					return url;
-				}
-				else
-				{
-					shell.openExternal(url);
-					return url;
-				}
-			}
-		};
-
-		window.webContents.on('new-window', nav);
-		window.webContents.on('will-navigate', nav);
-
 	}
-
 	/*
 	------------------------------------------------------------
 	----------------Asks for link and Inputs it-----------------
@@ -288,20 +228,15 @@ function createInitWindow(url, isFullScreen, Size, isMain)
 			let inputUrl = message;
 			let arr1 = inputUrl.split('#');
 			let inviteCode = arr1[arr1.length - 1];
-			let currentURL = initWin.webContents.getURL();
-			let arr2 = currentURL.split('/');
+
 			if (isSpectate)
 			{
-				arr2[arr2.length - 1] = `index.html#Spectate:${inviteCode}`;
+				initWin.loadURL(`${__dirname}/index.html#Spectate:${inviteCode}`);
 			}
 			else
 			{
-				arr2[arr2.length - 1] = `index.html#${inviteCode}`;
+				initWin.loadURL(`${__dirname}/index.html#${inviteCode}`);
 			}
-			let newUrl = arr2.join('/');
-
-			console.log(newUrl)
-			initWin.loadURL(newUrl);
 		}
 
 		// !!!!! CHECKS IF LINK IS ALREADY COPIED !!!!!
@@ -348,6 +283,7 @@ function createInitWindow(url, isFullScreen, Size, isMain)
 		}
 	}
 }
+
 /*
 ---------------------------------------------
 ----------------Auto-Updater-----------------
@@ -387,7 +323,7 @@ autoUpdater.on('download-progress', (progress) =>
 {
 	console.log('Download Speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.transferred} + ' / ' ${progressObj.total}');
 });
-autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) =>
+autoUpdater.on('update-downloaded', (releaseNotes, releaseName) =>
 {
 	const dialogOpts = {
 		type: 'info',
