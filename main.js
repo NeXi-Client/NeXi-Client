@@ -50,9 +50,6 @@ function init() {
   autoUpdater.checkForUpdatesAndNotify();
 }
 
-//Create Start Window
-let size = 1;
-
 function createInitWindow(url) {
   if (checkURL(url) == "social") size = 0.9;
   else size = 1.1;
@@ -137,7 +134,6 @@ function createInitWindow(url) {
       setRPCActivity(e);
     }
   }
-  // !!!!! REGISTERS SHORTCUTS !!!!!
   const shortcut = require("electron-localshortcut");
   shortcut.register(initWin, "F1", () => {
     switch (checkURL(url)) {
@@ -306,11 +302,7 @@ function createInitWindow(url) {
     }
   }
 
-  /*
-	------------------------------------------------------------
-	----------------Asks for link and Inputs it-----------------
-	------------------------------------------------------------
-	*/
+  
   function LinkBox() {
     function input(msg) {
       var prompting = prompt({
@@ -325,7 +317,7 @@ function createInitWindow(url) {
       return prompting;
     }
 
-    // !!!!! CHOOSE BETWEEN PLAY AND SPECTATE !!!!!
+
     function question() {
       const choice = dialog.showMessageBoxSync(initWin, {
         type: "question",
@@ -338,10 +330,8 @@ function createInitWindow(url) {
       return choice;
     }
 
-    // !!!!! LOADS NEW URL !!!!!
     function isPaste(message, isSpectate) {
-      let inputUrl = message;
-      let arr1 = inputUrl.split("#");
+      let arr1 = message.split("#");
       let inviteCode = arr1[arr1.length - 1];
 
       if (isSpectate) {
@@ -379,11 +369,6 @@ function createInitWindow(url) {
   }
 }
 
-/*
----------------------------------------------
-----------------Auto-Updater-----------------
----------------------------------------------
-*/
 const { autoUpdater } = require("electron-updater");
 autoUpdater.logger = require("electron-log");
 autoUpdater.logger.transports.file.level = "info";
@@ -391,15 +376,13 @@ autoUpdater.on("checking-for-update", () => {
   console.log("Checking for updates...");
 });
 autoUpdater.on("update-available", () => {
-  const dialogOpts = {
-    type: "info",
-    buttons: ["Alright!"],
-    title: "NeXi-Client Update",
-    message: "New Version of NeXi-Client has been found",
-    detail: "Please don't play any matches until the download is complete",
-  };
-
-  dialog.showMessageBox(dialogOpts).then((returnValue) => {
+  dialog.showMessageBox({
+	  type: 'info',
+	  buttons: ['Alright!'],
+	  title: 'NeXi-Client Update',
+	  message: "New Version of NeXi-Client has been found",
+	  detail: 'Please refrain from play any matches until the download is complete'
+  }).then((returnValue) => {
     if (returnValue.response === 0) console.log("User saw New Version message");
   });
 });
