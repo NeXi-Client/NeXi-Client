@@ -5,6 +5,7 @@ const client = () => {
 
 const customInit = () => {
   customOnLeaveCallback();
+  startCustomSolo();
   customTransition();
   customMatchFoundAnimation();
   customDeathMessage();
@@ -23,9 +24,20 @@ const customInit = () => {
   inspectWeapon();
   removeRandomInspect();
   scoreboardFix();
+  hexagonBreak();
+  weaponSelectionFix();
   
+  console.clear()
   console.log('All Scripts have been started!')
-  console.log('Slimecube is gay <3')
+  console.log('"NeXi Boosting Service = $5 ❤" - NeXi2k#9174')
+  console.log('"Daddy can i have your Credit cards? For what this time? I NEED VG COINS!!" - Vatr1x. ツ#3087')
+  console.log('"Resort ..... never again ....never again (RS2:V)" - Prophet#1487')
+  console.log('"Come join me on Twitch! Geno_TTV" - KaG | Geno#1073')
+  console.log('"Izzi aint no baby." - Izzibaby#5917')
+  console.log('"lemons are created to be eaten" - Powered#3959')
+  console.log('"I have a massive black c**k that prophet likes a lot" - ooops#0001')
+  console.log('"KaG on top" - Slimecube#1925')
+  console.log('"Sub to me on youtube and follow me on twitch (or if not I will find you and kill you >:)" - Nipotino333#2482')
 };
 
 // Functionality modifications
@@ -39,6 +51,14 @@ const customOnLeaveCallback = () => {
         : (window.location.href = "index.html");
   };
 };
+
+const startCustomSolo = () => {
+    RoomManager.prototype.onStart = function() {
+      this.app.fire("Analytics:Event", "Invite", "TriedToStart"),
+      this.send([this.keys.start]),
+      this.app.fire("Analytics:Event", "Invite", "Start")
+  }
+}
 
 // UI Modifications
 
@@ -380,6 +400,34 @@ const removeWeaponMenu = () => {
   }
 }
 
+//IZZI FIX THIS
+const teamChange = () => {
+    NetworkManager.prototype.teamSet = function(e) {
+      console.log(e.length)
+      if (e.length > 0) {
+          var t = e[0]
+            , i = e[1]
+            , a = this.getPlayerById(t);
+          t == this.playerId ? (this.app.fire("Player:Team", i),
+          pc.currentTeam = i,
+          this.team = i) : a && a.script.enemy.setTeam(i)
+      }
+  }
+  ,
+  NetworkManager.prototype.teamSetBlue = function(e) {
+      console.log(e.length)
+      var e = 2
+      if (e.length > 0) {
+          var t = e[0]
+            , i = e[1]
+            , a = this.getPlayerById(t);
+          t == this.playerId ? (this.app.fire("Player:Team", blue),
+          pc.currentTeam = blue, 
+          this.team = blue) : a && a.script.enemy.setTeam(blue)
+      }
+  }
+}
+
 //Remove Ad Preroll after match
 const fixAdPreroll = () => {
   NetworkManager.prototype.mode = function(e) {
@@ -583,6 +631,22 @@ const inspectWeapon = () => {
     }, 9999999999, this)),
 
       void (this.app.keyboard.wasReleased(pc.KEY_SHIFT) && (this.isFocusing = !1))))))
+  }
+  
+  function setTeamBlue(){
+    var e = [2, "blue"]
+    console.log(e)
+    pc.currentTeam = "blue"
+    this.team = "blue"
+    console.log("F7 Triggered | " + "Team Color: " + pc.currentTeam) 
+  }
+  
+  function setTeamRed(){
+    var e = [2, "red"]
+    console.log(e)
+    pc.currentTeam = "red"
+    this.team = "red"
+    console.log("F8 Triggered | " + "Team Color: " + pc.currentTeam) 
   }
   
   function checkFOV(){
@@ -851,3 +915,28 @@ const scoreboardFix = () => {
   }
 }
 
+//Fix Hexagon Tiles not breaking :P
+const hexagonBreak = () => {
+    Damageable.prototype.setDamage = function(t) {
+      var e = this.entity.getPosition().clone();
+      this.health = t,
+      this.app.fire("EffectManager:CustomSound", "Hit-Sound", 1 - .005 * this.health, e),
+      this.health <= -500 && (this.app.fire("EffectManager:ExplosionEffect", e),
+      this.entity.destroy())
+  }
+}
+
+//Fix Weapon Selection
+const weaponSelectionFix = () => {
+    Menu.prototype.onWeaponSelect = function(e) {
+      var t = this.weaponEntity.findByTag("Weapon")
+        , n = this.app.assets.find(e + "-Thumbnail-White.png");
+      for (var i in t) {
+          t[i].enabled = !1
+      }
+      this.weaponIcon.element.textureAsset = n,
+      this.weaponName.element.text = e.toLowerCase(),
+      this.entity.sound.play("Whoosh"),
+      pc.session.weapon = e
+  }
+}
