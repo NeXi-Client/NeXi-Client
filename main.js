@@ -103,7 +103,7 @@ function createInitWindow(url) {
     function setRPCActivity(msg) {
       rpc.setActivity({
         largeImageKey: "nexi-client",
-        largeImageText: `NeXi-Client V${app.getVersion()}`,
+        largeImageText: `NeXi-Client v${app.getVersion()}`,
         startTimestamp: date,
         details: `${msg}`,
       });
