@@ -368,47 +368,48 @@ function createInitWindow(url) {
     }
   }
 }
+const { autoUpdater } = require('electron-updater');
+autoUpdater.logger = require('electron-log');
+autoUpdater.logger.transports.file.level = 'info';
+autoUpdater.on('checking-for-update', () => {
+    console.log('Checking for updates...');
+});
+autoUpdater.on('update-available', (info) => {
+    const dialogOpts = {
+        type: 'info',
+        buttons: ['Alright!'],
+        title: 'NeXi-Client Update',
+        message: 'New Version of NeXi-Client has been released',
+        detail: 'It will be downloaded in the background and notify you when the download is finished.'
+       }
+  
+       dialog.showMessageBox(dialogOpts).then((returnValue) => {
+         if (returnValue.response === 0)
+         console.log('User saw New Version message')
+       })
+});
+autoUpdater.on('update-not-available', () => {
+    console.log('Version is up-to-date');
+});
+autoUpdater.on('download-progress', (progressObj) => {
+    console.log(`Download Speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.transferred} + '/ ${progressObj.total}`);
+});
+autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+    const dialogOpts = {
+      type: 'info',
+      buttons: ['Restart', 'Later'],
+      title: 'Application Update',
+      message: process.platform === 'win32' ? releaseNotes : releaseName,
+      detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+     }
 
-const { autoUpdater } = require("electron-updater");
-autoUpdater.logger = require("electron-log");
-autoUpdater.logger.transports.file.level = "info";
-autoUpdater.on("checking-for-update", () => {
-  console.log("Checking for updates...");
-});
-autoUpdater.on("update-available", () => {
-  dialog.showMessageBox({
-	  type: 'info',
-	  buttons: ['Alright!'],
-	  title: 'NeXi-Client Update',
-	  message: "New Version of NeXi-Client has been found",
-	  detail: 'Please refrain to play any matches until the download is complete'
-  }).then((returnValue) => {
-    if (returnValue.response === 0) console.log("User saw New Version message");
-  });
-});
-autoUpdater.on("update-not-available", () => {
-  console.log("Version is up-to-date");
-});
-autoUpdater.on("download-progress", (progressObj) => {
-  console.log(
-    `Download Speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.transferred}/${progressObj.total}`
-  );
-});
-autoUpdater.on("update-downloaded", (releaseNotes, releaseName) => {
-  const dialogOpts = {
-    type: "info",
-    buttons: ["Restart", "Later"],
-    title: "Application Update",
-    message: process.platform === "win32" ? releaseNotes : releaseName,
-    detail: "A new version has been downloaded. Want to update the client now?",
-  };
+     dialog.showMessageBox(dialogOpts).then((returnValue) => {
+       if (returnValue.response === 0) autoUpdater.quitAndInstall()
+     })
+   })
+autoUpdater.on('error', (error) => {
+    console.log(error)
+})
 
-  dialog.showMessageBox(dialogOpts).then((returnValue) => {
-    if (returnValue.response === 0) autoUpdater.quitAndInstall();
-  });
-});
-autoUpdater.on("error", (error) => {
-  console.log(error);
-});
 
 app.on("ready", init);
