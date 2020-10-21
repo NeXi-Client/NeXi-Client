@@ -381,7 +381,7 @@ autoUpdater.on("update-available", () => {
 	  buttons: ['Alright!'],
 	  title: 'NeXi-Client Update',
 	  message: "New Version of NeXi-Client has been found",
-	  detail: 'Please refrain from play any matches until the download is complete'
+	  detail: 'Please refrain to play any matches until the download is complete'
   }).then((returnValue) => {
     if (returnValue.response === 0) console.log("User saw New Version message");
   });
