@@ -17771,6 +17771,11 @@ ModeManager.prototype.triggerWeaponChange = function(e) {
         this.app.fire("Overlay:OtherIcons", t, n),
         this.app.fire("Overlay:WeaponText", this.variables.kills + " / " + this.variables.gungame.weaponLevels[e])
     }
+    else
+    {
+        this.app.fire("Overlay:WeaponText")
+        this.app.fire("Overlay:OtherIcons")
+    }
     this.currentWeapon = e
 }
 ;
