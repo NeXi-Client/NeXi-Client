@@ -26,18 +26,9 @@ const customInit = () => {
   scoreboardFix();
   hexagonBreak();
   weaponSelectionFix();
+  teamModeFixes();
   
   console.clear()
-  console.log('All Scripts have been started!')
-  console.log('"NeXi Boosting Service = $5 ❤" - NeXi2k#9174')
-  console.log('"Daddy can i have your Credit cards? For what this time? I NEED VG COINS!!" - Vatr1x. ツ#3087')
-  console.log('"Resort ..... never again ....never again (RS2:V)" - Prophet#1487')
-  console.log('"Come join me on Twitch! Geno_TTV" - KaG | Geno#1073')
-  console.log('"Izzi aint no baby." - Izzibaby#5917')
-  console.log('"lemons are created to be eaten" - Powered#3959')
-  console.log('"I have a massive black c**k that prophet likes a lot" - ooops#0001')
-  console.log('"KaG on top" - Slimecube#1925')
-  console.log('"Sub to me on youtube and follow me on twitch (or if not I will find you and kill you >:)" - Nipotino333#2482')
 };
 
 // Functionality modifications
@@ -938,5 +929,141 @@ const weaponSelectionFix = () => {
       this.weaponName.element.text = e.toLowerCase(),
       this.entity.sound.play("Whoosh"),
       pc.session.weapon = e
+  }
+}
+
+//TDM Mode fixes
+const teamModeFixes = () => {
+    NetworkManager.prototype.initialize = function() {
+      "undefined" != typeof VERSION && (this.isDebug = !1),
+      this.pack = MessagePack.initialize(4194304),
+      this.ws = !1,
+      this.isMuted = !1,
+      this.playerId = !1,
+      this.username = "none",
+      this.mapTimer = !1,
+      this.currentVolume = 1, 
+      this.lastGameStart = Date.now(),
+      this.lastGuardTime = Date.now(),
+      pc.session && pc.session.hash ? (this.hash = pc.session.hash,
+      pc.session.username && (this.username = pc.session.username)) : this.hash = !1,
+      this.skin = "Lilium",
+      this.team = "none",
+      pc.currentMode = "TDM",
+      this.currentWeapon = "Scar",
+      this.currentMode = "TDM",
+      this.currentMap = "Sierra2v2",
+      this.isSpectator = !1,
+      void 0 !== pc.currentMap && (this.currentMap = pc.currentMap),
+      pc.session && void 0 !== pc.session.character ? (this.characterName = pc.session.character,
+      this.skin = pc.session.character) : this.skin = this.characterName,
+      pc.session && void 0 !== pc.session.dance ? this.dance = pc.session.dance : this.dance = "Techno",
+      this.group = 0,
+      this.keys = this.getKeys(),
+      this.players = [],
+      this.stats = [],
+      this.lastPingDate = Date.now(),
+      this.currentPing = 0;
+      var e = 300;
+      pc.isMobile && (e = 140),
+      this.options = {
+          maxTime: e,
+          maxPlayer: 4,
+          points: 4,
+          gameMode: this.currentMode,
+          map: this.currentMap
+      },
+      this.payloadPercentage = 0,
+      pc.globalAngle = 62,
+      this.app.on("Network:Options", this.setOptions, this),
+      this.app.on("Network:Issue", this.setIssue, this),
+      this.app.on("Network:Reconnect", this.reconnect, this),
+      this.app.on("Network:Position", this.setPosition, this),
+      this.app.on("Network:Event", this.setEvent, this),
+      this.app.on("Network:State", this.setState, this),
+      this.app.on("Network:Damage", this.setDamage, this),
+      this.app.on("Network:Hurt", this.setHurt, this),
+      this.app.on("Network:Chat", this.sendChatMessage, this),
+      this.app.on("Network:Vote", this.setVote, this),
+      this.app.on("Network:RadiusEffect", this.setRadiusEffect, this),
+      this.app.on("Network:PointEffect", this.setPointEffect, this),
+      this.app.on("Network:Respawn", this.setRespawn, this),
+      this.app.on("Network:Throw", this.setThrow, this),
+      this.app.on("Network:Weapon", this.setWeapon, this),
+      this.app.on("Network:Point", this.setPoint, this),
+      this.app.on("Network:Buy", this.setBuy, this),
+      this.app.on("Network:Card", this.setCard, this),
+      this.app.on("Network:Reward", this.setReward, this),
+      this.app.on("Network:DealSpell", this.setDealSpell, this),
+      this.app.on("Network:Report", this.setReport, this),
+      this.app.on("Network:Drown", this.setDrown, this),
+      this.app.on("Network:Kick", this.setPlayerKick, this),
+      this.app.on("Network:ObjectDamage", this.setObjectDamage, this),
+      this.app.on("Network:Guard", this.setGuard, this),
+      this.app.on("Network:Restart", this.onRestart, this),
+      this.app.on("Player:Hide", this.setPlayerHide, this),
+      this.app.on("Player:Show", this.setPlayerShow, this),
+      this.app.on("Player:Character", this.setCharacterSkin, this),
+      this.app.on("Map:Loaded", this.onMapLoaded, this),
+      window.onhashchange = this.reconnect.bind(this),
+      this.enemyEntity.enabled = !1,
+      this.isDebug ? this.reconnect() : this.blackShadow.enabled = !0,
+      "undefined" != typeof PokiSDK && this.app.fire("Analytics:GameplayStart", !0)
+  }
+
+  Enemy.prototype.damage = function(t, i, e) {
+      var s = !1;
+      if (e && e.y > .9 && (s = !0),
+      this.damageAngle = Utils.lookAt(0, 0, e.x, e.z),
+      this.skinMaterial && (this.skinMaterial.emissiveIntensity = .65,
+      this.skinMaterial.update()),
+      this.tempAngle.x += 3 * Math.random() - 3 * Math.random(),
+      this.tempAngle.y += 2 * Math.random() - 2 * Math.random(),
+      !this.isActivated) {
+          clearTimeout(this.skinMaterialTimer),
+          this.skinMaterialTimer = setTimeout(function(t) {
+              var i = pc.app.tween(t.skinMaterial).to({
+                  emissiveIntensity: 0
+              }, .15, pc.Linear);
+              i.on("update", function(i) {
+                  t.skinMaterial.update()
+              }),
+              i.start()
+          }, 50, this);
+          var n = Math.round(2 * Math.random()) + 1
+            , a = this.skin + "-Grunt-" + n
+            , h = !0;
+          "TDM" != pc.currentMode && "PAYLOAD" != pc.currentMode || pc.currentTeam == this.team && (h = !1,
+          this.app.fire("Overlay:FriendlyFire", !0)),
+          h && (this.app.fire("Hit:Point", this.entity, Math.floor(20 * Math.random()) + 5),
+          this.entity.sound.play(a),
+          s && this.app.fire("Hit:Headshot", this.entity, Math.floor(20 * Math.random()) + 5)),
+          this.lastDamage = Date.now(),
+          "TDM" != pc.currentMode && "PAYLOAD" != pc.currentMode || this.app.fire("Outline:Add", this.characterEntity)
+
+          if(pc.currentMode == "TDM" && pc.currentTeam == this.team && h == !1) {
+              this.app.fire("Overlay:FriendlyFire", !1)
+          }
+          
+      }
+      this.app.fire("Network:Damage", t, i, s, this.playerId)
+  }
+  
+  ModeManager.prototype.triggerWeaponChange = function(e) {
+      if ("GUNGAME" == this.currentMode) {
+          var a = this.variables.gungame.weapons.indexOf(this.currentWeapon)
+            , i = this.variables.gungame.weapons.indexOf(e)
+            , t = this.variables.gungame.weapons[i + 1]
+            , n = this.variables.gungame.weapons[i + 2];
+          a > i && (this.variables.kills = 0),
+          this.app.fire("Overlay:OtherIcons", t, n),
+          this.app.fire("Overlay:WeaponText", this.variables.kills + " / " + this.variables.gungame.weaponLevels[e])
+      }
+      else
+      {
+          this.app.fire("Overlay:WeaponText")
+          this.app.fire("Overlay:OtherIcons")
+      }
+      this.currentWeapon = e
   }
 }

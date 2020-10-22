@@ -3201,10 +3201,10 @@
             1,
             0.5
           ],
-          "text": "Guest",
+          "text": "Knights Academy Gaming",
           "key": null,
           "fontAsset": 29329818,
-          "fontSize": 20,
+          "fontSize": 26,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
@@ -3215,8 +3215,8 @@
           "spacing": 1,
           "color": [
             1,
-            1,
-            1
+            0,
+            0
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -3226,9 +3226,9 @@
           "width": 45.479,
           "height": 20.957,
           "margin": [
-            -115.479,
+            74.7,
             -10.479,
-            70,
+            35,
             -10.479
           ],
           "alignment": [
@@ -3241,7 +3241,7 @@
             0,
             1
           ],
-          "outlineThickness": 0,
+          "outlineThickness": 0.45,
           "shadowColor": [
             0,
             0,
@@ -3307,7 +3307,7 @@
             0.5,
             0.5
           ],
-          "text": "0",
+          "text": "",
           "key": null,
           "fontAsset": 29313023,
           "fontSize": 20,
@@ -3413,7 +3413,7 @@
             0.5,
             0.5
           ],
-          "text": "0",
+          "text": "",
           "key": null,
           "fontAsset": 29313023,
           "fontSize": 20,
@@ -3519,10 +3519,10 @@
             0,
             0.5
           ],
-          "text": "Guest",
+          "text": "ERA",
           "key": null,
           "fontAsset": 29329818,
-          "fontSize": 20,
+          "fontSize": 26,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
@@ -3532,7 +3532,7 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            1,
+            0,
             1,
             1
           ],
@@ -3544,9 +3544,9 @@
           "width": 45.479,
           "height": 20.957,
           "margin": [
-            70,
+            35,
             -10.479,
-            -115.479,
+            0.479,
             -10.479
           ],
           "alignment": [
@@ -3559,7 +3559,7 @@
             0,
             1
           ],
-          "outlineThickness": 0,
+          "outlineThickness": 0.45,
           "shadowColor": [
             0,
             0,
@@ -41120,7 +41120,7 @@
             0.5,
             0.5
           ],
-          "text": "0",
+          "text": "",
           "key": null,
           "fontAsset": 29313023,
           "fontSize": 20,
@@ -41226,10 +41226,10 @@
             1,
             0.5
           ],
-          "text": "Guest",
+          "text": "Knights Academy Gaming",
           "key": null,
           "fontAsset": 29329818,
-          "fontSize": 20,
+          "fontSize": 26,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
@@ -41240,8 +41240,8 @@
           "spacing": 1,
           "color": [
             1,
-            1,
-            1
+            0,
+            0
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -41251,9 +41251,9 @@
           "width": 45.479,
           "height": 20.957,
           "margin": [
-            -115.479,
+            74.7,
             -10.479,
-            70,
+            35,
             -10.479
           ],
           "alignment": [
@@ -41266,7 +41266,7 @@
             0,
             1
           ],
-          "outlineThickness": 0,
+          "outlineThickness": 0.45,
           "shadowColor": [
             0,
             0,
@@ -41443,7 +41443,7 @@
             0.5,
             0.5
           ],
-          "text": "0",
+          "text": "",
           "key": null,
           "fontAsset": 29313023,
           "fontSize": 20,
@@ -41549,10 +41549,10 @@
             0,
             0.5
           ],
-          "text": "Guest",
+          "text": "ERA",
           "key": null,
           "fontAsset": 29329818,
-          "fontSize": 20,
+          "fontSize": 26,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
@@ -41562,7 +41562,7 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            1,
+            0,
             1,
             1
           ],
@@ -41574,9 +41574,9 @@
           "width": 45.479,
           "height": 20.957,
           "margin": [
-            70,
+            35,
             -10.479,
-            -115.479,
+            -0.479,
             -10.479
           ],
           "alignment": [
@@ -41589,7 +41589,7 @@
             0,
             1
           ],
-          "outlineThickness": 0,
+          "outlineThickness": 0.45,
           "shadowColor": [
             0,
             0,
@@ -62629,7 +62629,7 @@
           "height": 200,
           "margin": [
             -120,
-            80,
+            0,
             0,
             -280
           ],
@@ -63131,7 +63131,7 @@
         "MODE-UI",
         "GUNGAME"
       ],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "082cdb81-0d4a-45a7-920c-ede5f8bae0d2",
       "parent": "17992180-94d8-46cf-9e9b-0f13d2d80da9",
       "children": [],

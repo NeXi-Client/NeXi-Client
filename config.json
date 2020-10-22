@@ -402,7 +402,7 @@
       "url": "Sierra.json"
     },
     {
-      "name": "Sierra2v2",
+      "name": "Sierra 2v2",
       "url": "Sierra2v2.json"
     },
     {
@@ -428,6 +428,10 @@
     {
       "name": "Xibalba",
       "url": "Xibalba.json"
+    },
+    {
+      "name": "Xibalba 2v2",
+      "url": "Xibalba2v2.json"
     },
     {
       "name": "Result-Mobile",
