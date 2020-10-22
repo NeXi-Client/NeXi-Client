@@ -57,14 +57,19 @@ pc.script.createLoadingScreen(function (app) {
         wrapper.appendChild(splash);
         
         var hints = [
-            'Press [B] to buy ability cards in game!', 
-            'Mistle map has a different game mode, try it out!',
-            'Stay in green area to get score!',
-            'Unlock ability cards with frag and objective scores!'
+            '"NeXi Boosting Service = $5 ❤" - NeXi2k#9174', 
+            '"Daddy can i have your Credit cards? For what this time? I NEED VG COINS!!" - Vatr1x. ツ#3087',
+            '"Resort ..... never again ....never again (RS2:V)" - Prophet#1487',
+            '"Come join me on Twitch! Geno_TTV" - KaG | Geno#1073',
+            '"Izzi aint no baby." - Izzibaby#5917',
+            '"lemons are created to be eaten" - Powered#3959',
+            '"I have a massive black c**k that prophet likes a lot" - ooops#0001',
+            '"KaG on top" - Slimecube#1925',
+            '"Sub to me on youtube and follow me on twitch (or if not I will find you and kill you >:)" - Nipotino333#2482'
         ];
         
         var description = document.createElement('div');
-            description.innerText = '🧐 Tip : ' + hints[
+            description.innerText = '' + hints[
                 Math.floor(Math.random() * hints.length)
             ];
             description.id = 'description';
