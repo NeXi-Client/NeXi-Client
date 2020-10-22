@@ -81462,24 +81462,6 @@
       "i18n": {},
       "id": "36484534"
     },
-    "36487671": {
-      "tags": [],
-      "name": "M4-Tail-w.mp3",
-      "revision": 1,
-      "preload": false,
-      "meta": null,
-      "data": null,
-      "type": "audio",
-      "file": {
-        "filename": "M4-Tail-w.mp3",
-        "size": 31885,
-        "hash": "1c5cca51796cae7ae730d1289d6d42eb",
-        "url": "files/assets/36487671/1/M4-Tail-w.mp3"
-      },
-      "region": "eu-west-1",
-      "i18n": {},
-      "id": "36487671"
-    },
     "36487672": {
       "tags": [],
       "name": "M4-Fire.mp3",
