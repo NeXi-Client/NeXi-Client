@@ -26,7 +26,7 @@ const customInit = () => {
   scoreboardFix();
   hexagonBreak();
   weaponSelectionFix();
-  teamModeFixes();
+  //teamModeFixes();
   
   console.clear()
 };
@@ -388,34 +388,6 @@ const removeWeaponMenu = () => {
     //this.weaponEntity.setLocalScale(100, 100, 100),
     //this.weaponEntity.reparent(t)),
     //this.app.fire("Player:Weapon", pc.session.weapon)
-  }
-}
-
-//IZZI FIX THIS
-const teamChange = () => {
-    NetworkManager.prototype.teamSet = function(e) {
-      console.log(e.length)
-      if (e.length > 0) {
-          var t = e[0]
-            , i = e[1]
-            , a = this.getPlayerById(t);
-          t == this.playerId ? (this.app.fire("Player:Team", i),
-          pc.currentTeam = i,
-          this.team = i) : a && a.script.enemy.setTeam(i)
-      }
-  }
-  ,
-  NetworkManager.prototype.teamSetBlue = function(e) {
-      console.log(e.length)
-      var e = 2
-      if (e.length > 0) {
-          var t = e[0]
-            , i = e[1]
-            , a = this.getPlayerById(t);
-          t == this.playerId ? (this.app.fire("Player:Team", blue),
-          pc.currentTeam = blue, 
-          this.team = blue) : a && a.script.enemy.setTeam(blue)
-      }
   }
 }
 

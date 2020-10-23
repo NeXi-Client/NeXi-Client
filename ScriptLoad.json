@@ -63438,8 +63438,8 @@
         0
       ],
       "scale": [
-        1,
-        1,
+        0.564,
+        1.775,
         1
       ],
       "components": {
@@ -63478,8 +63478,8 @@
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 512,
-          "height": 512,
+          "width": 1920,
+          "height": 1080,
           "margin": [
             -256,
             -256,
