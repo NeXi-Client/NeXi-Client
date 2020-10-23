@@ -543,13 +543,7 @@ const inspectWeaponKeyboardBind = () => {
       default_key: "F6",
       function: "Toggle UI",
       waiting: ""
-    },
-    {
-      key: keyboardMap[pc.KEY_F5],
-      default_key: "F5",
-      function: "Change Team",
-      waiting: ""
-    }];
+    },];
     if (e) {
         for (var n in t) {
             t[n].default_key == e.default_key && (t[n].waiting = "Waiting for prompt...")
@@ -605,7 +599,13 @@ const inspectWeapon = () => {
         pc.isModeMenuActive = !0,
         this.app.fire("Overlay:Pause", !0),
         console.log("Opened"),
-        this.app.fire("View:Pause", "Team")
+        this.app.fire("View:Pause", "Team"),
+        pc.app.fire("Player:PointerLock", !1),
+        setTimeout(function() {
+          pc.app.fire("Player:PointerLock", !0),
+          pc.isModeMenuActive = !1,
+          this.app.fire("Overlay:Pause", !1)
+        }, 5000)
       ),
       this.app.keyboard.wasPressed(pc.KEY_J) && (this.app.scene.layers.getLayerByName("NonFOV").enabled = checkFOV()),
       toggle = this.app.scene.layers.getLayerByName("NonFOV").enabled,
@@ -1067,9 +1067,14 @@ const teamModeFixes = () => {
       this.currentWeapon = e
   }
 
-  ModeManager.prototype.onModeEvent = function(e) {
-    "PAYLOAD" != this.currentMode || "TDM" != this.currentMode || "ShowTeamSelection" == e && (pc.isModeMenuActive = !0,
-    this.app.fire("Overlay:Pause", !0),
-    this.app.fire("View:Pause", "Team"))
+  NetworkManager.prototype.setTeam = function(e) {
+      var t = e.team;
+      this.isTeamSelected || (this.send([this.keys.team, t]),
+      pc.app.fire("View:Pause", "Popup"),
+      setTimeout(function() {
+          pc.app.fire("Player:PointerLock", !0)
+      }, 50),
+      this.isTeamSelected = !0,
+      pc.isModeMenuActive = !1)
   }
 }
