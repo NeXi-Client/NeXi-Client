@@ -510,7 +510,7 @@
             0.568627451,
             1.000000000
           ],
-          "opacity": 1,
+          "opacity": 0.8,
           "textureAsset": 29914569,
           "spriteAsset": null,
           "spriteFrame": 0,
@@ -9596,7 +9596,7 @@
                   1.000000000
                 ],
                 "buttons": [],
-                "links": []
+                "destroyButton": false
               }
             }
           }
@@ -10289,7 +10289,7 @@
                   1.000000000
                 ],
                 "buttons": [],
-                "links": []
+                "destroyButton": false
               }
             },
             "fetcher": {
@@ -19154,7 +19154,7 @@
                 "buttons": [
                   "Follow=Fetcher:Follow@username"
                 ],
-                "links": []
+                "destroyButton": false
               }
             },
             "fetcher": {
@@ -21412,7 +21412,7 @@
                 "buttons": [
                   "Unfollow=Fetcher:Unfollow@username"
                 ],
-                "links": []
+                "destroyButton": false
               }
             },
             "fetcher": {
@@ -23267,19 +23267,19 @@
         "9e5f929f-40dc-4b06-9479-569e652282bb"
       ],
       "position": [
-        1.1945574856371167,
-        28.587579051818466,
-        -135.934548772191192
+        1.7966503542131704,
+        -3.9383004962141968,
+        -4.883151614715407
       ],
       "rotation": [
         0,
-        10.664874580091267,
+        -15.947160438550615,
         0
       ],
       "scale": [
-        7.7218783093221597,
-        7.7218783093221597,
-        7.7218783093221597
+        3.0308387452019443,
+        3.0308387452019443,
+        3.0308387452019443
       ],
       "components": {
         "model": {
@@ -28640,7 +28640,7 @@
                 "friendEntity": "14f860c4-5794-4f2c-a4e0-ce00f2ed87cb",
                 "friendHolder": "cf1581dc-fcea-48f7-8fd8-9649990c2498",
                 "friendWaiting": "8f22a35f-9591-4b80-8599-eebd06f02b87",
-                "serverCode": "1.0.17",
+                "serverCode": "1.0.18",
                 "isMobile": false,
                 "matchmakingTitle": "32700db4-9e34-4800-8892-7d39c44db361",
                 "matchmakingCancel": "d704db8c-dfd1-498b-ae1e-27768031efb5"
@@ -34520,7 +34520,7 @@
             1,
             1
           ],
-          "opacity": 0.4,
+          "opacity": 1,
           "textureAsset": 29816706,
           "spriteAsset": null,
           "spriteFrame": 0,
@@ -34626,7 +34626,7 @@
             1,
             1
           ],
-          "opacity": 0.4,
+          "opacity": 1,
           "textureAsset": 31216147,
           "spriteAsset": null,
           "spriteFrame": 0,
@@ -40050,9 +40050,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.09019607843137255,
-            0.09019607843137255,
-            0.09019607843137255
+            0,
+            0,
+            0
           ],
           "opacity": 0.9,
           "textureAsset": null,
@@ -44094,7 +44094,7 @@
                   0,
                   0
                 ],
-                "links": []
+                "destroyButton": false
               }
             }
           }
@@ -44446,7 +44446,9 @@
                   "Sierra",
                   "Xibalba",
                   "Mistle",
-                  "Tundra"
+                  "Tundra",
+                  "Sierra 2v2",
+                  "Xibalba 2v2"
                 ],
                 "itemImages": [
                 ]
@@ -47053,19 +47055,19 @@
         "d5518557-6f37-4670-abfa-3c28b4d44fc0"
       ],
       "position": [
-        1.1945574856371167,
-        28.587579051818466,
-        -135.934548772191192
+        1.7966503542131704,
+        -3.9383004962141968,
+        -4.883151614715407
       ],
       "rotation": [
         0,
-        -15.664874580091267,
+        -15.947160438550615,
         0
       ],
       "scale": [
-        7.7218783093221597,
-        7.7218783093221597,
-        7.7218783093221597
+        3.0308387452019443,
+        3.0308387452019443,
+        3.0308387452019443
       ],
       "components": {
         "model": {
@@ -47399,7 +47401,7 @@
             1,
             1
           ],
-          "text": "NeXi-Client v1.2.91",
+          "text": "\nMODNAME",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 20,
@@ -52726,9 +52728,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            1,
-            0.5843137254901961,
-            0
+            0.6823529411764706,
+            0.5764705882352941,
+            0.6078431372549019
           ],
           "opacity": 1,
           "textureAsset": 33208344,
@@ -56291,7 +56293,7 @@
                   "Equip=Fetcher:EquipInventory@id",
                   "Unequip=Fetcher:UnequipInventory@id"
                 ],
-                "links": []
+                "destroyButton": false
               }
             },
             "fetcher": {
@@ -61794,7 +61796,7 @@
                   1.000000000
                 ],
                 "buttons": [],
-                "links": []
+                "destroyButton": false
               }
             },
             "fetcher": {
@@ -64896,7 +64898,7 @@
     "c54764ff-a5d4-49d9-b7a6-24de6e3def41": {
       "name": "Challenges",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "c54764ff-a5d4-49d9-b7a6-24de6e3def41",
       "parent": "89fa5e74-7929-4d0e-9469-11fc9f785088",
       "children": [
@@ -64949,7 +64951,7 @@
             0,
             0
           ],
-          "opacity": 0.5,
+          "opacity": 0.8,
           "textureAsset": 34217613,
           "spriteAsset": null,
           "spriteFrame": 0,
@@ -64992,13 +64994,37 @@
           "materialAsset": null,
           "autoWidth": false,
           "autoHeight": false,
-          "useInput": false,
+          "useInput": true,
           "batchGroupId": null,
           "mask": false,
           "layers": [
             4
           ],
           "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "button"
+          ],
+          "scripts": {
+            "button": {
+              "enabled": true,
+              "attributes": {
+                "connected": null,
+                "triggerFunction": "window.open(\"https://skinmaker.venge.io/\");",
+                "pressFunction": "",
+                "fireFunction": "",
+                "fireArgs": "",
+                "playSound": true,
+                "waitResolve": false,
+                "leaveFunction": "",
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
+              }
+            }
+          }
         }
       }
     },
@@ -65038,7 +65064,7 @@
             0,
             1
           ],
-          "text": "Challenges",
+          "text": "BRAND NEW: SKIN VIEWER",
           "key": null,
           "fontAsset": 34136925,
           "fontSize": 20,
@@ -65051,7 +65077,7 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            1,
+            0,
             1,
             1
           ],
@@ -65144,7 +65170,7 @@
             0,
             1
           ],
-          "text": "Coming soon...",
+          "text": "Click here to open the Skin Viewer",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 15,
@@ -72000,7 +72026,8 @@
                   "04379587-b169-438f-be19-c24ba4be2b1f"
                 ],
                 "rowEntity": "6ec44933-9f4a-445c-87eb-e69720f0de75",
-                "holderEntity": "c2cfd567-c6e2-4852-87ee-63f949eece3c"
+                "holderEntity": "c2cfd567-c6e2-4852-87ee-63f949eece3c",
+                "padding": 0
               }
             }
           }
@@ -75937,7 +75964,6 @@
                 "buttons": [
                   "Join=Fetcher:JoinClan@id"
                 ],
-                "links": [],
                 "color": [
                   1,
                   1,
@@ -75952,7 +75978,8 @@
                   0.1980392157,
                   0.568627451,
                   1.000000000
-                ]
+                ],
+                "destroyButton": false
               }
             },
             "fetcher": {
@@ -78600,7 +78627,6 @@
                   "rank"
                 ],
                 "buttons": [],
-                "links": [],
                 "color": [
                   1,
                   1,
@@ -78615,7 +78641,8 @@
                   0.1980392157,
                   0.568627451,
                   1.000000000
-                ]
+                ],
+                "destroyButton": false
               }
             },
             "fetcher": {
@@ -83990,7 +84017,8 @@
                   "924dd027-fc82-4ef2-94c9-5d9036af5e7c"
                 ],
                 "rowEntity": "8c1a9fc8-fabf-4bf8-901c-3898e2b06017",
-                "holderEntity": "9e0bd849-620d-4519-a930-15b489c61394"
+                "holderEntity": "9e0bd849-620d-4519-a930-15b489c61394",
+                "padding": 0
               }
             }
           }
@@ -85362,7 +85390,6 @@
                 "buttons": [
                   "Roles=Fetcher:MemberDetails@user_id"
                 ],
-                "links": [],
                 "color": [
                   1,
                   1,
@@ -85377,7 +85404,8 @@
                   0,
                   0.2196078431372549,
                   0.8823529411764706
-                ]
+                ],
+                "destroyButton": false
               }
             },
             "fetcher": {
@@ -88671,7 +88699,6 @@
                 "buttons": [
                   "Kick=Fetcher:Kick@user_id"
                 ],
-                "links": [],
                 "color": [
                   1,
                   1,
@@ -88686,7 +88713,8 @@
                   0.2235294117647059,
                   0.19607843137254902,
                   0.41568627450980394
-                ]
+                ],
+                "destroyButton": false
               }
             },
             "fetcher": {
@@ -89059,7 +89087,6 @@
                   "level"
                 ],
                 "buttons": [],
-                "links": [],
                 "color": [
                   1,
                   1,
@@ -89074,7 +89101,8 @@
                   0.2235294117647059,
                   0.19607843137254902,
                   0.41568627450980394
-                ]
+                ],
+                "destroyButton": false
               }
             },
             "fetcher": {
@@ -89223,7 +89251,6 @@
                   "Approve=Fetcher:Approve@user_id",
                   "Decline=Fetcher:Kick@user_id"
                 ],
-                "links": [],
                 "color": [
                   1,
                   1,
@@ -89238,7 +89265,8 @@
                   0.2235294117647059,
                   0.19607843137254902,
                   0.41568627450980394
-                ]
+                ],
+                "destroyButton": false
               }
             },
             "fetcher": {
@@ -90249,7 +90277,7 @@
                   1.000000000
                 ],
                 "buttons": [],
-                "links": []
+                "destroyButton": false
               }
             },
             "fetcher": {
@@ -91920,7 +91948,6 @@
                 "buttons": [
                   "Request to Join=Fetcher:Join@id"
                 ],
-                "links": [],
                 "color": [
                   1,
                   1,
@@ -91935,7 +91962,8 @@
                   0.1980392157,
                   0.568627451,
                   1.000000000
-                ]
+                ],
+                "destroyButton": false
               }
             },
             "fetcher": {
@@ -99555,7 +99583,8 @@
       "parent": "bf3d6d33-6490-48f9-bb74-df7a4f7991a4",
       "children": [
         "0b71c7aa-bb95-4920-a94e-74a64e17e464",
-        "c95db5f8-ec1c-4ca4-a883-e02ab90e2bf7"
+        "c95db5f8-ec1c-4ca4-a883-e02ab90e2bf7",
+        "3ace79b0-93c8-43dd-a761-76988d20cf1b"
       ],
       "position": [
         20,
@@ -100393,7 +100422,7 @@
           "margin": [
             21.256,
             -40,
-            -101.256,
+            -33.256,
             -40
           ],
           "alignment": [
@@ -100496,7 +100525,7 @@
             0,
             0.5
           ],
-          "text": "Image should be square",
+          "text": "Image should be in size of 64x64",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 15,
@@ -104748,6 +104777,1048 @@
             "19": 35912036,
             "20": 35912036
           }
+        }
+      }
+    },
+    "3ace79b0-93c8-43dd-a761-76988d20cf1b": {
+      "name": "Row",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "3ace79b0-93c8-43dd-a761-76988d20cf1b",
+      "parent": "7479ce05-6045-4fc4-8fef-5c23a5bfc1af",
+      "children": [
+        "1510d148-7098-4ebf-9417-1429f9642816",
+        "1f900d27-c0b9-461e-8b81-15e37069ba0f",
+        "56a01bdf-d6c3-402b-aeed-187068ff7ec8",
+        "017e7896-cd5f-44b7-b531-605be4f2a258",
+        "e0552ca0-f0eb-4a26-aaae-c0877edff4ab"
+      ],
+      "position": [
+        -9.5367431640625e-7,
+        -135,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "pivot": [
+            0,
+            1
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 0.05,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 680,
+          "height": 100,
+          "margin": [
+            0,
+            -235,
+            -680,
+            135
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "1510d148-7098-4ebf-9417-1429f9642816": {
+      "name": "Label",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "1510d148-7098-4ebf-9417-1429f9642816",
+      "parent": "3ace79b0-93c8-43dd-a761-76988d20cf1b",
+      "children": [],
+      "position": [
+        20.000003814697266,
+        26.478224027237587,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0,
+            0.5,
+            0,
+            0.5
+          ],
+          "pivot": [
+            0,
+            0.5
+          ],
+          "text": "Custom Sniper Scope Image",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 18,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 18,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 199.661,
+          "height": 18.861,
+          "margin": [
+            20,
+            17.048,
+            -219.661,
+            -35.909
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "1f900d27-c0b9-461e-8b81-15e37069ba0f": {
+      "name": "Description",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "1f900d27-c0b9-461e-8b81-15e37069ba0f",
+      "parent": "3ace79b0-93c8-43dd-a761-76988d20cf1b",
+      "children": [],
+      "position": [
+        20.000003814697266,
+        7.132106053909951,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0,
+            0.5,
+            0,
+            0.5
+          ],
+          "pivot": [
+            0,
+            0.5
+          ],
+          "text": "Image should be in size of 1920x1080",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 15,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 15,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            0.6509803921568628,
+            0.6509803921568628,
+            0.6509803921568628
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 168.126,
+          "height": 18.861,
+          "margin": [
+            20,
+            -0.727,
+            -160.105,
+            -14.991
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "56a01bdf-d6c3-402b-aeed-187068ff7ec8": {
+      "name": "DragArea",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "56a01bdf-d6c3-402b-aeed-187068ff7ec8",
+      "parent": "3ace79b0-93c8-43dd-a761-76988d20cf1b",
+      "children": [
+        "66245c93-b1ef-4e90-a739-843312870a8d",
+        "6a77aa2b-7487-4c24-be9a-a4f74cfea2ca"
+      ],
+      "position": [
+        -20,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            1,
+            0.5,
+            1,
+            0.5
+          ],
+          "pivot": [
+            1,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 0.203,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 200,
+          "height": 80,
+          "margin": [
+            -220,
+            -40,
+            20,
+            -40
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "container",
+            "upload"
+          ],
+          "scripts": {
+            "container": {
+              "enabled": true,
+              "attributes": {
+                "id": "drag-and-drop-scope",
+                "onInit": "",
+                "onInitTrigger": "",
+                "innerHTML": "",
+                "onDestroy": "",
+                "autoResize": true,
+                "fullyRemove": false,
+                "showOnly": "Both"
+              }
+            },
+            "upload": {
+              "enabled": true,
+              "attributes": {
+                "key": "CustomScope",
+                "onUpload": "CustomImage:CustomScope"
+              }
+            }
+          }
+        }
+      }
+    },
+    "66245c93-b1ef-4e90-a739-843312870a8d": {
+      "name": "Text",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "66245c93-b1ef-4e90-a739-843312870a8d",
+      "parent": "56a01bdf-d6c3-402b-aeed-187068ff7ec8",
+      "children": [],
+      "position": [
+        -0.00004291534423828125,
+        6.656558998036445,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "Drag and drop",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 15,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 15,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 82.727,
+          "height": 15.718,
+          "margin": [
+            -41.364,
+            -1.202,
+            -41.363,
+            -14.515
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "6a77aa2b-7487-4c24-be9a-a4f74cfea2ca": {
+      "name": "Text",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "6a77aa2b-7487-4c24-be9a-a4f74cfea2ca",
+      "parent": "56a01bdf-d6c3-402b-aeed-187068ff7ec8",
+      "children": [],
+      "position": [
+        -0.00004291534423828125,
+        -10.227517597269966,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": ".png files are allowed",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 10,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 10,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 83.56,
+          "height": 10.479,
+          "margin": [
+            -41.78,
+            -15.467,
+            -41.78,
+            4.988
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "017e7896-cd5f-44b7-b531-605be4f2a258": {
+      "name": "CustomScope",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "017e7896-cd5f-44b7-b531-605be4f2a258",
+      "parent": "3ace79b0-93c8-43dd-a761-76988d20cf1b",
+      "children": [],
+      "position": [
+        61.256,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0.4,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": 30964398,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 80,
+          "height": 80,
+          "margin": [
+            21.256,
+            -40,
+            -101.256,
+            -40
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "customImage",
+            "cookie"
+          ],
+          "scripts": {
+            "customImage": {
+              "enabled": true,
+              "attributes": {
+                "key": "CustomScope",
+                "autoResize": false,
+                "defaultImage": 30964398
+              }
+            },
+            "cookie": {
+              "enabled": true,
+              "attributes": {
+                "key": "CustomScope",
+                "onGet": "CustomImage:CustomScope"
+              }
+            }
+          }
+        }
+      }
+    },
+    "e0552ca0-f0eb-4a26-aaae-c0877edff4ab": {
+      "name": "Reset",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "e0552ca0-f0eb-4a26-aaae-c0877edff4ab",
+      "parent": "3ace79b0-93c8-43dd-a761-76988d20cf1b",
+      "children": [
+        "b8534900-b23e-4cd9-93ef-59ba81918b7e"
+      ],
+      "position": [
+        20.000003814697266,
+        11.012185832440608,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pivot": [
+            0,
+            0
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 0.1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 100,
+          "height": 28,
+          "margin": [
+            20,
+            11.012,
+            -120,
+            -39.012
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": true,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "button"
+          ],
+          "scripts": {
+            "button": {
+              "enabled": true,
+              "attributes": {
+                "connected": null,
+                "triggerFunction": "",
+                "pressFunction": "",
+                "leaveFunction": "",
+                "fireFunction": "Cookie:CustomScope:Clear",
+                "fireArgs": "",
+                "playSound": true,
+                "waitResolve": false,
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "b8534900-b23e-4cd9-93ef-59ba81918b7e": {
+      "name": "Text",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "b8534900-b23e-4cd9-93ef-59ba81918b7e",
+      "parent": "e0552ca0-f0eb-4a26-aaae-c0877edff4ab",
+      "children": [],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "Reset",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 17,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 17,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 70.906,
+          "height": 33.531,
+          "margin": [
+            -35.453,
+            -16.766,
+            -35.453,
+            -16.766
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
         }
       }
     }

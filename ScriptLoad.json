@@ -1765,7 +1765,7 @@
               "asset": 31632611,
               "startTime": 0,
               "duration": null,
-              "volume": 0.3,
+              "volume": 0.25,
               "pitch": 1
             },
             "35": {
@@ -5913,8 +5913,8 @@
             "networkManager": {
               "enabled": true,
               "attributes": {
-                "URL": "wss://server-na-18.venge.io",
-                "testURL": "wss://server-na-18.venge.io",
+                "URL": "wss://server-na-1.venge.io",
+                "testURL": "wss://server-na-1.venge.io",
                 "playerEntity": "d6311a5c-7dec-4eb4-b495-15f29130570e",
                 "overlayEntity": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
                 "menuCameraEntity": "c58e956e-222b-47a0-a2a2-44233169f8f5",
@@ -9483,7 +9483,7 @@
               "attributes": {
                 "defaultMap": "Sierra",
                 "mapHolder": "61d5c8dc-28d8-4b9e-b0cc-7908646ca0c7",
-                "autoLoad": true
+                "autoLoad": false
               }
             }
           }
@@ -14593,7 +14593,7 @@
                   1.000000000
                 ],
                 "whitePlaceholder": true,
-                "fontFamily": "Arial, sans-serif",
+                "fontFamily": "Comic Sans MS, Comic Sans MS",
                 "storeValue": false,
                 "focusEntity": null,
                 "sleepValue": "",
@@ -18614,14 +18614,14 @@
       }
     },
     "93abf351-c078-4bb4-8bf0-e164bd9f793a": {
-      "name": "Scope",
+      "name": "ScopeHolder",
       "tags": [],
       "enabled": false,
       "resource_id": "93abf351-c078-4bb4-8bf0-e164bd9f793a",
       "parent": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
       "children": [
-        "03a21dce-6227-4aff-a9a5-3e1e4492ec75",
-        "78c01491-2565-417a-987b-6c95af4cc8eb"
+        "fd959018-405d-427e-be2d-8135ec7387fe",
+        "d642c543-1e9f-4a0a-89e0-d50465185117"
       ],
       "position": [
         0,
@@ -18641,7 +18641,7 @@
       "components": {
         "element": {
           "enabled": true,
-          "type": "image",
+          "type": "group",
           "anchor": [
             0.5,
             0.5,
@@ -18670,7 +18670,7 @@
             1
           ],
           "opacity": 1,
-          "textureAsset": 30964398,
+          "textureAsset": null,
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
@@ -18727,11 +18727,11 @@
       "tags": [],
       "enabled": false,
       "resource_id": "03a21dce-6227-4aff-a9a5-3e1e4492ec75",
-      "parent": "93abf351-c078-4bb4-8bf0-e164bd9f793a",
+      "parent": "fd959018-405d-427e-be2d-8135ec7387fe",
       "children": [],
       "position": [
-        -240,
-        0.00003814697265625,
+        -239.99997791352507,
+        0.00003054529588553123,
         0
       ],
       "rotation": [
@@ -18833,11 +18833,11 @@
       "tags": [],
       "enabled": false,
       "resource_id": "78c01491-2565-417a-987b-6c95af4cc8eb",
-      "parent": "93abf351-c078-4bb4-8bf0-e164bd9f793a",
+      "parent": "fd959018-405d-427e-be2d-8135ec7387fe",
       "children": [],
       "position": [
-        240,
-        0,
+        239.99999317231413,
+        -0.000011444091796875,
         0
       ],
       "rotation": [
@@ -30322,6 +30322,7 @@
       "children": [
         "042afaa4-4432-4e25-845e-9a1a7eb897a1",
         "8cccbfae-98c2-4902-8a7b-149dd211f1ed",
+        "98f28c61-ed3d-43fc-9977-91c75bde874e",
         "273eccd6-741c-49e9-a7d3-a464c72f640e",
         "cb088615-4b79-49f0-94c2-7e1c72c8a76a",
         "87a6a20e-0e08-4723-8699-62a852d9a806"
@@ -30437,7 +30438,8 @@
                   "8cccbfae-98c2-4902-8a7b-149dd211f1ed",
                   "cb088615-4b79-49f0-94c2-7e1c72c8a76a",
                   "87a6a20e-0e08-4723-8699-62a852d9a806",
-                  "273eccd6-741c-49e9-a7d3-a464c72f640e"
+                  "273eccd6-741c-49e9-a7d3-a464c72f640e",
+                  "98f28c61-ed3d-43fc-9977-91c75bde874e"
                 ],
                 "defaultView": "Popup"
               }
@@ -42642,7 +42644,7 @@
             1,
             1
           ],
-          "opacity": 0.2,
+          "opacity": 0.15,
           "textureAsset": null,
           "spriteAsset": null,
           "spriteFrame": 0,
@@ -46151,7 +46153,7 @@
                   0,
                   0
                 ],
-                "links": []
+                "destroyButton": false
               }
             }
           }
@@ -51703,12 +51705,12 @@
           "spriteFrame": 0,
           "pixelsPerUnit": null,
           "width": 500,
-          "height": 530,
+          "height": 590,
           "margin": [
             -250,
-            -265,
+            -295,
             -250,
-            -265
+            -295
           ],
           "alignment": [
             0.5,
@@ -52061,7 +52063,7 @@
           "width": 460,
           "height": 440,
           "margin": [
-            45,
+            20,
             -460,
             -480,
             20
@@ -59407,7 +59409,7 @@
                   0,
                   0
                 ],
-                "links": []
+                "destroyButton": false
               }
             }
           }
@@ -63415,6 +63417,838 @@
             0
           ],
           "batchGroupId": null
+        }
+      }
+    },
+    "4d0b2af7-f751-492f-8e34-71c7505003ed": {
+      "name": "ScopeTexture",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "4d0b2af7-f751-492f-8e34-71c7505003ed",
+      "parent": "fd959018-405d-427e-be2d-8135ec7387fe",
+      "children": [],
+      "position": [
+        0,
+        -0.000011444091796875,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": 30964398,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 512,
+          "height": 512,
+          "margin": [
+            -256,
+            -256,
+            -256,
+            -256
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "d642c543-1e9f-4a0a-89e0-d50465185117": {
+      "name": "CustomScope",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "d642c543-1e9f-4a0a-89e0-d50465185117",
+      "parent": "93abf351-c078-4bb4-8bf0-e164bd9f793a",
+      "children": [],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": 35630927,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 512,
+          "height": 512,
+          "margin": [
+            -256,
+            -256,
+            -256,
+            -256
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "customImage",
+            "cookie"
+          ],
+          "scripts": {
+            "customImage": {
+              "enabled": true,
+              "attributes": {
+                "key": "CustomScope",
+                "autoResize": true,
+                "defaultImage": 35630927
+              }
+            },
+            "cookie": {
+              "enabled": true,
+              "attributes": {
+                "key": "CustomScope",
+                "onGet": "CustomImage:CustomScope, Overlay:SetCustomScope"
+              }
+            }
+          }
+        }
+      }
+    },
+    "fd959018-405d-427e-be2d-8135ec7387fe": {
+      "name": "Scope",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "fd959018-405d-427e-be2d-8135ec7387fe",
+      "parent": "93abf351-c078-4bb4-8bf0-e164bd9f793a",
+      "children": [
+        "03a21dce-6227-4aff-a9a5-3e1e4492ec75",
+        "78c01491-2565-417a-987b-6c95af4cc8eb",
+        "4d0b2af7-f751-492f-8e34-71c7505003ed"
+      ],
+      "position": [
+        0,
+        -0.000011444091796875,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "group",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 512,
+          "height": 512,
+          "margin": [
+            -256,
+            -256,
+            -256,
+            -256
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "98f28c61-ed3d-43fc-9977-91c75bde874e": {
+      "name": "Team",
+      "tags": [],
+      "enabled": false,
+      "resource_id": "98f28c61-ed3d-43fc-9977-91c75bde874e",
+      "parent": "8b342ff8-803b-4878-9f1d-865d66598e36",
+      "children": [
+        "ff82a610-5ba1-419e-a8e9-0188c8d150e3",
+        "22cab623-0577-4452-b261-a8aec0b2d84e"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            0.06274509803921569,
+            0.06274509803921569,
+            0.06274509803921569
+          ],
+          "opacity": 1,
+          "textureAsset": 29914569,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 480,
+          "height": 310,
+          "margin": [
+            -240,
+            -155,
+            -240,
+            -155
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": true,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "ff82a610-5ba1-419e-a8e9-0188c8d150e3": {
+      "name": "Title",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "ff82a610-5ba1-419e-a8e9-0188c8d150e3",
+      "parent": "98f28c61-ed3d-43fc-9977-91c75bde874e",
+      "children": [
+        "277e9c50-4c52-4508-9fd5-e9aa57a2754b"
+      ],
+      "position": [
+        37,
+        -15.000038146972656,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "pivot": [
+            0,
+            1
+          ],
+          "text": "Select A Team",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 18,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 18,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 100.371,
+          "height": 18.861,
+          "margin": [
+            37,
+            -33.861,
+            -137.371,
+            15
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "277e9c50-4c52-4508-9fd5-e9aa57a2754b": {
+      "name": "Image",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "277e9c50-4c52-4508-9fd5-e9aa57a2754b",
+      "parent": "ff82a610-5ba1-419e-a8e9-0188c8d150e3",
+      "children": [],
+      "position": [
+        -25,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0,
+            0.5,
+            0,
+            0.5
+          ],
+          "pivot": [
+            0,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": 31197331,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 20,
+          "height": 20,
+          "margin": [
+            -25,
+            -10,
+            5,
+            -10
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "22cab623-0577-4452-b261-a8aec0b2d84e": {
+      "name": "Teams",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "22cab623-0577-4452-b261-a8aec0b2d84e",
+      "parent": "98f28c61-ed3d-43fc-9977-91c75bde874e",
+      "children": [],
+      "position": [
+        0,
+        -55,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0.5,
+            1,
+            0.5,
+            1
+          ],
+          "pivot": [
+            0.5,
+            1
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 0.05,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 460,
+          "height": 245,
+          "margin": [
+            -230,
+            -300,
+            -230,
+            55
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "table",
+            "jsontrigger",
+            "initTrigger"
+          ],
+          "scripts": {
+            "table": {
+              "enabled": true,
+              "attributes": {
+                "labels": [
+                  "Team",
+                  "Players",
+                  "Action"
+                ],
+                "keys": [
+                  "name",
+                  "players",
+                  "$button"
+                ],
+                "buttons": [
+                  "Select=Network:Team@team"
+                ],
+                "color": [
+                  1,
+                  1,
+                  1
+                ],
+                "rowColor": [
+                  0.09019607843137255,
+                  0.09019607843137255,
+                  0.09019607843137255
+                ],
+                "headerColor": [
+                  0,
+                  0,
+                  0
+                ],
+                "destroyButton": true
+              }
+            },
+            "jsontrigger": {
+              "enabled": true,
+              "attributes": {
+                "data": "{ \"result\" : [{ \"name\" : \"Blue\", \"team\" : \"blue\", \"players\" : \"\" }, { \"name\" : \"Red\", \"team\" : \"red\" , \"players\" : \"\" }]}",
+                "triggerFunction": "Table:Teams"
+              }
+            },
+            "initTrigger": {
+              "enabled": true,
+              "attributes": {
+                "triggerFunction": "Network:RequestTeamList"
+              }
+            }
+          }
         }
       }
     }

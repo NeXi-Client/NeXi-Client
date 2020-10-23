@@ -244,7 +244,8 @@
                 "rewardButton": "2b780def-dd9c-4a0b-8f1b-bdf47a593234",
                 "bannerEntity": "1cdee0e0-1fd7-458b-a7b7-0a50f466f3a8",
                 "rewardCountEntity": "d22efc1c-2450-4673-9ad1-d2049e371279",
-                "rewardLost": "7561b409-b007-4a13-8af7-257d2aa3a3e4"
+                "rewardLost": "7561b409-b007-4a13-8af7-257d2aa3a3e4",
+                "mapNameEntity": "1cdfbbfe-f539-4228-8222-a4c15ed6250d"
               }
             },
             "alert": {
@@ -1650,7 +1651,7 @@
       }
     },
     "1cdfbbfe-f539-4228-8222-a4c15ed6250d": {
-      "name": "Map",
+      "name": "MapName",
       "tags": [],
       "enabled": true,
       "resource_id": "1cdfbbfe-f539-4228-8222-a4c15ed6250d",

@@ -543,6 +543,12 @@ const inspectWeaponKeyboardBind = () => {
       default_key: "F6",
       function: "Toggle UI",
       waiting: ""
+    },
+    {
+      key: keyboardMap[pc.KEY_F5],
+      default_key: "F5",
+      function: "Change Team",
+      waiting: ""
     }];
     if (e) {
         for (var n in t) {
@@ -593,6 +599,14 @@ const inspectWeapon = () => {
       this.app.keyboard.wasPressed(pc.KEY_F6) && (
         (e == 1) ? (this.interface.showGameplay(), e = 0) : (this.interface.hideAllGameplay(), e = 1)
       ),
+      this.app.keyboard.wasPressed(pc.KEY_F5) && (
+        this.app.mouse.disablePointerLock(),
+        "ShowTeamSelection" == e,
+        pc.isModeMenuActive = !0,
+        this.app.fire("Overlay:Pause", !0),
+        console.log("Opened"),
+        this.app.fire("View:Pause", "Team")
+      ),
       this.app.keyboard.wasPressed(pc.KEY_J) && (this.app.scene.layers.getLayerByName("NonFOV").enabled = checkFOV()),
       toggle = this.app.scene.layers.getLayerByName("NonFOV").enabled,
       this.app.keyboard.wasPressed(pc.KEY_T) && (this.inspectAfterReload = !0),
@@ -622,22 +636,6 @@ const inspectWeapon = () => {
     }, 9999999999, this)),
 
       void (this.app.keyboard.wasReleased(pc.KEY_SHIFT) && (this.isFocusing = !1))))))
-  }
-  
-  function setTeamBlue(){
-    var e = [2, "blue"]
-    console.log(e)
-    pc.currentTeam = "blue"
-    this.team = "blue"
-    console.log("F7 Triggered | " + "Team Color: " + pc.currentTeam) 
-  }
-  
-  function setTeamRed(){
-    var e = [2, "red"]
-    console.log(e)
-    pc.currentTeam = "red"
-    this.team = "red"
-    console.log("F8 Triggered | " + "Team Color: " + pc.currentTeam) 
   }
   
   function checkFOV(){
@@ -942,7 +940,7 @@ const teamModeFixes = () => {
       this.playerId = !1,
       this.username = "none",
       this.mapTimer = !1,
-      this.currentVolume = 1, 
+      this.currentVolume = 1,
       this.lastGameStart = Date.now(),
       this.lastGuardTime = Date.now(),
       pc.session && pc.session.hash ? (this.hash = pc.session.hash,
@@ -998,7 +996,9 @@ const teamModeFixes = () => {
       this.app.on("Network:Report", this.setReport, this),
       this.app.on("Network:Drown", this.setDrown, this),
       this.app.on("Network:Kick", this.setPlayerKick, this),
+      this.app.on("Network:Team", this.setTeam, this),
       this.app.on("Network:ObjectDamage", this.setObjectDamage, this),
+      this.app.on("Network:RequestTeamList", this.requestTeamList, this),
       this.app.on("Network:Guard", this.setGuard, this),
       this.app.on("Network:Restart", this.onRestart, this),
       this.app.on("Player:Hide", this.setPlayerHide, this),
@@ -1065,5 +1065,11 @@ const teamModeFixes = () => {
           this.app.fire("Overlay:OtherIcons")
       }
       this.currentWeapon = e
+  }
+
+  ModeManager.prototype.onModeEvent = function(e) {
+    "PAYLOAD" != this.currentMode || "TDM" != this.currentMode || "ShowTeamSelection" == e && (pc.isModeMenuActive = !0,
+    this.app.fire("Overlay:Pause", !0),
+    this.app.fire("View:Pause", "Team"))
   }
 }

@@ -1002,7 +1002,7 @@ Movement.prototype.setCurrentWeapon = function() {
 Movement.prototype.onCollisionStart = function(t) {
     return !this.player.isDeath && (!pc.isFinished && (t.other && ("Bounce" == t.other.name && this.bounceJump(this.airTime, t.other),
     "Water" == t.other.name && this.app.fire("Network:Drown", !0),
-    "Kill" == t.other.name && this.app.fire("Player:Respawn", !0),
+    "Kill" == t.other.name && this.app.fire("Network:RequestRespawn", !0),
     t.other && t.other.tags.list().indexOf("Damageable") > -1 && this.app.fire("Network:ObjectDamage", t.other._guid)),
     this.now() - this.leftAirTime > 1e3 && (this.airTime = this.now()),
     this.isDashing && this.dashTrigger(t),
@@ -1022,12 +1022,12 @@ Movement.prototype.setMouseState = function() {
 }
 ,
 Movement.prototype.onMouseDown = function(t) {
-    return !this.player.isDeath && (!pc.isFinished && (!pc.isDisplayingAds && (!this.locked && (!pc.isPauseActive && (this.app.mouse.enablePointerLock(),
+    return !this.player.isDeath && (!pc.isFinished && (!pc.isDisplayingAds && (!this.locked && (!pc.isPauseActive && (!pc.isModeMenuActive && (this.app.mouse.enablePointerLock(),
     2 === t.button && (this.isFocusing = !0,
     this.focusStartTime = this.now(),
     this.cancelInspect(!0),
     this.app.fire("Overlay:SetAmmo", !0)),
-    void (0 === t.button && (this.leftMouse = !0)))))))
+    void (0 === t.button && (this.leftMouse = !0))))))))
 }
 ,
 Movement.prototype.onMouseMove = function(t) {
@@ -1085,7 +1085,7 @@ Movement.prototype.onJoystick = function(t) {
 ,
 Movement.prototype.onMouseUp = function(t) {
     return !this.player.isDeath && (!pc.isFinished && (2 === t.button && (this.isFocusing = !1),
-    void (0 === t.button && (this.isMouseReleased = !0,
+    void (0 === t.button && (this.leftMouse && (this.isMouseReleased = !0),
     this.leftMouse = !1))))
 }
 ,
@@ -2117,7 +2117,7 @@ Movement.prototype.scanShootables = function() {
 }
 ,
 Movement.prototype.checkGlitches = function(t) {
-    this.entity.rigidbody.linearVelocity.length() > 300 || this.currentHeight > 100 ? (this.glitchThreshold > 2 && this.app.fire("Player:Respawn", !0),
+    this.entity.rigidbody.linearVelocity.length() > 300 || this.currentHeight > 100 ? (this.glitchThreshold > 2 && this.app.fire("Network:Respawn", !0),
     this.glitchThreshold += t) : this.glitchThreshold = pc.math.lerp(this.glitchThreshold, 0, .1)
 }
 ,
@@ -2951,6 +2951,7 @@ Overlay.prototype.initialize = function() {
     this.app.on("Overlay:Circular", this.onCircularMenu, this),
     this.app.on("Overlay:CircularSelect", this.onCircularSelect, this),
     this.app.on("Overlay:SetCustomCrosshair", this.setCustomCrosshair, this),
+    this.app.on("Overlay:SetCustomScope", this.setCustomScope, this),
     this.app.on("Overlay:Explosive", this.onExplosive, this),
     this.app.on("Overlay:SkillTimer", this.onSkillTimer, this),
     this.app.on("Overlay:MeleeTimer", this.onMeleeTimer, this),
@@ -3042,9 +3043,7 @@ Overlay.prototype.hideDesktop = function() {
     }
 }
 ,
-Overlay.prototype.allowRespawn = function() {
-    this.blackShadow.enabled = !1
-}
+Overlay.prototype.allowRespawn = function() {}
 ,
 Overlay.prototype.onRespawn = function() {}
 ,
@@ -3056,7 +3055,7 @@ Overlay.prototype.onLoaded = function() {
     clearTimeout(this.blackShadowTimer),
     this.blackShadowTimer = setTimeout(function(t) {
         t.blackShadow.enabled = !1
-    }, 1500, this),
+    }, 500, this),
     this.app.fire("DOM:Update", !0)
 }
 ,
@@ -3079,6 +3078,10 @@ Overlay.prototype.setCustomCrosshair = function() {
     for (var e in t) {
         t[e].enabled = !1
     }
+}
+,
+Overlay.prototype.setCustomScope = function() {
+    this.app.root.findByName("Scope").enabled = !1
 }
 ,
 Overlay.prototype.onPause = function(t) {
@@ -4198,19 +4201,18 @@ Overlay.prototype.onNotification = function(t, e, i, a) {
         s.element.width = 7 * (Utils.cleanUsername(e).length + 1);
     else if ("kill" == t && e.killer && e.killed) {
         var o = Utils.cleanUsername(e.killer).length
-          , l = Utils.cleanUsername(e.killed).length
-          , r = o + l
-          , y = e.killedSkin
-          , h = e.killerSkin;
+          , l = o + Utils.cleanUsername(e.killed).length
+          , r = e.killedSkin
+          , y = e.killerSkin;
         (s = this.notificationKill.clone()).findByName("Gibbon").element.color = e.color,
-        s.findByName("Gibbon").element.width = 7 * (l + 15),
+        s.findByName("Gibbon").element.width = 7 * (o + 15),
         s.findByName("Killer").element.text = e.killer,
         s.findByName("Killed").element.text = e.killed,
-        s.element.width = 7 * (r + 17);
+        s.element.width = 7 * (l + 17);
+        var h = this.app.assets.find(r + "-Thumbnail-2");
+        s.findByName("KilledPicture").element.textureAsset = h;
         var c = this.app.assets.find(y + "-Thumbnail-2");
-        s.findByName("KilledPicture").element.textureAsset = c;
-        var p = this.app.assets.find(h + "-Thumbnail-2");
-        s.findByName("KillerPicture").element.textureAsset = p
+        s.findByName("KillerPicture").element.textureAsset = c
     }
     if (!s)
         return !1;
@@ -5362,8 +5364,12 @@ WeaponManager.prototype.playSwing = function(e) {
 WeaponManager.prototype.setSkins = function(e) {
     this.weaponSkins = e,
     e && setTimeout(function(e) {
-        e.setWeapons()
-    }, 500, this)
+        e.setCurrentWeaponSkin()
+    }, 1e3, this)
+}
+,
+WeaponManager.prototype.setCurrentWeaponSkin = function() {
+    this.setCosmetics(this.currentWeapon.entity.name)
 }
 ,
 WeaponManager.prototype.setWeapons = function() {
@@ -5381,11 +5387,11 @@ WeaponManager.prototype.setWeapon = function(e, t) {
     this.weaponHolder.findByTag("Weapon").forEach(function(e) {
         e.enabled = !1
     });
-    var a = this.weaponHolder.findByName(e);
-    a.enabled = !0,
-    this.currentWeapon = a.script.weapon,
+    var n = this.weaponHolder.findByName(e);
+    n.enabled = !0,
+    this.currentWeapon = n.script.weapon,
     this.currentWeapon.prepare(),
-    this.currentWeaponEntity = a.findByName("Model"),
+    this.currentWeaponEntity = n.findByName("Model"),
     this.setMuzzleParent(),
     this.setCosmetics(e),
     this.armLeftEntity.enabled = !this.currentWeapon.isRightHanded,
@@ -5409,8 +5415,8 @@ WeaponManager.prototype.setCharm = function(e) {
 ,
 WeaponManager.prototype.createAnimatedSkin = function(e) {
     var t = this.app
-      , a = e.replace(".jpg", ".mp4")
-      , n = this.app.assets.find(a)
+      , n = e.replace(".jpg", ".mp4")
+      , a = this.app.assets.find(n)
       , i = new pc.Texture(t.graphicsDevice,{
         format: pc.PIXELFORMAT_R5_G6_B5,
         autoMipmap: !1
@@ -5425,7 +5431,7 @@ WeaponManager.prototype.createAnimatedSkin = function(e) {
     }),
     s.setAttribute("webkit-playsinline", "webkit-playsinline"),
     s.muted = !0,
-    s.src = n.getFileUrl(),
+    s.src = a.getFileUrl(),
     s.crossOrigin = "anonymous",
     s.loop = !0,
     s.play(),
@@ -5437,17 +5443,17 @@ WeaponManager.prototype.createAnimatedSkin = function(e) {
 WeaponManager.prototype.setSkin = function(e) {
     if (e && this.currentWeaponEntity) {
         var t = this.currentWeaponEntity.model.material.clone()
-          , a = !1;
-        e.search("Animated") > -1 ? (a = this.createAnimatedSkin(e),
-        t.diffuseMap = a,
-        t.update()) : (a = this.app.assets.find(e),
-        this.app.assets.load(a),
-        a.ready(function(e) {
-            t.diffuseMap = a.resource,
+          , n = !1;
+        e.search("Animated") > -1 ? (n = this.createAnimatedSkin(e),
+        t.diffuseMap = n,
+        t.update()) : (n = this.app.assets.find(e),
+        this.app.assets.load(n),
+        n.ready(function(e) {
+            t.diffuseMap = n.resource,
             t.update()
         }));
-        for (var n = this.currentWeaponEntity.model.meshInstances, i = 0; i < n.length; ++i) {
-            n[i].material = t
+        for (var a = this.currentWeaponEntity.model.meshInstances, i = 0; i < a.length; ++i) {
+            a[i].material = t
         }
     }
 }
@@ -5455,8 +5461,8 @@ WeaponManager.prototype.setSkin = function(e) {
 WeaponManager.prototype.setAccessory = function(e) {
     if (e && this.currentWeaponEntity && this.currentWeapon.doodahEntity) {
         var t = this.app.assets.find(e)
-          , a = this.currentWeapon.doodahEntity.findByName("Model");
-        t && a && (a.model.asset = t)
+          , n = this.currentWeapon.doodahEntity.findByName("Model");
+        t && n && (n.model.asset = t)
     }
 }
 ,
@@ -5788,7 +5794,8 @@ NetworkManager.prototype.initialize = function() {
     this.team = "none",
     this.currentWeapon = "Scar",
     this.currentMode = "POINT",
-    this.currentMap = "Sierra",
+    this.currentMap = "Mistle",
+    this.isTeamSelected = !1,
     this.isSpectator = !1,
     void 0 !== pc.currentMap && (this.currentMap = pc.currentMap),
     pc.session && void 0 !== pc.session.character ? (this.characterName = pc.session.character,
@@ -5834,7 +5841,9 @@ NetworkManager.prototype.initialize = function() {
     this.app.on("Network:Report", this.setReport, this),
     this.app.on("Network:Drown", this.setDrown, this),
     this.app.on("Network:Kick", this.setPlayerKick, this),
+    this.app.on("Network:Team", this.setTeam, this),
     this.app.on("Network:ObjectDamage", this.setObjectDamage, this),
+    this.app.on("Network:RequestTeamList", this.requestTeamList, this),
     this.app.on("Network:Guard", this.setGuard, this),
     this.app.on("Network:Restart", this.onRestart, this),
     this.app.on("Player:Hide", this.setPlayerHide, this),
@@ -5929,11 +5938,14 @@ NetworkManager.prototype.getKeys = function() {
         spell: "spell",
         me: "me",
         token: "token",
+        team: "team",
         hit: "hit",
         report: "report",
         payload: "payload",
         charm: "charm",
         ping: "ping",
+        mode_event: "modeEvent",
+        team_list: "teamList",
         team_set: "teamSet",
         damage_point: "damagePoint",
         object_damage: "objectDamage",
@@ -6032,12 +6044,14 @@ NetworkManager.prototype.mode = function(e) {
     this.app.fire("Game:PreStart", !0),
     this.app.fire("Outline:Restart", !0);
     var a = e[1];
-    if (clearTimeout(this.mapTimer),
+    if (pc.currentMap = a,
+    clearTimeout(this.mapTimer),
     this.mapTimer = setTimeout(function(e) {
         a ? e.app.fire("Map:Load", a) : e.app.fire("Map:Load", "Sierra")
     }, 100, this),
     pc.isFinished = !1,
     pc.isPauseActive = !1,
+    this.isTeamSelected = !1,
     this.app.fire("Game:Start", !0),
     this.app.fire("Player:Lock", !0),
     "GUNGAME" != pc.currentMode && pc.session && pc.session.weapon && this.app.fire("WeaponManager:Set", pc.session.weapon),
@@ -6474,6 +6488,10 @@ NetworkManager.prototype.event = function(e) {
     }
 }
 ,
+NetworkManager.prototype.modeEvent = function(e) {
+    e.length > 0 && this.app.fire("Mode:Event", e[0], e[1])
+}
+,
 NetworkManager.prototype.setState = function(e, t) {
     this.send(["s", e, t])
 }
@@ -6505,18 +6523,51 @@ NetworkManager.prototype.state = function(e) {
 NetworkManager.prototype.respawn = function(e) {
     if (e && e.length > 0) {
         var t = e[0]
-          , i = this.getPlayerById(t);
+          , i = e[1]
+          , a = this.getPlayerById(t);
         t == this.playerId ? (this.app.fire("Player:AllowRespawn", !0),
         this.app.fire("Overlay:Transition", !0),
         clearTimeout(this.respawnTimer),
         this.respawnTimer = setTimeout(function(e) {
-            e.app.fire("Player:Respawn", !0)
-        }, 300, this)) : i && i.script.enemy.respawn()
+            e.app.fire("Player:Respawn", i)
+        }, 300, this)) : a && a.script.enemy.respawn(i)
     }
 }
 ,
 NetworkManager.prototype.info = function(e) {
     this.app.fire("Overlay:Info", e[0])
+}
+,
+NetworkManager.prototype.setTeam = function(e) {
+    var t = e.team;
+    this.isTeamSelected || (this.send([this.keys.team, t]),
+    pc.app.fire("View:Pause", "Popup"),
+    setTimeout(function() {
+        pc.app.fire("Player:PointerLock", !0)
+    }, 50),
+    this.isTeamSelected = !0,
+    pc.isModeMenuActive = !1)
+}
+,
+NetworkManager.prototype.teamList = function(e) {
+    var t = e[0]
+      , i = e[1];
+    this.currentTeamList = {
+        result: [{
+            name: "Blue",
+            team: "blue",
+            players: t.join(", ")
+        }, {
+            name: "Red",
+            team: "red",
+            players: i.join(", ")
+        }]
+    },
+    this.app.fire("Table:Teams", this.currentTeamList)
+}
+,
+NetworkManager.prototype.requestTeamList = function() {
+    this.currentTeamList && this.app.fire("Table:Teams", this.currentTeamList)
 }
 ,
 NetworkManager.prototype.teamSet = function(e) {
@@ -6583,7 +6634,7 @@ NetworkManager.prototype.left = function(e) {
 NetworkManager.prototype.position = function(e) {
     if (e.length > 0) {
         var t = this.getPlayerById(e[0]);
-        if (t) {
+        if (t && t.script && t.script.enemy) {
             var i = Utils.decodeFloat(e[1])
               , a = Utils.decodeFloat(e[2])
               , r = Utils.decodeFloat(e[3])
@@ -8579,9 +8630,10 @@ Player.prototype.onUnlock = function() {
     this.canBuy = !0
 }
 ,
-Player.prototype.onPointerLock = function() {
-    this.app.fire("Overlay:Pause", !1),
-    this.app.mouse.enablePointerLock()
+Player.prototype.onPointerLock = function(t) {
+    !1 === t ? (this.app.fire("Overlay:Pause", !0),
+    this.app.mouse.disablePointerLock()) : (this.app.fire("Overlay:Pause", !1),
+    this.app.mouse.enablePointerLock())
 }
 ,
 Player.prototype.onLeave = function() {
@@ -8675,7 +8727,7 @@ Player.prototype._onAbilitySet = function() {
     this.characterHolder.enabled = !1,
     this.movement.lookEntity.enabled = !0,
     this.app.fire("Overlay:Gameplay", !0),
-    this.app.fire("Player:Respawn", !0)
+    this.app.fire("Network:Respawn", !0)
 }
 ,
 Player.prototype.setWhiteShadow = function(t) {
@@ -8884,12 +8936,12 @@ Player.prototype.onRespawn = function(t) {
     this.movement.enableMovement(),
     this.movement.setAmmoFull(),
     this.interface.showGameplay();
-    var e = this.getSpawnPoint()
-      , a = 3 * Math.random() + 2
-      , i = 3 * Math.random() + 2;
+    var e = new pc.Vec3(t.position.x,t.position.y,t.position.z)
+      , a = 2 * Math.random() + 2
+      , i = 2 * Math.random() + 2;
     if (e) {
-        var s = e.point.add(new pc.Vec3(a,6,i))
-          , o = e.angle;
+        var s = e.add(new pc.Vec3(a,4,i))
+          , o = t.rotation;
         this.entity.rigidbody.linearVelocity = new pc.Vec3(0,0,0),
         this.entity.rigidbody.teleport(s.x, s.y, s.z, 0, 0, 0),
         180 == o.x && 180 == o.z ? this.movement.lookX = 90 - o.y : this.movement.lookX = o.y + 45
@@ -9366,7 +9418,11 @@ Enemy.prototype.teleport = function() {
     this.entity.setPosition(this.currentPosition)
 }
 ,
-Enemy.prototype.respawn = function() {
+Enemy.prototype.respawn = function(t) {
+    this.nextPosition.x = t.position.x,
+    this.nextPosition.y = t.position.y,
+    this.nextPosition.z = t.position.z,
+    this.entity.setPosition(t.position.x, t.position.y, t.position.z),
     this.teleport(),
     this.characterEntity.animation.speed = 1,
     this.characterEntity.setLocalPosition(0, -2, 0),
@@ -9708,7 +9764,8 @@ MapManager.prototype.setMap = function(t) {
     this.isLoading = Date.now(),
     pc.isMapLoaded = !1;
     var i = this.app.root.findByName("Map");
-    i && i.sound && i.sound.stop("Ambient"),
+    i && i.sound && (i.sound.stop("Ambient"),
+    i.sound.stop("Rain")),
     e && e.url && (this.app.scenes.loadSceneHierarchy(e.url + "?v=" + o, function(t, i) {
         i && (a.mapHolder.reparent(i),
         a.app.scenes.loadSceneSettings(e.url + "?v=" + o, function(t, a) {
@@ -10644,6 +10701,9 @@ Result.attributes.add("cloudEntity", {
 Result.attributes.add("cloudNoiseEntity", {
     type: "entity"
 }),
+Result.attributes.add("mapNameEntity", {
+    type: "entity"
+}),
 Result.attributes.add("scoresEntity", {
     type: "entity"
 }),
@@ -10751,6 +10811,7 @@ Result.prototype.initialize = function() {
     this.rowEntity.enabled = !1,
     this.resultHolder.enabled = !0,
     this.scoresEntity.enabled = !1,
+    pc.currentMap && (this.mapNameEntity.element.text = pc.currentMap + ""),
     !0 === pc.isSpectator ? this.showMessage("OVER") : pc.isVictory ? this.showMessage("VICTORY") : this.showMessage("DEFEAT"),
     setTimeout(function(t) {
         t.showScoreTable(pc.stats)
@@ -11955,7 +12016,12 @@ Waterfall.prototype.initialize = function() {
     }),
     this.app.assets.load(e),
     this.app.on("Game:Settings", this.onSettingsChange, this),
+    this.on("destroy", this.onDestroy),
     this.onSettingsChange()
+}
+,
+Waterfall.prototype.onDestroy = function() {
+    this.entity.sound.stop("Waterfall")
 }
 ,
 Waterfall.prototype.onSettingsChange = function() {
@@ -12957,8 +13023,12 @@ Table.attributes.add("rowColor", {
 Table.attributes.add("headerColor", {
     type: "rgb"
 }),
+Table.attributes.add("destroyButton", {
+    type: "boolean"
+}),
 Table.prototype.initialize = function() {
     this.isDestroyed = !1,
+    this.buttonsDisabled = !1,
     this.rows = [],
     this._onInit(),
     this.on("state", function(t) {
@@ -12971,12 +13041,14 @@ Table.prototype.initialize = function() {
 }
 ,
 Table.prototype.onDOMClear = function() {
-    this.entity.enabled = !1
+    this.entity.enabled = !1,
+    this.buttonsDisabled = !1
 }
 ,
 Table.prototype.onDestroy = function() {
     this.app.off("DOM:Update"),
     this.isDestroyed = !0,
+    this.buttonsDisabled = !1,
     this.container && this.container.remove()
 }
 ,
@@ -13038,36 +13110,41 @@ Table.prototype.createThumbnail = function(t, e) {
 }
 ,
 Table.prototype.createButtons = function(t, e, i) {
+    var a = this;
+    if (this.buttonsDisabled)
+        return !1;
     if (t[e] && t[e].match(/\$button\[(.*?)\]/)) {
-        var a = t[e].match(/\$button\[(.*?)\]/)
-          , n = parseInt(a[1])
-          , r = (o = this.buttons[n].split("="))[1].split("@");
-        (s = document.createElement("button")).innerText = o[0],
-        s.trigger = r[0],
-        s._key = r[1],
-        s._value = t[r[1]],
-        s.onclick = function() {
+        var n = t[e].match(/\$button\[(.*?)\]/)
+          , r = parseInt(n[1])
+          , o = (s = this.buttons[r].split("="))[1].split("@");
+        (l = document.createElement("button")).innerText = s[0],
+        l.trigger = o[0],
+        l._key = o[1],
+        l._value = t[o[1]],
+        l.onclick = function() {
             var t = {};
             t[this._key] = this._value,
-            pc.app.fire(this.trigger, t)
+            pc.app.fire(this.trigger, t),
+            a.destroyButton && (a.buttonsDisabled = !0)
         }
         ,
-        i.appendChild(s)
+        i.appendChild(l)
     } else
-        for (var n in this.buttons) {
-            var o, s;
-            r = (o = this.buttons[n].split("="))[1].split("@");
-            (s = document.createElement("button")).innerText = o[0],
-            s.trigger = r[0],
-            s._key = r[1],
-            s._value = t[r[1]],
-            s.onclick = function() {
+        for (var r in this.buttons) {
+            var s, l;
+            o = (s = this.buttons[r].split("="))[1].split("@");
+            (l = document.createElement("button")).innerText = s[0],
+            l.trigger = o[0],
+            l._key = o[1],
+            l._value = t[o[1]],
+            l.onclick = function() {
                 var t = {};
                 t[this._key] = this._value,
-                pc.app.fire(this.trigger, t)
+                pc.app.fire(this.trigger, t),
+                a.destroyButton && (a.buttonsDisabled = !0)
             }
             ,
-            i.appendChild(s)
+            i.appendChild(l)
         }
 }
 ,
@@ -15772,6 +15849,29 @@ Shop.prototype.initialize = function() {
     this.transactionToken = !1,
     this.currentQuantity = 750,
     this.contentCreatorCode = "",
+    this.rarityNumbers = {
+        "T1 Crate": {
+            common: 55,
+            uncommon: 30,
+            rare: 15,
+            legendary: 0,
+            mythical: 0
+        },
+        "T2 Crate": {
+            common: 50,
+            uncommon: 30,
+            rare: 15,
+            legendary: 5,
+            mythical: 0
+        },
+        "T3 Crate": {
+            common: 50,
+            uncommon: 30,
+            rare: 15,
+            legendary: 4.95,
+            mythical: .05
+        }
+    },
     this.app.on("Shop:TransactionToken", this.onTransactionToken, this),
     this.app.on("Shop:Buy", this.onShopBuy, this),
     this.app.on("Shop:CreatorCode", this.setCreatorCode, this),
@@ -15924,21 +16024,22 @@ Shop.prototype.onItemUnlock = function() {
     }, 1500, this))
 }
 ,
-Shop.prototype.showRarities = function(t) {
-    for (var e = this.rarities.length; e--; )
-        this.rarities[e] && this.rarities[e].destroy();
-    for (var i in this.rarities = [],
-    t) {
-        var o = t[i];
-        o = o.toLowerCase();
-        var n = this.raritiesItem.clone();
-        n.enabled = !0,
-        n.element.color = this[o + "Color"],
-        n.findByName("Text").element.text = o.toUpperCase() + " (%" + this[o + "Percentage"] + ")",
-        n.setLocalPosition(10, 20 * -parseInt(i) - 10, 0),
-        this.raritiesEntity.addChild(n),
-        this.rarities.push(n)
+Shop.prototype.showRarities = function(t, e) {
+    for (var i = this.rarities.length; i--; )
+        this.rarities[i] && this.rarities[i].destroy();
+    for (var o in this.rarities = [],
+    e) {
+        var n = e[o];
+        n = n.toLowerCase();
+        var r = this.raritiesItem.clone();
+        r.enabled = !0,
+        r.element.color = this[n + "Color"],
+        r.findByName("Text").element.text = n.toUpperCase() + " (%" + this.rarityNumbers[t][n] + ")",
+        r.setLocalPosition(10, 20 * -parseInt(o) - 10, 0),
+        this.raritiesEntity.addChild(r),
+        this.rarities.push(r)
     }
+    this.raritiesEntity.element.height = 20 * e.length + 15
 }
 ,
 Shop.prototype.setPreview = function(t) {
@@ -15956,7 +16057,7 @@ Shop.prototype.setPreview = function(t) {
     this.unlockButton.enabled = !0,
     this.equipButton.enabled = !1,
     this.raritiesEntity.enabled = !0,
-    this.showRarities(t.rarity.split(", "))) : "VirtualCoin" == t.type ? (this.unlockButton.enabled = !1,
+    this.showRarities(t.name, t.rarity.split(", "))) : "VirtualCoin" == t.type ? (this.unlockButton.enabled = !1,
     this.equipButton.enabled = !1,
     this.buyButton.enabled = !0,
     this.itemRarityColor.enabled = !1,
@@ -16017,20 +16118,20 @@ Shop.prototype.addShopItem = function(t, e, i) {
     o.enabled = !0,
     o.setLocalPosition(0, -n * e, 0),
     o.element.color = this.getColor(t.color);
-    var s = this.app.assets.find(t.icon);
-    s && (o.findByName("Icon").element.textureAsset = s),
+    var r = this.app.assets.find(t.icon);
+    r && (o.findByName("Icon").element.textureAsset = r),
     o.findByName("ItemName").element.text = t.name;
-    var r = "Scar-Thumbnail-White.png";
-    if ("ScarSkin" == t.type && (r = "Scar-Thumbnail-White.png"),
-    "ShotgunSkin" == t.type && (r = "Shotgun-Thumbnail-White.png"),
-    "SniperSkin" == t.type && (r = "Sniper-Thumbnail-White.png"),
-    "Tec9Skin" == t.type && (r = "Tec-9-Thumbnail-White.png"),
-    "LiliumDance" == t.type && (r = "Dance-Icon.png"),
-    "ShinDance" == t.type && (r = "Dance-Icon.png"),
-    "WeaponAccessory" == t.type && (r = "KeyChain-Icon.png"),
-    "Crate" == t.type && (r = "Loot-Icon.png"),
+    var s = "Scar-Thumbnail-White.png";
+    if ("ScarSkin" == t.type && (s = "Scar-Thumbnail-White.png"),
+    "ShotgunSkin" == t.type && (s = "Shotgun-Thumbnail-White.png"),
+    "SniperSkin" == t.type && (s = "Sniper-Thumbnail-White.png"),
+    "Tec9Skin" == t.type && (s = "Tec-9-Thumbnail-White.png"),
+    "LiliumDance" == t.type && (s = "Dance-Icon.png"),
+    "ShinDance" == t.type && (s = "Dance-Icon.png"),
+    "WeaponAccessory" == t.type && (s = "KeyChain-Icon.png"),
+    "Crate" == t.type && (s = "Loot-Icon.png"),
     "Offers" == this.shopType) {
-        var a = this.app.assets.find(r);
+        var a = this.app.assets.find(s);
         a && (o.findByName("ClassIcon").element.textureAsset = a),
         o.findByName("TimeLeft").element.text = t.offer_end_time
     }
@@ -16982,6 +17083,10 @@ CustomList.attributes.add("items", {
     type: "entity",
     array: !0
 }),
+CustomList.attributes.add("padding", {
+    type: "number",
+    default: 0
+}),
 CustomList.attributes.add("rowEntity", {
     type: "entity"
 }),
@@ -17003,18 +17108,29 @@ CustomList.prototype.clearList = function() {
 CustomList.prototype.setCustomList = function(t) {
     this.clearList();
     var i = t[this.key];
-    for (var s in i) {
+    for (var s in this.key || (i = t),
+    console.log(i),
+    i) {
         var e = i[s]
-          , o = this.rowEntity.clone();
-        o.enabled = !0;
+          , n = this.rowEntity.clone();
+        n.enabled = !0;
         var a = this.items;
-        for (var r in a) {
-            var n = a[r];
-            "Color" == n.name ? o.findByName(n.name).element.color = Utils.hex2RGB(e[this.fields[r]]) : o.findByName(n.name).element.text = e[this.fields[r]]
+        for (var o in a) {
+            var r = a[o];
+            if ("Color" == r.name)
+                n.findByName(r.name).element.color = Utils.hex2RGB(e[this.fields[o]]);
+            else if ("Image" == r.name)
+                n.findByName(r.name).element.textureAsset = this.app.assets.find(e[this.fields[o]]);
+            else if (r && r.script && r.script.button) {
+                var d = n.findByName(r.name).script.button.fireFunction;
+                console.log(this.fields[o]),
+                n.findByName(r.name).script.button.fireFunction = d.replace(this.fields[o], e[this.fields[o]])
+            } else
+                n.findByName(r.name).element.text = e[this.fields[o]]
         }
-        o.setLocalPosition(0, -s * o.element.height, 0),
-        this.holderEntity.addChild(o),
-        this.list.push(o)
+        n.setLocalPosition(0, -s * (n.element.height + this.padding) - this.padding, 0),
+        this.holderEntity.addChild(n),
+        this.list.push(n)
     }
 }
 ;
@@ -17191,14 +17307,16 @@ Upload.prototype.initialize = function() {
     this.dragAndDropArea.addEventListener("dragover", this.handleDragOver.bind(this), !1),
     this.dragAndDropArea.addEventListener("drop", this.setDragAndDrop.bind(this), !1),
     this.b64 = "null",
-    this.maxFileSize = 5e5
+    this.maxFileSize = 1e6
 }
 ,
 Upload.prototype.setDragAndDrop = function(e) {
     e.preventDefault(),
     e.stopPropagation();
-    var t = e.dataTransfer.files[0];
-    "image" == t.type.split("/")[0] ? t.size < this.maxFileSize ? this.encodeImage(t) : this.app.fire("Alert:Menu", t.name + " file's size exceeds max limit of 500 KB!") : this.app.fire("Alert:Menu", t.name + "'s file format " + t.type + " is not supported!")
+    var t = e.dataTransfer.files[0]
+      , a = !1;
+    "image" == t.type.split("/")[0] || "video" == t.type.split("/")[0] ? t.size < this.maxFileSize ? ("video" == t.type.split("/")[0] && (a = !0),
+    this.encodeImage(t, a)) : this.app.fire("Alert:Menu", t.name + " file's size exceeds max limit of 500 KB!") : this.app.fire("Alert:Menu", t.name + "'s file format " + t.type + " is not supported!")
 }
 ,
 Upload.prototype.handleDragOver = function(e) {
@@ -17207,18 +17325,18 @@ Upload.prototype.handleDragOver = function(e) {
     event.dataTransfer.dropEffect = "copy"
 }
 ,
-Upload.prototype.encodeImage = function(e) {
-    var t = new FileReader
-      , a = this;
-    t.addEventListener("load", function(e) {
-        this.b64 = e.target.result;
-        var t = {};
-        t[a.key] = this.b64;
-        var i = JSON.stringify(t);
-        window.localStorage.setItem(a.key, i),
-        a.app.fire(a.onUpload, t)
+Upload.prototype.encodeImage = function(e, t) {
+    var a = new FileReader
+      , i = this;
+    a.addEventListener("load", function(e) {
+        i.b64 = e.target.result;
+        var a = {};
+        a[i.key] = i.b64;
+        var r = JSON.stringify(a);
+        window.localStorage.setItem(i.key, r),
+        i.app.fire(i.onUpload, a, t)
     }),
-    t.readAsDataURL(e)
+    a.readAsDataURL(e)
 }
 ;
 var CustomImage = pc.createScript("customImage");
@@ -17728,7 +17846,10 @@ ModePosition.prototype.setMode = function(t) {
 var ModeManager = pc.createScript("modeManager");
 ModeManager.prototype.initialize = function() {
     this.currentMode = "POINT",
+    pc.isModeMenuActive = !1,
     this.app.on("Game:Mode", this.onModeSet, this),
+    this.app.on("Map:Loaded", this.onMapLoaded, this),
+    this.app.on("Mode:Event", this.onModeEvent, this),
     this.app.on("Player:Kill", this.onKill, this),
     this.app.on("Overlay:Weapon", this.triggerWeaponChange, this),
     this.variables = {
@@ -17755,6 +17876,14 @@ ModeManager.prototype.onModeSet = function(e) {
     this.variables.kills = 0
 }
 ,
+ModeManager.prototype.onMapLoaded = function() {}
+,
+ModeManager.prototype.onModeEvent = function(e) {
+    "PAYLOAD" != this.currentMode || "TDM" != this.currentMode || "ShowTeamSelection" == e && (pc.isModeMenuActive = !0,
+    this.app.fire("Overlay:Pause", !0),
+    this.app.fire("View:Pause", "Team"))
+}
+,
 ModeManager.prototype.onKill = function(e, a) {
     this.variables.kills++,
     "GUNGAME" == this.currentMode && (a.indexOf("Rank") > -1 && (this.variables.kills = 0),
@@ -17771,11 +17900,210 @@ ModeManager.prototype.triggerWeaponChange = function(e) {
         this.app.fire("Overlay:OtherIcons", t, n),
         this.app.fire("Overlay:WeaponText", this.variables.kills + " / " + this.variables.gungame.weaponLevels[e])
     }
-    else
-    {
-        this.app.fire("Overlay:WeaponText")
-        this.app.fire("Overlay:OtherIcons")
-    }
     this.currentWeapon = e
+}
+;
+var Jsontrigger = pc.createScript("jsontrigger");
+Jsontrigger.attributes.add("data", {
+    type: "string"
+}),
+Jsontrigger.attributes.add("triggerFunction", {
+    type: "string"
+}),
+Jsontrigger.prototype.initialize = function() {
+    this.triggerFunction && this.app.fire(this.triggerFunction, JSON.parse(this.data))
+}
+;
+var MouseInput = pc.createScript("mouseInput");
+MouseInput.attributes.add("orbitSensitivity", {
+    type: "number",
+    default: .3,
+    title: "Orbit Sensitivity",
+    description: "How fast the camera moves around the orbit. Higher is faster"
+}),
+MouseInput.attributes.add("distanceSensitivity", {
+    type: "number",
+    default: .15,
+    title: "Distance Sensitivity",
+    description: "How fast the camera moves in and out. Higher is faster"
+}),
+MouseInput.prototype.initialize = function() {
+    if (this.orbitCamera = this.entity.script.orbitCamera,
+    this.orbitCamera) {
+        var t = this
+          , o = function(o) {
+            t.onMouseOut(o)
+        };
+        this.app.mouse.on(pc.EVENT_MOUSEDOWN, this.onMouseDown, this),
+        this.app.mouse.on(pc.EVENT_MOUSEUP, this.onMouseUp, this),
+        this.app.mouse.on(pc.EVENT_MOUSEMOVE, this.onMouseMove, this),
+        this.app.mouse.on(pc.EVENT_MOUSEWHEEL, this.onMouseWheel, this),
+        window.addEventListener("mouseout", o, !1),
+        this.on("destroy", function() {
+            this.app.mouse.off(pc.EVENT_MOUSEDOWN, this.onMouseDown, this),
+            this.app.mouse.off(pc.EVENT_MOUSEUP, this.onMouseUp, this),
+            this.app.mouse.off(pc.EVENT_MOUSEMOVE, this.onMouseMove, this),
+            this.app.mouse.off(pc.EVENT_MOUSEWHEEL, this.onMouseWheel, this),
+            window.removeEventListener("mouseout", o, !1)
+        })
+    }
+    this.app.mouse.disableContextMenu(),
+    this.lookButtonDown = !1,
+    this.panButtonDown = !1,
+    this.lastPoint = new pc.Vec2
+}
+,
+MouseInput.fromWorldPoint = new pc.Vec3,
+MouseInput.toWorldPoint = new pc.Vec3,
+MouseInput.worldDiff = new pc.Vec3,
+MouseInput.prototype.pan = function(t) {
+    var o = MouseInput.fromWorldPoint
+      , e = MouseInput.toWorldPoint
+      , i = MouseInput.worldDiff
+      , s = this.entity.camera
+      , n = this.orbitCamera.distance;
+    s.screenToWorld(t.x, t.y, n, o),
+    s.screenToWorld(this.lastPoint.x, this.lastPoint.y, n, e),
+    i.sub2(e, o),
+    this.orbitCamera.pivotPoint.add(i)
+}
+,
+MouseInput.prototype.onMouseDown = function(t) {
+    switch (t.button) {
+    case pc.MOUSEBUTTON_LEFT:
+        this.lookButtonDown = !0;
+        break;
+    case pc.MOUSEBUTTON_MIDDLE:
+    case pc.MOUSEBUTTON_RIGHT:
+        this.panButtonDown = !0
+    }
+}
+,
+MouseInput.prototype.onMouseUp = function(t) {
+    switch (t.button) {
+    case pc.MOUSEBUTTON_LEFT:
+        this.lookButtonDown = !1;
+        break;
+    case pc.MOUSEBUTTON_MIDDLE:
+    case pc.MOUSEBUTTON_RIGHT:
+        this.panButtonDown = !1
+    }
+}
+,
+MouseInput.prototype.onMouseMove = function(t) {
+    pc.app.mouse;
+    this.lookButtonDown ? (this.orbitCamera.pitch -= t.dy * this.orbitSensitivity,
+    this.orbitCamera.yaw -= t.dx * this.orbitSensitivity) : this.panButtonDown && this.pan(t),
+    this.lastPoint.set(t.x, t.y)
+}
+,
+MouseInput.prototype.onMouseWheel = function(t) {
+    this.orbitCamera.distance -= t.wheel * this.distanceSensitivity * (.1 * this.orbitCamera.distance),
+    t.event.preventDefault()
+}
+,
+MouseInput.prototype.onMouseOut = function(t) {
+    this.lookButtonDown = !1,
+    this.panButtonDown = !1
+}
+;
+var ContainerWrapper = pc.createScript("containerWrapper");
+ContainerWrapper.attributes.add("padding", {
+    type: "number",
+    default: 0
+}),
+ContainerWrapper.prototype.initialize = function() {
+    var e = 0;
+    for (var t in this.entity.children) {
+        var i = this.entity.children[t]
+          , n = i.getLocalPosition();
+        i.element && (e = Math.min(i.element.height - n.y))
+    }
+    this.entity.element.height = e + this.padding
+}
+;
+var CustomSkin = pc.createScript("customSkin");
+CustomSkin.attributes.add("key", {
+    type: "string"
+}),
+CustomSkin.prototype.initialize = function() {
+    this.app.on("CustomSkin:Set", this.setCustomSkin, this)
+}
+,
+CustomSkin.prototype.setCustomSkin = function(t, e) {
+    var i = this;
+    e ? this.setSkin(this.entity, t[this.key], !0) : this.setCustomImage(t, function(t) {
+        i.setSkin(i.entity, t)
+    })
+}
+,
+CustomSkin.prototype.setCustomImage = function(t, e) {
+    var i = new pc.Texture(this.app.graphicsDevice,{
+        mipmaps: !1
+    });
+    i.minFilter = pc.FILTER_LINEAR,
+    i.magFilter = pc.FILTER_LINEAR,
+    i.addressU = pc.ADDRESS_CLAMP_TO_EDGE,
+    i.addressV = pc.ADDRESS_CLAMP_TO_EDGE;
+    var n = document.createElement("img");
+    n.src = t[this.key],
+    n.crossOrigin = "anonymous",
+    n.addEventListener("load", function(t) {
+        i.setSource(n),
+        e(i)
+    })
+}
+,
+CustomSkin.prototype.createAnimatedSkin = function(t) {
+    var e = this.app
+      , i = new pc.Texture(e.graphicsDevice,{
+        format: pc.PIXELFORMAT_R5_G6_B5,
+        autoMipmap: !1
+    });
+    i.minFilter = pc.FILTER_LINEAR,
+    i.magFilter = pc.FILTER_LINEAR,
+    i.addressU = pc.ADDRESS_CLAMP_TO_EDGE,
+    i.addressV = pc.ADDRESS_CLAMP_TO_EDGE;
+    var n = document.createElement("video");
+    return n.addEventListener("canplay", function(t) {
+        i.setSource(n)
+    }),
+    n.setAttribute("webkit-playsinline", "webkit-playsinline"),
+    n.muted = !0,
+    n.src = t,
+    n.crossOrigin = "anonymous",
+    n.loop = !0,
+    n.play(),
+    this.isAnimatedSkin = !0,
+    this.videoTexture = i,
+    i
+}
+,
+CustomSkin.prototype.setSkin = function(t, e, i) {
+    var n = t.model.material.clone();
+    i ? (e = this.createAnimatedSkin(e),
+    n.diffuseMap = e,
+    n.update()) : (n.diffuseMap = e,
+    n.update());
+    for (var s = t.model.meshInstances, o = 0; o < s.length; ++o) {
+        s[o].material = n
+    }
+}
+,
+CustomSkin.prototype.update = function(t) {
+    this.isAnimatedSkin && this.videoTexture && this.videoTexture.upload()
+}
+;
+var InitTrigger = pc.createScript("initTrigger");
+InitTrigger.attributes.add("triggerFunction", {
+    type: "string"
+}),
+InitTrigger.prototype.initialize = function() {
+    this.onState(!0),
+    this.on("state", this.onState, this)
+}
+,
+InitTrigger.prototype.onState = function(t) {
+    !0 === t && this.triggerFunction && this.app.fire(this.triggerFunction)
 }
 ;

@@ -841,7 +841,8 @@
         "bd360807-7fa0-405f-a72c-e0a2062adb9c",
         "231f7279-bcb1-4db4-8bff-f3f04398549a",
         "dde12b57-e6f4-4f60-9f3f-129bd786d8a9",
-        "e3a620b9-4bd7-433e-b1f9-9a2d01590fa1"
+        "e3a620b9-4bd7-433e-b1f9-9a2d01590fa1",
+        "bb87c7bd-c46b-49f9-919d-f01c8762fa61"
       ],
       "position": [
         0,
@@ -870,9 +871,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        23.759008407592773,
-        18.444819000875864,
-        34.18592071533203
+        107.20138549804688,
+        23.363004522883237,
+        -10.568739891052246
       ],
       "rotation": [
         0,
@@ -896,9 +897,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        69.78248596191406,
+        56.126930236816406,
         22.413841247558594,
-        -1.8829585741069648
+        -2.4051855337226105
       ],
       "rotation": [
         0,
@@ -922,9 +923,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        -0.9018641710281372,
-        19.492645263671875,
-        -51.85239562666342
+        4.370087623596191,
+        13.824614174012439,
+        -39.7725944519043
       ],
       "rotation": [
         0,
@@ -948,9 +949,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        -75.81807216625131,
-        21.929656982421875,
-        28.227602005004883
+        -94.8310407561715,
+        19.15995216369629,
+        35.3181037902832
       ],
       "rotation": [
         0,
@@ -974,9 +975,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        -38.69746398925781,
-        21.929656982421875,
-        51.66567822520686
+        -106.37521126131115,
+        10.293326377868652,
+        -97.25594329833984
       ],
       "rotation": [
         0,
@@ -1000,9 +1001,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        25.7397403717041,
-        20.604528389020672,
-        -16.885643005371094
+        -4.659506320953369,
+        6.7295331954956055,
+        -15.968700773374211
       ],
       "rotation": [
         0,
@@ -1026,9 +1027,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        30.020606994628906,
-        20.604528427124023,
-        -107.53096448882583
+        59.2998046875,
+        29.662445030174993,
+        -139.4222412109375
       ],
       "rotation": [
         0,
@@ -1052,9 +1053,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        12.01620798847487,
+        25.676860314544957,
         20.604528427124023,
-        -134.48631286621094
+        -124.7586669921875
       ],
       "rotation": [
         0,
@@ -1078,9 +1079,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        -48.147576592883446,
-        24.948476791381836,
-        -144.2412109375
+        -73.60733032226562,
+        8.663453303307456,
+        -133.6970977783203
       ],
       "rotation": [
         0,
@@ -1104,9 +1105,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        -86.47173459480295,
+        -89.89700317382812,
         12.437285423278809,
-        -52.19808578491211
+        -56.46805999524754
       ],
       "rotation": [
         0,
@@ -1130,9 +1131,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        -41.11120213056193,
-        27.65567970275879,
-        -64.96743774414062
+        -6.564351558685303,
+        15.355603945361551,
+        45.66737747192383
       ],
       "rotation": [
         0,
@@ -1156,9 +1157,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        -65.31482111510228,
+        -59.19193649291992,
         11.34752082824707,
-        -13.122669219970703
+        -10.004835856935193
       ],
       "rotation": [
         0,
@@ -1182,9 +1183,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        50.22972421063098,
-        7.428329944610596,
-        20.472097396850586
+        123.9446029663086,
+        21.57977294921875,
+        -93.61140550950896
       ],
       "rotation": [
         0,
@@ -1208,9 +1209,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        24.507728576660156,
-        19.706641870351138,
-        -68.6117935180664
+        -40.22666931152344,
+        19.706642150878906,
+        -95.9226656048323
       ],
       "rotation": [
         0,
@@ -1234,8 +1235,8 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        42.66080829663021,
-        19.706642150878906,
+        120.78429412841797,
+        34.80357664410913,
         -48.68144607543945
       ],
       "rotation": [
@@ -1260,9 +1261,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        -80.37817166703157,
+        -129.48616575197627,
         9.026748657226562,
-        -23.509784698486328
+        -53.52067565917969
       ],
       "rotation": [
         0,
@@ -1286,9 +1287,9 @@
       "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
       "children": [],
       "position": [
-        -57.69962054184114,
+        -45.881929330749465,
         21.49022674560547,
-        -106.47925567626953
+        -95.80839538574219
       ],
       "rotation": [
         0,
@@ -1754,14 +1755,14 @@
       "parent": "4eb0f5b4-7922-48fc-ac52-3c769239c8e4",
       "children": [],
       "position": [
-        -87.05393249009576,
-        24.935210995290632,
-        -107.07255513439077
+        -128.85610593376887,
+        2.3247620046572197,
+        -55.81442318868204
       ],
       "rotation": [
-        172.40100881278516,
-        -59.9986120643578,
-        179.99999997607668
+        -174.79899170880861,
+        -44.598611425189695,
+        180
       ],
       "scale": [
         1,
@@ -1780,7 +1781,7 @@
           ],
           "clearDepthBuffer": true,
           "projection": 0,
-          "fov": 45,
+          "fov": 33.49,
           "frustumCulling": true,
           "orthoHeight": 4,
           "nearClip": 0.1,
@@ -5775,6 +5776,8 @@
         "f38580c4-7b91-44c7-a3bc-f0151c060ece",
         "0af0549c-b0df-40e6-8ca9-1e47aba5e206",
         "54bb810a-e60f-4817-b78d-9e8baa3b3694",
+        "13f7887f-17dc-4e10-a7ab-2958d63d4269",
+        "d9f8322d-f46d-4dae-b7ed-41a080666068",
         "0006752d-2f7e-407f-9016-f65163d66db7",
         "136cf18f-1be9-4f1a-904f-d7e04dbd7e7a",
         "d1592dfe-94c4-4bd9-9291-727c67a80b81",
@@ -36595,6 +36598,244 @@
           "restitution": 0.5
         }
       }
+    },
+    "13f7887f-17dc-4e10-a7ab-2958d63d4269": {
+      "name": "box_large_2",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "13f7887f-17dc-4e10-a7ab-2958d63d4269",
+      "parent": "5555864e-0370-461f-8121-bbe134df537d",
+      "children": [
+        "da076471-3443-4f4d-874c-5ec898cb6bb6"
+      ],
+      "position": [
+        -113.59366993926142,
+        0,
+        -36.70257568359375
+      ],
+      "rotation": [
+        0,
+        7.6191947316972675,
+        0
+      ],
+      "scale": [
+        4,
+        4,
+        4
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 31197280,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": 100000
+        }
+      }
+    },
+    "da076471-3443-4f4d-874c-5ec898cb6bb6": {
+      "name": "Box",
+      "tags": [
+        "Rigidbody",
+        "Wood"
+      ],
+      "enabled": true,
+      "resource_id": "da076471-3443-4f4d-874c-5ec898cb6bb6",
+      "parent": "13f7887f-17dc-4e10-a7ab-2958d63d4269",
+      "children": [],
+      "position": [
+        5.662551139096195e-8,
+        0.5,
+        7.972903404152021e-7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "collision": {
+          "enabled": true,
+          "type": "box",
+          "halfExtents": [
+            2,
+            2,
+            2
+          ],
+          "radius": 0.5,
+          "axis": 1,
+          "height": 2,
+          "asset": null
+        },
+        "rigidbody": {
+          "enabled": true,
+          "type": "static",
+          "mass": 1,
+          "linearDamping": 0,
+          "angularDamping": 0,
+          "linearFactor": [
+            1,
+            1,
+            1
+          ],
+          "angularFactor": [
+            1,
+            1,
+            1
+          ],
+          "friction": 1,
+          "restitution": 0.5
+        }
+      }
+    },
+    "d9f8322d-f46d-4dae-b7ed-41a080666068": {
+      "name": "box_large_2",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "d9f8322d-f46d-4dae-b7ed-41a080666068",
+      "parent": "5555864e-0370-461f-8121-bbe134df537d",
+      "children": [
+        "b165750d-ce6a-4b12-9b05-1b2946818a63"
+      ],
+      "position": [
+        -118.36870574951172,
+        0,
+        -36.959292564401906
+      ],
+      "rotation": [
+        0,
+        -0.47521379800226005,
+        0
+      ],
+      "scale": [
+        4,
+        4,
+        4
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 31197280,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": 100000
+        }
+      }
+    },
+    "b165750d-ce6a-4b12-9b05-1b2946818a63": {
+      "name": "Box",
+      "tags": [
+        "Rigidbody",
+        "Wood"
+      ],
+      "enabled": true,
+      "resource_id": "b165750d-ce6a-4b12-9b05-1b2946818a63",
+      "parent": "d9f8322d-f46d-4dae-b7ed-41a080666068",
+      "children": [],
+      "position": [
+        5.662551139096195e-8,
+        0.5,
+        7.972903404152021e-7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "collision": {
+          "enabled": true,
+          "type": "box",
+          "halfExtents": [
+            2,
+            2,
+            2
+          ],
+          "radius": 0.5,
+          "axis": 1,
+          "height": 2,
+          "asset": null
+        },
+        "rigidbody": {
+          "enabled": true,
+          "type": "static",
+          "mass": 1,
+          "linearDamping": 0,
+          "angularDamping": 0,
+          "linearFactor": [
+            1,
+            1,
+            1
+          ],
+          "angularFactor": [
+            1,
+            1,
+            1
+          ],
+          "friction": 1,
+          "restitution": 0.5
+        }
+      }
+    },
+    "bb87c7bd-c46b-49f9-919d-f01c8762fa61": {
+      "name": "Point",
+      "tags": [
+        "CameraPoint"
+      ],
+      "enabled": true,
+      "resource_id": "bb87c7bd-c46b-49f9-919d-f01c8762fa61",
+      "parent": "3bd32332-7334-4988-b5cc-a517e565f1e0",
+      "children": [],
+      "position": [
+        -55.126792907714844,
+        16.080739974975586,
+        56.06948479183479
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
     }
   },
   "created": "2020-08-29T18:24:08.121Z",
