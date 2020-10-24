@@ -5913,8 +5913,8 @@
             "networkManager": {
               "enabled": true,
               "attributes": {
-                "URL": "wss://server-na-1.venge.io",
-                "testURL": "wss://server-na-1.venge.io",
+                "URL": "wss://server-na-18.venge.io",
+                "testURL": "wss://server-na-18.venge.io",
                 "playerEntity": "d6311a5c-7dec-4eb4-b495-15f29130570e",
                 "overlayEntity": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
                 "menuCameraEntity": "c58e956e-222b-47a0-a2a2-44233169f8f5",
@@ -52020,9 +52020,9 @@
         0
       ],
       "scale": [
-        0.9,
-        0.9,
-        0.9
+        1,
+        1,
+        1
       ],
       "components": {
         "element": {
