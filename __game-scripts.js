@@ -5794,7 +5794,7 @@ NetworkManager.prototype.initialize = function() {
     this.team = "none",
     this.currentWeapon = "Scar",
     this.currentMode = "POINT",
-    this.currentMap = "Mistle",
+    this.currentMap = "Sierra",
     this.isTeamSelected = !1,
     this.isSpectator = !1,
     void 0 !== pc.currentMap && (this.currentMap = pc.currentMap),
@@ -8940,6 +8940,7 @@ Player.prototype.onRespawn = function(t) {
       , a = 2 * Math.random() + 2
       , i = 2 * Math.random() + 2;
     if (e) {
+        0 === e.x && 0 === e.y && 0 === e.z && (e = this.getSpawnPoint());
         var s = e.add(new pc.Vec3(a,4,i))
           , o = t.rotation;
         this.entity.rigidbody.linearVelocity = new pc.Vec3(0,0,0),
@@ -9877,6 +9878,12 @@ Menu.attributes.add("meleeIcon", {
 Menu.attributes.add("throwIcon", {
     type: "entity"
 }),
+Menu.attributes.add("streamEntity", {
+    type: "entity"
+}),
+Menu.attributes.add("streamEntityContainer", {
+    type: "entity"
+}),
 Menu.attributes.add("twitchName", {
     type: "entity"
 }),
@@ -10219,9 +10226,30 @@ Menu.prototype.defineKey = function(e) {
 }
 ,
 Menu.prototype.setHome = function(e) {
-    return !this.isConnected && (!!this.youtubeName && ("undefined" != typeof VERSION_CODE && (VERSION_CODE == e.version || pc.isMobile || (this.updateEntity.enabled = !0,
+    if (this.isConnected)
+        return !1;
+    if (!this.youtubeName)
+        return !1;
+    if ("undefined" != typeof VERSION_CODE && (VERSION_CODE == e.version || pc.isMobile || (this.updateEntity.enabled = !0,
     this.updateVersionEntity.element.text = e.version)),
-    !!this.twitchButton && (e.display_name && Math.random() > .2 ? (this.twitchButton.enabled = !0,
+    !this.twitchButton)
+        return !1;
+    if (e && e.official_stream_data) {
+        var t = "";
+        t += "<iframe",
+        t += ' src="https://player.twitch.tv/?channel=' + e.official_stream_data,
+        t += '&parent=venge.io"',
+        t += ' height="100%"',
+        t += ' width="100%"',
+        t += ' frameborder="0"',
+        t += ' scrolling="false"',
+        t += ' allowfullscreen="true">',
+        t += "</iframe>",
+        this.streamEntity.enabled = !0,
+        this.streamEntityContainer.script.container.element.innerHTML = t
+    } else
+        this.streamEntity.enabled = !1;
+    e.display_name && Math.random() > .2 ? (this.twitchButton.enabled = !0,
     this.twitchName.element.text = e.display_name,
     this.twitchButton.element.width = this.twitchName.element.calculatedWidth + 50,
     this.twitchButton.script.button.triggerFunction = 'window.open("https://www.twitch.tv/' + e.username + '");') : this.twitchButton.enabled = !1,
@@ -10229,7 +10257,7 @@ Menu.prototype.setHome = function(e) {
     this.youtubeName.element.text = e.youtuber.name,
     this.youtubeButton.element.width = this.youtubeName.element.calculatedWidth + 50,
     this.youtubeButton.script.button.triggerFunction = 'window.open("' + e.youtuber.link + '");',
-    void (e.server && this.app.fire("RoomManager:SetServer", e.server)))))
+    e.server && this.app.fire("RoomManager:SetServer", e.server)
 }
 ,
 Menu.prototype.setMute = function() {
@@ -15298,24 +15326,24 @@ SpectatorScreen.prototype.setLeaderboard = function(t) {
       , i = 0;
     for (var a in t) {
         var o = t[a]
-          , s = parseInt(a)
-          , r = this.app.assets.find("Tier-" + o.tier + ".png")
-          , c = this.leaderboardItem.clone();
-        c.enabled = !0,
-        c.setLocalPosition(-3 * parseInt(a), i, 0),
-        c.setLocalScale(n, n, n),
-        c.findByName("Bar").setLocalScale(o.bar, 1, 1),
-        c.findByName("Tier").element.textureAsset = r,
-        c.findByName("Rank").element.text = s + 1 + ".",
-        c.findByName("Username").element.text = o.username,
-        c.findByName("KillDeath").element.text = o.kill + " / " + o.death,
-        o.isMe && (c.findByName("Username").element.color = pc.colors.me,
-        c.findByName("Leader").element.color = pc.colors.me,
-        s),
-        c.element.width = c.findByName("Username").element.width + 70,
-        c.findByName("Leader").enabled = 0 === s,
-        this.leaderboardEntity.addChild(c),
-        this.leaderboardItems.push(c),
+          , r = parseInt(a)
+          , c = this.app.assets.find("Tier-" + o.tier + ".png")
+          , s = this.leaderboardItem.clone();
+        s.enabled = !0,
+        s.setLocalPosition(-3 * parseInt(a), i, 0),
+        s.setLocalScale(n, n, n),
+        s.findByName("Bar").setLocalScale(o.bar, 1, 1),
+        s.findByName("Tier").element.textureAsset = c,
+        s.findByName("Rank").element.text = r + 1 + ".",
+        s.findByName("Username").element.text = o.username,
+        s.findByName("KillDeath").element.text = o.kill + " / " + o.death,
+        o.isMe && (s.findByName("Username").element.color = pc.colors.me,
+        s.findByName("Leader").element.color = pc.colors.me,
+        r),
+        s.element.width = s.findByName("Username").element.width + 70,
+        s.findByName("Leader").enabled = 0 === r,
+        this.leaderboardEntity.addChild(s),
+        this.leaderboardItems.push(s),
         i += -45 * (n -= .15) - 10
     }
 }
@@ -15376,9 +15404,7 @@ SpectatorScreen.prototype.setOvertime = function() {
 }
 ,
 SpectatorScreen.prototype.update = function(t) {
-    this.app.keyboard.wasPressed(pc.KEY_TAB) && (this.shortcutsEntity.enabled = !this.shortcutsEntity.enabled,
-    this.leaderboardEntity.enabled = this.shortcutsEntity.enabled,
-    this.timeDisplayEntity.enabled = this.shortcutsEntity.enabled)
+    this.app.keyboard.wasPressed(pc.KEY_TAB) && (this.shortcutsEntity.enabled = !this.shortcutsEntity.enabled)
 }
 ,
 SpectatorScreen.prototype.onTick = function(t, e) {
@@ -17879,7 +17905,7 @@ ModeManager.prototype.onModeSet = function(e) {
 ModeManager.prototype.onMapLoaded = function() {}
 ,
 ModeManager.prototype.onModeEvent = function(e) {
-    "PAYLOAD" != this.currentMode || "TDM" != this.currentMode || "ShowTeamSelection" == e && (pc.isModeMenuActive = !0,
+    "PAYLOAD" != this.currentMode && "TDM" != this.currentMode || "ShowTeamSelection" == e && (pc.isModeMenuActive = !0,
     this.app.fire("Overlay:Pause", !0),
     this.app.fire("View:Pause", "Team"))
 }
