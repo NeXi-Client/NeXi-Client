@@ -387,12 +387,12 @@
   },
   "scenes": [
     {
-      "name": "Prototype",
-      "url": "ScriptLoad.json"
-    },
-    {
       "name": "Menu",
       "url": "MainMenu.json"
+    },
+    {
+      "name": "Prototype",
+      "url": "ScriptLoad.json"
     },
     {
       "name": "Capture",
@@ -433,14 +433,6 @@
     {
       "name": "Editor",
       "url": "Editor.json"
-    },
-    {
-      "name": "Sierra 2v2",
-      "url": "Sierra2v2.json"
-    },
-    {
-      "name": "Xibalba 2v2",
-      "url": "Xibalba2v2.json"
     }
   ],
   "assets": {
@@ -1367,8 +1359,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -1442,8 +1434,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -1466,8 +1458,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -3958,8 +3950,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -4225,8 +4217,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -6878,8 +6870,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -6947,8 +6939,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -7355,8 +7347,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -7586,8 +7578,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -8702,8 +8694,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -8941,8 +8933,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -9390,8 +9382,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -9413,8 +9405,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -9519,8 +9511,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -9622,8 +9614,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -12254,8 +12246,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -12292,8 +12284,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -13623,6 +13615,8 @@
               "characterName",
               "meleeIcon",
               "throwIcon",
+              "streamEntity",
+              "streamEntityContainer",
               "twitchName",
               "twitchButton",
               "youtubeName",
@@ -13740,6 +13734,12 @@
               },
               "originEntity": {
                 "type": "entity"
+              },
+              "streamEntity": {
+                "type": "entity"
+              },
+              "streamEntityContainer": {
+                "type": "entity"
               }
             }
           }
@@ -13750,8 +13750,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -14247,8 +14247,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -16175,8 +16175,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -16649,8 +16649,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -17705,8 +17705,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -20429,8 +20429,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -21629,8 +21629,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -21712,8 +21712,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -24290,8 +24290,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -24349,8 +24349,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -25240,7 +25240,7 @@
       "region": "eu-west-1",
       "i18n": {},
       "id": "30838436"
-    },    
+    },
     "30842568": {
       "tags": [],
       "name": "Headshot-Icon-Leaderboard.png",
@@ -26512,8 +26512,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -27571,8 +27571,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -28176,8 +28176,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -32086,8 +32086,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -32978,8 +32978,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -33503,8 +33503,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -34039,8 +34039,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36325,8 +36325,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36368,8 +36368,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36405,8 +36405,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36463,8 +36463,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36506,8 +36506,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36566,8 +36566,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36609,8 +36609,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36647,8 +36647,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36873,8 +36873,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36914,8 +36914,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -37099,8 +37099,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -37161,8 +37161,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -37198,8 +37198,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -37490,8 +37490,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -38670,8 +38670,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -40982,8 +40982,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -41009,8 +41009,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -41318,8 +41318,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -41345,8 +41345,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -42322,8 +42322,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -42620,8 +42620,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -44656,8 +44656,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -46599,8 +46599,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -49643,8 +49643,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -49710,8 +49710,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -49783,8 +49783,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -50149,8 +50149,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -50338,8 +50338,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -55355,8 +55355,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -55438,8 +55438,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -56427,8 +56427,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -58254,8 +58254,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -58351,8 +58351,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -58373,8 +58373,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -60767,8 +60767,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -67577,8 +67577,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -69139,8 +69139,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -73458,8 +73458,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -74885,8 +74885,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -75232,8 +75232,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -75572,8 +75572,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -75618,8 +75618,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -75792,8 +75792,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -76479,8 +76479,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -77715,8 +77715,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -77757,8 +77757,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -79659,8 +79659,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -79735,8 +79735,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -80124,8 +80124,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -80179,8 +80179,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -80526,8 +80526,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -81221,8 +81221,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -81474,6 +81474,24 @@
       "file": null,
       "i18n": {},
       "id": "36484534"
+    },
+    "36487671": {
+      "tags": [],
+      "name": "M4-Tail-w.mp3",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": null,
+      "type": "audio",
+      "file": {
+        "filename": "M4-Tail-w.mp3",
+        "size": 31885,
+        "hash": "1c5cca51796cae7ae730d1289d6d42eb",
+        "url": "files/assets/36487671/1/M4-Tail-w.mp3"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36487671"
     },
     "36487672": {
       "tags": [],
@@ -83176,8 +83194,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -83203,8 +83221,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -85430,8 +85448,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -85473,8 +85491,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -85507,8 +85525,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -85587,8 +85605,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -85620,8 +85638,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 466936,
-        "hash": "258470be213da66faf6da920e34cbed2",
+        "size": 467394,
+        "hash": "bc75e43f47fa2562e86a4d5df776d9d5",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -89102,6 +89120,693 @@
       "region": "eu-west-1",
       "i18n": {},
       "id": "37063943"
+    },
+    "37142175": {
+      "tags": [],
+      "name": "Material.010",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 0
+      },
+      "data": {
+        "shader": "blinn",
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "diffuse": [
+          0.8,
+          0.395274,
+          0.0265494
+        ],
+        "specular": [
+          0.25,
+          0.123523,
+          0.00829669
+        ],
+        "shininess": 60.3729,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 1,
+        "aoMap": null,
+        "diffuseMap": null,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": null,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": 29307645,
+        "lightMap": null,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 8,
+        "refraction": 0,
+        "refractionIndex": 1,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "37142175"
+    },
+    "37142176": {
+      "tags": [],
+      "name": "Material.013",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 1
+      },
+      "data": {
+        "shader": "blinn",
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "diffuse": [
+          0.021768,
+          0.00436765,
+          0
+        ],
+        "specular": [
+          0.00680249,
+          0.00136489,
+          0
+        ],
+        "shininess": 57.0805,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 1,
+        "aoMap": null,
+        "diffuseMap": null,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": null,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": null,
+        "lightMap": null,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "37142176"
+    },
+    "37142177": {
+      "tags": [],
+      "name": "Material.002",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 2
+      },
+      "data": {
+        "shader": "blinn",
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "diffuse": [
+          0.609019,
+          0.302545,
+          0.021211
+        ],
+        "specular": [
+          0.190318,
+          0.0945454,
+          0.00662845
+        ],
+        "shininess": 60.3729,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 1,
+        "aoMap": null,
+        "diffuseMap": null,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": null,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": 29307645,
+        "lightMap": null,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 8,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "37142177"
+    },
+    "37142178": {
+      "tags": [],
+      "name": "Trophy-Charm.glb",
+      "revision": 1,
+      "preload": false,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 3,
+        "meshInstances": 3,
+        "nodes": 2,
+        "skins": 0,
+        "vertices": 2650,
+        "triangles": 1326,
+        "attributes": {
+          "NORMAL": 3,
+          "POSITION": 3,
+          "TEXCOORD_0": 3
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 37142175
+          },
+          {
+            "material": 37142176
+          },
+          {
+            "material": 37142177
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "08101159b4971d793a86518aab2a5ef4",
+        "size": 103124,
+        "filename": "Trophy-Charm.glb",
+        "url": "files/assets/37142178/1/Trophy-Charm.glb"
+      },
+      "i18n": {},
+      "id": "37142178"
+    },
+    "37142262": {
+      "tags": [],
+      "name": "Trophy-Charm.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColorAlpha",
+        "width": 512,
+        "height": 512,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Trophy-Charm.png",
+        "size": 26843,
+        "hash": "d4c4de1cbe8a98c998c8caba315349fa",
+        "variants": {},
+        "url": "files/assets/37142262/1/Trophy-Charm.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "37142262"
     }
   }
 }
