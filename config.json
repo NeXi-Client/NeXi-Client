@@ -11870,6 +11870,205 @@
       "i18n": {},
       "id": "29699556"
     },
+    "29699557": {
+      "tags": [],
+      "name": "pumpkin",
+      "revision": 1,
+      "preload": false,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 0
+      },
+      "data": {
+        "shader": "phong",
+        "ambient": [
+          0.572656,
+          0.572656,
+          0.572656
+        ],
+        "diffuse": [
+          0.8,
+          0.8,
+          0.8
+        ],
+        "specular": [
+          0,
+          0,
+          0
+        ],
+        "shininess": 0,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 1,
+        "aoMap": null,
+        "diffuseMap": 29699560,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": null,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": null,
+        "lightMap": null,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "29699557"
+    },
     "29699559": {
       "tags": [],
       "name": "desert_building_set.jpg",
@@ -11916,6 +12115,53 @@
       "region": "eu-west-1",
       "i18n": {},
       "id": "29699559"
+    },
+    "29699560": {
+      "tags": [],
+      "name": "Pumpkin.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 512,
+        "height": 512,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Pumpkin.jpg",
+        "hash": "e370b738021bd98d20955017b1a3b8c9",
+        "size": 46789,
+        "variants": {},
+        "url": "files/assets/29699560/1/Pumpkin.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "29699560"
     },
     "29699620": {
       "tags": [],
@@ -12074,7 +12320,7 @@
     },
     "29700044": {
       "tags": [],
-      "name": "jar_big_purple.json",
+      "name": "jar_big_purple.glb",
       "revision": 1,
       "preload": false,
       "region": "eu-west-1",
@@ -12082,7 +12328,7 @@
       "data": {
         "mapping": [
           {
-            "material": 29699556
+            "material": 29699557
           }
         ],
         "area": 0
@@ -12091,8 +12337,8 @@
       "file": {
         "hash": "db2af0d2e49d9d7d8fe23ba7de681171",
         "size": 23882,
-        "filename": "jar_big_purple.json",
-        "url": "files/assets/29700044/1/jar_big_purple.json"
+        "filename": "jar_big_purple.glb",
+        "url": "files/assets/29700044/1/jar_big_purple.glb"
       },
       "i18n": {},
       "id": "29700044"
@@ -15930,7 +16176,7 @@
     },
     "30018396": {
       "tags": [],
-      "name": "jar_big_blue.json",
+      "name": "jar_big_blue.glb",
       "revision": 1,
       "preload": false,
       "region": "eu-west-1",
@@ -15951,7 +16197,7 @@
       "data": {
         "mapping": [
           {
-            "material": 29699556
+            "material": 29699557
           }
         ],
         "area": 0
@@ -15960,8 +16206,8 @@
       "file": {
         "hash": "2f5696cc9e41d4fad9dbbcf04f9fa8d2",
         "size": 23884,
-        "filename": "jar_big_blue.json",
-        "url": "files/assets/30018396/1/jar_big_blue.json"
+        "filename": "jar_big_blue.glb",
+        "url": "files/assets/30018396/1/jar_big_blue.glb"
       },
       "i18n": {},
       "id": "30018396"

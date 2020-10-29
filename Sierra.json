@@ -27,7 +27,7 @@
       "tonemapping": 1,
       "exposure": 4,
       "skybox": 29307645,
-      "skyboxIntensity": 4,
+      "skyboxIntensity": 1,
       "skyboxMip": 0,
       "lightmapSizeMultiplier": 16,
       "lightmapMaxResolution": 2048,
@@ -83,9 +83,9 @@
           "vsmBlurSize": 11,
           "normalOffsetBias": 0.05,
           "color": [
-            1,
-            0.7647058823529411,
-            0.7019607843137254
+            0.0,
+            0.0,
+            0.0
           ],
           "outerConeAngle": 45,
           "castShadows": true,
@@ -190,7 +190,7 @@
               "asset": 30975135,
               "startTime": 0,
               "duration": null,
-              "volume": 0.85,
+              "volume": 0.1,
               "pitch": 1
             }
           }
@@ -2742,7 +2742,7 @@
       ],
       "rotation": [
         0,
-        -28.789413447115834,
+        0,
         0
       ],
       "scale": [
@@ -13396,7 +13396,7 @@
       ],
       "rotation": [
         0,
-        -28.789413447115834,
+        0,
         0
       ],
       "scale": [
@@ -13503,7 +13503,7 @@
       ],
       "rotation": [
         0,
-        -28.789413447115834,
+        0,
         0
       ],
       "scale": [
@@ -13610,7 +13610,7 @@
       ],
       "rotation": [
         0,
-        -28.789413447115834,
+        0,
         0
       ],
       "scale": [
@@ -27471,7 +27471,7 @@
       ],
       "rotation": [
         0,
-        -28.789413447115834,
+        0,
         0
       ],
       "scale": [
@@ -27578,7 +27578,7 @@
       ],
       "rotation": [
         0,
-        -28.789413447115834,
+        0,
         0
       ],
       "scale": [
@@ -27685,7 +27685,7 @@
       ],
       "rotation": [
         0,
-        -28.789413447115834,
+        0,
         0
       ],
       "scale": [
@@ -27792,7 +27792,7 @@
       ],
       "rotation": [
         0,
-        -28.789413447115834,
+        0,
         0
       ],
       "scale": [

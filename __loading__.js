@@ -65,7 +65,8 @@ pc.script.createLoadingScreen(function (app) {
             '"lemons are created to be eaten" - Powered#3959',
             '"I have a massive black c**k that prophet likes a lot" - ooops#0001',
             '"KaG on top" - Slimecube#1925',
-            '"Sub to me on youtube and follow me on twitch (or if not I will find you and kill you >:)" - Nipotino333#2482'
+            '"Sub to me on youtube and follow me on twitch (or if not I will find you and kill you >:)" - Nipotino333#2482',
+            '"Hapiness is not thinking of the past or the present" - Deepanshu9#9117'
         ];
         
         var description = document.createElement('div');

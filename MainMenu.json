@@ -21,13 +21,13 @@
         0,
         0
       ],
-      "fog": "none",
-      "fog_density": 0.01,
-      "gamma_correction": 1,
+      "fog": "exp",
+      "fog_density": 0.011,
+      "gamma_correction": 0,
       "tonemapping": 0,
       "exposure": 1,
       "skybox": 29307645,
-      "skyboxIntensity": 1,
+      "skyboxIntensity": 0.1,
       "skyboxMip": 0,
       "lightmapSizeMultiplier": 16,
       "lightmapMaxResolution": 2048,
@@ -23346,9 +23346,9 @@
           "affectDynamic": true,
           "affectLightmapped": false,
           "color": [
-            1,
-            0.9450980392156862,
-            0.9019607843137255
+            0.4,
+            0.4,
+            0.4
           ],
           "intensity": 3,
           "castShadows": false,
@@ -34022,9 +34022,9 @@
           "wrapLines": true,
           "spacing": 0.9,
           "color": [  
-            0,
             1,
-            1
+            0.3,
+            0.3
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -46772,7 +46772,7 @@
     "524a4ce5-c6e8-494f-90da-9317f84a4337": {
       "name": "DisableMenuMusic",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "524a4ce5-c6e8-494f-90da-9317f84a4337",
       "parent": "c719a624-3eb0-4761-9c3d-a18c7963b776",
       "children": [],
@@ -104458,7 +104458,7 @@
     "a5b08868-e754-4ae2-bb3e-16343c185c79": {
       "name": "Flag",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "a5b08868-e754-4ae2-bb3e-16343c185c79",
       "parent": "da7afdbf-ad4b-4295-9746-715a51b8e89c",
       "children": [
@@ -104722,25 +104722,25 @@
       "parent": "da7afdbf-ad4b-4295-9746-715a51b8e89c",
       "children": [],
       "position": [
-        -10.09861688435005,
+        -9.09861688435005,
         -3.5796146392822266,
-        -9.269020080566406
+        -20.269020080566406
       ],
       "rotation": [
-        2.381382162410079e-14,
-        -65.6824585411134,
-        -1.3190032214893945e-14
+        0,
+        -10,
+        15
       ],
       "scale": [
-        1,
-        1,
-        1
+        5,
+        5,
+        5
       ],
       "components": {
         "model": {
           "enabled": true,
           "type": "asset",
-          "asset": 31441653,
+          "asset": 29700044,
           "materialAsset": null,
           "castShadows": true,
           "castShadowsLightmap": false,
@@ -104756,27 +104756,7 @@
           ],
           "batchGroupId": 100011,
           "mapping": {
-            "0": 35912036,
-            "1": 35912036,
-            "2": 35912036,
-            "3": 35912036,
-            "4": 35912036,
-            "5": 35912036,
-            "6": 35912036,
-            "7": 35912036,
-            "8": 35912036,
-            "9": 35912036,
-            "10": 35912036,
-            "11": 35912036,
-            "12": 35912036,
-            "13": 35912036,
-            "14": 35912036,
-            "15": 35912036,
-            "16": 35912036,
-            "17": 35912036,
-            "18": 35912036,
-            "19": 35912036,
-            "20": 35912036
+            "material": 29699557
           }
         }
       }

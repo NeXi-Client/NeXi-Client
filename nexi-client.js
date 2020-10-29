@@ -27,8 +27,6 @@ const customInit = () => {
   hexagonBreak();
   weaponSelectionFix();
   //teamModeFixes();
-  
-  console.clear()
 };
 
 // Functionality modifications

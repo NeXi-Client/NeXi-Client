@@ -313,13 +313,13 @@
             },
             "5": {
               "name": "Defeat-Result",
-              "loop": true,
+              "loop": false,
               "autoPlay": false,
               "overlap": false,
               "asset": 30629511,
               "startTime": 0,
               "duration": null,
-              "volume": 0.6,
+              "volume": 0.8,
               "pitch": 1
             },
             "6": {
