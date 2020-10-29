@@ -22,8 +22,8 @@
         0
       ],
       "fog": "exp",
-      "fog_density": 0.011,
-      "gamma_correction": 0,
+      "fog_density": 0.025,
+      "gamma_correction": 1,
       "tonemapping": 0,
       "exposure": 1,
       "skybox": 29307645,
