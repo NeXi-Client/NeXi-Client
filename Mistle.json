@@ -11931,7 +11931,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "1e3740e5-eeb9-4726-ae36-dfd4c4f7dcde",
@@ -24569,7 +24570,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "231462ec-6732-43da-829d-2db512ae3ffa",
@@ -38122,7 +38124,9 @@
       "enabled": true,
       "resource_id": "81c00c00-4f23-4dda-bb67-e47db69233d3",
       "parent": "8de0cb93-121f-43b3-9070-d84e7914007f",
-      "children": [],
+      "children": [
+        "cd7b067f-a2ba-4a10-a6d2-b458ec43fa95"
+      ],
       "position": [
         -12.537,
         21.113,
@@ -38162,7 +38166,11 @@
     },
     "3f1325e7-e805-40de-bfcf-56f1b1aab778": {
       "name": "Snake-Roof",
-      "tags": [],
+      "tags": [
+        "Rigidbody",
+        "Gravel",
+        "Grapple"
+      ],
       "enabled": true,
       "resource_id": "3f1325e7-e805-40de-bfcf-56f1b1aab778",
       "parent": "8de0cb93-121f-43b3-9070-d84e7914007f",
@@ -40547,14 +40555,16 @@
     },
     "898caa91-67d0-4b87-8eea-cad71bea8cc2": {
       "name": "Snake-Collision",
-      "tags": [],
+      "tags": [
+        "Invisible"
+      ],
       "enabled": true,
       "resource_id": "898caa91-67d0-4b87-8eea-cad71bea8cc2",
       "parent": "8de0cb93-121f-43b3-9070-d84e7914007f",
       "children": [],
       "position": [
         -12.536999702453613,
-        30.00854699198858,
+        31.691990367871895,
         36
       ],
       "rotation": [
@@ -41221,6 +41231,67 @@
             47.349,
             4,
             72.553
+          ],
+          "radius": 0.5,
+          "axis": 1,
+          "height": 2,
+          "asset": null
+        },
+        "rigidbody": {
+          "enabled": true,
+          "type": "static",
+          "mass": 1,
+          "linearDamping": 0,
+          "angularDamping": 0,
+          "linearFactor": [
+            1,
+            1,
+            1
+          ],
+          "angularFactor": [
+            1,
+            1,
+            1
+          ],
+          "friction": 0.5,
+          "restitution": 0.5
+        }
+      }
+    },
+    "cd7b067f-a2ba-4a10-a6d2-b458ec43fa95": {
+      "name": "Snake-Roof",
+      "tags": [
+        "Rigidbody",
+        "Gravel",
+        "Grapple"
+      ],
+      "enabled": true,
+      "resource_id": "cd7b067f-a2ba-4a10-a6d2-b458ec43fa95",
+      "parent": "81c00c00-4f23-4dda-bb67-e47db69233d3",
+      "children": [],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "collision": {
+          "enabled": true,
+          "type": "box",
+          "halfExtents": [
+            17.518,
+            1.117,
+            14.701
           ],
           "radius": 0.5,
           "axis": 1,

@@ -138,6 +138,7 @@
                     }
 
                     client();
+                    //loadModName();
                     app.loadScene(SCENE_PATH, function (err, scene) {
                         if (err) {
                             console.error(err);

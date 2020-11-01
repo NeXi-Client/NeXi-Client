@@ -2337,7 +2337,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "cb30c13a-5e92-44b8-9e0e-e0a2aa76c21e",
@@ -8985,7 +8986,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "e89deeb2-8710-4cb7-a697-1c6310d96787",
@@ -9165,7 +9167,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "7859eb0c-4725-4fbf-b2e7-b2138cec390a",
@@ -10727,7 +10730,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "234af010-cf1a-4a5c-84d0-0acd03d59dbe",
@@ -11820,7 +11824,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "00ca521a-6ac0-4a7e-b403-18011de7d9a2",
@@ -25669,7 +25674,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "3c148137-fca8-4e87-9212-c12ad9880945",
@@ -25895,7 +25901,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "c406b91a-22e6-48d5-9bc4-083d0762fe94",
@@ -26669,7 +26676,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "eb9c117f-3f4f-4094-8de5-d7bbd511c461",
@@ -27399,7 +27407,8 @@
       "name": "Plane",
       "tags": [
         "Rigidbody",
-        "Concrete"
+        "Concrete",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "0842befd-68b6-439b-ae69-b06f3de6264a",
@@ -32722,7 +32731,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "444f3168-b31e-43b9-9f71-a5440361019d",
@@ -32828,7 +32838,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "c59f5c83-3751-4975-846b-b777d67ef625",
@@ -34060,7 +34071,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "ec4066f7-aa99-48e8-b174-cf87731dbc99",
@@ -34574,7 +34586,8 @@
       "name": "Plane",
       "tags": [
         "Rigidbody",
-        "Concrete"
+        "Concrete",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "a4c2e77b-687b-4c83-bc16-7fbfe00f7c9e",
@@ -39463,7 +39476,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "ec92535f-c459-4882-b3ac-20510d302997",
@@ -39569,7 +39583,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "8fa5dcad-e2d4-4384-b381-c086340f9287",
@@ -40573,7 +40588,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "44a3a654-c2f8-4323-a5b4-80b5ba48cfc9",
@@ -41087,7 +41103,8 @@
       "name": "Plane",
       "tags": [
         "Rigidbody",
-        "Concrete"
+        "Concrete",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "800284be-1cd7-4e5c-88d8-f7b283d71a08",
@@ -43579,7 +43596,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "6a39ff15-cb7c-489b-b39e-1b3f2e2722ae",
@@ -46900,7 +46918,8 @@
       "name": "Collision",
       "tags": [
         "Rigidbody",
-        "Brick"
+        "Brick",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "82a4ff55-8390-4d99-ba32-d089224114ab",

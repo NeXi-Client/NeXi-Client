@@ -820,8 +820,6 @@ Movement.prototype.initialize = function() {
     this.lastAutoLockTime = 0,
     this.timerBag = [],
     this.timerTween = [],
-    this.lastThrowDate = this.now() - 5e3,
-    this.lastDashDate = this.now() - 5e3,
     this.animation = {
         jumpAngle: 0,
         landAngle: 0,
@@ -897,11 +895,8 @@ Movement.prototype.initialize = function() {
     this.isJumping = !0,
     this.isShooting = 0,
     this.isReloading = 0,
-    this.isHitting = 0,
-    this.isThrowing = !1,
     this.isMobile = !1,
     this.reloadingTime = 1.5,
-    this.hittingTime = .7,
     this.inspectAfterReload = !1,
     this.isFocusing = !1,
     this.raycastShootFrom = !1,
@@ -944,6 +939,7 @@ Movement.prototype.initialize = function() {
     this.interface = this.interfaceEntity.script.overlay,
     this.interface.movement = this,
     this.player = this.entity.script.player,
+    this.playerAbilities = this.entity.script.playerAbilities,
     this.weaponManager = this.entity.script.weaponManager,
     pc.controls = this,
     this.mouseFrame = 0,
@@ -1005,7 +1001,8 @@ Movement.prototype.onCollisionStart = function(t) {
     "Kill" == t.other.name && this.app.fire("Network:RequestRespawn", !0),
     t.other && t.other.tags.list().indexOf("Damageable") > -1 && this.app.fire("Network:ObjectDamage", t.other._guid)),
     this.now() - this.leftAirTime > 1e3 && (this.airTime = this.now()),
-    this.isDashing && this.dashTrigger(t),
+    this.playerAbilities.isDashing && this.playerAbilities.triggerDashDamage(t),
+    this.playerAbilities.isGrappling && this.playerAbilities.triggerGrappleDamage(t),
     this.collision.start = t.other,
     void (t.contacts[0].normal.y > .85 && (this.isCollided = !0,
     this.land()))))
@@ -1022,17 +1019,17 @@ Movement.prototype.setMouseState = function() {
 }
 ,
 Movement.prototype.onMouseDown = function(t) {
-    return !this.player.isDeath && (!pc.isFinished && (!pc.isDisplayingAds && (!this.locked && (!pc.isPauseActive && (!pc.isModeMenuActive && (this.app.mouse.enablePointerLock(),
+    return !this.player.isDeath && (!pc.isFinished && (!pc.isDisplayingAds && (!this.locked && (!this.mouseLocked && (!pc.isPauseActive && (!pc.isModeMenuActive && (this.app.mouse.enablePointerLock(),
     2 === t.button && (this.isFocusing = !0,
     this.focusStartTime = this.now(),
     this.cancelInspect(!0),
     this.app.fire("Overlay:SetAmmo", !0)),
-    void (0 === t.button && (this.leftMouse = !0))))))))
+    void (0 === t.button && (this.leftMouse = !0)))))))))
 }
 ,
 Movement.prototype.onMouseMove = function(t) {
-    return !this.player.isDeath && (!this.mouseLocked && (this.isMouseLocked && (this.isFocusing ? (this.lookX -= t.movementX * this.focusSensitivity * pc.settings.adsSensivity * this.mouseInvertAxis * this.animation.movementFactor,
-    this.lookY -= t.movementY * this.focusSensitivity * pc.settings.adsSensivity * this.mouseInvertAxis * this.animation.movementFactor) : (this.lookX -= t.movementX * this.defaultSensitivity * pc.settings.sensivity * this.mouseInvertAxis * this.animation.movementFactor,
+    return !this.player.isDeath && (!this.mouseLocked && (this.isMouseLocked && (this.isFocusing ? (this.lookX -= t.movementX * this.focusSensitivity * pc.settings.adsSensivity * this.animation.movementFactor,
+    this.lookY -= t.movementY * this.focusSensitivity * pc.settings.adsSensivity * this.mouseInvertAxis * this.animation.movementFactor) : (this.lookX -= t.movementX * this.defaultSensitivity * pc.settings.sensivity * this.animation.movementFactor,
     this.lookY -= t.movementY * this.defaultSensitivity * pc.settings.sensivity * this.mouseInvertAxis * this.animation.movementFactor),
     this.isFocusing ? (this.senseX -= t.movementX * this.focusLookSense * this.mouseInvertAxis,
     this.senseY -= t.movementY * this.focusLookSense * this.mouseInvertAxis) : (this.senseX -= t.movementX * this.defaultLookSense * this.mouseInvertAxis,
@@ -1063,11 +1060,11 @@ Movement.prototype.onTouchJump = function() {
 }
 ,
 Movement.prototype.onTouchThrow = function() {
-    this.throw()
+    this.triggerKeyF()
 }
 ,
 Movement.prototype.onTouchMelee = function() {
-    this.meleeSkill()
+    this.triggerKeyE()
 }
 ,
 Movement.prototype.onJoystick = function(t) {
@@ -1104,6 +1101,11 @@ Movement.prototype.setHandAngle = function(t) {
     this.senseHolder.setLocalEulerAngles(.5 * this.senseX + .5 * this.senseY + this.animation.cameraImpact, .5 * this.senseX, 2 * -this.senseY)
 }
 ,
+Movement.prototype.setCameraMovementLock = function(t) {
+    !0 === t ? (this.mouseLocked = !0,
+    this.stopFiring()) : this.mouseLocked = !1
+}
+,
 Movement.prototype.setKeyboard = function() {
     return !this.player.isDeath && (!pc.isFinished && (!this.locked && ("INPUT" != document.activeElement.tagName && (this.jumpingTime + this.jumpLandTime < this.timestamp && this.currentHeight < this.nearGround && (this.isForward = !1,
     this.isBackward = !1,
@@ -1115,8 +1117,8 @@ Movement.prototype.setKeyboard = function() {
     (this.app.keyboard.isPressed(pc.KEY_D) || this.isMobileRight) && (this.isRight = !0),
     this.app.keyboard.wasPressed(pc.KEY_SPACE) && this.jump(),
     this.app.keyboard.wasPressed(pc.KEY_R) && this.reload(),
-    this.app.keyboard.wasPressed(pc.KEY_F) && this.throw(),
-    this.app.keyboard.wasPressed(pc.KEY_E) && this.meleeSkill(),
+    this.app.keyboard.wasPressed(pc.KEY_F) && this.triggerKeyF(),
+    this.app.keyboard.wasPressed(pc.KEY_E) && this.triggerKeyE(),
     this.app.keyboard.wasPressed(pc.KEY_X) && (this.leftMouse = !0,
     this.isMouseReleased = !0),
     this.app.keyboard.wasReleased(pc.KEY_X) && (this.leftMouse = !1),
@@ -1132,7 +1134,7 @@ Movement.prototype.setMovement = function() {
         return !1;
     if (pc.isFinished)
         return !1;
-    if (this.isDashing)
+    if (this.playerAbilities.isDashing)
         return !1;
     var t = this.angleEntity.forward
       , e = this.angleEntity.right
@@ -1236,250 +1238,26 @@ Movement.prototype.setMovementAnimation = function(t) {
     "Sniper" == this.currentWeapon.type ? this.now() - this.focusStartTime > 60 && (this.currentWeapon.scopeOverlay.enabled = this.isFocusing) : this.isZoomEffectEnabled
 }
 ,
-Movement.prototype.dash = function() {
-    if (Date.now() - this.lastDashDate < 1e3 * this.player.dashCooldown)
-        return this.entity.sound.play("Error"),
-        !1;
-    if (!this.isLanded)
-        return !1;
-    var t = this.angleEntity.forward.scale(110);
-    this.isDashing = !0,
-    this.showMelee(),
-    this.hideWeapons(),
-    this.entity.rigidbody.applyImpulse(t),
-    this.player.melee(),
-    this.app.fire("Effect:Trigger", "Wind"),
-    this.app.fire("Overlay:MeleeTimer", 10),
-    this.player.fireNetworkEvent("dash"),
-    this.entity.sound.play("Buff-Attack-1"),
-    this.entity.sound.play("Whoosh-High"),
-    this.entity.sound.slots["Whoosh-High"].pitch = 1 + .2 * Math.random(),
-    this.app.tween(this.animation).to({
-        fov: 10
-    }, .2, pc.BackOut).start(),
-    this.axeEntity.setLocalEulerAngles(106.08, 39.04, 48.43),
-    this.axeEntity.tween(this.axeEntity.getLocalEulerAngles()).rotate({
-        x: 48.79,
-        y: -44.81,
-        z: 34.89
-    }, .25, pc.BackOut).delay(.08).start(),
-    setTimeout(function(t) {
-        t.isDashing = !1,
-        t.showWeapons(),
-        t.hideMelee()
-    }, 200, this),
-    this.isHitting = this.timestamp + this.hittingTime,
-    this.lastDashDate = Date.now()
+Movement.prototype.playEffortSound = function(t) {
+    var e = Math.floor(1.4 * Math.random()) + 1
+      , i = "Throw-" + e;
+    t && (i = "Grunt-" + e),
+    this.app.fire("Character:Sound", i, .1 * Math.random())
 }
 ,
-Movement.prototype.melee = function() {
-    this.hideWeapons(),
-    this.showMelee(),
-    this.meleeHit(),
-    this.isHitting = this.timestamp + this.hittingTime,
-    this.player.fireNetworkEvent("m"),
-    this.player.melee()
+Movement.prototype.triggerKeyE = function() {
+    return !(this.playerAbilities.isHitting > this.timestamp) && (this.cancelReload(),
+    !this.playerAbilities.isThrowing && (this.cancelInspect(!0),
+    void this.playerAbilities.triggerKeyE()))
 }
 ,
-Movement.prototype.meleeSkill = function() {
-    return !(this.isHitting > this.timestamp) && (this.cancelReload(),
-    !this.isThrowing && (this.cancelInspect(!0),
-    void ("Lilium" == this.player.characterName ? this.melee() : "Shin" == this.player.characterName && this.dash())))
-}
-,
-Movement.prototype.meleeHit = function() {
-    this.axeEntity.setLocalPosition(-1.341, -2.65, -3.462),
-    this.axeEntity.tween(this.axeEntity.getLocalPosition()).to({
-        y: .67
-    }, .2, pc.BackOut).start(),
-    this.playEffortSound(),
-    Math.random() > .5 ? (this.axeEntity.setLocalEulerAngles(66.97, -17.07, 29.54),
-    this.axeEntity.tween(this.axeEntity.getLocalEulerAngles()).rotate({
-        x: -20.32,
-        y: 40.6,
-        z: -108.25
-    }, .25, pc.BackOut).delay(.2).start()) : (this.axeEntity.setLocalEulerAngles(-42.45, -13.74, 21.08),
-    this.axeEntity.tween(this.axeEntity.getLocalEulerAngles()).rotate({
-        x: 37.81,
-        y: -38.75,
-        z: -130.44
-    }, .25, pc.BackOut).delay(.2).start()),
-    setTimeout(function(t) {
-        t.meleeTrigger(),
-        t.entity.sound.play("Throw"),
-        t.app.tween(t.animation).to({
-            cameraImpact: -3
-        }, .1, pc.BackOut).start()
-    }, 200, this),
-    setTimeout(function(t) {
-        t.showWeapons(),
-        t.hideMelee()
-    }, 500, this)
-}
-,
-Movement.prototype.meleeTrigger = function(t) {
-    this.setShootDirection();
-    var e = this.raycastShootFrom
-      , i = this.meleePoint.getPosition().clone()
-      , s = Math.round(20 * Math.random()) + 80;
-    t > 0 && (s = t),
-    this.app.fire("EffectManager:Hit", "Melee", e, i, this.player.playerId, s, this.meleePoints)
-}
-,
-Movement.prototype.dashTrigger = function(t) {
-    var e = Math.round(20 * Math.random()) + 50
-      , i = {
-        entity: t.other,
-        normal: t.contacts[0].normal,
-        point: t.contacts[0].point
-    };
-    this.app.fire("EffectManager:DealHit", "Dash", i, e, this.player.playerId, !1)
-}
-,
-Movement.prototype.playEffortSound = function() {
-    var t = "Throw-" + (Math.floor(1.4 * Math.random()) + 1);
-    this.app.fire("Character:Sound", t, .1 * Math.random())
-}
-,
-Movement.prototype.throwGrenade = function() {
-    this.app.fire("EffectManager:Throw", "Grenade", this.throwPoint.getPosition().clone(), this.throwPoint.forward, this.player.playerId, this.player.cards.length > 0),
-    this.app.fire("Network:Throw", "Grenade", this.throwPoint.getPosition().clone(), this.throwPoint.forward),
-    this.entity.sound.play("Throw"),
-    this.app.fire("Overlay:SkillTimer", this.player.throwCooldown)
-}
-,
-Movement.prototype._throwShuriken = function() {
-    this.setShootDirection(),
-    this.entity.sound.play("Whoosh-High"),
-    this.entity.sound.slots["Whoosh-High"].pitch = 1 + .2 * Math.random(),
-    this.app.fire("EffectManager:Shuriken", this.throwPoint.getPosition(), [this.shurikenPoint1.getPosition(), this.shurikenPoint2.getPosition(), this.shurikenPoint3.getPosition()], this.player.playerId),
-    this.app.fire("Network:Throw", "Shuriken", this.throwPoint.getPosition(), [this.shurikenPoint1.getPosition(), this.shurikenPoint2.getPosition(), this.shurikenPoint3.getPosition()])
-}
-,
-Movement.prototype.throwShuriken = function() {
-    for (var t = 0; t < 3; t++)
-        setTimeout(function(t) {
-            t._throwShuriken()
-        }, 90 * t, this);
-    this.app.fire("Overlay:SkillTimer", this.player.throwCooldown)
-}
-,
-Movement.prototype.throw = function() {
-    return this.now() - this.lastThrowDate < 1e3 * this.player.throwCooldown ? (this.entity.sound.play("Error"),
-    !1) : !(this.isReloading > this.timestamp) && (!(this.isHitting > this.timestamp) && (this.isFocusing = !1,
+Movement.prototype.triggerKeyF = function() {
+    return this.now() - this.lastThrowDate < 1e3 * this.playerAbilities.throwCooldown ? (this.entity.sound.play("Error"),
+    !1) : !(this.isReloading > this.timestamp) && (!(this.playerAbilities.isHitting > this.timestamp) && (this.isFocusing = !1,
     this.player.throw(),
     this.stopFiring(),
-    this.isThrowing = !0,
-    "Lilium" == this.player.characterName ? this.throwGrenadeAnimation() : "Shin" == this.player.characterName && this.throwShurikenAnimation(),
+    this.playerAbilities.triggerKeyF(),
     void (this.lastThrowDate = this.now())))
-}
-,
-Movement.prototype.throwShurikenAnimation = function() {
-    this.shoulderEntity.tween(this.shoulderEntity.getLocalEulerAngles()).rotate({
-        x: 42.75,
-        y: 30.65,
-        z: -57.65
-    }, .4, pc.SineOut).start(),
-    this.shoulderEntity.reparent(this.handEntity),
-    this.app.tween(this.animation).to({
-        takeX: -.52,
-        takeY: 22.19,
-        takeZ: -55.11
-    }, .1, pc.BackInOut).start(),
-    setTimeout(function(t) {
-        t.shoulderEntity.tween(t.shoulderEntity.getLocalEulerAngles()).rotate({
-            x: 147.77,
-            y: 3.9,
-            z: 138.54
-        }, .1, pc.Linear).start()
-    }, 50, this),
-    setTimeout(function(t) {
-        t.shoulderEntity.tween(t.shoulderEntity.getLocalEulerAngles()).rotate({
-            x: 113.4,
-            y: -9.2,
-            z: 25.38
-        }, .15, pc.QuinticInOut).start(),
-        setTimeout(function() {
-            t.throwShuriken()
-        }, 15)
-    }, 150, this),
-    setTimeout(function(t) {
-        t.shoulderEntity.tween(t.shoulderEntity.getLocalEulerAngles()).rotate({
-            x: 64.6,
-            y: 4.31,
-            z: 1.91
-        }, .2, pc.BackOut).start()
-    }, 850, this),
-    setTimeout(function(t) {
-        t.isThrowing = !1,
-        t.shoulderEntity.reparent(t.armEntity),
-        t.shoulderEntity.tween(t.shoulderEntity.getLocalEulerAngles()).rotate({
-            x: 0,
-            y: 0,
-            z: 0
-        }, .2, pc.BackOut).start(),
-        t.app.tween(t.animation).to({
-            takeX: 0,
-            takeY: 0,
-            takeZ: 0
-        }, .2, pc.BackInOut).start()
-    }, 1e3, this)
-}
-,
-Movement.prototype.throwGrenadeAnimation = function() {
-    this.shoulderEntity.tween(this.shoulderEntity.getLocalEulerAngles()).rotate({
-        x: 42.75,
-        y: 30.65,
-        z: -57.65
-    }, .4, pc.SineOut).start(),
-    this.shoulderEntity.reparent(this.handEntity),
-    this.app.tween(this.animation).to({
-        takeX: -.52,
-        takeY: 22.19,
-        takeZ: -55.11
-    }, .15, pc.BackInOut).start(),
-    setTimeout(function(t) {
-        t.shoulderEntity.tween(t.shoulderEntity.getLocalEulerAngles()).rotate({
-            x: 147.77,
-            y: 3.9,
-            z: 138.54
-        }, .2, pc.Linear).start()
-    }, 200, this),
-    setTimeout(function(t) {
-        t.playEffortSound(),
-        t.shoulderEntity.tween(t.shoulderEntity.getLocalEulerAngles()).rotate({
-            x: 113.4,
-            y: -9.2,
-            z: 25.38
-        }, .55, pc.QuinticInOut).start(),
-        setTimeout(function() {
-            t.throwGrenade(),
-            t.app.tween(t.animation).to({
-                cameraImpact: -3
-            }, .1, pc.BackOut).start()
-        }, 200)
-    }, 400, this),
-    setTimeout(function(t) {
-        t.shoulderEntity.tween(t.shoulderEntity.getLocalEulerAngles()).rotate({
-            x: 64.6,
-            y: 4.31,
-            z: 1.91
-        }, .2, pc.BackOut).start()
-    }, 1150, this),
-    setTimeout(function(t) {
-        t.isThrowing = !1,
-        t.shoulderEntity.reparent(t.armEntity),
-        t.shoulderEntity.tween(t.shoulderEntity.getLocalEulerAngles()).rotate({
-            x: 0,
-            y: 0,
-            z: 0
-        }, .2, pc.BackOut).start(),
-        t.app.tween(t.animation).to({
-            takeX: 0,
-            takeY: 0,
-            takeZ: 0
-        }, .2, pc.BackInOut).start()
-    }, 1300, this)
 }
 ,
 Movement.prototype.now = function() {
@@ -1532,7 +1310,7 @@ Movement.prototype.setFocus = function(t) {
 }
 ,
 Movement.prototype.inspect = function() {
-    return !(this.isHitting > this.timestamp) && (this.isReloading > this.timestamp ? (this.inspectAfterReload = !0,
+    return !(this.playerAbilities.isHitting > this.timestamp) && (this.isReloading > this.timestamp ? (this.inspectAfterReload = !0,
     !1) : (Math.random() > .6 && this.app.fire("Player:Speak", "Attack", 4),
     !(Math.random() > .8) && (this.cancelInspect(),
     this.timer.inspect0 = setTimeout(function(t) {
@@ -1605,7 +1383,7 @@ Movement.prototype.cancelReload = function() {
 }
 ,
 Movement.prototype.reload = function() {
-    return !(this.isHitting > this.timestamp) && (!(this.isReloading > this.timestamp) && (this.currentWeapon.capacity !== this.currentWeapon.ammo && (this.cancelInspect(),
+    return !(this.playerAbilities.isHitting > this.timestamp) && (!(this.isReloading > this.timestamp) && (this.currentWeapon.capacity !== this.currentWeapon.ammo && (this.cancelInspect(),
     this.stopFiring(),
     this.player.fireNetworkEvent("r"),
     this.reloadingTime = this.currentWeapon.reloadingTime,
@@ -1708,31 +1486,19 @@ Movement.prototype.takeout = function() {
 }
 ,
 Movement.prototype.showMelee = function() {
-    this.meleeCenter.enabled = !0,
-    this.meleeCenter.tween(this.meleeCenter.getLocalPosition()).to({
-        y: -.246
-    }, .2, pc.BackOut).start()
+    this.playerAbilities.showMelee()
 }
 ,
 Movement.prototype.hideMelee = function() {
-    this.meleeCenter.tween(this.meleeCenter.getLocalPosition()).to({
-        y: -1.5
-    }, .15, pc.BackOut).start(),
-    setTimeout(function(t) {
-        t.meleeCenter.enabled = !1
-    }, 150, this)
+    this.playerAbilities.hideMelee()
 }
 ,
 Movement.prototype.hideWeapons = function() {
-    this.weaponCenter.tween(this.weaponCenter.getLocalPosition()).to({
-        y: -1.5
-    }, .15, pc.BackOut).start()
+    this.playerAbilities.hideWeapons()
 }
 ,
 Movement.prototype.showWeapons = function() {
-    this.weaponCenter.tween(this.weaponCenter.getLocalPosition()).to({
-        y: -.058
-    }, .2, pc.BackOut).start()
+    this.playerAbilities.showWeapons()
 }
 ,
 Movement.prototype.impact = function() {
@@ -1774,7 +1540,7 @@ Movement.prototype.death = function() {
 Movement.prototype.jump = function() {
     if (!this.isLanded && !this.isCollided)
         return !1;
-    if (this.isDashing)
+    if (this.playerAbilities.isDashing)
         return !1;
     if (this.bounceJumpTime > this.timestamp)
         return !1;
@@ -1858,7 +1624,7 @@ Movement.prototype.land = function() {
 }
 ,
 Movement.prototype.setDamping = function(t) {
-    if (this.currentHeight > this.defaultHeight && !this.isLanded && !this.isDashing) {
+    if (this.currentHeight > this.defaultHeight && !this.isLanded && !this.playerAbilities.isDashing) {
         var e = Math.min((this.now() - this.airTime) / 1e3, 1);
         this.dynamicGravity += t * this.gravityStep * this.gravityStep,
         this.entity.rigidbody.linearDamping = this.airDamping,
@@ -1911,7 +1677,7 @@ Movement.prototype.stopMeleeShooting = function() {
 }
 ,
 Movement.prototype.setMeleeShoot = function() {
-    if (this.leftMouse && !this.isShootingLocked && !this.isThrowing && this.isReloading < this.timestamp && this.isHitting < this.timestamp && (this.isShooting = this.currentWeapon.shootTime + this.timestamp),
+    if (this.leftMouse && !this.isShootingLocked && !this.playerAbilities.isThrowing && this.isReloading < this.timestamp && this.playerAbilities.isHitting < this.timestamp && (this.isShooting = this.currentWeapon.shootTime + this.timestamp),
     this.isShooting > this.timestamp && !this.isShootingLocked) {
         if (this.meleeShootingIndex % 2 == 0 ? (this.app.tween(this.animation).rotate({
             takeX: 137.28,
@@ -1926,7 +1692,7 @@ Movement.prototype.setMeleeShoot = function() {
             }, .2, pc.BackOut).start()
         }, 100, this),
         setTimeout(function(t) {
-            t.meleeTrigger(t.currentWeapon.damage),
+            t.playerAbilities.meleeTrigger(t.currentWeapon.damage),
             t.app.fire("WeaponManager:Swing", "Right")
         }, 160, this)) : (this.app.tween(this.animation).to({
             takeX: 21.08,
@@ -1941,7 +1707,7 @@ Movement.prototype.setMeleeShoot = function() {
             }, .3, pc.BackOut).start()
         }, 100, this),
         setTimeout(function(t) {
-            t.meleeTrigger(t.currentWeapon.damage),
+            t.playerAbilities.meleeTrigger(t.currentWeapon.damage),
             t.app.fire("WeaponManager:Swing", "Left")
         }, 160, this)),
         setTimeout(function(t) {
@@ -1970,7 +1736,7 @@ Movement.prototype.setShooting = function(t) {
         return !1;
     if (this.leftMouse || this.isShootingLocked || this.isFireStopped || (this.stopFiring(),
     0 === this.currentWeapon.ammo && this.reload()),
-    this.leftMouse && !this.isShootingLocked && !this.isThrowing && this.isReloading < this.timestamp && this.isHitting < this.timestamp && (this.currentWeapon.ammo > 0 ? this.isShooting = this.currentWeapon.shootTime + this.timestamp : this.reload()),
+    this.leftMouse && !this.isShootingLocked && !this.playerAbilities.isThrowing && this.isReloading < this.timestamp && this.playerAbilities.isHitting < this.timestamp && (this.currentWeapon.ammo > 0 ? this.isShooting = this.currentWeapon.shootTime + this.timestamp : this.reload()),
     this.isShooting > this.timestamp && !this.isShootingLocked) {
         var e = this.currentWeapon.recoil
           , i = this.currentWeapon.cameraShake
@@ -1983,7 +1749,6 @@ Movement.prototype.setShooting = function(t) {
           , p = Math.cos(110 * this.spreadCount)
           , m = this.currentWeapon.spread * p;
         this.cancelInspect(!0),
-        this.setShootDirection(),
         this.isFocusing && "Rifle" == this.currentWeapon.type && (n = -.05,
         o = .5,
         a = -.2,
@@ -2009,15 +1774,15 @@ Movement.prototype.setShooting = function(t) {
           , v = Math.random() * this.spreadNumber - Math.random() * this.spreadNumber
           , f = this.raycastTo.clone().add(new pc.Vec3(y,g,v))
           , M = this.currentWeapon.damage
-          , w = this.currentWeapon.distanceMultiplier;
+          , b = this.currentWeapon.distanceMultiplier;
         if ("Shotgun" == this.currentWeapon.type) {
-            this.app.fire("EffectManager:Fire", d, f, l, this.player.playerId, M, "Shotgun", w);
-            for (var k = 0; k < 6; k++)
-                y = Math.cos(k / 3 * Math.PI) * this.spreadNumber,
-                g = Math.sin(k / 3 * Math.PI) * this.spreadNumber,
-                v = Math.cos(k / 3 * Math.PI) * this.spreadNumber,
+            this.app.fire("EffectManager:Fire", d, f, l, this.player.playerId, M, "Shotgun", b);
+            for (var w = 0; w < 6; w++)
+                y = Math.cos(w / 3 * Math.PI) * this.spreadNumber,
+                g = Math.sin(w / 3 * Math.PI) * this.spreadNumber,
+                v = Math.cos(w / 3 * Math.PI) * this.spreadNumber,
                 f = this.raycastTo.clone().add(new pc.Vec3(y,g,v)),
-                this.app.fire("EffectManager:Fire", d, f, l, this.player.playerId, M, "Shotgun", w)
+                this.app.fire("EffectManager:Fire", d, f, l, this.player.playerId, M, "Shotgun", b)
         } else
             this.app.fire("EffectManager:Fire", d, f, l, this.player.playerId, M);
         this.lookY += .04 * i,
@@ -2985,6 +2750,7 @@ Overlay.prototype.initialize = function() {
     this.app.on("Overlay:Gameplay", this.setOverlayStatus, this),
     this.app.on("Overlay:WhiteShadow", this.setWhiteShadow, this),
     this.app.on("Overlay:Ping", this.setPing, this),
+    this.app.on("Overlay:Attention", this.showAttention, this),
     this.modeElements = this.app.root.findByTag("MODE-UI"),
     this.app.on("Game:Mode", this.onModeSet, this),
     this.app.on("Game:PreStart", this.onPreStart, this),
@@ -3116,6 +2882,17 @@ Overlay.prototype.openKickMenu = function() {
 Overlay.prototype.clearPausePlayers = function() {
     for (var t = this.pausePlayers.length; t--; )
         this.pausePlayers[t].destroy()
+}
+,
+Overlay.prototype.showAttention = function(t) {
+    "Melee" == t && (this.meleeTimer.setLocalScale(2.5, 2.5, 2.5),
+    this.meleeTimer.tween(this.meleeTimer.getLocalScale()).to({
+        x: 1,
+        y: 1,
+        z: 1
+    }, .4, pc.BackOut).start(),
+    this.entity.sound.play("Error"),
+    this.entity.sound.play("Tick-Tock-Short"))
 }
 ,
 Overlay.prototype.setPausePlayers = function(t) {
@@ -4673,6 +4450,13 @@ EffectManager.attributes.add("grenadeTime", {
 EffectManager.attributes.add("explosionEntity", {
     type: "entity"
 }),
+EffectManager.attributes.add("grappleEntity", {
+    type: "entity"
+}),
+EffectManager.attributes.add("grapples", {
+    type: "entity",
+    array: !0
+}),
 EffectManager.attributes.add("loudSoundEntity", {
     type: "entity"
 }),
@@ -4683,6 +4467,12 @@ EffectManager.attributes.add("traceEntity", {
     type: "entity"
 }),
 EffectManager.attributes.add("shurikenEntity", {
+    type: "entity"
+}),
+EffectManager.attributes.add("axeEntity", {
+    type: "entity"
+}),
+EffectManager.attributes.add("abilityHolder", {
     type: "entity"
 }),
 EffectManager.attributes.add("explosionEffect", {
@@ -4730,12 +4520,16 @@ EffectManager.prototype.initialize = function() {
     this.app.on("EffectManager:ExplosionEffect", this.setExplosionEffect, this),
     this.app.on("EffectManager:Shuriken", this.onShuriken, this),
     this.app.on("EffectManager:DealHit", this.dealHitEntity, this),
+    this.app.on("EffectManager:Axe", this.onAxeThrow, this),
+    this.app.on("EffectManager:Grapple", this.onGrappleThrow, this),
+    this.app.on("Test:Raycast", this.testRaycast, this),
     this.app.on("Map:Loaded", this.onMapLoaded, this),
     this.app.on("Game:Finish", this.onGameFinish, this),
     this.impactBatching(),
     this.hitBatching(),
     this.shootRayBatching(),
     this.bulletBatching(),
+    this.abilityBatcher(),
     this.grenadeEntity.enabled = !1,
     this.splashEntity.splash1 = this.splashEntity.findByName("Splash1"),
     this.splashEntity.splash2 = this.splashEntity.findByName("Splash2"),
@@ -4793,7 +4587,8 @@ EffectManager.prototype.onMapLoaded = function() {
     setTimeout(function(t) {
         t.thunder()
     }, 5e3, this)) : (e.enabled = !1,
-    clearTimeout(this.thunderTimer))
+    clearTimeout(this.thunderTimer)),
+    this.lookAtEntities = this.app.root.findByTag("LookAt")
 }
 ,
 EffectManager.prototype.thunder = function() {
@@ -4847,6 +4642,37 @@ EffectManager.prototype.shootRayBatching = function() {
         this.garbageEntity.addChild(e)
     }
     this.shootRay.destroy()
+}
+,
+EffectManager.prototype.abilityBatcher = function() {
+    this.axes = [],
+    this.grenades = [],
+    this.shurikens = [],
+    this.currentAxeIndex = 0,
+    this.currentGrenadeIndex = 0,
+    this.currentShurikenIndex = 0,
+    this.currentGrappleIndex = 0;
+    for (var t = 0; t < 3; t++) {
+        var e = this.grenadeEntity.clone();
+        e.setPosition(Utils.nullVector),
+        e.enabled = !1,
+        this.grenades.push(e),
+        this.abilityHolder.addChild(e)
+    }
+    for (var i = 0; i < 3; i++) {
+        var a = this.axeEntity.clone();
+        a.setPosition(Utils.nullVector),
+        a.enabled = !1,
+        this.axes.push(a),
+        this.abilityHolder.addChild(a)
+    }
+    for (var s = 0; s < 5; s++) {
+        var n = this.shurikenEntity.clone();
+        n.setPosition(Utils.nullVector),
+        n.enabled = !1,
+        this.shurikens.push(n),
+        this.abilityHolder.addChild(n)
+    }
 }
 ,
 EffectManager.prototype.bulletBatching = function() {
@@ -5013,29 +4839,79 @@ EffectManager.prototype.updateBullets = function(t) {
         this.bullets[e].translateLocal(this.bulletTranslate.x * t, this.bulletTranslate.y * t, this.bulletTranslate.z * t))
 }
 ,
+EffectManager.prototype.onGrappleThrow = function(t, e, i, a, s) {
+    var n = Math.floor(15 * Math.random() + 20)
+      , o = this.testRaycast(e.clone(), i.clone().add(e))
+      , r = new pc.Vec3(0,0,0);
+    r = o ? o.point : i.clone(),
+    o && setTimeout(function(t) {
+        t.dealHitEntity("Grapple", o, n, a, !0)
+    }, 100, this),
+    this.grapples[this.currentGrappleIndex].script.grapple.onThrow(t, e, r),
+    this.currentGrappleIndex++,
+    this.currentGrappleIndex = this.currentGrappleIndex % 3
+}
+,
+EffectManager.prototype.onAxeThrow = function(t, e, i, a) {
+    var s = Math.floor(15 * Math.random() + 20)
+      , n = this.testRaycast(t, e.clone().add(t))
+      , o = new pc.Vec3(0,0,0);
+    o = n ? n.point : e.clone();
+    var r = this.axes[this.currentAxeIndex];
+    r.setLocalPosition(t),
+    r.lookAt(o),
+    r.enabled = !0,
+    r.originEntity = r.findByName("Origin"),
+    r.rayEntity = r.findByName("Ray"),
+    r.rayEntity.enabled = !0,
+    r.originEntity.enabled = !0,
+    r.originEntity.script.enabled = !0,
+    r.sound.play("Loop"),
+    this.currentAxeIndex++,
+    this.currentAxeIndex = this.currentAxeIndex % 3,
+    r.tween(r.getLocalPosition()).to({
+        x: o.x,
+        y: o.y,
+        z: o.z
+    }, .25, pc.Linear).start(),
+    setTimeout(function(t, e, n) {
+        t.sound.stop("Loop"),
+        t.rayEntity.enabled = !1,
+        t.originEntity.script.enabled = !1,
+        t.originEntity.setLocalEulerAngles(18.68, 0, 0),
+        e && n.dealHitEntity("Axe", e, s, i, !0),
+        a && n.app.fire("Spell:Wind", t.getPosition().clone())
+    }, 250, r, n, this),
+    n && n.entity && "Player" == n.entity.name ? setTimeout(function(t, e) {
+        t.enabled = !1
+    }, 600, r, this) : setTimeout(function(t, e) {
+        t.enabled = !1
+    }, 2e3, r, this)
+}
+,
 EffectManager.prototype.onShuriken = function(t, e, i, a, s) {
     var n = Math.floor(15 * Math.random() + 20)
       , o = e[this.shurikenSpread]
       , r = new pc.Vec3(o.x,o.y,o.z).sub(t.clone()).normalize().scale(100).add(t)
-      , p = this.testRaycast(t, r)
-      , l = r;
-    p && (l = p.point);
+      , l = this.testRaycast(t, r)
+      , p = r;
+    l && (p = l.point);
     var h = this.shurikenEntity.clone();
     h.setLocalPosition(t),
-    h.lookAt(l),
+    h.lookAt(p),
     h.enabled = !0,
     h.ray = h.findByName("Ray"),
     h.shurikenModel = h.findByName("Model"),
     s && (h.shurikenModel.enabled = !1),
     h.tween(h.getLocalPosition()).to({
-        x: l.x,
-        y: l.y,
-        z: l.z
+        x: p.x,
+        y: p.y,
+        z: p.z
     }, .2, pc.Linear).start(),
-    p && setTimeout(function(t, e, a) {
+    l && setTimeout(function(t, e, a) {
         t.ray.enabled = !1,
         a && e.dealHitEntity("Shuriken", a, n, i, !0)
-    }, 50, h, this, p),
+    }, 50, h, this, l),
     setTimeout(function(t) {
         t.destroy()
     }, 1e3, h),
@@ -5049,39 +4925,42 @@ EffectManager.prototype.testRaycast = function(t, e, i, a, s) {
     a = 0,
     s = 0);
     var n = e.add(new pc.Vec3(i,a,s))
-      , o = this.app.systems.rigidbody.raycastFirst(t, n);
-    return o || !1
+      , o = this.app.systems.rigidbody.raycastFirst(t, n)
+      , r = 1e3;
+    return !!o && (r = t.clone().sub(o.point.clone()).length(),
+    o.distance = r,
+    o)
 }
 ,
 EffectManager.prototype.onHit = function(t, e, i, a, s, n) {
     var o = []
       , r = .3
-      , p = 15;
-    if ("Dash" == t && (p = 36,
+      , l = 15;
+    if ("Dash" == t && (l = 36,
     r = .2),
     n && n.length > 0)
-        for (var l in n) {
-            var h = n[l].getPosition().clone();
+        for (var p in n) {
+            var h = n[p].getPosition().clone();
             (c = this.testRaycast(e, h)) && o.push(c)
         }
     else
-        for (var y = 0; y < p; y++) {
-            var c, d = Math.cos(y / p) * r, f = Math.sin(y / p) * r, u = Math.cos(y / p) * r;
+        for (var y = 0; y < l; y++) {
+            var c, d = Math.cos(y / l) * r, f = Math.sin(y / l) * r, u = Math.cos(y / l) * r;
             (c = this.testRaycast(e, i, d, f, u)) && o.push(c)
         }
-    var m = !1
-      , g = []
-      , E = !1;
+    var g = !1
+      , E = []
+      , m = !1;
     for (var b in o) {
-        var M = o[b]
-          , S = M.entity.tags.list();
-        for (var k in this.breakable) {
-            var x = this.breakable[k];
-            S.indexOf(x) > -1 && !m && (m = M)
+        var x = o[b]
+          , M = x.entity.tags.list();
+        for (var S in this.breakable) {
+            var k = this.breakable[S];
+            M.indexOf(k) > -1 && !g && (g = x)
         }
-        S.length > 0 && (g.indexOf(S[0]) > -1 && (E = !0),
-        g.push(S[0])),
-        E || this.dealHitEntity(t, M, s, a)
+        M.length > 0 && (E.indexOf(M[0]) > -1 && (m = !0),
+        E.push(M[0])),
+        m || this.dealHitEntity(t, x, s, a)
     }
 }
 ,
@@ -5091,13 +4970,13 @@ EffectManager.prototype.dealHitEntity = function(t, e, i, a, s) {
     var n = this.shootRayIndex
       , o = e.entity.tags.list()
       , r = pc.setFromNormal(e.normal)
-      , p = 2 * Math.random() + 1;
+      , l = 2 * Math.random() + 1;
     if (o.indexOf("Player") > -1) {
-        var l = this.hitParticles[n];
-        if (l.setPosition(e.point),
-        l.setEulerAngles(r),
-        l.setLocalScale(p, p, p),
-        l.sprite.stop(),
+        var p = this.hitParticles[n];
+        if (p.setPosition(e.point),
+        p.setEulerAngles(r),
+        p.setLocalScale(l, l, l),
+        p.sprite.stop(),
         pc.controls.player.playerId == a && i > 0) {
             var h = e.entity
               , y = !1
@@ -5108,7 +4987,7 @@ EffectManager.prototype.dealHitEntity = function(t, e, i, a, s) {
             y && this.app.fire("Hit:Point", h, i)),
             this.entity.setPosition(e.point),
             this.entity.sound.play("Impact-Iron"),
-            y && l.sprite.play("Impact")
+            y && p.sprite.play("Impact")
         }
     } else if (o.indexOf("Explosive") > -1)
         e.entity.explode();
@@ -5117,7 +4996,7 @@ EffectManager.prototype.dealHitEntity = function(t, e, i, a, s) {
         var d = this.impactParticles[n];
         for (var f in d.setPosition(e.point),
         d.setEulerAngles(r),
-        d.setLocalScale(p, p, p),
+        d.setLocalScale(l, l, l),
         d.sprite1.play("Impact"),
         d.sprite2.play("Impact"),
         d.sprite3.play("Impact"),
@@ -5128,14 +5007,14 @@ EffectManager.prototype.dealHitEntity = function(t, e, i, a, s) {
             this.entity.sound.play(u),
             e.entity.parent && e.entity.parent.destroy())
         }
-        if (Math.random() > .4 || "Melee" == t || "Shuriken" == t || "Dash" == t)
-            for (var m in this.impactable) {
-                var g = this.impactable[m];
-                o.indexOf(g) > -1 && this.playMaterialImpact(g, e, t)
+        if (Math.random() > .4 || "Melee" == t || "Shuriken" == t || "Axe" == t || "Dash" == t || "Grapple" == t)
+            for (var g in this.impactable) {
+                var E = this.impactable[g];
+                o.indexOf(E) > -1 && this.playMaterialImpact(E, e, t)
             }
-        "Shuriken" == t ? (this.entity.setPosition(e.point),
+        "Shuriken" == t || "Grapple" == t ? (this.entity.setPosition(e.point),
         this.entity.sound.slots["Impact-Iron-Light"].pitch = .1 * Math.random() + 1,
-        this.entity.sound.play("Impact-Iron-Light")) : "Melee" != t && "Dash" != t || (this.entity.setPosition(e.point),
+        this.entity.sound.play("Impact-Iron-Light")) : "Melee" != t && "Dash" != t && "Axe" != t || (this.entity.setPosition(e.point),
         this.entity.sound.slots["Impact-Iron"].pitch = .1 * Math.random() + 1,
         this.entity.sound.play("Impact-Iron")),
         Date.now() - this.lastSmoke > 700 && (this.explosionSmokeEntity.setLocalScale(2, 2, 2),
@@ -5150,111 +5029,114 @@ EffectManager.prototype.onFire = function(t, e, i, a, s, n, o) {
     if (0 === this.shootRays.length)
         return !1;
     var r = this.shootRayIndex
-      , p = (this.sparkIndex,
+      , l = (this.sparkIndex,
     this.app.systems.rigidbody.raycastFirst(t, e))
-      , l = 300;
-    if (p) {
+      , p = 300;
+    if (l) {
         var h = 1
-          , y = t.clone().sub(p.point.clone()).length();
-        y > 0 && (l = y),
+          , y = t.clone().sub(l.point.clone()).length();
+        y > 0 && (p = y),
         o && (y > 10 && (h *= o),
         y > 30 && (h *= o),
         s *= h);
-        var c = pc.setFromNormal(p.normal)
+        var c = pc.setFromNormal(l.normal)
           , d = 2 * Math.random() + 1
-          , f = p.entity.tags.list();
+          , f = l.entity.tags.list();
         if (f.indexOf("Player") > -1) {
             var u = this.hitParticles[r];
-            if (u.setPosition(p.point),
+            if (u.setPosition(l.point),
             u.setEulerAngles(c),
             u.setLocalScale(d, d, d),
             u.sprite.stop(),
-            p.entity && p.entity.script && p.entity.script.enemy)
-                "-1" !== p.entity.script.enemy.playerId && u.sprite.play("Impact")
+            l.entity && l.entity.script && l.entity.script.enemy)
+                "-1" !== l.entity.script.enemy.playerId && u.sprite.play("Impact")
         } else if (f.indexOf("Water") > -1)
-            this.entity.setPosition(p.point),
+            this.entity.setPosition(l.point),
             this.entity.sound.play("Water-Splash"),
-            this.splashEntity.setPosition(p.point),
+            this.splashEntity.setPosition(l.point),
             this.splashEntity.splash1.sprite.stop(),
             this.splashEntity.splash2.sprite.stop(),
             this.splashEntity.splash1.sprite.play("Fire"),
             this.splashEntity.splash2.sprite.play("Fire");
         else if (f.indexOf("Explosive") > -1)
-            p.entity.explode();
+            l.entity.explode();
         else {
-            var m = Math.round(180 * Math.random())
-              , g = this.impactParticles[r];
-            if (g.setPosition(p.point),
-            g.setEulerAngles(c),
-            g.setLocalScale(d, d, d),
-            g.sprite1.play("Impact"),
-            g.sprite2.play("Impact"),
-            g.sprite3.play("Impact"),
-            g.sprite4.play("Impact"),
+            var g = !0
+              , E = Math.round(180 * Math.random())
+              , m = this.impactParticles[r];
+            if (m.setPosition(l.point),
+            m.setEulerAngles(c),
+            m.setLocalScale(d, d, d),
+            m.sprite1.play("Impact"),
+            m.sprite2.play("Impact"),
+            m.sprite3.play("Impact"),
+            m.sprite4.play("Impact"),
             "Shotgun" != n && (Math.random() > .4 || "Melee" == n))
-                for (var E in this.impactable) {
-                    var b = this.impactable[E];
-                    f.indexOf(b) > -1 && this.playMaterialImpact(b, p, n)
+                for (var b in this.impactable) {
+                    var x = this.impactable[b];
+                    f.indexOf(x) > -1 && this.playMaterialImpact(x, l, n)
                 }
             for (var M in this.breakable) {
                 var S = this.breakable[M];
-                f.indexOf(S) > -1 && (this.entity.setPosition(p.point),
+                f.indexOf(S) > -1 && (this.entity.setPosition(l.point),
                 this.entity.sound.play(S),
-                p.entity.parent.destroy())
+                l.entity.parent.destroy(),
+                g = !1)
             }
             for (var k in this.explosive) {
-                var x = this.explosive[k];
-                f.indexOf(x) > -1 && (this.setExplosionEffect(p.point),
-                p.entity.parent.destroy())
+                var v = this.explosive[k];
+                f.indexOf(v) > -1 && (this.setExplosionEffect(l.point),
+                l.entity.parent.destroy(),
+                g = !1)
             }
             Date.now() - this.lastSmoke > 700 && (this.explosionSmokeEntity.setLocalScale(2, 2, 2),
-            this.explosionSmokeEntity.setPosition(p.point),
+            this.explosionSmokeEntity.setPosition(l.point),
             this.explosionSmokeEntity.particlesystem.reset(),
             this.explosionSmokeEntity.particlesystem.play(),
             this.lastSmoke = Date.now()),
-            g.hole.setLocalScale(.17, .17, .17),
-            g.hole.setLocalEulerAngles(0, m, 0),
-            f.indexOf("Damageable") > -1 && this.app.fire("Network:ObjectDamage", p.entity._guid)
+            g ? (m.hole.setLocalScale(.17, .17, .17),
+            m.hole.setLocalEulerAngles(0, E, 0)) : m.hole.setLocalScale(.001, .001, .001),
+            f.indexOf("Damageable") > -1 && this.app.fire("Network:ObjectDamage", l.entity._guid)
         }
-        if (pc.controls.player.playerId == a && p.entity.tags.list().indexOf("Player") > -1) {
-            var v = p.entity
-              , P = p.point.clone().sub(v.getPosition().clone());
-            v && v.script && v.script.enemy && v.script.enemy.damage(a, s, P)
+        if (pc.controls.player.playerId == a && l.entity.tags.list().indexOf("Player") > -1) {
+            var P = l.entity
+              , I = l.point.clone().sub(P.getPosition().clone());
+            P && P.script && P.script.enemy && P.script.enemy.damage(a, s, I)
         }
     }
     if ("Melee" != n) {
         pc.controls.player.playerId != a && this.calculateRichotte(t, e, a, r);
-        var I = this.shootRays[r];
-        I.setPosition(i),
-        I.lookAt(e),
-        I.sprite1.stop(),
-        I.sprite1.play("Fire"),
-        I.sprite2.stop(),
-        I.sprite2.play("Fire"),
-        "Shotgun" == n ? (I.sprite1.opacity = .1,
-        I.sprite1.speed = 1.2,
-        I.sprite2.opacity = .1,
-        I.sprite2.speed = 1.2) : "Sniper" == n ? (I.sprite1.opacity = .9,
-        I.sprite1.speed = .5,
-        I.sprite2.opacity = .9,
-        I.sprite2.speed = .5) : s > 40 ? (I.sprite1.opacity = .3,
-        I.sprite1.speed = .7,
-        I.sprite2.opacity = .3,
-        I.sprite2.speed = .7) : (I.sprite1.opacity = .1,
-        I.sprite1.speed = 1.2,
-        I.sprite2.opacity = .1,
-        I.sprite2.speed = 1.2),
-        I.trace.setLocalPosition(0, 0, -5),
+        var w = this.shootRays[r];
+        w.setPosition(i),
+        w.lookAt(e),
+        w.sprite1.stop(),
+        w.sprite1.play("Fire"),
+        w.sprite2.stop(),
+        w.sprite2.play("Fire"),
+        "Shotgun" == n ? (w.sprite1.opacity = .1,
+        w.sprite1.speed = 1.2,
+        w.sprite2.opacity = .1,
+        w.sprite2.speed = 1.2) : "Sniper" == n ? (w.sprite1.opacity = .9,
+        w.sprite1.speed = .5,
+        w.sprite2.opacity = .9,
+        w.sprite2.speed = .5) : s > 40 ? (w.sprite1.opacity = .3,
+        w.sprite1.speed = .7,
+        w.sprite2.opacity = .3,
+        w.sprite2.speed = .7) : (w.sprite1.opacity = .1,
+        w.sprite1.speed = 1.2,
+        w.sprite2.opacity = .1,
+        w.sprite2.speed = 1.2),
+        w.trace.setLocalPosition(0, 0, -5),
         pc.controls.player.playerId,
-        I.trace.tween(I.trace.getLocalPosition()).to({
+        w.trace.tween(w.trace.getLocalPosition()).to({
             x: 0,
             y: 0,
-            z: -l
+            z: -p
         }, .2, pc.Linear).start(),
-        clearTimeout(I.timer),
-        I.timer = setTimeout(function(t) {
+        clearTimeout(w.timer),
+        w.timer = setTimeout(function(t) {
             t.trace.setLocalPosition(0, 0, -500)
-        }, 250, I)
+        }, 250, w)
     }
     this.shootRayIndex++,
     this.shootRayIndex > this.shootRayCount - 1 && (this.shootRayIndex = 0)
@@ -5290,11 +5172,11 @@ EffectManager.prototype.calculateRichotte = function(t, e, i, a) {
     if (n && n.point) {
         var o = new pc.Vec3(n.point.x,s.y,n.point.y)
           , r = Math.random()
-          , p = s.clone().sub(o).length();
-        if (r > .5 && p < 3) {
-            var l = "FlyBy-" + (Math.round(1 * Math.random()) + 2);
+          , l = s.clone().sub(o).length();
+        if (r > .5 && l < 3) {
+            var p = "FlyBy-" + (Math.round(1 * Math.random()) + 2);
             this.entity.setPosition(o),
-            this.entity.sound.play(l),
+            this.entity.sound.play(p),
             this.app.fire("Overlay:Ricochet", o)
         }
     }
@@ -5303,8 +5185,11 @@ EffectManager.prototype.calculateRichotte = function(t, e, i, a) {
 EffectManager.prototype.update = function(t) {
     this.updateBullets(t);
     var e = this.cameraEntity.getPosition();
-    this.explosionEntity.lookAt(e),
-    this.skullEntity.lookAt(e)
+    for (var i in this.explosionEntity.lookAt(e),
+    this.skullEntity.lookAt(e),
+    this.lookAtEntities) {
+        this.lookAtEntities[i].lookAt(this.cameraEntity.getPosition().clone())
+    }
 }
 ;
 var WeaponManager = pc.createScript("weaponManager");
@@ -6128,7 +6013,7 @@ NetworkManager.prototype.weapon = function(e) {
 }
 ,
 NetworkManager.prototype.setThrow = function(e, t, i) {
-    "Grenade" == e ? this.send([this.keys.throw, e, t.x, t.y, t.z, i.x, i.y, i.z]) : "Shuriken" == e && this.send([this.keys.throw, e, t.x, t.y, t.z, i[0], i[1], i[2]])
+    "Grenade" == e || "Grapple" == e || "Axe" == e ? this.send([this.keys.throw, e, t.x, t.y, t.z, i.x, i.y, i.z]) : "Shuriken" == e && this.send([this.keys.throw, e, t.x, t.y, t.z, i[0], i[1], i[2]])
 }
 ,
 NetworkManager.prototype.throw = function(e) {
@@ -6142,12 +6027,10 @@ NetworkManager.prototype.throw = function(e) {
           , n = e[6]
           , p = e[7]
           , h = e[8]
-          , c = new pc.Vec3(i,a,r);
-        if ("Grenade" == t) {
-            var l = new pc.Vec3(s,o,n);
-            this.app.fire("EffectManager:Throw", t, c, l, !1, h)
-        } else
-            "Shuriken" == t && this.app.fire("EffectManager:Shuriken", c, [s, o, n], p, h, !1)
+          , c = this.getPlayerById(p)
+          , l = new pc.Vec3(i,a,r)
+          , y = new pc.Vec3(s,o,n);
+        "Grenade" == t ? this.app.fire("EffectManager:Throw", t, l, y, !1, h) : "Grapple" == t ? this.app.fire("EffectManager:Grapple", c, l, y, !1, h) : "Axe" == t ? this.app.fire("EffectManager:Axe", l, y, !1, h) : "Shuriken" == t && this.app.fire("EffectManager:Shuriken", l, [s, o, n], p, h, !1)
     }
 }
 ,
@@ -8412,7 +8295,7 @@ NetworkManager.prototype.tick = function(e) {
 
 var Player = pc.createScript("player");
 Player.attributes.add("playerId", {
-    type: "string",
+    type: "number",
     default: -1
 }),
 Player.attributes.add("username", {
@@ -8445,15 +8328,6 @@ Player.attributes.add("characterArmLeft", {
 Player.attributes.add("characterArmRight", {
     type: "entity"
 }),
-Player.attributes.add("meleeCenter", {
-    type: "entity"
-}),
-Player.attributes.add("hammerEntity", {
-    type: "entity"
-}),
-Player.attributes.add("katanaEntity", {
-    type: "entity"
-}),
 Player.attributes.add("sex", {
     type: "string",
     default: "Female"
@@ -8461,14 +8335,6 @@ Player.attributes.add("sex", {
 Player.attributes.add("lowExposure", {
     type: "number",
     default: 4
-}),
-Player.attributes.add("throwCooldown", {
-    type: "number",
-    default: 8
-}),
-Player.attributes.add("dashCooldown", {
-    type: "number",
-    default: 10
 }),
 Player.attributes.add("weapons", {
     type: "string",
@@ -8542,10 +8408,10 @@ Player.prototype.initialize = function() {
 ,
 Player.prototype.onSpeedUp = function() {
     this.animation.cameraFov = this.app.tween(this.movement.animation).to({
-        fov: 20
+        fov: 10
     }, .5, pc.SineIn),
     this.animation.cameraShake = this.app.tween(pc.controls.animation).to({
-        cameraBounce: .8
+        cameraBounce: 1
     }, .04, pc.Linear).yoyo(!0).repeat(10),
     this.animation.cameraShake.start(),
     this.animation.cameraFov.start(),
@@ -8565,20 +8431,13 @@ Player.prototype.onCharacterSet = function(t) {
     this.characterEntity = e,
     this.danceName = this.characterName + "-Techno",
     this.characterArmLeft.model.asset = this.app.assets.find(t + "-RightArm"),
-    this.characterArmRight.model.asset = this.app.assets.find(t + "-LeftArm");
-    var s = this.meleeCenter.findByTag("Melee");
-    for (var o in s) {
-        s[o].enabled = !1
-    }
-    "Lilium" == t ? (this.hammerEntity.enabled = !0,
-    this.throwCooldown = 10) : "Shin" == t && (this.katanaEntity.enabled = !0,
-    this.throwCooldown = 3)
+    this.characterArmRight.model.asset = this.app.assets.find(t + "-LeftArm")
 }
 ,
 Player.prototype.onDanceSet = function(t) {
     var e = this.characterName
       , a = this.app.assets.find(e + "-" + t + "-Animation")
-      , i = this.app.assets.find(e + "-" + t + "-Music.mp3");
+      , i = this.app.assets.find(t + "-Music.mp3");
     if (a) {
         this.app.assets.load(a);
         var s = this.characterEntity.animation.assets;
@@ -9134,6 +8993,7 @@ Enemy.prototype.initialize = function() {
     this.skinMaterial = !1,
     this.isActive = !0,
     this.isDashing = !1,
+    this.isGrappling = !1,
     this.isEmotePlaying = !1,
     this.headAngle = 52,
     this.bodyAngle = 62,
@@ -9277,7 +9137,7 @@ Enemy.prototype.setCharacterSkin = function(t, i, e) {
 ,
 Enemy.prototype.setDanceAnimation = function(t, i) {
     var e = this.app.assets.find(t + "-" + i + "-Animation")
-      , s = this.app.assets.find(t + "-" + i + "-Music.mp3");
+      , s = this.app.assets.find(i + "-Music.mp3");
     if (e) {
         this.app.assets.load(e);
         var n = this.characterEntity.animation.assets;
@@ -9307,7 +9167,7 @@ Enemy.prototype.loadCharacterParts = function() {
     this.bodyAngle = 62,
     t = 90,
     i = -3.92,
-    e = -180) : "Shin" == this.skin && (this.headEntity = this.characterEntity.findByName("Head"),
+    e = -180) : "Shin" == this.skin ? (this.headEntity = this.characterEntity.findByName("Head"),
     this.spineEntity = this.characterEntity.findByName("Chest"),
     this.handEntity = this.characterEntity.findByName("Hand_R"),
     this.headAngleX = -90,
@@ -9322,7 +9182,22 @@ Enemy.prototype.loadCharacterParts = function() {
     this.bodyAngle = 70,
     t = 0,
     i = -10,
-    e = -95),
+    e = -95) : "Echo" == this.skin && (this.headEntity = this.characterEntity.findByName("head"),
+    this.spineEntity = this.characterEntity.findByName("spine_02"),
+    this.handEntity = this.characterEntity.findByName("hand_r"),
+    this.headAngleX = 0,
+    this.headAngleY = 52,
+    this.headAngleZ = 0,
+    this.spineFactorX = 1,
+    this.spineFactorY = 0,
+    this.spineFactorZ = -1,
+    this.spineDirectionX = 0,
+    this.spineDirectionY = -10,
+    this.spineDirectionZ = 0,
+    this.bodyAngle = 62,
+    t = 90,
+    i = -3.92,
+    e = -180),
     this.weaponHolder.setLocalEulerAngles(t, i, e),
     this.weaponHolder.setLocalScale(40, 40, 40),
     this.weaponHolder.reparent(this.handEntity),
@@ -9435,7 +9310,8 @@ Enemy.prototype.respawn = function(t) {
 }
 ,
 Enemy.prototype.dealSpell = function(t) {
-    "Shuriken" == t && this.app.fire("Network:DealSpell", this.playerId)
+    "Shuriken" == t && this.app.fire("Network:DealSpell", this.playerId),
+    "Axe" == t && this.app.fire("Network:DealSpell", this.playerId)
 }
 ,
 Enemy.prototype.damage = function(t, i, e) {
@@ -9565,6 +9441,11 @@ Enemy.prototype.triggerEvent = function(t) {
     }
 }
 ,
+Enemy.prototype.playGrappleAnimation = function() {
+    this.characterEntity.animation.speed = .1,
+    this.setAnimation("Echo-Grapple")
+}
+,
 Enemy.prototype.dash = function() {
     if (this.isDashing)
         return !1;
@@ -9637,7 +9518,7 @@ Enemy.prototype.bounceJump = function() {
 }
 ,
 Enemy.prototype.setDirection = function() {
-    if (this.isDeath || this.isJumping || this.isEmotePlaying || this.isDashing)
+    if (this.isDeath || this.isJumping || this.isEmotePlaying || this.isDashing || this.isGrappling)
         return !1;
     var t = "none";
     if (this.isForward && this.isLeft ? t = "Forward-Left" : this.isForward && this.isRight ? t = "Forward-Right" : this.isBackward && this.isLeft ? t = "Backward-Left" : this.isBackward && this.isRight ? t = "Backward-Right" : this.isForward ? t = "Forward" : this.isBackward ? t = "Backward" : this.isLeft ? t = "Left" : this.isRight && (t = "Right"),
@@ -10103,7 +9984,7 @@ Menu.prototype.onCloseMobile = function() {
 ,
 Menu.prototype.attachCharacterEntity = function() {
     var e = "Character1_RightHand";
-    "Lilium" == pc.session.character ? e = "Character1_RightHand" : "Shin" == pc.session.character && (e = "Hand_R");
+    "Lilium" == pc.session.character ? e = "Character1_RightHand" : "Shin" == pc.session.character ? e = "Hand_R" : "Echo" == pc.session.character && (e = "hand_r");
     var t = this.characterEntity.findByName(e);
     t && (this.weaponEntity = this.characterEntity.findByName("Weapon"),
     this.weaponEntity.setLocalScale(100, 100, 100),
@@ -10382,8 +10263,9 @@ Menu.prototype.onCharacterSelect = function(e) {
     this.characterName.element.text = e.toLowerCase(),
     this.entity.sound.play("Whoosh"),
     "Lilium" == e ? (this.meleeIcon.element.textureAsset = this.app.assets.find("Lilium-Melee.png"),
-    this.throwIcon.element.textureAsset = this.app.assets.find("Grenade-Icon.png")) : "Shin" == e && (this.meleeIcon.element.textureAsset = this.app.assets.find("Shin-Melee.png"),
-    this.throwIcon.element.textureAsset = this.app.assets.find("Star-Icon.png")),
+    this.throwIcon.element.textureAsset = this.app.assets.find("Grenade-Icon.png")) : "Shin" == e ? (this.meleeIcon.element.textureAsset = this.app.assets.find("Shin-Melee.png"),
+    this.throwIcon.element.textureAsset = this.app.assets.find("Star-Icon.png")) : "Echo" == e && (this.meleeIcon.element.textureAsset = this.app.assets.find("Echo-Melee.png"),
+    this.throwIcon.element.textureAsset = this.app.assets.find("Axe-Icon.png")),
     pc.session.character = e,
     this.attachCharacterEntity()
 }
@@ -12452,7 +12334,8 @@ SpellManager.prototype.initialize = function() {
     this.isActiveSpell = !1,
     this.activeSpells = [],
     this.weaponMaterial = !1,
-    this.player = this.playerEntity.script.player
+    this.player = this.playerEntity.script.player,
+    this.playerAbilities = this.playerEntity.script.playerAbilities
 }
 ,
 SpellManager.prototype.onCharacterSet = function(e) {
@@ -12460,7 +12343,7 @@ SpellManager.prototype.onCharacterSet = function(e) {
 }
 ,
 SpellManager.prototype.onGameStart = function() {
-    "Lilium" == this.characterName ? this.player.throwCooldown = 10 : "Shin" == this.characterName && (this.player.throwCooldown = 3),
+    "Lilium" == this.characterName ? this.playerAbilities.throwCooldown = 10 : "Shin" == this.characterName && (this.playerAbilities.throwCooldown = 3),
     this.isReducedApplied = !1
 }
 ,
@@ -12469,17 +12352,19 @@ SpellManager.prototype.onRespawn = function() {
     this.app.scene.fogDensity = 1e-4
 }
 ,
-SpellManager.prototype.onEffectTrigger = function(e) {
+SpellManager.prototype.onEffectTrigger = function(e, t) {
     if ("Wind" == e) {
-        var t = 1.367
-          , i = .878;
-        this.cameraEntity.camera.fov > 75 && (t = 1.972,
-        i = 1.266),
-        this.windEntity.setLocalScale(t, i, i),
+        var i = 1.367
+          , a = .878
+          , n = 300;
+        t && t > 0 && (n = t),
+        this.cameraEntity.camera.fov > 75 && (i = 1.972,
+        a = 1.266),
+        this.windEntity.setLocalScale(i, a, a),
         this.windEntity.enabled = !0,
         setTimeout(function(e) {
             e.windEntity.enabled = !1
-        }, 300, this)
+        }, n, this)
     }
 }
 ,
@@ -12687,7 +12572,7 @@ SpellManager.prototype.cancelFrostBomb = function() {
 SpellManager.prototype.cancelMuscleShock = function() {}
 ,
 SpellManager.prototype.applyReduce = function() {
-    this.isReducedApplied || ("Lilium" == this.characterName ? this.player.throwCooldown = 7 : "Shin" == this.characterName && (this.player.throwCooldown = 2),
+    this.isReducedApplied || ("Lilium" == this.characterName ? this.playerAbilities.throwCooldown = 7 : "Shin" == this.characterName && (this.playerAbilities.throwCooldown = 2),
     this.isReducedApplied = !0,
     this.app.fire("Overlay:Announce", "Reduce", "Throw cooldown time reduced", !1, "Reduce-Icon"))
 }
@@ -17712,6 +17597,9 @@ var Grapple = pc.createScript("grapple");
 Grapple.attributes.add("ropeEntity", {
     type: "entity"
 }),
+Grapple.attributes.add("holderEntity", {
+    type: "entity"
+}),
 Grapple.attributes.add("grappleEntity", {
     type: "entity"
 }),
@@ -17739,39 +17627,51 @@ Grapple.attributes.add("active", {
     default: !1
 }),
 Grapple.prototype.initialize = function() {
-    this.app.on("Grapple:Throw", this.onThrow, this)
+    this.currentPlayerEntity = !1
 }
 ,
-Grapple.prototype.onThrow = function(t, i) {
-    !1 === t && (t = this.playerEntity.getPosition().clone()),
-    this.entity.setPosition(t),
-    this.entity.lookAt(i),
+Grapple.prototype.onThrow = function(t, i, e) {
+    if (this.currentPlayerEntity = t,
+    !1 === i && (i = this.currentPlayerEntity.getPosition().clone()),
+    this.currentPlayerEntity && this.currentPlayerEntity.script && this.currentPlayerEntity.script.enemy && (this.currentPlayerEntity.script.enemy.isGrappling = !0,
+    this.currentPlayerEntity.script.enemy.playGrappleAnimation()),
+    i.clone().sub(e).length() > 47)
+        return !1;
+    this.holderEntity.enabled = !0,
+    this.entity.setPosition(i),
+    this.entity.lookAt(e),
     this.originEntity.reparent(this.entity),
     this.originEntity.setLocalPosition(0, 0, 0),
     this.ropeEntity.reparent(this.originEntity),
     this.ropeEntity.setLocalPosition(0, 0, 0),
-    this.swingEntity.setPosition(i),
+    this.swingEntity.setPosition(e),
     this.swingEntity.setLocalEulerAngles(0, 0, 0),
     this.swingRopeEntity.setLocalScale(1, 1, 1),
-    this.scaleRope(t, i),
+    this.scaleRope(i, e),
+    setTimeout(function(t) {
+        t.entity.sound.play("Foley-Start")
+    }, 100, this),
+    setTimeout(function(t) {
+        t.entity.sound.play("Whip")
+    }, 300, this),
     this.active = !0
 }
 ,
 Grapple.prototype.scaleRope = function(t, i) {
-    var e = i.clone().sub(t).length() / 4;
+    var e = i.clone().sub(t).length() / 3.8;
     this.ropeEntity.setLocalScale(.5, .1, .5),
     this.ropeEntity.tween(this.ropeEntity.getLocalScale()).to({
         x: .5,
         y: e,
         z: .5
     }, .85, pc.ElasticOut).start(),
-    this.grappleEntity.setLocalPosition(0, .34, 0),
+    this.grappleEntity.setLocalPosition(0, .6, 0),
     this.grappleEntity.tween(this.grappleEntity.getLocalPosition()).to({
         x: 0,
-        y: 3.2 * e,
+        y: 3.1 * e,
         z: 0
-    }, .5, pc.ElasticOut).start();
-    var n = 5 * Math.random();
+    }, .85, pc.ElasticOut).start();
+    var n = 3 * Math.random();
     this.grappleEntity.setLocalEulerAngles(85, 50, 30),
     this.grappleEntity.tween(this.grappleEntity.getLocalEulerAngles()).rotate({
         x: 0,
@@ -17780,10 +17680,11 @@ Grapple.prototype.scaleRope = function(t, i) {
     }, 1, pc.ElasticOut).start(),
     setTimeout(function(t, i) {
         t.swing(i)
-    }, 250, this, e)
+    }, 500, this, e)
 }
 ,
 Grapple.prototype.swing = function(t) {
+    this.entity.sound.play("Zipline"),
     this.originEntity.reparent(this.swingEntity),
     this.originEntity.setLocalPosition(0, 0, 3.8 * t),
     this.ropeEntity.reparent(this.swingRopeEntity),
@@ -17792,7 +17693,7 @@ Grapple.prototype.swing = function(t) {
         x: 1,
         y: .1,
         z: 1
-    }, .4, pc.QuadraticOut).start(),
+    }, .6, pc.QuadraticOut).start(),
     setTimeout(function(t) {
         t.swingEntity.tween(t.swingEntity.getLocalEulerAngles()).rotate({
             x: 90,
@@ -17804,23 +17705,26 @@ Grapple.prototype.swing = function(t) {
             y: .2,
             z: 1
         }, .3, pc.BackOut).delay(.05).start()
-    }, 300, this),
-    this.app.fire("Player:SpeedUp", !0),
+    }, 600, this),
+    pc.controls.entity == this.currentPlayerEntity && this.app.fire("Player:SpeedUp", !0),
     setTimeout(function(t) {
         t.active = !1,
         t.kickForce()
-    }, 500, this)
+    }, 400, this)
 }
 ,
 Grapple.prototype.kickForce = function() {
-    var t = this.entity.forward.scale(50);
-    this.playerEntity.rigidbody.applyImpulse(t)
+    var t = this.entity.forward.scale(90);
+    this.currentPlayerEntity.rigidbody.applyImpulse(t),
+    this.holderEntity.enabled = !1,
+    this.currentPlayerEntity && this.currentPlayerEntity.script && this.currentPlayerEntity.script.enemy && (this.currentPlayerEntity.script.enemy.isGrappling = !1),
+    this.entity.sound.play("Foley-Strong")
 }
 ,
 Grapple.prototype.update = function() {
     if (this.isPlayerGrapple && this.active) {
         var t = this.playerPoint.getPosition().clone();
-        this.playerEntity.rigidbody.teleport(t)
+        this.currentPlayerEntity.rigidbody.teleport(t)
     }
 }
 ;
@@ -18131,5 +18035,514 @@ InitTrigger.prototype.initialize = function() {
 ,
 InitTrigger.prototype.onState = function(t) {
     !0 === t && this.triggerFunction && this.app.fire(this.triggerFunction)
+}
+;
+var PlayerAbilities = pc.createScript("playerAbilities");
+PlayerAbilities.attributes.add("meleeCenter", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("meleeOrigin", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("shoulderEntity", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("throwPoint", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("throwHandPoint", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("weaponCenter", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("handEntity", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("armEntity", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("angleEntity", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("meleePoint", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("meleePoints", {
+    type: "entity",
+    array: !0
+}),
+PlayerAbilities.attributes.add("shurikenPoint1", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("shurikenPoint2", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("shurikenPoint3", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("hammerEntity", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("katanaEntity", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("grappleEntity", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("effectManagerEntity", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("lookPoint", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("hookIcon", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("screenEntity", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("testBox", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("inspectEntity", {
+    type: "entity"
+}),
+PlayerAbilities.attributes.add("inspectMaterial", {
+    type: "asset",
+    assetType: "material"
+}),
+PlayerAbilities.attributes.add("garbageEntity", {
+    type: "entity"
+}),
+PlayerAbilities.prototype.initialize = function() {
+    this.isDashing = !1,
+    this.isThrowing = !1,
+    this.isHitting = 0,
+    this.isGrappling = !1,
+    this.hittingTime = .7,
+    this.throwCooldown = 3,
+    this.dashCooldown = 10,
+    this.animation = {
+        inspectOpacity: 0
+    },
+    this.player = this.entity.script.player,
+    this.movement = this.entity.script.movement,
+    this.character = this.player.characterName,
+    this.effectManager = this.effectManagerEntity.script.effectManager,
+    this.grappleEntities = [],
+    this.timestamp = this.movement.timestamp,
+    this.lastThrowDate = this.now() - 5e3,
+    this.lastDashDate = this.now() - 5e3,
+    this.lastHookIndicatorTime = Date.now(),
+    this.lastAttentionDate = Date.now(),
+    this.lastHookPoint = new pc.Vec3(0,0,0),
+    this.lastDirectionVector = new pc.Vec3(0,0,0),
+    this.app.on("Player:Character", this.onCharacterSet, this),
+    this.app.on("Map:Loaded", this.onMapLoaded, this),
+    this.inspectEntities = [],
+    this.createInspectBatch()
+}
+,
+PlayerAbilities.prototype.onCharacterSet = function(t) {
+    var e = this.meleeCenter.findByTag("Melee");
+    for (var i in e) {
+        e[i].enabled = !1
+    }
+    "Lilium" == t ? (this.hammerEntity.enabled = !0,
+    this.throwCooldown = 10) : "Shin" == t ? (this.katanaEntity.enabled = !0,
+    this.throwCooldown = 3,
+    this.dashCooldown = 10) : "Echo" == t && (this.grappleEntity.enabled = !0,
+    this.throwCooldown = 3,
+    this.dashCooldown = 5),
+    this.character = t,
+    this.hideMelee()
+}
+,
+PlayerAbilities.prototype.onMapLoaded = function() {
+    "Echo" == this.character && (this.grappleEntities = this.app.root.findByTag("Grapple"))
+}
+,
+PlayerAbilities.prototype.triggerKeyF = function() {
+    "Lilium" == this.character ? this.throwGrenadeAnimation() : "Shin" == this.character ? this.throwShurikenAnimation() : "Echo" == this.character && this.throwAxeAnimation()
+}
+,
+PlayerAbilities.prototype.triggerKeyE = function() {
+    "Lilium" == this.character ? this.triggerAxeMelee() : "Shin" == this.character ? this.triggerDash() : "Echo" == this.character && this.triggerGrapple()
+}
+,
+PlayerAbilities.prototype.showMelee = function() {
+    this.meleeCenter.enabled = !0,
+    this.meleeCenter.tween(this.meleeCenter.getLocalPosition()).to({
+        y: -.246
+    }, .2, pc.BackOut).start()
+}
+,
+PlayerAbilities.prototype.hideMelee = function() {
+    this.meleeCenter.tween(this.meleeCenter.getLocalPosition()).to({
+        y: -1.5
+    }, .15, pc.BackOut).start(),
+    setTimeout(function(t) {
+        t.meleeCenter.enabled = !1
+    }, 150, this)
+}
+,
+PlayerAbilities.prototype.triggerAxeMelee = function() {
+    if (this.isHitting > this.timestamp)
+        return !1;
+    this.hideWeapons(),
+    this.showMelee(),
+    this.meleeHit(),
+    this.isHitting = this.timestamp + this.hittingTime,
+    this.player.fireNetworkEvent("m"),
+    this.player.melee()
+}
+,
+PlayerAbilities.prototype.meleeHit = function() {
+    this.meleeOrigin.setLocalPosition(-1.341, -2.65, -3.462),
+    this.meleeOrigin.tween(this.meleeOrigin.getLocalPosition()).to({
+        y: .67
+    }, .2, pc.BackOut).start(),
+    this.movement.playEffortSound(),
+    Math.random() > .5 ? (this.meleeOrigin.setLocalEulerAngles(66.97, -17.07, 29.54),
+    this.meleeOrigin.tween(this.meleeOrigin.getLocalEulerAngles()).rotate({
+        x: -20.32,
+        y: 40.6,
+        z: -108.25
+    }, .25, pc.BackOut).delay(.2).start()) : (this.meleeOrigin.setLocalEulerAngles(-42.45, -13.74, 21.08),
+    this.meleeOrigin.tween(this.meleeOrigin.getLocalEulerAngles()).rotate({
+        x: 37.81,
+        y: -38.75,
+        z: -130.44
+    }, .25, pc.BackOut).delay(.2).start()),
+    setTimeout(function(t) {
+        t.meleeTrigger(),
+        t.entity.sound.play("Throw"),
+        t.app.tween(t.movement.animation).to({
+            cameraImpact: -3
+        }, .1, pc.BackOut).start()
+    }, 200, this),
+    setTimeout(function(t) {
+        t.showWeapons(),
+        t.hideMelee()
+    }, 500, this)
+}
+,
+PlayerAbilities.prototype.meleeTrigger = function(t) {
+    this.movement.setShootDirection();
+    var e = this.movement.raycastShootFrom
+      , i = this.meleePoint.getPosition().clone()
+      , n = Math.round(20 * Math.random()) + 80;
+    t > 0 && (n = t),
+    this.app.fire("EffectManager:Hit", "Melee", e, i, this.player.playerId, n, this.meleePoints)
+}
+,
+PlayerAbilities.prototype.hideWeapons = function() {
+    this.weaponCenter.tween(this.weaponCenter.getLocalPosition()).to({
+        y: -1.5
+    }, .15, pc.BackOut).start()
+}
+,
+PlayerAbilities.prototype.showWeapons = function() {
+    this.weaponCenter.tween(this.weaponCenter.getLocalPosition()).to({
+        y: -.058
+    }, .2, pc.BackOut).start()
+}
+,
+PlayerAbilities.prototype.createInspectBatch = function() {
+    for (var t = 0; t < 7; t++) {
+        var e = this.inspectEntity.clone();
+        e.setPosition(Utils.nullVector),
+        e.enabled = !0,
+        this.inspectEntities.push(e),
+        this.garbageEntity.addChild(e)
+    }
+}
+,
+PlayerAbilities.prototype.showGrappleIndicators = function() {
+    if (Date.now() - this.lastAttentionDate < 200)
+        return !1;
+    var t = 0
+      , e = this.lookPoint.getPosition();
+    for (var i in this.grappleEntities) {
+        var n = this.grappleEntities[i];
+        n.getPosition().clone().sub(e).length() < 50 && this.inspectEntities[t] && (this.inspectEntities[t].enabled = !0,
+        this.inspectEntities[t].setPosition(n.getPosition().clone()),
+        this.inspectEntities[t].setRotation(n.getRotation().clone()),
+        this.inspectEntities[t].setLocalScale(n.collision.halfExtents.clone().scale(2.1)),
+        t++)
+    }
+    this.attentionInspect(),
+    this.lastAttentionDate = Date.now()
+}
+,
+PlayerAbilities.prototype.attentionInspect = function() {
+    this.animation.inspectOpacity = 1,
+    this.inspectMaterial.resource.opacity = 1,
+    this.inspectMaterial.resource.update();
+    var t = this.app.tween(this.animation).to({
+        inspectOpacity: 0
+    }, .2, pc.Linear)
+      , e = this;
+    t.on("update", function(t) {
+        e.inspectMaterial.resource.opacity = e.animation.inspectOpacity,
+        e.inspectMaterial.resource.update()
+    }),
+    t.start(),
+    this.entity.sound.play("Attention-Echo")
+}
+,
+PlayerAbilities.prototype.triggerGrapple = function() {
+    if (Date.now() - this.lastDashDate < 1e3 * this.dashCooldown)
+        return this.app.fire("Overlay:Attention", "Melee"),
+        !1;
+    if (this.isGrappling)
+        return !1;
+    if (!this.movement.isLanded)
+        return !1;
+    var t = this
+      , e = this.throwPoint.getPosition().clone()
+      , i = this.throwPoint.forward.scale(110)
+      , n = this.effectManager.testRaycast(e, i.clone().add(e));
+    return n ? n && n.distance > 47 ? (this.showGrappleIndicators(),
+    !1) : n && n.entity && -1 === n.entity.tags.list().indexOf("Grapple") ? (this.showGrappleIndicators(),
+    !1) : (this.player.fireNetworkEvent("grapple"),
+    this.isGrappling = !0,
+    this.lastDirectionVector = i.clone(),
+    this.inspectEntity.enabled = !1,
+    this.throwAnimation(function() {
+        t.movement.setCameraMovementLock(!0),
+        t.hookGrapple()
+    }, !0, 200),
+    this.app.fire("Overlay:MeleeTimer", 5),
+    void (this.lastDashDate = Date.now())) : (this.showGrappleIndicators(),
+    !1)
+}
+,
+PlayerAbilities.prototype.hookGrapple = function() {
+    this.app.fire("EffectManager:Grapple", this.entity, this.throwPoint.getPosition().clone(), this.lastDirectionVector, this.player.playerId, this.player.cards.length > 0),
+    this.app.fire("Network:Throw", "Grapple", this.throwPoint.getPosition().clone(), this.lastDirectionVector),
+    this.app.tween(this.movement.animation).to({
+        takeX: 0,
+        takeY: 0,
+        takeZ: 0
+    }, .2, pc.BackInOut).start(),
+    this.hideWeapons(),
+    this.entity.sound.play("Whoosh-High"),
+    this.entity.sound.slots["Whoosh-High"].pitch = 1 + .2 * Math.random(),
+    setTimeout(function(t) {
+        t.showMelee(),
+        t.app.fire("Effect:Trigger", "Wind", 500),
+        t.entity.sound.play("Buff-Attack")
+    }, 500, this),
+    setTimeout(function(t) {
+        t.hideMelee(),
+        t.isGrappling = !1,
+        t.movement.setCameraMovementLock(!1)
+    }, 800, this),
+    setTimeout(function(t) {
+        t.showWeapons()
+    }, 1e3, this)
+}
+,
+PlayerAbilities.prototype.throwAxe = function() {
+    if (this.isGrappling)
+        return !1;
+    var t = this.throwPoint.forward.scale(110);
+    this.app.fire("EffectManager:Axe", this.throwPoint.getPosition().clone(), t, this.player.playerId, this.player.cards.length > 0),
+    this.app.fire("Network:Throw", "Axe", this.throwPoint.getPosition().clone(), t),
+    this.entity.sound.play("Throw"),
+    this.app.fire("Overlay:SkillTimer", this.throwCooldown)
+}
+,
+PlayerAbilities.prototype.throwGrenade = function() {
+    this.app.fire("EffectManager:Throw", "Grenade", this.throwHandPoint.getPosition().clone(), this.throwHandPoint.forward, this.player.playerId, this.player.cards.length > 0),
+    this.app.fire("Network:Throw", "Grenade", this.throwHandPoint.getPosition().clone(), this.throwHandPoint.forward),
+    this.entity.sound.play("Throw"),
+    this.app.fire("Overlay:SkillTimer", this.throwCooldown)
+}
+,
+PlayerAbilities.prototype.triggerDash = function() {
+    if (Date.now() - this.lastDashDate < 1e3 * this.dashCooldown)
+        return this.entity.sound.play("Error"),
+        !1;
+    if (!this.movement.isLanded)
+        return !1;
+    var t = this.angleEntity.forward.scale(110);
+    this.isDashing = !0,
+    this.showMelee(),
+    this.hideWeapons(),
+    this.entity.rigidbody.applyImpulse(t),
+    this.player.melee(),
+    this.app.fire("Effect:Trigger", "Wind"),
+    this.app.fire("Overlay:MeleeTimer", 10),
+    this.player.fireNetworkEvent("dash"),
+    this.entity.sound.play("Buff-Attack"),
+    this.entity.sound.play("Whoosh-High"),
+    this.entity.sound.slots["Whoosh-High"].pitch = 1 + .2 * Math.random(),
+    this.app.tween(this.movement.animation).to({
+        fov: 10
+    }, .2, pc.BackOut).start(),
+    this.meleeOrigin.setLocalEulerAngles(106.08, 39.04, 48.43),
+    this.meleeOrigin.tween(this.meleeOrigin.getLocalEulerAngles()).rotate({
+        x: 48.79,
+        y: -44.81,
+        z: 34.89
+    }, .25, pc.BackOut).delay(.08).start(),
+    setTimeout(function(t) {
+        t.isDashing = !1,
+        t.showWeapons(),
+        t.hideMelee()
+    }, 200, this),
+    this.isHitting = this.timestamp + this.hittingTime,
+    this.lastDashDate = Date.now()
+}
+,
+PlayerAbilities.prototype.triggerDashDamage = function(t) {
+    var e = Math.round(20 * Math.random()) + 30
+      , i = {
+        entity: t.other,
+        normal: t.contacts[0].normal,
+        point: t.contacts[0].point
+    };
+    this.app.fire("EffectManager:DealHit", "Dash", i, e, this.player.playerId, !1)
+}
+,
+PlayerAbilities.prototype.triggerGrappleDamage = function(t) {
+    var e = Math.round(20 * Math.random()) + 40
+      , i = {
+        entity: t.other,
+        normal: t.contacts[0].normal,
+        point: t.contacts[0].point
+    };
+    this.app.fire("EffectManager:DealHit", "Grapple", i, e, this.player.playerId, !1)
+}
+,
+PlayerAbilities.prototype._throwShuriken = function() {
+    this.movement.setShootDirection(),
+    this.entity.sound.play("Whoosh-High"),
+    this.entity.sound.slots["Whoosh-High"].pitch = 1 + .2 * Math.random(),
+    this.app.fire("EffectManager:Shuriken", this.throwHandPoint.getPosition(), [this.shurikenPoint1.getPosition(), this.shurikenPoint2.getPosition(), this.shurikenPoint3.getPosition()], this.player.playerId),
+    this.app.fire("Network:Throw", "Shuriken", this.throwHandPoint.getPosition(), [this.shurikenPoint1.getPosition(), this.shurikenPoint2.getPosition(), this.shurikenPoint3.getPosition()])
+}
+,
+PlayerAbilities.prototype.throwShuriken = function() {
+    for (var t = 0; t < 3; t++)
+        setTimeout(function(t) {
+            t._throwShuriken()
+        }, 90 * t, this);
+    this.app.fire("Overlay:SkillTimer", this.throwCooldown)
+}
+,
+PlayerAbilities.prototype.throwShurikenAnimation = function() {
+    var t = this;
+    this.throwAnimation(function() {
+        t.throwShuriken()
+    }, !0)
+}
+,
+PlayerAbilities.prototype.throwGrenadeAnimation = function() {
+    var t = this;
+    this.throwAnimation(function() {
+        t.throwGrenade()
+    }, !0)
+}
+,
+PlayerAbilities.prototype.throwAxeAnimation = function() {
+    var t = this;
+    this.throwAnimation(function() {
+        t.throwAxe()
+    }, !0, 200)
+}
+,
+PlayerAbilities.prototype.throwAnimation = function(t, e, i, n) {
+    var a = 400;
+    i && i > 0 && (a = i),
+    this.shoulderEntity.tween(this.shoulderEntity.getLocalEulerAngles()).rotate({
+        x: 42.75,
+        y: 30.65,
+        z: -57.65
+    }, a / 1e3, pc.SineOut).start(),
+    this.shoulderEntity.reparent(this.handEntity),
+    this.app.tween(this.movement.animation).to({
+        takeX: -.52,
+        takeY: 22.19,
+        takeZ: -55.11
+    }, a / 2500, pc.BackInOut).start(),
+    setTimeout(function(t) {
+        t.shoulderEntity.tween(t.shoulderEntity.getLocalEulerAngles()).rotate({
+            x: 147.77,
+            y: 3.9,
+            z: 138.54
+        }, a / 2e3, pc.Linear).start()
+    }, a / 2, this),
+    setTimeout(function(i) {
+        i.movement.playEffortSound(n),
+        i.shoulderEntity.tween(i.shoulderEntity.getLocalEulerAngles()).rotate({
+            x: 113.4,
+            y: -9.2,
+            z: 25.38
+        }, a / 700, pc.QuinticInOut).start(),
+        setTimeout(function() {
+            t(),
+            e && i.app.tween(i.movement.animation).to({
+                cameraImpact: -3
+            }, .1, pc.BackOut).start()
+        }, a / 2)
+    }, a, this),
+    setTimeout(function(t) {
+        t.shoulderEntity.tween(t.shoulderEntity.getLocalEulerAngles()).rotate({
+            x: 64.6,
+            y: 4.31,
+            z: 1.91
+        }, .2, pc.BackOut).start()
+    }, 2.8 * a, this),
+    setTimeout(function(t) {
+        t.isThrowing = !1,
+        t.shoulderEntity.reparent(t.armEntity),
+        t.shoulderEntity.tween(t.shoulderEntity.getLocalEulerAngles()).rotate({
+            x: 0,
+            y: 0,
+            z: 0
+        }, .2, pc.BackOut).start(),
+        t.app.tween(t.movement.animation).to({
+            takeX: 0,
+            takeY: 0,
+            takeZ: 0
+        }, .2, pc.BackInOut).start()
+    }, 2.9 * a, this)
+}
+,
+PlayerAbilities.prototype.now = function() {
+    return this.app._time
+}
+,
+PlayerAbilities.prototype.setScreenPosition = function(t, e) {
+    var i = new pc.Vec3
+      , n = this.app.systems.camera.cameras[0]
+      , a = this.app.graphicsDevice.maxPixelRatio
+      , s = this.screenEntity.screen.scale
+      , o = this.app.graphicsDevice
+      , r = e;
+    if (!n)
+        return !1;
+    n.worldToScreen(r, i),
+    i.x *= a,
+    i.y *= a,
+    i.x > 0 && i.x < this.app.graphicsDevice.width && i.y > 0 && i.y < this.app.graphicsDevice.height && i.z > 0 ? (t.setLocalPosition(i.x / s, (o.height - i.y) / s, 0),
+    t.enabled = !0) : t.enabled = !1
+}
+,
+PlayerAbilities.prototype.visionUpdate = function() {
+    if (this.movement.setShootDirection(),
+    "Echo" == this.character) {
+        var t = this.effectManager.testRaycast(this.movement.raycastShootFrom, this.movement.raycastTo);
+        t && t.distance > 1 && t.distance < 40 && t.entity && t.entity.tags.list().indexOf("Grapple") > -1 ? this.hookIcon.enabled = !0 : this.hookIcon.enabled = !1
+    }
+}
+,
+PlayerAbilities.prototype.update = function(t) {
+    this.visionUpdate(),
+    this.timestamp = this.movement.timestamp
 }
 ;

@@ -8035,7 +8035,8 @@
     "40c1b609-56d5-45f3-8f32-5a668cb1e7b9": {
       "name": "Snake-Floor",
       "tags": [
-        "Concrete"
+        "Concrete",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "40c1b609-56d5-45f3-8f32-5a668cb1e7b9",
@@ -9083,7 +9084,8 @@
     "d3157d4a-44b5-447a-9365-b6ae0bcd2b97": {
       "name": "Snake-Floor",
       "tags": [
-        "Concrete"
+        "Concrete",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "d3157d4a-44b5-447a-9365-b6ae0bcd2b97",
@@ -10551,7 +10553,8 @@
     "57a0c6e1-dab0-4993-8fe0-b4933df51b60": {
       "name": "Snake-Floor",
       "tags": [
-        "Concrete"
+        "Concrete",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "57a0c6e1-dab0-4993-8fe0-b4933df51b60",
@@ -14307,7 +14310,8 @@
     "b265f9a5-f556-4f08-afa1-a57a41e92b1d": {
       "name": "Snake-Floor",
       "tags": [
-        "Concrete"
+        "Concrete",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "b265f9a5-f556-4f08-afa1-a57a41e92b1d",
@@ -27259,7 +27263,8 @@
     "69e8b88b-8c1f-4ac7-bc38-757a1467bef4": {
       "name": "Snake-Floor",
       "tags": [
-        "Concrete"
+        "Concrete",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "69e8b88b-8c1f-4ac7-bc38-757a1467bef4",
@@ -27415,7 +27420,8 @@
     "d6def025-f09f-4e1a-bbba-88a8cb0ac56b": {
       "name": "Snake-Floor",
       "tags": [
-        "Concrete"
+        "Concrete",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "d6def025-f09f-4e1a-bbba-88a8cb0ac56b",
@@ -31709,7 +31715,8 @@
     "9c2342fe-82a1-4200-a459-250888dc89c3": {
       "name": "Snake-Floor",
       "tags": [
-        "Concrete"
+        "Concrete",
+        "Grapple"
       ],
       "enabled": true,
       "resource_id": "9c2342fe-82a1-4200-a459-250888dc89c3",

@@ -329,7 +329,8 @@
           "order": [
             "movement",
             "weaponManager",
-            "player"
+            "player",
+            "playerAbilities"
           ],
           "scripts": {
             "movement": {
@@ -428,7 +429,6 @@
                 "characterCameraHolder": "b72c0968-5700-4e6a-bd46-84367f74a4e2",
                 "sex": "Female",
                 "lowExposure": 2,
-                "throwCooldown": 10,
                 "weapons": [
                   "Scar",
                   "Shotgun",
@@ -437,11 +437,45 @@
                 ],
                 "danceName": "Techno",
                 "characterName": "Lilium",
-                "characterArmLeft": "ac6d9d60-eaca-4660-8be4-0595b9b27b06",
+                "characterArmLeft": "f3d58c57-8ef9-4a54-9d6b-fa2f80c5eb76",
                 "characterArmRight": "25d3a2d2-50a2-456f-a117-af777b61e455",
+                "playerId": -1
+              }
+            },
+            "playerAbilities": {
+              "enabled": true,
+              "attributes": {
                 "meleeCenter": "e274f82e-7e5a-4239-96e2-f649a792c64f",
+                "shoulderEntity": "a1697e49-b421-4c1f-80d7-c4e46b3c117e",
+                "throwPoint": "ad76fa85-2a31-4d46-8bf3-1a692b74c814",
+                "meleePoint": "b9e4db1c-d9f4-42b7-9358-138fce8df3bc",
+                "weaponCenter": "f6362378-ef61-4e6e-90a0-f4bfa23a448d",
+                "meleePoints": [
+                  "c50f7acf-d16d-41b9-8157-eca207cd9c1d",
+                  "17b5bfde-4136-4a48-a5de-2a4ff5dacfe0",
+                  "36da96ae-7238-420c-aed7-13ecf65a57e4",
+                  "17785b42-14f6-47b3-a508-1c1bc3048eb7",
+                  "b9b2638a-d59f-4e10-a842-9ce519281b01"
+                ],
+                "shurikenPoint1": "0670086f-4ba6-477c-af94-4293a207cf3f",
+                "shurikenPoint2": "f67fab9f-377e-4755-b483-1714a5a74292",
+                "shurikenPoint3": "39ce40b7-4e4b-41bd-a6d2-05bda69a49ea",
+                "meleeOrigin": "f23ecc94-2204-4c25-b51b-fc2a1e5c737b",
+                "handEntity": "7799d1c6-d41a-491e-b60e-a37ea01aa096",
+                "armEntity": "c112a26d-22a6-468a-82d6-b3b600b07bc5",
+                "angleEntity": "6101aaba-dc5d-41dc-b26b-436a6af2f613",
                 "hammerEntity": "97b3834f-fe49-40d7-80fe-2b54174fb2bb",
-                "katanaEntity": "518fdcbc-871f-4243-8826-2a349484bfc8"
+                "katanaEntity": "518fdcbc-871f-4243-8826-2a349484bfc8",
+                "grappleEntity": "d13d2656-a57c-4677-bd8c-d8ce05b011f8",
+                "effectManagerEntity": "34d9554d-9a90-4090-95cd-07fb900bb43d",
+                "testBox": "776273e3-be41-4743-9396-29e78173edf6",
+                "lookPoint": "565b6ed9-2c10-42b1-9467-3aadb89b99f5",
+                "hookIcon": "ca4c3dcb-6f67-441f-83c5-e4f0ab102d21",
+                "screenEntity": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
+                "inspectEntity": "95e8f0c6-9a19-4ba4-8939-d916f60abb48",
+                "inspectMaterial": 37436430,
+                "garbageEntity": "fcf27bc6-8c98-4b74-ac38-36482fad0dbb",
+                "throwHandPoint": "9f0a5779-8456-4828-8259-e5a0aaf5f24c"
               }
             }
           }
@@ -873,6 +907,28 @@
               "duration": null,
               "volume": 0.5,
               "pitch": 1
+            },
+            "42": {
+              "name": "Attention-Echo",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440105,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "43": {
+              "name": "Tick-Tock",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440128,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
             }
           }
         }
@@ -886,7 +942,8 @@
       "parent": "93790e46-99cf-49e7-830a-a15bc441b889",
       "children": [
         "68d4e7a4-7063-11ea-97ae-026349a27a7c",
-        "ad76fa85-2a31-4d46-8bf3-1a692b74c814"
+        "ad76fa85-2a31-4d46-8bf3-1a692b74c814",
+        "9f0a5779-8456-4828-8259-e5a0aaf5f24c"
       ],
       "position": [
         0,
@@ -1032,7 +1089,7 @@
               "asset": 29479198,
               "startTime": 0,
               "duration": null,
-              "volume": 1,
+              "volume": 0.6,
               "pitch": 1
             },
             "2": {
@@ -1043,7 +1100,7 @@
               "asset": 29479199,
               "startTime": 0,
               "duration": null,
-              "volume": 1,
+              "volume": 0.6,
               "pitch": 1
             },
             "3": {
@@ -1128,6 +1185,7 @@
       "children": [
         "db3d2f6d-518b-48a4-9514-ea0f07d4e63f",
         "7799d1c6-d41a-491e-b60e-a37ea01aa096",
+        "565b6ed9-2c10-42b1-9467-3aadb89b99f5",
         "69e381ee-446c-4c7d-a61e-dc2b7940b5ea",
         "63cc6332-bf3e-4da6-a11b-c467bead28a4",
         "b9e4db1c-d9f4-42b7-9358-138fce8df3bc",
@@ -1213,6 +1271,7 @@
         "a0ecd56f-c56a-4525-87f1-957f18940981",
         "f8763836-19f6-44e6-8682-8da05cc064b6",
         "2885c322-8cea-4b70-b591-89266a1bb5a0",
+        "2c2cdaeb-9cf9-44fb-ab75-40b9073929f2",
         "907d5c7e-7daa-4663-a7e9-5807b0f17a74",
         "6cfce88b-0ac9-45d8-a5dc-bc86f23f539d",
         "71eb5b83-a160-43d9-aab3-4ad7caa239b8",
@@ -1829,6 +1888,39 @@
               "autoPlay": false,
               "overlap": false,
               "asset": 36680489,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "41": {
+              "name": "Attention-Echo",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440105,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "42": {
+              "name": "Tick-Tock-Short",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440128,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "43": {
+              "name": "Error",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 31197478,
               "startTime": 0,
               "duration": null,
               "volume": 1,
@@ -3201,10 +3293,10 @@
             1,
             0.5
           ],
-          "text": "Knights Academy Gaming",
+          "text": "Guest",
           "key": null,
           "fontAsset": 29329818,
-          "fontSize": 26,
+          "fontSize": 20,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
@@ -3215,8 +3307,8 @@
           "spacing": 1,
           "color": [
             1,
-            0,
-            0
+            1,
+            1
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -3226,9 +3318,9 @@
           "width": 45.479,
           "height": 20.957,
           "margin": [
-            74.7,
+            -115.479,
             -10.479,
-            35,
+            70,
             -10.479
           ],
           "alignment": [
@@ -3241,7 +3333,7 @@
             0,
             1
           ],
-          "outlineThickness": 0.45,
+          "outlineThickness": 0,
           "shadowColor": [
             0,
             0,
@@ -3307,7 +3399,7 @@
             0.5,
             0.5
           ],
-          "text": "",
+          "text": "0",
           "key": null,
           "fontAsset": 29313023,
           "fontSize": 20,
@@ -3413,7 +3505,7 @@
             0.5,
             0.5
           ],
-          "text": "",
+          "text": "0",
           "key": null,
           "fontAsset": 29313023,
           "fontSize": 20,
@@ -3519,10 +3611,10 @@
             0,
             0.5
           ],
-          "text": "ERA",
+          "text": "Guest",
           "key": null,
           "fontAsset": 29329818,
-          "fontSize": 26,
+          "fontSize": 20,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
@@ -3532,7 +3624,7 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0,
+            1,
             1,
             1
           ],
@@ -3544,9 +3636,9 @@
           "width": 45.479,
           "height": 20.957,
           "margin": [
-            35,
+            70,
             -10.479,
-            0.479,
+            -115.479,
             -10.479
           ],
           "alignment": [
@@ -3559,7 +3651,7 @@
             0,
             1
           ],
-          "outlineThickness": 0.45,
+          "outlineThickness": 0,
           "shadowColor": [
             0,
             0,
@@ -4259,6 +4351,14 @@
                 "killSphereEntity": "fbc1de9e-7379-455b-a473-c7195fd7ae25",
                 "explosive": [
                   "Barrel"
+                ],
+                "axeEntity": "3ce549c5-f2f1-4370-b257-bda3100e8f19",
+                "abilityHolder": "e10a6925-37a3-4cbc-878c-7fd37b460250",
+                "grappleEntity": "5fdfdb5b-7203-4852-b7df-8b28ba1bee5c",
+                "grapples": [
+                  "5fdfdb5b-7203-4852-b7df-8b28ba1bee5c",
+                  "e00cf7db-e6da-493b-b68b-fb32b6c7ccd0",
+                  "d97fe206-3ba4-4cc4-8edf-b50e625d1cde"
                 ]
               }
             }
@@ -4279,7 +4379,7 @@
               "loop": false,
               "autoPlay": false,
               "overlap": false,
-              "asset": 30026073,
+              "asset": 37459201,
               "startTime": 0,
               "duration": null,
               "volume": 1,
@@ -4428,13 +4528,11 @@
         "4442000b-6faa-4926-8796-9faff37f2aa3",
         "de27e70a-5470-4fa0-b01d-245314636bf5",
         "5b168db3-3eff-4b4d-acdf-50b4ff403524",
-        "58209216-a5d3-4da8-874e-de4ccd4b7304",
         "a50a0a93-f587-48b3-854c-830e3a85aab7",
         "a8543778-df77-4f28-8bc5-62c323272f5a",
         "24b27cc1-cf58-4f9e-8b27-6b4c4beac5db",
         "3f2f7cf1-bd93-455d-a542-a4b30a2c3268",
         "436591b0-26aa-4678-ad3f-645a76a01c9c",
-        "9c502ded-f8f5-4f7a-9534-608b920456c2",
         "fbc1de9e-7379-455b-a473-c7195fd7ae25"
       ],
       "position": [
@@ -5913,8 +6011,8 @@
             "networkManager": {
               "enabled": true,
               "attributes": {
-                "URL": "wss://server-na-18.venge.io",
-                "testURL": "wss://server-na-18.venge.io",
+                "URL": "wss://server-eu-3.venge.io",
+                "testURL": "wss://server-eu-3.venge.io",
                 "playerEntity": "d6311a5c-7dec-4eb4-b495-15f29130570e",
                 "overlayEntity": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
                 "menuCameraEntity": "c58e956e-222b-47a0-a2a2-44233169f8f5",
@@ -6810,7 +6908,8 @@
                 "weaponHolder": "bdeb1052-0eee-4b93-884a-e099c6923179",
                 "skins": [
                   "3e55d351-f74d-4632-b907-d780f3393c97",
-                  "02721b72-f283-4976-bba9-ca1ac434838b"
+                  "02721b72-f283-4976-bba9-ca1ac434838b",
+                  "072f0ba8-8387-4a4e-8252-ac0c3d3c43a3"
                 ],
                 "modelHolder": "6691bb9a-2a0c-4098-bbbb-10c7683c3ebe",
                 "hammerEntity": "12a5cc9c-449a-4334-89ff-e30e0e03426e",
@@ -10198,6 +10297,7 @@
       "parent": "d6311a5c-7dec-4eb4-b495-15f29130570e",
       "children": [
         "e2cc1773-de1b-4727-8abc-75ab4736c883",
+        "066d6c4a-cf08-4605-b3db-a91c70a022da",
         "c884fbec-c2df-4768-ac9e-c1c138969000",
         "b72c0968-5700-4e6a-bd46-84367f74a4e2"
       ],
@@ -11616,50 +11716,6 @@
         1
       ],
       "components": {}
-    },
-    "ac6d9d60-eaca-4660-8be4-0595b9b27b06": {
-      "name": "Female",
-      "tags": [],
-      "enabled": true,
-      "resource_id": "ac6d9d60-eaca-4660-8be4-0595b9b27b06",
-      "parent": "a1697e49-b421-4c1f-80d7-c4e46b3c117e",
-      "children": [],
-      "position": [
-        -0.18263244628905717,
-        0.356842041015625,
-        -0.07176017761230113
-      ],
-      "rotation": [
-        -53.104232321930674,
-        13.767848611559907,
-        -37.97787720004024
-      ],
-      "scale": [
-        2.5546106103911463,
-        2.5546106103911463,
-        2.5546106103911463
-      ],
-      "components": {
-        "model": {
-          "enabled": true,
-          "type": "asset",
-          "asset": 29973465,
-          "materialAsset": null,
-          "castShadows": false,
-          "castShadowsLightmap": false,
-          "receiveShadows": false,
-          "lightmapped": false,
-          "lightmapSizeMultiplier": 1,
-          "castShadowsLightMap": true,
-          "lightMapped": false,
-          "lightMapSizeMultiplier": 1,
-          "isStatic": false,
-          "layers": [
-            1000
-          ],
-          "batchGroupId": null
-        }
-      }
     },
     "62b8bc2c-ff14-4d50-845a-fc8b516d0987": {
       "name": "Bars",
@@ -13107,7 +13163,7 @@
     "e274f82e-7e5a-4239-96e2-f649a792c64f": {
       "name": "MeleeCenter",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "e274f82e-7e5a-4239-96e2-f649a792c64f",
       "parent": "0aa8b14c-8f4c-481d-9dee-67d1f99dfe6f",
       "children": [
@@ -13179,7 +13235,7 @@
       "tags": [
         "Melee"
       ],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "97b3834f-fe49-40d7-80fe-2b54174fb2bb",
       "parent": "f23ecc94-2204-4c25-b51b-fc2a1e5c737b",
       "children": [
@@ -13785,18 +13841,16 @@
       "enabled": true,
       "resource_id": "ad76fa85-2a31-4d46-8bf3-1a692b74c814",
       "parent": "db3d2f6d-518b-48a4-9514-ea0f07d4e63f",
-      "children": [
-        "608ee1b3-f123-4c9e-b822-57f12e08ef00"
-      ],
+      "children": [],
       "position": [
-        -0.29098017976104984,
-        -0.4332456588745117,
+        0,
+        0,
         -2.0476932525634766
       ],
       "rotation": [
-        4.265438684852131,
-        -0.7227894377768078,
-        -0.05390692710025962
+        0,
+        0,
+        0
       ],
       "scale": [
         1,
@@ -13812,13 +13866,13 @@
       ],
       "enabled": false,
       "resource_id": "58209216-a5d3-4da8-874e-de4ccd4b7304",
-      "parent": "60fdbaf8-aecd-4713-99a8-d40d8a5eaa61",
+      "parent": "e10a6925-37a3-4cbc-878c-7fd37b460250",
       "children": [
         "29bc0ca0-722e-4259-8493-c9854a5cc909"
       ],
       "position": [
         0,
-        1.7092712572602142,
+        1.7092713117599487,
         0
       ],
       "rotation": [
@@ -13942,50 +13996,6 @@
           "castShadows": false,
           "castShadowsLightmap": false,
           "receiveShadows": false,
-          "lightmapped": false,
-          "lightmapSizeMultiplier": 1,
-          "castShadowsLightMap": true,
-          "lightMapped": false,
-          "lightMapSizeMultiplier": 1,
-          "isStatic": false,
-          "layers": [
-            0
-          ],
-          "batchGroupId": null
-        }
-      }
-    },
-    "608ee1b3-f123-4c9e-b822-57f12e08ef00": {
-      "name": "Box",
-      "tags": [],
-      "enabled": false,
-      "resource_id": "608ee1b3-f123-4c9e-b822-57f12e08ef00",
-      "parent": "ad76fa85-2a31-4d46-8bf3-1a692b74c814",
-      "children": [],
-      "position": [
-        0,
-        0,
-        0
-      ],
-      "rotation": [
-        0,
-        0,
-        0
-      ],
-      "scale": [
-        0.36778476011239847,
-        0.36778476011239847,
-        0.36778476011239847
-      ],
-      "components": {
-        "model": {
-          "enabled": true,
-          "type": "box",
-          "asset": null,
-          "materialAsset": null,
-          "castShadows": true,
-          "castShadowsLightmap": true,
-          "receiveShadows": true,
           "lightmapped": false,
           "lightmapSizeMultiplier": 1,
           "castShadowsLightMap": true,
@@ -15838,7 +15848,11 @@
                   "Oh!",
                   "Oi!",
                   "Doryaaa!",
-                  "My power is rising!"
+                  "My power is rising!",
+                  "The spirits have many secrets!",
+                  "Better luck next respawn.",
+                  "Another victory on my book!",
+                  "Restore my strength!"
                 ]
               }
             }
@@ -15998,7 +16012,7 @@
               "pitch": 1
             },
             "14": {
-              "name": "Shin-Attack1",
+              "name": "Shin-Attack-1",
               "loop": false,
               "autoPlay": false,
               "overlap": false,
@@ -16124,6 +16138,50 @@
               "autoPlay": false,
               "overlap": false,
               "asset": 32484541,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "26": {
+              "name": "Echo-Respawn-1",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37443474,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "27": {
+              "name": "Echo-Respawn-2",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37443475,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "28": {
+              "name": "Echo-Attack-1",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37443473,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "29": {
+              "name": "Echo-Heal-1",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37443476,
               "startTime": 0,
               "duration": null,
               "volume": 1,
@@ -19047,7 +19105,7 @@
       "resource_id": "a1697e49-b421-4c1f-80d7-c4e46b3c117e",
       "parent": "c112a26d-22a6-468a-82d6-b3b600b07bc5",
       "children": [
-        "ac6d9d60-eaca-4660-8be4-0595b9b27b06"
+        "f3d58c57-8ef9-4a54-9d6b-fa2f80c5eb76"
       ],
       "position": [
         -0.3793964385986275,
@@ -35778,6 +35836,105 @@
               "duration": null,
               "volume": 0.8,
               "pitch": 1
+            },
+            "18": {
+              "name": "Echo-Jump-1",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440358,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.5,
+              "pitch": 1
+            },
+            "19": {
+              "name": "Echo-Jump-2",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440357,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.5,
+              "pitch": 1
+            },
+            "20": {
+              "name": "Echo-Sigh",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440355,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "21": {
+              "name": "Echo-Throw-1",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440352,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "22": {
+              "name": "Echo-Throw-2",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440353,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "23": {
+              "name": "Echo-Grunt-1",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440356,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "24": {
+              "name": "Echo-Grunt-2",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440350,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "25": {
+              "name": "Echo-Grunt-3",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440354,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "26": {
+              "name": "Echo-Death-1",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": null,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
             }
           }
         },
@@ -36040,7 +36197,7 @@
       "tags": [
         "Melee"
       ],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "518fdcbc-871f-4243-8826-2a349484bfc8",
       "parent": "f23ecc94-2204-4c25-b51b-fc2a1e5c737b",
       "children": [
@@ -36070,7 +36227,7 @@
       "tags": [
         "Skin"
       ],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "3e55d351-f74d-4632-b907-d780f3393c97",
       "parent": "6691bb9a-2a0c-4098-bbbb-10c7683c3ebe",
       "children": [],
@@ -36138,7 +36295,7 @@
       "tags": [
         "Skin"
       ],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "02721b72-f283-4976-bba9-ca1ac434838b",
       "parent": "6691bb9a-2a0c-4098-bbbb-10c7683c3ebe",
       "children": [],
@@ -36305,14 +36462,15 @@
       }
     },
     "f23ecc94-2204-4c25-b51b-fc2a1e5c737b": {
-      "name": "AxeOrigin",
+      "name": "MeleeOrigin",
       "tags": [],
       "enabled": true,
       "resource_id": "f23ecc94-2204-4c25-b51b-fc2a1e5c737b",
       "parent": "e274f82e-7e5a-4239-96e2-f649a792c64f",
       "children": [
         "97b3834f-fe49-40d7-80fe-2b54174fb2bb",
-        "518fdcbc-871f-4243-8826-2a349484bfc8"
+        "518fdcbc-871f-4243-8826-2a349484bfc8",
+        "d13d2656-a57c-4677-bd8c-d8ce05b011f8"
       ],
       "position": [
         -1.341,
@@ -36334,13 +36492,14 @@
     "6691bb9a-2a0c-4098-bbbb-10c7683c3ebe": {
       "name": "ModelHolder",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "6691bb9a-2a0c-4098-bbbb-10c7683c3ebe",
       "parent": "eb1d4dda-c0a9-4059-87d6-38a9d02a037f",
       "children": [
         "0bda9a9b-5b91-4bf6-b77f-346461d4d662",
         "3e55d351-f74d-4632-b907-d780f3393c97",
-        "02721b72-f283-4976-bba9-ca1ac434838b"
+        "02721b72-f283-4976-bba9-ca1ac434838b",
+        "072f0ba8-8387-4a4e-8252-ac0c3d3c43a3"
       ],
       "position": [
         0,
@@ -38233,14 +38392,14 @@
       "tags": [],
       "enabled": false,
       "resource_id": "9c502ded-f8f5-4f7a-9534-608b920456c2",
-      "parent": "60fdbaf8-aecd-4713-99a8-d40d8a5eaa61",
+      "parent": "e10a6925-37a3-4cbc-878c-7fd37b460250",
       "children": [
         "51ece498-2c6e-4687-bdfe-b4cdd784f2af",
         "c06af5e8-ec7f-4de7-9af3-4e3ce41287bb"
       ],
       "position": [
         0,
-        3.01855611327861,
+        3.0185561180114746,
         0
       ],
       "rotation": [
@@ -41228,10 +41387,10 @@
             1,
             0.5
           ],
-          "text": "Knights Academy Gaming",
+          "text": "Guest",
           "key": null,
           "fontAsset": 29329818,
-          "fontSize": 26,
+          "fontSize": 20,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
@@ -41242,8 +41401,8 @@
           "spacing": 1,
           "color": [
             1,
-            0,
-            0
+            1,
+            1
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -41253,9 +41412,9 @@
           "width": 45.479,
           "height": 20.957,
           "margin": [
-            74.7,
+            -115.479,
             -10.479,
-            35,
+            70,
             -10.479
           ],
           "alignment": [
@@ -41268,7 +41427,7 @@
             0,
             1
           ],
-          "outlineThickness": 0.45,
+          "outlineThickness": 0,
           "shadowColor": [
             0,
             0,
@@ -41445,7 +41604,7 @@
             0.5,
             0.5
           ],
-          "text": "",
+          "text": "0",
           "key": null,
           "fontAsset": 29313023,
           "fontSize": 20,
@@ -41551,10 +41710,10 @@
             0,
             0.5
           ],
-          "text": "ERA",
+          "text": "Guest",
           "key": null,
           "fontAsset": 29329818,
-          "fontSize": 26,
+          "fontSize": 20,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
@@ -41564,7 +41723,7 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0,
+            1,
             1,
             1
           ],
@@ -41576,9 +41735,9 @@
           "width": 45.479,
           "height": 20.957,
           "margin": [
-            35,
+            70,
             -10.479,
-            -0.479,
+            -115.479,
             -10.479
           ],
           "alignment": [
@@ -41591,7 +41750,7 @@
             0,
             1
           ],
-          "outlineThickness": 0.45,
+          "outlineThickness": 0,
           "shadowColor": [
             0,
             0,
@@ -60663,7 +60822,13 @@
       "resource_id": "e10a6925-37a3-4cbc-878c-7fd37b460250",
       "parent": "68d4e7a3-7063-11ea-97ae-026349a27a7c",
       "children": [
-        "5fdfdb5b-7203-4852-b7df-8b28ba1bee5c"
+        "5fdfdb5b-7203-4852-b7df-8b28ba1bee5c",
+        "e00cf7db-e6da-493b-b68b-fb32b6c7ccd0",
+        "d97fe206-3ba4-4cc4-8edf-b50e625d1cde",
+        "58209216-a5d3-4da8-874e-de4ccd4b7304",
+        "9c502ded-f8f5-4f7a-9534-608b920456c2",
+        "3ce549c5-f2f1-4370-b257-bda3100e8f19",
+        "95e8f0c6-9a19-4ba4-8939-d916f60abb48"
       ],
       "position": [
         0,
@@ -60689,8 +60854,7 @@
       "resource_id": "5fdfdb5b-7203-4852-b7df-8b28ba1bee5c",
       "parent": "e10a6925-37a3-4cbc-878c-7fd37b460250",
       "children": [
-        "d002b398-204c-4fa5-9857-f43c0a4d3764",
-        "323336a8-524b-4a6d-80db-41a34514cc7a"
+        "bd65650d-d6a2-41ba-92d0-a4785698494e"
       ],
       "position": [
         0,
@@ -60717,16 +60881,73 @@
             "grapple": {
               "enabled": true,
               "attributes": {
-                "ropeEntity": "76d33ed6-7703-420b-bba3-29ec236cbabe",
-                "grappleEntity": "b1ee65d6-432e-4d25-9de4-cd41dbfba625",
+                "ropeEntity": "2e95a2ff-a419-4a83-880a-e8d528a611d4",
+                "grappleEntity": "e80d7660-b79a-49ac-a7c8-7e552b8bd1e5",
                 "originEntity": "323336a8-524b-4a6d-80db-41a34514cc7a",
                 "swingEntity": "d002b398-204c-4fa5-9857-f43c0a4d3764",
                 "swingRopeEntity": "b8ef465b-524a-4281-8a7c-a967152aaa0f",
                 "playerEntity": "d6311a5c-7dec-4eb4-b495-15f29130570e",
-                "playerPoint": "12f1f795-02b9-422a-a7df-669354b432f6",
+                "playerPoint": "3f6a10b5-5700-419c-bed9-2961238550bb",
                 "isPlayerGrapple": true,
-                "active": false
+                "active": false,
+                "holderEntity": "bd65650d-d6a2-41ba-92d0-a4785698494e"
               }
+            }
+          }
+        },
+        "sound": {
+          "enabled": true,
+          "volume": 1,
+          "pitch": 1,
+          "positional": true,
+          "refDistance": 10,
+          "maxDistance": 10000,
+          "rollOffFactor": 1,
+          "distanceModel": "exponential",
+          "slots": {
+            "1": {
+              "name": "Zipline",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37359318,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "2": {
+              "name": "Foley-Start",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37359277,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "3": {
+              "name": "Foley-Strong",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37359276,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "4": {
+              "name": "Whip",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37455930,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
             }
           }
         }
@@ -60737,7 +60958,7 @@
       "tags": [],
       "enabled": true,
       "resource_id": "d002b398-204c-4fa5-9857-f43c0a4d3764",
-      "parent": "5fdfdb5b-7203-4852-b7df-8b28ba1bee5c",
+      "parent": "bd65650d-d6a2-41ba-92d0-a4785698494e",
       "children": [
         "b8ef465b-524a-4281-8a7c-a967152aaa0f"
       ],
@@ -60787,10 +61008,10 @@
       "tags": [],
       "enabled": true,
       "resource_id": "323336a8-524b-4a6d-80db-41a34514cc7a",
-      "parent": "5fdfdb5b-7203-4852-b7df-8b28ba1bee5c",
+      "parent": "bd65650d-d6a2-41ba-92d0-a4785698494e",
       "children": [
-        "76d33ed6-7703-420b-bba3-29ec236cbabe",
-        "b1ee65d6-432e-4d25-9de4-cd41dbfba625"
+        "2e95a2ff-a419-4a83-880a-e8d528a611d4",
+        "e80d7660-b79a-49ac-a7c8-7e552b8bd1e5"
       ],
       "position": [
         0,
@@ -60798,7 +61019,7 @@
         0
       ],
       "rotation": [
-        -90,
+        -89.99999999999999,
         0,
         0
       ],
@@ -60810,18 +61031,16 @@
       "components": {}
     },
     "76d33ed6-7703-420b-bba3-29ec236cbabe": {
-      "name": "Rope",
+      "name": "Model",
       "tags": [],
       "enabled": true,
       "resource_id": "76d33ed6-7703-420b-bba3-29ec236cbabe",
-      "parent": "323336a8-524b-4a6d-80db-41a34514cc7a",
-      "children": [
-        "12f1f795-02b9-422a-a7df-669354b432f6"
-      ],
+      "parent": "2e95a2ff-a419-4a83-880a-e8d528a611d4",
+      "children": [],
       "position": [
         0,
-        0,
-        0
+        -0.8000045938435001,
+        -1.7763568394002505e-15
       ],
       "rotation": [
         0,
@@ -60829,9 +61048,9 @@
         0
       ],
       "scale": [
-        0.5,
-        0.1,
-        0.5
+        3,
+        1,
+        3
       ],
       "components": {
         "model": {
@@ -60855,61 +61074,17 @@
         }
       }
     },
-    "12f1f795-02b9-422a-a7df-669354b432f6": {
-      "name": "Box",
-      "tags": [],
-      "enabled": true,
-      "resource_id": "12f1f795-02b9-422a-a7df-669354b432f6",
-      "parent": "76d33ed6-7703-420b-bba3-29ec236cbabe",
-      "children": [],
-      "position": [
-        0,
-        0,
-        0
-      ],
-      "rotation": [
-        0,
-        0,
-        0
-      ],
-      "scale": [
-        0.6929820703739148,
-        5.464003788529388,
-        0.6929820703739148
-      ],
-      "components": {
-        "model": {
-          "enabled": true,
-          "type": "asset",
-          "asset": 36198018,
-          "materialAsset": null,
-          "castShadows": true,
-          "castShadowsLightmap": true,
-          "receiveShadows": true,
-          "lightmapped": false,
-          "lightmapSizeMultiplier": 1,
-          "castShadowsLightMap": true,
-          "lightMapped": false,
-          "lightMapSizeMultiplier": 1,
-          "isStatic": false,
-          "layers": [
-            0
-          ],
-          "batchGroupId": null
-        }
-      }
-    },
     "b1ee65d6-432e-4d25-9de4-cd41dbfba625": {
-      "name": "Grapple",
+      "name": "Model",
       "tags": [],
       "enabled": true,
       "resource_id": "b1ee65d6-432e-4d25-9de4-cd41dbfba625",
-      "parent": "323336a8-524b-4a6d-80db-41a34514cc7a",
+      "parent": "e80d7660-b79a-49ac-a7c8-7e552b8bd1e5",
       "children": [],
       "position": [
         0,
-        0.3400000035762787,
-        0
+        0.599335313078492,
+        -8.881784197001252e-16
       ],
       "rotation": [
         0,
@@ -60917,9 +61092,9 @@
         0
       ],
       "scale": [
-        0.6546680940350044,
-        0.6546680940350044,
-        0.6546680940350044
+        1.8976970364207162,
+        3.642121616820735,
+        1.8976970364207162
       ],
       "components": {
         "model": {
@@ -62631,7 +62806,7 @@
           "height": 200,
           "margin": [
             -120,
-            0,
+            80,
             0,
             -280
           ],
@@ -64251,6 +64426,1626 @@
           }
         }
       }
+    },
+    "072f0ba8-8387-4a4e-8252-ac0c3d3c43a3": {
+      "name": "Echo",
+      "tags": [
+        "Skin"
+      ],
+      "enabled": false,
+      "resource_id": "072f0ba8-8387-4a4e-8252-ac0c3d3c43a3",
+      "parent": "6691bb9a-2a0c-4098-bbbb-10c7683c3ebe",
+      "children": [],
+      "position": [
+        0,
+        -2,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.1684460318433714,
+        2.1684460318433714,
+        2.1684460318433714
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 37198881,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "animation": {
+          "enabled": true,
+          "assets": [
+            37221145,
+            37221136,
+            37221146,
+            37221142,
+            37221137,
+            37221011,
+            37221005,
+            37221007,
+            37221013,
+            37220974,
+            37220989,
+            37220976,
+            37220980,
+            37220983,
+            37221003,
+            37425460
+          ],
+          "speed": 1,
+          "loop": true,
+          "activate": true
+        }
+      }
+    },
+    "f3d58c57-8ef9-4a54-9d6b-fa2f80c5eb76": {
+      "name": "Female",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "f3d58c57-8ef9-4a54-9d6b-fa2f80c5eb76",
+      "parent": "a1697e49-b421-4c1f-80d7-c4e46b3c117e",
+      "children": [],
+      "position": [
+        -0.18263244628905717,
+        0.356842041015625,
+        -0.07176017761230113
+      ],
+      "rotation": [
+        -53.104232321930674,
+        13.767848611559907,
+        -37.97787720004024
+      ],
+      "scale": [
+        2.5546106103911463,
+        2.5546106103911463,
+        2.5546106103911463
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 29973465,
+          "materialAsset": null,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            1000
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "066d6c4a-cf08-4605-b3db-a91c70a022da": {
+      "name": "Echo-Model",
+      "tags": [
+        "Skin"
+      ],
+      "enabled": false,
+      "resource_id": "066d6c4a-cf08-4605-b3db-a91c70a022da",
+      "parent": "1914b585-ea77-475c-85b3-43fab2e90282",
+      "children": [],
+      "position": [
+        0,
+        -2.15,
+        0
+      ],
+      "rotation": [
+        180,
+        0,
+        180
+      ],
+      "scale": [
+        2.1998638175441583,
+        2.1998638175441583,
+        2.1998638175441583
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 37198881,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "animation": {
+          "enabled": true,
+          "assets": [
+            37221013,
+            37220974,
+            37222153,
+            37221003
+          ],
+          "speed": 1,
+          "loop": false,
+          "activate": true
+        }
+      }
+    },
+    "e44e6388-f903-42a1-9d09-92422f6fd53c": {
+      "name": "Origin",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "e44e6388-f903-42a1-9d09-92422f6fd53c",
+      "parent": "3ce549c5-f2f1-4370-b257-bda3100e8f19",
+      "children": [
+        "9321a227-198a-4dd7-b48e-e287c13e27dc"
+      ],
+      "position": [
+        0,
+        -1.00253887236003,
+        -0.511626124382019
+      ],
+      "rotation": [
+        18.684858821067817,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "script": {
+          "enabled": true,
+          "order": [
+            "rotate"
+          ],
+          "scripts": {
+            "rotate": {
+              "enabled": true,
+              "attributes": {
+                "axis": "x",
+                "speed": 35,
+                "waveStyle": false,
+                "waveWidth": 0,
+                "children": false,
+                "graphName": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "3ce549c5-f2f1-4370-b257-bda3100e8f19": {
+      "name": "Axe",
+      "tags": [],
+      "enabled": false,
+      "resource_id": "3ce549c5-f2f1-4370-b257-bda3100e8f19",
+      "parent": "e10a6925-37a3-4cbc-878c-7fd37b460250",
+      "children": [
+        "e44e6388-f903-42a1-9d09-92422f6fd53c",
+        "e9fd7c14-7c8d-4ad7-8cab-7b1b844d29cd"
+      ],
+      "position": [
+        0,
+        -0.7208711378409869,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "sound": {
+          "enabled": true,
+          "volume": 1,
+          "pitch": 1,
+          "positional": true,
+          "refDistance": 10,
+          "maxDistance": 10000,
+          "rollOffFactor": 1,
+          "distanceModel": "exponential",
+          "slots": {
+            "1": {
+              "name": "Loop",
+              "loop": true,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 32583116,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.8,
+              "pitch": 1.1
+            }
+          }
+        }
+      }
+    },
+    "9321a227-198a-4dd7-b48e-e287c13e27dc": {
+      "name": "Model",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "9321a227-198a-4dd7-b48e-e287c13e27dc",
+      "parent": "e44e6388-f903-42a1-9d09-92422f6fd53c",
+      "children": [],
+      "position": [
+        -0.07318495330279742,
+        0.458225892774625,
+        1.4736145341303308
+      ],
+      "rotation": [
+        -135.2659170434332,
+        0.5448932038536962,
+        -172.80488110983995
+      ],
+      "scale": [
+        3.5331484815887233,
+        3.5331484815887233,
+        3.5331484815887233
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 37251016,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "e9fd7c14-7c8d-4ad7-8cab-7b1b844d29cd": {
+      "name": "Ray",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "e9fd7c14-7c8d-4ad7-8cab-7b1b844d29cd",
+      "parent": "3ce549c5-f2f1-4370-b257-bda3100e8f19",
+      "children": [],
+      "position": [
+        -0.31994428440627765,
+        -0.3363903381771324,
+        -0.7237227517140962
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.2616682363211293,
+        1.187937039250854,
+        1.4247109869468424
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 32582193,
+          "materialAsset": null,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null,
+          "mapping": {
+            "0": 37312945
+          }
+        }
+      }
+    },
+    "2e95a2ff-a419-4a83-880a-e8d528a611d4": {
+      "name": "Rope",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "2e95a2ff-a419-4a83-880a-e8d528a611d4",
+      "parent": "323336a8-524b-4a6d-80db-41a34514cc7a",
+      "children": [
+        "3f6a10b5-5700-419c-bed9-2961238550bb",
+        "76d33ed6-7703-420b-bba3-29ec236cbabe"
+      ],
+      "position": [
+        0,
+        -8.881784197001252e-16,
+        -8.881784197001252e-16
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.1,
+        0.5
+      ],
+      "components": {}
+    },
+    "3f6a10b5-5700-419c-bed9-2961238550bb": {
+      "name": "PlayerPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "3f6a10b5-5700-419c-bed9-2961238550bb",
+      "parent": "2e95a2ff-a419-4a83-880a-e8d528a611d4",
+      "children": [],
+      "position": [
+        0,
+        -4.76837168861266e-7,
+        -1.7763568394002505e-15
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "d13d2656-a57c-4677-bd8c-d8ce05b011f8": {
+      "name": "Grapple",
+      "tags": [
+        "Melee"
+      ],
+      "enabled": true,
+      "resource_id": "d13d2656-a57c-4677-bd8c-d8ce05b011f8",
+      "parent": "f23ecc94-2204-4c25-b51b-fc2a1e5c737b",
+      "children": [
+        "3fba6831-2df0-497f-9914-31919c2cac42"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "6c087a9a-7898-46c2-93a4-43f91a18f4b0": {
+      "name": "Right",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "6c087a9a-7898-46c2-93a4-43f91a18f4b0",
+      "parent": "3fba6831-2df0-497f-9914-31919c2cac42",
+      "children": [],
+      "position": [
+        2.9309196193878467e-8,
+        -2.0418083351704618e-8,
+        2.4138684575063856
+      ],
+      "rotation": [
+        4.846453607803086e-7,
+        6.956854673625322e-7,
+        0.0000011291656973480896
+      ],
+      "scale": [
+        18.791666535178187,
+        18.791666535178187,
+        18.791666535178187
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 37239560,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            1000
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "3fba6831-2df0-497f-9914-31919c2cac42": {
+      "name": "Origin",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "3fba6831-2df0-497f-9914-31919c2cac42",
+      "parent": "d13d2656-a57c-4677-bd8c-d8ce05b011f8",
+      "children": [
+        "6c087a9a-7898-46c2-93a4-43f91a18f4b0"
+      ],
+      "position": [
+        -1.426046741357652,
+        -3.800231451102974,
+        -0.25643734970776677
+      ],
+      "rotation": [
+        -70.78469694010239,
+        -8.590574336867999,
+        1.1230419338228355
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "bd65650d-d6a2-41ba-92d0-a4785698494e": {
+      "name": "Holder",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "bd65650d-d6a2-41ba-92d0-a4785698494e",
+      "parent": "5fdfdb5b-7203-4852-b7df-8b28ba1bee5c",
+      "children": [
+        "d002b398-204c-4fa5-9857-f43c0a4d3764",
+        "323336a8-524b-4a6d-80db-41a34514cc7a"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "e80d7660-b79a-49ac-a7c8-7e552b8bd1e5": {
+      "name": "Grapple",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "e80d7660-b79a-49ac-a7c8-7e552b8bd1e5",
+      "parent": "323336a8-524b-4a6d-80db-41a34514cc7a",
+      "children": [
+        "b1ee65d6-432e-4d25-9de4-cd41dbfba625"
+      ],
+      "position": [
+        0,
+        0.21437361961650137,
+        -8.881784197001252e-16
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "565b6ed9-2c10-42b1-9467-3aadb89b99f5": {
+      "name": "LookPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "565b6ed9-2c10-42b1-9467-3aadb89b99f5",
+      "parent": "93790e46-99cf-49e7-830a-a15bc441b889",
+      "children": [],
+      "position": [
+        0,
+        1.41400146484375,
+        -40
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "2c2cdaeb-9cf9-44fb-ab75-40b9073929f2": {
+      "name": "Clues",
+      "tags": [
+        "Gameplay"
+      ],
+      "enabled": true,
+      "resource_id": "2c2cdaeb-9cf9-44fb-ab75-40b9073929f2",
+      "parent": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
+      "children": [
+        "ca4c3dcb-6f67-441f-83c5-e4f0ab102d21"
+      ],
+      "position": [
+        0.00003814697265625,
+        -0.00003814697265625,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "group",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 32,
+          "height": 32,
+          "margin": [
+            -16,
+            -16,
+            -16,
+            -16
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "ca4c3dcb-6f67-441f-83c5-e4f0ab102d21": {
+      "name": "Hook",
+      "tags": [],
+      "enabled": false,
+      "resource_id": "ca4c3dcb-6f67-441f-83c5-e4f0ab102d21",
+      "parent": "2c2cdaeb-9cf9-44fb-ab75-40b9073929f2",
+      "children": [],
+      "position": [
+        20,
+        -20,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": 37420905,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 32,
+          "height": 32,
+          "margin": [
+            4,
+            -36,
+            -36,
+            4
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "e00cf7db-e6da-493b-b68b-fb32b6c7ccd0": {
+      "name": "Grapple",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "e00cf7db-e6da-493b-b68b-fb32b6c7ccd0",
+      "parent": "e10a6925-37a3-4cbc-878c-7fd37b460250",
+      "children": [
+        "9ef3a9d4-dea9-4a2e-80ef-65d7805f9dcd"
+      ],
+      "position": [
+        0,
+        -5,
+        -2.6882684712447134
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "script": {
+          "enabled": true,
+          "order": [
+            "grapple"
+          ],
+          "scripts": {
+            "grapple": {
+              "enabled": true,
+              "attributes": {
+                "ropeEntity": "c151fdf8-d702-4d80-a3cd-d4eea4f2018b",
+                "grappleEntity": "2f92d98b-55af-4746-8fa3-909331201bc6",
+                "originEntity": "5630063f-72f9-4d44-8562-6a94bba3eb39",
+                "swingEntity": "cd820d8a-8afb-44fa-bd47-1da51b931c1d",
+                "swingRopeEntity": "29ab19f3-5d5d-47e2-ae2c-6e3e91c39a67",
+                "playerEntity": "d6311a5c-7dec-4eb4-b495-15f29130570e",
+                "playerPoint": "2da9f2e1-9777-42df-aef2-b22cd7e4cc73",
+                "isPlayerGrapple": true,
+                "active": false,
+                "holderEntity": "9ef3a9d4-dea9-4a2e-80ef-65d7805f9dcd"
+              }
+            }
+          }
+        },
+        "sound": {
+          "enabled": true,
+          "volume": 1,
+          "pitch": 1,
+          "positional": true,
+          "refDistance": 10,
+          "maxDistance": 10000,
+          "rollOffFactor": 1,
+          "distanceModel": "exponential",
+          "slots": {
+            "1": {
+              "name": "Zipline",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37359318,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "2": {
+              "name": "Foley-Start",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37359277,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "3": {
+              "name": "Foley-Strong",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37359276,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "4": {
+              "name": "Whip",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37455930,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            }
+          }
+        }
+      }
+    },
+    "9ef3a9d4-dea9-4a2e-80ef-65d7805f9dcd": {
+      "name": "Holder",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "9ef3a9d4-dea9-4a2e-80ef-65d7805f9dcd",
+      "parent": "e00cf7db-e6da-493b-b68b-fb32b6c7ccd0",
+      "children": [
+        "cd820d8a-8afb-44fa-bd47-1da51b931c1d",
+        "5630063f-72f9-4d44-8562-6a94bba3eb39"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "cd820d8a-8afb-44fa-bd47-1da51b931c1d": {
+      "name": "Swing",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "cd820d8a-8afb-44fa-bd47-1da51b931c1d",
+      "parent": "9ef3a9d4-dea9-4a2e-80ef-65d7805f9dcd",
+      "children": [
+        "29ab19f3-5d5d-47e2-ae2c-6e3e91c39a67"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "29ab19f3-5d5d-47e2-ae2c-6e3e91c39a67": {
+      "name": "SwingRope",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "29ab19f3-5d5d-47e2-ae2c-6e3e91c39a67",
+      "parent": "cd820d8a-8afb-44fa-bd47-1da51b931c1d",
+      "children": [],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        -90,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "5630063f-72f9-4d44-8562-6a94bba3eb39": {
+      "name": "Origin",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "5630063f-72f9-4d44-8562-6a94bba3eb39",
+      "parent": "9ef3a9d4-dea9-4a2e-80ef-65d7805f9dcd",
+      "children": [
+        "c151fdf8-d702-4d80-a3cd-d4eea4f2018b",
+        "2f92d98b-55af-4746-8fa3-909331201bc6"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        -89.99999999999999,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "c151fdf8-d702-4d80-a3cd-d4eea4f2018b": {
+      "name": "Rope",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "c151fdf8-d702-4d80-a3cd-d4eea4f2018b",
+      "parent": "5630063f-72f9-4d44-8562-6a94bba3eb39",
+      "children": [
+        "2da9f2e1-9777-42df-aef2-b22cd7e4cc73",
+        "494a8daf-0d91-4054-94a4-9ee7b37b926a"
+      ],
+      "position": [
+        0,
+        -8.881784197001252e-16,
+        -8.881784197001252e-16
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.1,
+        0.5
+      ],
+      "components": {}
+    },
+    "2da9f2e1-9777-42df-aef2-b22cd7e4cc73": {
+      "name": "PlayerPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "2da9f2e1-9777-42df-aef2-b22cd7e4cc73",
+      "parent": "c151fdf8-d702-4d80-a3cd-d4eea4f2018b",
+      "children": [],
+      "position": [
+        0,
+        -4.76837168861266e-7,
+        -1.7763568394002505e-15
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "494a8daf-0d91-4054-94a4-9ee7b37b926a": {
+      "name": "Model",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "494a8daf-0d91-4054-94a4-9ee7b37b926a",
+      "parent": "c151fdf8-d702-4d80-a3cd-d4eea4f2018b",
+      "children": [],
+      "position": [
+        0,
+        -0.8000045938435001,
+        -1.7763568394002505e-15
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3,
+        1,
+        3
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36198017,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "2f92d98b-55af-4746-8fa3-909331201bc6": {
+      "name": "Grapple",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "2f92d98b-55af-4746-8fa3-909331201bc6",
+      "parent": "5630063f-72f9-4d44-8562-6a94bba3eb39",
+      "children": [
+        "1881ed0c-eafd-4831-903d-2c11b9afa473"
+      ],
+      "position": [
+        0,
+        0.21437361961650137,
+        -8.881784197001252e-16
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "1881ed0c-eafd-4831-903d-2c11b9afa473": {
+      "name": "Model",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "1881ed0c-eafd-4831-903d-2c11b9afa473",
+      "parent": "2f92d98b-55af-4746-8fa3-909331201bc6",
+      "children": [],
+      "position": [
+        0,
+        0.599335313078492,
+        -8.881784197001252e-16
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.8976970364207162,
+        3.642121616820735,
+        1.8976970364207162
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36198018,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "d97fe206-3ba4-4cc4-8edf-b50e625d1cde": {
+      "name": "Grapple",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "d97fe206-3ba4-4cc4-8edf-b50e625d1cde",
+      "parent": "e10a6925-37a3-4cbc-878c-7fd37b460250",
+      "children": [
+        "cb7646d8-c435-4dcd-8043-43c497f21efb"
+      ],
+      "position": [
+        0,
+        -5,
+        -2.6882684712447134
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "script": {
+          "enabled": true,
+          "order": [
+            "grapple"
+          ],
+          "scripts": {
+            "grapple": {
+              "enabled": true,
+              "attributes": {
+                "ropeEntity": "3bf5c1c0-0e8f-4827-83b6-ea7c38198604",
+                "grappleEntity": "0125d6e9-a34a-4f2e-a57a-07299739c7dd",
+                "originEntity": "60d3980a-448f-44ce-aecc-433afe9dfff6",
+                "swingEntity": "0db4ed3b-d16a-477e-847c-85730e9ba1fd",
+                "swingRopeEntity": "fbae5461-3485-4c7d-82b9-e49074db43b2",
+                "playerEntity": "d6311a5c-7dec-4eb4-b495-15f29130570e",
+                "playerPoint": "1f2ee75a-2428-426d-862b-4b69514d3754",
+                "isPlayerGrapple": true,
+                "active": false,
+                "holderEntity": "cb7646d8-c435-4dcd-8043-43c497f21efb"
+              }
+            }
+          }
+        },
+        "sound": {
+          "enabled": true,
+          "volume": 1,
+          "pitch": 1,
+          "positional": true,
+          "refDistance": 10,
+          "maxDistance": 10000,
+          "rollOffFactor": 1,
+          "distanceModel": "exponential",
+          "slots": {
+            "1": {
+              "name": "Zipline",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37359318,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "2": {
+              "name": "Foley-Start",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37359277,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "3": {
+              "name": "Foley-Strong",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37359276,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "4": {
+              "name": "Whip",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37455930,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            }
+          }
+        }
+      }
+    },
+    "cb7646d8-c435-4dcd-8043-43c497f21efb": {
+      "name": "Holder",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "cb7646d8-c435-4dcd-8043-43c497f21efb",
+      "parent": "d97fe206-3ba4-4cc4-8edf-b50e625d1cde",
+      "children": [
+        "0db4ed3b-d16a-477e-847c-85730e9ba1fd",
+        "60d3980a-448f-44ce-aecc-433afe9dfff6"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "0db4ed3b-d16a-477e-847c-85730e9ba1fd": {
+      "name": "Swing",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "0db4ed3b-d16a-477e-847c-85730e9ba1fd",
+      "parent": "cb7646d8-c435-4dcd-8043-43c497f21efb",
+      "children": [
+        "fbae5461-3485-4c7d-82b9-e49074db43b2"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "fbae5461-3485-4c7d-82b9-e49074db43b2": {
+      "name": "SwingRope",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "fbae5461-3485-4c7d-82b9-e49074db43b2",
+      "parent": "0db4ed3b-d16a-477e-847c-85730e9ba1fd",
+      "children": [],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        -90,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "60d3980a-448f-44ce-aecc-433afe9dfff6": {
+      "name": "Origin",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "60d3980a-448f-44ce-aecc-433afe9dfff6",
+      "parent": "cb7646d8-c435-4dcd-8043-43c497f21efb",
+      "children": [
+        "3bf5c1c0-0e8f-4827-83b6-ea7c38198604",
+        "0125d6e9-a34a-4f2e-a57a-07299739c7dd"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        -89.99999999999999,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "3bf5c1c0-0e8f-4827-83b6-ea7c38198604": {
+      "name": "Rope",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "3bf5c1c0-0e8f-4827-83b6-ea7c38198604",
+      "parent": "60d3980a-448f-44ce-aecc-433afe9dfff6",
+      "children": [
+        "1f2ee75a-2428-426d-862b-4b69514d3754",
+        "a15fae9b-07ec-4199-8457-d1fc58204584"
+      ],
+      "position": [
+        0,
+        -8.881784197001252e-16,
+        -8.881784197001252e-16
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.1,
+        0.5
+      ],
+      "components": {}
+    },
+    "1f2ee75a-2428-426d-862b-4b69514d3754": {
+      "name": "PlayerPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "1f2ee75a-2428-426d-862b-4b69514d3754",
+      "parent": "3bf5c1c0-0e8f-4827-83b6-ea7c38198604",
+      "children": [],
+      "position": [
+        0,
+        -4.76837168861266e-7,
+        -1.7763568394002505e-15
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "a15fae9b-07ec-4199-8457-d1fc58204584": {
+      "name": "Model",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "a15fae9b-07ec-4199-8457-d1fc58204584",
+      "parent": "3bf5c1c0-0e8f-4827-83b6-ea7c38198604",
+      "children": [],
+      "position": [
+        0,
+        -0.8000045938435001,
+        -1.7763568394002505e-15
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3,
+        1,
+        3
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36198017,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "0125d6e9-a34a-4f2e-a57a-07299739c7dd": {
+      "name": "Grapple",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "0125d6e9-a34a-4f2e-a57a-07299739c7dd",
+      "parent": "60d3980a-448f-44ce-aecc-433afe9dfff6",
+      "children": [
+        "67ff940f-1da3-4ba6-9bc7-eec62bfa26ca"
+      ],
+      "position": [
+        0,
+        0.21437361961650137,
+        -8.881784197001252e-16
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "67ff940f-1da3-4ba6-9bc7-eec62bfa26ca": {
+      "name": "Model",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "67ff940f-1da3-4ba6-9bc7-eec62bfa26ca",
+      "parent": "0125d6e9-a34a-4f2e-a57a-07299739c7dd",
+      "children": [],
+      "position": [
+        0,
+        0.599335313078492,
+        -8.881784197001252e-16
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.8976970364207162,
+        3.642121616820735,
+        1.8976970364207162
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 36198018,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "95e8f0c6-9a19-4ba4-8939-d916f60abb48": {
+      "name": "Inspect",
+      "tags": [],
+      "enabled": false,
+      "resource_id": "95e8f0c6-9a19-4ba4-8939-d916f60abb48",
+      "parent": "e10a6925-37a3-4cbc-878c-7fd37b460250",
+      "children": [],
+      "position": [
+        0,
+        -100,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "box",
+          "asset": null,
+          "materialAsset": 37436430,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "9f0a5779-8456-4828-8259-e5a0aaf5f24c": {
+      "name": "ThrowHandPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "9f0a5779-8456-4828-8259-e5a0aaf5f24c",
+      "parent": "db3d2f6d-518b-48a4-9514-ea0f07d4e63f",
+      "children": [],
+      "position": [
+        -0.25,
+        -0.21119675523291903,
+        -2.0476932525634766
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
     }
   },
   "id": 895025
