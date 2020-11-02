@@ -1,13 +1,13 @@
-// Little Tutorial how to enable mods itself
+// Little Tutorial how to enable this mod file
 // First search in the file __start__.js the line loadModName();
 // Delete the // infront of it.
 // Now in this file, search for the line called MODNAME
-// Change it to the name of your mod if you want
+// Change MODNAME to your Mod name
 
 // YouTube Tutorial how to make mods for NeXi-Client can be found here:
 // ||||||||||||||||||||||||||||
 // vvvvvvvvvvvvvvvvvvvvvvvvvvvv
-// 
+// Coming soon
 
 const loadModName = () => {
 	Menu.prototype.initialize = function() {
@@ -82,4 +82,14 @@ const loadModName = () => {
             this.mobileUsernameChange.destroy();
         this.app.fire("Ads:Adblock", !0)
     }
+
+    //Define your changes here aka. functions
+    defaultMessage();
+}
+
+//Copy the functions from __game-scripts.js, paste them below here & make your changes here.
+//DON'T CHANGE THE ACTUAL __game-scripts.js FILE IN ANYWAY
+
+const defaultMessage = () => {
+    console.log('Mod loaded')
 }
