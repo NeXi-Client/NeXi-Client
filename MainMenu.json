@@ -45898,8 +45898,7 @@
       "parent": "742462a0-9782-4c6b-9625-f27511467468",
       "children": [
         "e7d340da-ad1c-4789-88dd-e3215d3ecaa0",
-        "36c1709e-0c18-4ac9-9cb3-18bd4e3616b3",
-        "c719a624-3eb0-4761-9c3d-a18c7963b776"
+        "36c1709e-0c18-4ac9-9cb3-18bd4e3616b3"
       ],
       "position": [
         20,
@@ -46561,7 +46560,7 @@
     "c719a624-3eb0-4761-9c3d-a18c7963b776": {
       "name": "Row",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "c719a624-3eb0-4761-9c3d-a18c7963b776",
       "parent": "66ff71c7-3b29-4715-8f8a-1f57b4c2e41e",
       "children": [
@@ -46625,7 +46624,7 @@
             0,
             -120,
             -680,
-            75
+            270
           ],
           "alignment": [
             0.5,
@@ -46670,7 +46669,7 @@
     "9ea3182f-57f6-4a5c-90cd-c4051b46ec15": {
       "name": "Label",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "9ea3182f-57f6-4a5c-90cd-c4051b46ec15",
       "parent": "c719a624-3eb0-4761-9c3d-a18c7963b776",
       "children": [],
@@ -46703,7 +46702,7 @@
             0,
             0.5
           ],
-          "text": "Disable Menu Music",
+          "text": "Hide weapon on ADS",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 18,
@@ -46875,7 +46874,7 @@
           "layers": [
             4
           ],
-          "enableMarkup": true
+          "enableMarkup": false
         },
         "script": {
           "enabled": true,
@@ -46889,8 +46888,7 @@
                 "default": false,
                 "storeValue": true,
                 "storeWithName": true,
-                "triggerFunction": "Menu:Settings",
-                "key": ""
+                "triggerFunction": "Menu:Settings"
               }
             }
           }
@@ -47920,7 +47918,8 @@
         "06ea25f5-a705-400d-83fc-682e41e0b390",
         "9c094b3b-6729-4f82-89f3-44c9c2fd2886",
         "ea925b34-bf1a-4d61-87ad-1ba49fc042e3",
-        "3c1efecb-6c07-4ab6-a599-2c9c4976538f"
+        "3c1efecb-6c07-4ab6-a599-2c9c4976538f",
+        "c719a624-3eb0-4761-9c3d-a18c7963b776"
       ],
       "position": [
         20,
