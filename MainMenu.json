@@ -12,22 +12,22 @@
       "fog_end": 1000,
       "fog_start": 1,
       "global_ambient": [
-        0.08235294117647059,
-        0.08627450980392157,
-        0.19607843137254902
+        0.2,
+        0.2,
+        0.2
       ],
       "fog_color": [
         0,
         0,
         0
       ],
-      "fog": "exp2",
-      "fog_density": 0.04,
+      "fog": "none",
+      "fog_density": 0.01,
       "gamma_correction": 1,
       "tonemapping": 0,
       "exposure": 1,
       "skybox": 29307645,
-      "skyboxIntensity": 0.3,
+      "skyboxIntensity": 1,
       "skyboxMip": 0,
       "lightmapSizeMultiplier": 16,
       "lightmapMaxResolution": 2048,
@@ -510,9 +510,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.12549019607843137,
-            0.12549019607843137,
-            0.12549019607843137
+            0.1980392157,
+            0.568627451,
+            1.000000000
           ],
           "opacity": 0.8,
           "textureAsset": 29914569,
@@ -23275,9 +23275,9 @@
         "9e5f929f-40dc-4b06-9479-569e652282bb"
       ],
       "position": [
-        -12.419486301109996,
+        1.9531747286290562,
         -3.9100031368443524,
-        -12.936196359067253
+        -5.936196359067253
       ],
       "rotation": [
         0,
@@ -23351,9 +23351,9 @@
           "affectDynamic": true,
           "affectLightmapped": false,
           "color": [
-            0.4,
-            0.4,
-            0.4
+            1,
+            0.9450980392156862,
+            0.9019607843137255
           ],
           "intensity": 3,
           "castShadows": false,
@@ -26928,9 +26928,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            1.0,
-            0.5,
-            0.3
+            0.1980392157,
+            0.568627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": 29912055,
@@ -30330,9 +30330,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            1.0,
-            0.5,
-            0.3
+            0.1980392157,
+            0.568627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": 29912055,
@@ -34026,9 +34026,9 @@
           "wrapLines": true,
           "spacing": 0.9,
           "color": [  
+            0,
             1,
-            0.3,
-            0.3
+            1
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -39677,9 +39677,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            1.0,
-            0.5,
-            0.3
+            0.1980392157,
+            0.568627451,
+            1.000000000
           ],
           "opacity": 1,
           "textureAsset": 29912104,
@@ -43170,7 +43170,7 @@
               "enabled": true,
               "attributes": {
                 "connected": null,
-                "triggerFunction": "window.open(\"https://www.twitch.tv/NeXi2k_\");",
+                "triggerFunction": "window.open(\"https://www.twitch.tv/grimkrunker\");",
                 "pressFunction": "",
                 "fireFunction": "",
                 "fireArgs": "",
@@ -46624,7 +46624,7 @@
             0,
             -120,
             -680,
-            270
+            265
           ],
           "alignment": [
             0.5,
@@ -46702,7 +46702,7 @@
             0,
             0.5
           ],
-          "text": "Hide weapon on ADS",
+          "text": "Hide Weapon on ADS",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 18,
@@ -46874,7 +46874,7 @@
           "layers": [
             4
           ],
-          "enableMarkup": false
+          "enableMarkup": true
         },
         "script": {
           "enabled": true,
@@ -46888,7 +46888,8 @@
                 "default": false,
                 "storeValue": true,
                 "storeWithName": true,
-                "triggerFunction": "Menu:Settings"
+                "triggerFunction": "Menu:Settings",
+                "key": ""
               }
             }
           }
@@ -47059,9 +47060,9 @@
         "d5518557-6f37-4670-abfa-3c28b4d44fc0"
       ],
       "position": [
-        -12.419486301109996,
-        -3.9100031368443524,
-        -12.936196359067253
+        1.7966503542131704,
+        -3.9383004962141968,
+        -4.883151614715407
       ],
       "rotation": [
         0,
@@ -47107,7 +47108,7 @@
     "d5518557-6f37-4670-abfa-3c28b4d44fc0": {
       "name": "Weapon",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "d5518557-6f37-4670-abfa-3c28b4d44fc0",
       "parent": "b4238466-5b4e-4051-85fc-5f1f6438d7f6",
       "children": [
@@ -64973,33 +64974,33 @@
           "layers": [
             4
           ],
-          "enableMarkup": true        
-          },
-          "script": {
-            "enabled": true,
-            "order": [
-              "button"
-            ],
-            "scripts": {
-              "button": {
-                "enabled": true,
-                "attributes": {
-                  "connected": null,
-                  "triggerFunction": "window.open(\"https://skinmaker.venge.io/\");",
-                  "pressFunction": "",
-                  "fireFunction": "",
-                  "fireArgs": "",
-                  "playSound": true,
-                  "waitResolve": false,
-                  "leaveFunction": "",
-                  "destroyOnFunction": false,
-                  "linkButton": false,
-                  "key": ""
-                }
+          "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "button"
+          ],
+          "scripts": {
+            "button": {
+              "enabled": true,
+              "attributes": {
+                "connected": null,
+                "triggerFunction": "window.open(\"https://skinmaker.venge.io/\");",
+                "pressFunction": "",
+                "fireFunction": "",
+                "fireArgs": "",
+                "playSound": true,
+                "waitResolve": false,
+                "leaveFunction": "",
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
               }
             }
           }
         }
+      }
     },
     "53cf2428-c286-4f8b-aad7-d4162244b4af": {
       "name": "Text",
@@ -65037,7 +65038,7 @@
             0,
             1
           ],
-          "text": "Skin Viewer",
+          "text": "SKIN VIEWER",
           "key": null,
           "fontAsset": 34136925,
           "fontSize": 20,
@@ -67848,7 +67849,7 @@
             0,
             -266,
             -680,
-            221
+            218
           ],
           "alignment": [
             0.5,
@@ -104430,7 +104431,7 @@
     "a5b08868-e754-4ae2-bb3e-16343c185c79": {
       "name": "Flag",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "a5b08868-e754-4ae2-bb3e-16343c185c79",
       "parent": "da7afdbf-ad4b-4295-9746-715a51b8e89c",
       "children": [
@@ -104608,8 +104609,8 @@
               "enabled": true,
               "attributes": {
                 "materialAsset": 36067672,
-                "speedX": 0.3,
-                "speedY": 0.04
+                "speedX": 0.4,
+                "speedY": 0.4
               }
             }
           }
@@ -104694,25 +104695,25 @@
       "parent": "da7afdbf-ad4b-4295-9746-715a51b8e89c",
       "children": [],
       "position": [
-        -9.09861688435005,
+        -10.09861688435005,
         -3.5796146392822266,
-        -20.269020080566406
+        -9.269020080566406
       ],
       "rotation": [
-        10,
-        -100,
-        10
+        2.381382162410079e-14,
+        -65.6824585411134,
+        -1.3190032214893945e-14
       ],
       "scale": [
-        100,
-        100,
-        100
+        1,
+        1,
+        1
       ],
       "components": {
         "model": {
           "enabled": true,
           "type": "asset",
-          "asset": 37457585,
+          "asset": 31441653,
           "materialAsset": null,
           "castShadows": true,
           "castShadowsLightmap": false,
@@ -104728,7 +104729,27 @@
           ],
           "batchGroupId": 100011,
           "mapping": {
-            "material": 37457585
+            "0": 35912036,
+            "1": 35912036,
+            "2": 35912036,
+            "3": 35912036,
+            "4": 35912036,
+            "5": 35912036,
+            "6": 35912036,
+            "7": 35912036,
+            "8": 35912036,
+            "9": 35912036,
+            "10": 35912036,
+            "11": 35912036,
+            "12": 35912036,
+            "13": 35912036,
+            "14": 35912036,
+            "15": 35912036,
+            "16": 35912036,
+            "17": 35912036,
+            "18": 35912036,
+            "19": 35912036,
+            "20": 35912036
           }
         }
       }
@@ -106236,9 +106257,9 @@
         "29575b0c-2bf4-44c9-aee6-8a95055cd2ca"
       ],
       "position": [
-        -12.419486301109996,
+        1.719486301109996,
         -3.9100031368443524,
-        -12.936196359067253
+        -5.936196359067253
       ],
       "rotation": [
         0,
@@ -106246,9 +106267,9 @@
         0
       ],
       "scale": [
-        2.8178567968502393,
-        2.8178567968502393,
-        2.8178567968502393
+        3.1178567968502393,
+        3.1178567968502393,
+        3.1178567968502393
       ],
       "components": {
         "model": {
@@ -106637,7 +106658,7 @@
     "4de82f52-0b56-4980-aeec-551d11d4ad47": {
       "name": "Web",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "4de82f52-0b56-4980-aeec-551d11d4ad47",
       "parent": "06c5ec69-e469-4a9c-8d86-1f10ab8e0412",
       "children": [],

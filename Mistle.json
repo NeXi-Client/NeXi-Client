@@ -27,7 +27,7 @@
       "tonemapping": 1,
       "exposure": 4,
       "skybox": 29533642,
-      "skyboxIntensity": 0.1,
+      "skyboxIntensity": 4,
       "skyboxMip": 0,
       "lightmapSizeMultiplier": 16,
       "lightmapMaxResolution": 2048,
@@ -83,9 +83,9 @@
           "vsmBlurSize": 11,
           "normalOffsetBias": 0.05,
           "color": [
-            0,
-            0,
-            0
+            0.8745098039215686,
+            0.7137254901960784,
+            0.5215686274509804
           ],
           "outerConeAngle": 45,
           "castShadows": true,
@@ -186,7 +186,7 @@
               "loop": true,
               "autoPlay": true,
               "overlap": false,
-              "asset": 30975135,
+              "asset": 34076897,
               "startTime": 0,
               "duration": null,
               "volume": 0.1,
@@ -200,7 +200,7 @@
               "asset": 30975135,
               "startTime": 0,
               "duration": null,
-              "volume": 0.1,
+              "volume": 0.8,
               "pitch": 1
             },
             "3": {
