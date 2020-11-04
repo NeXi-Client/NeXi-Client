@@ -45,6 +45,9 @@ app.commandLine.appendSwitch("autoplay-policy", "no-user-gesture-required");
 app.commandLine.appendSwitch("enable-quic");
 app.commandLine.appendSwitch("high-dpi-support", 1);
 
+updateSeen = 0;
+console.log(updateSeen)
+
 function init() {
   createInitWindow(`file:///${__dirname}/index.html`);
   autoUpdater.checkForUpdatesAndNotify();
@@ -136,6 +139,7 @@ function createInitWindow(url) {
   }
   const shortcut = require("electron-localshortcut");
   shortcut.register(initWin, "F1", () => {
+    autoUpdater.checkForUpdatesAndNotify();
     switch (checkURL(url)) {
       case "social":
         initWin.loadURL("https://social.venge.io");
