@@ -119,7 +119,7 @@
             0,
             0
           ],
-          "shadowResolution": 512,
+          "shadowResolution": 1024,
           "enabled": true,
           "range": 8,
           "shadowDistance": 200,

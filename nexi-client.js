@@ -616,44 +616,46 @@ const removeWeaponMenu = () => {
 
 //Remove Ad Preroll after match
 const fixAdPreroll = () => {
-  NetworkManager.prototype.mode = function(e) {
-    e[0] && (this.lastMode = this.currentMode + "",
-    this.currentMode = e[0],
-    pc.currentMode = this.currentMode,
-    this.app.fire("Game:Mode", this.currentMode)),
-    this.setModeState(this.lastMode, !1),
-    this.setModeState(this.currentMode, !0);
-    var t = this.app.root.findByName("Result");
-    if (t) {
-        var i = this.app.root.findByName("ChatWrapper");
-        i && (i.setLocalPosition(0, 0, 0),
-        i.reparent(this.app.root.findByName("ChatGame"))),
-        t.destroy()
-    }
-    this.app.fire("Game:PreStart", !0),
-    this.app.fire("Outline:Restart", !0);
-    var a = e[1];
-    if (console.log("Map load triggered!"),
-    clearTimeout(this.mapTimer),
-    this.mapTimer = setTimeout(function(e) {
-        a ? e.app.fire("Map:Load", a) : e.app.fire("Map:Load", "Sierra")
-    }, 100, this),
-    pc.isFinished = !1,
-    pc.isPauseActive = !1,
-    this.app.fire("Game:Start", !0),
-    this.app.fire("Player:Lock", !0),
-    setTimeout(function(e) {
-        e.app.fire("DOM:Update", !0)
-    }, 500, this),
-    Date.now() - this.lastGameStart > 1e5) {
-        var r = this;
-        this.app.fire("Player:Hide", !1)
-       // this.app.fire("Ads:Preroll", function() {
-       //     r.app.fire("Player:Show", !0)
-       // })
-    }
+    NetworkManager.prototype.mode = function(e) {
+      var t = e[1];
+      e[0] && (this.lastMode = this.currentMode + "",
+      this.currentMode = e[0],
+      pc.currentMode = this.currentMode,
+      pc.isPrivate = e[2],
+      this.app.fire("Game:Mode", this.currentMode, t)),
+      this.setModeState(this.lastMode, !1),
+      this.setModeState(this.currentMode, !0);
+      var i = this.app.root.findByName("Result");
+      if (i) {
+          var a = this.app.root.findByName("ChatWrapper");
+          a && (a.setLocalPosition(0, 0, 0),
+          a.reparent(this.app.root.findByName("ChatGame"))),
+          i.destroy()
+      }
+      if (this.app.fire("Game:PreStart", !0),
+      this.app.fire("Outline:Restart", !0),
+      pc.currentMap = t,
+      clearTimeout(this.mapTimer),
+      this.mapTimer = setTimeout(function(e) {
+          t ? e.app.fire("Map:Load", t) : e.app.fire("Map:Load", "Sierra")
+      }, 100, this),
+      pc.isFinished = !1,
+      pc.isPauseActive = !1,
+      this.isTeamSelected = !1,
+      this.app.fire("Game:Start", !0),
+      this.app.fire("Player:Lock", !0),
+      "GUNGAME" != pc.currentMode && pc.session && pc.session.weapon && this.app.fire("WeaponManager:Set", pc.session.weapon),
+      setTimeout(function(e) {
+          e.app.fire("DOM:Update", !0)
+      }, 500, this),
+      Date.now() - this.lastGameStart > 1e5) {
+          var r = this;
+          this.app.fire("Player:Hide", !0)
+          //this.app.fire("Ads:Preroll", function() {
+          //    r.app.fire("Player:Show", !0)
+          }
+      }
   }
-}
 
 //Add Inspect Weapon Keybind
 const inspectWeaponKeyboardBind = () => {

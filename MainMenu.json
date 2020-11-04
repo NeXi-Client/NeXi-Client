@@ -12,9 +12,9 @@
       "fog_end": 1000,
       "fog_start": 1,
       "global_ambient": [
-        0.2,
-        0.2,
-        0.2
+        0.1803921568627451,
+        0.1843137254901961,
+        0.3411764705882353
       ],
       "fog_color": [
         0,
@@ -22,12 +22,12 @@
         0
       ],
       "fog": "none",
-      "fog_density": 0.01,
+      "fog_density": 0.04,
       "gamma_correction": 1,
       "tonemapping": 0,
       "exposure": 1,
       "skybox": 29307645,
-      "skyboxIntensity": 1,
+      "skyboxIntensity": 0.5,
       "skyboxMip": 0,
       "lightmapSizeMultiplier": 16,
       "lightmapMaxResolution": 2048,
@@ -152,7 +152,6 @@
       "parent": "95c1e252-c6d9-4eb7-940a-c484bca0c489",
       "children": [
         "12c4b14a-33d9-4e97-8bcb-a6299dab7773",
-        "4de82f52-0b56-4980-aeec-551d11d4ad47",
         "ee816692-3902-4363-984a-c6c02bb65864",
         "82e28ffa-96bd-418d-a5b8-32cf60e5946f",
         "25c130ff-ea6b-4aa7-aaac-92668ab9d466",
@@ -23240,11 +23239,7 @@
         "c010d34f-618f-413a-bf4b-314fef128b93",
         "a5b08868-e754-4ae2-bb3e-16343c185c79",
         "d9dec1c7-9043-436b-bf40-0278030b8c75",
-        "1b8aec8d-db65-4266-a9c1-9fad9cf6e78f",
-        "48513a5b-7ba2-40de-8885-bc0a38cc54a5",
-        "75e9270e-1ab8-4089-9418-6735124e9632",
-        "412a5839-ef71-4a66-8358-b87eaf5648bf",
-        "62d38502-6964-4860-92cb-8bec1f07deba"
+        "1b8aec8d-db65-4266-a9c1-9fad9cf6e78f"
       ],
       "position": [
         0,
@@ -23355,7 +23350,7 @@
             0.9450980392156862,
             0.9019607843137255
           ],
-          "intensity": 3,
+          "intensity": 2,
           "castShadows": false,
           "shadowType": 0,
           "vsmBlurMode": 1,
@@ -25816,6 +25811,8 @@
         "2123a6e2-3bf0-40f8-86cd-9a68f689bd2b",
         "ed3526e2-16ff-4fa9-a9a5-2dd5908e842e",
         "0f3aaa83-aa4e-4a46-af03-a40bf527f726",
+        "019bfc08-7caa-49fe-a4b1-681dc7060a80",
+        "72fadb2f-bcce-4848-9c17-f66bfce97edf",
         "9b3f317d-b27f-4819-8303-5c0bab068d86",
         "e0850441-d29d-4e62-ae27-b1853130faec",
         "39731b88-90c4-4248-bb96-6e4fde2008c2",
@@ -33985,8 +33982,8 @@
       "parent": "89fa5e74-7929-4d0e-9469-11fc9f785088",
       "children": [],
       "position": [
-        183.0210497379303,
-        58.65657827435285,
+        156.53612345357024,
+        -29.85899019241333,
         0
       ],
       "rotation": [
@@ -34038,10 +34035,10 @@
           "width": 36.855,
           "height": 17.265,
           "margin": [
-            146.166,
-            41.392,
-            -183.021,
-            -58.657
+            130.681,
+            -41.124,
+            -168.536,
+            -12.859
           ],
           "alignment": [
             0.5,
@@ -44587,8 +44584,8 @@
         "f55b52a1-6ee5-4f0f-b2fb-e640de7ac75c"
       ],
       "position": [
-        164.14300107955933,
-        -20.054208137449564,
+        171.11290940963963,
+        37.79499864578247,
         0
       ],
       "rotation": [
@@ -44640,10 +44637,10 @@
           "width": 120,
           "height": 32,
           "margin": [
-            44.143,
-            -20.054,
-            -164.143,
-            -11.946
+            51.113,
+            41.795,
+            -145.113,
+            -65.795
           ],
           "alignment": [
             0.5,
@@ -44720,8 +44717,8 @@
         "5f86930e-3c5a-4d8b-b1f1-92ef87731a50"
       ],
       "position": [
-        172.72539342001988,
-        5.697027206420898,
+        181.7859878540039,
+        63.545855953579846,
         0
       ],
       "rotation": [
@@ -44773,10 +44770,10 @@
           "width": 120,
           "height": 32,
           "margin": [
-            52.725,
-            5.697,
-            -172.725,
-            -37.697
+            61.786,
+            63.546,
+            -148.786,
+            -95.546
           ],
           "alignment": [
             0.5,
@@ -47378,8 +47375,8 @@
       "parent": "89fa5e74-7929-4d0e-9469-11fc9f785088",
       "children": [],
       "position": [
-        180.47399061138975,
-        39.36068844795227,
+        159.56486825577076,
+        -15.0029616355896,
         0
       ],
       "rotation": [
@@ -47431,10 +47428,10 @@
           "width": 27.765,
           "height": 15.718,
           "margin": [
-            152.709,
-            23.643,
-            -180.474,
-            -39.361
+            137.353,
+            -27.577,
+            -135.565,
+            -5.003
           ],
           "alignment": [
             0.5,
@@ -52394,7 +52391,8 @@
                 "rarityElement": "7f63b27d-f0b0-4d53-bf29-bc2547ef8e25",
                 "itemLabel": "46def1a9-0667-44a5-b664-34830cfbb886",
                 "rotateLabelEntity": "db9863f2-b5ac-4ba8-b345-9a99d65ede96",
-                "coinsEntity": "251aea65-250c-423f-b255-b067ab5c54cd"
+                "coinsEntity": "251aea65-250c-423f-b255-b067ab5c54cd",
+                "echoEntity": "6ea67062-956e-48fd-bc3a-9db7bbdb7c01"
               }
             }
           }
@@ -52651,6 +52649,7 @@
         "f307f87a-98e2-4aa4-b20c-8a68dd388dda",
         "378a026d-b908-4bd9-bab7-cabc07bdaf2f",
         "d41f9aa3-73b9-4f2d-84bc-5fb995f4df30",
+        "6ea67062-956e-48fd-bc3a-9db7bbdb7c01",
         "126b52de-7a0c-4f04-bcd3-449b9fc7b890",
         "983372dc-59d7-4e21-9cb2-5f2f90f290b5",
         "251aea65-250c-423f-b255-b067ab5c54cd"
@@ -52734,9 +52733,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.6823529411764706,
-            0.5764705882352941,
-            0.6078431372549019
+            0.6745098039215687,
+            0.6745098039215687,
+            0.6745098039215687
           ],
           "opacity": 1,
           "textureAsset": 33208344,
@@ -55399,7 +55398,7 @@
               "enabled": true,
               "attributes": {
                 "auto": true,
-                "URL": "https://gateway.venge.io/?request=get_offers&version=6",
+                "URL": "https://gateway.venge.io/?request=get_offers&version=7",
                 "data": "",
                 "success": "Shop:SetItems, Hide:Loading",
                 "error": "Alert:Menu, Hide:Loading",
@@ -106567,104 +106566,16 @@
         }
       }
     },
-    "48513a5b-7ba2-40de-8885-bc0a38cc54a5": {
-      "name": "Pumpkin",
+    "019bfc08-7caa-49fe-a4b1-681dc7060a80": {
+      "name": "ChangeLog",
       "tags": [],
       "enabled": true,
-      "resource_id": "48513a5b-7ba2-40de-8885-bc0a38cc54a5",
-      "parent": "da7afdbf-ad4b-4295-9746-715a51b8e89c",
+      "resource_id": "019bfc08-7caa-49fe-a4b1-681dc7060a80",
+      "parent": "89fa5e74-7929-4d0e-9469-11fc9f785088",
       "children": [],
       "position": [
-        -4.729243356538509,
-        -3.2957825660705566,
-        -5.331571102142334
-      ],
-      "rotation": [
-        0,
-        -62.177911574608736,
-        0
-      ],
-      "scale": [
-        40.528410322211776,
-        40.528410322211776,
-        40.528410322211776
-      ],
-      "components": {
-        "model": {
-          "enabled": true,
-          "type": "asset",
-          "asset": 37457585,
-          "materialAsset": null,
-          "castShadows": true,
-          "castShadowsLightmap": true,
-          "receiveShadows": true,
-          "lightmapped": false,
-          "lightmapSizeMultiplier": 1,
-          "castShadowsLightMap": true,
-          "lightMapped": false,
-          "lightMapSizeMultiplier": 1,
-          "isStatic": false,
-          "layers": [
-            0
-          ],
-          "batchGroupId": null
-        }
-      }
-    },
-    "75e9270e-1ab8-4089-9418-6735124e9632": {
-      "name": "Pumpkin",
-      "tags": [],
-      "enabled": true,
-      "resource_id": "75e9270e-1ab8-4089-9418-6735124e9632",
-      "parent": "da7afdbf-ad4b-4295-9746-715a51b8e89c",
-      "children": [],
-      "position": [
-        5.344052762026584,
-        -3.2957825660705566,
-        -5.331571102142334
-      ],
-      "rotation": [
-        180,
-        -33.55518100355226,
-        180
-      ],
-      "scale": [
-        38.333013442687744,
-        38.333013442687744,
-        38.333013442687744
-      ],
-      "components": {
-        "model": {
-          "enabled": true,
-          "type": "asset",
-          "asset": 37457585,
-          "materialAsset": null,
-          "castShadows": true,
-          "castShadowsLightmap": true,
-          "receiveShadows": true,
-          "lightmapped": false,
-          "lightmapSizeMultiplier": 1,
-          "castShadowsLightMap": true,
-          "lightMapped": false,
-          "lightMapSizeMultiplier": 1,
-          "isStatic": false,
-          "layers": [
-            0
-          ],
-          "batchGroupId": null
-        }
-      }
-    },
-    "4de82f52-0b56-4980-aeec-551d11d4ad47": {
-      "name": "Web",
-      "tags": [],
-      "enabled": false,
-      "resource_id": "4de82f52-0b56-4980-aeec-551d11d4ad47",
-      "parent": "06c5ec69-e469-4a9c-8d86-1f10ab8e0412",
-      "children": [],
-      "position": [
-        0.0000858306884765625,
-        141.90224647521973,
+        102.8690464102107,
+        -32.64592456817627,
         0
       ],
       "rotation": [
@@ -106673,53 +106584,53 @@
         0
       ],
       "scale": [
-        0.7917658184633529,
-        0.7917658184633529,
-        0.7917658184633529
+        1,
+        1,
+        1
       ],
       "components": {
         "element": {
           "enabled": true,
-          "type": "image",
+          "type": "text",
           "anchor": [
-            0,
             1,
-            0,
+            1,
+            1,
             1
           ],
           "pivot": [
-            0,
+            1,
             1
           ],
-          "text": "",
+          "text": "Changelog",
           "key": null,
-          "fontAsset": 29313023,
-          "fontSize": 32,
+          "fontAsset": 29329818,
+          "fontSize": 16,
           "minFontSize": 8,
           "maxFontSize": 32,
           "autoFitWidth": false,
           "autoFitHeight": false,
           "maxLines": null,
-          "lineHeight": 32,
+          "lineHeight": 13,
           "wrapLines": true,
-          "spacing": 1,
+          "spacing": 0.9,
           "color": [
-            1,
-            1,
-            1
+            0.7019607843137254,
+            0.7019607843137254,
+            0.7019607843137254
           ],
           "opacity": 1,
-          "textureAsset": 37457905,
+          "textureAsset": null,
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 512,
-          "height": 512,
+          "width": 48.925,
+          "height": 15.718,
           "margin": [
-            0,
-            -370.098,
-            -512,
-            -141.902
+            53.944,
+            -46.268,
+            -160.869,
+            32.646
           ],
           "alignment": [
             0.5,
@@ -106749,32 +106660,53 @@
             1
           ],
           "materialAsset": null,
-          "autoWidth": false,
-          "autoHeight": false,
-          "useInput": false,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": true,
           "batchGroupId": null,
           "mask": false,
           "layers": [
             4
           ],
           "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "button"
+          ],
+          "scripts": {
+            "button": {
+              "enabled": true,
+              "attributes": {
+                "connected": null,
+                "triggerFunction": "window.open('https://about.venge.io/changes.html');",
+                "pressFunction": "",
+                "fireFunction": "",
+                "fireArgs": "",
+                "playSound": true,
+                "waitResolve": false,
+                "leaveFunction": "",
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
+              }
+            }
+          }
         }
       }
     },
-    "412a5839-ef71-4a66-8358-b87eaf5648bf": {
-      "name": "Candle",
+    "72fadb2f-bcce-4848-9c17-f66bfce97edf": {
+      "name": "TOS",
       "tags": [],
       "enabled": true,
-      "resource_id": "412a5839-ef71-4a66-8358-b87eaf5648bf",
-      "parent": "da7afdbf-ad4b-4295-9746-715a51b8e89c",
-      "children": [
-        "e498e594-dcba-4adb-9344-12139a8c02ba",
-        "6cda730b-a413-4386-ae57-aaf4deb27d98"
-      ],
+      "resource_id": "72fadb2f-bcce-4848-9c17-f66bfce97edf",
+      "parent": "89fa5e74-7929-4d0e-9469-11fc9f785088",
+      "children": [],
       "position": [
-        3.380971591416418,
-        -3.228567123413086,
-        -4.301918983459473
+        44.322935546875,
+        -32.6459296875,
+        0
       ],
       "rotation": [
         0,
@@ -106782,15 +106714,147 @@
         0
       ],
       "scale": [
-        4.289391369819342,
-        4.289391369819342,
-        4.289391369819342
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "pivot": [
+            1,
+            1
+          ],
+          "text": "TOS",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 16,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 13,
+          "wrapLines": true,
+          "spacing": 0.9,
+          "color": [
+            0.7019607843137254,
+            0.7019607843137254,
+            0.7019607843137254
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 18.984,
+          "height": 13.622,
+          "margin": [
+            25.339,
+            -46.268,
+            -44.323,
+            32.646
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": true,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "button"
+          ],
+          "scripts": {
+            "button": {
+              "enabled": true,
+              "attributes": {
+                "connected": null,
+                "triggerFunction": "window.open('https://about.venge.io/tos.html');",
+                "pressFunction": "",
+                "fireFunction": "",
+                "fireArgs": "",
+                "playSound": true,
+                "waitResolve": false,
+                "leaveFunction": "",
+                "destroyOnFunction": false,
+                "linkButton": false,
+                "key": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "6ea67062-956e-48fd-bc3a-9db7bbdb7c01": {
+      "name": "Echo",
+      "tags": [
+        "Class"
+      ],
+      "enabled": false,
+      "resource_id": "6ea67062-956e-48fd-bc3a-9db7bbdb7c01",
+      "parent": "eaf4bcbd-8554-496c-b06f-5f2f38e95e02",
+      "children": [],
+      "position": [
+        0,
+        -1.3048886819733134,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.6532405317116483,
+        1.6532405317116483,
+        1.6532405317116483
       ],
       "components": {
         "model": {
           "enabled": true,
           "type": "asset",
-          "asset": 37458124,
+          "asset": 37198881,
           "materialAsset": null,
           "castShadows": true,
           "castShadowsLightmap": true,
@@ -106802,354 +106866,16 @@
           "lightMapSizeMultiplier": 1,
           "isStatic": false,
           "layers": [
-            0
-          ],
-          "batchGroupId": 100021
-        }
-      }
-    },
-    "e498e594-dcba-4adb-9344-12139a8c02ba": {
-      "name": "Light-1x",
-      "tags": [],
-      "enabled": true,
-      "resource_id": "e498e594-dcba-4adb-9344-12139a8c02ba",
-      "parent": "412a5839-ef71-4a66-8358-b87eaf5648bf",
-      "children": [],
-      "position": [
-        0.0039508557926097865,
-        -0.002735145954915197,
-        -0.01186804977464817
-      ],
-      "rotation": [
-        0,
-        0,
-        0
-      ],
-      "scale": [
-        0.7803316154609546,
-        0.7803316154609546,
-        0.7803316154609546
-      ],
-      "components": {
-        "model": {
-          "enabled": true,
-          "type": "plane",
-          "asset": null,
-          "materialAsset": 37458158,
-          "castShadows": false,
-          "castShadowsLightmap": false,
-          "receiveShadows": false,
-          "lightmapped": false,
-          "lightmapSizeMultiplier": 1,
-          "castShadowsLightMap": true,
-          "lightMapped": false,
-          "lightMapSizeMultiplier": 1,
-          "isStatic": false,
-          "layers": [
-            0
+            1001
           ],
           "batchGroupId": null
-        }
-      }
-    },
-    "6cda730b-a413-4386-ae57-aaf4deb27d98": {
-      "name": "Fire",
-      "tags": [
-        "LookAt"
-      ],
-      "enabled": true,
-      "resource_id": "6cda730b-a413-4386-ae57-aaf4deb27d98",
-      "parent": "412a5839-ef71-4a66-8358-b87eaf5648bf",
-      "children": [
-        "4cde9fd2-1bb1-419f-b14d-5b6664ef8eab"
-      ],
-      "position": [
-        0.003951115539432282,
-        0.2745957802806629,
-        0.005583009545290452
-      ],
-      "rotation": [
-        0,
-        0,
-        0
-      ],
-      "scale": [
-        0.06585688885570222,
-        0.06585688885570222,
-        0.06585688885570222
-      ],
-      "components": {
-        "sprite": {
+        },
+        "animation": {
           "enabled": true,
-          "type": "animated",
-          "width": 1,
-          "height": 1,
-          "color": [
-            1,
-            0.7490196078431373,
-            0
-          ],
-          "opacity": 1,
-          "flipX": false,
-          "flipY": false,
-          "spriteAsset": null,
-          "frame": 0,
+          "assets": [],
           "speed": 1,
-          "batchGroupId": null,
-          "layers": [
-            0
-          ],
-          "drawOrder": 0,
-          "autoPlayClip": "Fire",
-          "clips": {
-            "0": {
-              "name": "Fire",
-              "fps": 20,
-              "loop": true,
-              "autoPlay": true,
-              "spriteAsset": 37458156
-            }
-          }
-        }
-      }
-    },
-    "4cde9fd2-1bb1-419f-b14d-5b6664ef8eab": {
-      "name": "Light-2x",
-      "tags": [],
-      "enabled": true,
-      "resource_id": "4cde9fd2-1bb1-419f-b14d-5b6664ef8eab",
-      "parent": "6cda730b-a413-4386-ae57-aaf4deb27d98",
-      "children": [],
-      "position": [
-        -9.033722108142683e-7,
-        4.864141374127939e-7,
-        -0.2649805007657591
-      ],
-      "rotation": [
-        78.38912666157317,
-        0,
-        0
-      ],
-      "scale": [
-        3.901783811286255,
-        3.901783811286255,
-        3.901783811286255
-      ],
-      "components": {
-        "model": {
-          "enabled": true,
-          "type": "plane",
-          "asset": null,
-          "materialAsset": 37458189,
-          "castShadows": false,
-          "castShadowsLightmap": false,
-          "receiveShadows": false,
-          "lightmapped": false,
-          "lightmapSizeMultiplier": 1,
-          "castShadowsLightMap": true,
-          "lightMapped": false,
-          "lightMapSizeMultiplier": 1,
-          "isStatic": false,
-          "layers": [
-            0
-          ],
-          "batchGroupId": null
-        }
-      }
-    },
-    "62d38502-6964-4860-92cb-8bec1f07deba": {
-      "name": "Candle",
-      "tags": [],
-      "enabled": true,
-      "resource_id": "62d38502-6964-4860-92cb-8bec1f07deba",
-      "parent": "da7afdbf-ad4b-4295-9746-715a51b8e89c",
-      "children": [
-        "382fc189-ebad-4a1b-a08a-354d259c989c",
-        "a978ac05-b44a-4053-8b87-8dd346de5497"
-      ],
-      "position": [
-        -6.288800804504925,
-        -3.228567123413086,
-        -4.301918983459473
-      ],
-      "rotation": [
-        0,
-        0,
-        0
-      ],
-      "scale": [
-        4.289391369819342,
-        4.289391369819342,
-        4.289391369819342
-      ],
-      "components": {
-        "model": {
-          "enabled": true,
-          "type": "asset",
-          "asset": 37458124,
-          "materialAsset": null,
-          "castShadows": true,
-          "castShadowsLightmap": true,
-          "receiveShadows": true,
-          "lightmapped": false,
-          "lightmapSizeMultiplier": 1,
-          "castShadowsLightMap": true,
-          "lightMapped": false,
-          "lightMapSizeMultiplier": 1,
-          "isStatic": false,
-          "layers": [
-            0
-          ],
-          "batchGroupId": 100021
-        }
-      }
-    },
-    "382fc189-ebad-4a1b-a08a-354d259c989c": {
-      "name": "Light-1x",
-      "tags": [],
-      "enabled": true,
-      "resource_id": "382fc189-ebad-4a1b-a08a-354d259c989c",
-      "parent": "62d38502-6964-4860-92cb-8bec1f07deba",
-      "children": [],
-      "position": [
-        0.0039508557926097865,
-        -0.002735145954915197,
-        -0.01186804977464817
-      ],
-      "rotation": [
-        0,
-        0,
-        0
-      ],
-      "scale": [
-        0.7803316154609546,
-        0.7803316154609546,
-        0.7803316154609546
-      ],
-      "components": {
-        "model": {
-          "enabled": true,
-          "type": "plane",
-          "asset": null,
-          "materialAsset": 37458158,
-          "castShadows": false,
-          "castShadowsLightmap": false,
-          "receiveShadows": false,
-          "lightmapped": false,
-          "lightmapSizeMultiplier": 1,
-          "castShadowsLightMap": true,
-          "lightMapped": false,
-          "lightMapSizeMultiplier": 1,
-          "isStatic": false,
-          "layers": [
-            0
-          ],
-          "batchGroupId": null
-        }
-      }
-    },
-    "a978ac05-b44a-4053-8b87-8dd346de5497": {
-      "name": "Fire",
-      "tags": [
-        "LookAt"
-      ],
-      "enabled": true,
-      "resource_id": "a978ac05-b44a-4053-8b87-8dd346de5497",
-      "parent": "62d38502-6964-4860-92cb-8bec1f07deba",
-      "children": [
-        "143ce72c-9353-4b0f-870f-48c88700cda4"
-      ],
-      "position": [
-        0.003951115539432282,
-        0.2745957802806629,
-        0.005583009545290452
-      ],
-      "rotation": [
-        0,
-        0,
-        0
-      ],
-      "scale": [
-        0.06585688885570222,
-        0.06585688885570222,
-        0.06585688885570222
-      ],
-      "components": {
-        "sprite": {
-          "enabled": true,
-          "type": "animated",
-          "width": 1,
-          "height": 1,
-          "color": [
-            1,
-            0.7490196078431373,
-            0
-          ],
-          "opacity": 1,
-          "flipX": false,
-          "flipY": false,
-          "spriteAsset": null,
-          "frame": 0,
-          "speed": 1,
-          "batchGroupId": null,
-          "layers": [
-            0
-          ],
-          "drawOrder": 0,
-          "autoPlayClip": "Fire",
-          "clips": {
-            "0": {
-              "name": "Fire",
-              "fps": 20,
-              "loop": true,
-              "autoPlay": true,
-              "spriteAsset": 37458156
-            }
-          }
-        }
-      }
-    },
-    "143ce72c-9353-4b0f-870f-48c88700cda4": {
-      "name": "Light-2x",
-      "tags": [],
-      "enabled": true,
-      "resource_id": "143ce72c-9353-4b0f-870f-48c88700cda4",
-      "parent": "a978ac05-b44a-4053-8b87-8dd346de5497",
-      "children": [],
-      "position": [
-        -9.033722108142683e-7,
-        4.864141374127939e-7,
-        -0.2649805007657591
-      ],
-      "rotation": [
-        78.38912666157317,
-        0,
-        0
-      ],
-      "scale": [
-        3.901783811286255,
-        3.901783811286255,
-        3.901783811286255
-      ],
-      "components": {
-        "model": {
-          "enabled": true,
-          "type": "plane",
-          "asset": null,
-          "materialAsset": 37458189,
-          "castShadows": false,
-          "castShadowsLightmap": false,
-          "receiveShadows": false,
-          "lightmapped": false,
-          "lightmapSizeMultiplier": 1,
-          "castShadowsLightMap": true,
-          "lightMapped": false,
-          "lightMapSizeMultiplier": 1,
-          "isStatic": false,
-          "layers": [
-            0
-          ],
-          "batchGroupId": null
+          "loop": true,
+          "activate": true
         }
       }
     }

@@ -5,7 +5,8 @@ CONTEXT_OPTIONS = {
     'antialias': false,
     'alpha': false,
     'preserveDrawingBuffer': false,
-    'preferWebGl2': true
+    'preferWebGl2': true,
+    'powerPreference': 'high-performance'
 };
 SCRIPTS = [];
 CONFIG_FILENAME = "config.json?v=" + VERSION;
@@ -13,7 +14,7 @@ INPUT_SETTINGS = {
     useKeyboard: true,
     useMouse: true,
     useGamepads: false,
-    useTouch: false
+    useTouch: true
 };
 pc.script.legacy = false;
 PRELOAD_MODULES = [

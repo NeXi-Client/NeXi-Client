@@ -917,6 +917,7 @@ Movement.prototype.initialize = function() {
     this.app.on("Touch:Throw", this.onTouchThrow, this),
     this.app.on("Touch:AutoLock", this.setAutoLock, this),
     this.app.on("Touch:Melee", this.onTouchMelee, this),
+    this.app.on("Touch:Reload", this.onTouchReload, this),
     this.isMobile = !0) : (this.app.mouse.on("mousedown", this.onMouseDown, this),
     window.addEventListener("mousemove", this.onMouseMove.bind(this)),
     this.app.mouse.on("mouseup", this.onMouseUp, this)),
@@ -1380,6 +1381,10 @@ Movement.prototype.cancelReload = function() {
     this.currentWeapon.magazineAttach(),
     this.timerBag = [],
     this.timerTween = []
+}
+,
+Movement.prototype.onTouchReload = function() {
+    this.reload()
 }
 ,
 Movement.prototype.reload = function() {
@@ -1899,7 +1904,7 @@ Movement.prototype.update = function(t) {
     this.setMovementAnimation(e),
     this.checkGlitches(e),
     this.setShooting(e),
-    pc.isMobile && this.updateAutoLock(),
+    this.isMobile && this.updateAutoLock(),
     this.timestamp += e,
     this.lastDelta = 0)
 }
@@ -2628,6 +2633,12 @@ Overlay.attributes.add("chatEntity", {
 Overlay.attributes.add("chatWrapperEntity", {
     type: "entity"
 }),
+Overlay.attributes.add("mapImageEntity", {
+    type: "entity"
+}),
+Overlay.attributes.add("mapNameEntity", {
+    type: "entity"
+}),
 Overlay.attributes.add("modeEntity", {
     type: "entity"
 }),
@@ -2667,6 +2678,7 @@ Overlay.prototype.initialize = function() {
     this.isDeath = !1,
     this.activeTaskTimer = !1,
     this.taskHideTimer = !1,
+    this.isTransitionPlaying = !1,
     this.lastSmallBannerUpdate = 0,
     this.smallBannerSet = !1,
     this.notifications = [],
@@ -2766,7 +2778,10 @@ Overlay.prototype.initialize = function() {
     this.app.on("Server:Tick", this.onTick, this),
     this.subtitleEntity.enabled = !1,
     setTimeout(function(t) {
-        t.blackShadow.enabled = !1
+        t.blackShadow.enabled && (pc.app.fire("Overlay:Transition", !1),
+        setTimeout(function() {
+            t.blackShadow.enabled = !1
+        }, 200))
     }, 1e4, this)
 }
 ,
@@ -2782,12 +2797,15 @@ Overlay.prototype.onFollowUser = function(t) {
     this.app.fire("Network:Chat", t + " followed!")
 }
 ,
-Overlay.prototype.onModeSet = function(t) {
-    this.modeEntity.element.text = t;
-    var e = this.modeElements;
-    for (var i in e) {
-        var a = e[i];
-        -1 === a.tags.list().indexOf(t) ? a.enabled = !1 : a.enabled = !0
+Overlay.prototype.onModeSet = function(t, e) {
+    this.modeEntity.element.text = t,
+    this.mapNameEntity.element.text = e.toLowerCase(),
+    this.mapImageEntity.element.textureAsset = this.app.assets.find(e + "-Large.jpg"),
+    this.mapImageEntity.element.color = pc.colors.white;
+    var i = this.modeElements;
+    for (var a in i) {
+        var n = i[a];
+        -1 === n.tags.list().indexOf(t) ? n.enabled = !1 : n.enabled = !0
     }
 }
 ,
@@ -2820,7 +2838,10 @@ Overlay.prototype.onPreStart = function() {
 Overlay.prototype.onLoaded = function() {
     clearTimeout(this.blackShadowTimer),
     this.blackShadowTimer = setTimeout(function(t) {
-        t.blackShadow.enabled = !1
+        pc.app.fire("Overlay:Transition", !1),
+        setTimeout(function() {
+            t.blackShadow.enabled = !1
+        }, 100)
     }, 500, this),
     this.app.fire("DOM:Update", !0)
 }
@@ -3528,9 +3549,12 @@ Overlay.prototype.setOverlayStatus = function(t) {
 }
 ,
 Overlay.prototype.onTransition = function(t) {
+    if (this.isTransitionPlaying)
+        return !1;
     t ? (this.leftCinema.element.color = t,
     this.rightCinema.element.color = t) : (this.leftCinema.element.color = pc.colors.black,
     this.rightCinema.element.color = pc.colors.black),
+    this.isTransitionPlaying = !0,
     this.leftCinema.enabled = !0,
     this.rightCinema.enabled = !0,
     this.entity.sound.slots.Whoosh.pitch = 1.1,
@@ -3564,7 +3588,10 @@ Overlay.prototype.onTransition = function(t) {
         }, .35, pc.Linear).start(),
         t.entity.sound.slots.Whoosh.pitch = 1,
         t.entity.sound.play("Whoosh")
-    }, 400, this)
+    }, 400, this),
+    setTimeout(function(t) {
+        t.isTransitionPlaying = !1
+    }, 600, this)
 }
 ,
 Overlay.prototype.setDeath = function() {
@@ -4880,7 +4907,7 @@ EffectManager.prototype.onAxeThrow = function(t, e, i, a) {
         t.originEntity.script.enabled = !1,
         t.originEntity.setLocalEulerAngles(18.68, 0, 0),
         e && n.dealHitEntity("Axe", e, s, i, !0),
-        a && n.app.fire("Spell:Wind", t.getPosition().clone())
+        a && n.app.fire("Spell:Wind", t.getPosition().clone(), "Small")
     }, 250, r, n, this),
     n && n.entity && "Player" == n.entity.name ? setTimeout(function(t, e) {
         t.enabled = !1
@@ -5912,27 +5939,27 @@ NetworkManager.prototype.auth = function(e) {
 }
 ,
 NetworkManager.prototype.mode = function(e) {
+    var t = e[1];
     e[0] && (this.lastMode = this.currentMode + "",
     this.currentMode = e[0],
     pc.currentMode = this.currentMode,
     pc.isPrivate = e[2],
-    this.app.fire("Game:Mode", this.currentMode)),
+    this.app.fire("Game:Mode", this.currentMode, t)),
     this.setModeState(this.lastMode, !1),
     this.setModeState(this.currentMode, !0);
-    var t = this.app.root.findByName("Result");
-    if (t) {
-        var i = this.app.root.findByName("ChatWrapper");
-        i && (i.setLocalPosition(0, 0, 0),
-        i.reparent(this.app.root.findByName("ChatGame"))),
-        t.destroy()
+    var i = this.app.root.findByName("Result");
+    if (i) {
+        var a = this.app.root.findByName("ChatWrapper");
+        a && (a.setLocalPosition(0, 0, 0),
+        a.reparent(this.app.root.findByName("ChatGame"))),
+        i.destroy()
     }
-    this.app.fire("Game:PreStart", !0),
-    this.app.fire("Outline:Restart", !0);
-    var a = e[1];
-    if (pc.currentMap = a,
+    if (this.app.fire("Game:PreStart", !0),
+    this.app.fire("Outline:Restart", !0),
+    pc.currentMap = t,
     clearTimeout(this.mapTimer),
     this.mapTimer = setTimeout(function(e) {
-        a ? e.app.fire("Map:Load", a) : e.app.fire("Map:Load", "Sierra")
+        t ? e.app.fire("Map:Load", t) : e.app.fire("Map:Load", "Sierra")
     }, 100, this),
     pc.isFinished = !1,
     pc.isPauseActive = !1,
@@ -8660,7 +8687,7 @@ Player.prototype.emote = function() {
     }, 1500, this),
     this.emoteTimeout = setTimeout(function(t) {
         t.finishEmote()
-    }, 3e3, this)
+    }, 4500, this)
 }
 ,
 Player.prototype.finishEmote = function() {
@@ -9859,7 +9886,7 @@ Menu.prototype.initialize = function() {
         return !1
     }
     ,
-    this.mobileRedirection && !pc.isMobile && (Utils.isIOS() ? this.mobileRedirection.enabled = !0 : this.mobileRedirection.enabled = !1),
+    this.mobileRedirection && pc.isMobile,
     Utils.isMobile() && this.mobileFreeCoin.setLocalScale(1.2, 1.2, 1.2),
     pc.isMobile) {
         Utils.getItem("MobileUsernameChanged") && this.mobileUsernameChange.destroy();
@@ -13743,28 +13770,32 @@ SpellWind.attributes.add("time", {
     default: 1.5
 }),
 SpellWind.prototype.initialize = function() {
-    this.scale = 0,
     this.timestamp = 10,
+    this.animation = {
+        scale: 0
+    },
     this.app.on("Spell:Wind", this.onSet, this)
 }
 ,
-SpellWind.prototype.onSet = function(t) {
-    this.scale = .1,
+SpellWind.prototype.onSet = function(t, e) {
+    this.animation.scale = .1,
     this.timestamp = 0,
     this.material.resource.opacity = 1,
     this.entity.setLocalPosition(t),
     this.app.tween(this.material.resource).to({
         opacity: 0
     }, .5, pc.Linear).delay(this.opacityDelay).start(),
+    this.app.tween(this.animation).to({
+        scale: 3
+    }, .5, pc.BackOut).start(),
     this.entity.enabled = !0,
     this.entity.sound.play("Cast")
 }
 ,
 SpellWind.prototype.update = function(t) {
     this.entity.rotateLocal(0, -1500 * t, 0),
-    this.scale += t * this.scaleSpeed,
     this.timestamp += t,
-    this.entity.setLocalScale(this.scale, this.scale, this.scale),
+    this.entity.setLocalScale(this.animation.scale, this.animation.scale, this.animation.scale),
     this.material.resource.update(),
     this.timestamp > this.time && (this.entity.enabled = !1)
 }
@@ -15066,7 +15097,8 @@ Spectator.prototype.onMouseUp = function(t) {
 }
 ,
 Spectator.prototype.onMouseMove = function(t) {
-    return !!this.currentState && (!!this.isMouseLocked && (this.lookX -= t.dy * this.defaultSensitivity * pc.settings.sensivity,
+    return console.log("state : ", this.currentState),
+    !!this.currentState && (!!this.isMouseLocked && (this.lookX -= t.dy * this.defaultSensitivity * pc.settings.sensivity,
     void (this.lookY -= t.dx * this.defaultSensitivity * pc.settings.sensivity)))
 }
 ,
@@ -15158,6 +15190,9 @@ Spectator.prototype.update = function(t) {
 }
 ;
 var SpectatorScreen = pc.createScript("spectatorScreen");
+SpectatorScreen.attributes.add("cameraEntity", {
+    type: "entity"
+}),
 SpectatorScreen.attributes.add("shortcutsEntity", {
     type: "entity"
 }),
@@ -15191,6 +15226,18 @@ SpectatorScreen.attributes.add("announceTextEntity", {
 SpectatorScreen.attributes.add("announceStripeEntity", {
     type: "entity"
 }),
+SpectatorScreen.attributes.add("leaderboardHolder", {
+    type: "entity"
+}),
+SpectatorScreen.attributes.add("labelHolder", {
+    type: "entity"
+}),
+SpectatorScreen.attributes.add("timeHolder", {
+    type: "entity"
+}),
+SpectatorScreen.attributes.add("pauseEntity", {
+    type: "entity"
+}),
 SpectatorScreen.prototype.initialize = function() {
     this.isOvertime = !1,
     this.leaderboardItems = [],
@@ -15199,7 +15246,22 @@ SpectatorScreen.prototype.initialize = function() {
     this.app.on("Overlay:Leaderboard", this.setLeaderboard, this),
     this.app.on("Game:Start", this.onStart, this),
     this.app.on("Game:Overtime", this.setOvertime, this),
+    this.app.on("Menu:Settings", this.onSettingsChange, this),
+    this.app.on("Menu:CloseSettings", this.onCloseSettings, this),
+    this.onSettingsChange(),
     this.leaderboardItem.enabled = !1
+}
+,
+SpectatorScreen.prototype.onSettingsChange = function(t) {
+    !0 === pc.settings.disableLeaderboard ? this.leaderboardHolder.enabled = !1 : this.leaderboardHolder.enabled = !0,
+    !0 === pc.settings.disableUsernames ? this.labelHolder.enabled = !1 : this.labelHolder.enabled = !0,
+    !0 === pc.settings.disableTime ? this.timeHolder.enabled = !1 : this.timeHolder.enabled = !0,
+    this.cameraEntity.script.spectator.defaultSpeed = pc.settings.cameraSpeed
+}
+,
+SpectatorScreen.prototype.onCloseSettings = function() {
+    this.pauseEntity.enabled = !1,
+    this.app.fire("Camera:State", !0)
 }
 ,
 SpectatorScreen.prototype.setLeaderboard = function(t) {
@@ -15211,24 +15273,25 @@ SpectatorScreen.prototype.setLeaderboard = function(t) {
       , i = 0;
     for (var a in t) {
         var o = t[a]
-          , r = parseInt(a)
-          , c = this.app.assets.find("Tier-" + o.tier + ".png")
-          , s = this.leaderboardItem.clone();
-        s.enabled = !0,
-        s.setLocalPosition(-3 * parseInt(a), i, 0),
-        s.setLocalScale(n, n, n),
-        s.findByName("Bar").setLocalScale(o.bar, 1, 1),
-        s.findByName("Tier").element.textureAsset = c,
-        s.findByName("Rank").element.text = r + 1 + ".",
-        s.findByName("Username").element.text = o.username,
-        s.findByName("KillDeath").element.text = o.kill + " / " + o.death,
-        o.isMe && (s.findByName("Username").element.color = pc.colors.me,
-        s.findByName("Leader").element.color = pc.colors.me,
-        r),
-        s.element.width = s.findByName("Username").element.width + 70,
-        s.findByName("Leader").enabled = 0 === r,
-        this.leaderboardEntity.addChild(s),
-        this.leaderboardItems.push(s),
+          , s = parseInt(a)
+          , r = this.app.assets.find("Tier-" + o.tier + ".png")
+          , c = this.leaderboardItem.clone();
+        c.enabled = !0,
+        c.setLocalPosition(-3 * parseInt(a), i, 0),
+        c.setLocalScale(n, n, n),
+        c.findByName("Bar").setLocalScale(o.bar, 1, 1),
+        c.findByName("Tier").element.textureAsset = r,
+        c.findByName("Rank").element.text = s + 1 + ".",
+        c.findByName("Username").element.text = o.username,
+        c.findByName("KillDeath").element.text = o.kill + " / " + o.death,
+        c.findByName("Score").element.text = o.score,
+        o.isMe && (c.findByName("Username").element.color = pc.colors.me,
+        c.findByName("Leader").element.color = pc.colors.me,
+        s),
+        c.element.width = c.findByName("Username").element.width + 70,
+        c.findByName("Leader").enabled = 0 === s,
+        this.leaderboardEntity.addChild(c),
+        this.leaderboardItems.push(c),
         i += -45 * (n -= .15) - 10
     }
 }
@@ -15289,7 +15352,9 @@ SpectatorScreen.prototype.setOvertime = function() {
 }
 ,
 SpectatorScreen.prototype.update = function(t) {
-    this.app.keyboard.wasPressed(pc.KEY_TAB) && (this.shortcutsEntity.enabled = !this.shortcutsEntity.enabled)
+    this.app.keyboard.wasPressed(pc.KEY_TAB) && (this.shortcutsEntity.enabled = !this.shortcutsEntity.enabled),
+    this.app.keyboard.wasPressed(pc.KEY_ESCAPE) && (this.pauseEntity.enabled = !this.pauseEntity.enabled,
+    this.app.fire("Camera:State", this.pauseEntity.enabled))
 }
 ,
 SpectatorScreen.prototype.onTick = function(t, e) {
@@ -15348,6 +15413,9 @@ Preview.attributes.add("liliumEntity", {
     type: "entity"
 }),
 Preview.attributes.add("shinEntity", {
+    type: "entity"
+}),
+Preview.attributes.add("echoEntity", {
     type: "entity"
 }),
 Preview.attributes.add("rotateLabelEntity", {
@@ -15519,8 +15587,8 @@ Preview.prototype.createAnimatedSkin = function(t) {
     });
     s.minFilter = pc.FILTER_LINEAR,
     s.magFilter = pc.FILTER_LINEAR,
-    s.addressU = pc.ADDRESS_CLAMP_TO_EDGE,
-    s.addressV = pc.ADDRESS_CLAMP_TO_EDGE;
+    s.addressU = pc.ADDRESS_REPEAT,
+    s.addressV = pc.ADDRESS_REPEAT;
     var a = document.createElement("video");
     return a.addEventListener("canplay", function(t) {
         s.setSource(a)
@@ -15558,7 +15626,7 @@ Preview.prototype.setSkin = function(t, e) {
 Preview.prototype.setAnimation = function(t, e, i) {
     var n = e + "-" + i + "-Animation"
       , s = this.app.assets.find(n)
-      , a = this.app.assets.find(e + "-" + i + "-Music.mp3")
+      , a = this.app.assets.find(i + "-Music.mp3")
       , o = this;
     this.app.assets.load(s),
     s.ready(function() {
@@ -15597,9 +15665,14 @@ Preview.prototype.onSet = function(t, e) {
     "Tec9Skin" == e && (this.tec9Skin.enabled = !0,
     this.setSkin(this.tec9Skin, t.filename)),
     "LiliumDance" == e && (this.liliumEntity.enabled = !0,
+    this.isStatic = !0,
     this.setAnimation(this.liliumEntity, "Lilium", t.filename)),
     "ShinDance" == e && (this.shinEntity.enabled = !0,
+    this.isStatic = !0,
     this.setAnimation(this.shinEntity, "Shin", t.filename)),
+    "EchoDance" == e && (this.echoEntity.enabled = !0,
+    this.isStatic = !0,
+    this.setAnimation(this.echoEntity, "Echo", t.filename)),
     "HeroSkin" == e && (this.characterPreview.enabled = !0),
     "Charm" == e && (this.cubePreview.enabled = !0,
     this.loadCubeModel(this.cubePreview, t.filename)),
@@ -16612,7 +16685,10 @@ Settings.prototype.initialize = function() {
         fpsCounter: !1,
         hideChat: !1,
         hideUsernames: !1,
-        hideArms: !1
+        hideArms: !1,
+        disableLeaderboard: !1,
+        disableUsernames: !1,
+        disableTime: !1
     },
     this.app.on("Menu:Settings", this.setSettings, this),
     this.app.on("Menu:KeyboardConfiguration", this.setKeyboardConfiguration, this),
@@ -16652,16 +16728,24 @@ Settings.prototype.setSettings = function() {
     "true" === this.getSetting("DisableMenuMusic") ? (pc.settings.disableMenuMusic = !0,
     this.app.fire("Menu:Music", !1)) : (pc.settings.disableMenuMusic = !1,
     this.app.fire("Menu:Music", !0));
-    var p = this.getSetting("FPSCounter");
-    pc.settings.fpsCounter = "true" === p;
-    var r = this.getSetting("DisableSpecialEffects");
-    pc.settings.disableSpecialEffects = "true" === r;
-    var g = this.getSetting("HideChat");
-    pc.settings.hideChat = "true" === g;
+    var r = this.getSetting("FPSCounter");
+    pc.settings.fpsCounter = "true" === r;
+    var g = this.getSetting("DisableSpecialEffects");
+    pc.settings.disableSpecialEffects = "true" === g;
+    var p = this.getSetting("HideChat");
+    pc.settings.hideChat = "true" === p;
     var o = this.getSetting("HideUsernames");
     pc.settings.hideUsernames = "true" === o;
     var c = this.getSetting("HideArms");
-    pc.settings.hideArms = "true" === c,
+    pc.settings.hideArms = "true" === c;
+    var u = this.getSetting("DisableLeaderboard");
+    pc.settings.disableLeaderboard = "true" === u;
+    var h = this.getSetting("DisableUsernames");
+    pc.settings.disableUsernames = "true" === h;
+    var d = this.getSetting("DisableTime");
+    pc.settings.disableTime = "true" === d;
+    var S = this.getSetting("CameraSpeed");
+    e > 0 && (pc.settings.cameraSpeed = S / 100),
     this.app.root.findByTag("KeyBinding").forEach(function(t) {
         t.element.text = keyboardMap[pc["KEY_" + t.element.text]]
     }),
@@ -18438,7 +18522,7 @@ PlayerAbilities.prototype.throwShurikenAnimation = function() {
     var t = this;
     this.throwAnimation(function() {
         t.throwShuriken()
-    }, !0)
+    }, !1, 150)
 }
 ,
 PlayerAbilities.prototype.throwGrenadeAnimation = function() {
@@ -18544,5 +18628,191 @@ PlayerAbilities.prototype.visionUpdate = function() {
 PlayerAbilities.prototype.update = function(t) {
     this.visionUpdate(),
     this.timestamp = this.movement.timestamp
+}
+;
+var Timeline = pc.createScript("timeline");
+Timeline.attributes.add("autoplay", {
+    type: "boolean"
+}),
+Timeline.attributes.add("position", {
+    type: "boolean",
+    default: !1
+}),
+Timeline.attributes.add("scale", {
+    type: "boolean",
+    default: !1
+}),
+Timeline.attributes.add("rotation", {
+    type: "boolean",
+    default: !1
+}),
+Timeline.attributes.add("opacity", {
+    type: "boolean",
+    default: !1
+}),
+Timeline.attributes.add("duration", {
+    type: "number",
+    default: 1
+}),
+Timeline.attributes.add("delay", {
+    type: "number",
+    default: 0
+}),
+Timeline.attributes.add("ease", {
+    type: "string",
+    enum: [{
+        Linear: "Linear"
+    }, {
+        QuadraticIn: "QuadraticIn"
+    }, {
+        QuadraticOut: "QuadraticOut"
+    }, {
+        QuadraticInOut: "QuadraticInOut"
+    }, {
+        CubicIn: "CubicIn"
+    }, {
+        CubicOut: "CubicOut"
+    }, {
+        CubicInOut: "CubicInOut"
+    }, {
+        QuarticIn: "QuarticIn"
+    }, {
+        QuarticOut: "QuarticOut"
+    }, {
+        QuarticInOut: "QuarticInOut"
+    }, {
+        QuinticIn: "QuinticIn"
+    }, {
+        QuinticOut: "QuinticOut"
+    }, {
+        QuinticInOut: "QuinticInOut"
+    }, {
+        SineIn: "SineIn"
+    }, {
+        SineOut: "SineOut"
+    }, {
+        SineInOut: "SineInOut"
+    }, {
+        ExponentialIn: "ExponentialIn"
+    }, {
+        ExponentialOut: "ExponentialOut"
+    }, {
+        ExponentialInOut: "ExponentialInOut"
+    }, {
+        CircularIn: "CircularIn"
+    }, {
+        CircularOut: "CircularOut"
+    }, {
+        CircularInOut: "CircularInOut"
+    }, {
+        BackIn: "BackIn"
+    }, {
+        BackOut: "BackOut"
+    }, {
+        BackInOut: "BackInOut"
+    }, {
+        BounceIn: "BounceIn"
+    }, {
+        BounceOut: "BounceOut"
+    }, {
+        BounceInOut: "BounceInOut"
+    }, {
+        ElasticIn: "ElasticIn"
+    }, {
+        ElasticOut: "ElasticOut"
+    }, {
+        ElasticInOut: "ElasticInOut"
+    }],
+    default: "Linear"
+}),
+Timeline.attributes.add("startFrame", {
+    type: "json",
+    schema: [{
+        name: "position",
+        type: "vec3"
+    }, {
+        name: "rotation",
+        type: "vec3"
+    }, {
+        name: "scale",
+        type: "vec3",
+        default: [1, 1, 1]
+    }, {
+        name: "opacity",
+        type: "number",
+        default: 1
+    }]
+}),
+Timeline.attributes.add("endFrame", {
+    type: "json",
+    schema: [{
+        name: "position",
+        type: "vec3"
+    }, {
+        name: "rotation",
+        type: "vec3"
+    }, {
+        name: "scale",
+        type: "vec3",
+        default: [1, 1, 1]
+    }, {
+        name: "opacity",
+        type: "number",
+        default: 1
+    }]
+}),
+Timeline.prototype.initialize = function() {
+    this.app.on(this.entity.name + ":Timeline", this.onPlay, this),
+    this.autoplay && this.onPlay(),
+    this.on("state", this.onState, this)
+}
+,
+Timeline.prototype.onState = function(t) {
+    !1 === t ? this.reset() : this.onPlay()
+}
+,
+Timeline.prototype.getEase = function() {
+    return pc[this.ease]
+}
+,
+Timeline.prototype.reset = function() {
+    this.positionFrames && this.positionFrames.stop(),
+    this.rotationFrames && this.rotationFrames.stop(),
+    this.scaleFrames && this.scaleFrames.stop(),
+    this.opacityFrames && this.opacityFrames.stop()
+}
+,
+Timeline.prototype.setFirstFrame = function() {
+    this.position && this.entity.setLocalPosition(this.startFrame.position),
+    this.rotation && this.entity.setLocalEulerAngles(this.startFrame.rotation),
+    this.scale && this.entity.setLocalScale(this.startFrame.scale),
+    this.opacity && (this.entity.element.opacity = this.startFrame.opacity)
+}
+,
+Timeline.prototype.onPlay = function() {
+    this.reset(),
+    this.setFirstFrame(),
+    this.position && (this.positionFrames = this.entity.tween(this.entity.getLocalPosition()).to({
+        x: this.endFrame.position.x,
+        y: this.endFrame.position.y,
+        z: this.endFrame.position.z
+    }, this.duration, this.getEase()),
+    this.positionFrames.start()),
+    this.rotation && (this.rotationFrames = this.entity.tween(this.entity.getLocalEulerAngles()).rotate({
+        x: this.endFrame.rotation.x,
+        y: this.endFrame.rotation.y,
+        z: this.endFrame.rotation.z
+    }, this.duration, this.getEase()),
+    this.rotationFrames.start()),
+    this.scale && (this.scaleFrames = this.entity.tween(this.entity.getLocalScale()).to({
+        x: this.endFrame.scale.x,
+        y: this.endFrame.scale.y,
+        z: this.endFrame.scale.z
+    }, this.duration, this.getEase()),
+    this.scaleFrames.start()),
+    this.opacity && (this.opacityFrames = this.entity.tween(this.entity.element).to({
+        opacity: this.endFrame.opacity
+    }, this.duration, this.getEase()),
+    this.opacityFrames.start())
 }
 ;
