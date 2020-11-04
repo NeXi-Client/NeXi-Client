@@ -89,7 +89,6 @@ const hideWeaponOnADS = () => {
 }
 
 const hideWeaponADS = () => {
-  console.log("Hide weapon on ADS is now on"),
     Movement.prototype.onMouseDown = function(t) {
       return !this.player.isDeath && (!pc.isFinished && (!pc.isDisplayingAds && (!this.locked && (!this.mouseLocked && (!pc.isPauseActive && (!pc.isModeMenuActive && (this.app.mouse.enablePointerLock(),
       2 === t.button && (this.isFocusing = !0,
@@ -187,7 +186,6 @@ const hideWeaponADS = () => {
 }
 
 const showWeaponADS = () => {
-    console.log("Show weapon on ADS is now on"),
     Movement.prototype.onMouseDown = function(t) {
       return !this.player.isDeath && (!pc.isFinished && (!pc.isDisplayingAds && (!this.locked && (!this.mouseLocked && (!pc.isPauseActive && (!pc.isModeMenuActive && (this.app.mouse.enablePointerLock(),
       2 === t.button && (this.isFocusing = !0,
