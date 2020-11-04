@@ -26,6 +26,7 @@ const customInit = () => {
   scoreboardFix();
   hexagonBreak();
   weaponSelectionFix();
+  hideWeaponOnADS();
   //teamModeFixes();
 };
 
@@ -46,6 +47,232 @@ const startCustomSolo = () => {
       this.app.fire("Analytics:Event", "Invite", "TriedToStart"),
       this.send([this.keys.start]),
       this.app.fire("Analytics:Event", "Invite", "Start")
+  }
+}
+
+const hideWeaponOnADS = () => {
+    Settings.prototype.setSettings = function() {
+      var t = this.getSetting("Sensivity");
+      t > 0 && (pc.settings.sensivity = t / 100);
+      var e = this.getSetting("ADSSensivity");
+      e > 0 && (pc.settings.adsSensivity = e / 100);
+      var i = this.getSetting("FOV");
+      i > 0 && (pc.settings.fov = parseInt(i));
+      var s = this.getSetting("Quality");
+      s > 0 ? (pc.settings.resolution = parseInt(s) / 100,
+      this.app.graphicsDevice.maxPixelRatio = .9 * pc.settings.resolution) : "undefined" != typeof mobileAds && pc.isMobile ? this.app.graphicsDevice.maxPixelRatio = 1.5 : this.app.graphicsDevice.maxPixelRatio = .95;
+      var n = parseInt(this.getSetting("Volume"));
+      n > -1 ? (pc.settings.volume = parseInt(n) / 100,
+      pc.app.systems.sound.volume = .25 * pc.settings.volume) : pc.app.systems.sound.volume = .25;
+      var a = this.getSetting("InvertMouse");
+      pc.settings.invertAxis = "true" === a,
+
+      "true" === this.getSetting("DisableMenuMusic") ? (pc.settings.disableMenuMusic = !0,
+      hideWeaponADS()) : (pc.settings.disableMenuMusic = !1,
+      showWeaponADS());
+      
+      var p = this.getSetting("FPSCounter");
+      pc.settings.fpsCounter = "true" === p;
+      var r = this.getSetting("DisableSpecialEffects");
+      pc.settings.disableSpecialEffects = "true" === r;
+      var g = this.getSetting("HideChat");
+      pc.settings.hideChat = "true" === g;
+      var o = this.getSetting("HideUsernames");
+      pc.settings.hideUsernames = "true" === o;
+      var c = this.getSetting("HideArms");
+      pc.settings.hideArms = "true" === c,
+      this.app.root.findByTag("KeyBinding").forEach(function(t) {
+          t.element.text = keyboardMap[pc["KEY_" + t.element.text]]
+      }),
+      this.app.fire("Game:Settings", pc.settings)
+  }
+}
+
+const hideWeaponADS = () => {
+  console.log("Hide weapon on ADS is now on"),
+    Movement.prototype.onMouseDown = function(t) {
+      return !this.player.isDeath && (!pc.isFinished && (!pc.isDisplayingAds && (!this.locked && (!this.mouseLocked && (!pc.isPauseActive && (!pc.isModeMenuActive && (this.app.mouse.enablePointerLock(),
+      2 === t.button && (this.isFocusing = !0,
+      this.focusStartTime = this.now(),
+      this.cancelInspect(!0),
+      this.app.scene.layers.getLayerByName("NonFOV").enabled = !1,
+      this.interface.focusBulletsEntity.enabled = !0,
+      this.app.fire("Overlay:SetAmmo", !0)),
+      void (0 === t.button && (this.leftMouse = !0)))))))))
+  }
+
+    Movement.prototype.onMouseUp = function(t) {
+      return !this.player.isDeath && (!pc.isFinished && (2 === t.button && (this.isFocusing = !1, this.app.scene.layers.getLayerByName("NonFOV").enabled = !0, this.interface.focusBulletsEntity.enabled = !1),
+      void (0 === t.button && (this.leftMouse && (this.isMouseReleased = !0),
+      this.leftMouse = !1))))
+  }
+
+    Movement.prototype.setMovementAnimation = function(t) {
+      if (this.player.isDeath)
+          return !1;
+      var e = Math.sin(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic
+        , i = Math.cos(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor
+        , s = Math.cos(this.forwardCount / this.movementSwingSpeed) * Math.sin(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * 2 * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic
+        , n = Math.cos(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * this.movementSpeed;
+      !this.isFocusing && this.movementSpeed > .8 ? this.animation.movementPositionZ = pc.math.lerp(this.animation.movementPositionZ, -.04, .08) : this.animation.movementPositionZ = pc.math.lerp(this.animation.movementPositionZ, 0, .1),
+      this.isJumping ? (e = 0,
+      i = 0,
+      s = 0,
+      this.animation.jumpHeight = pc.math.lerp(this.animation.jumpHeight, this.deltaHeight, .15)) : this.animation.jumpHeight = pc.math.lerp(this.animation.jumpHeight, 0, .1);
+      var o = this.weaponPositionEntity
+        , a = 1
+        , h = this.defaultFov
+        , r = this.defaultNonFov;
+      this.isFocusing && this.isReloading < this.timestamp && this.currentWeapon.isFocusable ? (o = this.focusPositionEntity,
+      a = .1,
+      h = this.currentWeapon.focusFov,
+      r = this.currentWeapon.focusFov,
+      this.isFocused || (this.directionSenseX = 5),
+      this.isFocused || this.currentWeapon.focus(),
+      this.isFocused = !0) : this.isFocused = !1,
+      this.isShooting > this.timestamp && (a = pc.math.lerp(a, 0, .1));
+      var p = this.animation.jumpHeight * this.animation.jumpHeight * .01;
+      p = Math.min(p, .08);
+      var m = .4;
+      "Shotgun" == this.currentWeapon.type && (m = .8);
+      var c = this.handEntity.getLocalPosition().lerp(this.handEntity.getLocalPosition(), o.getLocalPosition(), m);
+      "Sniper" == this.currentWeapon.type && this.isFocusing && this.now() - this.focusStartTime > 60 ? (this.currentWeapon.modelEntity.enabled = !1,
+      this.currentWeapon.armEntity.enabled = !1) : (this.currentWeapon.modelEntity.enabled = !0,
+      this.currentWeapon.armEntity.enabled = !0),
+      this.handEntity.setLocalPosition(c),
+      this.movementHolder.setLocalPosition(.1 * s * a + this.animation.bounceZ + this.animation.movementPositionZ, (e + p) * a + this.animation.landAngle * a, .2 * -s * a),
+      this.takePoint.setLocalEulerAngles(this.animation.takeX, this.animation.takeY, this.animation.takeZ);
+      var u = this.animation.cameraBounce;
+      if (this.isFocusing && (u = 0),
+      this.movementHolder.setLocalEulerAngles(u + this.animation.movementAngleX + this.animation.shootSwing + this.directionSenseX + s * this.movementAngleFactor * a + this.animation.jumpAngle * a * this.randomDirection, this.animation.movementAngleY + e + s * this.movementAngleFactor * a, this.animation.movementAngleZ + this.directionSenseZ + this.animation.jumpAngle * a),
+      this.headEntity.setLocalEulerAngles(.2 * -this.animation.jumpAngle * a - this.animation.cameraShootBounce, 0, 0),
+      this.weaponCenter.setLocalEulerAngles(this.animation.horizantalSpread + this.animation.weaponAngleX, -e * e + .1 * this.senseX + n + 20 * this.animation.bounceX + this.animation.weaponAngleY, this.animation.bounceAngle + this.animation.activeBounce + this.animation.weaponAngleZ + 80 * i * a),
+      this.weaponFront.setLocalEulerAngles(0, 0, n + s * s * 2),
+      this.isLeft ? (this.forwardCount += 1.25 * t,
+      this.movementSpeed = 1) : this.isBackward || this.isRight ? (this.forwardCount -= 1.25 * t,
+      this.movementSpeed = 1) : this.isForward ? (this.forwardCount += t,
+      this.movementSpeed = 1) : this.currentSpeed > .1 && (this.forwardCount += t,
+      this.movementSpeed = pc.math.lerp(this.movementSpeed, 0, .1)),
+      this.isShooting < this.timestamp) {
+          var l = 1;
+          this.isFocusing && (l = .12),
+          this.isLeft ? this.directionSenseX = pc.math.lerp(this.directionSenseX, -25 * l, .07) : this.isRight && (this.directionSenseX = pc.math.lerp(this.directionSenseX, 17 * l, .07)),
+          this.isBackward && (this.directionSenseZ = pc.math.lerp(this.directionSenseZ, .8, .1))
+      }
+      if (this.directionSenseX = pc.math.lerp(this.directionSenseX, 0, .1),
+      this.directionSenseZ = pc.math.lerp(this.directionSenseZ, 0, .05),
+      this.currentSpeed = this.entity.rigidbody.linearVelocity.length(),
+      this.currentFov = pc.math.lerp(this.currentFov, h, .4),
+      this.currentNonFov = pc.math.lerp(this.currentNonFov, r, .4),
+      this.cameraEntity.camera.fov = this.currentFov + this.animation.fov,
+      this.cameraNonFOVEntity.camera.fov = this.currentNonFov + this.animation.fov,
+      this.isForward || this.isBackward || (this.movementSpeed = pc.math.lerp(this.movementSpeed, 0, .05)),
+      this.isLeft || this.isRight || (this.movementSpeed = pc.math.lerp(this.movementSpeed, 0, .01)),
+      this.isJumping ? this.lastHeight > this.currentHeight ? this.deltaHeight += t * this.jumpHeightSpeed : this.deltaHeight -= t * this.jumpHeightSpeed : this.deltaHeight = pc.math.lerp(this.deltaHeight, 0, .01),
+      this.now() - this.lastFootDate > this.footSpeed && this.currentSpeed > 1 && this.isLanded) {
+          var d = this.groundMaterial + "-Run-" + (this.footCount + 1)
+            , y = this.currentSpeed;
+          this.entity.sound.slots[d].pitch = 1 + .1 * Math.random(),
+          this.entity.sound.slots[d].volume = .2 + .2 * Math.random() + .3 * this.footForce,
+          this.entity.sound.play(d),
+          (this.isLeft || this.isRight || this.isBackward) && (y += 50),
+          y += 20 * this.footForce,
+          this.lastFootDate = this.now() - y,
+          this.footForce = pc.math.lerp(this.footForce, 0, .2),
+          this.footCount = Math.floor(5 * Math.random())
+      }
+      pc.isFinished || this.locked,
+      "Sniper" == this.currentWeapon.type ? this.now() - this.focusStartTime > 60 && (this.currentWeapon.scopeOverlay.enabled = this.isFocusing) : this.isZoomEffectEnabled
+  }
+}
+
+const showWeaponADS = () => {
+    console.log("Show weapon on ADS is now on"),
+    Movement.prototype.onMouseDown = function(t) {
+      return !this.player.isDeath && (!pc.isFinished && (!pc.isDisplayingAds && (!this.locked && (!this.mouseLocked && (!pc.isPauseActive && (!pc.isModeMenuActive && (this.app.mouse.enablePointerLock(),
+      2 === t.button && (this.isFocusing = !0,
+      this.focusStartTime = this.now(),
+      this.cancelInspect(!0),
+      this.app.fire("Overlay:SetAmmo", !0)),
+      void (0 === t.button && (this.leftMouse = !0)))))))))
+  }
+
+    Movement.prototype.setMovementAnimation = function(t) {
+      if (this.player.isDeath)
+          return !1;
+      var e = Math.sin(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic
+        , i = Math.cos(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor
+        , s = Math.cos(this.forwardCount / this.movementSwingSpeed) * Math.sin(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * 2 * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic
+        , n = Math.cos(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * this.movementSpeed;
+      !this.isFocusing && this.movementSpeed > .8 ? this.animation.movementPositionZ = pc.math.lerp(this.animation.movementPositionZ, -.04, .08) : this.animation.movementPositionZ = pc.math.lerp(this.animation.movementPositionZ, 0, .1),
+      this.isJumping ? (e = 0,
+      i = 0,
+      s = 0,
+      this.animation.jumpHeight = pc.math.lerp(this.animation.jumpHeight, this.deltaHeight, .15)) : this.animation.jumpHeight = pc.math.lerp(this.animation.jumpHeight, 0, .1);
+      var o = this.weaponPositionEntity
+        , a = 1
+        , h = this.defaultFov
+        , r = this.defaultNonFov;
+      this.isFocusing && this.isReloading < this.timestamp && this.currentWeapon.isFocusable ? (o = this.focusPositionEntity,
+      a = .1,
+      h = this.currentWeapon.focusFov,
+      r = this.currentWeapon.focusFov,
+      this.isFocused || (this.directionSenseX = 5),
+      this.isFocused || this.currentWeapon.focus(),
+      this.isFocused = !0) : this.isFocused = !1,
+      this.isShooting > this.timestamp && (a = pc.math.lerp(a, 0, .1));
+      var p = this.animation.jumpHeight * this.animation.jumpHeight * .01;
+      p = Math.min(p, .08);
+      var m = .4;
+      "Shotgun" == this.currentWeapon.type && (m = .8);
+      var c = this.handEntity.getLocalPosition().lerp(this.handEntity.getLocalPosition(), o.getLocalPosition(), m);
+      "Sniper" == this.currentWeapon.type && this.isFocusing && this.now() - this.focusStartTime > 60 ? (this.currentWeapon.modelEntity.enabled = !1,
+      this.currentWeapon.armEntity.enabled = !1) : (this.currentWeapon.modelEntity.enabled = !0,
+      this.currentWeapon.armEntity.enabled = !0),
+      this.handEntity.setLocalPosition(c),
+      this.movementHolder.setLocalPosition(.1 * s * a + this.animation.bounceZ + this.animation.movementPositionZ, (e + p) * a + this.animation.landAngle * a, .2 * -s * a),
+      this.takePoint.setLocalEulerAngles(this.animation.takeX, this.animation.takeY, this.animation.takeZ);
+      var u = this.animation.cameraBounce;
+      if (this.isFocusing && (u = 0),
+      this.movementHolder.setLocalEulerAngles(u + this.animation.movementAngleX + this.animation.shootSwing + this.directionSenseX + s * this.movementAngleFactor * a + this.animation.jumpAngle * a * this.randomDirection, this.animation.movementAngleY + e + s * this.movementAngleFactor * a, this.animation.movementAngleZ + this.directionSenseZ + this.animation.jumpAngle * a),
+      this.headEntity.setLocalEulerAngles(.2 * -this.animation.jumpAngle * a - this.animation.cameraShootBounce, 0, 0),
+      this.weaponCenter.setLocalEulerAngles(this.animation.horizantalSpread + this.animation.weaponAngleX, -e * e + .1 * this.senseX + n + 20 * this.animation.bounceX + this.animation.weaponAngleY, this.animation.bounceAngle + this.animation.activeBounce + this.animation.weaponAngleZ + 80 * i * a),
+      this.weaponFront.setLocalEulerAngles(0, 0, n + s * s * 2),
+      this.isLeft ? (this.forwardCount += 1.25 * t,
+      this.movementSpeed = 1) : this.isBackward || this.isRight ? (this.forwardCount -= 1.25 * t,
+      this.movementSpeed = 1) : this.isForward ? (this.forwardCount += t,
+      this.movementSpeed = 1) : this.currentSpeed > .1 && (this.forwardCount += t,
+      this.movementSpeed = pc.math.lerp(this.movementSpeed, 0, .1)),
+      this.isShooting < this.timestamp) {
+          var l = 1;
+          this.isFocusing && (l = .12),
+          this.isLeft ? this.directionSenseX = pc.math.lerp(this.directionSenseX, -25 * l, .07) : this.isRight && (this.directionSenseX = pc.math.lerp(this.directionSenseX, 17 * l, .07)),
+          this.isBackward && (this.directionSenseZ = pc.math.lerp(this.directionSenseZ, .8, .1))
+      }
+      if (this.directionSenseX = pc.math.lerp(this.directionSenseX, 0, .1),
+      this.directionSenseZ = pc.math.lerp(this.directionSenseZ, 0, .05),
+      this.currentSpeed = this.entity.rigidbody.linearVelocity.length(),
+      this.currentFov = pc.math.lerp(this.currentFov, h, .4),
+      this.currentNonFov = pc.math.lerp(this.currentNonFov, r, .4),
+      this.cameraEntity.camera.fov = this.currentFov + this.animation.fov,
+      this.cameraNonFOVEntity.camera.fov = this.currentNonFov + this.animation.fov,
+      this.isForward || this.isBackward || (this.movementSpeed = pc.math.lerp(this.movementSpeed, 0, .05)),
+      this.isLeft || this.isRight || (this.movementSpeed = pc.math.lerp(this.movementSpeed, 0, .01)),
+      this.isJumping ? this.lastHeight > this.currentHeight ? this.deltaHeight += t * this.jumpHeightSpeed : this.deltaHeight -= t * this.jumpHeightSpeed : this.deltaHeight = pc.math.lerp(this.deltaHeight, 0, .01),
+      this.now() - this.lastFootDate > this.footSpeed && this.currentSpeed > 1 && this.isLanded) {
+          var d = this.groundMaterial + "-Run-" + (this.footCount + 1)
+            , y = this.currentSpeed;
+          this.entity.sound.slots[d].pitch = 1 + .1 * Math.random(),
+          this.entity.sound.slots[d].volume = .2 + .2 * Math.random() + .3 * this.footForce,
+          this.entity.sound.play(d),
+          (this.isLeft || this.isRight || this.isBackward) && (y += 50),
+          y += 20 * this.footForce,
+          this.lastFootDate = this.now() - y,
+          this.footForce = pc.math.lerp(this.footForce, 0, .2),
+          this.footCount = Math.floor(5 * Math.random())
+      }
+      pc.isFinished || this.locked || (pc.settings.hideArms || (this.interface.crosshairEntity.enabled = !this.isFocusing)),
+      "Sniper" == this.currentWeapon.type ? this.now() - this.focusStartTime > 60 && (this.currentWeapon.scopeOverlay.enabled = this.isFocusing) : this.isZoomEffectEnabled
   }
 }
 
