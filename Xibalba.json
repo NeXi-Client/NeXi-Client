@@ -27,7 +27,7 @@
       "tonemapping": 1,
       "exposure": 3,
       "skybox": 31129095,
-      "skyboxIntensity": 0.2,
+      "skyboxIntensity": 3,
       "skyboxMip": 0,
       "lightmapSizeMultiplier": 16,
       "lightmapMaxResolution": 2048,
@@ -83,9 +83,9 @@
           "vsmBlurSize": 11,
           "normalOffsetBias": 0.05,
           "color": [
-            0,
-            0,
-            0
+            0.7372549019607844,
+            0.7019607843137254,
+            1
           ],
           "outerConeAngle": 45,
           "castShadows": true,
@@ -187,7 +187,7 @@
               "asset": 30975135,
               "startTime": 0,
               "duration": null,
-              "volume": 0.1,
+              "volume": 0.65,
               "pitch": 1
             },
             "2": {
