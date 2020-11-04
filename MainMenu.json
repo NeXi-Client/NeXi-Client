@@ -152,6 +152,7 @@
       "parent": "95c1e252-c6d9-4eb7-940a-c484bca0c489",
       "children": [
         "12c4b14a-33d9-4e97-8bcb-a6299dab7773",
+        "4de82f52-0b56-4980-aeec-551d11d4ad47",
         "ee816692-3902-4363-984a-c6c02bb65864",
         "82e28ffa-96bd-418d-a5b8-32cf60e5946f",
         "25c130ff-ea6b-4aa7-aaac-92668ab9d466",
@@ -23239,7 +23240,11 @@
         "c010d34f-618f-413a-bf4b-314fef128b93",
         "a5b08868-e754-4ae2-bb3e-16343c185c79",
         "d9dec1c7-9043-436b-bf40-0278030b8c75",
-        "1b8aec8d-db65-4266-a9c1-9fad9cf6e78f"
+        "1b8aec8d-db65-4266-a9c1-9fad9cf6e78f",
+        "48513a5b-7ba2-40de-8885-bc0a38cc54a5",
+        "75e9270e-1ab8-4089-9418-6735124e9632",
+        "412a5839-ef71-4a66-8358-b87eaf5648bf",
+        "62d38502-6964-4860-92cb-8bec1f07deba"
       ],
       "position": [
         0,
@@ -25288,11 +25293,10 @@
                 ],
                 "itemNames": [
                   "Lilium",
-                  "Shin"
+                  "Shin",
+                  "Echo"
                 ],
                 "itemImages": [
-                  30608289,
-                  32492791
                 ]
               }
             },
@@ -28643,7 +28647,7 @@
                 "friendEntity": "14f860c4-5794-4f2c-a4e0-ce00f2ed87cb",
                 "friendHolder": "cf1581dc-fcea-48f7-8fd8-9649990c2498",
                 "friendWaiting": "8f22a35f-9591-4b80-8599-eebd06f02b87",
-                "serverCode": "1.0.18",
+                "serverCode": "1.0.19",
                 "isMobile": false,
                 "matchmakingTitle": "32700db4-9e34-4800-8892-7d39c44db361",
                 "matchmakingCancel": "d704db8c-dfd1-498b-ae1e-27768031efb5"
@@ -43166,7 +43170,7 @@
               "enabled": true,
               "attributes": {
                 "connected": null,
-                "triggerFunction": "window.open(\"https://www.twitch.tv/NeXi2k_\");",
+                "triggerFunction": "window.open(\"https://www.twitch.tv/grimkrunker\");",
                 "pressFunction": "",
                 "fireFunction": "",
                 "fireArgs": "",
@@ -45894,8 +45898,7 @@
       "parent": "742462a0-9782-4c6b-9625-f27511467468",
       "children": [
         "e7d340da-ad1c-4789-88dd-e3215d3ecaa0",
-        "36c1709e-0c18-4ac9-9cb3-18bd4e3616b3",
-        "c719a624-3eb0-4761-9c3d-a18c7963b776"
+        "36c1709e-0c18-4ac9-9cb3-18bd4e3616b3"
       ],
       "position": [
         20,
@@ -46557,7 +46560,7 @@
     "c719a624-3eb0-4761-9c3d-a18c7963b776": {
       "name": "Row",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "c719a624-3eb0-4761-9c3d-a18c7963b776",
       "parent": "66ff71c7-3b29-4715-8f8a-1f57b4c2e41e",
       "children": [
@@ -46621,7 +46624,7 @@
             0,
             -120,
             -680,
-            75
+            265
           ],
           "alignment": [
             0.5,
@@ -46666,7 +46669,7 @@
     "9ea3182f-57f6-4a5c-90cd-c4051b46ec15": {
       "name": "Label",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "9ea3182f-57f6-4a5c-90cd-c4051b46ec15",
       "parent": "c719a624-3eb0-4761-9c3d-a18c7963b776",
       "children": [],
@@ -46699,7 +46702,7 @@
             0,
             0.5
           ],
-          "text": "Disable Menu Music",
+          "text": "Hide Weapon on ADS",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 18,
@@ -46772,7 +46775,7 @@
     "524a4ce5-c6e8-494f-90da-9317f84a4337": {
       "name": "DisableMenuMusic",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "524a4ce5-c6e8-494f-90da-9317f84a4337",
       "parent": "c719a624-3eb0-4761-9c3d-a18c7963b776",
       "children": [],
@@ -47025,6 +47028,7 @@
       "parent": "da7afdbf-ad4b-4295-9746-715a51b8e89c",
       "children": [
         "83208c92-d04f-49c0-88aa-f4eccaad1b89",
+        "e9564154-3b41-45c8-bfab-89d9a6de89c4",
         "b4238466-5b4e-4051-85fc-5f1f6438d7f6"
       ],
       "position": [
@@ -47915,7 +47919,8 @@
         "06ea25f5-a705-400d-83fc-682e41e0b390",
         "9c094b3b-6729-4f82-89f3-44c9c2fd2886",
         "ea925b34-bf1a-4d61-87ad-1ba49fc042e3",
-        "3c1efecb-6c07-4ab6-a599-2c9c4976538f"
+        "3c1efecb-6c07-4ab6-a599-2c9c4976538f",
+        "c719a624-3eb0-4761-9c3d-a18c7963b776"
       ],
       "position": [
         20,
@@ -55394,7 +55399,7 @@
               "enabled": true,
               "attributes": {
                 "auto": true,
-                "URL": "https://gateway.venge.io/?request=get_offers&version=5",
+                "URL": "https://gateway.venge.io/?request=get_offers&version=6",
                 "data": "",
                 "success": "Shop:SetItems, Hide:Loading",
                 "error": "Alert:Menu, Hide:Loading",
@@ -63990,22 +63995,6 @@
             4
           ],
           "enableMarkup": true
-        },
-        "script": {
-          "enabled": true,
-          "order": [
-            "tooltip"
-          ],
-          "scripts": {
-            "tooltip": {
-              "enabled": true,
-              "attributes": {
-                "text": "Primary Skill",
-                "screenEntity": "06c5ec69-e469-4a9c-8d86-1f10ab8e0412",
-                "delay": 0
-              }
-            }
-          }
         }
       }
     },
@@ -64114,22 +64103,6 @@
             4
           ],
           "enableMarkup": true
-        },
-        "script": {
-          "enabled": true,
-          "order": [
-            "tooltip"
-          ],
-          "scripts": {
-            "tooltip": {
-              "enabled": true,
-              "attributes": {
-                "text": "Secondary Skill",
-                "screenEntity": "06c5ec69-e469-4a9c-8d86-1f10ab8e0412",
-                "delay": 0
-              }
-            }
-          }
         }
       }
     },
@@ -67876,7 +67849,7 @@
             0,
             -266,
             -680,
-            221
+            218
           ],
           "alignment": [
             0.5,
@@ -104636,8 +104609,8 @@
               "enabled": true,
               "attributes": {
                 "materialAsset": 36067672,
-                "speedX": 0.3,
-                "speedY": 0.04
+                "speedX": 0.4,
+                "speedY": 0.4
               }
             }
           }
@@ -106269,6 +106242,914 @@
               }
             }
           }
+        }
+      }
+    },
+    "e9564154-3b41-45c8-bfab-89d9a6de89c4": {
+      "name": "Echo",
+      "tags": [
+        "Character"
+      ],
+      "enabled": false,
+      "resource_id": "e9564154-3b41-45c8-bfab-89d9a6de89c4",
+      "parent": "6194baff-4ff1-4193-9498-bf19a9939e04",
+      "children": [
+        "29575b0c-2bf4-44c9-aee6-8a95055cd2ca"
+      ],
+      "position": [
+        1.719486301109996,
+        -3.9100031368443524,
+        -5.936196359067253
+      ],
+      "rotation": [
+        0,
+        7.489012588242194,
+        0
+      ],
+      "scale": [
+        3.1178567968502393,
+        3.1178567968502393,
+        3.1178567968502393
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 37198881,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "animation": {
+          "enabled": true,
+          "assets": [
+            37222891
+          ],
+          "speed": 0.5,
+          "loop": true,
+          "activate": true
+        }
+      }
+    },
+    "29575b0c-2bf4-44c9-aee6-8a95055cd2ca": {
+      "name": "Weapon",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "29575b0c-2bf4-44c9-aee6-8a95055cd2ca",
+      "parent": "e9564154-3b41-45c8-bfab-89d9a6de89c4",
+      "children": [
+        "88be4e1f-72a8-4ce4-89dd-9c266fdffc23"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "88be4e1f-72a8-4ce4-89dd-9c266fdffc23": {
+      "name": "Holder",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "88be4e1f-72a8-4ce4-89dd-9c266fdffc23",
+      "parent": "29575b0c-2bf4-44c9-aee6-8a95055cd2ca",
+      "children": [
+        "75daf002-16d9-4c24-a739-924c65cb0620",
+        "c94a77bb-9e63-40fe-9571-a7c3ad69606c",
+        "c7b44a3f-6606-4ff7-be29-3f8a3eb6172d",
+        "e9afdc6c-f1f4-40eb-a218-e193894ee621"
+      ],
+      "position": [
+        -0.2143118460608309,
+        -0.052864869288130126,
+        0.06406779309588778
+      ],
+      "rotation": [
+        126.6382067738956,
+        1.754854759697887,
+        -176.0408787013611
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "75daf002-16d9-4c24-a739-924c65cb0620": {
+      "name": "Scar",
+      "tags": [
+        "Weapon"
+      ],
+      "enabled": false,
+      "resource_id": "75daf002-16d9-4c24-a739-924c65cb0620",
+      "parent": "88be4e1f-72a8-4ce4-89dd-9c266fdffc23",
+      "children": [],
+      "position": [
+        -8.547214491727573e-9,
+        -4.7286889071074256e-8,
+        3.295679462667067e-8
+      ],
+      "rotation": [
+        0,
+        6.625703523543601e-7,
+        0
+      ],
+      "scale": [
+        0.07584149648532794,
+        0.07584149648532794,
+        0.07584149648532794
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 29307548,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "c94a77bb-9e63-40fe-9571-a7c3ad69606c": {
+      "name": "Shotgun",
+      "tags": [
+        "Weapon"
+      ],
+      "enabled": false,
+      "resource_id": "c94a77bb-9e63-40fe-9571-a7c3ad69606c",
+      "parent": "88be4e1f-72a8-4ce4-89dd-9c266fdffc23",
+      "children": [],
+      "position": [
+        0.04427241233106233,
+        -4.7286889071074256e-8,
+        3.244482682297677e-8
+      ],
+      "rotation": [
+        0,
+        6.625703523543601e-7,
+        0
+      ],
+      "scale": [
+        0.07584149648532794,
+        0.07584149648532794,
+        0.07584149648532794
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 29973366,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "c7b44a3f-6606-4ff7-be29-3f8a3eb6172d": {
+      "name": "Tec-9",
+      "tags": [
+        "Weapon"
+      ],
+      "enabled": false,
+      "resource_id": "c7b44a3f-6606-4ff7-be29-3f8a3eb6172d",
+      "parent": "88be4e1f-72a8-4ce4-89dd-9c266fdffc23",
+      "children": [],
+      "position": [
+        -0.0758313012019224,
+        0.026890591652876467,
+        -0.008936728043859851
+      ],
+      "rotation": [
+        0,
+        6.625703523543601e-7,
+        0
+      ],
+      "scale": [
+        0.07584149648532794,
+        0.07584149648532794,
+        0.07584149648532794
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 31196825,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "e9afdc6c-f1f4-40eb-a218-e193894ee621": {
+      "name": "Sniper",
+      "tags": [
+        "Weapon"
+      ],
+      "enabled": false,
+      "resource_id": "e9afdc6c-f1f4-40eb-a218-e193894ee621",
+      "parent": "88be4e1f-72a8-4ce4-89dd-9c266fdffc23",
+      "children": [
+        "99288806-b895-4747-a5ca-7ef9a269f53f"
+      ],
+      "position": [
+        -0.0014640709711394428,
+        0,
+        0.008273157870349067
+      ],
+      "rotation": [
+        180,
+        -79.9644722316737,
+        180
+      ],
+      "scale": [
+        0.7172880895730442,
+        0.7172880895730442,
+        0.7172880895730442
+      ],
+      "components": {}
+    },
+    "99288806-b895-4747-a5ca-7ef9a269f53f": {
+      "name": "Model",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "99288806-b895-4747-a5ca-7ef9a269f53f",
+      "parent": "e9afdc6c-f1f4-40eb-a218-e193894ee621",
+      "children": [],
+      "position": [
+        -0.20649288788226766,
+        -0.11756304020287613,
+        -0.8704475943402579
+      ],
+      "rotation": [
+        179.99999996375928,
+        -12.074656828451639,
+        -179.99999982257907
+      ],
+      "scale": [
+        0.07584149648532794,
+        0.07584149648532794,
+        0.07584149648532794
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 31055964,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "48513a5b-7ba2-40de-8885-bc0a38cc54a5": {
+      "name": "Pumpkin",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "48513a5b-7ba2-40de-8885-bc0a38cc54a5",
+      "parent": "da7afdbf-ad4b-4295-9746-715a51b8e89c",
+      "children": [],
+      "position": [
+        -4.729243356538509,
+        -3.2957825660705566,
+        -5.331571102142334
+      ],
+      "rotation": [
+        0,
+        -62.177911574608736,
+        0
+      ],
+      "scale": [
+        40.528410322211776,
+        40.528410322211776,
+        40.528410322211776
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 37457585,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "75e9270e-1ab8-4089-9418-6735124e9632": {
+      "name": "Pumpkin",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "75e9270e-1ab8-4089-9418-6735124e9632",
+      "parent": "da7afdbf-ad4b-4295-9746-715a51b8e89c",
+      "children": [],
+      "position": [
+        5.344052762026584,
+        -3.2957825660705566,
+        -5.331571102142334
+      ],
+      "rotation": [
+        180,
+        -33.55518100355226,
+        180
+      ],
+      "scale": [
+        38.333013442687744,
+        38.333013442687744,
+        38.333013442687744
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 37457585,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "4de82f52-0b56-4980-aeec-551d11d4ad47": {
+      "name": "Web",
+      "tags": [],
+      "enabled": false,
+      "resource_id": "4de82f52-0b56-4980-aeec-551d11d4ad47",
+      "parent": "06c5ec69-e469-4a9c-8d86-1f10ab8e0412",
+      "children": [],
+      "position": [
+        0.0000858306884765625,
+        141.90224647521973,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7917658184633529,
+        0.7917658184633529,
+        0.7917658184633529
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "pivot": [
+            0,
+            1
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": 37457905,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 512,
+          "height": 512,
+          "margin": [
+            0,
+            -370.098,
+            -512,
+            -141.902
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "412a5839-ef71-4a66-8358-b87eaf5648bf": {
+      "name": "Candle",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "412a5839-ef71-4a66-8358-b87eaf5648bf",
+      "parent": "da7afdbf-ad4b-4295-9746-715a51b8e89c",
+      "children": [
+        "e498e594-dcba-4adb-9344-12139a8c02ba",
+        "6cda730b-a413-4386-ae57-aaf4deb27d98"
+      ],
+      "position": [
+        3.380971591416418,
+        -3.228567123413086,
+        -4.301918983459473
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.289391369819342,
+        4.289391369819342,
+        4.289391369819342
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 37458124,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": 100021
+        }
+      }
+    },
+    "e498e594-dcba-4adb-9344-12139a8c02ba": {
+      "name": "Light-1x",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "e498e594-dcba-4adb-9344-12139a8c02ba",
+      "parent": "412a5839-ef71-4a66-8358-b87eaf5648bf",
+      "children": [],
+      "position": [
+        0.0039508557926097865,
+        -0.002735145954915197,
+        -0.01186804977464817
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7803316154609546,
+        0.7803316154609546,
+        0.7803316154609546
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "plane",
+          "asset": null,
+          "materialAsset": 37458158,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "6cda730b-a413-4386-ae57-aaf4deb27d98": {
+      "name": "Fire",
+      "tags": [
+        "LookAt"
+      ],
+      "enabled": true,
+      "resource_id": "6cda730b-a413-4386-ae57-aaf4deb27d98",
+      "parent": "412a5839-ef71-4a66-8358-b87eaf5648bf",
+      "children": [
+        "4cde9fd2-1bb1-419f-b14d-5b6664ef8eab"
+      ],
+      "position": [
+        0.003951115539432282,
+        0.2745957802806629,
+        0.005583009545290452
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.06585688885570222,
+        0.06585688885570222,
+        0.06585688885570222
+      ],
+      "components": {
+        "sprite": {
+          "enabled": true,
+          "type": "animated",
+          "width": 1,
+          "height": 1,
+          "color": [
+            1,
+            0.7490196078431373,
+            0
+          ],
+          "opacity": 1,
+          "flipX": false,
+          "flipY": false,
+          "spriteAsset": null,
+          "frame": 0,
+          "speed": 1,
+          "batchGroupId": null,
+          "layers": [
+            0
+          ],
+          "drawOrder": 0,
+          "autoPlayClip": "Fire",
+          "clips": {
+            "0": {
+              "name": "Fire",
+              "fps": 20,
+              "loop": true,
+              "autoPlay": true,
+              "spriteAsset": 37458156
+            }
+          }
+        }
+      }
+    },
+    "4cde9fd2-1bb1-419f-b14d-5b6664ef8eab": {
+      "name": "Light-2x",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "4cde9fd2-1bb1-419f-b14d-5b6664ef8eab",
+      "parent": "6cda730b-a413-4386-ae57-aaf4deb27d98",
+      "children": [],
+      "position": [
+        -9.033722108142683e-7,
+        4.864141374127939e-7,
+        -0.2649805007657591
+      ],
+      "rotation": [
+        78.38912666157317,
+        0,
+        0
+      ],
+      "scale": [
+        3.901783811286255,
+        3.901783811286255,
+        3.901783811286255
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "plane",
+          "asset": null,
+          "materialAsset": 37458189,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "62d38502-6964-4860-92cb-8bec1f07deba": {
+      "name": "Candle",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "62d38502-6964-4860-92cb-8bec1f07deba",
+      "parent": "da7afdbf-ad4b-4295-9746-715a51b8e89c",
+      "children": [
+        "382fc189-ebad-4a1b-a08a-354d259c989c",
+        "a978ac05-b44a-4053-8b87-8dd346de5497"
+      ],
+      "position": [
+        -6.288800804504925,
+        -3.228567123413086,
+        -4.301918983459473
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.289391369819342,
+        4.289391369819342,
+        4.289391369819342
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 37458124,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": 100021
+        }
+      }
+    },
+    "382fc189-ebad-4a1b-a08a-354d259c989c": {
+      "name": "Light-1x",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "382fc189-ebad-4a1b-a08a-354d259c989c",
+      "parent": "62d38502-6964-4860-92cb-8bec1f07deba",
+      "children": [],
+      "position": [
+        0.0039508557926097865,
+        -0.002735145954915197,
+        -0.01186804977464817
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7803316154609546,
+        0.7803316154609546,
+        0.7803316154609546
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "plane",
+          "asset": null,
+          "materialAsset": 37458158,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "a978ac05-b44a-4053-8b87-8dd346de5497": {
+      "name": "Fire",
+      "tags": [
+        "LookAt"
+      ],
+      "enabled": true,
+      "resource_id": "a978ac05-b44a-4053-8b87-8dd346de5497",
+      "parent": "62d38502-6964-4860-92cb-8bec1f07deba",
+      "children": [
+        "143ce72c-9353-4b0f-870f-48c88700cda4"
+      ],
+      "position": [
+        0.003951115539432282,
+        0.2745957802806629,
+        0.005583009545290452
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.06585688885570222,
+        0.06585688885570222,
+        0.06585688885570222
+      ],
+      "components": {
+        "sprite": {
+          "enabled": true,
+          "type": "animated",
+          "width": 1,
+          "height": 1,
+          "color": [
+            1,
+            0.7490196078431373,
+            0
+          ],
+          "opacity": 1,
+          "flipX": false,
+          "flipY": false,
+          "spriteAsset": null,
+          "frame": 0,
+          "speed": 1,
+          "batchGroupId": null,
+          "layers": [
+            0
+          ],
+          "drawOrder": 0,
+          "autoPlayClip": "Fire",
+          "clips": {
+            "0": {
+              "name": "Fire",
+              "fps": 20,
+              "loop": true,
+              "autoPlay": true,
+              "spriteAsset": 37458156
+            }
+          }
+        }
+      }
+    },
+    "143ce72c-9353-4b0f-870f-48c88700cda4": {
+      "name": "Light-2x",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "143ce72c-9353-4b0f-870f-48c88700cda4",
+      "parent": "a978ac05-b44a-4053-8b87-8dd346de5497",
+      "children": [],
+      "position": [
+        -9.033722108142683e-7,
+        4.864141374127939e-7,
+        -0.2649805007657591
+      ],
+      "rotation": [
+        78.38912666157317,
+        0,
+        0
+      ],
+      "scale": [
+        3.901783811286255,
+        3.901783811286255,
+        3.901783811286255
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "plane",
+          "asset": null,
+          "materialAsset": 37458189,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
         }
       }
     }
