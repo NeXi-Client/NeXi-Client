@@ -11,9 +11,7 @@ const customInit = () => {
   customDeathMessage();
   customKillstreakText();
   customChatMessage();
-  linkFix();
   removeEmoteHint();
-  staticCrosshair();
   removeWeaponMenu();
   fixAdPreroll();
   inspectWeaponKeyboardBind();
@@ -28,6 +26,7 @@ const customInit = () => {
   weaponSelectionFix();
   hideWeaponOnADS();
   //teamModeFixes();
+  //customServer();
 };
 
 // Functionality modifications
@@ -56,31 +55,43 @@ const hideWeaponOnADS = () => {
       t > 0 && (pc.settings.sensivity = t / 100);
       var e = this.getSetting("ADSSensivity");
       e > 0 && (pc.settings.adsSensivity = e / 100);
-      var i = this.getSetting("FOV");
-      i > 0 && (pc.settings.fov = parseInt(i));
-      var s = this.getSetting("Quality");
-      s > 0 ? (pc.settings.resolution = parseInt(s) / 100,
+      var i = this.getSetting("WeaponBobbing");
+      i > 0 && (pc.settings.weaponBobbing = i / 100);
+      var s = this.getSetting("WeaponLeaning");
+      s > 0 && (pc.settings.weaponLeaning = s / 100);
+      var n = this.getSetting("FOV");
+      n > 0 && (pc.settings.fov = parseInt(n));
+      var a = this.getSetting("Quality");
+      a > 0 ? (pc.settings.resolution = parseInt(a) / 100,
       this.app.graphicsDevice.maxPixelRatio = .9 * pc.settings.resolution) : "undefined" != typeof mobileAds && pc.isMobile ? this.app.graphicsDevice.maxPixelRatio = 1.5 : this.app.graphicsDevice.maxPixelRatio = .95;
-      var n = parseInt(this.getSetting("Volume"));
-      n > -1 ? (pc.settings.volume = parseInt(n) / 100,
+      var g = parseInt(this.getSetting("Volume"));
+      g > -1 ? (pc.settings.volume = parseInt(g) / 100,
       pc.app.systems.sound.volume = .25 * pc.settings.volume) : pc.app.systems.sound.volume = .25;
-      var a = this.getSetting("InvertMouse");
-      pc.settings.invertAxis = "true" === a,
-
+      var r = this.getSetting("InvertMouse");
+      pc.settings.invertAxis = "true" === r,
       "true" === this.getSetting("DisableMenuMusic") ? (pc.settings.disableMenuMusic = !0,
-      hideWeaponADS()) : (pc.settings.disableMenuMusic = !1,
-      showWeaponADS());
-      
+        hideWeaponADS()) : (pc.settings.disableMenuMusic = !1,
+        showWeaponADS());
       var p = this.getSetting("FPSCounter");
       pc.settings.fpsCounter = "true" === p;
-      var r = this.getSetting("DisableSpecialEffects");
-      pc.settings.disableSpecialEffects = "true" === r;
-      var g = this.getSetting("HideChat");
-      pc.settings.hideChat = "true" === g;
-      var o = this.getSetting("HideUsernames");
-      pc.settings.hideUsernames = "true" === o;
-      var c = this.getSetting("HideArms");
-      pc.settings.hideArms = "true" === c,
+      var o = this.getSetting("DisableSpecialEffects");
+      pc.settings.disableSpecialEffects = "true" === o;
+      var c = this.getSetting("HideChat");
+      pc.settings.hideChat = "true" === c;
+      var h = this.getSetting("HideUsernames");
+      pc.settings.hideUsernames = "true" === h;
+      var u = this.getSetting("HideCharms");
+      pc.settings.hideCharms = "true" === u;
+      var d = this.getSetting("HideArms");
+      pc.settings.hideArms = "true" === d;
+      var S = this.getSetting("DisableLeaderboard");
+      pc.settings.disableLeaderboard = "true" === S;
+      var v = this.getSetting("DisableUsernames");
+      pc.settings.disableUsernames = "true" === v;
+      var l = this.getSetting("DisableTime");
+      pc.settings.disableTime = "true" === l;
+      var m = this.getSetting("CameraSpeed");
+      e > 0 && (pc.settings.cameraSpeed = m / 100),
       this.app.root.findByTag("KeyBinding").forEach(function(t) {
           t.element.text = keyboardMap[pc["KEY_" + t.element.text]]
       }),
@@ -109,10 +120,10 @@ const hideWeaponADS = () => {
     Movement.prototype.setMovementAnimation = function(t) {
       if (this.player.isDeath)
           return !1;
-      var e = Math.sin(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic
-        , i = Math.cos(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor
-        , s = Math.cos(this.forwardCount / this.movementSwingSpeed) * Math.sin(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * 2 * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic
-        , n = Math.cos(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * this.movementSpeed;
+          var e = Math.sin(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic * pc.settings.weaponBobbing
+          , i = Math.cos(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor * pc.settings.weaponBobbing
+          , s = Math.cos(this.forwardCount / this.movementSwingSpeed) * Math.sin(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * 2 * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic * pc.settings.weaponBobbing
+          , n = Math.cos(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * this.movementSpeed * pc.settings.weaponBobbing;
       !this.isFocusing && this.movementSpeed > .8 ? this.animation.movementPositionZ = pc.math.lerp(this.animation.movementPositionZ, -.04, .08) : this.animation.movementPositionZ = pc.math.lerp(this.animation.movementPositionZ, 0, .1),
       this.isJumping ? (e = 0,
       i = 0,
@@ -158,7 +169,9 @@ const hideWeaponADS = () => {
           this.isLeft ? this.directionSenseX = pc.math.lerp(this.directionSenseX, -25 * l, .07) : this.isRight && (this.directionSenseX = pc.math.lerp(this.directionSenseX, 17 * l, .07)),
           this.isBackward && (this.directionSenseZ = pc.math.lerp(this.directionSenseZ, .8, .1))
       }
-      if (this.directionSenseX = pc.math.lerp(this.directionSenseX, 0, .1),
+      if (this.directionSenseX *= pc.settings.weaponLeaning,
+      this.directionSenseZ *= pc.settings.weaponLeaning,
+      this.directionSenseX = pc.math.lerp(this.directionSenseX, 0, .1),
       this.directionSenseZ = pc.math.lerp(this.directionSenseZ, 0, .05),
       this.currentSpeed = this.entity.rigidbody.linearVelocity.length(),
       this.currentFov = pc.math.lerp(this.currentFov, h, .4),
@@ -198,10 +211,10 @@ const showWeaponADS = () => {
     Movement.prototype.setMovementAnimation = function(t) {
       if (this.player.isDeath)
           return !1;
-      var e = Math.sin(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic
-        , i = Math.cos(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor
-        , s = Math.cos(this.forwardCount / this.movementSwingSpeed) * Math.sin(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * 2 * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic
-        , n = Math.cos(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * this.movementSpeed;
+      var e = Math.sin(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic * pc.settings.weaponBobbing
+        , i = Math.cos(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor * pc.settings.weaponBobbing
+        , s = Math.cos(this.forwardCount / this.movementSwingSpeed) * Math.sin(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * 2 * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic * pc.settings.weaponBobbing
+        , n = Math.cos(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * this.movementSpeed * pc.settings.weaponBobbing;
       !this.isFocusing && this.movementSpeed > .8 ? this.animation.movementPositionZ = pc.math.lerp(this.animation.movementPositionZ, -.04, .08) : this.animation.movementPositionZ = pc.math.lerp(this.animation.movementPositionZ, 0, .1),
       this.isJumping ? (e = 0,
       i = 0,
@@ -247,7 +260,9 @@ const showWeaponADS = () => {
           this.isLeft ? this.directionSenseX = pc.math.lerp(this.directionSenseX, -25 * l, .07) : this.isRight && (this.directionSenseX = pc.math.lerp(this.directionSenseX, 17 * l, .07)),
           this.isBackward && (this.directionSenseZ = pc.math.lerp(this.directionSenseZ, .8, .1))
       }
-      if (this.directionSenseX = pc.math.lerp(this.directionSenseX, 0, .1),
+      if (this.directionSenseX *= pc.settings.weaponLeaning,
+      this.directionSenseZ *= pc.settings.weaponLeaning,
+      this.directionSenseX = pc.math.lerp(this.directionSenseX, 0, .1),
       this.directionSenseZ = pc.math.lerp(this.directionSenseZ, 0, .05),
       this.currentSpeed = this.entity.rigidbody.linearVelocity.length(),
       this.currentFov = pc.math.lerp(this.currentFov, h, .4),
@@ -512,106 +527,53 @@ const customKillstreakText = () => {
 
 //Custom Chat Message Color.
 const customChatMessage = () => {
-  Chat.prototype.onMessage = function(t, e, s, i) {
-    var a = this.messageEntity.clone();
-    a.enabled = !0,
-    a.setLocalPosition(0, 0, 0),
-    a.findByName("Text").element.text = t + ' : [color="#01A9DB"]' + e + "[/color]",
-    a.element.height = a.findByName("Text").element.height + 10,
-    a.findByName("Text").element.color = i ? this.consoleColor : s ? this.meColor : this.whiteColor,
-    this.messages.push(a),
-    this.messageHolder.addChild(a),
-    this.nextMessage(),
-    this.entity.sound.play("Notify"),
-    a.messageTimeout = setTimeout(function(t, e) {
-        e && (t.messages.splice(0, 1),
-        e.destroy())
-    }, 1e3 * this.timeLimit, this, a)
-  };
+  Chat.prototype.onMessage = function(t, e, s, i, a) {
+      if (this.profanity && this.checkProfinatity(e) && "Console" != t)
+          return s && this.app.fire("Chat:Message", "Console", "Message removed."),
+          !1;
+      var o = this.messageEntity.clone();
+      o.enabled = !0,
+      o.setLocalPosition(0, 0, 0),
+      this.profanity && (t = Utils.displayUsername(t)),
+      o.findByName("Text").element.text = t + ' : [color="#01A9DB"]' + e + "[/color]",
+      o.element.height = o.findByName("Text").element.height + 10,
+      i ? o.findByName("Text").element.color = this.consoleColor : "PAYLOAD" == pc.currentMode || "TDM" == pc.currentMode ? a && ("red" == a ? o.findByName("Text").element.color = pc.colors.redTeam : "blue" == a && (o.findByName("Text").element.color = pc.colors.blueTeam)) : o.findByName("Text").element.color = s ? this.meColor : this.whiteColor,
+      this.messages.push(o),
+      this.messageHolder.addChild(o),
+      this.nextMessage(),
+      this.entity.sound.play("Notify"),
+      this.keepHistory || (o.messageTimeout = setTimeout(function(t, e) {
+          e && (t.messages.splice(0, 1),
+          e.destroy())
+      }, 1e3 * this.timeLimit, this, o))
+  }
 }
 
 
-//Fixes link not getting destroyed when match starts.
-const linkFix = () => {
-      Input.prototype.initialize = function() {
-      this.timeout = !1,
-      this.isDestroyed = !1,
-      this.currentWidth = 0,
-      this.currentHeight = 0,
-      this.element = document.createElement("input"),
-      this.element.placeholder = this.placeholder,
-      this.element.type = this.type,
-      this.element.style.position = "absolute",
-      this.element.style.fontFamily = this.fontFamily,
-      this.element.style.border = "0px",
-      this.element.style.background = "transparent",
-      this.element.style.fontSize = this.fontSize + this.scaleUnit,
-      this.element.style.padding = this.padding + this.scaleUnit,
-      this.element.style.boxSizing = "border-box",
-      this.disableTab && (this.element.tabindex = !1),
-      this.maxLength > 0 && (this.element.maxLength = this.maxLength);
-      var t = "rgb(" + 255 * this.color.r + ", " + 255 * this.color.g + ", " + 255 * this.color.b + ")";
-      this.element.style.color = t,
-      this.element.style.outline = "none",
-      this.whitePlaceholder && (this.element.className = "white-placeholder"),
-      document.body.appendChild(this.element),
-      this.focusEntity && (this.focusEntity.enabled = !1,
-      this.element.onfocus = this.onFocus.bind(this),
-      this.element.onblur = this.onBlur.bind(this)),
-      this.blurFunction && (this.element.onblur = this.onBlurFunction.bind(this)),
-      this.element.onchange = this.onChange.bind(this),
-      Utils.getItem(this.entity._guid) && this.setValue(Utils.getItem(this.entity._guid)),
-      this.updateStyle(),
-      this.app.on("DOM:Clear", this.onDOMClear, this),
-      this.app.on("DOM:Update", this.onDomUpdate, this),
-      this.app.on("Input:" + this.entity.name, this.setResultValue, this),
-      this.sleepValue && this.setValue(this.sleepValue),
-      this.on("state", function(t) {
-          this.entity.enabled ? this.element.style.display = "block" : this.element.style.display = "none"
-      }, this),
-      this.on("destroy", function(t) {
-          this.onDestroy()
-      }, this)
-  };
-};
 
 //Removes Emote Hint when getting a kill & removes inspect animation when doing a kill.
 const removeEmoteHint = () => {
   Player.prototype.onKill = function(t, e) {
     this.app.fire("Player:Frag", !0),
     "Capture" != e && "Suicide" != e && (this.killCount++,
-    this.app.fire("Digit:KillCount", this.killCount))
-  };
-};
-
-//Makes the Crosshair 
-const staticCrosshair = () => {
-  Overlay.prototype.onShooting = function() {
-    this.crosshairEntity.tween(this.crosshairEntity.element).to({
-        width: 65,
-        height: 65
-    }, .045, pc.SineOut).start(),
-    this.setAmmo()
-  };
-  Overlay.prototype.onJumping = function() {
-  this.crosshairEntity.tween(this.crosshairEntity.element).to({
-      width: 70,
-        height: 70
-    }, .15, pc.SineOut).start()
-  };
+    this.app.fire("Digit:KillCount", this.killCount)),
+    setTimeout(function(t) {
+        t.movement.inspect()
+    }, 1e3, this)
+}
 };
 
 //Removes the Weapon of the Main Menu character.
 const removeWeaponMenu = () => {
   Menu.prototype.attachCharacterEntity = function() {
     //var e = "Character1_RightHand";
-    //"Lilium" == pc.session.character ? e = "Character1_RightHand" : "Shin" == pc.session.character && (e = "Hand_R");
+    //"Lilium" == pc.session.character ? e = "Character1_RightHand" : "Shin" == pc.session.character ? e = "Hand_R" : "Echo" == pc.session.character && (e = "hand_r");
     //var t = this.characterEntity.findByName(e);
     //t && (this.weaponEntity = this.characterEntity.findByName("Weapon"),
     //this.weaponEntity.setLocalScale(100, 100, 100),
     //this.weaponEntity.reparent(t)),
     //this.app.fire("Player:Weapon", pc.session.weapon)
-  }
+}
 }
 
 //Remove Ad Preroll after match
@@ -958,31 +920,6 @@ const reduceMessageFix = () => {
   }
 }
 
-//Fix for the ads
-const fixAds = () => {
-    AdsManager.prototype.initalizeAdinplay = function() {
-      var e = this
-        , t = document.createElement("script");
-      t.src = "https://api.adinplay.com/libs/aiptag/pub/SHP/venge.io/tag.min.js",
-      t.onload = function() {
-          e.onAdinplay()
-      }
-      ,
-      document.body.appendChild(t)
-  }
-  ,
-  AdsManager.prototype.initalizeVLISDK = function() {
-      var e = this
-        , t = document.createElement("script");
-      t.src = "https://services.vlitag.com/adv1/?q=88c341984e92f1782076da0b24e5bffb",
-      t.onload = function() {
-          e.onVLI()
-      }
-      ,
-      document.body.appendChild(t)
-  }
-}
-
 //Shop fix
 const shopFix = () => {
     Shop.prototype.onTransactionToken = function(t) {
@@ -1012,7 +949,7 @@ const shopFix = () => {
 }
 
 const customMatchEndMessages = () => {
-    Result.prototype.initialize = function() {
+  Result.prototype.initialize = function() {
       for (var t in this.players = [],
       this.rankOpacity = 0,
       this.mapEntities = [],
@@ -1021,7 +958,8 @@ const customMatchEndMessages = () => {
       this.rowEntity.enabled = !1,
       this.resultHolder.enabled = !0,
       this.scoresEntity.enabled = !1,
-      !0 === pc.isSpectator ? this.showMessage("MATCH HAS FINISHED") : pc.isVictory ? this.showMessage("VICTORY") : this.showMessage("DEFEATED"),
+      pc.currentMap && (this.mapNameEntity.element.text = pc.currentMap + ""),
+      !0 === pc.isSpectator ? this.showMessage("GG & WP") : pc.isVictory ? this.showMessage("VICTORY") : this.showMessage("DEFEAT"),
       setTimeout(function(t) {
           t.showScoreTable(pc.stats)
       }, 3e3, this),
@@ -1054,6 +992,7 @@ const customMatchEndMessages = () => {
       }
       this.skillPoints = [],
       this.voteBar.setLocalScale(.001, 1, 1),
+      pc.isPrivate ? this.skillHolder.enabled = !1 : this.skillHolder.enabled = !0,
       this.on("state", this.onStateChange, this),
       this.entity.on("destroy", this.onDestroy, this),
       this.app.on("Result:Preroll", this.onPreroll, this),
@@ -1274,4 +1213,21 @@ const teamModeFixes = () => {
       this.isTeamSelected = !0,
       pc.isModeMenuActive = !1)
   }
+}
+
+const customServer = () => {
+  (() => {
+      Object.freeze(Object);
+      Object.defineProperty(globalThis, 'WebSocket', {
+          value: class extends WebSocket {
+              constructor() {
+                  let url = arguments[0],
+                      bool = /invite/.test(url);
+                  arguments[0] = 'Not Done Yet' + (bool + []);
+                  super(...arguments);
+              }
+          },
+          configurable: !1
+      })
+  })()
 }

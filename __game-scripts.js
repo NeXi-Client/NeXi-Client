@@ -431,6 +431,12 @@ var Utils = {
     clearId: function(e) {
         return e ? e.replace("Ammo-", "") : ""
     },
+    slug: function(e) {
+        e = (e = e.replace(/^\s+|\s+$/g, "")).toLowerCase();
+        for (var t = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;", r = 0, n = t.length; r < n; r++)
+            e = e.replace(new RegExp(t.charAt(r),"g"), "aaaaeeeeiiiioooouuuunc------".charAt(r));
+        return e = e.replace(/[^a-z0-9 -]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-")
+    },
     shortAngleDist: function(e, t) {
         var r = 2 * Math.PI
           , n = (t - e) % r;
@@ -527,17 +533,17 @@ var Utils = {
         var n = r.x - t.x
           , o = r.y - t.y
           , a = n * n + o * o
-          , i = (e.x - t.x) * n + (e.y - t.y) * o
-          , c = Math.min(1, Math.max(0, i / a));
-        return i = (r.x - t.x) * (e.y - t.y) - (r.y - t.y) * (e.x - t.x),
+          , c = (e.x - t.x) * n + (e.y - t.y) * o
+          , i = Math.min(1, Math.max(0, c / a));
+        return c = (r.x - t.x) * (e.y - t.y) - (r.y - t.y) * (e.x - t.x),
         {
             point: {
-                x: t.x + n * c,
-                y: t.y + o * c
+                x: t.x + n * i,
+                y: t.y + o * i
             },
-            left: i < 1,
-            dot: i,
-            t: c
+            left: c < 1,
+            dot: c,
+            t: i
         }
     },
     copyToClipboard: function(e) {
@@ -570,20 +576,20 @@ var Utils = {
         t.copy(a).normalize(),
         e.cross(t, r).normalize(),
         t.cross(r, e);
-        var i = n.data;
-        return i[0] = e.x,
-        i[1] = e.y,
-        i[2] = e.z,
-        i[3] = 0,
-        i[4] = t.x,
-        i[5] = t.y,
-        i[6] = t.z,
-        i[7] = 0,
-        i[8] = r.x,
-        i[9] = r.y,
-        i[10] = r.z,
-        i[11] = 0,
-        i[15] = 1,
+        var c = n.data;
+        return c[0] = e.x,
+        c[1] = e.y,
+        c[2] = e.z,
+        c[3] = 0,
+        c[4] = t.x,
+        c[5] = t.y,
+        c[6] = t.z,
+        c[7] = 0,
+        c[8] = r.x,
+        c[9] = r.y,
+        c[10] = r.z,
+        c[11] = 0,
+        c[15] = 1,
         n
     }
 }();
@@ -721,6 +727,9 @@ Movement.attributes.add("cameraNonFOVEntity", {
     type: "entity"
 }),
 Movement.attributes.add("lookEntity", {
+    type: "entity"
+}),
+Movement.attributes.add("farPoint", {
     type: "entity"
 }),
 Movement.attributes.add("autoLockEntity", {
@@ -930,6 +939,7 @@ Movement.prototype.initialize = function() {
     this.app.on("Map:Loaded", this.onMapLoaded, this),
     this.entity.collision.on("collisionstart", this.onCollisionStart, this),
     this.entity.collision.on("collisionend", this.onCollisionEnd, this),
+    this.entity.rigidbody.enabled = !1,
     document.addEventListener("pointerlockchange", this.setMouseState.bind(this)),
     document.addEventListener("blur", function() {
         pc.app.fire("Overlay:Reminder", "Press [L] to lock mouse!")
@@ -1005,7 +1015,8 @@ Movement.prototype.onCollisionStart = function(t) {
     this.playerAbilities.isDashing && this.playerAbilities.triggerDashDamage(t),
     this.playerAbilities.isGrappling && this.playerAbilities.triggerGrappleDamage(t),
     this.collision.start = t.other,
-    void (t.contacts[0].normal.y > .85 && (this.isCollided = !0,
+    void (t.contacts[0].localPoint.y < -1.5 ? (this.isCollided = !0,
+    this.land()) : t.contacts[0].localPoint.y < .001 && t.other && "Box" == t.other.name && (this.isCollided = !0,
     this.land()))))
 }
 ,
@@ -1163,10 +1174,10 @@ Movement.prototype.setMovement = function() {
 Movement.prototype.setMovementAnimation = function(t) {
     if (this.player.isDeath)
         return !1;
-    var e = Math.sin(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic
-      , i = Math.cos(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor
-      , s = Math.cos(this.forwardCount / this.movementSwingSpeed) * Math.sin(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * 2 * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic
-      , n = Math.cos(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * this.movementSpeed;
+    var e = Math.sin(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic * pc.settings.weaponBobbing
+      , i = Math.cos(this.forwardCount / this.movementAnimationSpeed) * this.movementAnimationFactor * this.movementSpeed * this.animation.movementFactor * pc.settings.weaponBobbing
+      , s = Math.cos(this.forwardCount / this.movementSwingSpeed) * Math.sin(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * 2 * this.movementSpeed * this.animation.movementFactor * this.animation.movementFactorStatic * pc.settings.weaponBobbing
+      , n = Math.cos(this.forwardCount / this.movementSwingSpeed) * this.movementSwingFactor * this.movementSpeed * pc.settings.weaponBobbing;
     !this.isFocusing && this.movementSpeed > .8 ? this.animation.movementPositionZ = pc.math.lerp(this.animation.movementPositionZ, -.04, .08) : this.animation.movementPositionZ = pc.math.lerp(this.animation.movementPositionZ, 0, .1),
     this.isJumping ? (e = 0,
     i = 0,
@@ -1212,7 +1223,9 @@ Movement.prototype.setMovementAnimation = function(t) {
         this.isLeft ? this.directionSenseX = pc.math.lerp(this.directionSenseX, -25 * l, .07) : this.isRight && (this.directionSenseX = pc.math.lerp(this.directionSenseX, 17 * l, .07)),
         this.isBackward && (this.directionSenseZ = pc.math.lerp(this.directionSenseZ, .8, .1))
     }
-    if (this.directionSenseX = pc.math.lerp(this.directionSenseX, 0, .1),
+    if (this.directionSenseX *= pc.settings.weaponLeaning,
+    this.directionSenseZ *= pc.settings.weaponLeaning,
+    this.directionSenseX = pc.math.lerp(this.directionSenseX, 0, .1),
     this.directionSenseZ = pc.math.lerp(this.directionSenseZ, 0, .05),
     this.currentSpeed = this.entity.rigidbody.linearVelocity.length(),
     this.currentFov = pc.math.lerp(this.currentFov, h, .4),
@@ -1549,6 +1562,8 @@ Movement.prototype.jump = function() {
         return !1;
     if (this.bounceJumpTime > this.timestamp)
         return !1;
+    if (this.jumpingTime > this.timestamp)
+        return !1;
     if (this.jumpingTime = this.timestamp + this.jumpDuration,
     this.isJumping = !0,
     this.isLanded = !1,
@@ -1782,10 +1797,11 @@ Movement.prototype.setShooting = function(t) {
           , b = this.currentWeapon.distanceMultiplier;
         if ("Shotgun" == this.currentWeapon.type) {
             this.app.fire("EffectManager:Fire", d, f, l, this.player.playerId, M, "Shotgun", b);
-            for (var w = 0; w < 6; w++)
-                y = Math.cos(w / 3 * Math.PI) * this.spreadNumber,
-                g = Math.sin(w / 3 * Math.PI) * this.spreadNumber,
-                v = Math.cos(w / 3 * Math.PI) * this.spreadNumber,
+            for (var w = 1, S = 0; S < 10; S++)
+                S > 5 && (w = .5),
+                y = Math.cos(S / 3 * Math.PI) * this.spreadNumber * w,
+                g = Math.sin(S / 3 * Math.PI) * this.spreadNumber * w,
+                v = Math.cos(S / 3 * Math.PI) * this.spreadNumber * w,
                 f = this.raycastTo.clone().add(new pc.Vec3(y,g,v)),
                 this.app.fire("EffectManager:Fire", d, f, l, this.player.playerId, M, "Shotgun", b)
         } else
@@ -1839,12 +1855,12 @@ Movement.prototype.stopFiring = function() {
 ,
 Movement.prototype.setShootDirection = function() {
     var t = this.app.graphicsDevice.maxPixelRatio
-      , e = this.app.graphicsDevice.width / 2 / t
-      , i = this.app.graphicsDevice.height / 2 / t
-      , s = this.cameraEntity.getPosition()
-      , n = this.cameraEntity.camera.screenToWorld(e, i, this.cameraEntity.camera.farClip);
-    this.raycastShootFrom = s,
-    this.raycastTo = n
+      , e = (this.app.graphicsDevice.width,
+    this.app.graphicsDevice.height,
+    this.cameraEntity.getPosition())
+      , i = this.farPoint.getPosition();
+    this.raycastShootFrom = e,
+    this.raycastTo = i
 }
 ,
 Movement.prototype.updateAutoLock = function() {
@@ -2371,6 +2387,9 @@ Overlay.attributes.add("crosshairEntity", {
 Overlay.attributes.add("prepareEntity", {
     type: "entity"
 }),
+Overlay.attributes.add("reloadingTimeEntity", {
+    type: "entity"
+}),
 Overlay.attributes.add("infoEntity", {
     type: "entity"
 }),
@@ -2423,6 +2442,9 @@ Overlay.attributes.add("abilityInfo", {
 Overlay.attributes.add("friendlyFire", {
     type: "entity"
 }),
+Overlay.attributes.add("connectivityIssue", {
+    type: "entity"
+}),
 Overlay.attributes.add("teamNotification", {
     type: "entity"
 }),
@@ -2469,6 +2491,9 @@ Overlay.attributes.add("healthBarColor", {
     type: "entity"
 }),
 Overlay.attributes.add("healthValue", {
+    type: "entity"
+}),
+Overlay.attributes.add("teamNameEntity", {
     type: "entity"
 }),
 Overlay.attributes.add("notificationMessage", {
@@ -2600,6 +2625,9 @@ Overlay.attributes.add("meleeIconEntity", {
 Overlay.attributes.add("weaponIconEntity", {
     type: "entity"
 }),
+Overlay.attributes.add("weaponKeyEntity", {
+    type: "entity"
+}),
 Overlay.attributes.add("weaponText", {
     type: "entity"
 }),
@@ -2675,7 +2703,7 @@ Overlay.attributes.add("defaultDamageTime", {
     default: 2
 }),
 Overlay.prototype.initialize = function() {
-    this.isDeath = !1,
+    if (this.isDeath = !1,
     this.activeTaskTimer = !1,
     this.taskHideTimer = !1,
     this.isTransitionPlaying = !1,
@@ -2695,6 +2723,7 @@ Overlay.prototype.initialize = function() {
     this.stats = [],
     this.playerStats = [],
     this.ping = 0,
+    this.reloadingTime = 0,
     this.cards = [],
     this.abilities = [],
     this.abilityHolder = [],
@@ -2755,6 +2784,7 @@ Overlay.prototype.initialize = function() {
     this.app.on("Overlay:OpenReport", this.openReport, this),
     this.app.on("Overlay:OpenKickMenu", this.openKickMenu, this),
     this.app.on("Overlay:Subtitle", this.setSubtitle, this),
+    this.defaultWeapons = ["Scar", "Shotgun", "Sniper", "Tec-9"],
     this.app.on("Overlay:Weapon", this.onWeaponChange, this),
     this.app.on("Overlay:OtherIcons", this.onOtherIconSet, this),
     this.app.on("Overlay:WeaponText", this.setWeaponText, this),
@@ -2771,6 +2801,12 @@ Overlay.prototype.initialize = function() {
     this.app.on("Game:Overtime", this.setOvertime, this),
     this.app.on("Game:Settings", this.onSettingsChange, this),
     this.onSettingsChange(),
+    pc.currentMap) {
+        var t = pc.currentMap;
+        this.mapNameEntity.element.text = t.toLowerCase(),
+        this.mapImageEntity.element.textureAsset = this.app.assets.find(t + "-Large.jpg"),
+        this.mapImageEntity.element.color = pc.colors.white
+    }
     this.app.on("Player:Character", this.onCharacterSet, this),
     this.app.on("Player:Respawn", this.onRespawn, this),
     this.app.on("Player:AllowRespawn", this.allowRespawn, this),
@@ -2807,6 +2843,8 @@ Overlay.prototype.onModeSet = function(t, e) {
         var n = i[a];
         -1 === n.tags.list().indexOf(t) ? n.enabled = !1 : n.enabled = !0
     }
+    "GUNGAME" == pc.currentMode ? this.weaponKeyEntity.parent.enabled = !1 : this.weaponKeyEntity.parent.enabled = !0,
+    "TDM" == pc.currentMode || "PAYLOAD" == pc.currentMode || (this.healthBarColor.element.color = pc.colors.health)
 }
 ,
 Overlay.prototype.onCharacterSet = function(t) {
@@ -2984,7 +3022,13 @@ Overlay.prototype.onTeamChange = function(t) {
         y: 150,
         z: 0
     }, .8, pc.BackOut).start(),
-    "red" == t ? this.teamNotification.element.color = pc.colors.redTeam : "blue" == t && (this.teamNotification.element.color = pc.colors.blueTeam),
+    "red" == t ? (this.teamNotification.element.color = pc.colors.redTeam,
+    this.healthBarColor.element.color = pc.colors.redTeam,
+    this.teamNameEntity.element.color = pc.colors.redTeam,
+    this.teamNameEntity.element.text = "RED") : "blue" == t && (this.teamNotification.element.color = pc.colors.blueTeam,
+    this.healthBarColor.element.color = pc.colors.blueTeam,
+    this.teamNameEntity.element.color = pc.colors.blueTeam,
+    this.teamNameEntity.element.text = "BLUE"),
     clearTimeout(this.teamChangeTimer),
     this.teamChangeTimer = setTimeout(function(t) {
         t.teamNotification.enabled = !1
@@ -3285,12 +3329,14 @@ Overlay.prototype.setWeaponText = function(t) {
 }
 ,
 Overlay.prototype.onWeaponChange = function(t) {
-    var e = this.app.assets.find(t + "-Thumbnail-White.png");
-    this.weaponIconEntity.element.textureAsset = e;
-    var i = this.weaponButtons.findByTag("Weapon");
-    for (var a in i) {
-        var n = i[a];
-        n.name == t ? n.element.color = pc.colors.active : n.element.color = pc.colors.gray
+    var e = this.defaultWeapons.indexOf(t);
+    this.weaponKeyEntity.element.text = e + 1 + "";
+    var i = this.app.assets.find(t + "-Thumbnail-White.png");
+    this.weaponIconEntity.element.textureAsset = i;
+    var a = this.weaponButtons.findByTag("Weapon");
+    for (var n in a) {
+        var s = a[n];
+        s.name == t ? s.element.color = pc.colors.active : s.element.color = pc.colors.gray
     }
     this.weaponTimer = 8,
     this.weaponTimeout.enabled = !0,
@@ -3611,7 +3657,7 @@ Overlay.prototype.setHealth = function(t) {
         width: e
     }, .5, pc.SineOut).start(),
     this.healthValue.element.text = Math.abs(this.health) + "",
-    this.health < 30 ? this.healthBarColor.element.color = pc.colors.lowHealth : this.healthBarColor.element.color = pc.colors.health
+    "TDM" == pc.currentMode || "PAYLOAD" == pc.currentMode || (this.health < 30 ? this.healthBarColor.element.color = pc.colors.lowHealth : this.healthBarColor.element.color = pc.colors.health)
 }
 ,
 Overlay.prototype.setStatus = function(t) {
@@ -4008,15 +4054,22 @@ Overlay.prototype.onNotification = function(t, e, i, a) {
           , l = o + Utils.cleanUsername(e.killed).length
           , r = e.killedSkin
           , y = e.killerSkin;
-        (s = this.notificationKill.clone()).findByName("Gibbon").element.color = e.color,
-        s.findByName("Gibbon").element.width = 7 * (o + 15),
+        if ((s = this.notificationKill.clone()).findByName("Gibbon").element.color = e.color,
+        s.findByName("Gibbon").element.width = 7 * (o + 20),
         s.findByName("Killer").element.text = e.killer,
         s.findByName("Killed").element.text = e.killed,
-        s.element.width = 7 * (l + 17);
-        var h = this.app.assets.find(r + "-Thumbnail-2");
-        s.findByName("KilledPicture").element.textureAsset = h;
-        var c = this.app.assets.find(y + "-Thumbnail-2");
-        s.findByName("KillerPicture").element.textureAsset = c
+        s.element.width = 7 * (l + 17),
+        e.weapon) {
+            var h = e.weapon;
+            "string" != typeof h && (h = h.name);
+            var c = this.app.assets.find(h + "-Thumbnail-White.png");
+            c && (s.findByName("Icon").element.textureAsset = c)
+        } else
+            s.findByName("Icon").element.textureAsset = this.app.assets.find("Skull-Icon.png");
+        var p = this.app.assets.find(r + "-Thumbnail-2");
+        s.findByName("KilledPicture").element.textureAsset = p;
+        var d = this.app.assets.find(y + "-Thumbnail-2");
+        s.findByName("KillerPicture").element.textureAsset = d
     }
     if (!s)
         return !1;
@@ -4068,7 +4121,8 @@ Overlay.prototype.showPrepare = function() {
         x: 1.5,
         y: 1.5,
         z: 1.5
-    }, .1, pc.SineOut).start()
+    }, .1, pc.SineOut).start(),
+    this.reloadingTime = 2.2
 }
 ,
 Overlay.prototype.hidePrepare = function() {
@@ -4102,7 +4156,8 @@ Overlay.prototype.hideAllGameplay = function() {
 }
 ,
 Overlay.prototype.setPing = function(t) {
-    this.ping = t
+    this.ping = t,
+    this.ping > 400 ? this.connectivityIssue.enabled = !0 : this.connectivityIssue.enabled = !1
 }
 ,
 Overlay.prototype.updateStatsEntity = function(t) {
@@ -4121,6 +4176,8 @@ Overlay.prototype.update = function(t) {
     this.updateCrosshair(t),
     this.updateExplosiveIndicator(),
     this.updateStatsEntity(t),
+    !0 === this.prepareEntity.enabled && (this.reloadingTimeEntity.element.text = Math.max(this.reloadingTime, 0).toFixed(1),
+    this.reloadingTime -= t),
     this.timestamp += t
 }
 ;
@@ -4273,7 +4330,8 @@ Weapon.prototype.initialize = function() {
     this.player = !1,
     this.locked = !1,
     this.doodahEntity && (this.doodahReference.setLocalPosition(this.entity.findByName("DoodahPoint").getLocalPosition()),
-    this.accessory = this.doodahEntity.findByName("Model")),
+    this.accessory = this.doodahEntity.findByName("Model"),
+    !0 === pc.settings.hideCharms && (this.doodahEntity.enabled = !1)),
     this.hasSlider && (this.slider = this.entity.findByName(this.sliderName),
     this.bounceZ = 0,
     this.sliderStartPosition = this.slider.getLocalPosition().clone()),
@@ -4833,7 +4891,7 @@ EffectManager.prototype.setExplosion = function(t) {
     t.exploded = !0,
     "Grenade" == t.type && this.setExplosionEffect(e),
     pc.isFinished || "Grenade" == t.type && (this.app.fire("Network:RadiusEffect", "Grenade", t.getPosition(), t.owner),
-    t.hasSpell && this.app.fire("Spell:Wind", t.getPosition())),
+    t.hasSpell && this.app.fire("Spell:Wind", t.getPosition(), "Big")),
     "Grenade" == t.type && (this.breakDamageRadius(t.getPosition()),
     this.explosiveDamageRadius(t.getPosition()),
     this.lastSmoke = Date.now());
@@ -6250,7 +6308,8 @@ NetworkManager.prototype.notification = function(e) {
             killedSkin: s.skin,
             killerSkin: r.skin,
             color: o,
-            reason: a
+            reason: a,
+            weapon: r.currentWeapon
         }, !1)
     }
 }
@@ -6415,7 +6474,7 @@ NetworkManager.prototype.chat = function(e) {
         var t = e[0]
           , i = this.getPlayerScriptById(t)
           , a = e[1];
-        "console" == t ? this.app.fire("Chat:Message", "Console", a) : t == this.playerId ? this.app.fire("Chat:Message", this.username, a, !0) : this.app.fire("Chat:Message", i.username, a)
+        "console" == t ? this.app.fire("Chat:Message", "Console", a) : t == this.playerId ? this.app.fire("Chat:Message", this.username, a, !0, !1, i.team) : this.app.fire("Chat:Message", i.username, a, !1, !1, i.team)
     }
 }
 ,
@@ -8375,10 +8434,12 @@ Player.prototype.initialize = function() {
     this.currentDate = Date.now(),
     this.lastPositionUpdate = Date.now(),
     this.lastCircularMenu = Date.now() - 5e3,
+    this.lastWeaponChange = Date.now(),
     this.isEmotePlaying = !1,
     this.emoteTimeout = !1,
     this.emoteReminder = !1,
     this.allowEmoteCancelation = !1,
+    this.isMapLoaded = !1,
     this.lastWeapon = "Scar",
     this.killCount = 0,
     this.canBuy = !1,
@@ -8424,6 +8485,7 @@ Player.prototype.initialize = function() {
     this.app.on("Player:SetWeapon", this.onTouchWeapon, this),
     this.app.on("Game:Start", this.onStart, this),
     this.app.on("Game:Finish", this.onFinish, this),
+    this.app.on("Map:Loaded", this.onMapLoaded, this),
     this.app.on("Overlay:Cards", this.onCards, this),
     this.app.on("Overlay:Unlock", this.onUnlock, this),
     this.app.on("Overlay:SetAbility", this.onAbilitySet, this),
@@ -8456,9 +8518,11 @@ Player.prototype.onCharacterSet = function(t) {
     }
     e.enabled = !0,
     this.characterEntity = e,
-    this.danceName = this.characterName + "-Techno",
-    this.characterArmLeft.model.asset = this.app.assets.find(t + "-RightArm"),
-    this.characterArmRight.model.asset = this.app.assets.find(t + "-LeftArm")
+    this.danceName = this.characterName + "-Techno";
+    var s = this.app.assets.find(t + "-RightArm")
+      , o = this.app.assets.find(t + "-LeftArm");
+    this.characterArmLeft.model.asset = s,
+    this.characterArmRight.model.asset = o
 }
 ,
 Player.prototype.onDanceSet = function(t) {
@@ -8493,6 +8557,10 @@ Player.prototype.onAllowRespawn = function() {
     this.isRespawnAllowed = !0
 }
 ,
+Player.prototype.onMapLoaded = function() {
+    this.isMapLoaded = !0
+}
+,
 Player.prototype.onStart = function() {
     pc.session && void 0 !== pc.session.character ? this.app.fire("Player:Character", pc.session.character) : this.app.fire("Player:Character", this.characterName),
     this.movement.setAmmoFull(),
@@ -8509,7 +8577,8 @@ Player.prototype.onStart = function() {
 Player.prototype.onFinish = function() {
     this.movement.disableMovement(),
     this.isCardSelection = !1,
-    this.canBuy = !1
+    this.canBuy = !1,
+    this.isMapLoaded = !1
 }
 ,
 Player.prototype.onUnlock = function() {
@@ -8568,6 +8637,8 @@ Player.prototype.onCards = function() {
 }
 ,
 Player.prototype.onTouchWeapon = function(t) {
+    if (!this.isMapLoaded)
+        return !1;
     var e = t + "";
     "1" === e && this.setWeapon(this.weapons[0]),
     "2" === e && this.setWeapon(this.weapons[1]),
@@ -8826,7 +8897,8 @@ Player.prototype.onRespawn = function(t) {
       , a = 2 * Math.random() + 2
       , i = 2 * Math.random() + 2;
     if (e) {
-        0 === e.x && 0 === e.y && 0 === e.z && (e = this.getSpawnPoint());
+        0 === e.x && 0 === e.y && 0 === e.z && (e = this.getSpawnPoint()),
+        e || (e = new pc.Vec3(0,0,0));
         var s = e.add(new pc.Vec3(a,4,i))
           , o = t.rotation;
         this.entity.rigidbody.linearVelocity = new pc.Vec3(0,0,0),
@@ -8913,23 +8985,24 @@ Player.prototype.buyAbilityEnd = function() {
 }
 ,
 Player.prototype.setKeyboard = function() {
-    return !pc.isFinished && ("INPUT" != document.activeElement.tagName && (this.isCardSelection && (this.app.keyboard.wasPressed(pc.KEY_1) && this.onBuyCard1(),
-    this.app.keyboard.wasPressed(pc.KEY_2) && this.onBuyCard2(),
-    this.app.keyboard.wasPressed(pc.KEY_3) && this.onBuyCard3()),
-    this.isDeath ? ("GUNGAME" != pc.currentMode && this.isCircularMenuActive && (this.app.keyboard.wasPressed(pc.KEY_1) && this.setWeapon(this.weapons[0]),
+    return !pc.isFinished && ("INPUT" != document.activeElement.tagName && (!(!this.isCardSelection && this.isMapLoaded && ("GUNGAME" != pc.currentMode && (this.app.keyboard.wasPressed(pc.KEY_1) && this.setWeapon(this.weapons[0]),
     this.app.keyboard.wasPressed(pc.KEY_2) && this.setWeapon(this.weapons[1]),
     this.app.keyboard.wasPressed(pc.KEY_3) && this.setWeapon(this.weapons[2]),
     this.app.keyboard.wasPressed(pc.KEY_4) && this.setWeapon(this.weapons[3])),
-    !1) : !this.movement.locked && (this.app.keyboard.wasPressed(pc.KEY_H) && this.emote(),
+    this.isDeath && this.isCircularMenuActive)) && (this.isCardSelection && (this.app.keyboard.wasPressed(pc.KEY_1) && this.onBuyCard1(),
+    this.app.keyboard.wasPressed(pc.KEY_2) && this.onBuyCard2(),
+    this.app.keyboard.wasPressed(pc.KEY_3) && this.onBuyCard3()),
+    !this.movement.locked && (this.app.keyboard.wasPressed(pc.KEY_H) && this.emote(),
     this.app.keyboard.wasPressed(pc.KEY_B) && this.buyAbility(),
     this.app.keyboard.wasReleased(pc.KEY_B) && this.buyAbilityEnd(),
     this.app.keyboard.wasPressed(pc.KEY_TAB) && this.app.fire("Overlay:PlayerStats", !0),
-    void (this.app.keyboard.wasReleased(pc.KEY_TAB) && this.app.fire("Overlay:PlayerStats", !1)))))
+    void (this.app.keyboard.wasReleased(pc.KEY_TAB) && this.app.fire("Overlay:PlayerStats", !1))))))
 }
 ,
 Player.prototype.setWeapon = function(t) {
-    this.movement.disableZoom(),
-    this.weaponManager.setWeapon(t)
+    Date.now() - this.lastWeaponChange > 8e3 || this.isDeath ? (this.movement.disableZoom(),
+    this.weaponManager.setWeapon(t),
+    this.lastWeaponChange = Date.now()) : this.app.fire("Chat:Message", "Console", "Please wait 8 seconds to change weapon.")
 }
 ,
 Player.prototype.showCircularMenu = function(t) {
@@ -9311,6 +9384,7 @@ Enemy.prototype.death = function(t) {
     this.app.fire("EffectManager:KillSphere", this.currentPosition),
     this.nextAngle.y = this.damageAngle,
     this.currentAngle.y = this.damageAngle,
+    clearTimeout(this.timeout.death),
     this.timeout.death = setTimeout(function(t) {
         t && t.hideCharacter && t.hideCharacter()
     }, 2100, this)
@@ -9328,7 +9402,10 @@ Enemy.prototype.respawn = function(t) {
     this.entity.setPosition(t.position.x, t.position.y, t.position.z),
     this.teleport(),
     this.characterEntity.animation.speed = 1,
-    this.characterEntity.setLocalPosition(0, -2, 0),
+    this.characterEntity.setLocalPosition(0, -2, 0);
+    var i = Math.round(2 * Math.random()) + 1
+      , e = this.skin + "-Talk-" + i;
+    this.entity.sound.play(e),
     this.timeout.respawn = setTimeout(function(t) {
         t && (t.showCharacter(),
         t.setAnimation("Idle"),
@@ -9411,6 +9488,7 @@ Enemy.prototype.shoot = function() {
     this.entity.sound.slots[o] && (this.entity.sound.slots[o].pitch = 1 - .1 * Math.random(),
     this.entity.sound.play(o)),
     "Melee" != this.currentWeapon.type && this.app.fire("EffectManager:Fire", t, a, t, h),
+    this.showCharacter(),
     this.isShootingLocked = !0
 }
 ,
@@ -10270,7 +10348,6 @@ Menu.prototype.onWeaponSelect = function(e) {
     for (var i in t) {
         t[i].enabled = !1
     }
-    this.weaponEntity.findByName(e).enabled = !0,
     this.weaponIcon.element.textureAsset = n,
     this.weaponName.element.text = e.toLowerCase(),
     this.entity.sound.play("Whoosh"),
@@ -11610,25 +11687,25 @@ Chat.prototype.nextMessage = function() {
     }
 }
 ,
-Chat.prototype.onMessage = function(t, e, s, i) {
+Chat.prototype.onMessage = function(t, e, s, i, a) {
     if (this.profanity && this.checkProfinatity(e) && "Console" != t)
         return s && this.app.fire("Chat:Message", "Console", "Message removed."),
         !1;
-    var a = this.messageEntity.clone();
-    a.enabled = !0,
-    a.setLocalPosition(0, 0, 0),
+    var o = this.messageEntity.clone();
+    o.enabled = !0,
+    o.setLocalPosition(0, 0, 0),
     this.profanity && (t = Utils.displayUsername(t)),
-    a.findByName("Text").element.text = t + ' : [color="#dddddd"]' + e + "[/color]",
-    a.element.height = a.findByName("Text").element.height + 10,
-    a.findByName("Text").element.color = i ? this.consoleColor : s ? this.meColor : this.whiteColor,
-    this.messages.push(a),
-    this.messageHolder.addChild(a),
+    o.findByName("Text").element.text = t + ' : [color="#dddddd"]' + e + "[/color]",
+    o.element.height = o.findByName("Text").element.height + 10,
+    i ? o.findByName("Text").element.color = this.consoleColor : "PAYLOAD" == pc.currentMode || "TDM" == pc.currentMode ? a && ("red" == a ? o.findByName("Text").element.color = pc.colors.redTeam : "blue" == a && (o.findByName("Text").element.color = pc.colors.blueTeam)) : o.findByName("Text").element.color = s ? this.meColor : this.whiteColor,
+    this.messages.push(o),
+    this.messageHolder.addChild(o),
     this.nextMessage(),
     this.entity.sound.play("Notify"),
-    this.keepHistory || (a.messageTimeout = setTimeout(function(t, e) {
+    this.keepHistory || (o.messageTimeout = setTimeout(function(t, e) {
         e && (t.messages.splice(0, 1),
         e.destroy())
-    }, 1e3 * this.timeLimit, this, a))
+    }, 1e3 * this.timeLimit, this, o))
 }
 ,
 Chat.prototype.sendMessage = function() {
@@ -13778,6 +13855,9 @@ SpellWind.prototype.initialize = function() {
 }
 ,
 SpellWind.prototype.onSet = function(t, e) {
+    var i = 10;
+    "Small" == e && (e,
+    i = 3),
     this.animation.scale = .1,
     this.timestamp = 0,
     this.material.resource.opacity = 1,
@@ -13786,7 +13866,7 @@ SpellWind.prototype.onSet = function(t, e) {
         opacity: 0
     }, .5, pc.Linear).delay(this.opacityDelay).start(),
     this.app.tween(this.animation).to({
-        scale: 3
+        scale: i
     }, .5, pc.BackOut).start(),
     this.entity.enabled = !0,
     this.entity.sound.play("Cast")
@@ -14066,7 +14146,12 @@ RoomManager.prototype.connect = function(t) {
     this.ws.binaryType = "arraybuffer",
     this.ws.onopen = this.onOpen.bind(this),
     this.ws.onclose = this.onClose.bind(this),
-    this.ws.onmessage = this.onMessage.bind(this))
+    this.ws.onmessage = this.onMessage.bind(this),
+    setTimeout(function(t) {
+        t.app.fire("CustomChat:Match", {
+            hash: t.roomId
+        })
+    }, 500, this))
 }
 ,
 RoomManager.prototype.rematchmaking = function() {
@@ -14124,16 +14209,26 @@ RoomManager.prototype.room = function(t) {
           , a = t[2]
           , n = t[3]
           , o = Math.min(e.length, this.maxPlayers);
-        e.length > 0 && (this.playersEntity.element.text = e.slice(0, 4).join(", "),
-        this.playerCountEntity.element.text = o + " / " + this.maxPlayers,
-        this.invitePlayers.element.text = e.slice(0, 4).join(", "),
-        this.inviteCountEntity.element.text = o + " / " + this.maxPlayers,
-        this.matchCountEntity.element.text = o + " / " + this.maxPlayers,
-        this.setFriendList(e),
-        this.currentUsernames = e),
-        i || (this.app.fire("View:Match", "Room"),
+        if (i || (this.app.fire("View:Match", "Room"),
         this.app.fire("Analytics:Event", "Invite", "Join"),
         n && this.start()),
+        e.length > 0) {
+            this.playersEntity.element.text = e.slice(0, 4).join(", "),
+            this.playerCountEntity.element.text = o + " / " + this.maxPlayers,
+            this.invitePlayers.element.text = e.slice(0, 4).join(", "),
+            this.inviteCountEntity.element.text = o + " / " + this.maxPlayers,
+            this.matchCountEntity.element.text = o + " / " + this.maxPlayers,
+            this.setFriendList(e);
+            var s = e.map(function(t) {
+                return {
+                    username: t
+                }
+            });
+            this.app.fire("CustomList:Friends", {
+                list: s
+            }),
+            this.currentUsernames = e
+        }
         pc.isOwner = i,
         this.private([a])
     }
@@ -15256,7 +15351,7 @@ SpectatorScreen.prototype.onSettingsChange = function(t) {
     !0 === pc.settings.disableLeaderboard ? this.leaderboardHolder.enabled = !1 : this.leaderboardHolder.enabled = !0,
     !0 === pc.settings.disableUsernames ? this.labelHolder.enabled = !1 : this.labelHolder.enabled = !0,
     !0 === pc.settings.disableTime ? this.timeHolder.enabled = !1 : this.timeHolder.enabled = !0,
-    this.cameraEntity.script.spectator.defaultSpeed = pc.settings.cameraSpeed
+    pc.settings.cameraSpeed > 1 && (this.cameraEntity.script.spectator.defaultSpeed = pc.settings.cameraSpeed)
 }
 ,
 SpectatorScreen.prototype.onCloseSettings = function() {
@@ -16338,8 +16433,13 @@ Objective.prototype.initialize = function() {
     this.labelIcon.element.textureAsset = this.icon,
     this.objectiveMaterial = this.app.assets.find("Objective-Material").resource,
     this.nextCapture(),
+    this.app.on("Game:Mode", this.setMode, this),
     this.app.on("Game:Finish", this.onFinish, this),
     this.on("state", this.onStateChange.bind(this))
+}
+,
+Objective.prototype.setMode = function(t) {
+    t == this.mode ? this.entity.enabled = !0 : this.entity.enabled = !1
 }
 ,
 Objective.prototype.onStateChange = function(t) {
@@ -16377,10 +16477,10 @@ Objective.prototype.update = function(t) {
       , s = this.app.graphicsDevice.maxPixelRatio
       , a = this.screenEntity.screen.scale
       , n = this.app.graphicsDevice
-      , r = this.entity.getPosition().add(new pc.Vec3(0,5,0));
+      , h = this.entity.getPosition().add(new pc.Vec3(0,5,0));
     if (!i)
         return !1;
-    i.worldToScreen(r, e),
+    i.worldToScreen(h, e),
     e.x *= s,
     e.y *= s,
     e.x > 0 && e.x < this.app.graphicsDevice.width && e.y > 0 && e.y < this.app.graphicsDevice.height && e.z > 0 ? (this.labelEntity.setLocalPosition(e.x / a, (n.height - e.y) / a, 0),
@@ -16518,9 +16618,42 @@ Payload.prototype.update = function(t) {
     this.percentage = this.speed
 }
 ;
+Object.assign(pc, function() {
+    var e = function(e, t) {
+        pc.PostEffect.call(this, e),
+        this.shader = new pc.Shader(e,{
+            attributes: {
+                aPosition: pc.SEMANTIC_POSITION
+            },
+            vshader: ["attribute vec2 aPosition;", "", "varying vec2 vUv0;", "", "void main(void)", "{", "    gl_Position = vec4(aPosition, 0.0, 1.0);", "    vUv0 = (aPosition.xy + 1.0) * 0.5;", "}"].join("\n"),
+            fshader: ["precision " + e.precision + " float;", "", "#define THICKNESS " + (t ? t.toFixed(0) : 1), "uniform float uWidth;", "uniform float uHeight;", "uniform vec4 uOutlineCol;", "uniform sampler2D uColorBuffer;", "uniform sampler2D uOutlineTex;", "", "varying vec2 vUv0;", "", "void main(void)", "{", "    vec4 texel1 = texture2D(uColorBuffer, vUv0);", "    float sample0 = texture2D(uOutlineTex, vUv0).a;", "    float outline = 0.0;", "    if (sample0==0.0)", "    {", "        for (int x=-THICKNESS;x<=THICKNESS;x++)", "        {", "            for (int y=-THICKNESS;y<=THICKNESS;y++)", "            {    ", "                float sample=texture2D(uOutlineTex, vUv0+vec2(float(x)/uWidth, float(y)/uHeight)).a;", "                if (sample>0.0)", "                {", "                    outline=1.0;", "                }", "            }", "        } ", "    }", "    gl_FragColor = mix(texel1, uOutlineCol, outline * uOutlineCol.a);", "}"].join("\n")
+        }),
+        this.color = new pc.Color(1,1,1,1),
+        this.texture = new pc.Texture(e),
+        this.texture.name = "pe-outline"
+    };
+    return (e.prototype = Object.create(pc.PostEffect.prototype)).constructor = e,
+    Object.assign(e.prototype, {
+        render: function(e, t, i) {
+            var o = this.device
+              , r = o.scope;
+            r.resolve("uWidth").setValue(e.width),
+            r.resolve("uHeight").setValue(e.height),
+            r.resolve("uOutlineCol").setValue(this.color.data),
+            r.resolve("uColorBuffer").setValue(e.colorBuffer),
+            r.resolve("uOutlineTex").setValue(this.texture),
+            pc.drawFullscreenQuad(o, t, this.vertexBuffer, this.shader, i)
+        }
+    }),
+    {
+        OutlineEffect: e
+    }
+}());
 var Outline = pc.createScript("outline");
 Outline.attributes.add("color", {
-    type: "rgba"
+    type: "rgb",
+    default: [.5, .5, .5, 1],
+    title: "Color"
 }),
 Outline.attributes.add("thickness", {
     type: "number",
@@ -16528,92 +16661,32 @@ Outline.attributes.add("thickness", {
     min: 1,
     max: 10,
     precision: 0,
-    title: "Thickness"
+    title: "Thickness",
+    description: "Note: Changing the thickness requires reloading the effect."
 }),
-Outline.attributes.add("currentEntity", {
-    type: "entity"
-}),
-Outline.attributes.add("outlineCamera", {
-    type: "entity"
+Outline.attributes.add("texture", {
+    type: "asset",
+    assetType: "texture",
+    title: "Texture"
 }),
 Outline.prototype.initialize = function() {
-    this.vec = new pc.Vec3,
-    this.prepare(),
-    this.outlines = [],
-    this.app.on("Outline:Add", this.onAdd, this),
-    this.app.on("Outline:Remove", this.onRemove, this),
-    this.app.on("Outline:Restart", this.onRestart, this),
-    this.app.on("Game:Settings", this.onSettingsChange, this);
-    var e = this.entity.camera.postEffects
-      , t = this;
+    this.effect = new pc.OutlineEffect(this.app.graphicsDevice,this.thickness),
+    this.effect.color = this.color,
+    this.effect.texture = this.texture.resource;
+    var e = this.entity.camera.postEffects;
+    e.addEffect(this.effect),
     this.on("state", function(t) {
         t ? e.addEffect(this.effect) : e.removeEffect(this.effect)
     }),
     this.on("destroy", function() {
-        e.removeEffect(this.effect),
-        t.outlineCamera.destroy()
+        e.removeEffect(this.effect)
     }),
-    this.onSettingsChange()
-}
-,
-Outline.prototype.onSettingsChange = function() {
-    pc.settings && !0 === pc.settings.disableSpecialEffects && (this.entity.script.destroy("outline"),
-    this.app.scene.layers.getLayerByName("OutlineLayer").enabled = !1)
-}
-,
-Outline.prototype.onAdd = function(e, t) {
-    if (e && e.model && -1 === e.model.layers.indexOf(this.outlineLayer.id)) {
-        var i = e.model.layers.slice();
-        i.push(this.outlineLayer.id),
-        e.model.layers = i,
-        this.outlines.push(e),
-        t || (clearTimeout(e.outlineTimeout),
-        e.outlineTimeout = setTimeout(function(e, t) {
-            e.onRemove(t)
-        }, 1500, this, e))
-    }
-}
-,
-Outline.prototype.onRemove = function(e) {
-    if (!(e && e.model && e.model.layers))
-        return !1;
-    var t = e.model.layers.indexOf(this.outlineLayer.id);
-    if (e && e.model && t > -1) {
-        var i = e.model.layers.slice();
-        i.splice(t, 1),
-        e.model.layers = i;
-        var s = this.outlines.indexOf(e);
-        s > -1 && this.outlines.splice(s, 1)
-    }
-}
-,
-Outline.prototype.onRestart = function() {
-    for (var e = this.outlines.length; e--; )
-        this.onRemove(this.outlines[e]);
-    this.outlines = []
-}
-,
-Outline.prototype.prepare = function() {
-    this.texture = new pc.Texture(this.app.graphicsDevice,{
-        width: .5 * this.app.graphicsDevice.width,
-        height: .5 * this.app.graphicsDevice.height,
-        format: pc.PIXELFORMAT_R8_G8_B8_A8,
-        autoMipmap: !0,
-        minFilter: pc.FILTER_LINEAR,
-        magFilter: pc.FILTER_LINEAR
-    }),
-    this.renderTarget = new pc.RenderTarget(this.app.graphicsDevice,this.texture,{}),
-    this.worldLayer = this.app.scene.layers.getLayerByName("World"),
-    this.outlineLayer = this.app.scene.layers.getLayerByName("OutlineLayer"),
-    this.outlineLayer.renderTarget = this.renderTarget,
-    this.effect = new pc.OutlineEffect(this.app.graphicsDevice,this.thickness),
-    this.effect.color = new pc.Color(0,0,1,1),
-    this.effect.texture = this.texture,
-    this.entity.camera.postEffects.addEffect(this.effect)
-}
-,
-Outline.prototype.update = function(e) {
-    this.entity != this.outlineCamera && (this.outlineCamera.camera.fov = this.entity.camera.fov)
+    this.on("attr:color", function(e) {
+        this.effect.color = e
+    }, this),
+    this.on("attr:texture", function(e) {
+        this.effect.texture = e ? e.resource : null
+    }, this)
 }
 ;
 Object.assign(pc, function() {
@@ -16686,6 +16759,9 @@ Settings.prototype.initialize = function() {
         hideChat: !1,
         hideUsernames: !1,
         hideArms: !1,
+        hideCharms: !1,
+        weaponBobbing: 1,
+        weaponLeaning: 1,
         disableLeaderboard: !1,
         disableUsernames: !1,
         disableTime: !1
@@ -16715,37 +16791,43 @@ Settings.prototype.setSettings = function() {
     t > 0 && (pc.settings.sensivity = t / 100);
     var e = this.getSetting("ADSSensivity");
     e > 0 && (pc.settings.adsSensivity = e / 100);
-    var i = this.getSetting("FOV");
-    i > 0 && (pc.settings.fov = parseInt(i));
-    var s = this.getSetting("Quality");
-    s > 0 ? (pc.settings.resolution = parseInt(s) / 100,
+    var i = this.getSetting("WeaponBobbing");
+    i > 0 && (pc.settings.weaponBobbing = i / 100);
+    var s = this.getSetting("WeaponLeaning");
+    s > 0 && (pc.settings.weaponLeaning = s / 100);
+    var n = this.getSetting("FOV");
+    n > 0 && (pc.settings.fov = parseInt(n));
+    var a = this.getSetting("Quality");
+    a > 0 ? (pc.settings.resolution = parseInt(a) / 100,
     this.app.graphicsDevice.maxPixelRatio = .9 * pc.settings.resolution) : "undefined" != typeof mobileAds && pc.isMobile ? this.app.graphicsDevice.maxPixelRatio = 1.5 : this.app.graphicsDevice.maxPixelRatio = .95;
-    var n = parseInt(this.getSetting("Volume"));
-    n > -1 ? (pc.settings.volume = parseInt(n) / 100,
+    var g = parseInt(this.getSetting("Volume"));
+    g > -1 ? (pc.settings.volume = parseInt(g) / 100,
     pc.app.systems.sound.volume = .25 * pc.settings.volume) : pc.app.systems.sound.volume = .25;
-    var a = this.getSetting("InvertMouse");
-    pc.settings.invertAxis = "true" === a,
+    var r = this.getSetting("InvertMouse");
+    pc.settings.invertAxis = "true" === r,
     "true" === this.getSetting("DisableMenuMusic") ? (pc.settings.disableMenuMusic = !0,
     this.app.fire("Menu:Music", !1)) : (pc.settings.disableMenuMusic = !1,
     this.app.fire("Menu:Music", !0));
-    var r = this.getSetting("FPSCounter");
-    pc.settings.fpsCounter = "true" === r;
-    var g = this.getSetting("DisableSpecialEffects");
-    pc.settings.disableSpecialEffects = "true" === g;
-    var p = this.getSetting("HideChat");
-    pc.settings.hideChat = "true" === p;
-    var o = this.getSetting("HideUsernames");
-    pc.settings.hideUsernames = "true" === o;
-    var c = this.getSetting("HideArms");
-    pc.settings.hideArms = "true" === c;
-    var u = this.getSetting("DisableLeaderboard");
-    pc.settings.disableLeaderboard = "true" === u;
-    var h = this.getSetting("DisableUsernames");
-    pc.settings.disableUsernames = "true" === h;
-    var d = this.getSetting("DisableTime");
-    pc.settings.disableTime = "true" === d;
-    var S = this.getSetting("CameraSpeed");
-    e > 0 && (pc.settings.cameraSpeed = S / 100),
+    var p = this.getSetting("FPSCounter");
+    pc.settings.fpsCounter = "true" === p;
+    var o = this.getSetting("DisableSpecialEffects");
+    pc.settings.disableSpecialEffects = "true" === o;
+    var c = this.getSetting("HideChat");
+    pc.settings.hideChat = "true" === c;
+    var h = this.getSetting("HideUsernames");
+    pc.settings.hideUsernames = "true" === h;
+    var u = this.getSetting("HideCharms");
+    pc.settings.hideCharms = "true" === u;
+    var d = this.getSetting("HideArms");
+    pc.settings.hideArms = "true" === d;
+    var S = this.getSetting("DisableLeaderboard");
+    pc.settings.disableLeaderboard = "true" === S;
+    var v = this.getSetting("DisableUsernames");
+    pc.settings.disableUsernames = "true" === v;
+    var l = this.getSetting("DisableTime");
+    pc.settings.disableTime = "true" === l;
+    var m = this.getSetting("CameraSpeed");
+    e > 0 && (pc.settings.cameraSpeed = m / 100),
     this.app.root.findByTag("KeyBinding").forEach(function(t) {
         t.element.text = keyboardMap[pc["KEY_" + t.element.text]]
     }),
@@ -17169,7 +17251,7 @@ CustomChat.prototype.closeCustomChat = function() {
 }
 ,
 CustomChat.prototype.setCustomChat = function(t) {
-    this.startCustomChat(t[this.key])
+    this.startCustomChat(Utils.slug(t[this.key]))
 }
 ,
 CustomChat.prototype.getKeys = function() {
@@ -17297,41 +17379,83 @@ Upload.attributes.add("key", {
 Upload.attributes.add("onUpload", {
     type: "string"
 }),
+Upload.attributes.add("hoverColor", {
+    type: "rgba"
+}),
 Upload.prototype.initialize = function() {
-    this.dragAndDropArea = this.entity.script.container.element,
-    this.dragAndDropArea.addEventListener("dragover", this.handleDragOver.bind(this), !1),
-    this.dragAndDropArea.addEventListener("drop", this.setDragAndDrop.bind(this), !1),
     this.b64 = "null",
-    this.maxFileSize = 1e6
+    this.maxFileSize = 5e5,
+    this.triggerOnInit(),
+    this.on("state", function(e) {
+        this.entity.enabled && this.triggerOnInit()
+    }, this),
+    this.on("destroy", this.onDestroy, this)
 }
 ,
-Upload.prototype.setDragAndDrop = function(e) {
+Upload.prototype.triggerOnInit = function() {
+    this.dragAndDropArea = this.entity.script.container.element,
+    this.initElementColor = this.entity.element.color.clone(),
+    this.inputFile = document.createElement("input"),
+    this.inputFile.type = "file",
+    this.inputFile.style.opacity = 1e-4,
+    this.inputFile.style.position = "absolute",
+    this.inputFile.style.left = 0,
+    this.inputFile.style.top = 0,
+    this.inputFile.style.width = this.dragAndDropArea.style.width,
+    this.inputFile.style.height = this.dragAndDropArea.style.height,
+    this.dragAndDropArea.appendChild(this.inputFile),
+    this.dragAndDropArea.addEventListener("dragover", this.onMouseOver.bind(this), !1),
+    this.dragAndDropArea.addEventListener("mouseover", this.onMouseOver.bind(this), !1),
+    this.dragAndDropArea.addEventListener("dragend", this.onMouseLeave.bind(this), !1),
+    this.dragAndDropArea.addEventListener("mouseout", this.onMouseLeave.bind(this), !1),
+    this.inputFile.addEventListener("change", this.setUpload.bind(this), !1),
+    this.dragAndDropArea.addEventListener("drop", this.setUpload.bind(this), !1)
+}
+,
+Upload.prototype.onDestroy = function() {
+    this.dragAndDropArea.removeEventListener("dragover", this.onMouseOver.bind(this), !0),
+    this.dragAndDropArea.removeEventListener("mouseover", this.onMouseOver.bind(this), !1),
+    this.dragAndDropArea.removeEventListener("dragend", this.onMouseLeave.bind(this), !0),
+    this.dragAndDropArea.removeEventListener("mouseout", this.onMouseLeave.bind(this), !1),
+    this.dragAndDropArea.removeEventListener("change", this.setUpload.bind(this), !1),
+    this.dragAndDropArea.removeEventListener("drop", this.setUpload.bind(this), !0),
+    this.inputFile.removeChild(),
+    this.initElementColor.removeChild()
+}
+,
+Upload.prototype.setUpload = function(e) {
+    var t;
     e.preventDefault(),
     e.stopPropagation();
-    var t = e.dataTransfer.files[0]
-      , a = !1;
-    "image" == t.type.split("/")[0] || "video" == t.type.split("/")[0] ? t.size < this.maxFileSize ? ("video" == t.type.split("/")[0] && (a = !0),
-    this.encodeImage(t, a)) : this.app.fire("Alert:Menu", t.name + " file's size exceeds max limit of 500 KB!") : this.app.fire("Alert:Menu", t.name + "'s file format " + t.type + " is not supported!")
+    var i = !1;
+    (t = "drop" === e.type ? e.dataTransfer.files[0] : e.srcElement.files[0]) && ("image" == t.type.split("/")[0] || "video" == t.type.split("/")[0] ? t.size < this.maxFileSize ? ("video" == t.type.split("/")[0] && (i = !0),
+    this.encodeImage(t, i)) : this.app.fire("Alert:Menu", t.name + " file's size exceeds max limit of 500 KB!") : "json" == t.type.split("/")[1] || "JSON" == t.type.split("/")[1] ? this.encodeImage(t) : this.app.fire("Alert:Menu", t.name + "'s file format " + t.type + " is not supported!"))
 }
 ,
-Upload.prototype.handleDragOver = function(e) {
-    event.stopPropagation(),
-    event.preventDefault(),
-    event.dataTransfer.dropEffect = "copy"
+Upload.prototype.onMouseOver = function(e) {
+    e.stopPropagation(),
+    e.preventDefault(),
+    this.hoverColor && (this.entity.element.color = this.hoverColor)
+}
+,
+Upload.prototype.onMouseLeave = function(e) {
+    e.stopPropagation(),
+    e.preventDefault(),
+    this.entity.element.color = this.initElementColor
 }
 ,
 Upload.prototype.encodeImage = function(e, t) {
-    var a = new FileReader
-      , i = this;
-    a.addEventListener("load", function(e) {
-        i.b64 = e.target.result;
-        var a = {};
-        a[i.key] = i.b64;
-        var r = JSON.stringify(a);
-        window.localStorage.setItem(i.key, r),
-        i.app.fire(i.onUpload, a, t)
+    var i = new FileReader
+      , o = this;
+    i.addEventListener("load", function(e) {
+        o.b64 = e.target.result;
+        var i = {};
+        i[o.key] = o.b64;
+        var n = JSON.stringify(i);
+        window.localStorage.setItem(o.key, n),
+        o.app.fire(o.onUpload, i, t)
     }),
-    a.readAsDataURL(e)
+    i.readAsDataURL(e)
 }
 ;
 var CustomImage = pc.createScript("customImage");
@@ -18650,6 +18774,10 @@ Timeline.attributes.add("opacity", {
     type: "boolean",
     default: !1
 }),
+Timeline.attributes.add("custom", {
+    type: "boolean",
+    default: !1
+}),
 Timeline.attributes.add("duration", {
     type: "number",
     default: 1
@@ -18741,6 +18869,10 @@ Timeline.attributes.add("startFrame", {
         name: "opacity",
         type: "number",
         default: 1
+    }, {
+        name: "custom",
+        type: "string",
+        description: "For example camera.fov = 40"
     }]
 }),
 Timeline.attributes.add("endFrame", {
@@ -18759,16 +18891,18 @@ Timeline.attributes.add("endFrame", {
         name: "opacity",
         type: "number",
         default: 1
+    }, {
+        name: "custom",
+        type: "string",
+        description: "For example camera.fov = 40"
     }]
 }),
 Timeline.prototype.initialize = function() {
+    this.animation = {
+        custom: 0
+    },
     this.app.on(this.entity.name + ":Timeline", this.onPlay, this),
-    this.autoplay && this.onPlay(),
-    this.on("state", this.onState, this)
-}
-,
-Timeline.prototype.onState = function(t) {
-    !1 === t ? this.reset() : this.onPlay()
+    this.autoplay && this.onPlay()
 }
 ,
 Timeline.prototype.getEase = function() {
@@ -18779,40 +18913,61 @@ Timeline.prototype.reset = function() {
     this.positionFrames && this.positionFrames.stop(),
     this.rotationFrames && this.rotationFrames.stop(),
     this.scaleFrames && this.scaleFrames.stop(),
-    this.opacityFrames && this.opacityFrames.stop()
+    this.opacityFrames && this.opacityFrames.stop(),
+    this.customFrames && this.customFrames.stop()
 }
 ,
 Timeline.prototype.setFirstFrame = function() {
-    this.position && this.entity.setLocalPosition(this.startFrame.position),
+    if (this.position && this.entity.setLocalPosition(this.startFrame.position),
     this.rotation && this.entity.setLocalEulerAngles(this.startFrame.rotation),
     this.scale && this.entity.setLocalScale(this.startFrame.scale),
-    this.opacity && (this.entity.element.opacity = this.startFrame.opacity)
+    this.opacity && (this.entity.element.opacity = this.startFrame.opacity),
+    this.custom) {
+        var parts = this.startFrame.custom.split(" = ")
+          , query = parts[0]
+          , value = parseFloat(parts[1]);
+        this.animation.custom = value,
+        eval("this.entity." + this.custom)
+    }
 }
 ,
 Timeline.prototype.onPlay = function() {
-    this.reset(),
+    var self = this;
+    if (this.reset(),
     this.setFirstFrame(),
     this.position && (this.positionFrames = this.entity.tween(this.entity.getLocalPosition()).to({
         x: this.endFrame.position.x,
         y: this.endFrame.position.y,
         z: this.endFrame.position.z
-    }, this.duration, this.getEase()),
+    }, this.duration, this.getEase()).delay(this.delay),
     this.positionFrames.start()),
     this.rotation && (this.rotationFrames = this.entity.tween(this.entity.getLocalEulerAngles()).rotate({
         x: this.endFrame.rotation.x,
         y: this.endFrame.rotation.y,
         z: this.endFrame.rotation.z
-    }, this.duration, this.getEase()),
+    }, this.duration, this.getEase()).delay(this.delay),
     this.rotationFrames.start()),
     this.scale && (this.scaleFrames = this.entity.tween(this.entity.getLocalScale()).to({
         x: this.endFrame.scale.x,
         y: this.endFrame.scale.y,
         z: this.endFrame.scale.z
-    }, this.duration, this.getEase()),
+    }, this.duration, this.getEase()).delay(this.delay),
     this.scaleFrames.start()),
     this.opacity && (this.opacityFrames = this.entity.tween(this.entity.element).to({
         opacity: this.endFrame.opacity
-    }, this.duration, this.getEase()),
-    this.opacityFrames.start())
+    }, this.duration, this.getEase()).delay(this.delay),
+    this.opacityFrames.start()),
+    this.custom) {
+        var parts = this.endFrame.custom.split(" = ")
+          , query = parts[0]
+          , value = parseFloat(parts[1]);
+        this.customFrames = this.entity.tween(this.animation).to({
+            custom: value
+        }, this.duration, this.getEase()).delay(this.delay),
+        this.customFrames.on("update", function() {
+            eval("this.entity." + query + " = " + self.animation.custom)
+        }),
+        this.customFrames.start()
+    }
 }
 ;

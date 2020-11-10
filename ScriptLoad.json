@@ -90,7 +90,7 @@
                   0.5215686274509804,
                   0.11764705882352941
                 ],
-                "meColor": [                 
+                "meColor": [
                   0,
                   1,
                   1
@@ -261,7 +261,8 @@
         "2cbf5f6e-7ea9-4e6a-ba26-57577a20909b",
         "0670086f-4ba6-477c-af94-4293a207cf3f",
         "f67fab9f-377e-4755-b483-1714a5a74292",
-        "39ce40b7-4e4b-41bd-a6d2-05bda69a49ea"
+        "39ce40b7-4e4b-41bd-a6d2-05bda69a49ea",
+        "da9010be-19e9-4721-a26b-e3a62e2784ad"
       ]
     },
     "d6311a5c-7dec-4eb4-b495-15f29130570e": {
@@ -401,7 +402,8 @@
                   "36da96ae-7238-420c-aed7-13ecf65a57e4",
                   "17785b42-14f6-47b3-a508-1c1bc3048eb7",
                   "b9b2638a-d59f-4e10-a842-9ce519281b01"
-                ]
+                ],
+                "farPoint": "da9010be-19e9-4721-a26b-e3a62e2784ad"
               }
             },
             "weaponManager": {
@@ -1271,6 +1273,7 @@
         "a0ecd56f-c56a-4525-87f1-957f18940981",
         "f8763836-19f6-44e6-8682-8da05cc064b6",
         "2885c322-8cea-4b70-b591-89266a1bb5a0",
+        "a616cf97-49b1-48e2-9668-4b43020a23b4",
         "2c2cdaeb-9cf9-44fb-ab75-40b9073929f2",
         "907d5c7e-7daa-4663-a7e9-5807b0f17a74",
         "6cfce88b-0ac9-45d8-a5dc-bc86f23f539d",
@@ -1449,7 +1452,11 @@
                 "icon2Entity": "685b8538-9aac-4dae-8c4f-131aeba633cb",
                 "weaponText": "001eb608-6cc6-4160-87c2-a16c447288f6",
                 "mapNameEntity": "0e43c175-5d83-4848-a93d-f8e0be2fdcb5",
-                "mapImageEntity": "213969f0-9c70-466d-be88-fa0483709e0f"
+                "mapImageEntity": "213969f0-9c70-466d-be88-fa0483709e0f",
+                "connectivityIssue": "a616cf97-49b1-48e2-9668-4b43020a23b4",
+                "weaponKeyEntity": "35d594f4-9163-4477-a064-3ea321ec9700",
+                "teamNameEntity": "7e67f9b2-5f7b-4dcc-b66e-3b3e511223cc",
+                "reloadingTimeEntity": "778ab244-959e-43ac-8ede-c5f91ac8b85c"
               }
             },
             "mobileController": {
@@ -1943,7 +1950,8 @@
       "children": [
         "792a6e49-3a26-44ee-9a5a-07f67fb51ac3",
         "29900bc6-f2ef-40e4-8063-9bb46d585919",
-        "62b8bc2c-ff14-4d50-845a-fc8b516d0987"
+        "62b8bc2c-ff14-4d50-845a-fc8b516d0987",
+        "7e67f9b2-5f7b-4dcc-b66e-3b3e511223cc"
       ],
       "position": [
         30,
@@ -4126,7 +4134,7 @@
       "parent": "f3c3b984-f4c5-4501-a3e9-62a1bfbdea85",
       "children": [],
       "position": [
-        -18,
+        -10,
         0,
         0
       ],
@@ -4176,13 +4184,13 @@
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 18,
-          "height": 18,
+          "width": 32,
+          "height": 32,
           "margin": [
-            -36,
-            -9,
-            18,
-            -9
+            -20,
+            -16,
+            30,
+            -16
           ],
           "alignment": [
             0.5,
@@ -4306,7 +4314,7 @@
               "attributes": {
                 "garbageEntity": "fcf27bc6-8c98-4b74-ac38-36482fad0dbb",
                 "shootRay": "af24d45d-021c-4a33-807d-feaa495ff8e5",
-                "shootRayCount": 7,
+                "shootRayCount": 11,
                 "impactEntity": "66f38a4a-5dcc-4343-aa6a-8fe701f4dd22",
                 "explosionSmokeEntity": "1bce09b6-ca31-4865-bc4f-1cbcd2c7f604",
                 "bulletEntity": "de27e70a-5470-4fa0-b01d-245314636bf5",
@@ -4381,7 +4389,7 @@
               "loop": false,
               "autoPlay": false,
               "overlap": false,
-              "asset": 37459201,
+              "asset": 30026073,
               "startTime": 0,
               "duration": null,
               "volume": 1,
@@ -5223,7 +5231,8 @@
       "resource_id": "d9275565-f72c-43f9-bc55-7b07f889922b",
       "parent": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
       "children": [
-        "f965ec82-7dd3-4a0c-95ee-0f924e208fc5"
+        "f965ec82-7dd3-4a0c-95ee-0f924e208fc5",
+        "778ab244-959e-43ac-8ede-c5f91ac8b85c"
       ],
       "position": [
         0,
@@ -6013,8 +6022,8 @@
             "networkManager": {
               "enabled": true,
               "attributes": {
-                "URL": "wss://server-na-10.venge.io",
-                "testURL": "wss://server-na-10.venge.io",
+                "URL": "wss://server-eu-3.venge.io",
+                "testURL": "wss://server-eu-3.venge.io",
                 "playerEntity": "d6311a5c-7dec-4eb4-b495-15f29130570e",
                 "overlayEntity": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
                 "menuCameraEntity": "c58e956e-222b-47a0-a2a2-44233169f8f5",
@@ -7347,6 +7356,138 @@
               "autoPlay": false,
               "overlap": false,
               "asset": 29487879,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "39": {
+              "name": "Echo-Grunt-1",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440356,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "40": {
+              "name": "Echo-Grunt-2",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440350,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "41": {
+              "name": "Echo-Grunt-3",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440354,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "42": {
+              "name": "Echo-Jump-1",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440358,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "43": {
+              "name": "Echo-Jump-2",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440357,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "44": {
+              "name": "Echo-Death-1",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37440351,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "45": {
+              "name": "Lilium-Talk-1",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 30838436,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "46": {
+              "name": "Lilium-Talk-2",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 30644967,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "47": {
+              "name": "Shin-Talk-1",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 32484060,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "48": {
+              "name": "Shin-Talk-2",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 32484059,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "49": {
+              "name": "Echo-Talk-1",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37443474,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            },
+            "50": {
+              "name": "Echo-Talk-2",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 37443475,
               "startTime": 0,
               "duration": null,
               "volume": 1,
@@ -15533,9 +15674,9 @@
           "height": 60,
           "margin": [
             -120,
-            60,
+            120,
             0,
-            -120
+            -180
           ],
           "alignment": [
             0.5,
@@ -17008,9 +17149,9 @@
           "height": 60,
           "margin": [
             -120,
-            120,
+            60,
             0,
-            -180
+            -120
           ],
           "alignment": [
             0.5,
@@ -19887,7 +20028,7 @@
                 "focusSpread": 50,
                 "ammo": 3,
                 "capacity": 3,
-                "damage": 20,
+                "damage": 12,
                 "doodahEntity": "9c613e90-ada9-4a16-b8cd-fe8a624a832a",
                 "doodahReference": "6edd1eb2-6422-4a3b-b258-5ddca5b452ce",
                 "magazineName": "",
@@ -19904,7 +20045,7 @@
                 "barrelPoint": "1fe8f1ca-6a2c-4a46-806c-ab93b69591be",
                 "ammoEntity": "cb72285f-c9c4-4ead-a8a3-4384d667b8cc",
                 "isRightHanded": false,
-                "distanceMultiplier": 0.95,
+                "distanceMultiplier": 0.975,
                 "isShootable": true,
                 "rotationSlider": false,
                 "hiddenReload": false,
@@ -22614,7 +22755,7 @@
       "components": {}
     },
     "25d3a2d2-50a2-456f-a117-af777b61e455": {
-      "name": "Female",
+      "name": "Right",
       "tags": [],
       "enabled": true,
       "resource_id": "25d3a2d2-50a2-456f-a117-af777b61e455",
@@ -38283,7 +38424,6 @@
         "6f3d34a4-750f-488e-a951-4bc92e050a9c",
         "018df625-8176-4990-98a6-f5f9e7bbfea1",
         "db75065c-e8ee-4d21-bdd5-cf9fc48ec7d2",
-        "662a8a36-9466-45ef-ad3c-ed299c86f92a",
         "b0b96c8f-7d08-4473-873c-e530a2f5b6f1"
       ],
       "position": [
@@ -43729,11 +43869,11 @@
       "tags": [],
       "enabled": true,
       "resource_id": "662a8a36-9466-45ef-ad3c-ed299c86f92a",
-      "parent": "7fe7d9ba-5cbc-4d03-b474-d25abe424376",
+      "parent": "db75065c-e8ee-4d21-bdd5-cf9fc48ec7d2",
       "children": [],
       "position": [
-        0,
-        0,
+        0.00003814697265625,
+        -0.00003814697265625,
         0
       ],
       "rotation": [
@@ -48540,7 +48680,8 @@
       "resource_id": "11410326-15cd-47ba-b6f6-2df67fc047c9",
       "parent": "677b52db-53b5-44fb-9c99-75733583d542",
       "children": [
-        "8e08f8e4-d176-49e3-85b1-602e361194f4"
+        "8e08f8e4-d176-49e3-85b1-602e361194f4",
+        "b40c77ca-f193-4ae2-8718-d3d8d183df4d"
       ],
       "position": [
         0,
@@ -48780,7 +48921,8 @@
       "resource_id": "23fa81f9-9606-400e-a894-393106437bc1",
       "parent": "677b52db-53b5-44fb-9c99-75733583d542",
       "children": [
-        "e4ea4c23-aa5a-4b12-8b9d-d5fee6da50ef"
+        "e4ea4c23-aa5a-4b12-8b9d-d5fee6da50ef",
+        "de6ccb38-c31c-4c0b-a268-da009cc12664"
       ],
       "position": [
         130,
@@ -49020,7 +49162,8 @@
       "resource_id": "f3b09ffa-617c-4733-ae21-29585ddf38f9",
       "parent": "677b52db-53b5-44fb-9c99-75733583d542",
       "children": [
-        "61f5ea7a-44c6-49a2-8463-60ea0ece229f"
+        "61f5ea7a-44c6-49a2-8463-60ea0ece229f",
+        "609c831a-9e02-4370-97f5-7564525606df"
       ],
       "position": [
         260,
@@ -49260,7 +49403,8 @@
       "resource_id": "f8d8a8d9-cb64-4924-be5d-040f1ea44b0b",
       "parent": "677b52db-53b5-44fb-9c99-75733583d542",
       "children": [
-        "6b01f3e8-8b92-4cee-b0b2-6ae36f5af1f1"
+        "6b01f3e8-8b92-4cee-b0b2-6ae36f5af1f1",
+        "5130c9a2-f0da-4243-a936-f40bd102bb53"
       ],
       "position": [
         390,
@@ -63313,7 +63457,7 @@
       }
     },
     "f3d58c57-8ef9-4a54-9d6b-fa2f80c5eb76": {
-      "name": "Female",
+      "name": "Left",
       "tags": [],
       "enabled": true,
       "resource_id": "f3d58c57-8ef9-4a54-9d6b-fa2f80c5eb76",
@@ -63658,7 +63802,7 @@
       "tags": [
         "Melee"
       ],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "d13d2656-a57c-4677-bd8c-d8ce05b011f8",
       "parent": "f23ecc94-2204-4c25-b51b-fc2a1e5c737b",
       "children": [
@@ -67893,6 +68037,7 @@
       "resource_id": "db75065c-e8ee-4d21-bdd5-cf9fc48ec7d2",
       "parent": "7fe7d9ba-5cbc-4d03-b474-d25abe424376",
       "children": [
+        "662a8a36-9466-45ef-ad3c-ed299c86f92a",
         "1d90e454-05f1-4668-b259-5379c1001323"
       ],
       "position": [
@@ -69137,7 +69282,8 @@
                     1.4
                   ],
                   "opacity": 1
-                }
+                },
+                "custom": false
               }
             }
           }
@@ -69206,7 +69352,7 @@
           "pixelsPerUnit": null,
           "width": 1600,
           "height": 150,
-          "margin": [
+          "margin": [           
             800,
             -775,
             -800,
@@ -69625,7 +69771,8 @@
                     1.5
                   ],
                   "opacity": 1
-                }
+                },
+                "custom": false
               }
             }
           }
@@ -69894,7 +70041,8 @@
                     1
                   ],
                   "opacity": 1
-                }
+                },
+                "custom": false
               }
             }
           }
@@ -70057,12 +70205,1537 @@
                     1
                   ],
                   "opacity": 1
-                }
+                },
+                "custom": false
               }
             }
           }
         }
       }
+    },
+    "a616cf97-49b1-48e2-9668-4b43020a23b4": {
+      "name": "ConnectivityIssue",
+      "tags": [],
+      "enabled": false,
+      "resource_id": "a616cf97-49b1-48e2-9668-4b43020a23b4",
+      "parent": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
+      "children": [
+        "c901e4c7-9067-42fb-b414-1c822c39a9d5",
+        "b311096f-90c3-4deb-903a-f3f116dcecc9",
+        "0d8b1656-94a9-4caf-93c9-d6d0b2179e08"
+      ],
+      "position": [
+        25.000038146972656,
+        -255.00000762939453,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "group",
+          "anchor": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "pivot": [
+            0,
+            1
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 215,
+          "height": 50,
+          "margin": [
+            25,
+            -305,
+            -240,
+            255
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "b311096f-90c3-4deb-903a-f3f116dcecc9": {
+      "name": "Icon",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "b311096f-90c3-4deb-903a-f3f116dcecc9",
+      "parent": "a616cf97-49b1-48e2-9668-4b43020a23b4",
+      "children": [],
+      "position": [
+        4,
+        -0.000087738037109375,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0,
+            0.5,
+            0,
+            0.5
+          ],
+          "pivot": [
+            0,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            0.2901960784313726,
+            0
+          ],
+          "opacity": 1,
+          "textureAsset": 37762297,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 50,
+          "height": 50,
+          "margin": [
+            4,
+            -25,
+            -54,
+            -25
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "0d8b1656-94a9-4caf-93c9-d6d0b2179e08": {
+      "name": "Text",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "0d8b1656-94a9-4caf-93c9-d6d0b2179e08",
+      "parent": "a616cf97-49b1-48e2-9668-4b43020a23b4",
+      "children": [],
+      "position": [
+        59.202924659783775,
+        -0.000087738037109375,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0,
+            0.5,
+            0,
+            0.5
+          ],
+          "pivot": [
+            0,
+            0.5
+          ],
+          "text": "Connectivity issue. Get better WIFI",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 20,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 20,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 86.789,
+          "height": 12.574,
+          "margin": [
+            59.203,
+            -10.479,
+            -203.851,
+            -10.478
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "c901e4c7-9067-42fb-b414-1c822c39a9d5": {
+      "name": "Background",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "c901e4c7-9067-42fb-b414-1c822c39a9d5",
+      "parent": "a616cf97-49b1-48e2-9668-4b43020a23b4",
+      "children": [],
+      "position": [
+        0.0000247955322265625,
+        -0.000087738037109375,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            0,
+            0.5,
+            0,
+            0.5
+          ],
+          "pivot": [
+            0,
+            0.5
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "opacity": 0.2,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 215,
+          "height": 45,
+          "margin": [
+            0,
+            -22.5,
+            -215,
+            -22.5
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "b40c77ca-f193-4ae2-8718-d3d8d183df4d": {
+      "name": "Key",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "b40c77ca-f193-4ae2-8718-d3d8d183df4d",
+      "parent": "11410326-15cd-47ba-b6f6-2df67fc047c9",
+      "children": [
+        "e450d1a0-ec24-42ae-8b47-ccac0456b547"
+      ],
+      "position": [
+        -2,
+        2,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "pivot": [
+            1,
+            0
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            0.06274509803921569,
+            0.06274509803921569,
+            0.06274509803921569
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 25,
+          "height": 25,
+          "margin": [
+            -27,
+            2,
+            2,
+            -27
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "e450d1a0-ec24-42ae-8b47-ccac0456b547": {
+      "name": "Text",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "e450d1a0-ec24-42ae-8b47-ccac0456b547",
+      "parent": "b40c77ca-f193-4ae2-8718-d3d8d183df4d",
+      "children": [],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "1",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 15,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 15,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 15.68,
+          "height": 36.832,
+          "margin": [
+            -7.84,
+            -18.416,
+            -7.84,
+            -18.416
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "de6ccb38-c31c-4c0b-a268-da009cc12664": {
+      "name": "Key",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "de6ccb38-c31c-4c0b-a268-da009cc12664",
+      "parent": "23fa81f9-9606-400e-a894-393106437bc1",
+      "children": [
+        "35821380-c737-464a-8d48-7deecd031bd5"
+      ],
+      "position": [
+        -2,
+        2,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "pivot": [
+            1,
+            0
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            0.06274509803921569,
+            0.06274509803921569,
+            0.06274509803921569
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 25,
+          "height": 25,
+          "margin": [
+            -27,
+            2,
+            2,
+            -27
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "35821380-c737-464a-8d48-7deecd031bd5": {
+      "name": "Text",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "35821380-c737-464a-8d48-7deecd031bd5",
+      "parent": "de6ccb38-c31c-4c0b-a268-da009cc12664",
+      "children": [],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "2",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 15,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 15,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 9.45,
+          "height": 36.832,
+          "margin": [
+            -4.725,
+            -8.633,
+            -4.725,
+            -8.633
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "609c831a-9e02-4370-97f5-7564525606df": {
+      "name": "Key",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "609c831a-9e02-4370-97f5-7564525606df",
+      "parent": "f3b09ffa-617c-4733-ae21-29585ddf38f9",
+      "children": [
+        "b477c982-3e57-43a4-b7ad-c48e79cf9fea"
+      ],
+      "position": [
+        -2,
+        2,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "pivot": [
+            1,
+            0
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            0.06274509803921569,
+            0.06274509803921569,
+            0.06274509803921569
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 25,
+          "height": 25,
+          "margin": [
+            -27,
+            2,
+            2,
+            -27
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "b477c982-3e57-43a4-b7ad-c48e79cf9fea": {
+      "name": "Text",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "b477c982-3e57-43a4-b7ad-c48e79cf9fea",
+      "parent": "609c831a-9e02-4370-97f5-7564525606df",
+      "children": [],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "3",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 15,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 15,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 9.45,
+          "height": 36.832,
+          "margin": [
+            -4.725,
+            -8.633,
+            -4.725,
+            -8.633
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "5130c9a2-f0da-4243-a936-f40bd102bb53": {
+      "name": "Key",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "5130c9a2-f0da-4243-a936-f40bd102bb53",
+      "parent": "f8d8a8d9-cb64-4924-be5d-040f1ea44b0b",
+      "children": [
+        "7c4052b4-434c-4c7a-9b16-fd8e811ccc48"
+      ],
+      "position": [
+        -2,
+        2,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "image",
+          "anchor": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "pivot": [
+            1,
+            0
+          ],
+          "text": "",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 32,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 32,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            0.06274509803921569,
+            0.06274509803921569,
+            0.06274509803921569
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 25,
+          "height": 25,
+          "margin": [
+            -27,
+            2,
+            2,
+            -27
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": false,
+          "autoHeight": false,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "7c4052b4-434c-4c7a-9b16-fd8e811ccc48": {
+      "name": "Text",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "7c4052b4-434c-4c7a-9b16-fd8e811ccc48",
+      "parent": "5130c9a2-f0da-4243-a936-f40bd102bb53",
+      "children": [],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "text": "4",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 15,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 15,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 9.45,
+          "height": 36.832,
+          "margin": [
+            -4.725,
+            -8.633,
+            -4.725,
+            -8.633
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "7e67f9b2-5f7b-4dcc-b66e-3b3e511223cc": {
+      "name": "Team",
+      "tags": [
+        "MODE-UI",
+        "TDM",
+        "PAYLOAD"
+      ],
+      "enabled": true,
+      "resource_id": "7e67f9b2-5f7b-4dcc-b66e-3b3e511223cc",
+      "parent": "d024dcbc-ab7c-4ab5-983e-47c86da9e017",
+      "children": [],
+      "position": [
+        195,
+        0.00004465739039005712,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0,
+            0.5,
+            0,
+            0.5
+          ],
+          "pivot": [
+            0,
+            0.5
+          ],
+          "text": "BLUE",
+          "key": null,
+          "fontAsset": 29313023,
+          "fontSize": 15,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 15,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            0,
+            0.5843137254901961,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 50.4,
+          "height": 23.02,
+          "margin": [
+            195,
+            -11.51,
+            -245.4,
+            -11.51
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "778ab244-959e-43ac-8ede-c5f91ac8b85c": {
+      "name": "ReloadingTime",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "778ab244-959e-43ac-8ede-c5f91ac8b85c",
+      "parent": "d9275565-f72c-43f9-bc55-7b07f889922b",
+      "children": [],
+      "position": [
+        0,
+        -52,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "element": {
+          "enabled": true,
+          "type": "text",
+          "anchor": [
+            0.5,
+            0,
+            0.5,
+            0
+          ],
+          "pivot": [
+            0.5,
+            0
+          ],
+          "text": "2.0",
+          "key": null,
+          "fontAsset": 29329818,
+          "fontSize": 11,
+          "minFontSize": 8,
+          "maxFontSize": 32,
+          "autoFitWidth": false,
+          "autoFitHeight": false,
+          "maxLines": null,
+          "lineHeight": 11,
+          "wrapLines": true,
+          "spacing": 1,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "opacity": 1,
+          "textureAsset": null,
+          "spriteAsset": null,
+          "spriteFrame": 0,
+          "pixelsPerUnit": null,
+          "width": 42.109,
+          "height": 33.531,
+          "margin": [
+            -9.869,
+            -52,
+            -9.869,
+            36.282
+          ],
+          "alignment": [
+            0.5,
+            0.5
+          ],
+          "outlineColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "outlineThickness": 0,
+          "shadowColor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "shadowOffset": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "materialAsset": null,
+          "autoWidth": true,
+          "autoHeight": true,
+          "useInput": false,
+          "batchGroupId": null,
+          "mask": false,
+          "layers": [
+            4
+          ],
+          "enableMarkup": true
+        }
+      }
+    },
+    "da9010be-19e9-4721-a26b-e3a62e2784ad": {
+      "name": "FarPoint",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "da9010be-19e9-4721-a26b-e3a62e2784ad",
+      "parent": "68d4e7a4-7063-11ea-97ae-026349a27a7c",
+      "children": [],
+      "position": [
+        0,
+        0,
+        -1000
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
     }
   },
   "id": 895025
