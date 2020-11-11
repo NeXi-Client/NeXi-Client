@@ -81,16 +81,16 @@
       "resource_id": "dc2e6c75-0bd5-4f98-a7e2-9cc4e68869f6",
       "components": {
         "light": {
-          "vsmBlurSize": 11,
+          "vsmBlurSize": 0,
           "normalOffsetBias": 0.05,
           "color": [
-            1,
-            1,
-            1
+            0,
+            0,
+            0
           ],
           "outerConeAngle": 45,
           "castShadows": true,
-          "intensity": 5,
+          "intensity": 0,
           "bakeDir": true,
           "cookieAngle": 0,
           "cookieChannel": "rgb",

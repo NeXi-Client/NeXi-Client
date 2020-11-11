@@ -80,16 +80,16 @@
       "resource_id": "587f9c05-6d90-4294-a7d4-be719635296b",
       "components": {
         "light": {
-          "vsmBlurSize": 11,
+          "vsmBlurSize": 0,
           "normalOffsetBias": 0.05,
           "color": [
-            0.8745098039215686,
-            0.7137254901960784,
-            0.5215686274509804
+            0,
+            0,
+            0
           ],
           "outerConeAngle": 45,
           "castShadows": true,
-          "intensity": 7,
+          "intensity": 0,
           "bakeDir": true,
           "cookieAngle": 0,
           "cookieChannel": "rgb",

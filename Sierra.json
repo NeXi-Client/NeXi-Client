@@ -83,13 +83,13 @@
           "vsmBlurSize": 11,
           "normalOffsetBias": 0.05,
           "color": [
-            1,
-            0.7647058823529411,
-            0.7019607843137254
+            0,
+            0,
+            0
           ],
           "outerConeAngle": 45,
           "castShadows": true,
-          "intensity": 6,
+          "intensity": 0,
           "bakeDir": true,
           "cookieAngle": 0,
           "cookieChannel": "rgb",
@@ -120,7 +120,7 @@
             0
           ],
           "shadowResolution": 1024,
-          "enabled": true,
+          "enabled": false,
           "range": 8,
           "shadowDistance": 200,
           "shadowType": 0
