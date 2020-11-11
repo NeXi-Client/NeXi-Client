@@ -1034,7 +1034,7 @@
               "attributes": {
                 "sliderName": "Scar_Bolt",
                 "recoil": 0.9,
-                "sliderLimit": -220,
+                "sliderLimit": -2,
                 "hasSlider": true,
                 "cameraShake": 12,
                 "bulletPoint": "960154c1-d41d-4b96-a8f7-d9f8b4cde726",
@@ -10343,9 +10343,9 @@
         0
       ],
       "scale": [
-        0.01,
-        0.01,
-        0.01
+        1,
+        1,
+        1
       ],
       "components": {}
     },
