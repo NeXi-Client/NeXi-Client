@@ -432,6 +432,8 @@ var Utils = {
         return e ? e.replace("Ammo-", "") : ""
     },
     slug: function(e) {
+        if (!e)
+            return "";
         e = (e = e.replace(/^\s+|\s+$/g, "")).toLowerCase();
         for (var t = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;", r = 0, n = t.length; r < n; r++)
             e = e.replace(new RegExp(t.charAt(r),"g"), "aaaaeeeeiiiioooouuuunc------".charAt(r));
@@ -533,17 +535,17 @@ var Utils = {
         var n = r.x - t.x
           , o = r.y - t.y
           , a = n * n + o * o
-          , c = (e.x - t.x) * n + (e.y - t.y) * o
-          , i = Math.min(1, Math.max(0, c / a));
-        return c = (r.x - t.x) * (e.y - t.y) - (r.y - t.y) * (e.x - t.x),
+          , i = (e.x - t.x) * n + (e.y - t.y) * o
+          , c = Math.min(1, Math.max(0, i / a));
+        return i = (r.x - t.x) * (e.y - t.y) - (r.y - t.y) * (e.x - t.x),
         {
             point: {
-                x: t.x + n * i,
-                y: t.y + o * i
+                x: t.x + n * c,
+                y: t.y + o * c
             },
-            left: c < 1,
-            dot: c,
-            t: i
+            left: i < 1,
+            dot: i,
+            t: c
         }
     },
     copyToClipboard: function(e) {
@@ -576,20 +578,20 @@ var Utils = {
         t.copy(a).normalize(),
         e.cross(t, r).normalize(),
         t.cross(r, e);
-        var c = n.data;
-        return c[0] = e.x,
-        c[1] = e.y,
-        c[2] = e.z,
-        c[3] = 0,
-        c[4] = t.x,
-        c[5] = t.y,
-        c[6] = t.z,
-        c[7] = 0,
-        c[8] = r.x,
-        c[9] = r.y,
-        c[10] = r.z,
-        c[11] = 0,
-        c[15] = 1,
+        var i = n.data;
+        return i[0] = e.x,
+        i[1] = e.y,
+        i[2] = e.z,
+        i[3] = 0,
+        i[4] = t.x,
+        i[5] = t.y,
+        i[6] = t.z,
+        i[7] = 0,
+        i[8] = r.x,
+        i[9] = r.y,
+        i[10] = r.z,
+        i[11] = 0,
+        i[15] = 1,
         n
     }
 }();
@@ -989,10 +991,10 @@ Movement.prototype.onMapLoaded = function() {
 }
 ,
 Movement.prototype.setRandomPosition = function() {
-    var t = 2 * Math.random()
-      , e = 2 * Math.random()
-      , i = 2 * Math.random();
-    this.entity.rigidbody.teleport(t, e, i)
+    Math.random(),
+    Math.random();
+    var t = 2 * Math.random();
+    this.entity.rigidbody.teleport(50, -95, t)
 }
 ,
 Movement.prototype.onLockChange = function(t) {
@@ -9000,9 +9002,16 @@ Player.prototype.setKeyboard = function() {
 }
 ,
 Player.prototype.setWeapon = function(t) {
-    Date.now() - this.lastWeaponChange > 8e3 || this.isDeath ? (this.movement.disableZoom(),
-    this.weaponManager.setWeapon(t),
-    this.lastWeaponChange = Date.now()) : this.app.fire("Chat:Message", "Console", "Please wait 8 seconds to change weapon.")
+    if (Date.now() - this.lastWeaponChange > 8e3 || this.isDeath) {
+        if (this.movement.isShooting > this.movement.timestamp && !this.isDeath)
+            return !1;
+        if (this.movement.isReloading > this.movement.timestamp && !this.isDeath)
+            return !1;
+        this.movement.disableZoom(),
+        this.weaponManager.setWeapon(t),
+        this.lastWeaponChange = Date.now()
+    } else
+        this.app.fire("Chat:Message", "Console", "Please wait 8 seconds to change weapon.")
 }
 ,
 Player.prototype.showCircularMenu = function(t) {
@@ -9302,9 +9311,7 @@ Enemy.prototype.loadCharacterParts = function() {
     this.weaponHolder.setLocalScale(40, 40, 40),
     this.weaponHolder.reparent(this.handEntity),
     this.setHeroSkin(),
-    setTimeout(function(t) {
-        t.setAnimation("Idle")
-    }, 100, this)
+    this.setAnimation("Idle")
 }
 ,
 Enemy.prototype.setHeroSkin = function() {
@@ -9379,7 +9386,15 @@ Enemy.prototype.death = function(t) {
     this.characterEntity.setLocalPosition(0, -3.5, 0),
     this.setAnimation("Floating")) : (this.characterEntity.animation.speed = 1,
     this.characterEntity.setLocalPosition(0, -2, 0),
-    this.setAnimation("Death")),
+    this.setAnimation("Death"));
+    var i = this.entity.getPosition().clone()
+      , e = this.entity.up.scale(-100)
+      , s = this.app.systems.rigidbody.raycastFirst(i, e);
+    s && s.point && this.app.tween(this.nextPosition).to({
+        x: s.point.x,
+        y: s.point.y + 2.05,
+        z: s.point.z
+    }, .8, pc.BackOut).start(),
     this.app.fire("EffectManager:Skull", this.currentPosition),
     this.app.fire("EffectManager:KillSphere", this.currentPosition),
     this.nextAngle.y = this.damageAngle,
@@ -9403,7 +9418,7 @@ Enemy.prototype.respawn = function(t) {
     this.teleport(),
     this.characterEntity.animation.speed = 1,
     this.characterEntity.setLocalPosition(0, -2, 0);
-    var i = Math.round(2 * Math.random()) + 1
+    var i = Math.round(1 * Math.random()) + 1
       , e = this.skin + "-Talk-" + i;
     this.entity.sound.play(e),
     this.timeout.respawn = setTimeout(function(t) {
@@ -9622,6 +9637,8 @@ Enemy.prototype.bounceJump = function() {
     this.entity.sound.play("Bounce-Jump")
 }
 ,
+Enemy.prototype.setLagCompensatorMovement = function(t) {}
+,
 Enemy.prototype.setDirection = function() {
     if (this.isDeath || this.isJumping || this.isEmotePlaying || this.isDashing || this.isGrappling)
         return !1;
@@ -9631,6 +9648,7 @@ Enemy.prototype.setDirection = function() {
         var i = Math.min(Math.max(this.speed / pc.variables.enemySpeed, pc.variables.minEnemySpeed), pc.variables.maxEnemySpeed);
         "none" != this.lastDirection && this.setAnimation(this.lastDirection, .1),
         this.characterEntity.animation.speed = pc.math.lerp(this.characterEntity.animation.speed, i, .3),
+        this.setLagCompensatorMovement(t),
         this.entity.sound.slots.Footsteps.isPlaying || this.entity.sound.play("Footsteps"),
         this.lastDirection = t
     } else
@@ -10348,6 +10366,7 @@ Menu.prototype.onWeaponSelect = function(e) {
     for (var i in t) {
         t[i].enabled = !1
     }
+    this.weaponEntity.findByName(e).enabled = !0,
     this.weaponIcon.element.textureAsset = n,
     this.weaponName.element.text = e.toLowerCase(),
     this.entity.sound.play("Whoosh"),
@@ -10555,7 +10574,7 @@ Label.attributes.add("spectatorCameraEntity", {
 Label.prototype.initialize = function() {
     this.isInitalized = !1,
     this.team = "none",
-    this.isEnabled = !0,
+    this.isEnabled = !1,
     this.originalUsername = "Guest",
     this.usernameEntity = !1,
     this.app.on("Game:Mode", this.onGameMode, this),
@@ -15193,6 +15212,7 @@ Spectator.prototype.onMouseUp = function(t) {
 ,
 Spectator.prototype.onMouseMove = function(t) {
     return console.log("state : ", this.currentState),
+    console.log("is mouse locked : ", this.isMouseLocked),
     !!this.currentState && (!!this.isMouseLocked && (this.lookX -= t.dy * this.defaultSensitivity * pc.settings.sensivity,
     void (this.lookY -= t.dx * this.defaultSensitivity * pc.settings.sensivity)))
 }
@@ -15537,6 +15557,8 @@ Preview.prototype.initialize = function() {
     this.lookAngle = 0,
     this.state = !0,
     this.isAnimatedSkin = !1,
+    this.isDanceLoaded = !1,
+    this.lastDanceLoopTime = Date.now() - 6e3,
     this.animation = {
         lidAxis: 0
     },
@@ -15552,7 +15574,8 @@ Preview.prototype.initialize = function() {
 }
 ,
 Preview.prototype.onGameFound = function() {
-    this.entity.sound.stop("Emote")
+    this.entity.sound.stop("Emote"),
+    this.currentItemType = "None"
 }
 ,
 Preview.prototype.onEquip = function() {
@@ -15651,7 +15674,7 @@ Preview.prototype.onBuy = function() {
 ,
 Preview.prototype.onStateChange = function(t) {
     this.state = t,
-    !1 === t && this.entity.sound.stop("Emote")
+    !1 === t ? this.entity.sound.stop("Emote") : !0 === t && (this.lastDanceLoopTime = Date.now() - 6e3)
 }
 ,
 Preview.prototype.onMouseDown = function(t) {
@@ -15718,21 +15741,29 @@ Preview.prototype.setSkin = function(t, e) {
     }
 }
 ,
+Preview.prototype.playDanceLoop = function() {
+    if (!this.isDanceLoaded)
+        return !1;
+    Date.now() - this.lastDanceLoopTime > 6e3 && (this.entity.sound.play("Emote"),
+    this.currentCharacterEntity.animation.animations[this.danceName] && this.currentCharacterEntity.animation.play(this.danceName),
+    this.lastDanceLoopTime = Date.now())
+}
+,
 Preview.prototype.setAnimation = function(t, e, i) {
     var n = e + "-" + i + "-Animation"
       , s = this.app.assets.find(n)
       , a = this.app.assets.find(i + "-Music.mp3")
       , o = this;
     this.app.assets.load(s),
+    this.currentCharacterEntity = t,
+    this.danceName = n,
     s.ready(function() {
         if (s) {
-            var r = t.animation.assets;
-            r.push(s.id),
-            t.animation.assets = r,
+            var e = t.animation.assets;
+            e.push(s.id),
+            t.animation.assets = e,
             o.entity.sound.slots.Emote.asset = a.id,
-            o.entity.sound.play("Emote"),
-            t.animation.play(n),
-            o.danceName = e + "-" + i
+            o.isDanceLoaded = !0
         }
     })
 }
@@ -15748,6 +15779,7 @@ Preview.prototype.onSet = function(t, e) {
     this.itemPreview.enabled = !1,
     this.rotateLabelEntity.enabled = !0,
     this.isStatic = !1,
+    this.currentItemType = e,
     this.entity.findByTag("Class").forEach(function(t) {
         t.enabled = !1
     }),
@@ -15792,9 +15824,10 @@ Preview.prototype.update = function(t) {
         return !1;
     var e = this.lookAngle % 360;
     return this.isOpening ? (this.lidEntity && this.lidEntity.setLocalEulerAngles(this.animation.lidAxis, 0, 0),
-    !1) : !this.isStatic && (this.isDragging || (this.lookAngle -= 10 * t),
+    !1) : ("LiliumDance" != this.currentItemType && "ShinDance" != this.currentItemType && "EchoDance" != this.currentItemType || this.playDanceLoop(),
+    !this.isStatic && (this.isDragging || (this.lookAngle -= 10 * t),
     this.isAnimatedSkin && this.videoTexture && this.videoTexture.upload(),
-    void this.baseEntity.setLocalEulerAngles(0, e, 0))
+    void this.baseEntity.setLocalEulerAngles(0, e, 0)))
 }
 ;
 var Shop = pc.createScript("shop");
@@ -17186,28 +17219,26 @@ CustomList.prototype.setCustomList = function(t) {
     this.clearList();
     var i = t[this.key];
     for (var s in this.key || (i = t),
-    console.log(i),
     i) {
         var e = i[s]
-          , n = this.rowEntity.clone();
-        n.enabled = !0;
-        var a = this.items;
-        for (var o in a) {
-            var r = a[o];
-            if ("Color" == r.name)
-                n.findByName(r.name).element.color = Utils.hex2RGB(e[this.fields[o]]);
-            else if ("Image" == r.name)
-                n.findByName(r.name).element.textureAsset = this.app.assets.find(e[this.fields[o]]);
-            else if (r && r.script && r.script.button) {
-                var d = n.findByName(r.name).script.button.fireFunction;
-                console.log(this.fields[o]),
-                n.findByName(r.name).script.button.fireFunction = d.replace(this.fields[o], e[this.fields[o]])
+          , a = this.rowEntity.clone();
+        a.enabled = !0;
+        var n = this.items;
+        for (var r in n) {
+            var o = n[r];
+            if ("Color" == o.name)
+                a.findByName(o.name).element.color = Utils.hex2RGB(e[this.fields[r]]);
+            else if ("Image" == o.name)
+                a.findByName(o.name).element.textureAsset = this.app.assets.find(e[this.fields[r]]);
+            else if (o && o.script && o.script.button) {
+                var d = a.findByName(o.name).script.button.fireFunction;
+                a.findByName(o.name).script.button.fireFunction = d.replace(this.fields[r], e[this.fields[r]])
             } else
-                n.findByName(r.name).element.text = e[this.fields[o]]
+                a.findByName(o.name).element.text = e[this.fields[r]]
         }
-        n.setLocalPosition(0, -s * (n.element.height + this.padding) - this.padding, 0),
-        this.holderEntity.addChild(n),
-        this.list.push(n)
+        a.setLocalPosition(0, -s * (a.element.height + this.padding) - this.padding, 0),
+        this.holderEntity.addChild(a),
+        this.list.push(a)
     }
 }
 ;
@@ -17386,7 +17417,7 @@ Upload.prototype.initialize = function() {
     this.b64 = "null",
     this.maxFileSize = 5e5,
     this.triggerOnInit(),
-    this.on("state", function(e) {
+    this.on("state", function(t) {
         this.entity.enabled && this.triggerOnInit()
     }, this),
     this.on("destroy", this.onDestroy, this)
@@ -17412,50 +17443,41 @@ Upload.prototype.triggerOnInit = function() {
     this.dragAndDropArea.addEventListener("drop", this.setUpload.bind(this), !1)
 }
 ,
-Upload.prototype.onDestroy = function() {
-    this.dragAndDropArea.removeEventListener("dragover", this.onMouseOver.bind(this), !0),
-    this.dragAndDropArea.removeEventListener("mouseover", this.onMouseOver.bind(this), !1),
-    this.dragAndDropArea.removeEventListener("dragend", this.onMouseLeave.bind(this), !0),
-    this.dragAndDropArea.removeEventListener("mouseout", this.onMouseLeave.bind(this), !1),
-    this.dragAndDropArea.removeEventListener("change", this.setUpload.bind(this), !1),
-    this.dragAndDropArea.removeEventListener("drop", this.setUpload.bind(this), !0),
-    this.inputFile.removeChild(),
-    this.initElementColor.removeChild()
-}
+Upload.prototype.onDestroy = function() {}
 ,
-Upload.prototype.setUpload = function(e) {
-    var t;
-    e.preventDefault(),
-    e.stopPropagation();
+Upload.prototype.setUpload = function(t) {
+    var e;
+    t.preventDefault(),
+    t.stopPropagation();
     var i = !1;
-    (t = "drop" === e.type ? e.dataTransfer.files[0] : e.srcElement.files[0]) && ("image" == t.type.split("/")[0] || "video" == t.type.split("/")[0] ? t.size < this.maxFileSize ? ("video" == t.type.split("/")[0] && (i = !0),
-    this.encodeImage(t, i)) : this.app.fire("Alert:Menu", t.name + " file's size exceeds max limit of 500 KB!") : "json" == t.type.split("/")[1] || "JSON" == t.type.split("/")[1] ? this.encodeImage(t) : this.app.fire("Alert:Menu", t.name + "'s file format " + t.type + " is not supported!"))
+    (e = "drop" === t.type ? t.dataTransfer.files[0] : t.srcElement.files[0]) && ("image" == e.type.split("/")[0] || "video" == e.type.split("/")[0] ? e.size < this.maxFileSize ? ("video" == e.type.split("/")[0] && (i = !0),
+    this.encodeImage(e, i)) : this.app.fire("Alert:Menu", e.name + " file's size exceeds max limit of 500 KB!") : "json" == e.type.split("/")[1] || "JSON" == e.type.split("/")[1] ? this.encodeImage(e) : this.app.fire("Alert:Menu", e.name + "'s file format " + e.type + " is not supported!"))
 }
 ,
-Upload.prototype.onMouseOver = function(e) {
-    e.stopPropagation(),
-    e.preventDefault(),
+Upload.prototype.onMouseOver = function(t) {
+    t.stopPropagation(),
+    t.preventDefault(),
     this.hoverColor && (this.entity.element.color = this.hoverColor)
 }
 ,
-Upload.prototype.onMouseLeave = function(e) {
-    e.stopPropagation(),
-    e.preventDefault(),
+Upload.prototype.onMouseLeave = function(t) {
+    t.stopPropagation(),
+    t.preventDefault(),
     this.entity.element.color = this.initElementColor
 }
 ,
-Upload.prototype.encodeImage = function(e, t) {
+Upload.prototype.encodeImage = function(t, e) {
     var i = new FileReader
       , o = this;
-    i.addEventListener("load", function(e) {
-        o.b64 = e.target.result;
+    i.addEventListener("load", function(t) {
+        o.b64 = t.target.result;
         var i = {};
         i[o.key] = o.b64;
         var n = JSON.stringify(i);
         window.localStorage.setItem(o.key, n),
-        o.app.fire(o.onUpload, i, t)
+        o.app.fire(o.onUpload, i, e)
     }),
-    i.readAsDataURL(e)
+    i.readAsDataURL(t)
 }
 ;
 var CustomImage = pc.createScript("customImage");
@@ -18969,5 +18991,158 @@ Timeline.prototype.onPlay = function() {
         }),
         this.customFrames.start()
     }
+}
+;
+var Shader = pc.createScript("shader");
+Shader.attributes.add("autoplay", {
+    type: "boolean",
+    default: !0
+}),
+Shader.attributes.add("speed", {
+    type: "number",
+    default: 1
+}),
+Shader.attributes.add("layers", {
+    type: "json",
+    schema: [{
+        name: "texture",
+        type: "asset",
+        assetType: "texture"
+    }, {
+        name: "method",
+        type: "string",
+        enum: [{
+            Add: "Add"
+        }, {
+            Multiply: "Multiply"
+        }, {
+            Subtract: "Subtract"
+        }, {
+            Divide: "Divide"
+        }],
+        default: "Add"
+    }, {
+        name: "channel",
+        type: "string",
+        enum: [{
+            RGBA: "RGBA"
+        }, {
+            RGB: "RGB"
+        }, {
+            Alpha: "Alpha"
+        }],
+        default: "RGBA"
+    }, {
+        name: "position",
+        type: "vec2"
+    }, {
+        name: "scale",
+        type: "vec2",
+        default: [1, 1]
+    }, {
+        name: "color",
+        type: "rgba"
+    }, {
+        name: "timeFactor",
+        type: "number",
+        default: 1
+    }, {
+        name: "timeMethodX",
+        type: "string",
+        enum: [{
+            Linear: "Linear"
+        }, {
+            Cosine: "Cosine"
+        }, {
+            Sine: "Sine"
+        }],
+        default: "Linear"
+    }, {
+        name: "timeMethodY",
+        type: "string",
+        enum: [{
+            Linear: "Linear"
+        }, {
+            Cosine: "Cosine"
+        }, {
+            Sine: "Sine"
+        }],
+        default: "Linear"
+    }],
+    array: !0
+}),
+Shader.prototype.initialize = function() {
+    this.time = 0,
+    this.operators = {
+        Add: "+",
+        Subtract: "-",
+        Multiply: "*",
+        Divide: "/"
+    };
+    var e = "precision " + this.app.graphicsDevice.precision + " float;";
+    for (var t in e += "varying vec2 vUv0;",
+    e += "uniform float uTime;",
+    this.layers) {
+        this.layers[t];
+        e += "uniform sampler2D layer_" + t + ";",
+        e += "uniform vec2 position_" + t + ";",
+        e += "uniform vec2 scale_" + t + ";",
+        e += "uniform vec4 color_" + t + ";"
+    }
+    for (var a in e += "void main(void){",
+    e += "vec4 color = vec4(0.0, 0.0, 0.0, 0.0);",
+    this.layers) {
+        var i = this.layers[a];
+        e += "vec2 pos_" + a + " = position_" + a + ";",
+        e += "pos_" + a + ".x = pos_" + a + ".x * ",
+        "Linear" == i.timeMethodX ? e += "uTime" : "Sine" == i.timeMethodX ? e += "sin(uTime)" : "Cosine" == i.timeMethodX && (e += "cos(uTime)"),
+        e += ";",
+        e += "pos_" + a + ".y = pos_" + a + ".y",
+        e += " * ",
+        "Linear" == i.timeMethodY ? e += "uTime" : "Sine" == i.timeMethodY ? e += "sin(uTime)" : "Cosine" == i.timeMethodY && (e += "cos(uTime)"),
+        e += ";",
+        e += "vec4 texture_" + a + " = texture2D(layer_" + a + ",",
+        e += "vUv0 * scale_" + a + " + pos_" + a + ");",
+        "Alpha" != i.channel && (e += "color" + this.operators[i.method] + "= texture_" + a + " * color_" + a + ";")
+    }
+    for (var r in this.layers) {
+        "Alpha" == this.layers[r].channel && (e += "color.a*= texture2D(layer_" + r + ", vUv0).a;")
+    }
+    e += "gl_FragColor = color;",
+    e += "}";
+    var s = {
+        attributes: {
+            aPosition: pc.SEMANTIC_POSITION,
+            aUv0: pc.SEMANTIC_TEXCOORD0
+        },
+        vshader: "attribute vec3 aPosition;attribute vec2 aUv0;uniform mat4 matrix_model;uniform mat4 matrix_viewProjection;varying vec2 vUv0;void main(void){vUv0 = aUv0;gl_Position = matrix_viewProjection * matrix_model *vec4(aPosition, 1.0);}",
+        fshader: e
+    };
+    for (var o in this.shader = new pc.Shader(this.app.graphicsDevice,s),
+    this.material = new pc.Material,
+    this.material.shader = this.shader,
+    this.material.alphaWrite = !0,
+    this.material.alphaTest = !0,
+    this.material.depthWrite = !1,
+    this.material.depthTest = !0,
+    this.material.cull = pc.CULLFACE_NONE,
+    this.material.blendType = pc.BLEND_ADDITIVEALPHA,
+    this.layers) {
+        var n = this.layers[o];
+        this.material.setParameter("layer_" + o, n.texture.resource),
+        this.material.setParameter("position_" + o, [n.position.x, n.position.y]),
+        this.material.setParameter("scale_" + o, [n.scale.x, n.scale.y]),
+        this.material.setParameter("color_" + o, n.color.data)
+    }
+    this.entity.model.material = this.material;
+    var l = this.entity.model.meshInstances;
+    for (var m in l) {
+        l[m].material = this.material
+    }
+}
+,
+Shader.prototype.update = function(e) {
+    this.time += e,
+    this.material.setParameter("uTime", this.time * this.speed)
 }
 ;

@@ -4,6 +4,7 @@ const client = () => {
 };
 
 const customInit = () => {
+  clientFixes();
   customOnLeaveCallback();
   startCustomSolo();
   customTransition();
@@ -46,6 +47,21 @@ const startCustomSolo = () => {
       this.app.fire("Analytics:Event", "Invite", "TriedToStart"),
       this.send([this.keys.start]),
       this.app.fire("Analytics:Event", "Invite", "Start")
+  }
+}
+
+const clientFixes = () => {
+  Menu.prototype.onWeaponSelect = function(e) {
+      var t = this.weaponEntity.findByTag("Weapon")
+        , n = this.app.assets.find(e + "-Thumbnail-White.png");
+      for (var i in t) {
+          t[i].enabled = !1
+      }
+      this.weaponEntity.findByName(e).enabled = !0,
+      this.weaponIcon.element.textureAsset = n,
+      this.weaponName.element.text = e.toLowerCase(),
+      this.entity.sound.play("Whoosh"),
+      pc.session.weapon = e
   }
 }
 

@@ -376,7 +376,8 @@
       36890306,
       37050488,
       37276779,
-      37615092
+      37615092,
+      37896085
     ],
     "useMouse": true,
     "use3dPhysics": false,
@@ -390,16 +391,24 @@
   },
   "scenes": [
     {
-      "name": "Prototype",
-      "url": "ScriptLoad.json"
-    },
-    {
       "name": "Menu",
       "url": "MainMenu.json"
     },
     {
+      "name": "Prototype",
+      "url": "ScriptLoad.json"
+    },
+    {
       "name": "Tundra",
       "url": "Tundra.json"
+    },
+    {
+      "name": "Capture",
+      "url": "CaptureScript.json"
+    },
+    {
+      "name": "test-scene",
+      "url": "1014939.json"
     },
     {
       "name": "MVP",
@@ -418,20 +427,12 @@
       "url": "Xibalba.json"
     },
     {
-      "name": "Capture",
-      "url": "CaptureScript.json"
-    },
-    {
       "name": "Sierra-Halloween",
       "url": "913339.json"
     },
     {
       "name": "Result",
       "url": "ResultScreen.json"
-    },
-    {
-      "name": "test-scene",
-      "url": "1014939.json"
     },
     {
       "name": "Result-Mobile",
@@ -1378,8 +1379,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -1453,8 +1454,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -1477,8 +1478,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -3993,8 +3994,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -4260,8 +4261,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -6930,8 +6931,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -6999,8 +7000,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -7407,8 +7408,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -7638,8 +7639,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -8754,8 +8755,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -8993,8 +8994,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -9442,8 +9443,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -9465,8 +9466,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -9559,8 +9560,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -9662,8 +9663,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -12294,8 +12295,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -12332,8 +12333,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -13798,8 +13799,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -14295,8 +14296,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -16223,8 +16224,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -16697,8 +16698,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -17753,8 +17754,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -20477,8 +20478,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -21677,8 +21678,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -21760,8 +21761,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -24338,8 +24339,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -24397,8 +24398,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -26560,8 +26561,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -27619,8 +27620,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -28224,8 +28225,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -32134,8 +32135,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -33026,8 +33027,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -33551,8 +33552,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -34087,8 +34088,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36326,8 +36327,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36369,8 +36370,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36406,8 +36407,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36464,8 +36465,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36507,8 +36508,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36567,8 +36568,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36610,8 +36611,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36648,8 +36649,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36874,8 +36875,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -36915,8 +36916,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -37100,8 +37101,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -37162,8 +37163,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -37199,8 +37200,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -37491,8 +37492,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -38671,8 +38672,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -40983,8 +40984,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -41010,8 +41011,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -41319,8 +41320,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -41346,8 +41347,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -42323,8 +42324,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -42621,8 +42622,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -44657,8 +44658,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -46600,8 +46601,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -49644,8 +49645,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -49711,8 +49712,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -49804,8 +49805,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -50174,8 +50175,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -50363,8 +50364,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -55380,8 +55381,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -55463,8 +55464,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -56452,8 +56453,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -58279,8 +58280,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -58376,8 +58377,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -58398,8 +58399,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -60792,8 +60793,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -67602,8 +67603,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -69164,8 +69165,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -73483,8 +73484,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -74910,8 +74911,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -75257,8 +75258,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -75597,8 +75598,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -75643,8 +75644,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -75817,8 +75818,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -76504,8 +76505,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -77740,8 +77741,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -77782,8 +77783,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -79684,8 +79685,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -79760,8 +79761,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -80149,8 +80150,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -80204,8 +80205,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -80555,8 +80556,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -81250,8 +81251,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -83223,8 +83224,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -83250,8 +83251,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -85477,8 +85478,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -85520,8 +85521,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -85554,8 +85555,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -85634,8 +85635,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -85667,8 +85668,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -91104,8 +91105,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -95578,8 +95579,8 @@
       "type": "script",
       "file": {
         "filename": "__game-scripts.js",
-        "size": 492606,
-        "hash": "a3275d2beabd3e86f87d0f69b4473cb6",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
         "url": "__game-scripts.js"
       },
       "region": "eu-west-1",
@@ -95659,6 +95660,1530 @@
       "region": "eu-west-1",
       "i18n": {},
       "id": "37762297"
+    },
+    "37896085": {
+      "tags": [],
+      "name": "Shader.js",
+      "revision": 1,
+      "preload": true,
+      "meta": null,
+      "data": {
+        "scripts": {
+          "shader": {
+            "attributesOrder": [
+              "autoplay",
+              "speed",
+              "layers"
+            ],
+            "attributes": {
+              "autoplay": {
+                "type": "boolean",
+                "default": true
+              },
+              "speed": {
+                "type": "number",
+                "default": 1
+              },
+              "layers": {
+                "type": "json",
+                "schema": [
+                  {
+                    "name": "texture",
+                    "type": "asset",
+                    "assetType": "texture"
+                  },
+                  {
+                    "name": "method",
+                    "type": "string",
+                    "enum": {
+                      "order": [
+                        "Add",
+                        "Multiply",
+                        "Subtract",
+                        "Divide"
+                      ],
+                      "options": {
+                        "Add": "Add",
+                        "Multiply": "Multiply",
+                        "Subtract": "Subtract",
+                        "Divide": "Divide"
+                      }
+                    },
+                    "default": "Add"
+                  },
+                  {
+                    "name": "channel",
+                    "type": "string",
+                    "enum": {
+                      "order": [
+                        "RGBA",
+                        "RGB",
+                        "Alpha"
+                      ],
+                      "options": {
+                        "RGBA": "RGBA",
+                        "RGB": "RGB",
+                        "Alpha": "Alpha"
+                      }
+                    },
+                    "default": "RGBA"
+                  },
+                  {
+                    "name": "position",
+                    "type": "vec2"
+                  },
+                  {
+                    "name": "scale",
+                    "type": "vec2",
+                    "default": [
+                      1,
+                      1
+                    ]
+                  },
+                  {
+                    "name": "color",
+                    "type": "rgba"
+                  },
+                  {
+                    "name": "timeFactor",
+                    "type": "number",
+                    "default": 1
+                  },
+                  {
+                    "name": "timeMethodX",
+                    "type": "string",
+                    "enum": {
+                      "order": [
+                        "Linear",
+                        "Cosine",
+                        "Sine"
+                      ],
+                      "options": {
+                        "Linear": "Linear",
+                        "Cosine": "Cosine",
+                        "Sine": "Sine"
+                      }
+                    },
+                    "default": "Linear"
+                  },
+                  {
+                    "name": "timeMethodY",
+                    "type": "string",
+                    "enum": {
+                      "order": [
+                        "Linear",
+                        "Cosine",
+                        "Sine"
+                      ],
+                      "options": {
+                        "Linear": "Linear",
+                        "Cosine": "Cosine",
+                        "Sine": "Sine"
+                      }
+                    },
+                    "default": "Linear"
+                  }
+                ],
+                "array": true
+              }
+            }
+          }
+        },
+        "loading": false,
+        "loadingType": 0
+      },
+      "type": "script",
+      "file": {
+        "filename": "__game-scripts.js",
+        "size": 496251,
+        "hash": "0e4473f3ddab1b9755c503fbd507d2ad",
+        "url": "__game-scripts.js"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "37896085"
+    },
+    "37896091": {
+      "tags": [],
+      "name": "MotionNoise.jpg",
+      "revision": 1,
+      "preload": true,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "Grayscale",
+        "width": 256,
+        "height": 256,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "MotionNoise.jpg",
+        "size": 12416,
+        "hash": "e2a96e3e36ef68514a681cd308154860",
+        "variants": {},
+        "url": "files/assets/37896091/1/MotionNoise.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "37896091"
+    },
+    "37896092": {
+      "tags": [],
+      "name": "Vertical-Light-Border.jpg",
+      "revision": 1,
+      "preload": true,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "Grayscale",
+        "width": 512,
+        "height": 512,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "clamp",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Vertical-Light-Border.jpg",
+        "size": 10189,
+        "hash": "0d49ad996237e630cc0bda86259ad3f1",
+        "variants": {},
+        "url": "files/assets/37896092/1/Vertical-Light-Border.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "37896092"
+    },
+    "37896093": {
+      "tags": [],
+      "name": "Graident.png",
+      "revision": 1,
+      "preload": true,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "Bilevel",
+        "width": 512,
+        "height": 512,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "clamp",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Graident.png",
+        "size": 46350,
+        "hash": "2be22e9e52c4098bcac05a1b11cb6037",
+        "variants": {},
+        "url": "files/assets/37896093/1/Graident.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "37896093"
+    },
+    "37896095": {
+      "tags": [],
+      "name": "Point-Area.glb",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 1,
+        "meshInstances": 1,
+        "meshInstancesNames": [
+          "Circle"
+        ],
+        "nodes": 2,
+        "skins": 0,
+        "vertices": 66,
+        "triangles": 64,
+        "attributes": {
+          "NORMAL": 1,
+          "POSITION": 1,
+          "TEXCOORD_0": 1
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": null
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "f04112a1fe26e9741b1b934209542637",
+        "size": 4640,
+        "filename": "Point-Area.glb",
+        "url": "files/assets/37896095/1/Point-Area.glb"
+      },
+      "i18n": {},
+      "id": "37896095"
+    },
+    "37968689": {
+      "tags": [],
+      "name": "Teddy_Ambient_Occlusion.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "Grayscale",
+        "width": 1024,
+        "height": 1024,
+        "alpha": false,
+        "depth": 8,
+        "srgb": false,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Teddy_Ambient_Occlusion.jpg",
+        "size": 92529,
+        "hash": "64c602462dd7ae27d64e97b6f8182f9f",
+        "variants": {},
+        "url": "files/assets/37968689/1/Teddy_Ambient_Occlusion.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "37968689"
+    },
+    "37968690": {
+      "tags": [],
+      "name": "Teddy_BaseColor.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 1024,
+        "height": 1024,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Teddy_BaseColor.jpg",
+        "size": 37413,
+        "hash": "365167aad47d10931a9f59020cbdaf69",
+        "variants": {},
+        "url": "files/assets/37968690/1/Teddy_BaseColor.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "37968690"
+    },
+    "37968695": {
+      "tags": [],
+      "name": "Material.004",
+      "revision": 1,
+      "preload": false,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 0
+      },
+      "data": {
+        "shader": "blinn",
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "diffuse": [
+          0.0802198,
+          0.0307135,
+          0.0168074
+        ],
+        "specular": [
+          0.020055,
+          0.00767836,
+          0.00420184
+        ],
+        "shininess": 42.2169,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 1,
+        "aoMap": 37968689,
+        "diffuseMap": 37968690,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": null,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": null,
+        "lightMap": null,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "37968695"
+    },
+    "37968696": {
+      "tags": [],
+      "name": "Teddy_Charm.glb",
+      "revision": 1,
+      "preload": false,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 2,
+        "meshInstances": 2,
+        "meshInstancesNames": [
+          "Teddy",
+          "Teddy.001"
+        ],
+        "nodes": 3,
+        "skins": 0,
+        "vertices": 1106,
+        "triangles": 1434,
+        "attributes": {
+          "NORMAL": 2,
+          "POSITION": 2,
+          "TEXCOORD_0": 2
+        },
+        "userMapping": {
+          "1": true
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 37968695
+          },
+          {
+            "material": 37968695
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "5a92b19c344a3572afce1d1506c38c5e",
+        "size": 55704,
+        "filename": "Teddy_Charm.glb",
+        "url": "files/assets/37968696/1/Teddy_Charm.glb"
+      },
+      "i18n": {},
+      "id": "37968696"
+    },
+    "37968727": {
+      "tags": [],
+      "name": "Teddy-Charm.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColorAlpha",
+        "width": 512,
+        "height": 512,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Teddy-Charm.png",
+        "size": 77222,
+        "hash": "c2e84df846879665e9ac8ed5e5037ee5",
+        "variants": {},
+        "url": "files/assets/37968727/1/Teddy-Charm.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "37968727"
+    },
+    "37968749": {
+      "tags": [],
+      "name": "Skull_Charm_AmbientOcclusion.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "Grayscale",
+        "width": 1024,
+        "height": 1024,
+        "alpha": false,
+        "depth": 8,
+        "srgb": false,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Skull_Charm_AmbientOcclusion.jpg",
+        "size": 35501,
+        "hash": "c6015c0dc627ed42583a5483591b385e",
+        "variants": {},
+        "url": "files/assets/37968749/1/Skull_Charm_AmbientOcclusion.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "37968749"
+    },
+    "37968750": {
+      "tags": [],
+      "name": "Skull_Charm_BaseColor.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 1024,
+        "height": 1024,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Skull_Charm_BaseColor.jpg",
+        "size": 32412,
+        "hash": "21cebf28ee978b573103910ffeae9d2e",
+        "variants": {},
+        "url": "files/assets/37968750/1/Skull_Charm_BaseColor.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "37968750"
+    },
+    "37968752": {
+      "tags": [],
+      "name": "Skull_Charm.glb",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 2,
+        "meshInstances": 2,
+        "meshInstancesNames": [
+          "Skull_Charm",
+          "Skull"
+        ],
+        "nodes": 3,
+        "skins": 0,
+        "vertices": 1352,
+        "triangles": 1714,
+        "attributes": {
+          "NORMAL": 2,
+          "POSITION": 2,
+          "TEXCOORD_0": 2
+        },
+        "userMapping": {
+          "1": true
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 37968753
+          },
+          {
+            "material": 37968753
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "4d0f3647cc04fcbadd8a4db416948e12",
+        "size": 66976,
+        "filename": "Skull_Charm.glb",
+        "url": "files/assets/37968752/1/Skull_Charm.glb"
+      },
+      "i18n": {},
+      "id": "37968752"
+    },
+    "37968753": {
+      "tags": [],
+      "name": "Material.003",
+      "revision": 1,
+      "preload": true,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 0
+      },
+      "data": {
+        "shader": "blinn",
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "diffuse": [
+          0,
+          0.6235294117647059,
+          1
+        ],
+        "specular": [
+          0.170694,
+          0.112575,
+          0.0639278
+        ],
+        "shininess": 42.2169,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 1,
+        "aoMap": null,
+        "diffuseMap": 37968750,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": null,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": null,
+        "lightMap": null,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 8,
+        "refraction": 0.877,
+        "refractionIndex": 0.882,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "37968753"
+    },
+    "37968758": {
+      "tags": [],
+      "name": "Skull-Charm.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColorAlpha",
+        "width": 512,
+        "height": 512,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Skull-Charm.png",
+        "size": 60287,
+        "hash": "92e00636e107a0cbe81382fbd3015b86",
+        "variants": {},
+        "url": "files/assets/37968758/1/Skull-Charm.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "37968758"
+    },
+    "37969056": {
+      "tags": [],
+      "name": "BioHazard_Scar_100.jpg",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "jpeg",
+        "type": "TrueColor",
+        "width": 1024,
+        "height": 1024,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "BioHazard_Scar_100.jpg",
+        "size": 118992,
+        "hash": "6329d9b3701ebfe99460bfc9aa19f70a",
+        "variants": {},
+        "url": "files/assets/37969056/1/BioHazard_Scar_100.jpg"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "37969056"
+    },
+    "37969058": {
+      "tags": [],
+      "name": "BioHazard-Scar-Thumbnail.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "PaletteAlpha",
+        "width": 512,
+        "height": 512,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "BioHazard-Scar-Thumbnail.png",
+        "size": 38360,
+        "hash": "e2a7118cd2c54202c627bc77744ef940",
+        "variants": {},
+        "url": "files/assets/37969058/1/BioHazard-Scar-Thumbnail.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "37969058"
+    },
+    "37973648": {
+      "tags": [],
+      "name": "Llama-Color-map.png",
+      "revision": 1,
+      "preload": false,
+      "region": "eu-west-1",
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "Palette",
+        "width": 1024,
+        "height": 1024,
+        "alpha": false,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Llama-Color-map.png",
+        "hash": "5a2abca7d8382e1a2d33bb80c173a9f1",
+        "size": 22720,
+        "variants": {},
+        "url": "files/assets/37973648/1/Llama-Color-map.png"
+      },
+      "i18n": {},
+      "id": "37973648"
+    },
+    "37973649": {
+      "tags": [],
+      "name": "Llama_1.glb",
+      "revision": 1,
+      "preload": false,
+      "region": "eu-west-1",
+      "meta": {
+        "meshes": 1,
+        "meshInstances": 1,
+        "meshInstancesNames": [
+          "Circle"
+        ],
+        "nodes": 2,
+        "skins": 0,
+        "vertices": 2419,
+        "triangles": 1232,
+        "attributes": {
+          "NORMAL": 1,
+          "POSITION": 1,
+          "TEXCOORD_0": 1
+        }
+      },
+      "data": {
+        "mapping": [
+          {
+            "material": 37973650
+          }
+        ],
+        "area": 0
+      },
+      "type": "model",
+      "file": {
+        "hash": "3ede1a9ac51b1e6833afe712d54a436a",
+        "size": 93984,
+        "filename": "Llama_1.glb",
+        "url": "files/assets/37973649/1/Llama_1.glb"
+      },
+      "i18n": {},
+      "id": "37973649"
+    },
+    "37973650": {
+      "tags": [],
+      "name": "Llama",
+      "revision": 1,
+      "preload": false,
+      "region": "eu-west-1",
+      "meta": {
+        "index": 0
+      },
+      "data": {
+        "shader": "blinn",
+        "ambient": [
+          0,
+          0,
+          0
+        ],
+        "diffuse": [
+          0.8,
+          0.8,
+          0.8
+        ],
+        "diffuseMap": 37973648,
+        "diffuseMapOffset": [
+          0,
+          0
+        ],
+        "diffuseMapTiling": [
+          1,
+          1
+        ],
+        "specular": [
+          0.2,
+          0.2,
+          0.2
+        ],
+        "shininess": 42.2169,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "opacity": 1,
+        "aoMap": null,
+        "specularMap": null,
+        "metalnessMap": null,
+        "glossMap": null,
+        "emissiveMap": null,
+        "normalMap": null,
+        "heightMap": null,
+        "opacityMap": null,
+        "sphereMap": null,
+        "cubeMap": null,
+        "lightMap": null,
+        "ambientTint": false,
+        "aoMapVertexColor": false,
+        "aoMapChannel": "r",
+        "aoMapUv": 0,
+        "aoMapTiling": [
+          1,
+          1
+        ],
+        "aoMapOffset": [
+          0,
+          0
+        ],
+        "occludeSpecular": 1,
+        "diffuseMapVertexColor": false,
+        "diffuseMapChannel": "rgb",
+        "diffuseMapUv": 0,
+        "diffuseMapTint": false,
+        "specularMapVertexColor": false,
+        "specularMapChannel": "rgb",
+        "specularMapUv": 0,
+        "specularMapTiling": [
+          1,
+          1
+        ],
+        "specularMapOffset": [
+          0,
+          0
+        ],
+        "specularMapTint": false,
+        "specularAntialias": true,
+        "useMetalness": false,
+        "metalnessMapVertexColor": false,
+        "metalnessMapChannel": "r",
+        "metalnessMapUv": 0,
+        "metalnessMapTiling": [
+          1,
+          1
+        ],
+        "metalnessMapOffset": [
+          0,
+          0
+        ],
+        "metalnessMapTint": false,
+        "metalness": 1,
+        "conserveEnergy": true,
+        "glossMapVertexColor": false,
+        "glossMapChannel": "r",
+        "glossMapUv": 0,
+        "glossMapTiling": [
+          1,
+          1
+        ],
+        "glossMapOffset": [
+          0,
+          0
+        ],
+        "fresnelModel": 0,
+        "fresnelFactor": 0,
+        "emissiveMapVertexColor": false,
+        "emissiveMapChannel": "rgb",
+        "emissiveMapUv": 0,
+        "emissiveMapTiling": [
+          1,
+          1
+        ],
+        "emissiveMapOffset": [
+          0,
+          0
+        ],
+        "emissiveMapTint": false,
+        "emissiveIntensity": 1,
+        "normalMapTiling": [
+          1,
+          1
+        ],
+        "normalMapOffset": [
+          0,
+          0
+        ],
+        "normalMapUv": 0,
+        "bumpMapFactor": 1,
+        "heightMapChannel": "r",
+        "heightMapUv": 0,
+        "heightMapTiling": [
+          1,
+          1
+        ],
+        "heightMapOffset": [
+          0,
+          0
+        ],
+        "heightMapFactor": 1,
+        "alphaTest": 0,
+        "opacityMapVertexColor": false,
+        "opacityMapChannel": "r",
+        "opacityMapUv": 0,
+        "opacityMapTiling": [
+          1,
+          1
+        ],
+        "opacityMapOffset": [
+          0,
+          0
+        ],
+        "reflectivity": 1,
+        "refraction": 0,
+        "refractionIndex": 0.6666666666666666,
+        "cubeMapProjection": 0,
+        "cubeMapProjectionBox": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "halfExtents": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "lightMapVertexColor": false,
+        "lightMapChannel": "rgb",
+        "lightMapUv": 1,
+        "lightMapTiling": [
+          1,
+          1
+        ],
+        "lightMapOffset": [
+          0,
+          0
+        ],
+        "depthTest": true,
+        "depthWrite": true,
+        "cull": 1,
+        "blendType": 3,
+        "shadowSampleType": 1,
+        "useFog": true,
+        "useLighting": true,
+        "useSkybox": true,
+        "useGammaTonemap": true
+      },
+      "type": "material",
+      "file": null,
+      "i18n": {},
+      "id": "37973650"
+    },
+    "37973745": {
+      "tags": [],
+      "name": "Llama-Charm.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColorAlpha",
+        "width": 512,
+        "height": 512,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Llama-Charm.png",
+        "size": 53069,
+        "hash": "59dafdb2d53eda1e376c9a424f0f2643",
+        "variants": {},
+        "url": "files/assets/37973745/1/Llama-Charm.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "37973745"
     }
   }
 }

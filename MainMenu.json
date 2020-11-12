@@ -37447,7 +37447,7 @@
     "4f5169c9-5ba0-437a-ae8a-b0e1772cfea2": {
       "name": "Common",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "4f5169c9-5ba0-437a-ae8a-b0e1772cfea2",
       "parent": "b5d43b3a-1b6c-4c3a-a213-a59af8271a37",
       "children": [
@@ -46643,7 +46643,7 @@
             0,
             -120,
             -680,
-            406
+            375
           ],
           "alignment": [
             0.5,
@@ -48216,7 +48216,7 @@
             0,
             -75,
             -680,
-            30
+            15
           ],
           "alignment": [
             0.5,
@@ -48555,7 +48555,7 @@
             0,
             -122,
             -680,
-            77
+            60
           ],
           "alignment": [
             0.5,
@@ -52434,7 +52434,7 @@
           "slots": {
             "1": {
               "name": "Emote",
-              "loop": true,
+              "loop": false,
               "autoPlay": false,
               "overlap": false,
               "asset": 33221668,
@@ -52604,9 +52604,9 @@
         1.8937372566310708
       ],
       "rotation": [
-        56.97880760344876,
-        0,
-        0
+        89.31096816702565,
+        -14.646858748514713,
+        -9.093104667722084
       ],
       "scale": [
         1,
@@ -52758,9 +52758,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.6745098039215687,
-            0.6745098039215687,
-            0.6745098039215687
+            0.4627450980392157,
+            0.23137254901960785,
+            0.6941176470588235
           ],
           "opacity": 1,
           "textureAsset": 33208344,
@@ -53741,7 +53741,7 @@
           "enabled": true,
           "assets": [],
           "speed": 1,
-          "loop": true,
+          "loop": false,
           "activate": true
         }
       }
@@ -54323,7 +54323,7 @@
           "enabled": true,
           "assets": [],
           "speed": 1,
-          "loop": true,
+          "loop": false,
           "activate": true
         }
       }
@@ -55423,7 +55423,7 @@
               "enabled": true,
               "attributes": {
                 "auto": true,
-                "URL": "https://gateway.venge.io/?request=get_offers&version=7",
+                "URL": "https://gateway.venge.io/?request=get_offers&version=8",
                 "data": "",
                 "success": "Shop:SetItems, Hide:Loading",
                 "error": "Alert:Menu, Hide:Loading",
@@ -64515,7 +64515,7 @@
             0,
             -169,
             -680,
-            124
+            105
           ],
           "alignment": [
             0.5,
@@ -67873,7 +67873,7 @@
             0,
             -263,
             -680,
-            218
+            195
           ],
           "alignment": [
             0.5,
@@ -100131,7 +100131,7 @@
                 "innerHTML": "",
                 "onDestroy": "",
                 "autoResize": true,
-                "fullyRemove": false,
+                "fullyRemove": true,
                 "showOnly": "Both"
               }
             },
@@ -101460,7 +101460,7 @@
             0,
             -216,
             -680,
-            171
+            150
           ],
           "alignment": [
             0.5,
@@ -101538,7 +101538,7 @@
             0,
             0.5
           ],
-          "text": "Hide Usernames",
+          "text": "Censor Usernames",
           "key": null,
           "fontAsset": 29329818,
           "fontSize": 18,
@@ -105226,7 +105226,7 @@
                 "innerHTML": "",
                 "onDestroy": "",
                 "autoResize": true,
-                "fullyRemove": false,
+                "fullyRemove": true,
                 "showOnly": "Both"
               }
             },
@@ -106900,7 +106900,7 @@
           "enabled": true,
           "assets": [],
           "speed": 1,
-          "loop": true,
+          "loop": false,
           "activate": true
         }
       }
@@ -111436,7 +111436,7 @@
             0,
             -310,
             -680,
-            265
+            240
           ],
           "alignment": [
             0.5,
@@ -111775,7 +111775,7 @@
             0,
             -357,
             -680,
-            312
+            285
           ],
           "alignment": [
             0.5,
@@ -112227,7 +112227,7 @@
             0,
             -404,
             -680,
-            359
+            330
           ],
           "alignment": [
             0.5,
