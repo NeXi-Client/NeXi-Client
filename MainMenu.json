@@ -79060,8 +79060,8 @@
                   1
                 ],
                 "padding": 2,
-                "timeLimit": 12,
-                "messageLimit": 6,
+                "timeLimit": 99999,
+                "messageLimit": 3,
                 "isFocused": true,
                 "keepHistory": true,
                 "profanity": false
