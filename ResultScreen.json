@@ -11403,18 +11403,18 @@
           "spacing": 1,
           "color": [
             1,
-            0.5411764705882353,
-            0
+            1,
+            1
           ],
           "opacity": 1,
           "textureAsset": 31543248,
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 35,
-          "height": 40,
+          "width": 55,
+          "height": 60,
           "margin": [
-            5.517,
+            0.517,
             -20,
             -40.517,
             -20
