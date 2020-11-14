@@ -28,6 +28,7 @@ const customInit = () => {
   hideWeaponOnADS();
   //teamModeFixes();
   //customServer();
+  verifiedNeXi();
 };
 
 // Functionality modifications
@@ -1246,4 +1247,149 @@ const customServer = () => {
           configurable: !1
       })
   })()
+}
+
+const verifiedNeXi = () => {
+    Overlay.prototype.setLeaderboard = function(t) {
+      for (var e = this.leaderboardItems.length; e--; )
+          this.leaderboardItems[e].destroy();
+      this.leaderboardItems = [],
+      this.stats = t;
+      var i = 1.3
+        , a = 0
+        , n = 0;
+      for (var s in t) {
+          var o = t[s]
+            , l = parseInt(s)
+            , r = this.app.assets.find("Tier-" + o.tier + ".png");
+          "GUNGAME" == pc.currentMode && (r = this.app.assets.find("Rank-" + o.tier + ".png"));
+          var y = this.leaderboardItem.clone();
+          y.enabled = !0,
+          y.setLocalPosition(-3 * parseInt(s), a, 0),
+          y.setLocalScale(i, i, i),
+          y.findByName("Bar").setLocalScale(o.bar, 1, 1),
+          y.findByName("Tier").element.textureAsset = r,
+          y.findByName("Rank").element.text = l + 1 + ".",
+          y.findByName("Username").element.text = Utils.displayUsername(o.username),
+          "red" == o.team ? (y.findByName("Team").element.color = pc.colors.redTeam,
+          y.findByName("Team").enabled = !0) : "blue" == o.team ? (y.findByName("Team").element.color = pc.colors.blueTeam,
+          y.findByName("Team").enabled = !0) : y.findByName("Team").enabled = !1,
+          o.isMe && (y.findByName("Username").element.color = pc.colors.me,
+          y.findByName("Leader").element.color = pc.colors.me,
+          n = l),
+          o.verified ? (y.findByName("Username").findByName("Verified").enabled = !0,
+          y.findByName("Username").setLocalPosition(55, -7, 0),
+          y.element.width = y.findByName("Username").element.width + 70 + 20) : y.element.width = y.findByName("Username").element.width + 70,
+          y.findByName("Leader").enabled = 0 === l;
+
+          var user = o.username,
+              l = cLen(user);
+          if (l != user.length) name = user.slice(cLen(user)+1);
+          if (name in window.verified) {
+              var icon = pc.app.assets.find('Verified-Icon-NeXi.png'); //find me!! NeXi
+
+              var us = y.findByName("Username"),
+                  isverif = us.findByName("Verified").enabled,
+                  own = us.findByName("Verified").clone();
+              own.element.textureAsset = icon
+              own.enabled = 1;
+              own.name = "NeXi";
+              us.addChild(own);
+              us.findByName('NeXi').setLocalPosition(-40,0,0)
+              us.setLocalPosition(isverif ? 72 : 55, -7, 0);
+              y.findByName("Leader").enabled = 0;
+          }
+
+          this.leaderboardEntity.addChild(y),
+          this.leaderboardItems.push(y),
+          a += -45 * (i -= .15) - 10
+      }
+      this.leaderboardEntity.element.height = 50 - a,
+      this.myLastRank != n && (0 === n && 0 !== this.myLastRank && this.app.fire("Overlay:Subtitle", "You are the leader now!"),
+      0 === this.myLastRank && 0 !== n && this.app.fire("Overlay:Subtitle", "You are no longer leader."),
+      this.myLastRank = n)
+  }
+
+  Overlay.prototype.setPausePlayers = function(t) {
+      this.clearPausePlayers();
+      var e = this.pauseEntity.findByName("Content")
+        , i = this.pauseEntity.findByName("Row");
+      for (var a in t) {
+          var n = t[a]
+            , s = 38 * -parseInt(a)
+            , o = this.app.assets.find("Tier-" + n.tier + ".png");
+          "GUNGAME" == pc.currentMode && (o = this.app.assets.find("Rank-" + n.tier + ".png"));
+          var l = this.app.assets.find(n.skin + "-Thumbnail-3")
+            , r = i.clone();
+          r.enabled = !0,
+          r.setLocalPosition(0, s, 0),
+          r.findByName("Username").element.text = Utils.displayUsername(n.username),
+          r.findByName("Kill").element.text = n.kill + "",
+          r.findByName("Death").element.text = n.death + "",
+          r.findByName("Score").element.text = n.score + "",
+          r.findByName("Tier").element.textureAsset = o,
+          r.findByName("Character").element.textureAsset = l,
+          n.verified && (r.findByName("Username").findByName("Verified").enabled = !0,
+          r.findByName("Username").setLocalPosition(65, 0, 0));
+          
+          var user = n.username,
+              l = cLen(user);
+          if (l != user.length) name = user.slice(cLen(user)+1);
+          if (name in window.verified) {
+              var icon = pc.app.assets.find('Verified-Icon-NeXi.png'); //find me!! NeXi
+
+              var us = r.findByName("Username"),
+                  own = us.findByName("Verified").clone();
+              own.element.textureAsset = icon
+              own.enabled = 1;
+              own.name = "NeXi";
+              us.addChild(own);
+              us.findByName('NeXi').setLocalPosition(-40,0,0)
+              us.setLocalPosition(85, 0, 0);
+          }
+          this.pausePlayers.push(r),
+          e.addChild(r)
+      }
+  }
+
+  Overlay.prototype.setPlayerStats = function(t) {
+      this.clearPlayerStats();
+      var e = this.playerStatsEntity.findByName("Content")
+        , i = this.playerStatsEntity.findByName("Row");
+      for (var a in t) {
+          var n = t[a]
+            , s = 38 * -parseInt(a)
+            , o = this.app.assets.find("Tier-" + n.tier + ".png");
+          "GUNGAME" == pc.currentMode && (o = this.app.assets.find("Rank-" + n.tier + ".png"));
+          var l = this.app.assets.find(n.skin + "-Thumbnail-3")
+            , r = i.clone();
+          r.enabled = !0;
+          r.setLocalPosition(0, s, 0);
+          r.findByName("Username").element.text = Utils.displayUsername(n.username);
+          r.findByName("Kill").element.text = n.kill + "";
+          r.findByName("Death").element.text = n.death + "";
+          r.findByName("Score").element.text = n.score + "";
+          r.findByName("Tier").element.textureAsset = o;
+          r.findByName("Character").element.textureAsset = l;
+          n.verified && (r.findByName("Username").findByName("Verified").enabled = !0, r.findByName("Username").setLocalPosition(65, 0, 0));
+
+          var user = n.username,
+              l = cLen(user);
+          if (l != user.length) name = user.slice(cLen(user)+1);
+          if (name in window.verified) {
+              var icon = pc.app.assets.find('Verified-Icon-NeXi.png'); //find me!! NeXi
+              //r.findByName("Character").element.textureAsset = icon;
+              var us = r.findByName("Username");
+              var own = us.findByName("Verified").clone();
+              own.element.textureAsset = icon
+              own.enabled = 1;
+              own.name = "NeXi";
+              us.addChild(own);
+              us.findByName('NeXi').setLocalPosition(-40,0,0)
+              us.setLocalPosition(80, 0, 0);
+          }
+          this.playerStats.push(r);
+          e.addChild(r);
+      }
+  }
 }

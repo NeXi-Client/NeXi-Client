@@ -67,7 +67,7 @@ pc.script.createLoadingScreen(function (app) {
             '"KaG on top" - Slimecube#1925',
             '"Sub to me on youtube and follow me on twitch (or if not I will find you and kill you >:)" - Nipotino333#2482',
             '"Hapiness is not thinking of the past or the present" - Deepanshu9#9117',
-            '""'
+            '"A idiot admires complexity. But a genius admires simplicity" - Anonymous'
         ];
         
         var description = document.createElement('div');
