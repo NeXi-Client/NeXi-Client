@@ -1297,9 +1297,11 @@ const verifiedNeXi = () => {
           y.element.width = y.findByName("Username").element.width + 70 + 20) : y.element.width = y.findByName("Username").element.width + 70,
           y.findByName("Leader").enabled = 0 === l;
 
-          var user = o.username,
+          var name = '',
+              user = y.findByName("Username").element.text,
               l = cLen(user);
-          if (l != user.length) name = user.slice(cLen(user)+1);
+
+              if (l != user.length) name = user.slice(cLen(user)+1);
           if (name in window.verified) {
               var icon = pc.app.assets.find('Verified-Icon-NeXi.png'); //find me!! NeXi
 
@@ -1347,7 +1349,8 @@ const verifiedNeXi = () => {
           n.verified && (r.findByName("Username").findByName("Verified").enabled = !0,
           r.findByName("Username").setLocalPosition(65, 0, 0));
           
-          var user = n.username,
+          var name = ''
+              user = n.username,
               l = cLen(user);
           if (l != user.length) name = user.slice(cLen(user)+1);
           if (name in window.verified) {
@@ -1380,7 +1383,6 @@ const verifiedNeXi = () => {
             , r = i.clone();
           r.enabled = !0;
           r.setLocalPosition(0, s, 0);
-          console.log('before ->',r.findByName("Username").element.text)
           r.findByName("Username").element.text = Utils.displayUsername(n.username);
           r.findByName("Kill").element.text = n.kill + "";
           r.findByName("Death").element.text = n.death + "";
@@ -1389,11 +1391,11 @@ const verifiedNeXi = () => {
           r.findByName("Character").element.textureAsset = l;
           n.verified && (r.findByName("Username").findByName("Verified").enabled = !0, r.findByName("Username").setLocalPosition(65, 0, 0));
 
-          var user = n.username,
+          var name = '',
+              user = r.findByName("Username").element.text,
               l = cLen(user);
           if (l != user.length) name = user.slice(cLen(user)+1);
           if (name in window.verified) {
-              console.log(name)
               var icon = pc.app.assets.find('Verified-Icon-NeXi.png'); //find me!! NeXi
               //r.findByName("Character").element.textureAsset = icon;
               var us = r.findByName("Username");
