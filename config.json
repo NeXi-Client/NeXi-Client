@@ -44713,6 +44713,53 @@
       "i18n": {},
       "id": "32335389"
     },
+    "32335390": {
+      "tags": [],
+      "name": "Verified-Icon-NeXi.png",
+      "revision": 1,
+      "preload": false,
+      "meta": {
+        "compress": {
+          "alpha": false,
+          "normals": false,
+          "dxt": false,
+          "pvr": false,
+          "pvrBpp": 4,
+          "etc1": false,
+          "etc2": false,
+          "basis": false,
+          "quality": 128
+        },
+        "format": "png",
+        "type": "TrueColorAlpha",
+        "width": 32,
+        "height": 32,
+        "alpha": true,
+        "depth": 8,
+        "srgb": true,
+        "interlaced": false
+      },
+      "data": {
+        "addressu": "repeat",
+        "addressv": "repeat",
+        "minfilter": "linear_mip_linear",
+        "magfilter": "linear",
+        "anisotropy": 1,
+        "rgbm": false,
+        "mipmaps": true
+      },
+      "type": "texture",
+      "file": {
+        "filename": "Verified-Icon-NeXi.png",
+        "hash": "dbf7923a68e92f12369b5ca402d9a49f",
+        "size": 1657,
+        "variants": {},
+        "url": "files/assets/32335389/1/Verified-Icon-NeXi.png"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "32335390"
+    },
     "32409170": {
       "tags": [],
       "name": "Ice",

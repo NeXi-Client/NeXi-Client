@@ -12,7 +12,9 @@ const discord = require("discord-rpc");
 const Store = require("electron-store");
 const config = new Store();
 const OS = require("os");
+const fs = require('fs');
 const prompt = require("electron-prompt");
+const fetch = require('node-fetch');
 
 if (config.get("utilities_FPS") == null) {
   config.set("utilities_FPS", true);
