@@ -11723,18 +11723,18 @@
           "spacing": 1,
           "color": [
             1,
-            0.5843137254901961,
-            0
+            1,
+            1
           ],
           "opacity": 1,
           "textureAsset": 31543248,
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 58,
-          "height": 64,
+          "width": 80,
+          "height": 76,
           "margin": [
-            0,
+            -12,
             -32,
             -58,
             -32
@@ -11842,8 +11842,8 @@
           "width": 143.36,
           "height": 32,
           "margin": [
-            -49.28,
-            -4.661,
+            -50.28,
+            -20.661,
             -49.28,
             -20.661
           ],
@@ -11890,7 +11890,7 @@
     "fce7edf9-b497-4972-aa54-0ac40688cf7b": {
       "name": "Label",
       "tags": [],
-      "enabled": true,
+      "enabled": false,
       "resource_id": "fce7edf9-b497-4972-aa54-0ac40688cf7b",
       "parent": "ca1c1fd5-9930-4677-b661-903639d7cf88",
       "children": [],
@@ -12153,9 +12153,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
+            0,
             1,
-            0.5843137254901961,
-            0
+            1
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -40306,18 +40306,18 @@
           "spacing": 1,
           "color": [
             1,
-            0.5411764705882353,
-            0
+            1,
+            1
           ],
           "opacity": 1,
           "textureAsset": 31543248,
           "spriteAsset": null,
           "spriteFrame": 0,
           "pixelsPerUnit": null,
-          "width": 40,
-          "height": 45,
+          "width": 55,
+          "height": 60,
           "margin": [
-            11.127,
+            3.127,
             -22.5,
             -51.127,
             -22.5
@@ -40630,9 +40630,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            1,
-            0.5843137254901961,
-            0
+            0,
+            0.8,
+            0.8
           ],
           "opacity": 1,
           "textureAsset": null,
@@ -62114,9 +62114,9 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            1,
-            0.3333333333333333,
-            0
+            0,
+            0.7,
+            0.7
           ],
           "opacity": 1,
           "textureAsset": 29697915,
@@ -80630,7 +80630,7 @@
           "wrapLines": true,
           "spacing": 1,
           "color": [
-            0.4235294117647059,
+            0,
             0.4235294117647059,
             0.4235294117647059
           ],
