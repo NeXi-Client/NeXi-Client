@@ -29,9 +29,24 @@ const customInit = () => {
   //teamModeFixes();
   //customServer();
   verifiedNeXi();
+  customMaxPlayerFormat();
 };
 
 // Functionality modifications
+
+const messageFix = () => {
+  RoomManager.prototype.rematchmaking = function() {
+      this.time = 0,
+      console.log("Rematchmaking..."),
+      this.app.fire("RoomManager:Leave", !0),
+      this.app.fire("Analytics:Event", "Room", "Rematchmaking"),
+      this.matchmakingTitle.element.text = "Searching for players...",
+      this.matchmakingCancel.enabled = !0,
+      setTimeout(function(t) {
+          t.startMatchmaking()
+      }, 25, this)
+  }
+}
 
 const customOnLeaveCallback = () => {
   Player.prototype.onLeave = function () {
@@ -1365,6 +1380,7 @@ const verifiedNeXi = () => {
             , r = i.clone();
           r.enabled = !0;
           r.setLocalPosition(0, s, 0);
+          console.log('before ->',r.findByName("Username").element.text)
           r.findByName("Username").element.text = Utils.displayUsername(n.username);
           r.findByName("Kill").element.text = n.kill + "";
           r.findByName("Death").element.text = n.death + "";
@@ -1377,6 +1393,7 @@ const verifiedNeXi = () => {
               l = cLen(user);
           if (l != user.length) name = user.slice(cLen(user)+1);
           if (name in window.verified) {
+              console.log(name)
               var icon = pc.app.assets.find('Verified-Icon-NeXi.png'); //find me!! NeXi
               //r.findByName("Character").element.textureAsset = icon;
               var us = r.findByName("Username");
@@ -1391,5 +1408,41 @@ const verifiedNeXi = () => {
           this.playerStats.push(r);
           e.addChild(r);
       }
+  }
+}
+
+const customMaxPlayerFormat = () => {
+  RoomManager.prototype.room = function(t) {
+    if (this.isStarted)
+        return !1;
+    if (t.length > 0) {
+        var e = t[0]
+          , i = t[1]
+          , a = t[2]
+          , n = t[3]
+          , o = Math.min(e.length, this.maxPlayers);
+        if (i || (this.app.fire("View:Match", "Room"),
+        this.app.fire("Analytics:Event", "Invite", "Join"),
+        n && this.start()),
+        e.length > 0) {
+            this.playersEntity.element.text = e.slice(0, 4).join(", "),
+            this.playerCountEntity.element.text = o + " | " + this.maxPlayers,
+            this.invitePlayers.element.text = e.slice(0, 4).join(", "),
+            this.inviteCountEntity.element.text = o + " | " + this.maxPlayers,
+            this.matchCountEntity.element.text = o + " | " + this.maxPlayers,
+            this.setFriendList(e);
+            var s = e.map(function(t) {
+                return {
+                    username: t
+                }
+            });
+            this.app.fire("CustomList:Friends", {
+                list: s
+            }),
+            this.currentUsernames = e
+        }
+        pc.isOwner = i,
+        this.private([a])
+    }
   }
 }
