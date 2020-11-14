@@ -112039,7 +112039,7 @@
               "enabled": true,
               "attributes": {
                 "defaultValue": 100,
-                "min": 0,
+                "min": 1,
                 "max": 100,
                 "step": 1,
                 "displayElement": "a2b9dd74-c21b-4c94-85f8-8134fb5b2e17",
@@ -112491,7 +112491,7 @@
               "enabled": true,
               "attributes": {
                 "defaultValue": 100,
-                "min": 0,
+                "min": 1,
                 "max": 100,
                 "step": 1,
                 "displayElement": "4a292d15-f52a-4edb-ab3f-490aca95befc",
