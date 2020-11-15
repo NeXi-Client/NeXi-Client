@@ -1,6 +1,6 @@
 {
   "name": "nexi-client",
-  "version": "1.4.00",
+  "version": "1.4.0",
   "description": "Venge.io Client",
   "main": "main.js",
   "scripts": {
