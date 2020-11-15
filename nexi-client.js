@@ -1297,11 +1297,10 @@ const verifiedNeXi = () => {
           y.element.width = y.findByName("Username").element.width + 70 + 20) : y.element.width = y.findByName("Username").element.width + 70,
           y.findByName("Leader").enabled = 0 === l;
 
-          var name = '',
-              user = y.findByName("Username").element.text,
-              l = cLen(user);
+          var name = cLen(y.findByName("Username").element.text);
 
-              if (l != user.length) name = user.slice(cLen(user)+1);
+          console.log('1', name);
+
           if (name in window.verified) {
               var icon = pc.app.assets.find('Verified-Icon-NeXi.png'); //find me!! NeXi
 
@@ -1312,8 +1311,8 @@ const verifiedNeXi = () => {
               own.enabled = 1;
               own.name = "NeXi";
               us.addChild(own);
-              us.findByName('NeXi').setLocalPosition(-40,0,0)
-              us.setLocalPosition(isverif ? 72 : 55, -7, 0);
+              if (isverif) us.findByName('NeXi').setLocalPosition(-40,0,0)
+              us.setLocalPosition(isverif ? 72 : 50, -7, 0);
               y.findByName("Leader").enabled = 0;
           }
 
@@ -1349,21 +1348,22 @@ const verifiedNeXi = () => {
           n.verified && (r.findByName("Username").findByName("Verified").enabled = !0,
           r.findByName("Username").setLocalPosition(65, 0, 0));
           
-          var name = ''
-              user = n.username,
-              l = cLen(user);
-          if (l != user.length) name = user.slice(cLen(user)+1);
+          var name = cLen(r.findByName("Username").element.text);
+
+          console.log('2', name);
+
           if (name in window.verified) {
               var icon = pc.app.assets.find('Verified-Icon-NeXi.png'); //find me!! NeXi
 
               var us = r.findByName("Username"),
+                  isverif = us.findByName("Verified").enabled,
                   own = us.findByName("Verified").clone();
               own.element.textureAsset = icon
               own.enabled = 1;
               own.name = "NeXi";
               us.addChild(own);
-              us.findByName('NeXi').setLocalPosition(-40,0,0)
-              us.setLocalPosition(85, 0, 0);
+              if (isverif) us.findByName('NeXi').setLocalPosition(-40,0,0);
+              us.setLocalPosition(isverif ? 85 : 65, 0, 0);
           }
           this.pausePlayers.push(r),
           e.addChild(r)
@@ -1391,21 +1391,22 @@ const verifiedNeXi = () => {
           r.findByName("Character").element.textureAsset = l;
           n.verified && (r.findByName("Username").findByName("Verified").enabled = !0, r.findByName("Username").setLocalPosition(65, 0, 0));
 
-          var name = '',
-              user = r.findByName("Username").element.text,
-              l = cLen(user);
-          if (l != user.length) name = user.slice(cLen(user)+1);
+          var name = cLen(r.findByName("Username").element.text);
+
+          console.log('3', name);
+
           if (name in window.verified) {
               var icon = pc.app.assets.find('Verified-Icon-NeXi.png'); //find me!! NeXi
               //r.findByName("Character").element.textureAsset = icon;
-              var us = r.findByName("Username");
-              var own = us.findByName("Verified").clone();
+              var us = r.findByName("Username"),
+                  isverif = us.findByName("Verified").enabled,
+                  own = us.findByName("Verified").clone();
               own.element.textureAsset = icon
               own.enabled = 1;
               own.name = "NeXi";
               us.addChild(own);
-              us.findByName('NeXi').setLocalPosition(-40,0,0)
-              us.setLocalPosition(80, 0, 0);
+              if (isverif) us.findByName('NeXi').setLocalPosition(-40,0,0)
+              us.setLocalPosition(isverif ? 80 : 60, 0, 0);
           }
           this.playerStats.push(r);
           e.addChild(r);
