@@ -57,7 +57,7 @@ const loadModName = () => {
         // ||||||||||||||||||||
         // vvvvvvvvvvvvvvvvvvvv
 
-        "undefined" != typeof VERSION_CODE && (this.versionEntity.element.text = "MODNAME" + VERSION_CODE),
+        "undefined" != typeof VERSION_CODE && (this.versionEntity.element.text = "" + VERSION_CODE), //Type inside the "" your Modname
         
         // ^^^^^^^^^^^^^^^^^^^^
         // ||||||||||||||||||||
@@ -91,5 +91,5 @@ const loadModName = () => {
 //DON'T CHANGE THE ACTUAL __game-scripts.js FILE IN ANYWAY
 
 const defaultMessage = () => {
-    console.log('Mod loaded')
+    //console.log('Mod loaded')
 }
