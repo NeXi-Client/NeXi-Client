@@ -789,7 +789,6 @@ const inspectWeapon = () => {
         "ShowTeamSelection" == e,
         pc.isModeMenuActive = !0,
         this.app.fire("Overlay:Pause", !0),
-        console.log("Opened"),
         this.app.fire("View:Pause", "Team"),
         pc.app.fire("Player:PointerLock", !1),
         setTimeout(function() {
@@ -832,11 +831,9 @@ const inspectWeapon = () => {
   function checkFOV(){
     console.log('Function CheckFOV called.');
     if (toggle == 1){
-      console.log(0);
       return 0;
     }
     else {
-      console.log(1);
       return 1;
     }
   } 
@@ -1298,9 +1295,6 @@ const verifiedNeXi = () => {
           y.findByName("Leader").enabled = 0 === l;
 
           var name = cLen(y.findByName("Username").element.text);
-
-          console.log('1', name);
-
           if (name in window.verified) {
               var icon = pc.app.assets.find('Verified-Icon-NeXi.png'); //find me!! NeXi
 
@@ -1349,9 +1343,6 @@ const verifiedNeXi = () => {
           r.findByName("Username").setLocalPosition(65, 0, 0));
           
           var name = cLen(r.findByName("Username").element.text);
-
-          console.log('2', name);
-
           if (name in window.verified) {
               var icon = pc.app.assets.find('Verified-Icon-NeXi.png'); //find me!! NeXi
 
@@ -1392,9 +1383,6 @@ const verifiedNeXi = () => {
           n.verified && (r.findByName("Username").findByName("Verified").enabled = !0, r.findByName("Username").setLocalPosition(65, 0, 0));
 
           var name = cLen(r.findByName("Username").element.text);
-
-          console.log('3', name);
-
           if (name in window.verified) {
               var icon = pc.app.assets.find('Verified-Icon-NeXi.png'); //find me!! NeXi
               //r.findByName("Character").element.textureAsset = icon;
