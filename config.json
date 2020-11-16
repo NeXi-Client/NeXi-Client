@@ -81552,6 +81552,24 @@
       "i18n": {},
       "id": "36484534"
     },
+    "36487670": {
+      "tags": [],
+      "name": "LMG-Tail-w.mp3",
+      "revision": 1,
+      "preload": false,
+      "meta": null,
+      "data": null,
+      "type": "audio",
+      "file": {
+        "filename": "LMG-Tail-w.mp3",
+        "size": 31885,
+        "hash": "1c5cca51796cae7ae730d1289d6d42eb",
+        "url": "files/assets/36487670/1/LMG-Tail-w.mp3"
+      },
+      "region": "eu-west-1",
+      "i18n": {},
+      "id": "36487670"
+    },
     "36487671": {
       "tags": [],
       "name": "M4-Tail-w.mp3",
