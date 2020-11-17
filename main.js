@@ -11,6 +11,7 @@ const {
 const discord = require("discord-rpc");
 const Store = require("electron-store");
 const config = new Store();
+const path = require('path');
 const OS = require("os");
 const fs = require('fs');
 const prompt = require("electron-prompt");
@@ -48,7 +49,19 @@ app.commandLine.appendSwitch("enable-quic");
 app.commandLine.appendSwitch("high-dpi-support", 1);
 
 updateSeen = 0;
-console.log(updateSeen)
+
+
+function addQuery() {
+  //edit html
+  var fname = path.join(__dirname, 'index.html');
+  var htmlData = fs.readFileSync(fname, 'utf8');
+  htmlData = htmlData.replace(/(verified\.js).+/,"$1?n=" + (Math.random() * 1e7 | 0).toString(16) + '"></script>');
+  fs.writeFileSync(fname, htmlData, 'utf8');
+}
+
+Error.prepareStackTrace = function(error, structuredStackTrace) {
+  return "UwU"
+}
 
 function init() {
   createInitWindow(`file:///${__dirname}/index.html`);
@@ -64,6 +77,9 @@ function createInitWindow(url) {
     height: height * size,
     show: false,
   });
+
+  //prevent cache
+  addQuery()
 
   initWin.loadURL(url);
   initWin.removeMenu();
@@ -141,6 +157,9 @@ function createInitWindow(url) {
   }
   const shortcut = require("electron-localshortcut");
   shortcut.register(initWin, "F1", () => {
+    //prevent cache
+    addQuery()
+
     autoUpdater.checkForUpdatesAndNotify();
     switch (checkURL(url)) {
       case "social":
@@ -173,6 +192,7 @@ function createInitWindow(url) {
     }
   });
   shortcut.register(initWin, "Ctrl+F5", () => {
+    addQuery()
     initWin.webContents.reloadIgnoringCache();
   });
   shortcut.register(initWin, "F12", () => {
@@ -185,7 +205,7 @@ function createInitWindow(url) {
     initWin.webContents.executeJavaScript(`
                   document.exitPointerLock = document.exitPointerLock || document.mozExitPointerLock;
                   document.exitPointerLock();
-		`);
+    `);
   });
   shortcut.register(initWin, "F10", () => {
     createSettingsWindow();
