@@ -51,23 +51,20 @@ app.commandLine.appendSwitch("high-dpi-support", 1);
 updateSeen = 0;
 
 
-function addQuery() {
-  //edit html
+function addQuery(callback) {
   var fname = path.join(__dirname, 'index.html');
   var htmlData = fs.readFileSync(fname, 'utf8');
   htmlData = htmlData.replace(/(verified\.js).+/,"$1?n=" + (Math.random() * 1e7 | 0).toString(16) + '"></script>');
-  fs.writeFileSync(fname, htmlData, 'utf8');
-}
-
-Error.prepareStackTrace = function(error, structuredStackTrace) {
-  return "UwU"
+  callback();
 }
 
 function init() {
-  createInitWindow(`file:///${__dirname}/index.html`);
-  autoUpdater.checkForUpdatesAndNotify();
+  addQuery(()=>{
+    createInitWindow(`file:///${__dirname}/index.html`);
+    autoUpdater.checkForUpdatesAndNotify();
+  })
 }
-
+  
 function createInitWindow(url) {
   if (checkURL(url) == "social") size = 0.9;
   else size = 1.1;
@@ -77,9 +74,6 @@ function createInitWindow(url) {
     height: height * size,
     show: false,
   });
-
-  //prevent cache
-  addQuery()
 
   initWin.loadURL(url);
   initWin.removeMenu();
@@ -158,17 +152,17 @@ function createInitWindow(url) {
   const shortcut = require("electron-localshortcut");
   shortcut.register(initWin, "F1", () => {
     //prevent cache
-    addQuery()
-
-    autoUpdater.checkForUpdatesAndNotify();
-    switch (checkURL(url)) {
-      case "social":
-        initWin.loadURL("https://social.venge.io");
-        break;
-      default:
-        initWin.loadURL(`file:///${__dirname}/index.html`);
-        break;
-    }
+    addQuery(()=>{
+          autoUpdater.checkForUpdatesAndNotify();
+          switch (checkURL(url)) {
+            case "social":
+              initWin.loadURL("https://social.venge.io");
+              break;
+            default:
+              initWin.loadURL(`file:///${__dirname}/index.html`);
+              break;
+          }
+    })
   });
 
   shortcut.register(initWin, "F2", () => {
@@ -192,8 +186,9 @@ function createInitWindow(url) {
     }
   });
   shortcut.register(initWin, "Ctrl+F5", () => {
-    addQuery()
-    initWin.webContents.reloadIgnoringCache();
+    addQuery(()=>{
+      initWin.webContents.reloadIgnoringCache();
+    })
   });
   shortcut.register(initWin, "F12", () => {
     initWin.webContents.openDevTools();

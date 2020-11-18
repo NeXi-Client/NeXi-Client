@@ -28,6 +28,7 @@
     "nsis": {
       "oneClick": false,
       "perMachine": true,
+      "guid": "7d88f210-cca3-4437-ace9-c35ea6ad06bd",
       "license": "",
       "artifactName": "NeXi-Client-Windows.${ext}",
       "createDesktopShortcut": "always",
