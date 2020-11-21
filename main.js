@@ -115,6 +115,8 @@ function createInitWindow(url) {
       }, 1e3);
     });
 
+    app.on('before-quit',() => rpc.destroy())
+    
     function setRPCActivity(msg) {
       rpc.setActivity({
         largeImageKey: "nexi-client",
@@ -149,6 +151,7 @@ function createInitWindow(url) {
       setRPCActivity(e);
     }
   }
+
   const shortcut = require("electron-localshortcut");
   shortcut.register(initWin, "F1", () => {
     //prevent cache
@@ -431,6 +434,5 @@ autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
 autoUpdater.on('error', (error) => {
     console.log(error)
 })
-
 
 app.on("ready", init);
