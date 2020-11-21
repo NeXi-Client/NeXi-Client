@@ -199,7 +199,7 @@ pc.script.createLoadingScreen(function (app) {
             '#footer {',
             '    position: fixed;',
             '    bottom: 1vh;',
-            '    color: #666;',
+            '    color: #decafe;',
             '    text-align: center;',
             '    font-size: 1vw;',
             '    font-family: monospace;',
@@ -213,17 +213,17 @@ pc.script.createLoadingScreen(function (app) {
             '    padding: 10px 5px;',
             '    transform: translate(-50%, 0%);',
             '    text-align: center;',
-            '    background-color: rgba(0, 255, 255, 0.15);',
+            '    background-color: rgba(32, 32, 32, 0.75);',
             '    color: #fff;',
             '    width: 400px;',
-            '    border-radius: 5px;',
+            '    border-radius: 99px;',
             '    font-size: 16px;',
             '}',
 
             '#progress-bar-container {',
             '    margin-top: 20px;',
             '    height: 5px;',
-            '    width: calc(100% - 20px);',
+            '    width: calc(100% - 1px);',
             '    background-color: #1d292c;',
             '}',
             
@@ -236,11 +236,7 @@ pc.script.createLoadingScreen(function (app) {
             '    animation-name: loading-image-1;',
             '    animation-duration: 6s;',
             '}',
-            
-            '@keyframes loading-image-1 {',
-            '    from { opacity : 0; left : 0px; }',
-            '    to { opacity : 1; left : 30px; }',
-            '}',
+        
             
             '#animated-loading-image-2 {',
             '    height: 20vh;',
@@ -251,11 +247,6 @@ pc.script.createLoadingScreen(function (app) {
             '    animation-name: loading-image-2;',
             '    animation-duration: 6s;',
             '    animation-delay: 2s;',
-            '}',
-            
-            '@keyframes loading-image-2 {',
-            '    from { opacity : 0; right : -300px; }',
-            '    to { opacity : 1; right : 30px; }',
             '}',
             
             'button {',
@@ -289,7 +280,7 @@ pc.script.createLoadingScreen(function (app) {
             '   stroke-dasharray: 1000;',
             '   stroke-dashoffset: 1000;',
             '   stroke-width: 2;',
-            '   animation: dash 1.0s linear normal forwards;',
+            '   animation: dash 3.0s linear normal infinite;',
             '}',
             
             '@keyframes dash {',
@@ -297,7 +288,7 @@ pc.script.createLoadingScreen(function (app) {
             '       stroke-dashoffset: 1000;',
             '   }',
             '   to {',
-            '       stroke-dashoffset: 0;',
+            '       stroke-dashoffset: -1000;',
             '   }',
             '}'
         ].join("\n");
