@@ -182,7 +182,7 @@ pc.script.createLoadingScreen(function (app) {
             '    left: 0;',
             '    height: 100%;',
             '    width: 100%;',
-            '    background-color: #222427;',
+            '    background-color: #000000;',
             '}',
 
             '#application-splash {',
@@ -222,14 +222,15 @@ pc.script.createLoadingScreen(function (app) {
 
             '#progress-bar-container {',
             '    margin-top: 20px;',
-            '    height: 3px;',
+            '    height: 5px;',
             '    width: calc(100% - 20px);',
             '    background-color: #1d292c;',
             '}',
             
             '#animated-loading-image-1 {',
-            '    height: 40vh;',
-            '    left: -100px;',
+            '    height: 50vh;',
+            '    left: 0px;',
+            '    opacity: 0;',
             '    bottom: 0px;',
             '    position: absolute;',
             '    animation-name: loading-image-1;',
@@ -243,8 +244,9 @@ pc.script.createLoadingScreen(function (app) {
             
             '#animated-loading-image-2 {',
             '    height: 20vh;',
-            '    right: -500px;',
+            '    right: 30px;',
             '    bottom: 0px;',
+            '    opacity: 0;',
             '    position: absolute;',
             '    animation-name: loading-image-2;',
             '    animation-duration: 6s;',
@@ -274,7 +276,7 @@ pc.script.createLoadingScreen(function (app) {
             '    width: 0%;',
             '    height: 100%;',
             '    background-color: #ffffff;',
-            '    box-shadow: 0px 0px 5px #ffffff;',
+            '    box-shadow: 0px 0px 30px #ffffff;',
             '}',
             '@media (max-width: 480px) {',
             '    #application-splash {',
@@ -286,8 +288,8 @@ pc.script.createLoadingScreen(function (app) {
             '.cls-1 {',
             '   stroke-dasharray: 1000;',
             '   stroke-dashoffset: 1000;',
-            '   stroke-width: 3;',
-            '   animation: dash 8s linear normal infinite;',
+            '   stroke-width: 5;',
+            '   animation: dash 20s linear normal infinite;',
             '}',
             
             '@keyframes dash {',
@@ -317,7 +319,7 @@ pc.script.createLoadingScreen(function (app) {
         
     app.on('preload:start', function () {
         var randomImage = new Image();
-            randomImage.src = pc.app.assets.find('Shin-Thumbnail-3').getFileUrl();
+            randomImage.src = pc.app.assets.find('Echo-Thumbnail-1').getFileUrl();
             randomImage.id  = 'animated-loading-image-1';
         
         wrapper.appendChild(randomImage);

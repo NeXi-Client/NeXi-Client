@@ -4370,7 +4370,8 @@
                   "5fdfdb5b-7203-4852-b7df-8b28ba1bee5c",
                   "e00cf7db-e6da-493b-b68b-fb32b6c7ccd0",
                   "d97fe206-3ba4-4cc4-8edf-b50e625d1cde"
-                ]
+                ],
+                "playerEntity": "d6311a5c-7dec-4eb4-b495-15f29130570e"
               }
             }
           }
@@ -6023,8 +6024,8 @@
             "networkManager": {
               "enabled": true,
               "attributes": {
-                "URL": "wss://server-eu-1.venge.io",
-                "testURL": "wss://server-eu-1.venge.io",
+                "URL": "wss://server-eu-2.venge.io",
+                "testURL": "wss://server-eu-2.venge.io",
                 "playerEntity": "d6311a5c-7dec-4eb4-b495-15f29130570e",
                 "overlayEntity": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
                 "menuCameraEntity": "c58e956e-222b-47a0-a2a2-44233169f8f5",
@@ -33261,7 +33262,7 @@
     "4673e4e3-1cc7-4822-b362-1ac7bc66664b": {
       "name": "MobileLeft",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "4673e4e3-1cc7-4822-b362-1ac7bc66664b",
       "parent": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
       "children": [
@@ -35690,7 +35691,7 @@
     "10c88b28-8390-4ceb-af8d-e11203db410e": {
       "name": "MobileRight",
       "tags": [],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "10c88b28-8390-4ceb-af8d-e11203db410e",
       "parent": "9fcdea8c-ee29-403e-8e5b-0eddd1e548f6",
       "children": [
@@ -62251,7 +62252,7 @@
         "MODE-UI",
         "GUNGAME"
       ],
-      "enabled": false,
+      "enabled": true,
       "resource_id": "082cdb81-0d4a-45a7-920c-ede5f8bae0d2",
       "parent": "17992180-94d8-46cf-9e9b-0f13d2d80da9",
       "children": [],

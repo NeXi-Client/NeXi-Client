@@ -27568,6 +27568,7 @@
         "05cc2948-e8ee-47d0-9fa8-6557bc0c3bdc",
         "e136761e-fc5f-4bb2-a80b-f530c63abaea",
         "9d4f299f-4b5e-4a1f-835f-e681521c9479",
+        "81bf872b-3dec-43fa-934b-9c2738ba5461",
         "ff1d946c-cdec-46d6-b80d-675e6258d42a",
         "b628875d-078a-4aef-b73e-b647fb0f4c68",
         "136df5de-7d54-4564-990a-ce9e68e25d4d",
@@ -60445,6 +60446,9 @@
         "8936abf6-c473-4612-8ca2-4662de85e828",
         "7fb47d8f-5838-4c5d-b032-7d5c5750d00a",
         "156564e5-d0ed-4ec3-a00d-e1774920ef62",
+        "3700cf02-64bb-4062-bacd-840beb6c3165",
+        "0595d013-2caf-428d-b938-3faac5c6be82",
+        "b6d6ba06-6365-4738-8201-3d4e6f6347e8",
         "5047c926-5fcd-4007-9a97-2aafc324faed",
         "2fbba4f7-64fb-41b8-9480-9f488b66f2b4",
         "13967a94-6000-4fd4-86fb-2771d135817b"
@@ -61029,7 +61033,7 @@
         "model": {
           "enabled": true,
           "type": "asset",
-          "asset": 31197285,
+          "asset": 38217514,
           "materialAsset": null,
           "castShadows": true,
           "castShadowsLightmap": true,
@@ -61135,7 +61139,7 @@
         "model": {
           "enabled": true,
           "type": "asset",
-          "asset": 31197285,
+          "asset": 38217514,
           "materialAsset": null,
           "castShadows": true,
           "castShadowsLightmap": true,
@@ -61918,7 +61922,7 @@
         "model": {
           "enabled": true,
           "type": "asset",
-          "asset": 31197285,
+          "asset": 38217514,
           "materialAsset": null,
           "castShadows": true,
           "castShadowsLightmap": true,
@@ -62282,7 +62286,7 @@
         "model": {
           "enabled": true,
           "type": "asset",
-          "asset": 31197285,
+          "asset": 38217514,
           "materialAsset": null,
           "castShadows": true,
           "castShadowsLightmap": true,
@@ -62847,6 +62851,368 @@
           ],
           "friction": 0.5,
           "restitution": 0.5
+        }
+      }
+    },
+    "3700cf02-64bb-4062-bacd-840beb6c3165": {
+      "name": "box_large_2",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "3700cf02-64bb-4062-bacd-840beb6c3165",
+      "parent": "f5cea7d9-5f2b-49dc-855a-7c6f45cedae5",
+      "children": [
+        "9f095697-32e3-4fb4-9775-e17c4b1598ca"
+      ],
+      "position": [
+        46.973148612182335,
+        8.150918960571289,
+        -3.295637369155884
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        4,
+        4
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 38217514,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": 100000
+        }
+      }
+    },
+    "9f095697-32e3-4fb4-9775-e17c4b1598ca": {
+      "name": "Box",
+      "tags": [
+        "Rigidbody",
+        "Wood"
+      ],
+      "enabled": true,
+      "resource_id": "9f095697-32e3-4fb4-9775-e17c4b1598ca",
+      "parent": "3700cf02-64bb-4062-bacd-840beb6c3165",
+      "children": [],
+      "position": [
+        5.662551139096195e-8,
+        0.5,
+        7.972903404152021e-7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "collision": {
+          "enabled": true,
+          "type": "box",
+          "halfExtents": [
+            2,
+            2,
+            2
+          ],
+          "radius": 0.5,
+          "axis": 1,
+          "height": 2,
+          "asset": null
+        },
+        "rigidbody": {
+          "enabled": true,
+          "type": "static",
+          "mass": 1,
+          "linearDamping": 0,
+          "angularDamping": 0,
+          "linearFactor": [
+            1,
+            1,
+            1
+          ],
+          "angularFactor": [
+            1,
+            1,
+            1
+          ],
+          "friction": 1,
+          "restitution": 0.5
+        }
+      }
+    },
+    "0595d013-2caf-428d-b938-3faac5c6be82": {
+      "name": "box_large_2",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "0595d013-2caf-428d-b938-3faac5c6be82",
+      "parent": "f5cea7d9-5f2b-49dc-855a-7c6f45cedae5",
+      "children": [
+        "2f622e09-c9ed-4afd-a8cf-633993eb0724"
+      ],
+      "position": [
+        -59.06834411621094,
+        -0.007264824118465185,
+        -46.67133349827265
+      ],
+      "rotation": [
+        0,
+        -14.585330781261847,
+        0
+      ],
+      "scale": [
+        4,
+        4,
+        4
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 38217514,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": 100000
+        }
+      }
+    },
+    "2f622e09-c9ed-4afd-a8cf-633993eb0724": {
+      "name": "Box",
+      "tags": [
+        "Rigidbody",
+        "Wood"
+      ],
+      "enabled": true,
+      "resource_id": "2f622e09-c9ed-4afd-a8cf-633993eb0724",
+      "parent": "0595d013-2caf-428d-b938-3faac5c6be82",
+      "children": [],
+      "position": [
+        5.662551139096195e-8,
+        0.5,
+        7.972903404152021e-7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "collision": {
+          "enabled": true,
+          "type": "box",
+          "halfExtents": [
+            2,
+            2,
+            2
+          ],
+          "radius": 0.5,
+          "axis": 1,
+          "height": 2,
+          "asset": null
+        },
+        "rigidbody": {
+          "enabled": true,
+          "type": "static",
+          "mass": 1,
+          "linearDamping": 0,
+          "angularDamping": 0,
+          "linearFactor": [
+            1,
+            1,
+            1
+          ],
+          "angularFactor": [
+            1,
+            1,
+            1
+          ],
+          "friction": 1,
+          "restitution": 0.5
+        }
+      }
+    },
+    "b6d6ba06-6365-4738-8201-3d4e6f6347e8": {
+      "name": "box_large_2",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "b6d6ba06-6365-4738-8201-3d4e6f6347e8",
+      "parent": "f5cea7d9-5f2b-49dc-855a-7c6f45cedae5",
+      "children": [
+        "ed74bcc1-6066-416d-9a1b-ab856c420587"
+      ],
+      "position": [
+        -57.45532130995536,
+        -0.007264824118465185,
+        -50.86019515991211
+      ],
+      "rotation": [
+        0,
+        -7.665844297078886,
+        0
+      ],
+      "scale": [
+        4,
+        4,
+        4
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 38217514,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": 100000
+        }
+      }
+    },
+    "ed74bcc1-6066-416d-9a1b-ab856c420587": {
+      "name": "Box",
+      "tags": [
+        "Rigidbody",
+        "Wood"
+      ],
+      "enabled": true,
+      "resource_id": "ed74bcc1-6066-416d-9a1b-ab856c420587",
+      "parent": "b6d6ba06-6365-4738-8201-3d4e6f6347e8",
+      "children": [],
+      "position": [
+        5.662551139096195e-8,
+        0.5,
+        7.972903404152021e-7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "collision": {
+          "enabled": true,
+          "type": "box",
+          "halfExtents": [
+            2,
+            2,
+            2
+          ],
+          "radius": 0.5,
+          "axis": 1,
+          "height": 2,
+          "asset": null
+        },
+        "rigidbody": {
+          "enabled": true,
+          "type": "static",
+          "mass": 1,
+          "linearDamping": 0,
+          "angularDamping": 0,
+          "linearFactor": [
+            1,
+            1,
+            1
+          ],
+          "angularFactor": [
+            1,
+            1,
+            1
+          ],
+          "friction": 1,
+          "restitution": 0.5
+        }
+      }
+    },
+    "81bf872b-3dec-43fa-934b-9c2738ba5461": {
+      "name": "Grass",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "81bf872b-3dec-43fa-934b-9c2738ba5461",
+      "parent": "27f8cb9d-6208-40ae-a443-3b8106f23c2b",
+      "children": [],
+      "position": [
+        -73.41352081298828,
+        1.9394044137028936e-14,
+        -61.46744059586655
+      ],
+      "rotation": [
+        360,
+        -90,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 31441653,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": 100011
         }
       }
     }

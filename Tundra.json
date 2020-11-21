@@ -62,7 +62,7 @@
         "76306054-f24f-4a7c-b7c3-0610e8020586",
         "6cf18be2-9e10-4797-bfc4-292b4e4a987f",
         "3bd32332-7334-4988-b5cc-a517e565f1e0",
-        "1ba95f76-a265-4626-9ff6-bb17614b549e"
+        "c48a3ba8-d2bd-4846-bea4-8d1bfb1cab8a"
       ]
     },
     "dc2e6c75-0bd5-4f98-a7e2-9cc4e68869f6": {
@@ -151,7 +151,6 @@
         "7f4fd3b7-c341-4f35-a4d0-ad68a305454a",
         "24ae8b76-a5df-4c2e-9312-cb109432681e",
         "1c65238b-935a-4073-84e6-28c77e37cfb3",
-        "0efdaf4b-2413-4d5e-a89e-33eaaad1ddd7",
         "728799e4-16da-419f-a4de-7f365421bb51",
         "5e28db8e-1626-4ea7-b63c-43237b93bcc7"
       ],
@@ -1744,65 +1743,6 @@
             0
           ],
           "batchGroupId": 100014
-        }
-      }
-    },
-    "1ba95f76-a265-4626-9ff6-bb17614b549e": {
-      "name": "Camera",
-      "tags": [],
-      "enabled": false,
-      "resource_id": "1ba95f76-a265-4626-9ff6-bb17614b549e",
-      "parent": "4eb0f5b4-7922-48fc-ac52-3c769239c8e4",
-      "children": [],
-      "position": [
-        -128.85610593376887,
-        2.3247620046572197,
-        -55.81442318868204
-      ],
-      "rotation": [
-        -174.79899170880861,
-        -44.598611425189695,
-        180
-      ],
-      "scale": [
-        1,
-        1,
-        1
-      ],
-      "components": {
-        "camera": {
-          "enabled": true,
-          "clearColorBuffer": true,
-          "clearColor": [
-            0.118,
-            0.118,
-            0.118,
-            1
-          ],
-          "clearDepthBuffer": true,
-          "projection": 0,
-          "fov": 33.49,
-          "frustumCulling": true,
-          "orthoHeight": 4,
-          "nearClip": 0.1,
-          "farClip": 1000,
-          "priority": 0,
-          "rect": [
-            0,
-            0,
-            1,
-            1
-          ],
-          "layers": [
-            0,
-            1,
-            2,
-            3,
-            4
-          ]
-        },
-        "audiolistener": {
-          "enabled": true
         }
       }
     },
@@ -3853,7 +3793,7 @@
           "type": "box",
           "halfExtents": [
             5.488,
-            5.662,
+            21.996,
             1.357
           ],
           "radius": 0.5,
@@ -3958,7 +3898,7 @@
           "type": "box",
           "halfExtents": [
             5.488,
-            5.662,
+            18.755,
             1.357
           ],
           "radius": 0.5,
@@ -4063,7 +4003,7 @@
           "type": "box",
           "halfExtents": [
             5.488,
-            5.662,
+            18.528,
             1.357
           ],
           "radius": 0.5,
@@ -4168,7 +4108,7 @@
           "type": "box",
           "halfExtents": [
             5.488,
-            5.662,
+            15.482,
             1.357
           ],
           "radius": 0.5,
@@ -5767,7 +5707,6 @@
       "resource_id": "5555864e-0370-461f-8121-bbe134df537d",
       "parent": "fc9e8cd5-aeca-4274-ab33-e8a3090527a0",
       "children": [
-        "c08d3664-e2bf-4a7a-9b78-d34cc3b5c7a3",
         "0354fd42-e81d-42eb-a9c4-f496c035559c",
         "cbf100da-8acf-4050-8a11-c5a8535747d9",
         "3179177f-c682-4f5f-b577-0173ab3deeb4",
@@ -6077,112 +6016,6 @@
           "radius": 0.7,
           "axis": 1,
           "height": 3.5,
-          "asset": null
-        },
-        "rigidbody": {
-          "enabled": true,
-          "type": "static",
-          "mass": 1,
-          "linearDamping": 0,
-          "angularDamping": 0,
-          "linearFactor": [
-            1,
-            1,
-            1
-          ],
-          "angularFactor": [
-            1,
-            1,
-            1
-          ],
-          "friction": 0.5,
-          "restitution": 0.5
-        }
-      }
-    },
-    "c08d3664-e2bf-4a7a-9b78-d34cc3b5c7a3": {
-      "name": "fence_pole",
-      "tags": [],
-      "enabled": true,
-      "resource_id": "c08d3664-e2bf-4a7a-9b78-d34cc3b5c7a3",
-      "parent": "5555864e-0370-461f-8121-bbe134df537d",
-      "children": [
-        "076d88a9-4288-4db0-9e47-b24a995374a7"
-      ],
-      "position": [
-        21.625932693481445,
-        10.073031425476074,
-        63.58891611866952
-      ],
-      "rotation": [
-        0,
-        0,
-        0
-      ],
-      "scale": [
-        4.044505464883175,
-        4.044505464883175,
-        4.044505464883175
-      ],
-      "components": {
-        "model": {
-          "enabled": true,
-          "type": "asset",
-          "asset": 34099763,
-          "materialAsset": null,
-          "castShadows": true,
-          "castShadowsLightmap": true,
-          "receiveShadows": true,
-          "lightmapped": false,
-          "lightmapSizeMultiplier": 1,
-          "castShadowsLightMap": true,
-          "lightMapped": false,
-          "lightMapSizeMultiplier": 1,
-          "isStatic": false,
-          "layers": [
-            0
-          ],
-          "batchGroupId": null
-        }
-      }
-    },
-    "076d88a9-4288-4db0-9e47-b24a995374a7": {
-      "name": "Collision",
-      "tags": [
-        "Rigidbody",
-        "Wood"
-      ],
-      "enabled": true,
-      "resource_id": "076d88a9-4288-4db0-9e47-b24a995374a7",
-      "parent": "c08d3664-e2bf-4a7a-9b78-d34cc3b5c7a3",
-      "children": [],
-      "position": [
-        -1.4092006495047826e-7,
-        1.004002361786119,
-        -6.759637471986935e-8
-      ],
-      "rotation": [
-        0,
-        0,
-        0
-      ],
-      "scale": [
-        1,
-        1,
-        1
-      ],
-      "components": {
-        "collision": {
-          "enabled": true,
-          "type": "box",
-          "halfExtents": [
-            0.32,
-            4.041,
-            0.32
-          ],
-          "radius": 0.5,
-          "axis": 1,
-          "height": 2,
           "asset": null
         },
         "rigidbody": {
@@ -18376,9 +18209,9 @@
       "parent": "f48f4ea2-24f2-4329-9aa3-788b7547786a",
       "children": [],
       "position": [
-        -1.99295961158532,
-        1.989395639489327,
-        0.5090023408475803
+        -2.3189566411042506,
+        3.7469119089097482,
+        0.585636195364259
       ],
       "rotation": [
         0,
@@ -18395,9 +18228,9 @@
           "enabled": true,
           "type": "box",
           "halfExtents": [
-            5.488,
-            5.662,
-            1.357
+            7.046,
+            16.077,
+            6.959
           ],
           "radius": 0.5,
           "axis": 1,
@@ -18481,9 +18314,9 @@
       "parent": "87965167-db14-4e61-a28b-5c1a01b5648b",
       "children": [],
       "position": [
-        -1.99295961158532,
-        1.989395639489327,
-        0.5090023408475803
+        -1.992958616138047,
+        3.232031424564899,
+        0.5090010448857569
       ],
       "rotation": [
         0,
@@ -18501,7 +18334,7 @@
           "type": "box",
           "halfExtents": [
             5.488,
-            5.662,
+            12.029,
             1.357
           ],
           "radius": 0.5,
@@ -18586,9 +18419,9 @@
       "parent": "5683b15f-bfcb-4f16-ae1a-43eb2124f3c0",
       "children": [],
       "position": [
-        -1.99295961158532,
-        1.989395639489327,
-        0.5090023408475803
+        -1.9929594756766846,
+        3.3694898934608872,
+        0.5090021399111038
       ],
       "rotation": [
         0,
@@ -18606,7 +18439,7 @@
           "type": "box",
           "halfExtents": [
             5.488,
-            5.662,
+            11.01,
             1.357
           ],
           "radius": 0.5,
@@ -19637,7 +19470,7 @@
         "model": {
           "enabled": true,
           "type": "asset",
-          "asset": 31197280,
+          "asset": 38227889,
           "materialAsset": null,
           "castShadows": true,
           "castShadowsLightmap": true,
@@ -21242,7 +21075,7 @@
         "model": {
           "enabled": true,
           "type": "asset",
-          "asset": 31197280,
+          "asset": 38227889,
           "materialAsset": null,
           "castShadows": true,
           "castShadowsLightmap": true,
@@ -21348,7 +21181,7 @@
         "model": {
           "enabled": true,
           "type": "asset",
-          "asset": 31197280,
+          "asset": 38227889,
           "materialAsset": null,
           "castShadows": true,
           "castShadowsLightmap": true,
@@ -23077,45 +22910,17 @@
       ],
       "components": {}
     },
-    "0efdaf4b-2413-4d5e-a89e-33eaaad1ddd7": {
-      "name": "Animated",
-      "tags": [],
-      "enabled": true,
-      "resource_id": "0efdaf4b-2413-4d5e-a89e-33eaaad1ddd7",
-      "parent": "76306054-f24f-4a7c-b7c3-0610e8020586",
-      "children": [
-        "e7e71ff4-a0e1-4263-942c-3cb66999735d",
-        "94566c68-86d4-4169-b305-0760b65eabb9",
-        "38aa97bf-3a49-4eb9-912a-f761e977eff1"
-      ],
-      "position": [
-        0,
-        0,
-        0
-      ],
-      "rotation": [
-        0,
-        0,
-        0
-      ],
-      "scale": [
-        1,
-        1,
-        1
-      ],
-      "components": {}
-    },
     "e7e71ff4-a0e1-4263-942c-3cb66999735d": {
       "name": "Birds",
       "tags": [],
       "enabled": true,
       "resource_id": "e7e71ff4-a0e1-4263-942c-3cb66999735d",
-      "parent": "0efdaf4b-2413-4d5e-a89e-33eaaad1ddd7",
+      "parent": "c48a3ba8-d2bd-4846-bea4-8d1bfb1cab8a",
       "children": [
         "199283c8-6d15-4272-8c61-b8d63f91ea3a"
       ],
       "position": [
-        -14.205794486618373,
+        -14.205794334411621,
         2.7567659662214652e-14,
         -29.334165573120117
       ],
@@ -23213,16 +23018,16 @@
       "tags": [],
       "enabled": true,
       "resource_id": "94566c68-86d4-4169-b305-0760b65eabb9",
-      "parent": "0efdaf4b-2413-4d5e-a89e-33eaaad1ddd7",
+      "parent": "c48a3ba8-d2bd-4846-bea4-8d1bfb1cab8a",
       "children": [],
       "position": [
-        -72.0416553038594,
+        -72.04165649414062,
         0,
         -47.20724868774414
       ],
       "rotation": [
         0,
-        63.21536155782557,
+        63.21536136152704,
         0
       ],
       "scale": [
@@ -23273,16 +23078,16 @@
       "tags": [],
       "enabled": true,
       "resource_id": "38aa97bf-3a49-4eb9-912a-f761e977eff1",
-      "parent": "0efdaf4b-2413-4d5e-a89e-33eaaad1ddd7",
+      "parent": "c48a3ba8-d2bd-4846-bea4-8d1bfb1cab8a",
       "children": [],
       "position": [
         104.98251342773438,
-        12.633170771092392,
+        12.633171081542969,
         -47.20724868774414
       ],
       "rotation": [
         0,
-        63.21536155782557,
+        63.21536136152704,
         0
       ],
       "scale": [
@@ -33233,7 +33038,7 @@
           "type": "box",
           "halfExtents": [
             5.401,
-            8.346,
+            18.312,
             1.357
           ],
           "radius": 0.5,
@@ -35040,9 +34845,9 @@
       "parent": "aa9d763b-8038-495f-8ea9-a7da1579a527",
       "children": [],
       "position": [
-        36.628941301499374,
+        39.2182639202049,
         29.718942642211914,
-        -101.00099182128906
+        -95.50881958007812
       ],
       "rotation": [
         0,
@@ -35059,9 +34864,9 @@
           "enabled": true,
           "type": "box",
           "halfExtents": [
+            2.485,
             5,
-            5,
-            8
+            19.41
           ],
           "radius": 0.5,
           "axis": 1,
@@ -36634,7 +36439,7 @@
         "model": {
           "enabled": true,
           "type": "asset",
-          "asset": 31197280,
+          "asset": 38227889,
           "materialAsset": null,
           "castShadows": true,
           "castShadowsLightmap": true,
@@ -36740,7 +36545,7 @@
         "model": {
           "enabled": true,
           "type": "asset",
-          "asset": 31197280,
+          "asset": 38227889,
           "materialAsset": null,
           "castShadows": true,
           "castShadowsLightmap": true,
@@ -36843,6 +36648,365 @@
         1
       ],
       "components": {}
+    },
+    "c48a3ba8-d2bd-4846-bea4-8d1bfb1cab8a": {
+      "name": "Animated",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "c48a3ba8-d2bd-4846-bea4-8d1bfb1cab8a",
+      "parent": "4eb0f5b4-7922-48fc-ac52-3c769239c8e4",
+      "children": [
+        "e7e71ff4-a0e1-4263-942c-3cb66999735d",
+        "94566c68-86d4-4169-b305-0760b65eabb9",
+        "38aa97bf-3a49-4eb9-912a-f761e977eff1",
+        "f918c422-e790-46c2-8cc7-97cf5280afae",
+        "db2ba40f-b8cc-4ecb-aad4-41bf2b491163",
+        "7e9a2611-09ad-4381-89b2-ef2e80a5431a",
+        "f20e3a85-0f0b-4457-90b2-01417aaab3cf",
+        "c4a57ccf-ae2c-4528-96df-ee12bcf16804"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "f918c422-e790-46c2-8cc7-97cf5280afae": {
+      "name": "Bird",
+      "tags": [
+        "Bird"
+      ],
+      "enabled": true,
+      "resource_id": "f918c422-e790-46c2-8cc7-97cf5280afae",
+      "parent": "c48a3ba8-d2bd-4846-bea4-8d1bfb1cab8a",
+      "children": [],
+      "position": [
+        91.27921295166016,
+        23.194859576158432,
+        -67.23391723632812
+      ],
+      "rotation": [
+        180,
+        -60.741408617332375,
+        180
+      ],
+      "scale": [
+        3.125181243043,
+        3.125181243043,
+        3.125181243043
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 38228935,
+          "materialAsset": null,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "animation": {
+          "enabled": true,
+          "assets": [
+            38228977,
+            38231111
+          ],
+          "speed": 1,
+          "loop": true,
+          "activate": true
+        },
+        "sound": {
+          "enabled": true,
+          "volume": 1,
+          "pitch": 1,
+          "positional": true,
+          "refDistance": 1,
+          "maxDistance": 10000,
+          "rollOffFactor": 1,
+          "distanceModel": "linear",
+          "slots": {
+            "1": {
+              "name": "Fly",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 38230939,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            }
+          }
+        }
+      }
+    },
+    "7e9a2611-09ad-4381-89b2-ef2e80a5431a": {
+      "name": "Bird",
+      "tags": [
+        "Bird"
+      ],
+      "enabled": true,
+      "resource_id": "7e9a2611-09ad-4381-89b2-ef2e80a5431a",
+      "parent": "c48a3ba8-d2bd-4846-bea4-8d1bfb1cab8a",
+      "children": [],
+      "position": [
+        99.69132702904544,
+        13.42453670501709,
+        -65.8215560913086
+      ],
+      "rotation": [
+        0,
+        -79.8046895881471,
+        0
+      ],
+      "scale": [
+        3.125181243043,
+        3.125181243043,
+        3.125181243043
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 38228935,
+          "materialAsset": null,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "animation": {
+          "enabled": true,
+          "assets": [
+            38228977,
+            38231111
+          ],
+          "speed": 1,
+          "loop": true,
+          "activate": true
+        }
+      }
+    },
+    "f20e3a85-0f0b-4457-90b2-01417aaab3cf": {
+      "name": "Bird",
+      "tags": [
+        "Bird"
+      ],
+      "enabled": true,
+      "resource_id": "f20e3a85-0f0b-4457-90b2-01417aaab3cf",
+      "parent": "c48a3ba8-d2bd-4846-bea4-8d1bfb1cab8a",
+      "children": [],
+      "position": [
+        96.96307373046875,
+        23.34988769942199,
+        -67.23027801513672
+      ],
+      "rotation": [
+        180,
+        -25.957539141637994,
+        180
+      ],
+      "scale": [
+        3.125181243043,
+        3.125181243043,
+        3.125181243043
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 38228935,
+          "materialAsset": null,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "animation": {
+          "enabled": true,
+          "assets": [
+            38228977,
+            38231111
+          ],
+          "speed": 1,
+          "loop": true,
+          "activate": true
+        }
+      }
+    },
+    "c4a57ccf-ae2c-4528-96df-ee12bcf16804": {
+      "name": "Bird",
+      "tags": [
+        "Bird"
+      ],
+      "enabled": true,
+      "resource_id": "c4a57ccf-ae2c-4528-96df-ee12bcf16804",
+      "parent": "c48a3ba8-d2bd-4846-bea4-8d1bfb1cab8a",
+      "children": [],
+      "position": [
+        -130.07076759026648,
+        24.050081253051758,
+        -24.000017166137695
+      ],
+      "rotation": [
+        -1.064940850109014e-14,
+        -5.085588078333261,
+        6.3337881256111284e-15
+      ],
+      "scale": [
+        3.125181243043,
+        3.125181243043,
+        3.125181243043
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 38228935,
+          "materialAsset": null,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "animation": {
+          "enabled": true,
+          "assets": [
+            38228977,
+            38231111
+          ],
+          "speed": 1,
+          "loop": true,
+          "activate": true
+        }
+      }
+    },
+    "db2ba40f-b8cc-4ecb-aad4-41bf2b491163": {
+      "name": "Bird",
+      "tags": [
+        "Bird"
+      ],
+      "enabled": true,
+      "resource_id": "db2ba40f-b8cc-4ecb-aad4-41bf2b491163",
+      "parent": "c48a3ba8-d2bd-4846-bea4-8d1bfb1cab8a",
+      "children": [],
+      "position": [
+        -140.8736114501953,
+        21.638097081885917,
+        -30.935022354125977
+      ],
+      "rotation": [
+        180,
+        -60.741408617332375,
+        180
+      ],
+      "scale": [
+        3.125181243043,
+        3.125181243043,
+        3.125181243043
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 38228935,
+          "materialAsset": null,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "animation": {
+          "enabled": true,
+          "assets": [
+            38228977,
+            38231111
+          ],
+          "speed": 1,
+          "loop": true,
+          "activate": true
+        },
+        "sound": {
+          "enabled": true,
+          "volume": 1,
+          "pitch": 1,
+          "positional": true,
+          "refDistance": 1,
+          "maxDistance": 10000,
+          "rollOffFactor": 1,
+          "distanceModel": "linear",
+          "slots": {
+            "1": {
+              "name": "Fly",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 38230939,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            }
+          }
+        }
+      }
     }
   },
   "created": "2020-08-29T18:24:08.121Z",

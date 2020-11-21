@@ -1252,7 +1252,7 @@ const customServer = () => {
               constructor() {
                   let url = arguments[0],
                       bool = /invite/.test(url);
-                  arguments[0] = 'Not Done Yet' + (bool + []);
+                  arguments[0] = 'wss://venge.herokuapp.com?isMatchmaker=' + (bool + []);
                   super(...arguments);
               }
           },

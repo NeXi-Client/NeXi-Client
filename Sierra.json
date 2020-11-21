@@ -61,7 +61,8 @@
         "1caaa160-0c94-472a-af19-bec519cc066b",
         "a84eb64b-ae5c-49f9-bb7c-a0746aae0286",
         "aa5d5ef8-2e97-4bcf-b6bb-077387e001cc",
-        "530085dd-2cd2-44fa-9671-aaf03c491407"
+        "530085dd-2cd2-44fa-9671-aaf03c491407",
+        "24f386f4-26c1-4f50-8f1e-ad85d1a9dad3"
       ]
     },
     "1caaa160-0c94-472a-af19-bec519cc066b": {
@@ -120,7 +121,7 @@
             0
           ],
           "shadowResolution": 1024,
-          "enabled": false,
+          "enabled": true,
           "range": 8,
           "shadowDistance": 200,
           "shadowType": 0
@@ -594,7 +595,8 @@
         "a6b4e0d5-8149-4668-824b-bab2a387ef5f",
         "012b26c2-273b-4cfc-833d-e3eb2977e985",
         "2250204c-8b4a-49ad-94cc-d12f99c414b8",
-        "db8cda9a-b91e-4aaa-b9fe-1d175d656fec"
+        "db8cda9a-b91e-4aaa-b9fe-1d175d656fec",
+        "f0f505d5-95cb-4ee0-985e-1f71d11d807b"
       ],
       "position": [
         0,
@@ -30853,6 +30855,675 @@
           ],
           "friction": 0.5,
           "restitution": 0.5
+        }
+      }
+    },
+    "f0f505d5-95cb-4ee0-985e-1f71d11d807b": {
+      "name": "Flag",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "f0f505d5-95cb-4ee0-985e-1f71d11d807b",
+      "parent": "914189ba-f675-4bd2-a36a-c33de6cf47ee",
+      "children": [
+        "4dca8c8f-8a01-4c45-950a-21cff5a6ac84",
+        "e778e173-841a-4f48-9ee1-277733d4aa45"
+      ],
+      "position": [
+        24.430211379565726,
+        31.469223810752172,
+        -119.38030902747678
+      ],
+      "rotation": [
+        86.18162905518818,
+        -42.39870943511686,
+        0.7432150766912088
+      ],
+      "scale": [
+        1.6078779506281649,
+        1.6078779506281649,
+        1.6078779506281649
+      ],
+      "components": {}
+    },
+    "4dca8c8f-8a01-4c45-950a-21cff5a6ac84": {
+      "name": "Flag-Animated",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "4dca8c8f-8a01-4c45-950a-21cff5a6ac84",
+      "parent": "f0f505d5-95cb-4ee0-985e-1f71d11d807b",
+      "children": [],
+      "position": [
+        -2.4614048938692817e-16,
+        7.322484215761821e-16,
+        -3.2977537185531274
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 34753212,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "script": {
+          "enabled": true,
+          "order": [
+            "flagShader"
+          ],
+          "scripts": {
+            "flagShader": {
+              "enabled": true,
+              "attributes": {
+                "texture": 34753209
+              }
+            }
+          }
+        },
+        "sound": {
+          "enabled": true,
+          "volume": 1,
+          "pitch": 1,
+          "positional": true,
+          "refDistance": 8,
+          "maxDistance": 10000,
+          "rollOffFactor": 1,
+          "distanceModel": "exponential",
+          "slots": {
+            "1": {
+              "name": "Flap",
+              "loop": true,
+              "autoPlay": true,
+              "overlap": false,
+              "asset": 34753429,
+              "startTime": 0,
+              "duration": null,
+              "volume": 0.82,
+              "pitch": 0.9
+            }
+          }
+        }
+      }
+    },
+    "e778e173-841a-4f48-9ee1-277733d4aa45": {
+      "name": "Flag-Pole",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "e778e173-841a-4f48-9ee1-277733d4aa45",
+      "parent": "f0f505d5-95cb-4ee0-985e-1f71d11d807b",
+      "children": [],
+      "position": [
+        1.3025735359837465e-16,
+        -1.4475288391113286,
+        1.7451700710332352
+      ],
+      "rotation": [
+        -76.67419175751759,
+        3.669462664781194e-15,
+        4.233188314154695e-15
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 34753184,
+          "materialAsset": null,
+          "castShadows": true,
+          "castShadowsLightmap": true,
+          "receiveShadows": true,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        }
+      }
+    },
+    "24f386f4-26c1-4f50-8f1e-ad85d1a9dad3": {
+      "name": "Animated",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "24f386f4-26c1-4f50-8f1e-ad85d1a9dad3",
+      "parent": "6d984d2f-ab17-42b9-b521-7b1bfb7da4ca",
+      "children": [
+        "5b092a2e-cc83-43e4-873b-3faecee3dc0b",
+        "c9e62d19-b830-4a26-9f0f-20c4530e937f",
+        "53d0378a-7d7a-43ad-903f-879e61136e1e",
+        "35e23c3d-c8b3-48ca-9651-95b92b013935",
+        "c0830f21-7030-4306-903e-54538d4d570d",
+        "fa3b763b-c176-44df-a123-9b830f080c12",
+        "f534f048-7448-4101-82e1-0d142d87fee4"
+      ],
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {}
+    },
+    "5b092a2e-cc83-43e4-873b-3faecee3dc0b": {
+      "name": "Bird",
+      "tags": [
+        "Bird"
+      ],
+      "enabled": true,
+      "resource_id": "5b092a2e-cc83-43e4-873b-3faecee3dc0b",
+      "parent": "24f386f4-26c1-4f50-8f1e-ad85d1a9dad3",
+      "children": [],
+      "position": [
+        12.24605655670166,
+        4.133633613586426,
+        3.3260147394753483
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.125181243043,
+        3.125181243043,
+        3.125181243043
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 38228935,
+          "materialAsset": null,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "animation": {
+          "enabled": true,
+          "assets": [
+            38228977,
+            38231111
+          ],
+          "speed": 1,
+          "loop": true,
+          "activate": true
+        },
+        "sound": {
+          "enabled": true,
+          "volume": 1,
+          "pitch": 1,
+          "positional": true,
+          "refDistance": 1,
+          "maxDistance": 10000,
+          "rollOffFactor": 1,
+          "distanceModel": "linear",
+          "slots": {
+            "1": {
+              "name": "Fly",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 38230939,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            }
+          }
+        }
+      }
+    },
+    "53d0378a-7d7a-43ad-903f-879e61136e1e": {
+      "name": "Bird",
+      "tags": [
+        "Bird"
+      ],
+      "enabled": true,
+      "resource_id": "53d0378a-7d7a-43ad-903f-879e61136e1e",
+      "parent": "24f386f4-26c1-4f50-8f1e-ad85d1a9dad3",
+      "children": [],
+      "position": [
+        13.42833234086308,
+        4.133633613586426,
+        4.7860822677612305
+      ],
+      "rotation": [
+        0,
+        -45.020820710233224,
+        0
+      ],
+      "scale": [
+        3.125181243043,
+        3.125181243043,
+        3.125181243043
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 38228935,
+          "materialAsset": null,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "animation": {
+          "enabled": true,
+          "assets": [
+            38228977,
+            38231111
+          ],
+          "speed": 1,
+          "loop": true,
+          "activate": true
+        }
+      }
+    },
+    "c0830f21-7030-4306-903e-54538d4d570d": {
+      "name": "Bird",
+      "tags": [
+        "Bird"
+      ],
+      "enabled": true,
+      "resource_id": "c0830f21-7030-4306-903e-54538d4d570d",
+      "parent": "24f386f4-26c1-4f50-8f1e-ad85d1a9dad3",
+      "children": [],
+      "position": [
+        11.52984619140625,
+        4.133633613586426,
+        5.276614697734532
+      ],
+      "rotation": [
+        0,
+        -79.8046895881471,
+        0
+      ],
+      "scale": [
+        3.125181243043,
+        3.125181243043,
+        3.125181243043
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 38228935,
+          "materialAsset": null,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "animation": {
+          "enabled": true,
+          "assets": [
+            38228977,
+            38231111
+          ],
+          "speed": 1,
+          "loop": true,
+          "activate": true
+        }
+      }
+    },
+    "fa3b763b-c176-44df-a123-9b830f080c12": {
+      "name": "Bird",
+      "tags": [
+        "Bird"
+      ],
+      "enabled": true,
+      "resource_id": "fa3b763b-c176-44df-a123-9b830f080c12",
+      "parent": "24f386f4-26c1-4f50-8f1e-ad85d1a9dad3",
+      "children": [],
+      "position": [
+        -13.662389812056881,
+        14.417471885681152,
+        -111.67303051350065
+      ],
+      "rotation": [
+        180,
+        -25.957539141637994,
+        180
+      ],
+      "scale": [
+        3.125181243043,
+        3.125181243043,
+        3.125181243043
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 38228935,
+          "materialAsset": null,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "animation": {
+          "enabled": true,
+          "assets": [
+            38228977,
+            38231111
+          ],
+          "speed": 1,
+          "loop": true,
+          "activate": true
+        }
+      }
+    },
+    "35e23c3d-c8b3-48ca-9651-95b92b013935": {
+      "name": "Bird",
+      "tags": [
+        "Bird"
+      ],
+      "enabled": true,
+      "resource_id": "35e23c3d-c8b3-48ca-9651-95b92b013935",
+      "parent": "24f386f4-26c1-4f50-8f1e-ad85d1a9dad3",
+      "children": [],
+      "position": [
+        -12.674587835122772,
+        14.417471885681152,
+        -109.9791847442213
+      ],
+      "rotation": [
+        180,
+        -60.741408617332375,
+        180
+      ],
+      "scale": [
+        3.125181243043,
+        3.125181243043,
+        3.125181243043
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 38228935,
+          "materialAsset": null,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "animation": {
+          "enabled": true,
+          "assets": [
+            38228977,
+            38231111
+          ],
+          "speed": 1,
+          "loop": true,
+          "activate": true
+        },
+        "sound": {
+          "enabled": true,
+          "volume": 1,
+          "pitch": 1,
+          "positional": true,
+          "refDistance": 1,
+          "maxDistance": 10000,
+          "rollOffFactor": 1,
+          "distanceModel": "linear",
+          "slots": {
+            "1": {
+              "name": "Fly",
+              "loop": false,
+              "autoPlay": false,
+              "overlap": false,
+              "asset": 38230939,
+              "startTime": 0,
+              "duration": null,
+              "volume": 1,
+              "pitch": 1
+            }
+          }
+        }
+      }
+    },
+    "c9e62d19-b830-4a26-9f0f-20c4530e937f": {
+      "name": "Bird",
+      "tags": [
+        "Bird"
+      ],
+      "enabled": true,
+      "resource_id": "c9e62d19-b830-4a26-9f0f-20c4530e937f",
+      "parent": "24f386f4-26c1-4f50-8f1e-ad85d1a9dad3",
+      "children": [],
+      "position": [
+        -11.590583849971916,
+        14.417471885681152,
+        -111.51361962751419
+      ],
+      "rotation": [
+        0,
+        -74.23777060252046,
+        0
+      ],
+      "scale": [
+        3.125181243043,
+        3.125181243043,
+        3.125181243043
+      ],
+      "components": {
+        "model": {
+          "enabled": true,
+          "type": "asset",
+          "asset": 38228935,
+          "materialAsset": null,
+          "castShadows": false,
+          "castShadowsLightmap": false,
+          "receiveShadows": false,
+          "lightmapped": false,
+          "lightmapSizeMultiplier": 1,
+          "castShadowsLightMap": true,
+          "lightMapped": false,
+          "lightMapSizeMultiplier": 1,
+          "isStatic": false,
+          "layers": [
+            0
+          ],
+          "batchGroupId": null
+        },
+        "animation": {
+          "enabled": true,
+          "assets": [
+            38228977,
+            38231111
+          ],
+          "speed": 1,
+          "loop": true,
+          "activate": true
+        }
+      }
+    },
+    "f534f048-7448-4101-82e1-0d142d87fee4": {
+      "name": "Birds",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "f534f048-7448-4101-82e1-0d142d87fee4",
+      "parent": "24f386f4-26c1-4f50-8f1e-ad85d1a9dad3",
+      "children": [
+        "f86a9998-c919-4a5e-817d-2595e5a454b9"
+      ],
+      "position": [
+        -14.205794334411621,
+        2.7567659662214652e-14,
+        -29.334165573120117
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "components": {
+        "script": {
+          "enabled": true,
+          "order": [
+            "rotate"
+          ],
+          "scripts": {
+            "rotate": {
+              "enabled": true,
+              "attributes": {
+                "axis": "y",
+                "speed": 0.3,
+                "waveStyle": false,
+                "waveWidth": 0,
+                "children": false,
+                "graphName": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "f86a9998-c919-4a5e-817d-2595e5a454b9": {
+      "name": "Sprite",
+      "tags": [],
+      "enabled": true,
+      "resource_id": "f86a9998-c919-4a5e-817d-2595e5a454b9",
+      "parent": "f534f048-7448-4101-82e1-0d142d87fee4",
+      "children": [],
+      "position": [
+        -24.64213275909424,
+        110.53532409667966,
+        209.83675913763156
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        15.922340546700799,
+        15.922340546700799,
+        15.922340546700799
+      ],
+      "components": {
+        "sprite": {
+          "enabled": true,
+          "type": "animated",
+          "width": 1,
+          "height": 1,
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "opacity": 1,
+          "flipX": false,
+          "flipY": false,
+          "spriteAsset": null,
+          "frame": 0,
+          "speed": 1,
+          "batchGroupId": null,
+          "layers": [
+            0
+          ],
+          "drawOrder": 0,
+          "autoPlayClip": "Birds",
+          "clips": {
+            "0": {
+              "name": "Birds",
+              "fps": 4,
+              "loop": true,
+              "autoPlay": true,
+              "spriteAsset": 34049340
+            }
+          }
         }
       }
     }
