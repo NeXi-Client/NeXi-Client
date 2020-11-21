@@ -182,7 +182,7 @@ pc.script.createLoadingScreen(function (app) {
             '    left: 0;',
             '    height: 100%;',
             '    width: 100%;',
-            '    background-color: #000000;',
+            '    background-image: url("files/assets/34136044/1/Mistle-Blur.jpg");',
             '}',
 
             '#application-splash {',
@@ -213,7 +213,7 @@ pc.script.createLoadingScreen(function (app) {
             '    padding: 10px 5px;',
             '    transform: translate(-50%, 0%);',
             '    text-align: center;',
-            '    background-color: rgba(255, 255, 255, 0.05);',
+            '    background-color: rgba(0, 255, 255, 0.15);',
             '    color: #fff;',
             '    width: 400px;',
             '    border-radius: 5px;',
@@ -288,8 +288,8 @@ pc.script.createLoadingScreen(function (app) {
             '.cls-1 {',
             '   stroke-dasharray: 1000;',
             '   stroke-dashoffset: 1000;',
-            '   stroke-width: 5;',
-            '   animation: dash 20s linear normal infinite;',
+            '   stroke-width: 2;',
+            '   animation: dash 1.0s linear normal forwards;',
             '}',
             
             '@keyframes dash {',
