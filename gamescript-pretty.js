@@ -16917,8 +16917,8 @@ Settings.prototype.setSettings = function() {
     var r = this.getSetting("InvertMouse");
     pc.settings.invertAxis = "true" === r,
     "true" === this.getSetting("DisableMenuMusic") ? (pc.settings.disableMenuMusic = !0,
-        this.entity.sound.stop("Loop")) : (pc.settings.disableMenuMusic = !1,
-        this.entity.sound.play("Loop"));
+    this.app.fire("Menu:Music", !1)) : (pc.settings.disableMenuMusic = !1,
+    this.app.fire("Menu:Music", !0));
     var p = this.getSetting("FPSCounter");
     pc.settings.fpsCounter = "true" === p;
     var o = this.getSetting("DisableSpecialEffects");
