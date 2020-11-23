@@ -30,6 +30,7 @@ const customInit = () => {
   //customServer();
   verifiedNeXi();
   customMaxPlayerFormat();
+  playMenuMusic();
 };
 
 // Functionality modifications
@@ -1435,5 +1436,23 @@ const customMaxPlayerFormat = () => {
         pc.isOwner = i,
         this.private([a])
     }
+  }
+}
+
+const playMenuMusic = () => {
+    Menu.prototype.onWeaponSelect = function(e) {
+      var t = this.weaponEntity.findByTag("Weapon")
+        , n = this.app.assets.find(e + "-Thumbnail-White.png");
+      for (var i in t) {
+          t[i].enabled = !1
+      }
+      this.weaponEntity.findByName(e).enabled = !0,
+      this.weaponIcon.element.textureAsset = n,
+      this.weaponName.element.text = e.toLowerCase(),
+      this.entity.sound.play("Whoosh"),
+      this.entity.sound.play("Loop"),
+      pc.session.weapon = e
+  }
+  Menu.prototype.setMute = function() {
   }
 }
