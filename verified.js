@@ -1,4 +1,4 @@
-var verifs = ["NeXi2k", "OOOPS", "maaxuh", "R7AN?", "Slimecube", "Vatr1x", "FLEX_CHADWELL", "akimbo27", "TTV_dercookiiee", "2FlyWanna_Be", "wounds", "Zim"] //Urban lol]
+var verifs = ["NeXi2k", "OOOPS", "maaxuh", "R7AN?", "Slimecube", "Vatr1x", "FLEX_CHADWELL", "akimbo27", "TTV_dercookiiee", "2FlyWanna_Be", "wounds", "Zim", "Flexkng"] //Urban lol]
 
 window.verified = Object.fromEntries(verifs.map(e=>[e,1]));
 
